@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "kaiwood.endwise",
+    "castwide.solargraph",
+    "mikestead.dotenv",
+    "rebornix.ruby",
+    "esbenp.prettier-vscode"
+  ]
+}

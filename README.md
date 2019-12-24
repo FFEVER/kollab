@@ -14,7 +14,7 @@ Things you may want to cover:
 
 * [Database initialization](#-database)
 
-* Editor configuration
+* [Editor configuration](#editor-configuration)
 
 * How to run the test suite
 
@@ -34,11 +34,22 @@ Install this version `PostgreSQL 12.1` via **homebrew**. Then make it run at sta
 $ brew services start postgresql
 ```
 
-**Important**: request password from project manager before create database user
+**Important**: Request password from project manager before create database user.
+
+Add the requested password to your `~/.bash_profile` or  `~/.zshrc` or other shell configuration file depends on your prefer shell.
+```
+export KOLLAB_DATABASE_PASSWORD="requested_password"
+```
 
 Create user named `kollab` and enter the requeted password by:
 ```
 $ createuser -P -d kollab
+```
+
+Create a new database from `kollab/` by:
+```
+$ rails db:setup
+$ rails db:migrate
 ```
 
 # Editor Configuration

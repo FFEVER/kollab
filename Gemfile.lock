@@ -59,6 +59,7 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.0)
+    awesome_print (1.8.0)
     backport (1.1.2)
     bindex (0.8.1)
     bootsnap (1.4.5)
@@ -232,6 +233,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)

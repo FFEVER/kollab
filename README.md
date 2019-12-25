@@ -11,6 +11,7 @@ Things you may want to cover:
 - [Ruby and Rails Version](#ruby-and-rails-version)
 - [Javascript Version](#javascript-version)
 - [Configuration](#configuration)
+  - [Awesome irb and pry](#awesome-irb-and-pry)
   - [Credentials](#credentials)
 - [Database](#database)
 - [Editor Configuration](#editor-configuration)
@@ -55,6 +56,20 @@ $ nvm which
 ```
 
 # Configuration
+
+## Awesome irb and pry
+
+Reading plain text while debugging is painful. Lucklily, we have gem called **awesome_print** to handle this for us.
+
+Put `.irbrc` and `.pryrc` file to your home directory (~). Content could be copied from my [Github gist](https://gist.github.com/FFEVER/ae20275f858dcc238e39d8d4d7306690)
+
+After `bundle install` the rails gems, run the following command to find the location of **awesome_print** gem.
+
+```
+$ gem which awesome_print
+```
+
+**Do not copy all path**, copy only until `.../lib/`. Replace the copied path to the first line of both files. Now you will have beautiful debug outputs. No more pain!
 
 ## Credentials
 

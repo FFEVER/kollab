@@ -44,6 +44,8 @@ group :development do
   gem 'solargraph'
   # Rubocop for linting
   gem 'rubocop'
+  # Nice console output :)
+  gem 'awesome_print', require: 'ap'
 end
 
 group :test do

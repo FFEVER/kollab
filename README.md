@@ -18,6 +18,7 @@ Things you may want to cover:
 - [Ruby Style Guide](#ruby-style-guide)
 - [Rails Style Guide](#rails-style-guide)
 - [SASS Style Guide](#sass-style-guide)
+- [Up and Running](#up-and-running)
 
 To be updated
 
@@ -113,3 +114,24 @@ We follow style guide from [here](https://rails.rubystyle.guide/#introduction). 
 # SASS Style Guide
 
 We follow style guide from [here](https://sass-guidelin.es/#syntax--formatting). Please read and try to follow for the best practice.
+
+# Up and Running
+
+We need to run both **rails server** to serve rails app and **webpack dev server** for detecting changes in `app/javascript` and compile it in real-time.
+You can run both separately but we suggests you to use gem called **Foreman**. The gem allow you to run two processes simultaneously.
+
+```
+gem install foremane
+```
+
+To start a rails server, run foreman from the project root directory:
+
+```
+foreman start -f Procfile.dev -p 3000
+```
+
+or simply run the provided shell script:
+
+```
+./kollab
+```

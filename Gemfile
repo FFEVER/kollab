@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Paginate models without any configuration
+gem 'kaminari'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -37,7 +40,9 @@ group :development, :test do
   gem 'better_errors'
   # Full function of better_errors (REPL, local/instance variable inspection, pretty stack frame names)
   gem 'binding_of_caller'
+  # Rails console with Pry
   gem 'pry-rails'
+  # Rails debugger with Pry
   gem 'pry-byebug'
 end
 

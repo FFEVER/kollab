@@ -20,7 +20,9 @@ Things you may want to cover:
   - [Ruby](#ruby)
   - [Rails](#rails)
   - [SASS](#sass)
-- [Testing with RSpec](#testing-with-rspec)
+- [Testing](#testing)
+  - [RSpec](#rspec)
+  - [Code Coverage](#code-coverage)
 - [Up and Running](#up-and-running)
 
 To be updated
@@ -133,8 +135,12 @@ We follow style guide from [here](https://rails.rubystyle.guide/#introduction). 
 
 We follow style guide from [here](https://sass-guidelin.es/#syntax--formatting). Please read and try to follow for the best practice.
 
-# Testing with RSpec
+# Testing
+## RSpec
 Testing is as important as implementing since it makes sure that your code perform as you expected and knows when someone break your code. We use alternative framework for testing called [RSpec](https://github.com/rspec/rspec-rails). Please make sure you know how to write the test properly. You can follow the guide from [here](https://relishapp.com/rspec/rspec-rails/v/3-9/docs/gettingstarted).
+
+## Code Coverage
+After running your tests, open `coverage/index.html` in the browser of your choice. We use [simplecov](https://github.com/colszowka/simplecov) gem.
 
 # Up and Running
 

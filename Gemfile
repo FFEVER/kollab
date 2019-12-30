@@ -46,6 +46,8 @@ group :development, :test do
   gem 'pry-byebug'
   # Alternative testing framework
   gem 'rspec-rails', '~> 3.9'
+  # Code coverage analysis tool
+  gem 'simplecov', require: false
 end
 
 group :development do

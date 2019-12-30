@@ -35,6 +35,9 @@
 yarn-debug.log*
 .yarn-integrity
 
+# Do not commit generated files in the coverage directory
+coverage/*
+
 ##### VSCode #####
 .vscode/*
 !.vscode/settings.json

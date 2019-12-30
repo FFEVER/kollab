@@ -44,6 +44,8 @@ group :development, :test do
   gem 'pry-rails'
   # Rails debugger with Pry
   gem 'pry-byebug'
+  # Alternative testing framework
+  gem 'rspec-rails', '~> 3.9'
 end
 
 group :development do

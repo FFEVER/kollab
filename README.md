@@ -10,15 +10,17 @@ Things you may want to cover:
 - [Kollab - Online Platform for Project Collaboration](#kollab---online-platform-for-project-collaboration)
 - [Ruby and Rails Version](#ruby-and-rails-version)
 - [Javascript Version](#javascript-version)
-- [Configuration](#configuration)
+- [Environment Configuration](#environment-configuration)
   - [Awesome irb and pry](#awesome-irb-and-pry)
   - [Credentials](#credentials)
 - [Database](#database)
 - [Editor Configuration](#editor-configuration)
   - [VSCode](#vscode)
-- [Ruby Style Guide](#ruby-style-guide)
-- [Rails Style Guide](#rails-style-guide)
-- [SASS Style Guide](#sass-style-guide)
+- [Style Guide](#style-guide)
+  - [Ruby](#ruby)
+  - [Rails](#rails)
+  - [SASS](#sass)
+- [Testing with RSpec](#testing-with-rspec)
 - [Up and Running](#up-and-running)
 
 To be updated
@@ -55,7 +57,7 @@ $ nvm exec
 $ nvm which
 ```
 
-# Configuration
+# Environment Configuration
 
 ## Awesome irb and pry
 
@@ -118,17 +120,21 @@ The recommended extensions are defined in `.vscode/extensions.json`
 
 The recommended settings are defined in `.vscode/settings`
 
-# Ruby Style Guide
+# Style Guide
 
+## Ruby
 We follow style guide from [Airbnb Style Guide](https://github.com/airbnb/ruby). Please read and try to follow for the best practice.
 
-# Rails Style Guide
+## Rails
 
 We follow style guide from [here](https://rails.rubystyle.guide/#introduction). Please read and try to follow for the best practice.
 
-# SASS Style Guide
+## SASS
 
 We follow style guide from [here](https://sass-guidelin.es/#syntax--formatting). Please read and try to follow for the best practice.
+
+# Testing with RSpec
+Testing is as important as implementing since it makes sure that your code perform as you expected and knows when someone break your code. We use alternative framework for testing called [RSpec](https://github.com/rspec/rspec-rails). Please make sure you know how to write the test properly. You can follow the guide from [here](https://relishapp.com/rspec/rspec-rails/v/3-9/docs/gettingstarted).
 
 # Up and Running
 

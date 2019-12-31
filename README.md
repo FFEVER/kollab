@@ -19,7 +19,7 @@ Things you may want to cover:
 - [Style Guide](#style-guide)
   - [Ruby](#ruby)
   - [Rails](#rails)
-  - [SASS](#sass)
+  - [SCSS](#scss)
 - [Testing](#testing)
   - [RSpec](#rspec)
   - [Code Coverage](#code-coverage)
@@ -123,25 +123,31 @@ The recommended extensions are defined in `.vscode/extensions.json`
 The recommended settings are defined in `.vscode/settings`
 
 # Style Guide
+
 To improve code readability and consistency, we need to have some standard rules for writing our code. Fortunately, `solargraph` and `prettier` is good enough in auto formatting code in `vscode`, but it is also good to know some of the basic.
 
 **You don't need to remember it all!** Skimming through it is enough.
+
 ## Ruby
+
 We follow style guide from [Airbnb Style Guide](https://github.com/airbnb/ruby). Please read and try to follow for the best practice.
 
 ## Rails
 
 We follow style guide from [here](https://rails.rubystyle.guide/#introduction). Please read and try to follow for the best practice.
 
-## SASS
+## SCSS
 
 We follow style guide from [here](https://sass-guidelin.es/#syntax--formatting). Please read and try to follow for the best practice.
 
 # Testing
+
 ## RSpec
+
 Testing is as important as implementing since it makes sure that your code perform as you expected and knows when someone break your code. We use alternative framework for testing called [RSpec](https://github.com/rspec/rspec-rails). Please make sure you know how to write the test properly. You can follow the guide from [the official guide](https://relishapp.com/rspec/rspec-rails/v/3-9/docs/gettingstarted) or [another guide](https://www.codewithjason.com/rails-testing-hello-world-using-rspec-capybara/).
 
 ## Code Coverage
+
 After running your tests, open `coverage/index.html` in the browser of your choice. We use [simplecov](https://github.com/colszowka/simplecov) gem.
 
 # Up and Running

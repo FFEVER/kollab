@@ -8,6 +8,12 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels") // for ActionCable
 
+// Support component names relative to this directory (react-rails gem):
+var componentRequireContext = require.context("components", true)
+var ReactRailsUJS = require("react_ujs")
+ReactRailsUJS.useContext(componentRequireContext)
+
+// Javascript components
 import "jquery"
 import "bootstrap"
 import "popper.js"
@@ -19,7 +25,7 @@ import "popper.js"
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-// Add custom files here
+// Main style file
 import "../styles/application.scss"
 
 // Initiate tooltip features of bootstrap

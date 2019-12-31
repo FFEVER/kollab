@@ -1,0 +1,9 @@
+.text {
+  &__one {
+    font-size: larger;
+
+    &--red {
+      color: red;
+    }
+  }
+}

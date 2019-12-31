@@ -3,17 +3,19 @@
     font-size: larger;
 
     &--red {
-      color: red;
+      color: rgb(255, 0, 0);
     }
   }
 }
 
 .block {
-  height: 200px;
   width: 200px;
-  background-image: url("~images/kollab.jpg");
+  height: 200px;
+
+  opacity: 0.5;
+  border: thick;
+  background-image: url('~images/kollab.jpg');
   background-repeat: no-repeat;
   background-position: right top;
   background-size: cover;
-  border: thick;
 }

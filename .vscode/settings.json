@@ -8,5 +8,11 @@
   "editor.formatOnSave": true,
   "solargraph.autoformat": true,
   "solargraph.diagnostics": true,
-  "solargraph.formatting": true
+  "solargraph.formatting": true,
+
+  "csscomb.syntaxAssociations": {
+    "postcss": "scss"
+  },
+  "csscomb.formatOnSave": true,
+  "csscomb.preset": ".csscomb.json"
 }

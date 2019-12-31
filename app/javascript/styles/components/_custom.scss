@@ -7,3 +7,13 @@
     }
   }
 }
+
+.block {
+  height: 200px;
+  width: 200px;
+  background-image: url("../images/kollab.jpg");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: cover;
+  border: thick;
+}

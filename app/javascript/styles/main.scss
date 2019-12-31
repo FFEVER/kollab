@@ -1,0 +1,29 @@
+@import '~bootstrap/scss/bootstrap';
+
+/**
+Base
+**/
+@import 'base/base';
+
+/**
+Theme
+**/
+@import 'theme/theme';
+
+/**
+Layout
+**/
+@import 'layout/header';
+@import 'layout/navigation';
+@import 'layout/forms';
+@import 'layout/sidebar';
+
+/**
+Components
+**/
+@import 'components/custom';
+
+/**
+Pages
+**/
+@import 'pages/home';

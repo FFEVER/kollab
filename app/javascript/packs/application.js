@@ -26,7 +26,7 @@ const images = require.context("../images", true)
 const imagePath = name => images(name, true)
 
 // Main style file
-import "../styles/application.scss"
+import "../styles/main.scss"
 
 // Initiate tooltip features of bootstrap
 document.addEventListener("turbolinks:load", () => {

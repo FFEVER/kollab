@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-
-import KollabImage from "../images/kollab.jpg"
+import KollabImage from "images/kollab.jpg"
 
 class HelloWorld extends React.Component {
   render() {

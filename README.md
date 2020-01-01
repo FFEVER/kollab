@@ -24,6 +24,7 @@ Things you may want to cover:
   - [RSpec](#rspec)
   - [Code Coverage](#code-coverage)
 - [Up and Running](#up-and-running)
+- [Debugging](#debugging)
 
 To be updated
 
@@ -153,20 +154,29 @@ After running your tests, open `coverage/index.html` in the browser of your choi
 # Up and Running
 
 We need to run both **rails server** to serve rails app and **webpack dev server** for detecting changes in `app/javascript` and compile it in real-time.
-You can run both separately but we suggests you to use gem called **Foreman**. The gem allow you to run two processes simultaneously.
+You can run both separately but we suggests you to use app called [Overmind](https://github.com/DarthSim/overmind). The app allow you to run two processes simultaneously and allow you to connect to specific process too.
 
 ```
-gem install foremane
+$ brew install overmind
 ```
 
-To start a rails server, run foreman from the project root directory:
+To start a rails server, run **overmind** from the project root directory:
 
 ```
-foreman start -f Procfile.dev -p 3000
+$ overmind start
 ```
 
-or simply run the provided shell script:
+You can access your rails server from `localhost:5000`.
 
+
+
+# Debugging
+To debug put **pry** at any line of your code:
 ```
-./kollab
+binding.pry
 ```
+If you are using **Overmind** you need to open another terminal and run:
+```
+$ overmind connect web
+```
+After you done your debugging, you can safely disconnect from the window by hitting `Ctrl b` and then `d`.

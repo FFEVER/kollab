@@ -1,0 +1,48 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+}
+
+body {
+  font-family: 'HaboroSans';
+  font-size: 16px;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+
+  color: currentColor;
+
+  &:hover {
+    text-decoration: solid;
+
+    color: red;
+  }
+}
+
+img {
+  max-width: 100%;
+
+  &.aligncenter {
+    margin: auto;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}

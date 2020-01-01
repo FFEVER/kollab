@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'HaboroSans';
+  font-weight: 800;
+
+  src: url('~styles/fonts/HaboroSans-NormBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'HaboroSans';
+  font-weight: 600;
+
+  src: url('~styles/fonts/HaboroSans-NormMedium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'HaboroSans';
+  font-weight: 400;
+
+  src: url('~styles/fonts/HaboroSans-NormRegular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'HaboroSans';
+  font-weight: 200;
+
+  src: url('~styles/fonts/HaboroSans-NormLight.otf') format('opentype');
+}
+
+h1 {
+  font-size: 2.2em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+
+h4 {
+  font-size: 1.6em;
+}
+
+h5 {
+  font-size: 1.4em;
+}
+
+h6 {
+  font-size: 1.2em;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+h5 {
+  font-size: 1.4em;
+}

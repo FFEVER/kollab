@@ -68,6 +68,8 @@ group :development do
   gem 'solargraph'
   # Rubocop for linting
   gem 'rubocop'
+  # Erb autoformatting
+  gem 'htmlbeautifier'
 end
 
 group :test do

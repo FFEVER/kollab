@@ -5,6 +5,7 @@
     "mikestead.dotenv",
     "rebornix.ruby",
     "esbenp.prettier-vscode",
-    "mrmlnc.vscode-csscomb"
+    "mrmlnc.vscode-csscomb",
+    "aliariff.vscode-erb-beautify"
   ]
 }

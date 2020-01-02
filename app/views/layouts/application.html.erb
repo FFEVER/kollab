@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Kollab</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <head>
+    <title>Kollab</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
+    <%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-<body>
-  <%= yield %>
-</body>
+  <body>
+    <!-- TODO: [Anyone] Add styling and move to appropriate place -->
+    <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %> alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= value %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </body>
 
 </html>

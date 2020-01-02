@@ -1,12 +1,12 @@
 {
   "files.associations": {
-    "*.html.erb": "html"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
+    "*.erb": "erb"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[erb]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
   },
   "editor.formatOnSave": true,
   "solargraph.autoformat": true,
@@ -17,5 +17,7 @@
     "postcss": "scss"
   },
   "csscomb.formatOnSave": true,
-  "csscomb.preset": ".csscomb.json"
+  "csscomb.preset": ".csscomb.json",
+
+  "vscode-erb-beautify.keepBlankLines": 1
 }

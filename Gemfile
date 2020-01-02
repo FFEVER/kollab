@@ -32,6 +32,8 @@ gem 'kaminari'
 
 # Model serializer
 gem 'active_model_serializers', '~> 0.10.0'
+# User management
+gem 'devise'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -66,6 +68,8 @@ group :development do
   gem 'solargraph'
   # Rubocop for linting
   gem 'rubocop'
+  # Erb autoformatting
+  gem 'htmlbeautifier'
 end
 
 group :test do

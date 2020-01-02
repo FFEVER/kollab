@@ -1,13 +1,11 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <!-- Brand/logo -->
   <a class="navbar-brand" href="/"">
     <%= image_pack_tag 'kollab-blue.png', alt: 'kollab', class: 'nav-logo' %>
   </a>
 
-  <!-- Links -->
   <ul class=" navbar-nav mr-auto">
 
-    <!--TODO: Change mockup links-->
+    <!--TODO: [Anyone] Change mockup links when Anya finished homepage design-->
     <li class="nav-item">
       <a class="nav-link" href="#">Link 1</a>
     </li>
@@ -17,30 +15,29 @@
     <li class="nav-item">
       <a class="nav-link" href="#">Link 3</a>
     </li>
-    </ul>
+  </ul>
 
-
-    <!--TODO: Change styling-->
-    <ul class="navbar-nav">
-      <% if user_signed_in? %>
+  <!--TODO: [Anyone] Change styling when Anya finished homepage design-->
+  <ul class="navbar-nav">
+    <% if user_signed_in? %>
       <li class="nav-item">
         <%= link_to destroy_user_session_path, class: "nav-link", method: :delete do %>
-        <button type="button" class="btn btn-primary">Logout</button>
+          <button type="button" class="btn btn-primary">Logout</button>
         <% end %>
       </li>
 
-      <% else %>
+    <% else %>
       <li class="nav-item">
         <%= link_to new_user_session_path, class: "nav-link" do %>
-        <button type="button" class="btn btn-info">Login</button>
+          <button type="button" class="btn btn-info">Login</button>
         <% end %>
       </li>
       <li class="nav-item">
         <%= link_to new_user_registration_path, class: "nav-link" do %>
-        <button type="button" class="btn btn-outline-primary">Sign up</button>
+          <button type="button" class="btn btn-outline-primary">Sign up</button>
         <% end %>
       </li>
 
-      <% end %>
-    </ul>
+    <% end %>
+  </ul>
 </nav>

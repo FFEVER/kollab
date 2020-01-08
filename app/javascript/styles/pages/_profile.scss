@@ -1,7 +1,73 @@
 .profile {
+  display: flex;
+  flex-direction: column;
+
   &__header {
-    h1 {
-      text-align: center;
+    text-align: center;
+
+    div {
+      &:first-child {
+        margin-bottom: 0;
+
+        border-bottom: solid 0.5px;
+      }
+
+      &:last-child {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+
+      span {
+        font-family: 'Muli';
+        font-size: 1.5em;
+        font-weight: 800;
+      }
     }
+  }
+
+  &__section {
+    margin-bottom: $global-space * 0.25;
+    padding: $global-space * 0.5;
+
+    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-evenly;
+
+    padding: 0;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      width: 50%;
+      padding-top: $global-space * 0.25;
+      padding-bottom: $global-space * 0.25;
+
+      &--active {
+        transition: 0.4s ease-in-out;
+
+        border-bottom: solid 2px;
+      }
+    }
+  }
+}
+
+.dot {
+  display: inline-block;
+
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+  background-color: #bbb;
+
+  &--profile {
+    width: 50px;
+    height: 50px;
   }
 }

@@ -3,6 +3,8 @@ $kollab-width-tablet: 768px;
 $kollab-width-desktop: 1024px;
 $kollab-width-desktop-extra: 1200px;
 
+$global-space: 30px;
+
 html {
   box-sizing: border-box;
 }
@@ -24,7 +26,7 @@ html {
 }
 
 body {
-  font-family: 'Lato';
+  font-family: 'Lato', sans-serif;
   font-size: 12px;
   font-weight: 400;
 }
@@ -41,19 +43,8 @@ a {
   color: currentColor;
 
   &:hover {
-    text-decoration: solid;
-
-    color: red;
+    text-decoration: underline;
   }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
 }
 
 img,

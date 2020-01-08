@@ -1,15 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
 
 /**
+Theme
+**/
+@import 'theme/theme';
+
+/**
 Base
 **/
 @import 'base/base';
 @import 'base/typography';
-
-/**
-Theme
-**/
-@import 'theme/theme';
 
 /**
 Layout
@@ -28,3 +28,4 @@ Components
 Pages
 **/
 @import 'pages/home';
+@import 'pages/profile';

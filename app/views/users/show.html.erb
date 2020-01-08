@@ -6,12 +6,15 @@
     </div>
 
     <div class="profile__section">
+      <!-- TODO: [Anyone] Add profile picture. -->
       <span class="dot dot--profile"></span>
       <div>
         <span>11</span>
+        <!-- TODO: [Anyone] Add project total. -->
         <p>Projects</p>
       </div>
       <div>
+        <!-- TODO: [Anyone] Add following/followers total. -->
         <span>5</span>
         <p>Following</p>
       </div>
@@ -26,34 +29,24 @@
 
     <main>
       <div class="profile__section profile__menu">
-        <a class="profile__menu__item profile__menu__item--active">
+        <%= link_to user_path,
+        {class: "profile__menu__item #{'profile__menu__item--active' if profile_info_page?}"} do %>
           <div class="dot"></div>
           <div>Overview</div>
-        </a>
-        <a class="profile__menu__item">
+        <% end %>
+
+        <%= link_to user_path(page: project_page),
+        {class: "profile__menu__item #{'profile__menu__item--active' if !profile_info_page?}"} do %>
           <div class="dot"></div>
           Projects
-        </a>
-      </div>
-      <div class="profile__section">
-        <h2>About</h2>
-        <p>I am 4th year student from King Mongkut’s Institute of
-          Technology Ladkrabang and currently studying in Software
-          Engineering field. I am interested Web Development and Docker.</p>
+        <% end %>
       </div>
 
-      <div class="profile__section">
-        <h2>Skills</h2>
+      <% if profile_info_page? %>
+        <%= render 'show_info'%>
+      <% else %>
+        <%= render 'show_project'%>
+      <% end %>
 
-      </div>
-
-      <div class="profile__section">
-        <h2>Interests</h2>
-
-      </div>
-
-      <div class="profile__section">
-        <h2>Contact</h2>
-      </div>
     </main>
   </div>

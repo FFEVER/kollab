@@ -1,0 +1,22 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+
+  padding: $global-space * 0.3 $global-space * 2;
+
+  cursor: pointer;
+  letter-spacing: 1px;
+
+  color: $black !important;
+  border: solid 1px black;
+  border-radius: 4px;
+
+  &--small {
+    padding: 0 $global-space * 0.3;
+  }
+
+  &--gray {
+    color: $kollab-gray !important;
+    border-color: $kollab-gray;
+  }
+}

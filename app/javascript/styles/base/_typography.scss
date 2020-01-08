@@ -1,29 +1,46 @@
 @font-face {
-  font-family: 'HaboroSans';
-  font-weight: 800;
-
-  src: url('~styles/fonts/HaboroSans-NormBold.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'HaboroSans';
-  font-weight: 600;
-
-  src: url('~styles/fonts/HaboroSans-NormMedium.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'HaboroSans';
+  font-family: 'Lato';
   font-weight: 400;
 
-  src: url('~styles/fonts/HaboroSans-NormRegular.otf') format('opentype');
+  src: url('~styles/fonts/Lato-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HaboroSans';
-  font-weight: 200;
+  font-family: 'Lato';
+  font-weight: 700;
 
-  src: url('~styles/fonts/HaboroSans-NormLight.otf') format('opentype');
+  src: url('~styles/fonts/Lato-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 900;
+
+  src: url('~styles/fonts/Lato-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-weight: 400;
+
+  src: url('~styles/fonts/Muli-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-weight: 700;
+
+  src: url('~styles/fonts/Muli-Bold.ttf') format('truetype');
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Muli';
+  font-weight: 700;
 }
 
 h1 {

@@ -1,3 +1,8 @@
+$kollab-width-mobile: 576px;
+$kollab-width-tablet: 768px;
+$kollab-width-desktop: 1024px;
+$kollab-width-desktop-extra: 1200px;
+
 html {
   box-sizing: border-box;
 }
@@ -20,8 +25,14 @@ html {
 
 body {
   font-family: 'Lato';
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 400;
+}
+
+@media only screen and (min-width: $kollab-width-mobile) {
+  body {
+    font-size: 16px;
+  }
 }
 
 a {

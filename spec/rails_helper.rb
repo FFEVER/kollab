@@ -27,6 +27,7 @@ require 'rspec/rails'
 # require only the support files necessary.
 #
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+require 'devise'
 require 'factory_bot'
 
 # Checks for pending migrations and applies them before tests are run.
@@ -69,3 +70,7 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  # config.include Warden::Test::Helpers
+end

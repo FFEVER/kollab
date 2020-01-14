@@ -55,6 +55,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.9'
   # Code coverage analysis tool
   gem 'simplecov', require: false
+  # Fixtures replacement
+  gem 'factory_bot_rails'
 end
 
 group :development do

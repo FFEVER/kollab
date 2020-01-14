@@ -57,6 +57,10 @@ group :development, :test do
   gem 'simplecov', require: false
   # Fixtures replacement
   gem 'factory_bot_rails'
+  # Generate fake data in test suits
+  gem 'faker'
+  # Clean database efficiently in test suits
+  gem 'database_cleaner'
 end
 
 group :development do

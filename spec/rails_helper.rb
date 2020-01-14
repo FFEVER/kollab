@@ -28,7 +28,8 @@ require 'rspec/rails'
 #
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 require 'devise'
-require 'factory_bot'
+require_relative 'support/factory_bot'
+require_relative 'support/database_cleaner'
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.

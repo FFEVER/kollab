@@ -28,6 +28,7 @@ require 'rspec/rails'
 #
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 require 'devise'
+require 'faker'
 require_relative 'support/factory_bot'
 require_relative 'support/database_cleaner'
 

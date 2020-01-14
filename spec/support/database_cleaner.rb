@@ -5,7 +5,7 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
-  # Keep database without records before every test run
+  # Keep database without records before all (not each) test run
   config.before(:all) do
     DatabaseCleaner.clean
   end

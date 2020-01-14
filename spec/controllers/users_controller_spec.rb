@@ -13,7 +13,6 @@ RSpec.describe UsersController, type: :controller do
 
     it 'returns http success' do
       get :show, params: { id: subject.current_user.id }
-
       expect(response).to have_http_status(:success)
     end
   end

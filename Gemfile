@@ -52,7 +52,12 @@ group :development, :test do
   # Rails debugger with Pry
   gem 'pry-byebug'
   # Alternative testing framework
-  gem 'rspec-rails', '~> 3.9'
+  gem 'rspec-core', git: 'https://github.com/rspec/rspec-core'
+  gem 'rspec-expectations', git: 'https://github.com/rspec/rspec-expectations'
+  gem 'rspec-mocks', git: 'https://github.com/rspec/rspec-mocks'
+  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails'
+  gem 'rspec-support', git: 'https://github.com/rspec/rspec-support'
+  gem 'rails-controller-testing'
   # Code coverage analysis tool
   gem 'simplecov', require: false
   # Fixtures replacement

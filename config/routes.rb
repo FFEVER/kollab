@@ -11,4 +11,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   resources :users, only: [:show]
+
+  namespace :users do
+    resources :projects
+  end
 end

@@ -1,22 +1,17 @@
+# frozen_string_literal: true
+
 class Users::ProjectsController < ApplicationController
-  def index
-  end
+  before_action :authenticate_user!
 
   def new
+    @project = Project.new
   end
 
-  def create
-  end
+  def create; end
 
-  def update
-  end
+  def edit; end
 
-  def edit
-  end
+  def update; end
 
-  def destroy
-  end
-
-  def show
-  end
+  def destroy; end
 end

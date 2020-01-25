@@ -1,2 +1,15 @@
-<h1>Users::Projects#new</h1>
-<p>Find me in app/views/users/projects/new.html.erb</p>
+<main class="project">
+  <h1>Create New Project</h1>
+  <%= form_with model: [:users, @project], class: "project__form" do |f| %>
+    <!-- TODO: [Anyone] Add validations -->
+    <div class="form-group">
+      <label for="project_title">Title</label>
+      <%= f.text_field :title, class: "form-control", placeholder: "Enter title"%>
+    </div>
+    <div class="form-group">
+      <label for="project_short_desc">Short description</label>
+      <%= f.text_area :short_desc, class: "form-control", placeholder: "Enter a short description" %>
+    </div>
+    <%= f.submit "Create", class: "button" %>
+  <% end %>
+</main>

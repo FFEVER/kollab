@@ -1,15 +1,12 @@
-<main class="project">
-  <h1>Create New Project</h1>
-  <%= form_with model: [:users, @project], class: "project__form" do |f| %>
-    <!-- TODO: [Anyone] Add validations -->
-    <div class="form-group">
-      <label for="project_title">Title</label>
-      <%= f.text_field :title, class: "form-control", placeholder: "Enter title"%>
-    </div>
-    <div class="form-group">
-      <label for="project_short_desc">Short description</label>
-      <%= f.text_area :short_desc, class: "form-control", placeholder: "Enter a short description" %>
-    </div>
-    <%= f.submit "Create", class: "button" %>
-  <% end %>
-</main>
+<div class="project">
+  <header>
+    <h1>Create New Project</h1>
+  </header>
+
+  <!-- TODO: [Eit] Add path props -->
+  <%= react_component("ProjectCreateForm",
+    {
+      authenticityToken: form_authenticity_token,
+      project: @project,
+    })
+  %>

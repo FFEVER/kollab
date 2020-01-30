@@ -24,7 +24,11 @@ class TagInput extends React.Component {
   }
 
   handleChange = (value, actionMeta) => {
-    this.setState({ value })
+    // Handle clear or delete tags
+    if (value === null) {
+      value = []
+    }
+    this.props.onChange(value)
   }
 
   handleInputChange = inputValue => {
@@ -32,17 +36,15 @@ class TagInput extends React.Component {
   }
 
   handleKeyDown = event => {
-    const { inputValue, value } = this.state
+    const { inputValue } = this.state
     if (!inputValue) return
     switch (event.key) {
       case "Enter":
       case " ":
       case "Tab":
         if (this.validate()) {
-          // Append inputValue to current value
-          this.props.onChange(createOption(inputValue))
+          this.props.onKeyDown(createOption(inputValue))
         }
-
         this.setState({
           inputValue: ""
         })

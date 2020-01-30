@@ -10,6 +10,7 @@ class ProjectCreateForm extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleTagChange = this.handleTagChange.bind(this)
+    this.handleTagClear = this.handleTagClear.bind(this)
   }
 
   handleChange(event) {
@@ -17,8 +18,16 @@ class ProjectCreateForm extends React.Component {
   }
 
   handleTagChange(value) {
+    // Append tag to current tags
     this.setState({
       tags: [...this.state.tags, value]
+    })
+  }
+
+  handleTagClear(value) {
+    // Handle clear or delete tags
+    this.setState({
+      tags: value
     })
   }
 
@@ -95,7 +104,11 @@ class ProjectCreateForm extends React.Component {
 
         <div className="form-row">
           <label htmlFor="projectEndDate">Tags</label>
-          <TagInput value={this.state.tags} onChange={this.handleTagChange} />
+          <TagInput
+            value={this.state.tags}
+            onChange={this.handleTagClear}
+            onKeyDown={this.handleTagChange}
+          />
         </div>
 
         <button type="submit" className="button">

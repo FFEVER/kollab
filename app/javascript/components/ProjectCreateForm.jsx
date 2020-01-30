@@ -1,17 +1,25 @@
 import React from "react"
 import PropTypes from "prop-types"
+import TagInput from "./TagInput"
 
 class ProjectCreateForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { project: this.props.project }
+    this.state = { project: this.props.project, tags: [] }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleTagChange = this.handleTagChange.bind(this)
   }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value })
+  }
+
+  handleTagChange(value) {
+    this.setState({
+      tags: [...this.state.tags, value]
+    })
   }
 
   handleSubmit(event) {
@@ -32,6 +40,7 @@ class ProjectCreateForm extends React.Component {
             className="form-control"
             placeholder="Enter title"
             onChange={this.handleChange}
+            autoFocus={true}
           ></input>
         </div>
 
@@ -42,7 +51,7 @@ class ProjectCreateForm extends React.Component {
             name="short_desc"
             id="projectShortDesc"
             className="form-control"
-            placeholder="Enter a short description about your project"
+            placeholder="Enter a short description"
             onChange={this.handleChange}
           ></input>
         </div>
@@ -69,6 +78,24 @@ class ProjectCreateForm extends React.Component {
               onChange={this.handleChange}
             ></input>
           </div>
+        </div>
+
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="projectEndDate">Categories</label>
+            <input
+              type="text"
+              name="categories"
+              id="projectCategories"
+              className="form-control"
+              onChange={this.handleChange}
+            ></input>
+          </div>
+        </div>
+
+        <div className="form-row">
+          <label htmlFor="projectEndDate">Tags</label>
+          <TagInput value={this.state.tags} onChange={this.handleTagChange} />
         </div>
 
         <button type="submit" className="button">

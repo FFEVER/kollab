@@ -12,6 +12,7 @@ const createOption = label => ({
 })
 
 class TagInput extends React.Component {
+  // TODO: [Eit] Show suggestions while typing
   state = {
     inputValue: ""
   }

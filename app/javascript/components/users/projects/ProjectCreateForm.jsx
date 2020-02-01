@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import TagInput from "./TagInput"
+import TagInput from "../../TagInput"
 
 class ProjectCreateForm extends React.Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class ProjectCreateForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit} className="project__form">
         <div className="form-group">
-          <label htmlFor="projectTitle">Title</label>
+          <label htmlFor="projectTitle">Title *</label>
           <input
             type="text"
             name="title"
@@ -54,7 +54,7 @@ class ProjectCreateForm extends React.Component {
         </div>
 
         <div className="form-group">
-          <label htmlFor="projectShortDesc">Short description</label>
+          <label htmlFor="projectShortDesc">Short description *</label>
           <input
             type="text"
             name="short_desc"
@@ -91,7 +91,7 @@ class ProjectCreateForm extends React.Component {
 
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="projectEndDate">Categories</label>
+            <label htmlFor="projectEndDate">Categories *</label>
             <input
               type="text"
               name="categories"

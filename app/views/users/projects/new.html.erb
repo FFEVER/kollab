@@ -7,6 +7,6 @@
   <%= react_component("users/projects/ProjectCreateForm",
     {
       authenticityToken: form_authenticity_token,
-      project: @project,
+      submitPath: users_projects_path
     })
   %>

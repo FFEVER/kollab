@@ -1,11 +1,24 @@
 import React from "react"
 import PropTypes from "prop-types"
-import TagInput from "../../TagInput"
+import { TagInput, tagsToArray } from "../../TagInput"
+import axios from "axios"
+
+const DATA_PREFIX = "project"
+
+const dataName = name => {
+  return DATA_PREFIX + "[" + name + "]"
+}
 
 class ProjectCreateForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { project: this.props.project, tags: [] }
+    this.state = {
+      tags: [],
+      shortDesc: "",
+      title: "",
+      startDate: "",
+      endDate: ""
+    }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -34,6 +47,26 @@ class ProjectCreateForm extends React.Component {
   handleSubmit(event) {
     // TODO: [Eit] Send ajax requests
     event.preventDefault()
+    const { submitPath } = this.props
+    const formData = new FormData()
+    formData.append(dataName("title"), this.state.title)
+    formData.append(dataName("short_desc"), this.state.shortDesc)
+    formData.append(dataName("start_date"), this.state.startDate)
+    formData.append(dataName("end_date"), this.state.endDate)
+    formData.append(
+      dataName("tags"),
+      JSON.stringify(tagsToArray(this.state.tags))
+    )
+    formData.append("authenticity_token", this.props.authenticityToken)
+
+    axios
+      .post(submitPath, formData)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   render() {
@@ -57,7 +90,7 @@ class ProjectCreateForm extends React.Component {
           <label htmlFor="projectShortDesc">Short description *</label>
           <input
             type="text"
-            name="short_desc"
+            name="shortDesc"
             id="projectShortDesc"
             className="form-control"
             placeholder="Enter a short description"
@@ -70,7 +103,7 @@ class ProjectCreateForm extends React.Component {
             <label htmlFor="projectStartDate">Start date:</label>
             <input
               type="date"
-              name="start_date"
+              name="startDate"
               id="projectStartDate"
               className="form-control"
               onChange={this.handleChange}
@@ -81,7 +114,7 @@ class ProjectCreateForm extends React.Component {
             <label htmlFor="projectEndDate">End date:</label>
             <input
               type="date"
-              name="end_date"
+              name="endDate"
               id="projectEndDate"
               className="form-control"
               onChange={this.handleChange}
@@ -127,6 +160,6 @@ class ProjectCreateForm extends React.Component {
 
 ProjectCreateForm.propTypes = {
   authenticityToken: PropTypes.string,
-  project: PropTypes.object
+  submitPath: PropTypes.string
 }
 export default ProjectCreateForm

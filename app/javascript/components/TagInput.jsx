@@ -11,6 +11,14 @@ const createOption = label => ({
   value: label
 })
 
+const tagsToArray = tags => {
+  var tagsArray = []
+  tags.forEach(tagObj => {
+    tagsArray = [...tagsArray, tagObj["value"]]
+  })
+  return tagsArray
+}
+
 class TagInput extends React.Component {
   // TODO: [Eit] Show suggestions while typing
   state = {
@@ -76,3 +84,4 @@ class TagInput extends React.Component {
 }
 
 export default TagInput
+export { tagsToArray, TagInput }

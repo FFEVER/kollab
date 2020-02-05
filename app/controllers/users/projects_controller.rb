@@ -9,6 +9,7 @@ class Users::ProjectsController < ApplicationController
 
   def create
     # TODO: [Eit] Create Member and validates project
+    binding.pry
     @project = Project.new(project_params)
     if @project.save
       render json: {

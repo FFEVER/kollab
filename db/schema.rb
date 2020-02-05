@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_02_05_084919) do
     t.integer "project_status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "start_date"
+    t.date "end_date"
   end
 
   create_table "tags", force: :cascade do |t|

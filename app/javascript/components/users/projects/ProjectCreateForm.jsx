@@ -17,7 +17,8 @@ class ProjectCreateForm extends React.Component {
       shortDesc: "",
       title: "",
       startDate: "",
-      endDate: ""
+      endDate: "",
+      errors: []
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -45,7 +46,6 @@ class ProjectCreateForm extends React.Component {
   }
 
   handleSubmit(event) {
-    // TODO: [Eit] Send ajax requests
     event.preventDefault()
     const { submitPath } = this.props
     const formData = new FormData()
@@ -62,17 +62,23 @@ class ProjectCreateForm extends React.Component {
     axios
       .post(submitPath, formData)
       .then(response => {
-        console.log(response)
+        // TODO: [Anyone] Handle form error from server side validations
+        if (response.data.errors !== undefined) {
+          this.setState({ errors: response.data.errors })
+        }
       })
       .catch(error => {
-        console.log(error)
+        // TODO: [Anyone] Handle error (other than 200 OK)
       })
   }
 
+  handleErrorResponse(errors) {}
+
   render() {
-    // TODO: [Eit] Add categories and tag
+    // TODO: [Eit] Add fields and tags
+    // TODO: [Eit] Validates title short_desc length
     return (
-      <form onSubmit={this.handleSubmit} className="project__form">
+      <form onSubmit={this.handleSubmit} className="project__form" noValidate>
         <div className="form-group">
           <label htmlFor="projectTitle">Title *</label>
           <input
@@ -83,7 +89,9 @@ class ProjectCreateForm extends React.Component {
             placeholder="Enter title"
             onChange={this.handleChange}
             autoFocus={true}
+            required
           ></input>
+          <div className="invalid-feedback">Title cannot be blank.</div>
         </div>
 
         <div className="form-group">
@@ -95,6 +103,7 @@ class ProjectCreateForm extends React.Component {
             className="form-control"
             placeholder="Enter a short description"
             onChange={this.handleChange}
+            required
           ></input>
         </div>
 

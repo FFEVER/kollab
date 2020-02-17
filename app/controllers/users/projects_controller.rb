@@ -10,16 +10,10 @@ class Users::ProjectsController < ApplicationController
   def create
     # TODO: [Eit] Create Member after project created
     # TODO: [Eit] Add Tag to Project
-    @project = Project.new(
-      title: project_params[:title],
-      short_desc: project_params[:short_desc],
-      start_date: project_params[:start_date],
-      end_date: project_params[:end_date]
-    )
-
+    @project = create_new_project_from_params
     if @project.save
       render json: {
-        message: 'Project has been created.'
+        redirect_url: url_for(@project)
       }, status: :ok
     else
       render json: {
@@ -46,5 +40,20 @@ class Users::ProjectsController < ApplicationController
     )
     permitted[:tags] = JSON.parse(permitted[:tags]) || []
     permitted
+  end
+
+  def create_new_project_from_params
+    project = Project.new(
+      title: project_params[:title],
+      short_desc: project_params[:short_desc]
+    )
+    unless project_params[:start_date].blank?
+      @project.start_date = project_params[:start_date]
+    end
+    unless project_params[:end_date].blank?
+      @project.end_date = project_params[:end_date]
+    end
+
+    project
   end
 end

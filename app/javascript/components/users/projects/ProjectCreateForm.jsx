@@ -59,10 +59,18 @@ class ProjectCreateForm extends React.Component {
     )
     formData.append("authenticity_token", this.props.authenticityToken)
 
-    axios
-      .post(submitPath, formData)
+    axios({
+      method: "post",
+      url: submitPath,
+      responseType: "json",
+      data: formData
+    })
       .then(response => {
+        console.log(response)
         // TODO: [Anyone] Handle form error from server side validations
+        if (response.data.redirect_url !== undefined) {
+          window.location.href = response.data.redirect_url
+        }
         if (response.data.errors !== undefined) {
           this.setState({ errors: response.data.errors })
         }

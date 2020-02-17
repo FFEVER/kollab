@@ -8,17 +8,23 @@ class Users::ProjectsController < ApplicationController
   end
 
   def create
-    # TODO: [Eit] Create Member and validates project
-    binding.pry
-    @project = Project.new(project_params)
+    # TODO: [Eit] Create Member after project created
+    # TODO: [Eit] Add Tag to Project
+    @project = Project.new(
+      title: project_params[:title],
+      short_desc: project_params[:short_desc],
+      start_date: project_params[:start_date],
+      end_date: project_params[:end_date]
+    )
+
     if @project.save
       render json: {
         message: 'Project has been created.'
       }, status: :ok
     else
       render json: {
-        message: 'Something went wrong.'
-      }, status: :bad_request
+        errors: @project.errors.messages
+      }, status: :ok
     end
   end
 

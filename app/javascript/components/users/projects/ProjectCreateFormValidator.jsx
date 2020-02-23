@@ -1,23 +1,63 @@
 class FormValidator {
-  static validateTitle(title, errors) {
+  static validateTitle(state, errors) {
+    const { title } = state
+    const key = Object.keys({ title })[0]
+
     if (title === undefined || title.length < 1) {
-      errors["title"].push("cannot be blank.")
+      // Title is blank
+      errors[key].push("cannot be blank.")
     }
     if (title.length > 50) {
-      errors["title"].push("is too long.")
+      // Title has more than 50 letters
+      errors[key].push("is too long.")
     }
   }
 
-  static validateShortDesc(shortDesc, errors) {
+  static validateShortDesc(state, errors) {
+    const { shortDesc } = state
+    const key = Object.keys({ shortDesc })[0]
+
     if (shortDesc === undefined || shortDesc.length < 1) {
-      errors["shortDesc"].push("cannot be blank.")
+      // Short description is blank
+      errors[key].push("cannot be blank.")
     }
     if (shortDesc.length > 150) {
-      errors["shortDesc"].push("is too long.")
+      // Short description has more than 150 letters
+      errors[key].push("is too long.")
     }
   }
 
-  static validateStartEndDate(startDate, endDate, errors) {}
+  static validateStartEndDate(state, errors) {
+    const { startDate, endDate } = state
+    const key = Object.keys({ startDate })[0]
+
+    var startDateObj = Date.parse(startDate)
+    var endDateObj = Date.parse(endDate)
+
+    if (endDateObj !== NaN) {
+      if (startDateObj !== NaN && startDateObj - endDateObj > 0) {
+        // Start date come after end date
+        errors[key].push("must happen before end date.")
+      }
+      if (startDateObj === NaN) {
+        // Have end date but no start date
+        errors[key].push("cannot be blank.")
+      }
+    }
+  }
+
+  static validateTags(state, errors) {
+    const { tags } = state
+    const key = Object.keys({ tags })[0]
+
+    if (tags.length > 3) {
+      // Tags more than 3
+      errors[key].push("can have up to 3.")
+    } else if (tags.length <= 0) {
+      // Tags less than 1
+      errors[key].push("is required.")
+    }
+  }
 
   static isValidatePass(errors) {
     for (let [key, value] of Object.entries(errors)) {
@@ -36,11 +76,11 @@ class FormValidator {
         tags: [],
         categories: []
       }
-      const { title, shortDesc, startDate, endDate } = state
 
-      this.validateTitle(title, errors)
-      this.validateShortDesc(shortDesc, errors)
-      this.validateStartEndDate(startDate, endDate, errors)
+      this.validateTitle(state, errors)
+      this.validateShortDesc(state, errors)
+      this.validateStartEndDate(state, errors)
+      this.validateTags(state, errors)
 
       if (this.isValidatePass(errors)) {
         resolve(errors)

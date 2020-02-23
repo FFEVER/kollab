@@ -94,7 +94,6 @@ class ProjectCreateForm extends React.Component {
       data: formData
     })
       .then(response => {
-        console.log(response)
         // TODO: [Anyone] Handle form error from server side validations
         if (response.data.redirect_url !== undefined) {
           window.location.href = response.data.redirect_url
@@ -139,8 +138,8 @@ class ProjectCreateForm extends React.Component {
             required
           ></input>
 
-          {errors["title"].map((message, object) => (
-            <p key={object} className="error-message">
+          {errors["title"].map((message, index) => (
+            <p key={index} className="error-message">
               <small>Title {message}</small>
             </p>
           ))}
@@ -157,8 +156,8 @@ class ProjectCreateForm extends React.Component {
             onChange={this.handleChange}
             required
           ></input>
-          {errors["shortDesc"].map((message, object) => (
-            <p key={object} className="error-message">
+          {errors["shortDesc"].map((message, index) => (
+            <p key={index} className="error-message">
               <small>Short description {message}</small>
             </p>
           ))}
@@ -174,6 +173,11 @@ class ProjectCreateForm extends React.Component {
               className="form-control"
               onChange={this.handleChange}
             ></input>
+            {errors["startDate"].map((message, index) => (
+              <p key={index} className="error-message">
+                <small>Start date {message}</small>
+              </p>
+            ))}
           </div>
 
           <div className="form-group">
@@ -208,6 +212,11 @@ class ProjectCreateForm extends React.Component {
             onChange={this.handleTagClear}
             onKeyDown={this.handleTagChange}
           />
+          {errors["tags"].map((message, index) => (
+            <p key={index} className="error-message">
+              <small>Tags {message}</small>
+            </p>
+          ))}
         </div>
 
         <button

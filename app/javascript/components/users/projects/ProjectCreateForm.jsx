@@ -1,7 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { TagInput, tagsToArray } from "../../TagInput"
 import axios from "axios"
+
+import { TagInput, tagsToArray } from "../../TagInput"
+import FormValidator from "./ProjectCreateFormValidator"
 
 const DATA_PREFIX = "project"
 
@@ -18,7 +20,14 @@ class ProjectCreateForm extends React.Component {
       title: "",
       startDate: "",
       endDate: "",
-      errors: []
+      errors: {
+        title: [],
+        shortDesc: [],
+        startDate: [],
+        endDate: [],
+        tags: [],
+        categories: []
+      }
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -47,7 +56,22 @@ class ProjectCreateForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    const { submitPath } = this.props
+    this.loadingSubmitButton()
+
+    FormValidator.validateAll(this.state)
+      .then(result => {
+        const formData = this.createFormData()
+        this.submitForm(formData)
+      })
+      .catch(errors => {
+        this.setState({
+          errors: errors
+        })
+        this.unloadingSubmitButton()
+      })
+  }
+
+  createFormData() {
     const formData = new FormData()
     formData.append(dataName("title"), this.state.title)
     formData.append(dataName("short_desc"), this.state.shortDesc)
@@ -58,7 +82,11 @@ class ProjectCreateForm extends React.Component {
       JSON.stringify(tagsToArray(this.state.tags))
     )
     formData.append("authenticity_token", this.props.authenticityToken)
+    return formData
+  }
 
+  submitForm(formData) {
+    const { submitPath } = this.props
     axios({
       method: "post",
       url: submitPath,
@@ -73,6 +101,7 @@ class ProjectCreateForm extends React.Component {
         }
         if (response.data.errors !== undefined) {
           this.setState({ errors: response.data.errors })
+          this.unloadingSubmitButton()
         }
       })
       .catch(error => {
@@ -80,15 +109,25 @@ class ProjectCreateForm extends React.Component {
       })
   }
 
-  handleErrorResponse(errors) {}
+  loadingSubmitButton() {
+    $(".submit-body").hide()
+    $(".submit-body-loading").removeAttr("hidden")
+  }
+
+  unloadingSubmitButton() {
+    $(".submit-body").show()
+    $(".submit-body-loading").hide()
+  }
 
   render() {
     // TODO: [Eit] Add fields and tags
     // TODO: [Eit] Validates title short_desc length
+    const { errors } = this.state
     return (
       <form onSubmit={this.handleSubmit} className="project__form" noValidate>
         <div className="form-group">
           <label htmlFor="projectTitle">Title *</label>
+
           <input
             type="text"
             name="title"
@@ -99,7 +138,12 @@ class ProjectCreateForm extends React.Component {
             autoFocus={true}
             required
           ></input>
-          <div className="invalid-feedback">Title cannot be blank.</div>
+
+          {errors["title"].map((message, object) => (
+            <p key={object} className="error-message">
+              <small>Title {message}</small>
+            </p>
+          ))}
         </div>
 
         <div className="form-group">
@@ -113,6 +157,11 @@ class ProjectCreateForm extends React.Component {
             onChange={this.handleChange}
             required
           ></input>
+          {errors["shortDesc"].map((message, object) => (
+            <p key={object} className="error-message">
+              <small>Short description {message}</small>
+            </p>
+          ))}
         </div>
 
         <div className="form-row">
@@ -161,8 +210,19 @@ class ProjectCreateForm extends React.Component {
           />
         </div>
 
-        <button type="submit" className="button">
-          Create
+        <button
+          type="submit"
+          className="button button--fixed-bottom button--long button--gradient-green"
+        >
+          <div className="submit-body">Create a Project</div>
+          <div className="submit-body-loading" hidden>
+            <span
+              className="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+            <span className="sr-only">Loading...</span>
+          </div>
         </button>
 
         <input

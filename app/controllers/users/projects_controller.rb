@@ -49,10 +49,10 @@ class Users::ProjectsController < ApplicationController
       short_desc: project_params[:short_desc]
     )
     unless project_params[:start_date].blank?
-      @project.start_date = project_params[:start_date]
+      project.start_date = project_params[:start_date].to_date
     end
     unless project_params[:end_date].blank?
-      @project.end_date = project_params[:end_date]
+      project.end_date = project_params[:end_date].to_date
     end
 
     project

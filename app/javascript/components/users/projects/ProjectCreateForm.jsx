@@ -10,6 +10,14 @@ const DATA_PREFIX = "project"
 const dataName = name => {
   return DATA_PREFIX + "[" + name + "]"
 }
+const ERRORS = {
+  title: [],
+  shortDesc: [],
+  startDate: [],
+  endDate: [],
+  tags: [],
+  categories: []
+}
 
 class ProjectCreateForm extends React.Component {
   constructor(props) {
@@ -20,14 +28,7 @@ class ProjectCreateForm extends React.Component {
       title: "",
       startDate: "",
       endDate: "",
-      errors: {
-        title: [],
-        shortDesc: [],
-        startDate: [],
-        endDate: [],
-        tags: [],
-        categories: []
-      }
+      errors: ERRORS
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -94,12 +95,21 @@ class ProjectCreateForm extends React.Component {
       data: formData
     })
       .then(response => {
-        // TODO: [Anyone] Handle form error from server side validations
         if (response.data.redirect_url !== undefined) {
+          // No errors, redirect to the new project page
           window.location.href = response.data.redirect_url
         }
         if (response.data.errors !== undefined) {
-          this.setState({ errors: response.data.errors })
+          // There are errors from server response
+          this.setState(state => {
+            var errors = ERRORS
+            for (const [k, v] of Object.entries(response.data.errors)) {
+              errors[k] = v
+            }
+            return {
+              errors
+            }
+          })
           this.unloadingSubmitButton()
         }
       })
@@ -119,8 +129,7 @@ class ProjectCreateForm extends React.Component {
   }
 
   render() {
-    // TODO: [Eit] Add fields and tags
-    // TODO: [Eit] Validates title short_desc length
+    // TODO: [Anyone] Add fields
     const { errors } = this.state
     return (
       <form onSubmit={this.handleSubmit} className="project__form" noValidate>
@@ -176,6 +185,11 @@ class ProjectCreateForm extends React.Component {
             {errors["startDate"].map((message, index) => (
               <p key={index} className="error-message">
                 <small>Start date {message}</small>
+              </p>
+            ))}
+            {errors["endDate"].map((message, index) => (
+              <p key={index} className="error-message">
+                <small>End date {message}</small>
               </p>
             ))}
           </div>

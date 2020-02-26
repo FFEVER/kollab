@@ -16,8 +16,9 @@ class Users::ProjectsController < ApplicationController
         redirect_url: url_for(@project)
       }, status: :ok
     else
+      errors = helpers.errors_to_camel(@project.errors.messages)
       render json: {
-        errors: @project.errors.messages
+        errors: errors
       }, status: :ok
     end
   end

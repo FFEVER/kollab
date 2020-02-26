@@ -34,12 +34,12 @@ class FormValidator {
     var startDateObj = Date.parse(startDate)
     var endDateObj = Date.parse(endDate)
 
-    if (endDateObj !== NaN) {
-      if (startDateObj !== NaN && startDateObj - endDateObj > 0) {
+    if (!Number.isNaN(endDateObj)) {
+      if (!Number.isNaN(startDateObj) && startDateObj - endDateObj > 0) {
         // Start date come after end date
         errors[key].push("must happen before end date.")
       }
-      if (startDateObj === NaN) {
+      if (Number.isNaN(startDateObj)) {
         // Have end date but no start date
         errors[key].push("cannot be blank.")
       }

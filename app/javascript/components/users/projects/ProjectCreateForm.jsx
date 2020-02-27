@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import axios from "axios"
 
-import { TagInput, tagsToArray } from "../../TagInput"
+import { TagInput, tagsToArray } from "../../shared/TagInput"
 import FormValidator from "./ProjectCreateFormValidator"
 
 const DATA_PREFIX = "project"

@@ -4,6 +4,7 @@ import axios from "axios"
 
 import { TagInput, tagsToArray } from "../../shared/TagInput"
 import FormValidator from "./ProjectCreateFormValidator"
+import FormInput from "../../shared/FormInput"
 
 const DATA_PREFIX = "project"
 
@@ -130,107 +131,99 @@ class ProjectCreateForm extends React.Component {
 
   render() {
     // TODO: [Anyone] Add fields
-    const { errors } = this.state
+    const {
+      title,
+      shortDesc,
+      startDate,
+      endDate,
+      categories,
+      errors
+    } = this.state
     return (
       <form onSubmit={this.handleSubmit} className="project__form" noValidate>
         <div className="form-group">
-          <label htmlFor="projectTitle">Title *</label>
-
-          <input
-            type="text"
+          <FormInput
             name="title"
-            id="projectTitle"
-            className="form-control"
+            label="Title:"
+            type="text"
             placeholder="Enter title"
             onChange={this.handleChange}
-            autoFocus={true}
-            required
-          ></input>
-
-          {errors["title"].map((message, index) => (
-            <p key={index} className="error-message">
-              <small>Title {message}</small>
-            </p>
-          ))}
+            isRequired={true}
+            value={title}
+            className="form-control"
+            errors={errors["title"]}
+            errorPrefix="Title"
+          />
         </div>
 
         <div className="form-group">
-          <label htmlFor="projectShortDesc">Short description *</label>
-          <input
-            type="text"
+          <FormInput
             name="shortDesc"
-            id="projectShortDesc"
-            className="form-control"
+            label="Short description:"
+            type="text"
             placeholder="Enter a short description"
             onChange={this.handleChange}
-            required
-          ></input>
-          {errors["shortDesc"].map((message, index) => (
-            <p key={index} className="error-message">
-              <small>Short description {message}</small>
-            </p>
-          ))}
+            isRequired={true}
+            value={shortDesc}
+            className="form-control"
+            errors={errors["shortDesc"]}
+            errorPrefix="Short description"
+          />
         </div>
 
         <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="projectStartDate">Start date:</label>
-            <input
-              type="date"
+          <div className="form-group form__date">
+            <FormInput
               name="startDate"
-              id="projectStartDate"
-              className="form-control"
+              label="Start date:"
+              type="date"
               onChange={this.handleChange}
-            ></input>
-            {errors["startDate"].map((message, index) => (
-              <p key={index} className="error-message">
-                <small>Start date {message}</small>
-              </p>
-            ))}
-            {errors["endDate"].map((message, index) => (
-              <p key={index} className="error-message">
-                <small>End date {message}</small>
-              </p>
-            ))}
+              value={startDate}
+              className="form-control"
+              errors={errors["startDate"]}
+              errorPrefix="Start date"
+            />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="projectEndDate">End date:</label>
-            <input
-              type="date"
+          <div className="form-group form__date">
+            <FormInput
               name="endDate"
-              id="projectEndDate"
-              className="form-control"
+              label="End date:"
+              type="date"
               onChange={this.handleChange}
-            ></input>
+              value={endDate}
+              className="form-control"
+              errors={errors["endDate"]}
+              errorPrefix="End date"
+            />
           </div>
         </div>
 
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="projectEndDate">Categories *</label>
+            <label htmlFor="categories">Categories *</label>
             <input
               type="text"
               name="categories"
-              id="projectCategories"
+              id="categories"
               className="form-control"
               onChange={this.handleChange}
+              value={categories}
             ></input>
           </div>
         </div>
 
         <div className="form-row">
-          <label htmlFor="projectEndDate">Tags</label>
+          <label htmlFor="tags">Tags</label>
           <TagInput
             value={this.state.tags}
             onChange={this.handleTagClear}
             onKeyDown={this.handleTagChange}
+            placeholder="Type something and press enter..."
+            errors={errors["tags"]}
+            errorPrefix="Tags"
+            id="projectTags"
           />
-          {errors["tags"].map((message, index) => (
-            <p key={index} className="error-message">
-              <small>Tags {message}</small>
-            </p>
-          ))}
         </div>
 
         <button

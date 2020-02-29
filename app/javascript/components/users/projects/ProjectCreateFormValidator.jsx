@@ -55,7 +55,7 @@ class FormValidator {
       errors[key].push("can have up to 3.")
     } else if (tags.length <= 0) {
       // Tags less than 1
-      errors[key].push("is required.")
+      errors[key].push("cannot be blank.")
     }
   }
 

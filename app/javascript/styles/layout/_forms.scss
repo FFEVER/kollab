@@ -1,9 +1,18 @@
 form {
+  .form-control:focus {
+    box-shadow: 0 0 3px $kollab-turquoise;
+  }
   .error-message {
     color: red;
   }
 
   .input-error {
     border-color: red;
+
+    &:focus {
+      border: 1px solid red;
+      outline: none !important;
+      box-shadow: 0 0 3px #ce7171;
+    }
   }
 }

@@ -130,8 +130,6 @@ class TagInput extends React.Component {
           onKeyDown={this.handleKeyDown}
           placeholder={placeholder}
           value={value}
-          className="react-select__container"
-          classNamePrefix="react-select"
           id={id}
         />
 

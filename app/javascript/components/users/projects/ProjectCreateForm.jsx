@@ -5,6 +5,7 @@ import axios from "axios"
 import { TagInput, tagsToArray } from "../../shared/form/TagInput"
 import FormValidator from "./ProjectCreateFormValidator"
 import FormInput from "../../shared/form/FormInput"
+import FromTextarea from "../../shared/form/FormTextarea"
 import Button from "../../shared/form/Button"
 
 const DATA_PREFIX = "project"
@@ -139,8 +140,8 @@ class ProjectCreateForm extends React.Component {
         <div className="form-group">
           <FormInput
             name="title"
-            label="Title:"
             type="text"
+            label="Title:"
             placeholder="Enter title"
             onChange={this.handleChange}
             isRequired={true}
@@ -151,16 +152,16 @@ class ProjectCreateForm extends React.Component {
         </div>
 
         <div className="form-group">
-          <FormInput
+          <FromTextarea
             name="shortDesc"
             label="Short description:"
-            type="text"
             placeholder="Enter a short description"
             onChange={this.handleChange}
             isRequired={true}
             value={shortDesc}
             className="form-control"
             errors={errors.shortDesc}
+            rows="3"
           />
         </div>
 

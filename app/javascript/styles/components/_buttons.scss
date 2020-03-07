@@ -8,7 +8,6 @@
   cursor: pointer;
   letter-spacing: 1px;
 
-  color: $black !important;
   border-radius: 4px;
 
   &--small {
@@ -21,6 +20,7 @@
   }
 
   &--gradient-green {
+    color: white;
     background: rgb(84, 189, 194);
     background: linear-gradient(
     90deg,

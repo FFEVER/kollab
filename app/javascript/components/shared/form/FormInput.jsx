@@ -7,7 +7,6 @@ const FormInput = ({
   placeholder,
   onChange,
   className,
-  value,
   errors,
   children,
   label,
@@ -26,7 +25,6 @@ const FormInput = ({
         type={type}
         placeholder={placeholder}
         onChange={onChange}
-        value={value}
         className={`${className} ${errors.length === 0 ? "" : "input-error"}`}
         {...props}
       />

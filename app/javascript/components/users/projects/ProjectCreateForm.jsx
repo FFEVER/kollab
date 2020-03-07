@@ -2,9 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import axios from "axios"
 
-import { TagInput, tagsToArray } from "../../shared/TagInput"
+import { TagInput, tagsToArray } from "../../shared/form/TagInput"
 import FormValidator from "./ProjectCreateFormValidator"
-import FormInput from "../../shared/FormInput"
+import FormInput from "../../shared/form/FormInput"
 
 const DATA_PREFIX = "project"
 

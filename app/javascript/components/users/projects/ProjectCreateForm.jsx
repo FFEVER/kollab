@@ -43,7 +43,6 @@ class ProjectCreateForm extends React.Component {
   }
 
   handleTagChange(value) {
-    // Append tag to current tags
     this.setState({
       tags: [...this.state.tags, value]
     })
@@ -97,11 +96,9 @@ class ProjectCreateForm extends React.Component {
     })
       .then(response => {
         if (response.data.redirect_url !== undefined) {
-          // No errors, redirect to the new project page
           window.location.href = response.data.redirect_url
         }
         if (response.data.errors !== undefined) {
-          // There are errors from server response
           this.setState(state => {
             let errors = ERRORS
             for (const [k, v] of Object.entries(response.data.errors)) {

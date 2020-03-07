@@ -37,7 +37,8 @@
   }
 
   &--fixed-bottom {
-    position: absolute;
+    position: fixed;
+    z-index: 10;
     right: 0;
     bottom: 20px;
     left: 0;

@@ -154,7 +154,7 @@ TagInput.defaultProps = {
 }
 
 TagInput.propTypes = {
-  value: PropTypes.arrayOf(PropTypes.string).isRequired,
+  value: PropTypes.arrayOf(PropTypes.object).isRequired,
   placeholder: PropTypes.string,
   errorPrefix: PropTypes.string,
   errors: PropTypes.arrayOf(PropTypes.string),

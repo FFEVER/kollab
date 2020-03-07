@@ -12,7 +12,7 @@ const createOption = label => ({
 })
 
 const tagsToArray = tags => {
-  var tagsArray = []
+  let tagsArray = []
   tags.forEach(tagObj => {
     tagsArray = [...tagsArray, tagObj["value"]]
   })

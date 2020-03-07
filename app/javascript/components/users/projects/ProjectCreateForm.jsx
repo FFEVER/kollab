@@ -103,7 +103,7 @@ class ProjectCreateForm extends React.Component {
         if (response.data.errors !== undefined) {
           // There are errors from server response
           this.setState(state => {
-            var errors = ERRORS
+            let errors = ERRORS
             for (const [k, v] of Object.entries(response.data.errors)) {
               errors[k] = v
             }

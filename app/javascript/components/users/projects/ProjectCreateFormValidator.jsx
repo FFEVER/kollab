@@ -31,8 +31,8 @@ class FormValidator {
     const { startDate, endDate } = state
     const key = Object.keys({ startDate })[0]
 
-    var startDateObj = Date.parse(startDate)
-    var endDateObj = Date.parse(endDate)
+    let startDateObj = Date.parse(startDate)
+    let endDateObj = Date.parse(endDate)
 
     if (!Number.isNaN(endDateObj)) {
       if (!Number.isNaN(startDateObj) && startDateObj - endDateObj > 0) {
@@ -67,7 +67,7 @@ class FormValidator {
   }
 
   static validateAll(state) {
-    var promise = new Promise((resolve, reject) => {
+    let promise = new Promise((resolve, reject) => {
       const errors = {
         title: [],
         shortDesc: [],

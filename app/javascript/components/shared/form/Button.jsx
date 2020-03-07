@@ -4,8 +4,9 @@ import PropTypes from "prop-types"
 import Loader from "./../Loader"
 
 const Button = ({ name, children, isLoading, ...props }) => {
-  const [width, setWidth] = React.useState(0)
-  const [height, setHeight] = React.useState(0)
+  const [width, setWidth] = React.useState(false)
+  const [height, setHeight] = React.useState(false)
+  const [showLoader, setShowLoader] = React.useState(false)
   const ref = React.useRef(null)
 
   React.useEffect(() => {
@@ -16,6 +17,21 @@ const Button = ({ name, children, isLoading, ...props }) => {
       setHeight(ref.current.getBoundingClientRect().height)
     }
   }, [children])
+
+  React.useEffect(() => {
+    if (isLoading) {
+      setShowLoader(true)
+    }
+
+    if (!isLoading && showLoader) {
+      const timeout = setTimeout(() => {
+        setShowLoader(false)
+      }, 400)
+      return () => {
+        clearTimeout(timeout)
+      }
+    }
+  }, [isLoading, showLoader])
 
   return (
     <button
@@ -32,7 +48,7 @@ const Button = ({ name, children, isLoading, ...props }) => {
       }
       {...props}
     >
-      {isLoading ? <Loader width="1.5rem" height="1.5rem" /> : children}
+      {showLoader ? <Loader width="1.5rem" height="1.5rem" /> : children}
     </button>
   )
 }

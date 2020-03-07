@@ -32,9 +32,7 @@ const FormInput = ({
       />
       {errors.map((message, index) => (
         <p key={index} className="error-message">
-          <small>
-            {errorPrefix} {message}
-          </small>
+          <small>{message}</small>
         </p>
       ))}
     </React.Fragment>
@@ -58,8 +56,7 @@ FormInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   isRequired: PropTypes.bool,
   label: PropTypes.string,
-  errors: PropTypes.arrayOf(PropTypes.string),
-  errorPrefix: PropTypes.string
+  errors: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default FormInput

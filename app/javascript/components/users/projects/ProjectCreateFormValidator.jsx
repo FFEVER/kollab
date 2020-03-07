@@ -4,12 +4,10 @@ class FormValidator {
     const key = Object.keys({ title })[0]
 
     if (title === undefined || title.length < 1) {
-      // Title is blank
-      errors[key].push("cannot be blank.")
+      errors[key].push("Title cannot be blank.")
     }
     if (title.length > 50) {
-      // Title has more than 50 letters
-      errors[key].push("is too long.")
+      errors[key].push("Title is too long.")
     }
   }
 
@@ -18,12 +16,10 @@ class FormValidator {
     const key = Object.keys({ shortDesc })[0]
 
     if (shortDesc === undefined || shortDesc.length < 1) {
-      // Short description is blank
-      errors[key].push("cannot be blank.")
+      errors[key].push("Short description cannot be blank.")
     }
     if (shortDesc.length > 150) {
-      // Short description has more than 150 letters
-      errors[key].push("is too long.")
+      errors[key].push("Short description is too long.")
     }
   }
 
@@ -36,12 +32,10 @@ class FormValidator {
 
     if (!Number.isNaN(endDateObj)) {
       if (!Number.isNaN(startDateObj) && startDateObj - endDateObj > 0) {
-        // Start date come after end date
-        errors[key].push("must happen before end date.")
+        errors[key].push("Start date must be before end date.")
       }
       if (Number.isNaN(startDateObj)) {
-        // Have end date but no start date
-        errors[key].push("cannot be blank.")
+        errors[key].push("Start date cannot be blank.")
       }
     }
   }
@@ -51,11 +45,9 @@ class FormValidator {
     const key = Object.keys({ tags })[0]
 
     if (tags.length > 3) {
-      // Tags more than 3
-      errors[key].push("can have up to 3.")
+      errors[key].push("Tags can have up to 3.")
     } else if (tags.length <= 0) {
-      // Tags less than 1
-      errors[key].push("cannot be blank.")
+      errors[key].push("Tags cannot be blank.")
     }
   }
 

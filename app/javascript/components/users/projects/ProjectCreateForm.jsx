@@ -152,7 +152,6 @@ class ProjectCreateForm extends React.Component {
             value={title}
             className="form-control"
             errors={errors["title"]}
-            errorPrefix="Title"
           />
         </div>
 
@@ -167,7 +166,6 @@ class ProjectCreateForm extends React.Component {
             value={shortDesc}
             className="form-control"
             errors={errors["shortDesc"]}
-            errorPrefix="Short description"
           />
         </div>
 
@@ -181,7 +179,6 @@ class ProjectCreateForm extends React.Component {
               value={startDate}
               className="form-control"
               errors={errors["startDate"]}
-              errorPrefix="Start date"
             />
           </div>
 
@@ -194,7 +191,6 @@ class ProjectCreateForm extends React.Component {
               value={endDate}
               className="form-control"
               errors={errors["endDate"]}
-              errorPrefix="End date"
             />
           </div>
         </div>
@@ -221,7 +217,6 @@ class ProjectCreateForm extends React.Component {
             onKeyDown={this.handleTagChange}
             placeholder="Type something and press enter..."
             errors={errors["tags"]}
-            errorPrefix="Tags"
             id="projectTags"
           />
         </div>

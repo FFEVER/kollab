@@ -12,11 +12,10 @@ const FormInput = ({
   children,
   label,
   isRequired,
-  errorPrefix,
   ...props
 }) => {
   return (
-    <React.Fragment>
+    <>
       <label htmlFor={name}>
         {label}
         {isRequired && "*"}
@@ -28,14 +27,15 @@ const FormInput = ({
         placeholder={placeholder}
         onChange={onChange}
         value={value}
-        className={errors.length === 0 ? className : className + " input-error"}
+        className={`${className} ${errors.length === 0 ? "" : "input-error"}`}
+        {...props}
       />
       {errors.map((message, index) => (
         <p key={index} className="error-message">
           <small>{message}</small>
         </p>
       ))}
-    </React.Fragment>
+    </>
   )
 }
 

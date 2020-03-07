@@ -5,6 +5,7 @@ import axios from "axios"
 import { TagInput, tagsToArray } from "../../shared/form/TagInput"
 import FormValidator from "./ProjectCreateFormValidator"
 import FormInput from "../../shared/form/FormInput"
+import Button from "../../shared/form/Button"
 
 const DATA_PREFIX = "project"
 
@@ -29,13 +30,15 @@ class ProjectCreateForm extends React.Component {
       title: "",
       startDate: "",
       endDate: "",
-      errors: ERRORS
+      errors: ERRORS,
+      isButtonLoading: false
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleTagChange = this.handleTagChange.bind(this)
     this.handleTagClear = this.handleTagClear.bind(this)
+    this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
   }
 
   handleChange(event) {
@@ -57,7 +60,7 @@ class ProjectCreateForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.loadingSubmitButton()
+    this.setIsButtonLoading(true)
 
     FormValidator.validateAll(this.state)
       .then(result => {
@@ -68,7 +71,7 @@ class ProjectCreateForm extends React.Component {
         this.setState({
           errors: errors
         })
-        this.unloadingSubmitButton()
+        this.setIsButtonLoading(false)
       })
   }
 
@@ -95,6 +98,7 @@ class ProjectCreateForm extends React.Component {
       data: formData
     })
       .then(response => {
+        this.setIsButtonLoading(false)
         if (response.data.redirect_url !== undefined) {
           window.location.href = response.data.redirect_url
         }
@@ -108,7 +112,6 @@ class ProjectCreateForm extends React.Component {
               errors
             }
           })
-          this.unloadingSubmitButton()
         }
       })
       .catch(error => {
@@ -116,14 +119,8 @@ class ProjectCreateForm extends React.Component {
       })
   }
 
-  loadingSubmitButton() {
-    $(".submit-body").hide()
-    $(".submit-body-loading").removeAttr("hidden")
-  }
-
-  unloadingSubmitButton() {
-    $(".submit-body").show()
-    $(".submit-body-loading").hide()
+  setIsButtonLoading(isLoading) {
+    this.setState({ isButtonLoading: isLoading })
   }
 
   render() {
@@ -134,7 +131,8 @@ class ProjectCreateForm extends React.Component {
       startDate,
       endDate,
       categories,
-      errors
+      errors,
+      isButtonLoading
     } = this.state
     return (
       <form onSubmit={this.handleSubmit} className="project__form" noValidate>
@@ -148,7 +146,7 @@ class ProjectCreateForm extends React.Component {
             isRequired={true}
             value={title}
             className="form-control"
-            errors={errors["title"]}
+            errors={errors.title}
           />
         </div>
 
@@ -162,7 +160,7 @@ class ProjectCreateForm extends React.Component {
             isRequired={true}
             value={shortDesc}
             className="form-control"
-            errors={errors["shortDesc"]}
+            errors={errors.shortDesc}
           />
         </div>
 
@@ -175,7 +173,7 @@ class ProjectCreateForm extends React.Component {
               onChange={this.handleChange}
               value={startDate}
               className="form-control"
-              errors={errors["startDate"]}
+              errors={errors.startDate}
             />
           </div>
 
@@ -187,7 +185,7 @@ class ProjectCreateForm extends React.Component {
               onChange={this.handleChange}
               value={endDate}
               className="form-control"
-              errors={errors["endDate"]}
+              errors={errors.endDate}
             />
           </div>
         </div>
@@ -213,25 +211,19 @@ class ProjectCreateForm extends React.Component {
             onChange={this.handleTagClear}
             onKeyDown={this.handleTagChange}
             placeholder="Type something and press enter..."
-            errors={errors["tags"]}
-            id="projectTags"
+            errors={errors.tags}
+            id="tags"
           />
         </div>
 
-        <button
+        <Button
           type="submit"
+          name="submitButton"
+          isLoading={isButtonLoading}
           className="button button--fixed-bottom button--long button--gradient-green"
         >
-          <div className="submit-body">Create a Project</div>
-          <div className="submit-body-loading" hidden>
-            <span
-              className="spinner-border spinner-border-sm"
-              role="status"
-              aria-hidden="true"
-            ></span>
-            <span className="sr-only">Loading...</span>
-          </div>
-        </button>
+          Create a Project
+        </Button>
 
         <input
           type="hidden"

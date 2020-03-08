@@ -21,6 +21,7 @@ module Users::ProjectsHelper
     unless project_params[:end_date].blank?
       project.end_date = project_params[:end_date].to_date
     end
+    project.tag_list = project_params[:tags]
 
     project
   end

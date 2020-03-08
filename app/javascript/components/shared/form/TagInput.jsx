@@ -69,11 +69,15 @@ class TagInput extends React.Component {
     inputValue: ""
   }
 
-  validate = () => {
-    // Validate duplication of label
+  removeDup = () => {
     const { inputValue } = this.state
     const { value } = this.props
-    return value.find(({ label }) => label === inputValue) === undefined
+    const newTags = []
+    for (const tag of inputValue.split(" ")) {
+      if (value.find(({ label }) => label === tag) === undefined)
+        newTags.push(tag)
+    }
+    return newTags
   }
 
   handleChange = (value, actionMeta) => {
@@ -95,9 +99,12 @@ class TagInput extends React.Component {
       case "Enter":
       case " ":
       case "Tab":
-        if (this.validate()) {
-          this.props.onKeyDown(createOption(inputValue))
+        let newTags = this.removeDup()
+        let newTagObjList = []
+        for (const tag of newTags) {
+          newTagObjList.push(createOption(tag))
         }
+        this.props.onKeyDown(newTagObjList)
         this.setState({
           inputValue: ""
         })

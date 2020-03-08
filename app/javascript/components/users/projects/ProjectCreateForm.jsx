@@ -48,7 +48,7 @@ class ProjectCreateForm extends React.Component {
 
   handleTagChange(value) {
     this.setState({
-      tags: [...this.state.tags, value]
+      tagList: [...this.state.tagList, ...value]
     })
   }
 

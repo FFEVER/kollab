@@ -80,8 +80,16 @@ class ProjectCreateForm extends React.Component {
     const formData = new FormData()
     formData.append(dataName("title"), this.state.title)
     formData.append(dataName("short_desc"), this.state.shortDesc)
-    formData.append(dataName("start_date"), new Date(this.state.startDate))
-    formData.append(dataName("end_date"), new Date(this.state.endDate))
+    const startDate = new Date(this.state.startDate)
+    formData.append(
+      dataName("start_date"),
+      isNaN(startDate.getDate()) ? "" : startDate
+    )
+    const endDate = new Date(this.state.endDate)
+    formData.append(
+      dataName("end_date"),
+      isNaN(endDate.getDate()) ? "" : endDate
+    )
     formData.append(
       dataName("tags"),
       JSON.stringify(tagsToArray(this.state.tags))
@@ -117,6 +125,7 @@ class ProjectCreateForm extends React.Component {
       })
       .catch(error => {
         // TODO: [Anyone] Handle error (other than 200 OK)
+        this.setIsButtonLoading(false)
       })
   }
 

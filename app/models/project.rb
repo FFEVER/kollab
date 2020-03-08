@@ -4,6 +4,8 @@ class Project < ApplicationRecord
   # TODO: [Anyone] Add full_desc
   has_many :members
   has_many :users, through: :members
+  has_many :taggings
+  has_many :tags, through: :taggings
 
   # TODO: [Eit] Validates tags, fields
   validates :title, presence: true, length: { within: 1..50 }

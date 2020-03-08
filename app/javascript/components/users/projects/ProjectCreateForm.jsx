@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import axios from "axios"
 
 import { TagInput, tagsToArray } from "../../shared/form/TagInput"
-import FormValidator from "./ProjectCreateFormValidator"
+import { FormValidator, defaultErrors } from "./ProjectCreateFormValidator"
 import FormInput from "../../shared/form/FormInput"
 import FromTextarea from "../../shared/form/FormTextarea"
 import Button from "../../shared/form/Button"
@@ -13,25 +13,17 @@ const DATA_PREFIX = "project"
 const dataName = name => {
   return DATA_PREFIX + "[" + name + "]"
 }
-const ERRORS = {
-  title: [],
-  shortDesc: [],
-  startDate: [],
-  endDate: [],
-  tags: [],
-  categories: []
-}
 
 class ProjectCreateForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tags: [],
+      tagList: [],
       shortDesc: "",
       title: "",
       startDate: "",
       endDate: "",
-      errors: ERRORS,
+      errors: defaultErrors,
       isButtonLoading: false
     }
 
@@ -55,7 +47,7 @@ class ProjectCreateForm extends React.Component {
   handleTagClear(value) {
     // Handle clear or delete tags
     this.setState({
-      tags: value
+      tagList: value
     })
   }
 
@@ -91,8 +83,8 @@ class ProjectCreateForm extends React.Component {
       isNaN(endDate.getDate()) ? "" : endDate
     )
     formData.append(
-      dataName("tags"),
-      JSON.stringify(tagsToArray(this.state.tags))
+      dataName("tag_list"),
+      JSON.stringify(tagsToArray(this.state.tagList))
     )
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
@@ -113,7 +105,7 @@ class ProjectCreateForm extends React.Component {
         }
         if (response.data.errors !== undefined) {
           this.setState(state => {
-            let errors = ERRORS
+            let errors = defaultErrors
             for (const [k, v] of Object.entries(response.data.errors)) {
               errors[k] = v
             }
@@ -215,14 +207,14 @@ class ProjectCreateForm extends React.Component {
         </div>
 
         <div className="form-row">
-          <label htmlFor="tags">Tags</label>
+          <label htmlFor="tagList">Tags</label>
           <TagInput
-            value={this.state.tags}
+            value={this.state.tagList}
             onChange={this.handleTagClear}
             onKeyDown={this.handleTagChange}
             placeholder="Type something and press enter..."
-            errors={errors.tags}
-            id="tags"
+            errors={errors.tagList}
+            id="tagList"
           />
         </div>
 

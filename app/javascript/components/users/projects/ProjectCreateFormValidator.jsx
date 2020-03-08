@@ -49,14 +49,26 @@ class FormValidator {
     }
   }
 
-  static validateTags(state, errors) {
-    const { tags } = state
-    const key = Object.keys({ tags })[0]
+  static validateTagList(state, errors) {
+    const { tagList } = state
+    const key = Object.keys({ tagList })[0]
 
-    if (tags.length > 3) {
+    if (tagList.length > 3) {
       errors[key].push("Tags can have up to 3.")
-    } else if (tags.length <= 0) {
+    } else if (tagList.length <= 0) {
       errors[key].push("Tags cannot be blank.")
+    }
+
+    for (const { label, value } of tagList) {
+      const length = value.length
+      if (length > 25) {
+        errors[key].push("A tag is too long (maximum 25 characters).")
+        break
+      }
+      if (length <= 0) {
+        errors[key].push("A tag is too short (minimum 1 character).")
+        break
+      }
     }
   }
 
@@ -80,7 +92,7 @@ class FormValidator {
       this.validateTitle(state, errors)
       this.validateShortDesc(state, errors)
       this.validateStartEndDate(state, errors)
-      this.validateTags(state, errors)
+      this.validateTagList(state, errors)
 
       if (this.isValidatePass(errors)) {
         resolve(errors)

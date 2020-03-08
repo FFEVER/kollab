@@ -36,7 +36,6 @@ const FormTextarea = ({
 }
 
 FormTextarea.defaultProps = {
-  type: "text",
   className: "",
   isRequired: false,
   placeholder: ""

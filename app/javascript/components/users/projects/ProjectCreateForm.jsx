@@ -80,8 +80,8 @@ class ProjectCreateForm extends React.Component {
     const formData = new FormData()
     formData.append(dataName("title"), this.state.title)
     formData.append(dataName("short_desc"), this.state.shortDesc)
-    formData.append(dataName("start_date"), this.state.startDate)
-    formData.append(dataName("end_date"), this.state.endDate)
+    formData.append(dataName("start_date"), new Date(this.state.startDate))
+    formData.append(dataName("end_date"), new Date(this.state.endDate))
     formData.append(
       dataName("tags"),
       JSON.stringify(tagsToArray(this.state.tags))

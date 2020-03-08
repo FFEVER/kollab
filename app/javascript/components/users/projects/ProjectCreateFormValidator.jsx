@@ -1,3 +1,12 @@
+const defaultErrors = {
+  title: [],
+  shortDesc: [],
+  startDate: [],
+  endDate: [],
+  tagList: [],
+  categories: []
+}
+
 class FormValidator {
   static validateTitle(state, errors) {
     const { title } = state
@@ -52,23 +61,22 @@ class FormValidator {
   }
 
   static isValidatePass(errors) {
-    for (let [key, value] of Object.entries(errors)) {
+    for (const value of Object.values(errors)) {
       if (value.length != 0) return false
     }
     return true
   }
 
+  static clearErrors(errors) {
+    for (const k of Object.keys(errors)) {
+      errors[k] = []
+    }
+  }
+
   static validateAll(state) {
     let promise = new Promise((resolve, reject) => {
-      const errors = {
-        title: [],
-        shortDesc: [],
-        startDate: [],
-        endDate: [],
-        tags: [],
-        categories: []
-      }
-
+      const errors = { ...defaultErrors }
+      this.clearErrors(errors)
       this.validateTitle(state, errors)
       this.validateShortDesc(state, errors)
       this.validateStartEndDate(state, errors)
@@ -86,3 +94,4 @@ class FormValidator {
 }
 
 export default FormValidator
+export { FormValidator, defaultErrors }

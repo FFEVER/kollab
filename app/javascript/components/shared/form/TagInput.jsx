@@ -107,15 +107,7 @@ class TagInput extends React.Component {
 
   render() {
     const { inputValue } = this.state
-    const {
-      value,
-      placeholder,
-      errors,
-      errorPrefix,
-      id,
-      styles,
-      errorStyles
-    } = this.props
+    const { value, placeholder, errors, id, styles, errorStyles } = this.props
     return (
       <>
         <CreatableSelect
@@ -135,9 +127,7 @@ class TagInput extends React.Component {
 
         {errors.map((message, index) => (
           <p key={index} className="error-message">
-            <small>
-              {errorPrefix} {message}
-            </small>
+            <small>{message}</small>
           </p>
         ))}
       </>
@@ -156,7 +146,6 @@ TagInput.defaultProps = {
 TagInput.propTypes = {
   value: PropTypes.arrayOf(PropTypes.object).isRequired,
   placeholder: PropTypes.string,
-  errorPrefix: PropTypes.string,
   errors: PropTypes.arrayOf(PropTypes.string),
   onChange: PropTypes.func.isRequired,
   onKeyDown: PropTypes.func.isRequired,

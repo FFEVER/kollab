@@ -7,7 +7,7 @@ class Project < ApplicationRecord
   has_many :taggings
   has_many :tags, through: :taggings
 
-  # TODO: [Eit] Validates tags, fields
+  # TODO: [Eit] Validates fields
   validates :title, presence: true, length: { within: 1..50 }
   validates :short_desc, presence: true, length: { within: 1..150 }
   validates :start_date_before_type_cast,

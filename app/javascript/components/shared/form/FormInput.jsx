@@ -29,9 +29,9 @@ const FormInput = ({
         {...props}
       />
       {errors.map((message, index) => (
-        <p key={index} className="error-message">
+        <div key={index} className="error-message">
           <small>{message}</small>
-        </p>
+        </div>
       ))}
     </>
   )

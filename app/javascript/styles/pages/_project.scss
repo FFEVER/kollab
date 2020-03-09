@@ -10,4 +10,48 @@
   &--with-margin {
     margin-bottom: 3 * $global-space;
   }
+
+  &__view {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-size: 1rem;
+
+      padding-bottom: 0.5rem;
+
+      text-transform: uppercase;
+
+      color: $kollab-dark;
+    }
+
+    .section {
+      margin-bottom: 0.5 * $global-space;
+
+      &__header {
+        color: black;
+      }
+
+      &__actions {
+        margin-bottom: 0.25 * $global-space;
+      }
+
+      &__dates {
+        display: flex;
+        div {
+          margin-right: $global-space;
+        }
+      }
+
+      &__follower {
+        position: fixed;
+        left: 75%;
+
+        text-align: center;
+        span {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
 }

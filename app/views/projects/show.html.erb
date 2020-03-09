@@ -1,2 +1,69 @@
-<h1>This is project show page</h1>
-<p>At views/projects/show.html.erb</p>
+<div class="project project__view">
+  <section class="section section__header">
+    <h1><%= @project.title %></h1>
+  </section>
+
+  <section class="section section__follower">
+    <%# Todo: [Eit] Follower count %>
+    <span><b>3</b></span>
+    <p>Followers</p>
+  </section>
+
+  <section class="section section__actions">
+    <%# Todo: [Eit] Star count %>
+    <%# Todo: [Eit] Follow action %>
+    <button class="button button--small button--outline-gray-light">26</button>
+    <button class="button button--small button--green">Follow</button>
+  </section>
+
+  <section class="section section__short-desc">
+    <p><%= @project.short_desc%></p>
+  </section>
+
+  <section class="section section__dates">
+    <%# Todo: [Eit] Date conditions %>
+    <div>
+      <h2>Start</h2>
+      <p><%= @project.start_date.strftime "%a %d %b %Y" %></p>
+    </div>
+    <div>
+      <h2>End</h2>
+      <p><%= @project.end_date.strftime "%a %d %b %Y" %></p>
+    </div>
+  </section>
+
+  <section class="section section__status">
+    <%# Todo: [Eit] Project status %>
+    <h2>Status</h2>
+    <button>IN PROGRESS</button>
+  </section>
+
+  <section class="section section__overview">
+    <%# Todo: [Eit] Project Overview %>
+    <h2>Project Overview</h2>
+  </section>
+
+  <section class="section section__tags">
+    <%# Todo: [Eit] Tag styling %>
+    <h2>Tags</h2>
+    <% @project.tag_list.each do |tag|%>
+      <%= "##{tag}" %>
+    <% end %>
+  </section>
+
+  <section class="section section__members">
+    <%# Todo: [Eit] User styling %>
+    <h2>Members (<%= @project.members.count %>)</h2>
+    <% @project.users.each do |user| %>
+      <%= "#{user.first_name} #{user.last_name}"%>
+    <% end %>
+  </section>
+
+  <section class="section section__posts">
+    <h2>Project Posts</h2>
+  </section>
+
+  <section class="section section__related-projects">
+    <h2>Related Projects</h2>
+  </section>
+</div>

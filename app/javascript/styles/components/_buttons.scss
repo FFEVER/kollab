@@ -19,6 +19,17 @@
     border-color: $kollab-gray;
   }
 
+  &--green {
+    color: white;
+    background-color: $kollab-turquoise !important;
+  }
+
+  &--outline-gray-light {
+    color: $kollab-gray-light;
+    border: solid 2px $kollab-gray-light;
+    background-color: transparent;
+  }
+
   &--gradient-green {
     color: white;
     background: rgb(84, 189, 194);

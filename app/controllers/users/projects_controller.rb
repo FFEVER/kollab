@@ -11,6 +11,7 @@ class Users::ProjectsController < ApplicationController
     # TODO: [Eit] Create Member after project created
     @project = helpers.create_new_project_from_params(project_params)
     if @project.save
+      @project.add_member current_user, is_owner: true
       render json: {
         redirect_url: url_for(@project)
       }, status: :ok

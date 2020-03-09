@@ -36,9 +36,9 @@ class Users::ProjectsController < ApplicationController
       :short_desc,
       :start_date,
       :end_date,
-      :tags
+      :tag_list
     )
-    permitted[:tags] = JSON.parse(permitted[:tags]) || []
+    permitted[:tag_list] = JSON.parse(permitted[:tag_list]) || []
     permitted
   end
 end

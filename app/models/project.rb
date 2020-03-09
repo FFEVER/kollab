@@ -2,9 +2,9 @@
 
 class Project < ApplicationRecord
   # TODO: [Anyone] Add full_desc
-  has_many :members
+  has_many :members, dependent: :delete_all
   has_many :users, through: :members
-  has_many :taggings
+  has_many :taggings, dependent: :delete_all
   has_many :tags, through: :taggings
 
   # TODO: [Eit] Validates fields

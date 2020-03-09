@@ -35,4 +35,12 @@ class Project < ApplicationRecord
     new_or_found_tags = tag_names.collect { |name| Tag.find_or_create_by(name: name) }
     self.tags = new_or_found_tags
   end
+
+  def owners
+    Member.where(project: self, is_owner: true)
+  end
+
+  def add_member(user, is_owner: false)
+    Member.find_or_create_by(user: user, project: self, is_owner: is_owner)
+  end
 end

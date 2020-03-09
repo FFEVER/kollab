@@ -11,4 +11,10 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   resources :users, only: [:show]
+
+  namespace :users do
+    resources :projects, only: %i[new create edit update destroy]
+  end
+
+  resources :projects, only: :show
 end

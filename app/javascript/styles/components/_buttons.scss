@@ -6,6 +6,7 @@
   padding: 0 $global-space * 0.3;
 
   cursor: pointer;
+  white-space: nowrap;
   letter-spacing: 1px;
 
   border-radius: 5px;
@@ -75,5 +76,11 @@
       color: $kollab-orange;
       background-color: $kollab-orange-translucent;
     }
+  }
+
+  &--tag {
+    color: $kollab-gray-dark;
+    border: solid 1px $kollab-gray;
+    background-color: transparent;
   }
 }

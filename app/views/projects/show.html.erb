@@ -55,11 +55,14 @@
   </section>
 
   <section class="section section__tags">
-    <%# Todo: [Eit] Tag styling %>
     <h2>Tags</h2>
-    <% @project.tag_list.each do |tag|%>
-      <%= "##{tag}" %>
-    <% end %>
+    <div>
+      <% @project.tag_list.each do |tag|%>
+        <button class="button button--small button--tag">
+          <%= "##{tag}" %>
+        </button>
+      <% end %>
+    </div>
   </section>
 
   <section class="section section__members">

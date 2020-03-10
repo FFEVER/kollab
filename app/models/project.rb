@@ -2,9 +2,9 @@
 
 class Project < ApplicationRecord
   # TODO: [Anyone] Add full_desc
-  has_many :members
+  has_many :members, dependent: :delete_all
   has_many :users, through: :members
-  has_many :taggings
+  has_many :taggings, dependent: :delete_all
   has_many :tags, through: :taggings
 
   # TODO: [Eit] Validates fields
@@ -34,5 +34,17 @@ class Project < ApplicationRecord
     tag_names = tags_array.uniq[0..2]
     new_or_found_tags = tag_names.collect { |name| Tag.find_or_create_by(name: name) }
     self.tags = new_or_found_tags
+  end
+
+  def owners
+    owner_members.collect(&:user)
+  end
+
+  def owner_members
+    Member.where(project: self, is_owner: true)
+  end
+
+  def add_member(user, is_owner: false)
+    Member.find_or_create_by(user: user, project: self, is_owner: is_owner)
   end
 end

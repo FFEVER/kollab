@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
 
-  padding: $global-space * 0.3;
+  padding: 0 $global-space * 0.3;
 
   cursor: pointer;
   letter-spacing: 1px;
@@ -11,6 +11,8 @@
   border-radius: 5px;
 
   &--small {
+    height: 2rem;
+    max-height: 2rem;
     padding: $global-space * 0.2 $global-space * 0.3;
   }
 

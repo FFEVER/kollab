@@ -66,11 +66,22 @@
   </section>
 
   <section class="section section__members">
-    <%# Todo: [Eit] User styling %>
     <h2>Members (<%= @project.members.count %>)</h2>
-    <% @project.users.each do |user| %>
-      <%= "#{user.first_name} #{user.last_name}"%>
-    <% end %>
+    <div class="member">
+      <%= image_pack_tag 'person.jpg',
+        class: "image__profile image__profile--small image__profile--with-border"
+      %>
+      <div class="member__details">
+        <% @members.each do |member| %>
+          <p class="member__name">
+            <%= "#{member.user.first_name} #{member.user.last_name}"%>
+          </p>
+          <p class="member__role">
+            <%= member.role %>
+          </p>
+        <% end %>
+      </div>
+    </div>
   </section>
 
   <section class="section section__posts">

@@ -37,6 +37,10 @@ class Project < ApplicationRecord
   end
 
   def owners
+    owner_members.collect(&:user)
+  end
+
+  def owner_members
     Member.where(project: self, is_owner: true)
   end
 

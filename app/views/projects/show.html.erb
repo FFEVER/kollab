@@ -1,22 +1,26 @@
 <div class="project project__view">
   <section class="section section__header">
-    <h1><%= @project.title %></h1>
+    <div>
+      <section class="section">
+        <h1><%= @project.title %></h1>
+      </section>
+
+      <section class="section section__actions">
+        <%# TODO: [Eit] Star count %>
+        <%# TODO: [Eit] Follow action %>
+        <button class="button button--small button--outline-gray-light">
+          <span class="icon icon--star"></span>
+          26
+        </button>
+        <button class="button button--small button--green">Follow</button>
+      </section>
+    </div>
 
     <section class="section__follower">
-      <%# Todo: [Eit] Follower count %>
+      <%# TODO: [Eit] Follower count %>
       <span><b>130k</b></span>
       <p>Followers</p>
     </section>
-  </section>
-
-  <section class="section section__actions">
-    <%# Todo: [Eit] Star count %>
-    <%# Todo: [Eit] Follow action %>
-    <button class="button button--small button--outline-gray-light">
-      <span class="icon icon--star"></span>
-      26
-    </button>
-    <button class="button button--small button--green">Follow</button>
   </section>
 
   <section class="section section__short-desc">

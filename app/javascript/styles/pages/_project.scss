@@ -26,14 +26,29 @@
     }
 
     .section {
+      width: 100%;
       margin-bottom: 0.5 * $global-space;
 
       &__header {
+        display: flex;
+
         color: black;
       }
 
       &__actions {
+        display: flex;
+
         margin-bottom: 0.25 * $global-space;
+
+        button {
+          font-weight: 700;
+
+          margin-right: 0.25 * $global-space;
+
+          span {
+            margin-right: 3px;
+          }
+        }
       }
 
       &__dates {
@@ -44,8 +59,7 @@
       }
 
       &__follower {
-        position: fixed;
-        left: 75%;
+        width: 20%;
 
         text-align: center;
         span {

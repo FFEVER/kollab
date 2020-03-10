@@ -47,4 +47,16 @@ class Project < ApplicationRecord
   def add_member(user, is_owner: false)
     Member.find_or_create_by(user: user, project: self, is_owner: is_owner)
   end
+
+  def start_date_to_s
+    return '-' if start_date.blank?
+
+    start_date.strftime '%a %d %b %Y'
+  end
+
+  def end_date_to_s
+    return '-' if end_date.blank?
+
+    end_date.strftime '%a %d %b %Y'
+  end
 end

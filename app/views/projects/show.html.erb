@@ -25,14 +25,18 @@
 
   <section class="section section__dates">
     <%# Todo: [Eit] Date conditions %>
-    <div>
-      <h2>Start</h2>
-      <p><%= @project.start_date.strftime "%a %d %b %Y" %></p>
-    </div>
-    <div>
-      <h2>End</h2>
-      <p><%= @project.end_date.strftime "%a %d %b %Y" %></p>
-    </div>
+    <% unless @project.start_date.blank? %>
+      <div>
+        <h2>Start</h2>
+        <p><%= @project.start_date_to_s %></p>
+      </div>
+    <% end %>
+    <% unless @project.end_date.blank? %>
+      <div>
+        <h2>End</h2>
+        <p><%= @project.end_date_to_s %></p>
+      </div>
+    <% end %>
   </section>
 
   <section class="section section__status">

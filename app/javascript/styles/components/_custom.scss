@@ -22,3 +22,46 @@
   background-position: right top;
   background-size: cover;
 }
+
+.logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.profile-img {
+  width: 100px;
+
+  border-radius: 75px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.sep-line {
+  height: 5px;
+
+  background-color: #f6f6f6;
+}
+
+.card-border {
+  border-width: 5px;
+  border-color: #707070;
+  border-radius: 5px;
+}
+
+.card-status {
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+
+  height: 24px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: white;
+  border-radius: 5px;
+  background-color: #ffd289;
+}

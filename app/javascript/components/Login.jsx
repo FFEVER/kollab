@@ -129,7 +129,7 @@ class Login extends React.Component {
         <div className="right">
           <Link
             underline={"always"}
-            href="http://www.google.com"
+            href="http://localhost:5000/users/password/new"
             style={{
               fontSize: "1.2em",
               marginBottom: "20px",
@@ -156,7 +156,7 @@ class Login extends React.Component {
           <Link
             className="text"
             underline={"always"}
-            href="http://www.google.com"
+            href="http://localhost:5000/users/sign_up"
             style={{ fontSize: "1.2em", color: "#54bdc2", fontWeight: "bold" }}
           >
             Sign Up

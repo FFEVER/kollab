@@ -19,6 +19,7 @@
     "react-horizontal-scrolling-menu": "^0.7.6",
     "react-linear-gradient-button": "^1.1.1",
     "react-scroll-horizontal": "^1.6.4",
+    "react-select": "^3.0.8",
     "react_ujs": "^2.6.0",
     "turbolinks": "^5.2.0"
   },

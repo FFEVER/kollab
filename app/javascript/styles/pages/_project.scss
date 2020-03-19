@@ -1,0 +1,13 @@
+.project {
+  padding: $global-space;
+  &__form {
+    .form__date {
+      &:first-child {
+        margin-right: $global-space;
+      }
+    }
+  }
+  &--with-margin {
+    margin-bottom: 3 * $global-space;
+  }
+}

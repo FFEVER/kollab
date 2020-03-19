@@ -13,6 +13,8 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
+# Easily integrate react with rails
+gem 'react-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -27,6 +29,11 @@ gem 'jbuilder', '~> 2.7'
 
 # Paginate models without any configuration
 gem 'kaminari'
+
+# Model serializer
+gem 'active_model_serializers', '~> 0.10.0'
+# User management
+gem 'devise'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -45,9 +52,20 @@ group :development, :test do
   # Rails debugger with Pry
   gem 'pry-byebug'
   # Alternative testing framework
-  gem 'rspec-rails', '~> 3.9'
+  gem 'rspec-core', git: 'https://github.com/rspec/rspec-core'
+  gem 'rspec-expectations', git: 'https://github.com/rspec/rspec-expectations'
+  gem 'rspec-mocks', git: 'https://github.com/rspec/rspec-mocks'
+  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails'
+  gem 'rspec-support', git: 'https://github.com/rspec/rspec-support'
+  gem 'rails-controller-testing'
   # Code coverage analysis tool
   gem 'simplecov', require: false
+  # Fixtures replacement
+  gem 'factory_bot_rails'
+  # Generate fake data in test suits
+  gem 'faker'
+  # Clean database efficiently in test suits
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -61,6 +79,8 @@ group :development do
   gem 'solargraph'
   # Rubocop for linting
   gem 'rubocop'
+  # Erb autoformatting
+  gem 'htmlbeautifier'
 end
 
 group :test do

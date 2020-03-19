@@ -4,6 +4,8 @@
     "castwide.solargraph",
     "mikestead.dotenv",
     "rebornix.ruby",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "mrmlnc.vscode-csscomb",
+    "aliariff.vscode-erb-beautify"
   ]
 }

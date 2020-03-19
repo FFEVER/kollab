@@ -1,0 +1,24 @@
+.text {
+  &__one {
+    font-size: larger;
+
+    &--red {
+      color: #f00;
+    }
+    &--kollab-pink {
+      color: $kollab-pink;
+    }
+  }
+}
+
+.block {
+  width: 200px;
+  height: 200px;
+
+  opacity: 0.5;
+  border: thick;
+  background-image: url('~images/kollab-square.jpg');
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: cover;
+}

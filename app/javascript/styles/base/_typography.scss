@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'Lato';
+  font-weight: 400;
+
+  src: url('~styles/fonts/Lato-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 700;
+
+  src: url('~styles/fonts/Lato-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 900;
+
+  src: url('~styles/fonts/Lato-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-weight: 400;
+
+  src: url('~styles/fonts/Muli-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-weight: 700;
+
+  src: url('~styles/fonts/Muli-Bold.ttf') format('truetype');
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Muli';
+  font-weight: 700;
+
+  margin: 0;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+h3 {
+  font-size: 1.6em;
+}
+
+h4 {
+  font-size: 1.4em;
+}
+
+h5 {
+  font-size: 1.2em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+p {
+  font-size: 1em;
+
+  margin: 0;
+
+  color: $kollab-gray;
+}

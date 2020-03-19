@@ -19,11 +19,12 @@ Things you may want to cover:
 - [Style Guide](#style-guide)
   - [Ruby](#ruby)
   - [Rails](#rails)
-  - [SASS](#sass)
+  - [SCSS](#scss)
 - [Testing](#testing)
   - [RSpec](#rspec)
   - [Code Coverage](#code-coverage)
 - [Up and Running](#up-and-running)
+- [Debugging](#debugging)
 
 To be updated
 
@@ -123,44 +124,59 @@ The recommended extensions are defined in `.vscode/extensions.json`
 The recommended settings are defined in `.vscode/settings`
 
 # Style Guide
+
 To improve code readability and consistency, we need to have some standard rules for writing our code. Fortunately, `solargraph` and `prettier` is good enough in auto formatting code in `vscode`, but it is also good to know some of the basic.
 
 **You don't need to remember it all!** Skimming through it is enough.
+
 ## Ruby
+
 We follow style guide from [Airbnb Style Guide](https://github.com/airbnb/ruby). Please read and try to follow for the best practice.
 
 ## Rails
 
 We follow style guide from [here](https://rails.rubystyle.guide/#introduction). Please read and try to follow for the best practice.
 
-## SASS
+## SCSS
 
 We follow style guide from [here](https://sass-guidelin.es/#syntax--formatting). Please read and try to follow for the best practice.
 
 # Testing
+
 ## RSpec
+
 Testing is as important as implementing since it makes sure that your code perform as you expected and knows when someone break your code. We use alternative framework for testing called [RSpec](https://github.com/rspec/rspec-rails). Please make sure you know how to write the test properly. You can follow the guide from [the official guide](https://relishapp.com/rspec/rspec-rails/v/3-9/docs/gettingstarted) or [another guide](https://www.codewithjason.com/rails-testing-hello-world-using-rspec-capybara/).
 
 ## Code Coverage
+
 After running your tests, open `coverage/index.html` in the browser of your choice. We use [simplecov](https://github.com/colszowka/simplecov) gem.
 
 # Up and Running
 
 We need to run both **rails server** to serve rails app and **webpack dev server** for detecting changes in `app/javascript` and compile it in real-time.
-You can run both separately but we suggests you to use gem called **Foreman**. The gem allow you to run two processes simultaneously.
+You can run both separately but we suggests you to use app called [Overmind](https://github.com/DarthSim/overmind). The app allow you to run two processes simultaneously and allow you to connect to specific process too.
 
 ```
-gem install foremane
+$ brew install overmind
 ```
 
-To start a rails server, run foreman from the project root directory:
+To start a rails server, run **overmind** from the project root directory:
 
 ```
-foreman start -f Procfile.dev -p 3000
+$ overmind start
 ```
 
-or simply run the provided shell script:
+You can access your rails server from `localhost:5000`.
 
+
+
+# Debugging
+To debug put **pry** at any line of your code:
 ```
-./kollab
+binding.pry
 ```
+If you are using **Overmind** you need to open another terminal and run:
+```
+$ overmind connect web
+```
+After you done your debugging, you can safely disconnect from the window by hitting `Ctrl b` and then `d`.

@@ -33,13 +33,24 @@
   margin-bottom: 10px;
 }
 .mar-lr {
-  margin-right: 5px;
-  margin-left: 5px;
+  &--l {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  &--s {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
 }
 
 .mar-top {
   &--l {
     margin-top: 20px;
+  }
+
+  &--m {
+    margin-top: 15px;
   }
 
   &--s {
@@ -53,4 +64,8 @@
 
 .space-bet {
   justify-content: space-between;
+}
+
+.red {
+  background-color: red;
 }

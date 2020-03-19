@@ -1,0 +1,241 @@
+{
+  "fields": [
+    {
+      "fieldName": "Anthropology",
+      "subFields": [
+        {
+          "fieldName": "Anthropological criminology"
+        },
+        {
+          "fieldName": "Anthropological linguistics",
+          "subFields": [
+            {
+              "fieldName": "Synchronic linguistics"
+            },
+            {
+              "fieldName": "Descriptive linguistic"
+            },
+            {
+              "fieldName": "Diachronic linguistics"
+            },
+            {
+              "fieldName": "Historical linguistics"
+            },
+            {
+              "fieldName": "Ethnolinguistics"
+            },
+            {
+              "fieldName": "Semiotic anthropology"
+            },
+            {
+              "fieldName": "Sociolinguistics"
+            }
+          ]
+        },
+        {
+          "fieldName": "Anthrozoology"
+        },
+        {
+          "fieldName": "Biological anthropology",
+          "subFields": [
+            {
+              "fieldName": "Gene-culture coevolution"
+            },
+            {
+              "fieldName": "Evolutionary anthropology"
+            },
+            {
+              "fieldName": "Forensic anthropology"
+            },
+            {
+              "fieldName": "Human behavioral ecology"
+            },
+            {
+              "fieldName": "Human evolution"
+            },
+            {
+              "fieldName": "Medical anthropology"
+            },
+            {
+              "fieldName": "Molecular anthropology"
+            },
+            {
+              "fieldName": "Neuroanthropology"
+            },
+            {
+              "fieldName": "Nutritional anthropology"
+            },
+            {
+              "fieldName": "Paleoanthropology"
+            },
+            {
+              "fieldName": "Population genetics"
+            },
+            {
+              "fieldName": "Primatology"
+            }
+          ]
+        },
+        {
+          "fieldName": "Biocultural anthropology"
+        },
+        {
+          "fieldName": "Cultural anthropology",
+          "subFields": [
+            {
+              "fieldName": "Anthropology of development"
+            },
+            {
+              "fieldName": "Anthropology of religion"
+            },
+            {
+              "fieldName": "Applied anthropology"
+            },
+            {
+              "fieldName": "Cognitive anthropology"
+            },
+            {
+              "fieldName": "Cyborg anthropology"
+            },
+            {
+              "fieldName": "Digital anthropology"
+            },
+            {
+              "fieldName": "Digital culture"
+            },
+            {
+              "fieldName": "Ecological anthropology"
+            },
+            {
+              "fieldName": "Economic anthropology"
+            },
+            {
+              "fieldName": "Environmental anthropology"
+            },
+            {
+              "fieldName": "Ethnobiology"
+            },
+            {
+              "fieldName": "Ethnobotany"
+            },
+            {
+              "fieldName": "Ethnography"
+            },
+            {
+              "fieldName": "Ethnohistory"
+            },
+            {
+              "fieldName": "Ethnology"
+            },
+            {
+              "fieldName": "Ethnomuseology"
+            },
+            {
+              "fieldName": "Ethnomusicology"
+            },
+            {
+              "fieldName": "Feminist anthropology"
+            },
+            {
+              "fieldName": "Folklore"
+            },
+            {
+              "fieldName": "Kinship"
+            },
+            {
+              "fieldName": "Legal anthropology"
+            },
+            {
+              "fieldName": "Mythology"
+            },
+            {
+              "fieldName": "Missiology"
+            },
+            {
+              "fieldName": "Political anthropology"
+            },
+            {
+              "fieldName": "Political economic anthropology"
+            },
+            {
+              "fieldName": "Psychological anthropology"
+            },
+            {
+              "fieldName": "Public anthropology"
+            },
+            {
+              "fieldName": "Symbolic anthropology"
+            },
+            {
+              "fieldName": "Transpersonal anthropology"
+            },
+            {
+              "fieldName": "Urban anthropology"
+            }
+          ]
+        },
+        {
+          "fieldName": "Linguistic anthropology"
+        },
+        {
+          "fieldName": "Social anthropology",
+          "subFields": [
+            {
+              "fieldName": "Anthropology of art"
+            },
+            {
+              "fieldName": "Anthropology of institutions"
+            },
+            {
+              "fieldName": "Anthropology of media"
+            },
+            {
+              "fieldName": "Visual anthropology"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fieldName": "Archaeology"
+    },
+    {
+      "fieldName": "History"
+    },
+    {
+      "fieldName": "Linguistics and languages"
+    },
+    {
+      "fieldName": "Philosophy"
+    },
+    {
+      "fieldName": "Religion"
+    },
+    {
+      "fieldName": "Arts",
+      "subFields": [
+        {
+          "fieldName": "Culinary arts"
+        },
+        {
+          "fieldName": "Literature"
+        },
+        {
+          "fieldName": "Performing arts"
+        },
+        {
+          "fieldName": "Visual arts"
+        }
+      ]
+    },
+    {
+      "fieldName": "Economics"
+    },
+    {
+      "fieldName": "Geography"
+    },
+    {
+      "fieldName": "Interdisciplinary studies"
+    }
+  ]
+}

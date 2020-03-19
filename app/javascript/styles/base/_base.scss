@@ -1,5 +1,18 @@
+$kollab-width-mobile: 576px;
+$kollab-width-tablet: 768px;
+$kollab-width-desktop: 1024px;
+$kollab-width-desktop-extra: 1200px;
+
+$global-space: 30px;
+
 html {
   box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
 }
 
 *,
@@ -13,9 +26,15 @@ html {
 }
 
 body {
-  font-family: 'HaboroSans';
-  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
   font-weight: 400;
+}
+
+@media only screen and (min-width: $kollab-width-mobile) {
+  body {
+    font-size: 16px;
+  }
 }
 
 a {
@@ -24,21 +43,21 @@ a {
   color: currentColor;
 
   &:hover {
-    text-decoration: solid;
-
-    color: red;
+    text-decoration: none;
   }
 }
 
-img {
+img,
+embed,
+object,
+video {
   max-width: 100%;
-
-  &.aligncenter {
-    margin: auto;
-  }
 }
 
 ul {
+  margin: 0;
+  padding: 0;
+
   list-style-type: none;
 }
 

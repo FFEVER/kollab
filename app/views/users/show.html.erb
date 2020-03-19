@@ -1,2 +1,52 @@
-<h1>Users#show</h1>
-<p><%= @user.email %></p>
+<div class="profile">
+  <header class="profile__header">
+    <div class="profile__section">
+      <h1><%= "#{@user.first_name} #{@user.last_name}" %> </h1>
+      <p>4th year Software Engineering</p>
+    </div>
+
+    <div class="profile__section">
+      <!-- TODO: [Anyone] Add profile picture. -->
+      <span class="dot dot--profile"></span>
+      <div>
+        <span>11</span>
+        <!-- TODO: [Anyone] Add project total. -->
+        <p>Projects</p>
+      </div>
+      <div>
+        <!-- TODO: [Anyone] Add following/followers total. -->
+        <span>5</span>
+        <p>Following</p>
+      </div>
+      <div>
+        <span>3</span>
+        <p>Followers</p>
+      </div>
+      <div>
+        <a class="button button--small button--gray">Following</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="profile__section profile__menu">
+        <%= link_to user_path,
+        {class: "profile__menu__item #{'profile__menu__item--active' if profile_info_page?}"} do %>
+          <div class="dot"></div>
+          <div>Overview</div>
+        <% end %>
+
+        <%= link_to user_path(page: project_page),
+        {class: "profile__menu__item #{'profile__menu__item--active' if !profile_info_page?}"} do %>
+          <div class="dot"></div>
+          Projects
+        <% end %>
+      </div>
+
+      <% if profile_info_page? %>
+        <%= render 'show_info'%>
+      <% else %>
+        <%= render 'show_project'%>
+      <% end %>
+
+    </main>
+  </div>

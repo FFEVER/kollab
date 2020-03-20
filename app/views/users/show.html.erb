@@ -1,6 +1,59 @@
-<%= react_component("UserProfile",
+<div class="profile">
+  <div class="flex-row">
+    <%= image_tag 'default/anya.jpg', style: 'height:100px;width:100;border-radius:50px;' %>
+    <div class="flex-col justify-cen mar-lr--m">
+      <h2>Kasamabhorn Suparerkrat</h2>
+      <p>4th year Software Engineering Stduent</p>
+      <div class="flex-row align-cen space-bet">
+        <h3>11</h3>
+        <p class="mar-lr">Projects</p>
+        <h3>5</h3>
+        <p class="mar-lr">Folloings</p>
+        <h3>3</h3>
+        <p class="mar-lr">Followers</p>
+      </div>
+    </div>
+  </div>
+  <p class="mar-tb">I am 4th year student from King Mongkut’s Institute of Technology Ladkrabang and currently studying in Software Engineering field. I am interested Web Development and Docker.</p>
+  <button class="button--edit-profile">Edit Profile</button>
+  <div class="flex-row mar-tb space-bet">
+    <h3>Skills</h3>
+    <%=image_tag 'icon/more.png', style: 'height:20px;width:20px;'%>
+  </div>
+  <div class="flex-row space-bet">
+    <h3>Contact</h3>
+    <%=image_tag 'icon/more.png', style: 'height:20px;width:20px;'%>
+  </div>
+
+  <div class="flex-row mar-top--s">
+    <%=image_tag 'icon/phone-call.png', style: 'height:20px;width:20px;margin-right:10px;'%>
+    <p>+66 89 777 6666</p>
+  </div>
+  <div class="flex-row mar-top--ss">
+    <%=image_tag 'icon/mail.png', style: 'height:20px;width:20px;margin-right:10px;'%>
+    <p>anya.ks@gmail.com</p>
+  </div>
+  <div class="flex-row mar-top--ss">
+    <%=image_tag 'icon/instagram.png', style: 'height:20px;width:20px;margin-right:10px;'%>
+    <p>anya.ks</p>
+  </div>
+  <div class="mar-tb">
+    <h3>Projects</h3>
+  </div>
+  <div class="mar-tb">
+    <h3>Interests</h3>
+  </div>
+  <div class="mar-tb">
+    <h3>Photos</h3>
+  </div>
+  <div class="flex-row space-bet mar-tb">
+    <h3>Post</h3>
+    <%=image_tag 'icon/add.png', style: 'height:20px;width:20px;margin-right:10px;'%>
+  </div>
+  <%#= react_component("UserProfile",
     {
       authenticityToken: form_authenticity_token,
       submitPath: user_path
     })
-  %>
+%>
+</div>

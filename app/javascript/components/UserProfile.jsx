@@ -87,70 +87,8 @@ class UserProfile extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div className="form">
-          {/* <img className="logo" src={kollab} /> */}
-          <div className="flex-row">
-            <img className=" profile-img" src={profileImg} />
-
-            <div
-              className="flex-col justify-cen"
-              style={{
-                marginLeft: "20px"
-              }}
-            >
-              <h2>{this.state.fullname}</h2>
-              <p>{this.state.position}</p>
-              <div className="flex-row align-cen space-bet">
-                <h3>11</h3>
-                <p className="mar-lr">Projects</p>
-                <h3>5</h3>
-                <p className="mar-lr">Folloings</p>
-                <h3>3</h3>
-                <p className="mar-lr">Followers</p>
-              </div>
-            </div>
-          </div>
-          <p className="mar-tb">{this.state.bio}</p>
-          <button className="button--edit-profile">Edit Profile</button>
-        </div>
-        <div className="sep-line" />
-        <div className="form">
-          <div className="flex-row space-bet">
-            <div className="flex-row ">
-              <h3>Skills</h3>
-              {this.state.tags.map((item, index) => (
-                <button className="button--tags" key={index}>
-                  {item}
-                </button>
-              ))}
-            </div>
-            <img className="icon" src={more} />
-          </div>
-        </div>
-        <div className="sep-line" />
-        <div className="form">
-          <div className="flex-row space-bet">
-            <h3>Contact</h3>
-            <img className="icon" src={more} />
-          </div>
-
-          <div className="flex-row mar-top--s">
-            <img className="icon" src={phone} />
-            <p>{this.state.phone}</p>
-          </div>
-          <div className="flex-row mar-top--ss">
-            <img className="icon" src={mail} />
-            <p>{this.state.email}</p>
-          </div>
-          <div className="flex-row mar-top--ss">
-            <img className="icon" src={instagram} />
-            <p>{this.state.instagram}</p>
-          </div>
-        </div>
-        <div className="sep-line" />
-        <div className="form">
-          <h3>Projects</h3>
+      <div className="mar-tb">
+        <div>
           {projects.map((item, index) => (
             <Card
               key={index}
@@ -215,17 +153,6 @@ class UserProfile extends React.Component {
         </div>
         <div className="sep-line" />
 
-        <div className="form">
-          <h3>Files</h3>
-          <div className="flex-row mar-top--s">
-            <img className="icon" src={attach} />
-            <p>{filename}</p>
-          </div>
-          <p className="mar-top--s" style={{ color: "#54bdc2" }}>
-            See more
-          </p>
-        </div>
-        <div className="sep-line" />
         <div className="form">
           <div className="flex-row space-bet">
             <h3>Post</h3>

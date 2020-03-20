@@ -96,7 +96,7 @@ class Login extends React.Component {
           <InputLabel htmlFor="outlined-adornment-password">E-mail</InputLabel>
           <OutlinedInput
             name={"email"}
-            label={this.state.emailError.bool ? "" : "E-mail"}
+            label={"E-mail"}
             required
             error={this.state.emailError.bool ? true : false}
             variant={"outlined"}
@@ -113,7 +113,7 @@ class Login extends React.Component {
           </InputLabel>
           <OutlinedInput
             name={"password"}
-            label={this.state.passwordError.bool ? "" : "Password"}
+            label={"Password"}
             required
             error={this.state.passwordError.bool ? true : false}
             type={this.state.showPassword ? "text" : "password"}

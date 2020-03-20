@@ -1,14 +1,13 @@
 .button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
 
-  padding: $global-space * 0.3 $global-space * 2;
+  padding: $global-space * 0.3;
 
   cursor: pointer;
   letter-spacing: 1px;
 
-  color: $black !important;
-  border: solid 1px black;
   border-radius: 4px;
 
   &--small {
@@ -45,5 +44,33 @@
     border-width: 1px;
     border-color: black;
     background-color: white;
+
+    &--gradient-green {
+      color: white;
+      background: rgb(84, 189, 194);
+      background: linear-gradient(
+      90deg,
+      rgba(84, 189, 194, 1) 0%,
+      rgba(94, 219, 184, 1) 99%
+      );
+    }
+
+    &--long {
+      width: 300px;
+      height: 40px;
+
+      border-radius: 20px;
+    }
+
+    &--fixed-bottom {
+      position: fixed;
+      z-index: 10;
+      right: 0;
+      bottom: 20px;
+      left: 0;
+
+      margin-right: auto;
+      margin-left: auto;
+    }
   }
 }

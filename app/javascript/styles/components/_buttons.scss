@@ -46,4 +46,9 @@
     margin-right: auto;
     margin-left: auto;
   }
+  &--round {
+    height: 40px;
+
+    border-radius: 20px;
+  }
 }

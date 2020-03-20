@@ -76,3 +76,13 @@ p {
 
   color: $kollab-gray;
 }
+
+a:link,
+a:visited {
+  font-size: 1em;
+  font-weight: bold;
+
+  text-decoration: underline;
+
+  color: $kollab-turquoise;
+}

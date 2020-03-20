@@ -1,30 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Button
+  Link,
+  IconButton,
+  OutlinedInput,
+  InputLabel,
+  InputAdornment,
+  FormControl,
+  FormHelperText
 } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from "@material-ui/core/FormControl";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import Link from "@material-ui/core/Link";
 
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-
-import GradientButton from "react-linear-gradient-button";
-
-import kollab from "../images/kollab-blue.png";
-const DATA_PREFIX = "project";
-
-const dataName = name => {
-  return DATA_PREFIX + "[" + name + "]";
-};
 
 class Login extends React.Component {
   constructor(props) {
@@ -38,9 +25,9 @@ class Login extends React.Component {
       checkedAgreeCondition: false
     };
     this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
-    this.handleMouseDownPassword = this.handleMouseDownPassword.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.checkConditions = this.checkConditions.bind(this);
+    this.emailConditions = this.emailConditions.bind(this);
+    this.passwordConditions = this.passwordConditions.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
@@ -53,38 +40,59 @@ class Login extends React.Component {
       showPassword: !this.state.showPassword
     });
   }
-  handleMouseDownPassword(event) {
-    event.preventDefault();
+
+  emailConditions() {
+    var mail = this.state.email;
+    var at = mail.indexOf("@");
+    var dot = mail.indexOf(".");
+
+    if (mail == "") {
+      this.setState({ emailError: { bool: true, error: "Require e-mail" } });
+    } else if (at == -1 || dot == -1) {
+      this.setState({
+        emailError: { bool: true, error: "Invalid e-mail format" }
+      });
+    } else if (dot < at) {
+      this.setState({
+        emailError: { bool: true, error: "Invalid e-mail format" }
+      });
+    } else {
+      return this.setState({
+        emailError: { bool: false, error: "" }
+      });
+    }
   }
 
-  checkConditions() {
-    this.state.email === ""
-      ? this.setState({ emailError: { bool: true, error: "Required email" } })
-      : this.setState({ emailError: { bool: false, error: "" } });
+  passwordConditions() {
+    var password = this.state.password;
+    console.log("Pass : ", password);
 
-    this.state.password === ""
-      ? this.setState({
-          passwordError: { bool: true, error: "Required password" }
-        })
-      : this.setState({
-          passwordError: { bool: false, error: "" }
-        });
+    if (password == "") {
+      this.setState({
+        passwordError: { bool: true, error: "Require password" }
+      });
+    } else if (password.length < 8) {
+      this.setState({
+        passwordError: { bool: true, error: "Invalid password" }
+      });
+    } else {
+      return this.setState({
+        passwordError: { bool: false, error: "" }
+      });
+    }
   }
 
   handleSubmit() {
-    this.checkConditions();
+    this.emailConditions();
+    this.passwordConditions();
     console.log("State : ", this.state);
   }
 
   render() {
     return (
-      <div className="form">
-        <h2>Welcome to</h2>
-        <img className="logo" src={kollab} style={{ width: "150px" }} />
-        <h1>Sign In</h1>
-        {console.log("State", this.state)}
-
-        <FormControl variant="outlined" style={{ marginBottom: "20px" }}>
+      <div className="flex-col mar-top--s">
+        {console.log("Render")}
+        <FormControl variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">E-mail</InputLabel>
           <OutlinedInput
             name={"email"}
@@ -99,7 +107,7 @@ class Login extends React.Component {
           </FormHelperText>
         </FormControl>
 
-        <FormControl variant="outlined" style={{ marginBottom: "20px" }}>
+        <FormControl variant="outlined" style={{ marginTop: "15px" }}>
           <InputLabel htmlFor="outlined-adornment-password">
             Password
           </InputLabel>
@@ -126,42 +134,17 @@ class Login extends React.Component {
             {this.state.passwordError.error}
           </FormHelperText>
         </FormControl>
-        <div className="right">
-          <Link
-            underline={"always"}
-            href="http://localhost:5000/users/password/new"
-            style={{
-              fontSize: "1.2em",
-              marginBottom: "20px",
-              color: "#54bdc2",
-              fontWeight: "bold"
-            }}
-          >
-            Forget Password?
-          </Link>
+        <div className="flex-col mar-top--s end">
+          <a className="link" href="http://localhost:5000/users/password/new">
+            Forget password?
+          </a>
         </div>
-        <GradientButton
-          gradient={["#54bdc2", "#5edbb8"]}
-          color={"white"}
-          background={"#54bdc2"}
-          style={{ marginBottom: "20px" }}
+        <button
+          className="button--gradient-green button--round mar-top--s"
           onClick={this.handleSubmit}
         >
           Login
-        </GradientButton>
-        <div className=" flex-row">
-          <p className="text" style={{ marginRight: "5px" }}>
-            Don't have an Account?{" "}
-          </p>
-          <Link
-            className="text"
-            underline={"always"}
-            href="http://localhost:5000/users/sign_up"
-            style={{ fontSize: "1.2em", color: "#54bdc2", fontWeight: "bold" }}
-          >
-            Sign Up
-          </Link>
-        </div>
+        </button>
       </div>
     );
   }

@@ -1,6 +1,21 @@
-<%= react_component("Login",
+<div class="page">
+  <h2>Welcome to</h2>
+  <div class="mar-top--s">
+    <%= image_tag 'logo/kollab-blue.png', style:"width: 130px"%>
+  </div>
+  <div class="mar-top--s">
+    <h1>Sign In</h1>
+    <div class="flex-col">
+      <%= react_component("Login",
     {
       authenticityToken: form_authenticity_token,
       submitPath: new_user_session_path
     })
   %>
+      <div class="flex-row mar-top--s">
+        <p class="mar-right--s">Don't have an account?</p>
+        <a class="link" href="http://localhost:5000/users/sign_up">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</div>

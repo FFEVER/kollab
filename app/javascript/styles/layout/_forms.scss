@@ -47,8 +47,20 @@ form {
   margin-bottom: 10px;
 }
 .mar-lr {
-  margin-right: 5px;
-  margin-left: 5px;
+  &--l {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  &--m {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  &--s {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
 }
 
 .mar-top {

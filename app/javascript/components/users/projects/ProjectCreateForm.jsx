@@ -72,20 +72,20 @@ class ProjectCreateForm extends React.Component {
     const formData = new FormData()
     formData.append(dataName("title"), this.state.title)
     formData.append(dataName("short_desc"), this.state.shortDesc)
+
     const startDate = new Date(this.state.startDate)
-    formData.append(
-      dataName("start_date"),
-      isNaN(startDate.getDate()) ? "" : startDate
-    )
+    if (!isNaN(startDate.getDate()))
+      formData.append(dataName("start_date"), startDate)
+
     const endDate = new Date(this.state.endDate)
-    formData.append(
-      dataName("end_date"),
-      isNaN(endDate.getDate()) ? "" : endDate
-    )
+    if (!isNaN(endDate.getDate()))
+      formData.append(dataName("end_date"), endDate)
+
     formData.append(
       dataName("tag_list"),
       JSON.stringify(tagsToArray(this.state.tagList))
     )
+
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
   }

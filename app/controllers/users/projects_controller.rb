@@ -8,8 +8,7 @@ class Users::ProjectsController < ApplicationController
   end
 
   def create
-    # TODO: [Eit] Create Member after project created
-    @project = helpers.create_new_project_from_params(project_params)
+    @project = Project.new(project_params)
     respond_to do |format|
       if @project.save
         @project.add_member current_user, is_owner: true

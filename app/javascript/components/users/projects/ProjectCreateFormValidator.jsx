@@ -55,8 +55,8 @@ class FormValidator {
 
     if (tagList.length > 3) {
       errors[key].push("Tags can have up to 3.")
-    } else if (tagList.length <= 0) {
-      errors[key].push("Tags cannot be blank.")
+    } else if (tags.length <= 0) {
+      errors[key].push("Add at least 1 tag")
     }
 
     for (const { label, value } of tagList) {

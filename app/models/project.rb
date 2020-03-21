@@ -10,10 +10,6 @@ class Project < ApplicationRecord
   # TODO: [Eit] Validates fields
   validates :title, presence: true, length: { within: 1..50 }
   validates :short_desc, presence: true, length: { within: 1..150 }
-  validates :start_date_before_type_cast,
-            format: { with: /\A\d+-\d{2}-\d{2}\z/ }, allow_nil: true
-  validates :end_date_before_type_cast,
-            format: { with: /\A\d+-\d{2}-\d{2}\z/ }, allow_nil: true
   validate :start_date_greater_than_end_date
   validates_length_of :tag_list, minimum: 1, message: 'Tags cannot be blank.'
   validates_length_of :tag_list, maximum: 3, message: 'Tags can only have up to 3.'

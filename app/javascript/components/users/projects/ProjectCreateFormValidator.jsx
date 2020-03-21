@@ -55,7 +55,7 @@ class FormValidator {
 
     if (tagList.length > 3) {
       errors[key].push("Tags can have up to 3.")
-    } else if (tags.length <= 0) {
+    } else if (tagList.length <= 0) {
       errors[key].push("Add at least 1 tag")
     }
 

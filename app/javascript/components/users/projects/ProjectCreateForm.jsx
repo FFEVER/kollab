@@ -96,17 +96,21 @@ class ProjectCreateForm extends React.Component {
       method: "post",
       url: submitPath,
       responseType: "json",
+      headers: {
+        Accept: "application/json"
+      },
       data: formData
     })
       .then(response => {
-        this.setIsButtonLoading(false)
-        if (response.data.redirect_url !== undefined) {
+        if (response.status === 201)
           window.location.href = response.data.redirect_url
-        }
-        if (response.data.errors !== undefined) {
+      })
+      .catch(error => {
+        if (error.response.status === 400) {
           this.setState(state => {
+            let error_messages = error.response.data.messages
             let errors = defaultErrors
-            for (const [k, v] of Object.entries(response.data.errors)) {
+            for (const [k, v] of Object.entries(error_messages)) {
               errors[k] = v
             }
             return {
@@ -115,8 +119,7 @@ class ProjectCreateForm extends React.Component {
           })
         }
       })
-      .catch(error => {
-        // TODO: [Anyone] Handle error (other than 200 OK)
+      .finally(() => {
         this.setIsButtonLoading(false)
       })
   }

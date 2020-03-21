@@ -8,18 +8,21 @@ class Users::ProjectsController < ApplicationController
   end
 
   def create
-    # TODO: [Eit] Create Member after project created
-    @project = helpers.create_new_project_from_params(project_params)
-    if @project.save
-      @project.add_member current_user, is_owner: true
-      render json: {
-        redirect_url: url_for(@project)
-      }, status: :ok
-    else
-      errors = helpers.errors_to_camel(@project.errors.messages)
-      render json: {
-        errors: errors
-      }, status: :ok
+    @project = Project.new(project_params)
+    respond_to do |format|
+      if @project.save
+        @project.add_member current_user, is_owner: true
+        format.json do
+          render json: {
+            redirect_url: url_for(@project)
+          }, status: :created
+        end
+      else
+        errors = helpers.errors_to_camel(@project.errors.messages)
+        format.json do
+          render json: { messages: errors }, status: :bad_request
+        end
+      end
     end
   end
 

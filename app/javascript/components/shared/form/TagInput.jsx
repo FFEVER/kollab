@@ -69,11 +69,15 @@ class TagInput extends React.Component {
     inputValue: ""
   }
 
-  validate = () => {
-    // Validate duplication of label
+  removeDup = () => {
     const { inputValue } = this.state
     const { value } = this.props
-    return value.find(({ label }) => label === inputValue) === undefined
+    const newTags = []
+    for (const tag of inputValue.split(" ")) {
+      if (value.find(({ label }) => label === tag) === undefined)
+        newTags.push(tag)
+    }
+    return newTags
   }
 
   handleChange = (value, actionMeta) => {
@@ -95,9 +99,12 @@ class TagInput extends React.Component {
       case "Enter":
       case " ":
       case "Tab":
-        if (this.validate()) {
-          this.props.onKeyDown(createOption(inputValue))
+        let newTags = this.removeDup()
+        let newTagObjList = []
+        for (const tag of newTags) {
+          newTagObjList.push(createOption(tag))
         }
+        this.props.onKeyDown(newTagObjList)
         this.setState({
           inputValue: ""
         })
@@ -107,15 +114,7 @@ class TagInput extends React.Component {
 
   render() {
     const { inputValue } = this.state
-    const {
-      value,
-      placeholder,
-      errors,
-      errorPrefix,
-      id,
-      styles,
-      errorStyles
-    } = this.props
+    const { value, placeholder, errors, id, styles, errorStyles } = this.props
     return (
       <>
         <CreatableSelect
@@ -134,11 +133,9 @@ class TagInput extends React.Component {
         />
 
         {errors.map((message, index) => (
-          <p key={index} className="error-message">
-            <small>
-              {errorPrefix} {message}
-            </small>
-          </p>
+          <div key={index} className="error-message">
+            <small>{message} </small>
+          </div>
         ))}
       </>
     )
@@ -156,7 +153,6 @@ TagInput.defaultProps = {
 TagInput.propTypes = {
   value: PropTypes.arrayOf(PropTypes.object).isRequired,
   placeholder: PropTypes.string,
-  errorPrefix: PropTypes.string,
   errors: PropTypes.arrayOf(PropTypes.string),
   onChange: PropTypes.func.isRequired,
   onKeyDown: PropTypes.func.isRequired,

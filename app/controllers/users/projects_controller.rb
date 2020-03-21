@@ -9,9 +9,9 @@ class Users::ProjectsController < ApplicationController
 
   def create
     # TODO: [Eit] Create Member after project created
-    # TODO: [Eit] Add Tag to Project
-    @project = create_new_project_from_params
+    @project = helpers.create_new_project_from_params(project_params)
     if @project.save
+      @project.add_member current_user, is_owner: true
       render json: {
         redirect_url: url_for(@project)
       }, status: :ok
@@ -37,24 +37,9 @@ class Users::ProjectsController < ApplicationController
       :short_desc,
       :start_date,
       :end_date,
-      :tags
+      :tag_list
     )
-    permitted[:tags] = JSON.parse(permitted[:tags]) || []
+    permitted[:tag_list] = JSON.parse(permitted[:tag_list]) || []
     permitted
-  end
-
-  def create_new_project_from_params
-    project = Project.new(
-      title: project_params[:title],
-      short_desc: project_params[:short_desc]
-    )
-    unless project_params[:start_date].blank?
-      project.start_date = project_params[:start_date].to_date
-    end
-    unless project_params[:end_date].blank?
-      project.end_date = project_params[:end_date].to_date
-    end
-
-    project
   end
 end

@@ -1,3 +1,12 @@
+const defaultErrors = {
+  title: [],
+  shortDesc: [],
+  startDate: [],
+  endDate: [],
+  tagList: [],
+  categories: []
+}
+
 class FormValidator {
   static validateTitle(state, errors) {
     const { title } = state
@@ -40,39 +49,50 @@ class FormValidator {
     }
   }
 
-  static validateTags(state, errors) {
-    const { tags } = state
-    const key = Object.keys({ tags })[0]
+  static validateTagList(state, errors) {
+    const { tagList } = state
+    const key = Object.keys({ tagList })[0]
 
-    if (tags.length > 3) {
+    if (tagList.length > 3) {
       errors[key].push("Tags can have up to 3.")
     } else if (tags.length <= 0) {
       errors[key].push("Add at least 1 tag")
     }
+
+    for (const { label, value } of tagList) {
+      const length = value.length
+      if (length > 25) {
+        errors[key].push("A tag is too long (maximum 25 characters).")
+        break
+      }
+      if (length <= 0) {
+        errors[key].push("A tag is too short (minimum 1 character).")
+        break
+      }
+    }
   }
 
   static isValidatePass(errors) {
-    for (let [key, value] of Object.entries(errors)) {
+    for (const value of Object.values(errors)) {
       if (value.length != 0) return false
     }
     return true
   }
 
+  static clearErrors(errors) {
+    for (const k of Object.keys(errors)) {
+      errors[k] = []
+    }
+  }
+
   static validateAll(state) {
     let promise = new Promise((resolve, reject) => {
-      const errors = {
-        title: [],
-        shortDesc: [],
-        startDate: [],
-        endDate: [],
-        tags: [],
-        categories: []
-      }
-
+      const errors = { ...defaultErrors }
+      this.clearErrors(errors)
       this.validateTitle(state, errors)
       this.validateShortDesc(state, errors)
       this.validateStartEndDate(state, errors)
-      this.validateTags(state, errors)
+      this.validateTagList(state, errors)
 
       if (this.isValidatePass(errors)) {
         resolve(errors)
@@ -86,3 +106,4 @@ class FormValidator {
 }
 
 export default FormValidator
+export { FormValidator, defaultErrors }

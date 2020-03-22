@@ -6,6 +6,8 @@ class Project < ApplicationRecord
   has_many :users, through: :members
   has_many :taggings, dependent: :delete_all
   has_many :tags, through: :taggings
+  has_many :favorites, dependent: :destroy
+  has_many :stars, through: :favorites, source: :user
 
   # TODO: [Eit] Validates fields
   validates :title, presence: true, length: { within: 1..50 }

@@ -15,7 +15,15 @@ class ProjectsController < ApplicationController
 
   def unfollow; end
 
-  def star; end
+  def star
+    @project = Project.find_by_id(params[:id])
+    @project.stars << current_user
+    redirect_to @project
+  end
 
-  def unstar; end
+  def unstar
+    @project = Project.find_by_id(params[:id])
+    @project.stars.delete(current_user)
+    redirect_to @project
+  end
 end

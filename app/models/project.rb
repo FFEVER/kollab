@@ -57,4 +57,8 @@ class Project < ApplicationRecord
 
     end_date.strftime '%a %d %b %Y'
   end
+
+  def starred_by?(user)
+    stars.include? user
+  end
 end

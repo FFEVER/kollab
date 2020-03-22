@@ -6,12 +6,21 @@
       </section>
 
       <section class="section section__actions">
-        <%# TODO: [Eit] Star count %>
         <%# TODO: [Eit] Follow action %>
-        <button class="button button--small button--outline-gray-light">
-          <span class="icon icon--star"></span>
-          26
-        </button>
+        <% if @project.starred_by?(current_user) %>
+          <%= button_to unstar_project_path, method: :post,
+            class: "button button--small button--green" do %>
+            <span class="icon icon--star"></span>
+            <%= @project.stars.count %>
+          <% end %>
+        <% else %>
+          <%= button_to star_project_path, method: :post,
+            class: "button button--small button--outline-gray-light" do %>
+            <span class="icon icon--star"></span>
+            <%= @project.stars.count %>
+          <% end %>
+        <% end %>
+
         <button class="button button--small button--green">Follow</button>
       </section>
     </div>

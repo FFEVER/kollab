@@ -21,7 +21,9 @@ class User < ApplicationRecord
     followers.include?(user)
   end
 
-  def unfollow(user); end
+  def unfollow(user)
+    followings.delete(user)
+  end
 
   def followers=(user)
     followers << user

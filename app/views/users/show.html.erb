@@ -23,7 +23,15 @@
         <p>Followers</p>
       </div>
       <div>
-        <a class="button button--small button--gray">Following</a>
+        <% if current_user != @user %>
+          <% if current_user.is_following?(@user) %>
+            <button class="button button--small button--gray">Following</button>
+          <% else %>
+            <button class="button button--small button--green">Follow</button>
+          <% end %>
+        <% else %>
+          <button class="button button--small button--green">Edit profile</button>
+        <% end %>
       </div>
     </header>
 

@@ -103,7 +103,7 @@ class ProjectCreateForm extends React.Component {
     })
       .then(response => {
         if (response.status === 201)
-          window.location.href = response.data.redirect_url
+          window.location.href = response.headers.location
       })
       .catch(error => {
         if (error.response.status === 400) {

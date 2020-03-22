@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_131319) do
+ActiveRecord::Schema.define(version: 2020_03_22_174647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_favorites_on_project_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "members", force: :cascade do |t|
     t.boolean "is_owner"
@@ -77,6 +86,8 @@ ActiveRecord::Schema.define(version: 2020_03_22_131319) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "projects"
+  add_foreign_key "favorites", "users"
   add_foreign_key "taggings", "projects"
   add_foreign_key "taggings", "tags"
   add_foreign_key "user_followings", "users"

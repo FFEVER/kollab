@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :projects, only: %i[new create edit update destroy]
+    resources :follows, only: %i[index create destroy]
   end
 
   resources :projects, only: %i[index show]

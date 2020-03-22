@@ -21,5 +21,12 @@ Rails.application.routes.draw do
     resources :projects, only: %i[new create edit update destroy]
   end
 
-  resources :projects, only: %i[index show]
+  resources :projects, only: %i[index show] do
+    member do
+      post 'follow'
+      post 'unfollow'
+      post 'star'
+      post 'unstar'
+    end
+  end
 end

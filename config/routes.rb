@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   }
   resources :users, only: %i[show]
 
+  post '/users/:id/follow', to: 'users#follow', as: 'follow_user'
+  post '/users/:id/unfollow', to: 'users#unfollow', as: 'unfollow_user'
+
   namespace :users do
     resources :projects, only: %i[new create edit update destroy]
-    resources :follows, only: %i[index create destroy]
   end
 
   resources :projects, only: %i[index show]

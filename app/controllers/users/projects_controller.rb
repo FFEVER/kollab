@@ -9,20 +9,12 @@ class Users::ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    respond_to do |format|
-      if @project.save
-        @project.add_member current_user, is_owner: true
-        format.json do
-          render json: {
-            redirect_url: url_for(@project)
-          }, status: :created
-        end
-      else
-        errors = helpers.errors_to_camel(@project.errors.messages)
-        format.json do
-          render json: { messages: errors }, status: :bad_request
-        end
-      end
+    if @project.save
+      @project.add_member current_user, is_owner: true
+      render json: @project, location: project_path(@project), status: :created
+    else
+      errors = helpers.errors_to_camel(@project.errors.messages)
+      render json: { messages: errors }, status: :bad_request
     end
   end
 

@@ -13,13 +13,15 @@ class User < ApplicationRecord
                            foreign_key: :follower_id, class_name: 'UserFollowing'
   has_many :followings, through: :given_follows, source: :followed_user
 
-  def is_following?(user)
+  def following?(user)
     followings.include?(user)
   end
 
-  def is_followed_by?(user)
+  def followed_by?(user)
     followers.include?(user)
   end
+
+  def unfollow(user); end
 
   def followers=(user)
     followers << user

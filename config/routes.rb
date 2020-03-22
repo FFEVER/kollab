@@ -10,11 +10,11 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     sessions: 'users/sessions'
   }
-  resources :users, only: [:show]
+  resources :users, only: %i[show]
 
   namespace :users do
     resources :projects, only: %i[new create edit update destroy]
   end
 
-  resources :projects, only: :show
+  resources :projects, only: %i[index show]
 end

@@ -7,4 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :members
   has_many :projects, through: :members
+  has_many :followings, dependent: :delete_all, class_name: 'UserFollowing'
+  has_many :followers, through: :user_followings
 end

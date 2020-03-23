@@ -6,7 +6,6 @@
       </section>
 
       <section class="section section__actions">
-        <%# TODO: [Eit] Follow action %>
         <% if @project.starred_by?(current_user) %>
           <%= button_to unstar_project_path, method: :post,
             class: "button button--small button--green" do %>
@@ -21,13 +20,18 @@
           <% end %>
         <% end %>
 
-        <button class="button button--small button--green">Follow</button>
+        <% if @project.followed_by?(current_user) %>
+          <%= button_to "Following", unfollow_project_path, method: :post,
+            class: "button button--small button--outline-gray-light" %>
+        <% else %>
+          <%= button_to "Follow", follow_project_path, method: :post,
+            class: "button button--small button--green" %>
+        <% end %>
       </section>
     </div>
 
     <section class="section__follower">
-      <%# TODO: [Eit] Follower count %>
-      <span><b>130k</b></span>
+      <span><b><%= @project.followers.count %></b></span>
       <p>Followers</p>
     </section>
   </section>

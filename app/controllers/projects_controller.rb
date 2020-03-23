@@ -11,9 +11,17 @@ class ProjectsController < ApplicationController
     @members = @project.members
   end
 
-  def follow; end
+  def follow
+    @project = Project.find_by_id(params[:id])
+    @project.followers << current_user
+    redirect_to @project
+  end
 
-  def unfollow; end
+  def unfollow
+    @project = Project.find_by_id(params[:id])
+    @project.followers.delete(current_user)
+    redirect_to @project
+  end
 
   def star
     @project = Project.find_by_id(params[:id])

@@ -63,4 +63,8 @@ class Project < ApplicationRecord
   def starred_by?(user)
     stars.include? user
   end
+
+  def followed_by?(user)
+    followers.include?(user)
+  end
 end

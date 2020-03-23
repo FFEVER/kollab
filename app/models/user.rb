@@ -7,13 +7,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :members
   has_many :projects, through: :members
-  has_many :received_follows, dependent: :delete_all, class_name: 'UserFollowing'
-  has_many :followers, through: :received_follows, source: :follower
-  has_many :given_follows, dependent: :delete_all,
-                           foreign_key: :follower_id, class_name: 'UserFollowing'
-  has_many :followings, through: :given_follows, source: :followed_user
+
   has_many :favorites, dependent: :destroy
   has_many :starring_projects, through: :favorites, source: :project
+
+  has_many :received_follows, as: :followable, class_name: 'Following', dependent: :delete_all
+  has_many :followers, through: :received_follows, source: :follower
+  has_many :given_follows, dependent: :delete_all,
+                           foreign_key: :follower_id, class_name: 'Following'
+  has_many :followings, through: :given_follows, source: :followable, source_type: 'User'
 
   def following?(user)
     followings.include?(user)

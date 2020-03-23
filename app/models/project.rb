@@ -8,6 +8,8 @@ class Project < ApplicationRecord
   has_many :tags, through: :taggings
   has_many :favorites, dependent: :destroy
   has_many :stars, through: :favorites, source: :user
+  has_many :received_follows, as: :followable, class_name: 'Following'
+  has_many :followers, through: :received_follows, source: :follower
 
   # TODO: [Eit] Validates fields
   validates :title, presence: true, length: { within: 1..50 }

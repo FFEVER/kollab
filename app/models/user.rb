@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :given_follows, dependent: :delete_all,
                            foreign_key: :follower_id, class_name: 'Following'
   has_many :followings, through: :given_follows, source: :followable, source_type: 'User'
+  has_many :following_projects, through: :given_follows, source: :followable, source_type: 'Project'
 
   def following?(user)
     followings.include?(user)

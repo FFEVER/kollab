@@ -1,0 +1,16 @@
+.icon {
+  line-height: 1;
+
+  display: inline-block;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+
+  &--star {
+    width: 13px;
+    height: 13px;
+
+    background-image: url('~images/star.svg');
+  }
+}

@@ -10,10 +10,6 @@ class Project < ApplicationRecord
   # TODO: [Eit] Validates fields
   validates :title, presence: true, length: { within: 1..50 }
   validates :short_desc, presence: true, length: { within: 1..150 }
-  validates :start_date_before_type_cast,
-            format: { with: /\A\d+-\d{2}-\d{2}\z/ }, allow_nil: true
-  validates :end_date_before_type_cast,
-            format: { with: /\A\d+-\d{2}-\d{2}\z/ }, allow_nil: true
   validate :start_date_greater_than_end_date
   validates_length_of :tag_list, minimum: 1, message: 'Tags cannot be blank.'
   validates_length_of :tag_list, maximum: 3, message: 'Tags can only have up to 3.'
@@ -46,5 +42,17 @@ class Project < ApplicationRecord
 
   def add_member(user, is_owner: false)
     Member.find_or_create_by(user: user, project: self, is_owner: is_owner)
+  end
+
+  def start_date_to_s
+    return '-' if start_date.blank?
+
+    start_date.strftime '%a %d %b %Y'
+  end
+
+  def end_date_to_s
+    return '-' if end_date.blank?
+
+    end_date.strftime '%a %d %b %Y'
   end
 end

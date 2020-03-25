@@ -19,79 +19,7 @@ form {
   }
 }
 
-@media screen and (max-width: 429px) {
-  .page {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-
-    margin: 40px;
-  }
-}
-
-/* For Tablets */
-@media screen and (min-width: 430px) {
-  .page {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-
-    width: 600px;
-    margin: 100px auto 500px;
-  }
-}
-
 .text {
   align-items: center;
   justify-content: center;
-}
-
-.flex-col {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-}
-
-.flex-row {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-}
-
-.end {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
-.mar-top {
-  &--l {
-    margin-top: 20px;
-  }
-
-  &--m {
-    margin-top: 15px;
-  }
-
-  &--s {
-    margin-top: 10px;
-  }
-}
-
-.mar-right {
-  &--l {
-    margin-right: 20px;
-  }
-
-  &--m {
-    margin-right: 15px;
-  }
-
-  &--s {
-    margin-right: 10px;
-  }
-}
-
-.red {
-  background-color: red;
 }

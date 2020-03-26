@@ -11,6 +11,8 @@ import {
 
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { LoginValidator, defaultErrors } from "./LoginValidator";
+import Button from "../shared/form/Button";
 
 const DATA_PREFIX = "user";
 
@@ -20,6 +22,7 @@ class Login extends React.Component {
     this.state = {
       email: "",
       password: "",
+      errors: {},
       emailError: { bool: false, error: "" },
       passwordError: { bool: false, error: "" },
       showPassword: false,
@@ -30,6 +33,8 @@ class Login extends React.Component {
     this.emailConditions = this.emailConditions.bind(this);
     this.passwordConditions = this.passwordConditions.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.createFormData = this.createFormData.bind(this);
+    this.submitForm = this.submitForm.bind(this);
   }
 
   handleChange(event) {
@@ -53,7 +58,7 @@ class Login extends React.Component {
       this.setState({ emailError: { bool: true, error: "Require e-mail" } });
     } else if (at == -1 || dot == -1) {
       this.setState({
-        emailError: { bool: true, error: "Invalid e-mail format" }
+        emailError: { bool: true, error: "Invalid form of e-mail" }
       });
     } else if (dot < at) {
       this.setState({
@@ -74,7 +79,7 @@ class Login extends React.Component {
       });
     } else if (password.length < 8) {
       this.setState({
-        passwordError: { bool: true, error: "Invalid password" }
+        passwordError: { bool: true, error: "Invalid form of password" }
       });
     } else {
       return this.setState({
@@ -83,9 +88,62 @@ class Login extends React.Component {
     }
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
     this.emailConditions();
     this.passwordConditions();
+    console.log("handleSubmit");
+    event.preventDefault();
+
+    LoginValidator.validateAll(this.state)
+      .then(result => {
+        const formData = this.createFormData();
+        this.submitForm(formData);
+      })
+      .catch(errors => {
+        this.setState({
+          errors: errors
+        });
+      });
+  }
+
+  submitForm(formData) {
+    console.log("submitForm");
+
+    const { submitPath } = this.props;
+    axios({
+      method: "post",
+      url: submitPath,
+      responseType: "json",
+      data: formData
+    })
+      .then(response => {
+        if (response.data.redirect_url !== undefined) {
+          window.location.href = response.data.redirect_url;
+        }
+        if (response.data.errors !== undefined) {
+          this.setState(state => {
+            let errors = defaultErrors;
+            for (const [k, v] of Object.entries(response.data.errors)) {
+              errors[k] = v;
+            }
+            return {
+              errors
+            };
+          });
+        }
+      })
+      .catch(error => {
+        // this.setIsButtonLoading(false);
+      });
+  }
+
+  createFormData() {
+    console.log("createFormData");
+    const formData = new FormData();
+    formData.append(dataName("email"), this.state.email);
+    formData.append(dataName("password"), this.state.password);
+    formData.append("authenticity_token", this.props.authenticityToken);
+    return formData;
   }
 
   render() {
@@ -154,6 +212,7 @@ class Login extends React.Component {
 
 Login.propTypes = {
   authenticityToken: PropTypes.string,
+  submitPath: PropTypes.string,
   forgetPasswordPath: PropTypes.string,
   signUpPath: PropTypes.string
 };

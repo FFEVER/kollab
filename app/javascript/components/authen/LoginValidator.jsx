@@ -8,9 +8,12 @@ const defaultErrors = {
 };
 
 class LoginValidator {
-  static validateEmail(state) {}
-
-  static validatePassword(state) {}
+  static validateEmail(state) {
+    const { email } = state;
+  }
+  static validatePassword(state) {
+    const { password } = state;
+  }
 
   static isValidatePass(errors) {
     for (const value of Object.values(errors)) {

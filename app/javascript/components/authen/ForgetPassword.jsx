@@ -4,13 +4,8 @@ import {
   OutlinedInput,
   InputLabel,
   FormControl,
-  FormHelperText,
-  Link
+  FormHelperText
 } from "@material-ui/core";
-
-import GradientButton from "react-linear-gradient-button";
-
-import kollab from "../images/kollab-blue.png";
 
 const DATA_PREFIX = "user";
 

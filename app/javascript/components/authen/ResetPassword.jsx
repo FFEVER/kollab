@@ -14,7 +14,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 import GradientButton from "react-linear-gradient-button";
 
-import kollab from "../images/kollab-blue.png";
+import kollab from "../../images/kollab-blue.png";
 const DATA_PREFIX = "user";
 
 const dataName = name => {

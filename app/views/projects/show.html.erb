@@ -6,19 +6,32 @@
       </section>
 
       <section class="section section__actions">
-        <%# TODO: [Eit] Star count %>
-        <%# TODO: [Eit] Follow action %>
-        <button class="button button--small button--outline-gray-light">
-          <span class="icon icon--star"></span>
-          26
-        </button>
-        <button class="button button--small button--green">Follow</button>
+        <% if @project.starred_by?(current_user) %>
+          <%= button_to unstar_project_path, method: :post,
+            class: "button button--small button--green" do %>
+            <span class="icon icon--star"></span>
+            <%= @project.stars.count %>
+          <% end %>
+        <% else %>
+          <%= button_to star_project_path, method: :post,
+            class: "button button--small button--outline-gray-light" do %>
+            <span class="icon icon--star"></span>
+            <%= @project.stars.count %>
+          <% end %>
+        <% end %>
+
+        <% if @project.followed_by?(current_user) %>
+          <%= button_to "Following", unfollow_project_path, method: :post,
+            class: "button button--small button--outline-gray-light" %>
+        <% else %>
+          <%= button_to "Follow", follow_project_path, method: :post,
+            class: "button button--small button--green" %>
+        <% end %>
       </section>
     </div>
 
     <section class="section__follower">
-      <%# TODO: [Eit] Follower count %>
-      <span><b>130k</b></span>
+      <span><b><%= @project.followers.count %></b></span>
       <p>Followers</p>
     </section>
   </section>
@@ -67,15 +80,21 @@
 
   <section class="section section__members">
     <h2>Members (<%= @project.members.count %>)</h2>
+
     <div class="member">
-      <%= image_pack_tag 'person.jpg',
-        class: "image__profile image__profile--small image__profile--with-border"
-      %>
-      <div class="member__details">
-        <% @members.each do |member| %>
-          <p class="member__name">
-            <%= "#{member.user.first_name} #{member.user.last_name}"%>
-          </p>
+      <% @members.each do |member| %>
+        <%= link_to member.user do %>
+          <%= image_pack_tag 'person.jpg',
+            class: "image__profile image__profile--small image__profile--with-border" %>
+        <% end %>
+
+        <div class="member__details">
+          <%= link_to member.user, class: "member__name" do %>
+            <p class="member__name">
+              <%= "#{member.user.first_name} #{member.user.last_name}"%>
+            </p>
+          <% end %>
+
           <p class="member__role">
             <%= member.role %>
           </p>

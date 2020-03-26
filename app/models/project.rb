@@ -6,6 +6,10 @@ class Project < ApplicationRecord
   has_many :users, through: :members
   has_many :taggings, dependent: :delete_all
   has_many :tags, through: :taggings
+  has_many :favorites, dependent: :destroy
+  has_many :stars, through: :favorites, source: :user
+  has_many :received_follows, as: :followable, class_name: 'Following'
+  has_many :followers, through: :received_follows, source: :follower
 
   # TODO: [Eit] Validates fields
   validates :title, presence: true, length: { within: 1..50 }
@@ -54,5 +58,13 @@ class Project < ApplicationRecord
     return '-' if end_date.blank?
 
     end_date.strftime '%a %d %b %Y'
+  end
+
+  def starred_by?(user)
+    stars.include? user
+  end
+
+  def followed_by?(user)
+    followers.include?(user)
   end
 end

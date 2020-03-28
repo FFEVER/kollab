@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
+
 import {
-  TextField,
   FormControlLabel,
   Checkbox,
   IconButton,
@@ -15,6 +16,8 @@ import {
 
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { SignUpValidator, defaultErrors } from "./SignUpValidator";
+
 const DATA_PREFIX = "user";
 
 const dataName = name => {
@@ -25,25 +28,28 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fullname: "",
+      name: "",
       email: "",
       password: "",
       confirmPassword: "",
-      fullnameError: { bool: false, error: "" },
-      emailError: { bool: false, error: "" },
-      passwordError: { bool: false, error: "" },
-      confirmPasswordError: { bool: false, error: "" },
+      errors: defaultErrors,
       showPassword: false,
       showConfirmPassword: false,
-      checkedAgreeCondition: false
+      checkedAgreeCondition: false,
+      submitted: false
     };
+
     this.handleCheckAgreeCondition = this.handleCheckAgreeCondition.bind(this);
     this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
-    this.handleMouseDownPassword = this.handleMouseDownPassword.bind(this);
+    this.handleClickShowConfirmPassword = this.handleClickShowConfirmPassword.bind(
+      this
+    );
     this.handleChange = this.handleChange.bind(this);
-    this.checkConditions = this.checkConditions.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.createFormData = this.createFormData.bind(this);
+    this.submitForm = this.submitForm.bind(this);
   }
+
   handleCheckAgreeCondition() {
     this.setState({
       checkedAgreeCondition: !this.state.checkedAgreeCondition
@@ -55,13 +61,11 @@ class SignUp extends React.Component {
       [event.target.name]: event.target.value
     });
   }
+
   handleClickShowPassword() {
     this.setState({
       showPassword: !this.state.showPassword
     });
-  }
-  handleMouseDownPassword(event) {
-    event.preventDefault();
   }
 
   handleClickShowConfirmPassword() {
@@ -69,45 +73,63 @@ class SignUp extends React.Component {
       showConfirmPassword: !this.state.showConfirmPassword
     });
   }
-  handleMouseDownConfirmPassword(event) {
+
+  handleSubmit(event) {
+    this.setState({ submitted: true });
     event.preventDefault();
+
+    SignUpValidator.validateAll(this.state)
+      .then(result => {
+        this.setState({
+          errors: defaultErrors
+        });
+        const formData = this.createFormData();
+        this.submitForm(formData);
+      })
+      .catch(errors => {
+        this.setState({
+          errors: errors,
+          submitted: false
+        });
+      });
   }
 
-  checkConditions() {
-    this.state.fullname === ""
-      ? this.setState({
-          fullnameError: { bool: true, error: "Required Full Name" }
-        })
-      : this.setState({
-          fullnameError: { bool: false, error: "" }
-        });
-
-    this.state.email === ""
-      ? this.setState({ emailError: { bool: true, error: "Required E-mail" } })
-      : this.setState({ emailError: { bool: false, error: "" } });
-
-    this.state.password === ""
-      ? this.setState({
-          passwordError: { bool: true, error: "Required Password" }
-        })
-      : this.setState({
-          passwordError: { bool: false, error: "" }
-        });
-
-    this.state.confirmPassword === ""
-      ? this.setState({
-          confirmPasswordError: {
-            bool: true,
-            error: "Required Confirmed Password"
-          }
-        })
-      : this.setState({
-          confirmPasswordError: { bool: false, error: "" }
-        });
+  submitForm(formData) {
+    const { submitPath } = this.props;
+    axios({
+      method: "post",
+      url: submitPath,
+      responseType: "json",
+      data: formData
+    })
+      .then(response => {
+        if (response.data.redirect_url !== undefined) {
+          window.location.href = response.data.redirect_url;
+        }
+        if (response.data.errors !== undefined) {
+          this.setState(state => {
+            let errors = defaultErrors;
+            for (const [k, v] of Object.entries(response.data.errors)) {
+              errors[k] = v;
+            }
+            return {
+              errors
+            };
+          });
+        }
+      })
+      .catch(error => {
+        // this.setIsButtonLoading(false);
+      });
   }
 
-  handleSubmit() {
-    this.checkConditions();
+  createFormData() {
+    const formData = new FormData();
+    formData.append(dataName("name"), this.state.name);
+    formData.append(dataName("email"), this.state.email);
+    formData.append(dataName("password"), this.state.password);
+    formData.append("authenticity_token", this.props.authenticityToken);
+    return formData;
   }
   render() {
     return (
@@ -120,15 +142,17 @@ class SignUp extends React.Component {
             Full Name
           </InputLabel>
           <OutlinedInput
-            name="fullname"
-            label={this.state.fullnameError.bool ? "" : "Full Name"}
+            name="name"
+            label={"Full Name"}
             required
-            error={this.state.fullnameError.bool ? true : false}
+            error={this.state.errors.name.length > 0 ? true : false}
             variant="outlined"
             onChange={this.handleChange}
           />
-          <FormHelperText error={this.state.emailError.bool ? true : false}>
-            {this.state.fullnameError.error}
+          <FormHelperText
+            error={this.state.errors.name.length > 0 ? true : false}
+          >
+            {this.state.errors.name[0]}
           </FormHelperText>
         </FormControl>
 
@@ -136,14 +160,16 @@ class SignUp extends React.Component {
           <InputLabel htmlFor="outlined-adornment-password">E-mail</InputLabel>
           <OutlinedInput
             name="email"
-            label={this.state.emailError.bool ? "" : "E-mail"}
+            label={"E-mail"}
             required
-            error={this.state.emailError.bool ? true : false}
+            error={this.state.errors.email.length > 0 ? true : false}
             variant="outlined"
             onChange={this.handleChange}
           />
-          <FormHelperText error={this.state.emailError.bool ? true : false}>
-            {this.state.emailError.error}
+          <FormHelperText
+            error={this.state.errors.email.length > 0 ? true : false}
+          >
+            {this.state.errors.email[0]}
           </FormHelperText>
         </FormControl>
 
@@ -153,9 +179,9 @@ class SignUp extends React.Component {
           </InputLabel>
           <OutlinedInput
             name="password"
-            label={this.state.passwordError.bool ? "" : "Password"}
+            label={"Password"}
             required={true}
-            error={this.state.passwordError.bool ? true : false}
+            error={this.state.errors.password.length > 0 ? true : false}
             type={this.state.showPassword ? "text" : "password"}
             value={this.state.password}
             onChange={this.handleChange}
@@ -170,8 +196,10 @@ class SignUp extends React.Component {
               </InputAdornment>
             }
           />
-          <FormHelperText error={this.state.passwordError.bool ? true : false}>
-            {this.state.passwordError.error}
+          <FormHelperText
+            error={this.state.errors.password.length > 0 ? true : false}
+          >
+            {this.state.errors.password[0]}
           </FormHelperText>
         </FormControl>
         <FormControl variant="outlined" style={{ marginBottom: "20px" }}>
@@ -182,7 +210,7 @@ class SignUp extends React.Component {
             name="confirmPassword"
             label="Confirm Password"
             required={true}
-            error={this.state.confirmPasswordError.bool ? true : false}
+            error={this.state.errors.confirmPassword.length > 0 ? true : false}
             type={this.state.showConfirmPassword ? "text" : "password"}
             value={this.state.confirmPassword}
             onChange={this.handleChange}
@@ -202,9 +230,9 @@ class SignUp extends React.Component {
             }
           />
           <FormHelperText
-            error={this.state.confirmPasswordError.bool ? true : false}
+            error={this.state.errors.confirmPassword.length > 0 ? true : false}
           >
-            {this.state.confirmPasswordError.error}
+            {this.state.errors.confirmPassword[0]}
           </FormHelperText>
         </FormControl>
 
@@ -219,7 +247,7 @@ class SignUp extends React.Component {
               />
             }
             label="I agree to the "
-            style={{ marginBottom: "20px", marginRight: "5px" }}
+            style={{ marginRight: "5px" }}
           />
           <Link
             className="text"
@@ -235,7 +263,13 @@ class SignUp extends React.Component {
             Terms & Conditions
           </Link>
         </div>
-
+        {!this.state.checkedAgreeCondition && this.state.submitted ? (
+          <p className="text__one--red mb-3">
+            You need to agree with terms and conditions
+          </p>
+        ) : (
+          <div />
+        )}
         <button
           className="button--gradient-green button--round"
           onClick={this.handleSubmit}

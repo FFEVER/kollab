@@ -18,11 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :users do
-    resources :projects, except: %i[index show]
-  end
-
-  resources :projects, only: %i[index show] do
+  resources :projects do
     member do
       post 'follow'
       post 'unfollow'

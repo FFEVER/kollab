@@ -7,11 +7,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :members
   has_many :projects, through: :members do
-    def owner
+    def owned
       where('members.is_owner = ?', true)
     end
 
-    def participant
+    def participated
       where('members.is_owner = ?', false)
     end
   end

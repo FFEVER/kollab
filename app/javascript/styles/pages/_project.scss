@@ -106,4 +106,16 @@
       }
     }
   }
+
+  &__index {
+    .menu {
+      display: flex;
+      flex-direction: column;
+
+      a {
+        width: 100%;
+        padding: 20px;
+      }
+    }
+  }
 }

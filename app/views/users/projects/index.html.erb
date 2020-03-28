@@ -1,2 +1,49 @@
-<h1>Users::Projects#index</h1>
-<p>Find me in app/views/users/projects/index.html.erb</p>
+<div class="project__index">
+  <% if @page == "Owned" %>
+    <% selected_projects = @owned_projects %>
+  <% elsif @page == "Participated" %>
+    <% selected_projects = @participated_projects %>
+  <% elsif @page == "Followed" %>
+    <% selected_projects = @following_projects %>
+  <% elsif @page == "Starred" %>
+    <% selected_projects = @starring_projects %>
+  <% end %>
+
+  <h1>My Projects</h1>
+  <% if selected_projects %>
+    <b> <%= selected_projects.count %> </b>
+    <p> <%= @page %> </p>
+  <% end %>
+
+  <% if @page.blank? %>
+    <div class="menu">
+      <%= link_to user_projects_path(page: "Owned") do %>
+        <h2>
+          Owned Projects (<%= @owned_projects.count %>)
+        </h2>
+      <% end %>
+
+      <%= link_to user_projects_path(page: "Participated") do %>
+        <h2>
+          Participated Projects (<%= @participated_projects.count %>)
+        </h2>
+      <% end %>
+
+      <%= link_to user_projects_path(page: "Followed") do %>
+        <h2>
+          Followed Projects (<%= @following_projects.count %>)
+        </h2>
+      <% end %>
+
+      <%= link_to user_projects_path(page: "Starred") do %>
+        <h2>
+          Starred Projects (<%= @starring_projects.count %>)
+        </h2>
+      <% end %>
+
+    <% else %>
+      <%= render selected_projects %>
+    <% end %>
+
+  </div>
+</div>

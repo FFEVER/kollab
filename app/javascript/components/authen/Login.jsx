@@ -2,6 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import axios from "axios"
 
+import Button from "../shared/form/Button"
+
 import {
   IconButton,
   OutlinedInput,
@@ -168,12 +170,15 @@ class Login extends React.Component {
             Forget password?
           </a>
         </div>
-        <button
+        <Button
+          name="submitButton"
+          type="submit"
           className="button--gradient-green button--round mt-3"
+          isLoading={this.state.isButtonLoading}
           onClick={this.handleSubmit}
         >
           Login
-        </button>
+        </Button>
       </div>
     )
   }

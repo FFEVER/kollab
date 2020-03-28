@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
+
 import {
   IconButton,
   OutlinedInput,
@@ -89,9 +91,6 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
-    this.emailConditions();
-    this.passwordConditions();
-    console.log("handleSubmit");
     event.preventDefault();
 
     LoginValidator.validateAll(this.state)
@@ -107,8 +106,6 @@ class Login extends React.Component {
   }
 
   submitForm(formData) {
-    console.log("submitForm");
-
     const { submitPath } = this.props;
     axios({
       method: "post",
@@ -138,7 +135,6 @@ class Login extends React.Component {
   }
 
   createFormData() {
-    console.log("createFormData");
     const formData = new FormData();
     formData.append(dataName("email"), this.state.email);
     formData.append(dataName("password"), this.state.password);

@@ -1,10 +1,6 @@
 const defaultErrors = {
-  title: [],
-  shortDesc: [],
-  startDate: [],
-  endDate: [],
-  tagList: [],
-  categories: []
+  email: [],
+  password: []
 };
 
 class LoginValidator {

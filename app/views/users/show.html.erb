@@ -8,11 +8,10 @@
     <div class="profile__section">
       <!-- TODO: [Anyone] Add profile picture. -->
       <span class="dot dot--profile"></span>
-      <div>
+      <%= link_to user_projects_path(@user) do %>
         <span><%= @user.projects.count %></span>
-        <!-- TODO: [Anyone] Add project total. -->
         <p>Projects</p>
-      </div>
+      <% end %>
       <div>
         <span><%= @user.followings.count%></span>
         <p>Following</p>

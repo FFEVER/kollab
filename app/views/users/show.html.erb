@@ -25,10 +25,10 @@
         <% if current_user != @user %>
           <% if current_user.following?(@user) %>
             <%= link_to "Following", unfollow_user_path, method: :post,
-              class: "button button--small button--gray" %>
+              class: "button button--small button--gray", remote: true %>
           <% else %>
             <%= link_to "Follow", follow_user_path, method: :post,
-              class: "button button--small button--green" %>
+              class: "button button--small button--green", remote: true %>
           <% end %>
         <% else %>
           <button class="button button--small button--green">Edit profile</button>

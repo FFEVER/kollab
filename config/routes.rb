@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   resources :users, only: %i[show] do
+    resources :projects, only: :index, controller: 'users/projects'
     member do
       post 'follow'
       post 'unfollow'
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
-    resources :projects, only: %i[new create edit update destroy]
+    resources :projects, except: %i[index show]
   end
 
   resources :projects, only: %i[index show] do

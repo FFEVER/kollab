@@ -10,4 +10,100 @@
   &--with-margin {
     margin-bottom: 3 * $global-space;
   }
+
+  &__view {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-size: 1rem;
+
+      padding-bottom: 0.5rem;
+
+      text-transform: uppercase;
+
+      color: $kollab-dark;
+    }
+
+    .section {
+      width: 100%;
+      margin-bottom: 0.5 * $global-space;
+
+      &__header {
+        display: flex;
+
+        color: black;
+      }
+
+      &__actions {
+        display: flex;
+
+        margin-bottom: 0.25 * $global-space;
+
+        button {
+          font-weight: 700;
+
+          margin-right: 0.25 * $global-space;
+
+          span {
+            margin-right: 3px;
+          }
+        }
+      }
+
+      &__tags {
+        div {
+          display: flex;
+          flex-wrap: wrap;
+
+          button {
+            margin-right: 0.25 * $global-space;
+            margin-bottom: 0.25 * $global-space;
+          }
+        }
+      }
+
+      &__dates {
+        display: flex;
+        div {
+          flex-grow: 1;
+        }
+      }
+
+      &__follower {
+        margin-left: auto;
+
+        text-align: center;
+        span {
+          font-size: 1.25rem;
+          font-weight: bold;
+        }
+      }
+
+      &__members {
+        .member {
+          display: flex;
+          align-items: center;
+
+          &__details {
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.36;
+
+            margin-left: 0.25 * $global-space;
+
+            letter-spacing: normal;
+          }
+          &__name {
+            color: black;
+          }
+
+          &__role {
+            color: $kollab-gray-light;
+          }
+        }
+      }
+    }
+  }
 }

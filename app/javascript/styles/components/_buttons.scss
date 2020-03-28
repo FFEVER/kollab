@@ -3,20 +3,41 @@
   align-items: center;
   justify-content: center;
 
-  padding: $global-space * 0.3;
+  padding: 0 $global-space * 0.3;
 
   cursor: pointer;
+  white-space: nowrap;
   letter-spacing: 1px;
 
-  border-radius: 4px;
+  border-radius: 5px;
 
   &--small {
-    padding: 0 $global-space * 0.3;
+    height: 2rem;
+    max-height: 2rem;
+    padding: $global-space * 0.2 $global-space * 0.3;
+  }
+
+  &--long {
+    width: 300px;
+    height: 40px;
+
+    border-radius: 20px;
   }
 
   &--gray {
     color: $kollab-gray !important;
     border-color: $kollab-gray;
+  }
+
+  &--green {
+    color: white;
+    background-color: $kollab-turquoise !important;
+  }
+
+  &--outline-gray-light {
+    color: $kollab-gray-light;
+    border: solid 2px $kollab-gray-light;
+    background-color: transparent;
   }
 
   &--gradient-green {
@@ -29,13 +50,6 @@
     );
   }
 
-  &--long {
-    width: 300px;
-    height: 40px;
-
-    border-radius: 20px;
-  }
-
   &--fixed-bottom {
     position: fixed;
     z-index: 10;
@@ -46,9 +60,32 @@
     margin-right: auto;
     margin-left: auto;
   }
+  
   &--round {
     height: 40px;
 
     border-radius: 20px;
+
+  &--status {
+    font-style: normal;
+    font-stretch: normal;
+
+    height: 2rem;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    letter-spacing: normal;
+    text-transform: uppercase;
+
+    &--orange {
+      color: $kollab-orange;
+      background-color: $kollab-orange-translucent;
+    }
+  }
+
+  &--tag {
+    color: $kollab-gray-dark;
+    border: solid 1px $kollab-gray;
+    background-color: transparent;
   }
 }

@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import axios from "axios";
+import React from "react"
+import PropTypes from "prop-types"
+import axios from "axios"
 
 import {
   IconButton,
@@ -9,98 +9,107 @@ import {
   InputAdornment,
   FormControl,
   FormHelperText
-} from "@material-ui/core";
-import { Visibility, VisibilityOff } from "@material-ui/icons";
-import { LoginValidator, defaultErrors } from "./LoginValidator";
+} from "@material-ui/core"
+import { Visibility, VisibilityOff } from "@material-ui/icons"
+import { LoginValidator, defaultErrors } from "./LoginValidator"
 
-const DATA_PREFIX = "user";
+const DATA_PREFIX = "user"
 
 const dataName = name => {
-  return DATA_PREFIX + "[" + name + "]";
-};
+  return DATA_PREFIX + "[" + name + "]"
+}
 
 class Login extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       email: "",
       password: "",
       errors: defaultErrors,
-      showPassword: false
-    };
+      showPassword: false,
+      isButtonLoading: false
+    }
 
-    this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.createFormData = this.createFormData.bind(this);
-    this.submitForm = this.submitForm.bind(this);
+    this.handleClickShowPassword = this.handleClickShowPassword.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.createFormData = this.createFormData.bind(this)
+    this.submitForm = this.submitForm.bind(this)
+    this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
-    });
+    })
   }
 
   handleClickShowPassword() {
     this.setState({
       showPassword: !this.state.showPassword
-    });
+    })
   }
 
   handleSubmit(event) {
-    event.preventDefault();
+    event.preventDefault()
+    this.setIsButtonLoading(true)
 
     LoginValidator.validateAll(this.state)
       .then(result => {
-        this.setState({
-          errors: defaultErrors
-        });
-        const formData = this.createFormData();
-        this.submitForm(formData);
+        const formData = this.createFormData()
+        this.submitForm(formData)
       })
       .catch(errors => {
         this.setState({
           errors: errors
-        });
-      });
+        })
+        this.setIsButtonLoading(false)
+      })
   }
 
   submitForm(formData) {
-    const { submitPath } = this.props;
+    const { submitPath } = this.props
     axios({
       method: "post",
       url: submitPath,
       responseType: "json",
+      headers: {
+        Accept: "application/json"
+      },
       data: formData
     })
       .then(response => {
-        if (response.data.redirect_url !== undefined) {
-          window.location.href = response.data.redirect_url;
-        }
-        if (response.data.errors !== undefined) {
-          this.setState(state => {
-            let errors = defaultErrors;
-            for (const [k, v] of Object.entries(response.data.errors)) {
-              errors[k] = v;
-            }
-            return {
-              errors
-            };
-          });
+        if (response.status === 201) {
+          window.location.href = response.headers.location
         }
       })
       .catch(error => {
-        // this.setIsButtonLoading(false);
-      });
+        if (error.response.status === 401) {
+          this.setState(state => {
+            let error_message = error.response.data.error
+            let errors = defaultErrors
+            errors.password.push(error_message)
+            return {
+              errors
+            }
+          })
+        }
+      })
+      .finally(() => {
+        this.setIsButtonLoading(false)
+      })
   }
 
   createFormData() {
-    const formData = new FormData();
-    formData.append(dataName("email"), this.state.email);
-    formData.append(dataName("password"), this.state.password);
-    formData.append("authenticity_token", this.props.authenticityToken);
-    return formData;
+    const formData = new FormData()
+    formData.append(dataName("email"), this.state.email)
+    formData.append(dataName("password"), this.state.password)
+    formData.append("authenticity_token", this.props.authenticityToken)
+    return formData
+  }
+
+  setIsButtonLoading(isLoading) {
+    this.setState({ isButtonLoading: isLoading })
   }
 
   render() {
@@ -113,6 +122,7 @@ class Login extends React.Component {
             label="E-mail"
             required
             error={this.state.errors.email.length > 0 ? true : false}
+            type="email"
             variant="outlined"
             onChange={this.handleChange}
           />
@@ -154,10 +164,7 @@ class Login extends React.Component {
         </FormControl>
 
         <div className="d-flex flex-column mt-3 align-items-end ">
-          <a
-            className="link"
-            href={`http://localhost:5000${this.props.forgetPasswordPath}`}
-          >
+          <a className="link" href={this.props.forgetPasswordUrl}>
             Forget password?
           </a>
         </div>
@@ -168,7 +175,7 @@ class Login extends React.Component {
           Login
         </button>
       </div>
-    );
+    )
   }
 }
 

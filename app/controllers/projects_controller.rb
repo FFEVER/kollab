@@ -14,22 +14,22 @@ class ProjectsController < ApplicationController
 
   def follow
     @project.followers << current_user
-    redirect_to @project
+    redirect_to request.referrer
   end
 
   def unfollow
     @project.followers.delete(current_user)
-    redirect_to @project
+    redirect_to request.referrer
   end
 
   def star
     @project.stars << current_user
-    redirect_to @project
+    redirect_to request.referrer
   end
 
   def unstar
     @project.stars.delete(current_user)
-    redirect_to @project
+    redirect_to request.referrer
   end
 
   private

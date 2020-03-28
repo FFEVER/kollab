@@ -4,10 +4,11 @@ class Users::ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @owned_projects = current_user.projects.owned
-    @participated_projects = current_user.projects.participated
-    @following_projects = current_user.following_projects
-    @starring_projects = current_user.starring_projects
+    @user = User.find(params[:user_id])
+    @owned_projects = @user.projects.owned
+    @participated_projects = @user.projects.participated
+    @following_projects = @user.following_projects
+    @starring_projects = @user.starring_projects
     @page = params[:page]
   end
 end

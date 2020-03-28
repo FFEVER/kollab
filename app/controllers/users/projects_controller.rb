@@ -8,18 +8,13 @@ class Users::ProjectsController < ApplicationController
   end
 
   def create
-    # TODO: [Eit] Create Member after project created
-    @project = helpers.create_new_project_from_params(project_params)
+    @project = Project.new(project_params)
     if @project.save
       @project.add_member current_user, is_owner: true
-      render json: {
-        redirect_url: url_for(@project)
-      }, status: :ok
+      render json: @project, location: project_path(@project), status: :created
     else
       errors = helpers.errors_to_camel(@project.errors.messages)
-      render json: {
-        errors: errors
-      }, status: :ok
+      render json: { messages: errors }, status: :bad_request
     end
   end
 

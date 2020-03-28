@@ -16,34 +16,40 @@
   <% end %>
 
   <% if @page.blank? %>
-    <div class="menu">
-      <%= link_to user_projects_path(page: "Owned") do %>
+    <div class="list project__index__menu">
+      <%= link_to user_projects_path(page: "Owned"), class: "list__item" do %>
         <h3>
           Owned Projects (<%= @owned_projects.count %>)
         </h3>
       <% end %>
 
-      <%= link_to user_projects_path(page: "Participated") do %>
+      <%= link_to user_projects_path(page: "Participated"), class: "list__item" do %>
         <h3>
           Participated Projects (<%= @participated_projects.count %>)
         </h3>
       <% end %>
 
-      <%= link_to user_projects_path(page: "Followed") do %>
+      <%= link_to user_projects_path(page: "Followed"), class: "list__item" do %>
         <h3>
           Followed Projects (<%= @following_projects.count %>)
         </h3>
       <% end %>
 
-      <%= link_to user_projects_path(page: "Starred") do %>
+      <%= link_to user_projects_path(page: "Starred"), class: "list__item" do %>
         <h3>
           Starred Projects (<%= @starring_projects.count %>)
         </h3>
       <% end %>
+    </div>
 
+  <% else %>
+    <% if selected_projects.blank? %>
+      <p>
+        There is no projects here.
+      </p>
     <% else %>
       <%= render selected_projects %>
     <% end %>
+  <% end %>
 
-  </div>
 </div>

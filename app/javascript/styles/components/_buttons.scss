@@ -11,6 +11,11 @@
 
   border-radius: 5px;
 
+  &--very-small {
+    height: 1.5rem;
+    max-height: 1.5rem;
+  }
+
   &--small {
     height: 2rem;
     max-height: 2rem;
@@ -44,9 +49,9 @@
     color: white;
     background: rgb(84, 189, 194);
     background: linear-gradient(
-      90deg,
-      rgba(84, 189, 194, 1) 0%,
-      rgba(94, 219, 184, 1) 99%
+    90deg,
+    rgba(84, 189, 194, 1) 0%,
+    rgba(94, 219, 184, 1) 99%
     );
   }
 

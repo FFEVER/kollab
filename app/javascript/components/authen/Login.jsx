@@ -175,8 +175,8 @@ class Login extends React.Component {
 Login.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string,
-  forgetPasswordPath: PropTypes.string,
+  forgetPasswordUrl: PropTypes.string,
   signUpPath: PropTypes.string
-};
+}
 
-export default Login;
+export default Login

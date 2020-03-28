@@ -10,13 +10,15 @@ import {
   FormControl,
   FormHelperText
 } from "@material-ui/core";
-
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { makeStyles } from "@material-ui/core/styles";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { LoginValidator, defaultErrors } from "./LoginValidator";
-import Button from "../shared/form/Button";
 
 const DATA_PREFIX = "user";
+
+const dataName = name => {
+  return DATA_PREFIX + "[" + name + "]";
+};
 
 class Login extends React.Component {
   constructor(props) {
@@ -24,16 +26,12 @@ class Login extends React.Component {
     this.state = {
       email: "",
       password: "",
-      errors: {},
-      emailError: { bool: false, error: "" },
-      passwordError: { bool: false, error: "" },
+      errors: defaultErrors,
       showPassword: false,
       checkedAgreeCondition: false
     };
     this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.emailConditions = this.emailConditions.bind(this);
-    this.passwordConditions = this.passwordConditions.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.createFormData = this.createFormData.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -51,50 +49,14 @@ class Login extends React.Component {
     });
   }
 
-  emailConditions() {
-    var mail = this.state.email;
-    var at = mail.indexOf("@");
-    var dot = mail.indexOf(".");
-
-    if (mail == "") {
-      this.setState({ emailError: { bool: true, error: "Require e-mail" } });
-    } else if (at == -1 || dot == -1) {
-      this.setState({
-        emailError: { bool: true, error: "Invalid form of e-mail" }
-      });
-    } else if (dot < at) {
-      this.setState({
-        emailError: { bool: true, error: "Invalid e-mail format" }
-      });
-    } else {
-      return this.setState({
-        emailError: { bool: false, error: "" }
-      });
-    }
-  }
-
-  passwordConditions() {
-    var password = this.state.password;
-    if (password == "") {
-      this.setState({
-        passwordError: { bool: true, error: "Require password" }
-      });
-    } else if (password.length < 8) {
-      this.setState({
-        passwordError: { bool: true, error: "Invalid form of password" }
-      });
-    } else {
-      return this.setState({
-        passwordError: { bool: false, error: "" }
-      });
-    }
-  }
-
   handleSubmit(event) {
     event.preventDefault();
 
     LoginValidator.validateAll(this.state)
       .then(result => {
+        this.setState({
+          errors: defaultErrors
+        });
         const formData = this.createFormData();
         this.submitForm(formData);
       })
@@ -151,12 +113,14 @@ class Login extends React.Component {
             name="email"
             label="E-mail"
             required
-            error={this.state.emailError.bool ? true : false}
+            error={this.state.errors.email.length > 0 ? true : false}
             variant="outlined"
             onChange={this.handleChange}
           />
-          <FormHelperText error={this.state.emailError.bool ? true : false}>
-            {this.state.emailError.error}
+          <FormHelperText
+            error={this.state.errors.email.length > 0 ? true : false}
+          >
+            {this.state.errors.email[0]}
           </FormHelperText>
         </FormControl>
 
@@ -168,7 +132,7 @@ class Login extends React.Component {
             name="password"
             label="Password"
             required
-            error={this.state.passwordError.bool ? true : false}
+            error={this.state.errors.password.length > 0 ? true : false}
             type={this.state.showPassword ? "text" : "password"}
             value={this.state.password}
             onChange={this.handleChange}
@@ -183,10 +147,13 @@ class Login extends React.Component {
               </InputAdornment>
             }
           />
-          <FormHelperText error={this.state.passwordError.bool ? true : false}>
-            {this.state.passwordError.error}
+          <FormHelperText
+            error={this.state.errors.password.length > 0 ? true : false}
+          >
+            {this.state.errors.password[0]}
           </FormHelperText>
         </FormControl>
+
         <div className="d-flex flex-column mt-3 align-items-end ">
           <a
             className="link"

@@ -1,4 +1,4 @@
-<div class="project__index">
+<div class="project project__index">
   <% if @page == "Owned" %>
     <% selected_projects = @owned_projects %>
   <% elsif @page == "Participated" %>
@@ -18,27 +18,27 @@
   <% if @page.blank? %>
     <div class="menu">
       <%= link_to user_projects_path(page: "Owned") do %>
-        <h2>
+        <h3>
           Owned Projects (<%= @owned_projects.count %>)
-        </h2>
+        </h3>
       <% end %>
 
       <%= link_to user_projects_path(page: "Participated") do %>
-        <h2>
+        <h3>
           Participated Projects (<%= @participated_projects.count %>)
-        </h2>
+        </h3>
       <% end %>
 
       <%= link_to user_projects_path(page: "Followed") do %>
-        <h2>
+        <h3>
           Followed Projects (<%= @following_projects.count %>)
-        </h2>
+        </h3>
       <% end %>
 
       <%= link_to user_projects_path(page: "Starred") do %>
-        <h2>
+        <h3>
           Starred Projects (<%= @starring_projects.count %>)
-        </h2>
+        </h3>
       <% end %>
 
     <% else %>

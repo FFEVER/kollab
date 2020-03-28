@@ -23,9 +23,10 @@ class LoginValidator {
     if (password === undefined || password.length < 1) {
       errors[key].push("Password is required.")
     }
-    if (password.length < 8) {
-      errors[key].push("Invalid form of password");
+    if (password.length < 6) {
+      errors[key].push("Invalid password")
     }
+  }
 
   static isValidatePass(errors) {
     for (const value of Object.values(errors)) {

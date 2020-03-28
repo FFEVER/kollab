@@ -1,0 +1,19 @@
+<div class="project project__index">
+  <section class="project__index__header">
+    <h1><%= "#{@user.first_name} #{@user.last_name}"%></h1>
+    <% project_count = @owned_projects.count + @participated_projects.count %>
+    <div class="project__index__sub-title">
+      <span class="project__count"> <%= project_count %> </span>
+      <p> <%= "Project".pluralize(project_count) %> </p>
+    </div>
+  </section>
+
+  <section class="list project__list">
+    <h2>Owned Projects (<%= @owned_projects.count %>)</h2>
+    <%= render @owned_projects %>
+  </section>
+  <section class="list project__list">
+    <h2>Participated Projects (<%= @participated_projects.count %>)</h2>
+    <%= render @participated_projects %>
+  </section>
+</div>

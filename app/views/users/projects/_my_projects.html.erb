@@ -1,0 +1,63 @@
+<div class="project project__index">
+  <% if @page == "Owned" %>
+    <% selected_projects = @owned_projects %>
+  <% elsif @page == "Participated" %>
+    <% selected_projects = @participated_projects %>
+  <% elsif @page == "Followed" %>
+    <% selected_projects = @following_projects %>
+  <% elsif @page == "Starred" %>
+    <% selected_projects = @starring_projects %>
+  <% end %>
+
+  <% if selected_projects %>
+    <section class="project__index__header">
+      <h2>My Projects</h2>
+      <div class="project__index__sub-header">
+        <span class="project__index__sub-header__count"><%= selected_projects.count %></span>
+        <p> <%= @page %> </p>
+      </div>
+    </section>
+  <% else %>
+    <h1>My Projects</h1>
+  <% end %>
+
+  <% if @page.blank? %>
+    <section class="list project__index__menu">
+      <%= link_to user_projects_path(page: "Owned"), class: "list__item" do %>
+        <h3>
+          Owned Projects (<%= @owned_projects.count %>)
+        </h3>
+      <% end %>
+
+      <%= link_to user_projects_path(page: "Participated"), class: "list__item" do %>
+        <h3>
+          Participated Projects (<%= @participated_projects.count %>)
+        </h3>
+      <% end %>
+
+      <%= link_to user_projects_path(page: "Followed"), class: "list__item" do %>
+        <h3>
+          Followed Projects (<%= @following_projects.count %>)
+        </h3>
+      <% end %>
+
+      <%= link_to user_projects_path(page: "Starred"), class: "list__item" do %>
+        <h3>
+          Starred Projects (<%= @starring_projects.count %>)
+        </h3>
+      <% end %>
+    </section>
+
+  <% else %>
+    <% if selected_projects.blank? %>
+      <p>
+        There is no projects here.
+      </p>
+    <% else %>
+      <div class="list project__list">
+        <%= render selected_projects %>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>

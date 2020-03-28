@@ -10,7 +10,6 @@ import {
   FormControl,
   FormHelperText
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { LoginValidator, defaultErrors } from "./LoginValidator";
 
@@ -27,9 +26,9 @@ class Login extends React.Component {
       email: "",
       password: "",
       errors: defaultErrors,
-      showPassword: false,
-      checkedAgreeCondition: false
+      showPassword: false
     };
+
     this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

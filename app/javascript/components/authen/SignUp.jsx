@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import axios from "axios";
+import React from "react"
+import PropTypes from "prop-types"
+import axios from "axios"
 
 import {
   FormControlLabel,
@@ -12,21 +12,21 @@ import {
   FormControl,
   FormHelperText,
   Link
-} from "@material-ui/core";
+} from "@material-ui/core"
 
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import { SignUpValidator, defaultErrors } from "./SignUpValidator";
+import Visibility from "@material-ui/icons/Visibility"
+import VisibilityOff from "@material-ui/icons/VisibilityOff"
+import { SignUpValidator, defaultErrors } from "./SignUpValidator"
 
-const DATA_PREFIX = "user";
+const DATA_PREFIX = "user"
 
 const dataName = name => {
-  return DATA_PREFIX + "[" + name + "]";
-};
+  return DATA_PREFIX + "[" + name + "]"
+}
 
 class SignUp extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       name: "",
       email: "",
@@ -37,65 +37,65 @@ class SignUp extends React.Component {
       showConfirmPassword: false,
       checkedAgreeCondition: false,
       submitted: false
-    };
+    }
 
-    this.handleCheckAgreeCondition = this.handleCheckAgreeCondition.bind(this);
-    this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
+    this.handleCheckAgreeCondition = this.handleCheckAgreeCondition.bind(this)
+    this.handleClickShowPassword = this.handleClickShowPassword.bind(this)
     this.handleClickShowConfirmPassword = this.handleClickShowConfirmPassword.bind(
       this
-    );
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.createFormData = this.createFormData.bind(this);
-    this.submitForm = this.submitForm.bind(this);
+    )
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.createFormData = this.createFormData.bind(this)
+    this.submitForm = this.submitForm.bind(this)
   }
 
   handleCheckAgreeCondition() {
     this.setState({
       checkedAgreeCondition: !this.state.checkedAgreeCondition
-    });
+    })
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
-    });
+    })
   }
 
   handleClickShowPassword() {
     this.setState({
       showPassword: !this.state.showPassword
-    });
+    })
   }
 
   handleClickShowConfirmPassword() {
     this.setState({
       showConfirmPassword: !this.state.showConfirmPassword
-    });
+    })
   }
 
   handleSubmit(event) {
-    this.setState({ submitted: true });
-    event.preventDefault();
+    this.setState({ submitted: true })
+    event.preventDefault()
 
     SignUpValidator.validateAll(this.state)
       .then(result => {
         this.setState({
           errors: defaultErrors
-        });
-        const formData = this.createFormData();
-        this.submitForm(formData);
+        })
+        const formData = this.createFormData()
+        this.submitForm(formData)
       })
       .catch(errors => {
         this.setState({
           errors: errors,
           submitted: false
-        });
-      });
+        })
+      })
   }
 
   submitForm(formData) {
-    const { submitPath } = this.props;
+    const { submitPath } = this.props
     axios({
       method: "post",
       url: submitPath,
@@ -104,32 +104,32 @@ class SignUp extends React.Component {
     })
       .then(response => {
         if (response.data.redirect_url !== undefined) {
-          window.location.href = response.data.redirect_url;
+          window.location.href = response.data.redirect_url
         }
         if (response.data.errors !== undefined) {
           this.setState(state => {
-            let errors = defaultErrors;
+            let errors = defaultErrors
             for (const [k, v] of Object.entries(response.data.errors)) {
-              errors[k] = v;
+              errors[k] = v
             }
             return {
               errors
-            };
-          });
+            }
+          })
         }
       })
       .catch(error => {
         // this.setIsButtonLoading(false);
-      });
+      })
   }
 
   createFormData() {
-    const formData = new FormData();
-    formData.append(dataName("name"), this.state.name);
-    formData.append(dataName("email"), this.state.email);
-    formData.append(dataName("password"), this.state.password);
-    formData.append("authenticity_token", this.props.authenticityToken);
-    return formData;
+    const formData = new FormData()
+    formData.append(dataName("name"), this.state.name)
+    formData.append(dataName("email"), this.state.email)
+    formData.append(dataName("password"), this.state.password)
+    formData.append("authenticity_token", this.props.authenticityToken)
+    return formData
   }
   render() {
     return (
@@ -246,18 +246,15 @@ class SignUp extends React.Component {
                 color="primary"
               />
             }
-            label="I agree to the "
+            label="I agree to the"
             style={{ marginRight: "5px" }}
           />
           <Link
-            className="text"
-            underline="always"
-            href="http://www.google.com"
+            className="link"
+            href="#"
             style={{
               fontSize: "1.2em",
-              color: "#54bdc2",
-              fontWeight: "bold",
-              paddingTop: "5px"
+              paddingTop: "8px"
             }}
           >
             Terms & Conditions
@@ -277,13 +274,13 @@ class SignUp extends React.Component {
           Sign Up
         </button>
       </div>
-    );
+    )
   }
 }
 
 SignUp.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string
-};
+}
 
-export default SignUp;
+export default SignUp

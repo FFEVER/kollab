@@ -9,7 +9,7 @@ class LoginValidator {
     const key = Object.keys({ email })[0]
 
     if (email === undefined || email.length < 1) {
-      errors[key].push("E-mail is reuiqred.")
+      errors[key].push("E-mail is required.")
     }
 
     if (email.indexOf("@") == -1 && email.indexOf(".") == -1) {

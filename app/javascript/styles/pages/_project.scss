@@ -153,6 +153,10 @@
     }
   }
 
+  &__list {
+    margin-bottom: $spacer;
+  }
+
   &__item {
     a {
       display: block;

@@ -108,13 +108,16 @@ class SignUp extends React.Component {
     })
       .then(response => {
         debugger
-        if (response.data.redirect_url !== undefined) {
-          window.location.href = response.data.redirect_url
+        if (response.status === 201) {
+          window.location.href = response.headers.location
         }
-        if (response.data.errors !== undefined) {
+      })
+      .catch(error => {
+        if (error.response.status === 400) {
           this.setState(state => {
+            let error_messages = error.response.data.messages
             let errors = defaultErrors
-            for (const [k, v] of Object.entries(response.data.errors)) {
+            for (const [k, v] of Object.entries(error_messages)) {
               errors[k] = v
             }
             return {
@@ -122,10 +125,6 @@ class SignUp extends React.Component {
             }
           })
         }
-      })
-      .catch(error => {
-        debugger
-        // this.setIsButtonLoading(false);
       })
   }
 
@@ -138,6 +137,7 @@ class SignUp extends React.Component {
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
   }
+
   render() {
     return (
       <div className="d-flex flex-column mt-1">

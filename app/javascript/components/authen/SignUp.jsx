@@ -17,6 +17,7 @@ import {
 import Visibility from "@material-ui/icons/Visibility"
 import VisibilityOff from "@material-ui/icons/VisibilityOff"
 import { SignUpValidator, defaultErrors } from "./SignUpValidator"
+import Button from "../shared/form/Button"
 
 const DATA_PREFIX = "user"
 
@@ -37,7 +38,7 @@ class SignUp extends React.Component {
       showPassword: false,
       showConfirmPassword: false,
       checkedAgreeCondition: false,
-      submitted: false
+      isButtonLoading: false
     }
 
     this.handleCheckAgreeCondition = this.handleCheckAgreeCondition.bind(this)
@@ -49,6 +50,7 @@ class SignUp extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.createFormData = this.createFormData.bind(this)
     this.submitForm = this.submitForm.bind(this)
+    this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
   }
 
   handleCheckAgreeCondition() {
@@ -76,8 +78,8 @@ class SignUp extends React.Component {
   }
 
   handleSubmit(event) {
-    this.setState({ submitted: true })
     event.preventDefault()
+    this.setIsButtonLoading(true)
 
     SignUpValidator.validateAll(this.state)
       .then(result => {
@@ -89,9 +91,9 @@ class SignUp extends React.Component {
       })
       .catch(errors => {
         this.setState({
-          errors: errors,
-          submitted: false
+          errors: errors
         })
+        this.setIsButtonLoading(false)
       })
   }
 
@@ -107,7 +109,6 @@ class SignUp extends React.Component {
       data: formData
     })
       .then(response => {
-        debugger
         if (response.status === 201) {
           window.location.href = response.headers.location
         }
@@ -126,6 +127,9 @@ class SignUp extends React.Component {
           })
         }
       })
+      .finally(() => {
+        this.setIsButtonLoading(false)
+      })
   }
 
   createFormData() {
@@ -138,9 +142,17 @@ class SignUp extends React.Component {
     return formData
   }
 
+  setIsButtonLoading(isLoading) {
+    this.setState({ isButtonLoading: isLoading })
+  }
+
   render() {
     return (
-      <div className="d-flex flex-column mt-1">
+      <form
+        className="d-flex flex-column mt-1"
+        onSubmit={this.handleSubmit}
+        noValidate
+      >
         <FormControl
           variant="outlined"
           style={{ marginBottom: "20px", marginTop: "20px" }}
@@ -293,13 +305,15 @@ class SignUp extends React.Component {
           </p>
         ) : null}
 
-        )}
-        <button
+        <Button
+          type="submit"
+          name="submitButton"
+          isLoading={this.state.isButtonLoading}
           className="button--gradient-green button--round"
         >
           Sign Up
-        </button>
-      </div>
+        </Button>
+      </form>
     )
   }
 }

@@ -116,7 +116,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="d-flex flex-column mt-3">
+      <form onSubmit={this.handleSubmit} className="d-flex flex-column mt-3">
         <FormControl variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">E-mail</InputLabel>
           <OutlinedInput
@@ -175,11 +175,10 @@ class Login extends React.Component {
           type="submit"
           className="button--gradient-green button--round mt-3"
           isLoading={this.state.isButtonLoading}
-          onClick={this.handleSubmit}
         >
           Login
         </Button>
-      </div>
+      </form>
     )
   }
 }

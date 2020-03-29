@@ -81,7 +81,7 @@ class Login extends React.Component {
       data: formData
     })
       .then(response => {
-        if (response.status === 201) {
+        if (response.status === 200) {
           window.location.href = response.headers.location
         }
       })
@@ -116,7 +116,11 @@ class Login extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="d-flex flex-column mt-3">
+      <form
+        onSubmit={this.handleSubmit}
+        className="d-flex flex-column mt-3"
+        noValidate
+      >
         <FormControl variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">E-mail</InputLabel>
           <OutlinedInput

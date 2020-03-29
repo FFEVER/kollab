@@ -4,9 +4,9 @@
     <%= image_pack_tag 'kollab-blue.png', alt: 'kollab', size:'150x70'%>
   </div>
   <div class="mt-3">
-    <h1>Forget Password</h1>
+    <h1>Forgot Password</h1>
     <div class="d-flex flex-column">
-      <%= react_component("authen/ForgetPassword",
+      <%= react_component("authen/ForgotPassword",
     {
       authenticityToken: form_authenticity_token,
       signUpPath: new_user_registration_path

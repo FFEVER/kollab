@@ -166,8 +166,8 @@ class Login extends React.Component {
         </FormControl>
 
         <div className="d-flex flex-column mt-3 align-items-end ">
-          <a className="link" href={this.props.forgetPasswordUrl}>
-            Forget password?
+          <a className="link" href={this.props.forgotPasswordUrl}>
+            Forgot password?
           </a>
         </div>
         <Button
@@ -186,7 +186,7 @@ class Login extends React.Component {
 Login.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string,
-  forgetPasswordUrl: PropTypes.string,
+  forgotPasswordUrl: PropTypes.string,
   signUpPath: PropTypes.string
 }
 

@@ -286,16 +286,16 @@ class SignUp extends React.Component {
             Terms & Conditions
           </Link>
         </div>
-        {!this.state.checkedAgreeCondition && this.state.submitted ? (
+
+        {this.state.errors.checkedAgreeCondition.length > 0 ? (
           <p className="text__one--red mb-3">
-            You need to agree with terms and conditions
+            {this.state.errors.checkedAgreeCondition[0]}
           </p>
-        ) : (
-          <div />
+        ) : null}
+
         )}
         <button
           className="button--gradient-green button--round"
-          onClick={this.handleSubmit}
         >
           Sign Up
         </button>

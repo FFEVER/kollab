@@ -3,7 +3,8 @@ const defaultErrors = {
   lastName: [],
   email: [],
   password: [],
-  confirmPassword: []
+  confirmPassword: [],
+  checkedAgreeCondition: []
 }
 
 class SignUpValidator {
@@ -56,6 +57,14 @@ class SignUpValidator {
     }
   }
 
+  static validateCheckedAgreeCondition(state, errors) {
+    const { checkedAgreeCondition } = state
+    const key = Object.keys({ checkedAgreeCondition })[0]
+    if (checkedAgreeCondition === false) {
+      errors[key].push("You need to agree with terms and conditions")
+    }
+  }
+
   static isValidatePass(errors) {
     for (const value of Object.values(errors)) {
       if (value.length != 0) return false
@@ -78,6 +87,7 @@ class SignUpValidator {
       this.validateEmail(state, errors)
       this.validatePassword(state, errors)
       this.validateConfirmPassword(state, errors)
+      this.validateCheckedAgreeCondition(state, errors)
 
       if (this.isValidatePass(errors)) {
         resolve(errors)

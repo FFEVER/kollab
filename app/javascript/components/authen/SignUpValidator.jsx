@@ -1,16 +1,25 @@
 const defaultErrors = {
-  name: [],
+  firstName: [],
+  lastName: [],
   email: [],
   password: [],
   confirmPassword: []
 }
 
 class SignUpValidator {
-  static validateName(state, errors) {
-    const { name } = state;
-    const key = Object.keys({ name })[0];
-    if (name === undefined || name.length < 1) {
-      errors[key].push("Name is reuiqred.");
+  static validateFirstName(state, errors) {
+    const { firstName } = state
+    const key = Object.keys({ firstName })[0]
+    if (firstName === undefined || firstName.length < 1) {
+      errors[key].push("First name is reuiqred.")
+    }
+  }
+
+  static validateLastName(state, errors) {
+    const { lastName } = state
+    const key = Object.keys({ lastName })[0]
+    if (lastName === undefined || lastName.length < 1) {
+      errors[key].push("Last name is required.")
     }
   }
 
@@ -64,8 +73,8 @@ class SignUpValidator {
     let promise = new Promise((resolve, reject) => {
       const errors = { ...defaultErrors }
       this.clearErrors(errors)
-      this.validateName(state, errors);
-      this.validateEmail(state, errors);
+      this.validateFirstName(state, errors)
+      this.validateLastName(state, errors)
       this.validateEmail(state, errors)
       this.validatePassword(state, errors)
       this.validateConfirmPassword(state, errors)

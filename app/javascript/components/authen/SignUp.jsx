@@ -28,7 +28,8 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: "",
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -100,9 +101,13 @@ class SignUp extends React.Component {
       method: "post",
       url: submitPath,
       responseType: "json",
+      headers: {
+        Accept: "application/json"
+      },
       data: formData
     })
       .then(response => {
+        debugger
         if (response.data.redirect_url !== undefined) {
           window.location.href = response.data.redirect_url
         }
@@ -119,13 +124,15 @@ class SignUp extends React.Component {
         }
       })
       .catch(error => {
+        debugger
         // this.setIsButtonLoading(false);
       })
   }
 
   createFormData() {
     const formData = new FormData()
-    formData.append(dataName("name"), this.state.name)
+    formData.append(dataName("first_name"), this.state.firstName)
+    formData.append(dataName("last_name"), this.state.lastName)
     formData.append(dataName("email"), this.state.email)
     formData.append(dataName("password"), this.state.password)
     formData.append("authenticity_token", this.props.authenticityToken)
@@ -139,20 +146,39 @@ class SignUp extends React.Component {
           style={{ marginBottom: "20px", marginTop: "20px" }}
         >
           <InputLabel htmlFor="outlined-adornment-password">
-            Full Name
+            First Name
           </InputLabel>
           <OutlinedInput
-            name="name"
-            label={"Full Name"}
+            name="firstName"
+            label={"First Name"}
             required
-            error={this.state.errors.name.length > 0 ? true : false}
+            error={this.state.errors.firstName.length > 0 ? true : false}
             variant="outlined"
             onChange={this.handleChange}
           />
           <FormHelperText
-            error={this.state.errors.name.length > 0 ? true : false}
+            error={this.state.errors.firstName.length > 0 ? true : false}
           >
-            {this.state.errors.name[0]}
+            {this.state.errors.firstName[0]}
+          </FormHelperText>
+        </FormControl>
+
+        <FormControl variant="outlined" style={{ marginBottom: "20px" }}>
+          <InputLabel htmlFor="outlined-adornment-password">
+            Last Name
+          </InputLabel>
+          <OutlinedInput
+            name="lastName"
+            label={"Last Name"}
+            required
+            error={this.state.errors.lastName.length > 0 ? true : false}
+            variant="outlined"
+            onChange={this.handleChange}
+          />
+          <FormHelperText
+            error={this.state.errors.lastName.length > 0 ? true : false}
+          >
+            {this.state.errors.lastName[0]}
           </FormHelperText>
         </FormControl>
 

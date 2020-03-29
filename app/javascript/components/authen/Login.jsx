@@ -190,8 +190,7 @@ class Login extends React.Component {
 Login.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string,
-  forgotPasswordUrl: PropTypes.string,
-  signUpPath: PropTypes.string
+  forgotPasswordUrl: PropTypes.string
 }
 
 export default Login

@@ -83,4 +83,10 @@
     border: solid 1px $kollab-gray;
     background-color: transparent;
   }
+  
+  &--round {
+    height: 40px;
+
+    border-radius: 20px;
+  }
 }

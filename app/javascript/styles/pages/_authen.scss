@@ -1,9 +1,23 @@
+.authen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  margin: 40px;
+
+  a:link,
+  a:visited {
+    font-size: 1em;
+    font-weight: bold;
+
+    text-decoration: underline;
+
+    color: $kollab-turquoise;
+  }
+}
+
 @media screen and (max-width: 429px) {
   .authen {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-
     margin: 40px;
   }
 }
@@ -11,10 +25,6 @@
 /* For Tablets */
 @media screen and (min-width: 430px) {
   .authen {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-
     width: 600px;
     margin: 100px auto 500px;
   }

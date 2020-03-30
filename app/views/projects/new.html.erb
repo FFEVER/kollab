@@ -3,9 +3,9 @@
     <h1>Create New Project</h1>
   </header>
 
-  <%= react_component("users/projects/ProjectCreateForm",
+  <%= react_component("projects/ProjectCreateForm",
     {
       authenticityToken: form_authenticity_token,
-      submitPath: users_projects_path
+      submitPath: projects_path
     })
   %>

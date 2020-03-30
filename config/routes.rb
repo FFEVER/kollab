@@ -10,5 +10,23 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     sessions: 'users/sessions'
   }
-  resources :users, only: [:show]
+  resources :users, only: %i[show] do
+    member do
+      post 'follow'
+      post 'unfollow'
+    end
+  end
+
+  namespace :users do
+    resources :projects, only: %i[new create edit update destroy]
+  end
+
+  resources :projects, only: %i[index show] do
+    member do
+      post 'follow'
+      post 'unfollow'
+      post 'star'
+      post 'unstar'
+    end
+  end
 end

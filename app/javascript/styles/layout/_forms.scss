@@ -1,71 +1,25 @@
-.form {
-  display: flex;
-  flex-direction: column;
+form {
+  .form-control:focus {
+    box-shadow: 0 0 3px $kollab-turquoise;
+  }
+  .error-message {
+    width: 100%;
 
-  padding: 20px;
+    color: red;
+  }
+
+  .input-error {
+    border-color: red;
+
+    &:focus {
+      border: 1px solid red;
+      outline: none !important;
+      box-shadow: 0 0 3px #ce7171;
+    }
+  }
 }
 
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.flex-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.center {
+.text {
   align-items: center;
   justify-content: center;
-}
-
-.justify-cen {
-  justify-content: center;
-}
-
-.align-cen {
-  align-items: center;
-}
-
-.mar-tb {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.mar-lr {
-  &--l {
-    margin-right: 20px;
-    margin-left: 20px;
-  }
-
-  &--s {
-    margin-right: 5px;
-    margin-left: 5px;
-  }
-}
-
-.mar-top {
-  &--l {
-    margin-top: 20px;
-  }
-
-  &--m {
-    margin-top: 15px;
-  }
-
-  &--s {
-    margin-top: 10px;
-  }
-
-  &--ss {
-    margin-top: 5px;
-  }
-}
-
-.space-bet {
-  justify-content: space-between;
-}
-
-.red {
-  background-color: red;
 }

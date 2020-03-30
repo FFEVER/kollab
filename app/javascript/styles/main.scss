@@ -24,9 +24,13 @@ Components
 **/
 @import 'components/custom';
 @import 'components/buttons';
+@import 'components/icons';
+@import 'components/image';
 
 /**
 Pages
 **/
 @import 'pages/home';
+@import 'pages/authen';
 @import 'pages/profile';
+@import 'pages/project';

@@ -39,7 +39,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Muli';
+  font-family: 'Lato';
   font-weight: 700;
 
   margin: 0;
@@ -75,4 +75,14 @@ p {
   margin: 0;
 
   color: $kollab-gray;
+}
+
+a:link,
+a:visited {
+  font-size: 1em;
+  font-weight: bold;
+
+  text-decoration: underline;
+
+  color: $kollab-turquoise;
 }

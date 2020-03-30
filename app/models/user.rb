@@ -6,7 +6,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable
   has_many :members
-  has_many :projects, through: :members
+  has_many :projects, through: :members do
+    def owned
+      where('members.is_owner = ?', true)
+    end
+
+    def participated
+      where('members.is_owner = ?', false)
+    end
+  end
 
   has_many :favorites, dependent: :destroy
   has_many :starring_projects, through: :favorites, source: :project

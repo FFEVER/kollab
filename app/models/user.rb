@@ -18,6 +18,9 @@ class User < ApplicationRecord
   has_many :followings, through: :given_follows, source: :followable, source_type: 'User'
   has_many :following_projects, through: :given_follows, source: :followable, source_type: 'Project'
 
+  validates :first_name, presence: true, length: { within: 1..50 }
+  validates :last_name, presence: true, length: { within: 1..50 }
+
   def following?(user)
     followings.include?(user)
   end

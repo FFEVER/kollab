@@ -1,6 +1,7 @@
-<%= react_component("UserProfile",
+<%= react_component("users/profile/UserProfile",
     {
       authenticityToken: form_authenticity_token,
-      submitPath: user_path
+      submitPath: user_path,
+      editPath: edit_user_registration_path
     })
   %>

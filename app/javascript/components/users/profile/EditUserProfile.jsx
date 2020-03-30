@@ -5,16 +5,11 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 
 import CreatableSelect from "react-select/creatable";
 
-import HorizontalScroll from "react-scroll-horizontal";
-
-import GradientButton from "react-linear-gradient-button";
-
-import edit from "../images/icon/edit.png";
-import rectangle from "../images/icon/rectangle.png";
-import contact from "../images/icon/phone-call.png";
-import mail from "../images/icon/mail.png";
-import profileImg from "../images/anya.jpg";
-import faculty from "../../assets/utils/faculty";
+import edit from "../../../images/icon/edit.png";
+import contact from "../../../images/icon/phone-call.png";
+import mail from "../../../images/icon/mail.png";
+import profileImg from "../../../images/anya.jpg";
+import faculty from "../../../../assets/utils/faculty";
 
 const filename = "Proposal.pdf";
 const projects = [
@@ -113,23 +108,23 @@ class EditUserProfile extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="form center">
+      <form className="profile d-flex flex-column">
+        <div className="align-items-center">
           <h3>Edit Profile</h3>
         </div>
-        <div className="thin-line mar-lr--l" />
-        <div className="form">
-          <div className="flex-row space-bet">
+        <div className="thin-line mt-3 mb-3" />
+        <div>
+          <div className="d-flex flex-row justify-content-between">
             <h4>Profile Picture</h4>
             <img className="icon" src={edit} />
           </div>
-          <div className=" flex-col center mar-top--m">
+          <div className="d-flex flex-col justify-content-center mt-3">
             <img className="profile-img" src={profileImg} />
           </div>
-          <div className="thin-line mar-top--m" />
-          <div className="mar-top--l">
+          <div className="thin-line mt-3 mb-3" />
+          <div>
             <h4>Faculty</h4>
-            <div className="flex-col mar-top--m">
+            <div className="d-flex flex-column mt-3">
               <FormControl variant="outlined">
                 {/* <InputLabel>{this.state.faculty}</InputLabel> */}
                 <Select
@@ -150,9 +145,9 @@ class EditUserProfile extends React.Component {
                 </Select>
               </FormControl>
             </div>
-            <div className="flex-col mar-top--m">
+            <div className="d-flex flex-column mt-3">
               <h4>Year of Study</h4>
-              <div className="flex-col mar-top--m">
+              <div className="d-flex flex-column mt-3">
                 <FormControl variant="outlined">
                   {/* <InputLabel>{this.state.faculty}</InputLabel> */}
                   <Select
@@ -173,10 +168,10 @@ class EditUserProfile extends React.Component {
               </div>
             </div>
           </div>
-          <div className="thin-line mar-top--m" />
-          <div className="flex-col mar-top--m">
+          <div className="thin-line mt-3 mb-3" />
+          <div className="d-flex flex-column mt-3">
             <h4>Bio</h4>
-            <div className="flex-col mar-top--m">
+            <div className="d-flex flex-column mt-3">
               <TextField
                 // label="Multiline"
                 multiline
@@ -186,10 +181,10 @@ class EditUserProfile extends React.Component {
               />
             </div>
           </div>
-          <div className="thin-line mar-top--m" />
-          <div className="flex-col mar-top--m">
+          <div className="thin-line mt-3 mb-3" />
+          <div className="d-flex flex-column mt-3">
             <h4>Expertise</h4>
-            <div className="mar-top--m">
+            <div className="mt-3">
               <CreatableSelect
                 isClearable
                 value={this.state.expertise}
@@ -199,10 +194,10 @@ class EditUserProfile extends React.Component {
               />
             </div>
           </div>
-          <div className="thin-line mar-top--m" />
-          <div className="flex-col mar-top--m">
+          <div className="thin-line mt-3 mb-3" />
+          <div className="d-flex flex-column mt-3">
             <h4>Skills</h4>
-            <div className="mar-top--m">
+            <div className="mt-3">
               <CreatableSelect
                 isClearable
                 value={this.state.skills}
@@ -212,35 +207,38 @@ class EditUserProfile extends React.Component {
               />
             </div>
           </div>
-          <div className="thin-line mar-top--m" />
-          <div className="flex-col mar-top--m">
+          <div className="thin-line mt-3 mb-3" />
+          <div className="d-flex flex-column mt-3">
             <h4>Contact</h4>
-            <div className="flex-row mar-top--m align-cen">
+            <div className="d-flex flex-row  mt-3 align-items-center">
               <img className="icon" src={contact} />
               <TextField
                 label="Phone"
                 variant="outlined"
                 value={this.state.phone}
+                fullWidth
               />
             </div>
-            <div className="flex-row mar-top--m align-cen">
+            <div className="d-flex flex-row mt-3 align-items-center">
               <img className="icon" src={mail} />
               <TextField
                 label="E-mail"
                 variant="outlined"
                 value={this.state.email}
+                fullWidth
               />
             </div>
           </div>
         </div>
-      </div>
+      </form>
     );
   }
 }
 
 EditUserProfile.propTypes = {
   authenticityToken: PropTypes.string,
-  submitPath: PropTypes.string
+  submitPath: PropTypes.string,
+  editPath: PropTypes.string
 };
 
 export default EditUserProfile;

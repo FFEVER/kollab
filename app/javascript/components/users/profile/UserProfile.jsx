@@ -1,15 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import kollab from "../images/kollab-blue.png";
-import phone from "../images/icon/phone-call.png";
-import mail from "../images/icon/mail.png";
-import instagram from "../images/icon/instagram.png";
-import attach from "../images/icon/paperclip.png";
-import add from "../images/icon/add.png";
-import more from "../images/icon/more.png";
-import rectangle from "../images/icon/rectangle.png";
-import profileImg from "../images/anya.jpg";
-import Card from "../components/Card";
+import phone from "../../../images/icon/phone-call.png";
+import mail from "../../../images/icon/mail.png";
+import instagram from "../../../images/icon/instagram.png";
+import attach from "../../../images/icon/paperclip.png";
+import add from "../../../images/icon/add.png";
+import more from "../../../images/icon/more.png";
+import rectangle from "../../../images/icon/rectangle.png";
+import profileImg from "../../../images/anya.jpg";
+import Card from "../../Card";
 
 const filename = "Proposal.pdf";
 const projects = [
@@ -80,47 +79,50 @@ class UserProfile extends React.Component {
       [event.target.name]: event.target.value
     });
   }
+
   handleClickShowPassword() {
     this.setState({
       showPassword: !this.state.showPassword
     });
   }
+
   render() {
     return (
-      <div>
-        <div className="form">
+      <form className="profile">
+        <div>
           {/* <img className="logo" src={kollab} /> */}
-          <div className="flex-row">
+          <div className="d-flex flex-row">
             <img className=" profile-img" src={profileImg} />
 
-            <div
-              className="flex-col justify-cen"
-              style={{
-                marginLeft: "20px"
-              }}
-            >
+            <div className="d-flex flex-column justify-content-center ml-3">
               <h2>{this.state.fullname}</h2>
               <p>{this.state.position}</p>
-              <div className="flex-row align-cen space-bet">
+              <div className="d-flex flex-row align-items-center justify-content-between">
                 <h3>11</h3>
-                <p className="mar-lr">Projects</p>
+                <p className="ml-3 mr-3">Projects</p>
                 <h3>5</h3>
-                <p className="mar-lr">Folloings</p>
+                <p className="ml-3 mr-3">Folloings</p>
                 <h3>3</h3>
-                <p className="mar-lr">Followers</p>
+                <p className="ml-3 mr-3">Followers</p>
               </div>
             </div>
           </div>
-          <p className="mar-tb">{this.state.bio}</p>
-          <button className="button--edit-profile">Edit Profile</button>
+          <p className="mt-3 mb-3">{this.state.bio}</p>
+          <div className="d-flex flex-coloumn justify-content-center">
+            <button className="button--edit-profile" style={{ width: "100%" }}>
+              <a href={`http://localhost:5000/${this.props.editPath}`}>
+                Edit Profile
+              </a>
+            </button>
+          </div>
         </div>
-        <div className="sep-line" />
-        <div className="form">
-          <div className="flex-row space-bet">
+        <div className="sep-line mt-3 mb-3" />
+        <div>
+          <div className="d-flex flex-row justify-content-between">
             <div className="flex-row ">
               <h3>Skills</h3>
               {this.state.tags.map((item, index) => (
-                <button className="button--tags" key={index}>
+                <button className="button--tags mt-2" key={index}>
                   {item}
                 </button>
               ))}
@@ -128,28 +130,28 @@ class UserProfile extends React.Component {
             <img className="icon" src={more} />
           </div>
         </div>
-        <div className="sep-line" />
-        <div className="form">
-          <div className="flex-row space-bet">
+        <div className="sep-line mt-3 mb-3" />
+        <div>
+          <div className="d-flex flex-row justify-content-between">
             <h3>Contact</h3>
             <img className="icon" src={more} />
           </div>
 
-          <div className="flex-row mar-top--s">
+          <div className="d-flex flex-row mt-2">
             <img className="icon" src={phone} />
             <p>{this.state.phone}</p>
           </div>
-          <div className="flex-row mar-top--ss">
+          <div className="d-flex flex-row mt-1">
             <img className="icon" src={mail} />
             <p>{this.state.email}</p>
           </div>
-          <div className="flex-row mar-top--ss">
+          <div className="d-flex flex-row mt-1">
             <img className="icon" src={instagram} />
             <p>{this.state.instagram}</p>
           </div>
         </div>
-        <div className="sep-line" />
-        <div className="form">
+        <div className="sep-line mt-3 mb-3" />
+        <div>
           <h3>Projects</h3>
           {projects.map((item, index) => (
             <Card
@@ -160,74 +162,43 @@ class UserProfile extends React.Component {
               status={item.status}
             />
           ))}
-          <div className="flex-col align-cen mar-top--s">
+          <div className="d-flex flex-column align-items-center mt-2">
             <p style={{ color: "#54bdc2" }}>See more</p>
           </div>
         </div>
-        <div className="sep-line" />
-        <div className="form">
+        <div className="sep-line mt-3 mb-3" />
+        <div>
           <h3>Interests</h3>
-          {/* <HorizontalScroll>
-            <div
-              style={{ width: "30px", height: "100%", backgroundColor: "red" }}
-            />
-            <img className="logo" src={rectangle} />
-            <img className="logo" src={rectangle} />
-          </HorizontalScroll> */}
-          <div className="flex-row mar-top--s">
-            <img
-              className="logo"
-              src={rectangle}
-              style={{ marginRight: "10px" }}
-            />
-            <img
-              className="logo"
-              src={rectangle}
-              style={{ marginRight: "10px" }}
-            />
-            <img
-              className="logo"
-              src={rectangle}
-              style={{ marginRight: "10px" }}
-            />
+          <div className="d-flex flex-row mt-2s">
+            <img className="logo mr-2" src={rectangle} />
+            <img className="logo mr-2" src={rectangle} />
+            <img className="logo mr-2" src={rectangle} />
           </div>
         </div>
-        <div className="sep-line" />
-        <div className="form">
+        <div className="sep-line mt-3 mb-3" />
+        <div>
           <h3>Photos</h3>
-          <div className="flex-row mar-top--s">
-            <img
-              className="logo"
-              src={rectangle}
-              style={{ marginRight: "10px" }}
-            />
-            <img
-              className="logo"
-              src={rectangle}
-              style={{ marginRight: "10px" }}
-            />
-            <img
-              className="logo"
-              src={rectangle}
-              style={{ marginRight: "10px" }}
-            />
+          <div className="d-flex flex-row mt-2">
+            <img className="logo mr-2" src={rectangle} />
+            <img className="logo mr-2" src={rectangle} />
+            <img className="logo mr-2" src={rectangle} />
           </div>
         </div>
-        <div className="sep-line" />
+        <div className="sep-line mt-3 mb-3" />
 
-        <div className="form">
+        <div>
           <h3>Files</h3>
-          <div className="flex-row mar-top--s">
+          <div className="flex-row mt-2">
             <img className="icon" src={attach} />
             <p>{filename}</p>
           </div>
-          <p className="mar-top--s" style={{ color: "#54bdc2" }}>
+          <p className="mt-2" style={{ color: "#54bdc2" }}>
             See more
           </p>
         </div>
-        <div className="sep-line" />
+        <div className="sep-line mt-3 mb-3" />
         <div className="form">
-          <div className="flex-row space-bet">
+          <div className="d-flex flex-row justify-content-between">
             <h3>Post</h3>
             <img className="icon" src={add} />
           </div>
@@ -241,8 +212,8 @@ class UserProfile extends React.Component {
             />
           ))}
         </div>
-        <div className="sep-line" />
-      </div>
+        <div className="sep-line mt-3 mb-3" />
+      </form>
     );
   }
 }

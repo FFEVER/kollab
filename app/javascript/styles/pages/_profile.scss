@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
 
+  margin: 30px;
+
   &__header {
     text-align: center;
 
@@ -75,4 +77,10 @@
     width: 50px;
     height: 50px;
   }
+}
+
+.thin-line {
+  height: 1px;
+
+  background-color: #d5d5d5;
 }

@@ -19,64 +19,7 @@ form {
   }
 }
 
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.flex-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.center {
+.text {
   align-items: center;
   justify-content: center;
-}
-
-.justify-cen {
-  justify-content: center;
-}
-
-.align-cen {
-  align-items: center;
-}
-
-.mar-tb {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.mar-lr {
-  &--l {
-    margin-right: 15px;
-    margin-left: 15px;
-  }
-
-  &--m {
-    margin-right: 15px;
-    margin-left: 15px;
-  }
-
-  &--s {
-    margin-right: 15px;
-    margin-left: 15px;
-  }
-}
-
-.mar-top {
-  &--l {
-    margin-top: 20px;
-  }
-
-  &--s {
-    margin-top: 10px;
-  }
-
-  &--ss {
-    margin-top: 5px;
-  }
-}
-
-.space-bet {
-  justify-content: space-between;
 }

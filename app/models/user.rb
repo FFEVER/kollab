@@ -6,7 +6,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable
   has_many :members
-  has_many :projects, through: :members
+  has_many :projects, through: :members do
+    def owned
+      where('members.is_owner = ?', true)
+    end
+
+    def participated
+      where('members.is_owner = ?', false)
+    end
+  end
 
   has_many :favorites, dependent: :destroy
   has_many :starring_projects, through: :favorites, source: :project
@@ -17,6 +25,9 @@ class User < ApplicationRecord
                            foreign_key: :follower_id, class_name: 'Following'
   has_many :followings, through: :given_follows, source: :followable, source_type: 'User'
   has_many :following_projects, through: :given_follows, source: :followable, source_type: 'Project'
+
+  validates :first_name, presence: true, length: { within: 1..50 }
+  validates :last_name, presence: true, length: { within: 1..50 }
 
   def following?(user)
     followings.include?(user)

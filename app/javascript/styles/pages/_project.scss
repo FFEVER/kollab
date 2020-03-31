@@ -1,5 +1,5 @@
 .project {
-  padding: $global-space;
+  padding: 1.5 * $spacer $spacer;
   &__form {
     .form__date {
       &:first-child {
@@ -103,6 +103,79 @@
           }
         }
       }
+    }
+  }
+
+  &__index {
+    &__menu {
+      margin-top: $spacer;
+
+      .list__item {
+        align-items: center;
+      }
+
+      a:after {
+        font-size: x-large;
+        font-weight: bold;
+
+        margin-left: auto;
+
+        content: '>';
+      }
+    }
+
+    &__sub-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-top: 0.5 * $spacer;
+
+      &__count {
+        font-size: x-large;
+        font-weight: bold;
+
+        margin-right: 5px;
+      }
+    }
+
+    &__header {
+      margin: -1.5 * $spacer -1 * $spacer;
+      margin-bottom: $spacer;
+      padding-top: 1.5 * $spacer;
+      padding-bottom: 0.5 * $spacer;
+
+      text-align: center;
+
+      background-color: white;
+      box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  &__list {
+    margin-bottom: $spacer;
+  }
+
+  &__item {
+    a {
+      display: block;
+
+      width: 100%;
+    }
+
+    &__title {
+      letter-spacing: normal;
+    }
+
+    &__info {
+      max-width: 60%;
+    }
+
+    &__actions {
+      justify-content: start;
+
+      height: 100%;
+      margin-left: auto;
     }
   }
 }

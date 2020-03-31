@@ -11,6 +11,11 @@
 
   border-radius: 5px;
 
+  &--very-small {
+    height: 1.5rem;
+    max-height: 1.5rem;
+  }
+
   &--small {
     height: 2rem;
     max-height: 2rem;
@@ -82,5 +87,11 @@
     color: $kollab-gray-dark;
     border: solid 1px $kollab-gray;
     background-color: transparent;
+  }
+  
+  &--round {
+    height: 40px;
+
+    border-radius: 20px;
   }
 }

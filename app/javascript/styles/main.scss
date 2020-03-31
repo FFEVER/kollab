@@ -26,10 +26,13 @@ Components
 @import 'components/buttons';
 @import 'components/icons';
 @import 'components/image';
+@import 'components/list';
+@import 'components/tags';
 
 /**
 Pages
 **/
 @import 'pages/home';
+@import 'pages/authen';
 @import 'pages/profile';
 @import 'pages/project';

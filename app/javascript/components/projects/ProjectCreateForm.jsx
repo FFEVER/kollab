@@ -2,11 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 import axios from "axios"
 
-import { TagInput, tagsToArray } from "../../shared/form/TagInput"
+import { TagInput, tagsToArray } from "../shared/form/TagInput"
 import { FormValidator, defaultErrors } from "./ProjectCreateFormValidator"
-import FormInput from "../../shared/form/FormInput"
-import FromTextarea from "../../shared/form/FormTextarea"
-import Button from "../../shared/form/Button"
+import FormInput from "../shared/form/FormInput"
+import FromTextarea from "../shared/form/FormTextarea"
+import Button from "../shared/form/Button"
 
 const DATA_PREFIX = "project"
 

@@ -8,12 +8,12 @@ class UsersController < ApplicationController
 
   def follow
     current_user.followings << @user
-    redirect_to @user
+    redirect_to request.referrer
   end
 
   def unfollow
     current_user.unfollow(@user)
-    redirect_to @user
+    redirect_to request.referrer
   end
 
   def followers

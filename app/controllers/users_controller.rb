@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @projects = @user.projects
   end
 
   def follow

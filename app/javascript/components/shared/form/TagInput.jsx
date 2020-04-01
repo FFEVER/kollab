@@ -1,25 +1,25 @@
-import React from "react"
-import PropTypes from "prop-types"
-import CreatableSelect from "react-select/creatable"
+import React from "react";
+import PropTypes from "prop-types";
+import CreatableSelect from "react-select/creatable";
 
 const components = {
   DropdownIndicator: null
-}
+};
 
 const createOption = label => ({
   label,
   value: label
-})
+});
 
 const tagsToArray = tags => {
-  let tagsArray = []
+  let tagsArray = [];
   tags.forEach(tagObj => {
-    tagsArray = [...tagsArray, tagObj["value"]]
-  })
-  return tagsArray
-}
+    tagsArray = [...tagsArray, tagObj["value"]];
+  });
+  return tagsArray;
+};
 
-const customStyles = {
+const defaultStyles = {
   container: (provided, state) => ({
     ...provided,
     minWidth: "100%",
@@ -47,7 +47,7 @@ const customStyles = {
     ...provided,
     fontSize: "medium"
   })
-}
+};
 
 const customErrorStyles = {
   ...customStyles,
@@ -61,60 +61,60 @@ const customErrorStyles = {
       borderColor: "red"
     }
   })
-}
+};
 
 class TagInput extends React.Component {
   // TODO: [Eit] Show suggestions while typing
   state = {
     inputValue: ""
-  }
+  };
 
   removeDup = () => {
-    const { inputValue } = this.state
-    const { value } = this.props
-    const newTags = []
+    const { inputValue } = this.state;
+    const { value } = this.props;
+    const newTags = [];
     for (const tag of inputValue.split(" ")) {
       if (value.find(({ label }) => label === tag) === undefined)
-        newTags.push(tag)
+        newTags.push(tag);
     }
-    return newTags
-  }
+    return newTags;
+  };
 
   handleChange = (value, actionMeta) => {
     // Handle clear or delete tags
     if (value === null) {
-      value = []
+      value = [];
     }
-    this.props.onChange(value)
-  }
+    this.props.onChange(value);
+  };
 
   handleInputChange = inputValue => {
-    this.setState({ inputValue })
-  }
+    this.setState({ inputValue });
+  };
 
   handleKeyDown = event => {
-    const { inputValue } = this.state
-    if (!inputValue) return
+    const { inputValue } = this.state;
+    if (!inputValue) return;
     switch (event.key) {
       case "Enter":
       case " ":
       case "Tab":
-        let newTags = this.removeDup()
-        let newTagObjList = []
+        let newTags = this.removeDup();
+        let newTagObjList = [];
         for (const tag of newTags) {
-          newTagObjList.push(createOption(tag))
+          newTagObjList.push(createOption(tag));
         }
-        this.props.onKeyDown(newTagObjList)
+        this.props.onKeyDown(newTagObjList);
         this.setState({
           inputValue: ""
-        })
-        event.preventDefault()
+        });
+        event.preventDefault();
     }
-  }
+  };
 
   render() {
-    const { inputValue } = this.state
-    const { value, placeholder, errors, id, styles, errorStyles } = this.props
+    const { inputValue } = this.state;
+    const { value, placeholder, errors, id, styles, errorStyles } = this.props;
     return (
       <>
         <CreatableSelect
@@ -138,7 +138,7 @@ class TagInput extends React.Component {
           </div>
         ))}
       </>
-    )
+    );
   }
 }
 
@@ -146,9 +146,9 @@ TagInput.defaultProps = {
   placeholder: "",
   errors: [],
   id: "",
-  styles: customStyles,
+  styles: defaultStyles,
   errorStyles: customErrorStyles
-}
+};
 
 TagInput.propTypes = {
   value: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -159,7 +159,7 @@ TagInput.propTypes = {
   id: PropTypes.string,
   styles: PropTypes.object,
   errorStyles: PropTypes.object
-}
+};
 
-export default TagInput
-export { tagsToArray, TagInput }
+export default TagInput;
+export { tagsToArray, defaultStyles, TagInput };

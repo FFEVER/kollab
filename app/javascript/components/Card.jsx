@@ -6,7 +6,7 @@ class Card extends React.Component {
     return this.props.type === "project" ? (
       <div className="d-flex flex-column">
         <button className="button--card mt-3">
-          <div className="d-flex flex-row justify-content-between card-border">
+          <div className="d-flex flex-row justify-content-between">
             <div className="d-flex flex-column ">
               <h4 style={{ color: "#4e4e4e" }}>{this.props.title}</h4>
               <div className="d-flex flex-row">
@@ -25,8 +25,8 @@ class Card extends React.Component {
         </button>
       </div>
     ) : this.props.type === "post" ? (
-      <div className="mt-3 mb-3">
-        <div className="d-flex flex-row align-items-senter">
+      <div>
+        <div className="d-flex flex-row mt-1 align-items-senter">
           <h5>{this.props.user}</h5>
           <p
             style={{
@@ -37,7 +37,10 @@ class Card extends React.Component {
             {this.props.action}
           </p>
         </div>
-        <div className="mt-2">
+        <button
+          className="button--post d-flex flex-column mt-1 mb-3"
+          style={{ width: "100%" }}
+        >
           <h5 style={{ color: "#4e4e4e" }}>{this.props.project.title}</h5>
           <div className="d-flex flex-row">
             {this.props.project.tags.map((item, index) => (
@@ -52,7 +55,7 @@ class Card extends React.Component {
               </p>
             ))}
           </div>
-        </div>
+        </button>
       </div>
     ) : (
       <div />

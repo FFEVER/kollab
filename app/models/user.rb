@@ -5,6 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable
+
   has_many :members
   has_many :projects, through: :members do
     def owned
@@ -26,6 +27,9 @@ class User < ApplicationRecord
   has_many :followings, through: :given_follows, source: :followable, source_type: 'User'
   has_many :following_projects, through: :given_follows, source: :followable, source_type: 'Project'
 
+  validates :first_name, presence: true, length: { within: 1..50 }
+  validates :last_name, presence: true, length: { within: 1..50 }
+
   def following?(user)
     followings.include?(user)
   end
@@ -44,5 +48,13 @@ class User < ApplicationRecord
 
   def followings=(user)
     followings << user
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def year_faculty
+    '4th year Software Engineering Student'
   end
 end

@@ -1,32 +1,23 @@
-<main class="container">
-  <h1>Welcome to</h1>
-  <%= image_pack_tag('kollab-blue.png', style: 'width:100px;') %>
+<div class="authen">
+  <h2>Welcome to</h2>
+  <div class="mt-3">
+    <%= image_pack_tag 'kollab-blue.png', alt: 'kollab', size:'150x70'%>
+  </div>
+  <div class="mt-3">
+    <h1>Sign In</h1>
+    <div class="d-flex flex-column">
+      <%= react_component("authen/Login",
+    {
+      authenticityToken: form_authenticity_token,
+      submitPath: user_session_path,
+      forgotPasswordUrl: new_user_password_url,
+    })
+  %>
 
-  <!--TODO: [Anyone] Change login form to be only google account OAuth.-->
-  <h1>Login</h1>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
-
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
+    <div class="d-flex flex-row align-items-center mt-3" >
+      <p class="mr-2">Don't have an account?</p>
+      <%= link_to "Sign Up", new_user_registration_path, class:"link" %>
     </div>
-
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end %>
-
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
-  <% end %>
-
-  <%= render "users/shared/links" %>
-
-</main>
+  </div>
+</div>

@@ -1,25 +1,24 @@
-  
-<div class="list__item">
-  <div class="list__itme__col">
+<div class="list__item profile__item">
+  <div class="list__item__col profile__item__col--image">
     <%= link_to user do %>
       <%= image_pack_tag 'person.jpg',
-            class: "image__profile image__profile--small image__profile--with-border" %>
+            class: "image__profile image__profile--small" %>
     <% end %>
   </div>
   <%= link_to user do %>
-    <div class="list__item__col project__item__info">
-      <h6 class="project__item__title">
+    <div class="list__item__col profile__item__col--info">
+      <h6>
         <%= user.full_name %>
       </h6>
 
-      <p class="project__item__short-desc">
+      <p>
         <%= user.year_faculty %>
       </p>
 
     </div>
 
   <% end %>
-  <div class="list__item__col project__item__actions">
+  <div class="list__item__col profile__item__col--actions">
     <%# TODO: [Anyone] Add status%>
     <% if user.followed_by?(current_user) %>
       <%= button_to "Following", unfollow_user_path(user), method: :post,

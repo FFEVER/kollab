@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::ProjectsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :custom_authenticate_user!
 
   def index
     @user = User.find(params[:user_id])

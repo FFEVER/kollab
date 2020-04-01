@@ -5,6 +5,9 @@ $kollab-width-desktop-extra: 1200px;
 
 $global-space: 30px;
 
+$sidenav-width: 100px;
+$sidenav-height: 48px;
+
 html {
   box-sizing: border-box;
 }
@@ -27,15 +30,19 @@ html {
 
 body {
   font-family: 'Lato', sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
+
+  margin-left: $sidenav-width;
 
   background-color: #fcfcfc;
 }
 
-@media only screen and (min-width: $kollab-width-mobile) {
+@media only screen and (max-width: $kollab-width-tablet) {
   body {
-    font-size: 16px;
+    font-size: 12px;
+
+    margin-left: 0;
   }
 }
 

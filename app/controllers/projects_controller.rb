@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @project = Project.new(project_params)
     if @project.save
       @project.add_member current_user, is_owner: true
       render json: @project, location: project_path(@project), status: :created

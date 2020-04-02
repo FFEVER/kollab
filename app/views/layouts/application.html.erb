@@ -23,11 +23,7 @@
       </div>
     <% end %>
 
-    <% if user_signed_in? %>
-      <%= render 'layouts/side_nav'%>
-    <% else %>
-      <%= render 'layouts/navbar_bak'%>
-    <% end %>
+    <%= render 'layouts/navbar'%>
     <%= yield %>
   </body>
 

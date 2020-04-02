@@ -10,36 +10,51 @@ class Navbar extends React.Component {
     }
   }
 
-  render() {
-    let { userPath, userProjectsPath, projectsPath } = this.props
+  signedInLinks() {
+    let { newUserSessionPath, newUserRegistrationPath } = this.props
     return (
-      <nav className="sidenav">
-        <a href="/" className="sidenav__brand">
-          <img src={KollabLogo} alt="kollab" className="sidenav__brand__logo" />
+      <div className="nav__links--right">
+        <a href={newUserSessionPath} className="nav__link">
+          <button className="button button--small-fixed button--outline-primary">
+            Login
+          </button>
         </a>
-        <a href="#" className="sidenav__link">
-          <i className="fas fa-home fa-2x"></i>
-          <span>Feed</span>
+        <a href={newUserRegistrationPath} className="nav__link">
+          <button className="button button--small-fixed button--primary">
+            Signup
+          </button>
         </a>
-        <a href={projectsPath} className="sidenav__link">
-          <i className="fas fa-search fa-2x"></i>
-          <span>Explore</span>
+      </div>
+    )
+  }
+
+  nonSignedInLinks = () => {
+    return <div>Hello</div>
+  }
+
+  render() {
+    let {
+      userPath,
+      userProjectsPath,
+      projectsPath,
+      newUserSessionPath,
+      newUserRegistrationPath,
+      userSignedIn
+    } = this.props
+    return (
+      <nav className="nav">
+        <a href="/" className="nav__brand">
+          <img src={KollabLogo} alt="kollab" className="nav__brand__logo" />
         </a>
-        <a
-          href={userProjectsPath}
-          className="sidenav__link sidenav__link--active"
-        >
-          <i className="fas fa-th-large fa-2x"></i>
-          <span>Project</span>
-        </a>
-        <a href="#" className="sidenav__link">
-          <i className="fas fa-envelope fa-2x"></i>
-          <span>Message</span>
-        </a>
-        <a href={userPath} className="sidenav__link">
-          <i className="fas fa-user fa-2x"></i>
-          <span>Profile</span>
-        </a>
+        <div className="nav__links nav__links--desktop">
+          <a href="#" className="nav__link">
+            <span>Feed</span>
+          </a>
+          <a href={projectsPath} className="nav__link">
+            <span>Explore</span>
+          </a>
+        </div>
+        {userSignedIn ? this.signedInLinks() : this.nonSignedInLinks()}
       </nav>
     )
   }
@@ -50,6 +65,7 @@ Navbar.propTypes = {
   currentUserPath: PropTypes.string,
   destroyUserSessionPath: PropTypes.string,
   newUserRegistrationPath: PropTypes.string,
+  newUserSessionPath: PropTypes.string,
   userPath: PropTypes.string,
   userProjectsPath: PropTypes.string,
   projectsPath: PropTypes.string

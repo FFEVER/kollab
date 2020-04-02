@@ -1,13 +1,12 @@
-.sidenav {
-  position: absolute;
-  top: 0;
-  left: 0;
+.nav {
+  z-index: 10;
 
   display: flex;
-  flex-direction: column;
+  align-items: center;
 
-  width: $sidenav-width;
-  height: 100%;
+  width: 100%;
+  height: $nav-height;
+  padding: 0 $spacer-l;
 
   background-color: white;
   -webkit-box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
@@ -15,64 +14,28 @@
           box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
 
   &__brand {
-    height: 36px;
-    margin-bottom: $spacer-l;
-    padding: $spacer;
+    &__logo {
+      height: 30;
+      max-height: 30px;
+
+      @media only screen and (min-width: $kollab-width-tablet) {
+        height: 36px;
+        max-height: 36px;
+      }
+    }
+  }
+
+  &__links {
+    &--right {
+      margin-left: auto;
+    }
+
+    &--desktop {
+      display: none;
+    }
   }
 
   &__link {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-
-    margin-bottom: $spacer-l;
-    padding: $spacer;
-
-    color: $kollab-gray-light;
-
-    i {
-      margin-bottom: 2px;
-    }
-
-    span {
-      display: none;
-    }
-
-    &--active {
-      color: $kollab-turquoise !important;
-    }
-  }
-}
-
-@media only screen and (max-width: $kollab-width-tablet) {
-  .sidenav {
-    top: unset;
-    bottom: 0;
-
-    flex-direction: row;
-    justify-content: space-evenly;
-
-    width: 100vw;
-    height: $sidenav-height;
-
-    &__brand {
-      display: none;
-    }
-
-    &__link {
-      font-size: 10px;
-
-      flex-grow: 1;
-
-      margin-bottom: 0;
-      padding: 0;
-
-      color: $kollab-gray;
-
-      span {
-        display: block;
-      }
-    }
+    margin: 0 $spacer-xs;
   }
 }

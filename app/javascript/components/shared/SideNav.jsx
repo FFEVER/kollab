@@ -16,6 +16,7 @@ class SideNav extends React.Component {
         <a href="/" className="sidenav__brand">
           <img src={KollabLogo} alt="kollab" className="sidenav__brand__logo" />
         </a>
+        <i className="fas fa-home"></i>
       </nav>
     )
   }

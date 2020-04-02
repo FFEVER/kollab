@@ -31,10 +31,10 @@
               class: "button button--small button--gray", remote: true%>
           <% else %>
             <%= link_to "Follow", follow_user_path, method: :post,
-              class: "button button--small button--green", remote: true%>
+              class: "button button--small button--primary", remote: true%>
           <% end %>
         <% else %>
-          <button class="button button--small button--green">Edit profile</button>
+          <button class="button button--small button--primary">Edit profile</button>
         <% end %>
       </div>
     </header>

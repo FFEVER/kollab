@@ -8,7 +8,7 @@
       <section class="section section__actions">
         <% if @project.starred_by?(current_user) %>
           <%= button_to unstar_project_path, method: :post,
-            class: "button button--small button--green", remote: true do %>
+            class: "button button--small button--primary", remote: true do %>
             <span class="icon icon--star"></span>
             <%= @project.stars.count %>
           <% end %>
@@ -25,7 +25,7 @@
             class: "button button--small button--outline-gray-light", remote: true%>
         <% else %>
           <%= button_to "Follow", follow_project_path, method: :post,
-            class: "button button--small button--green", remote: true %>
+            class: "button button--small button--primary", remote: true %>
         <% end %>
       </section>
     </div>

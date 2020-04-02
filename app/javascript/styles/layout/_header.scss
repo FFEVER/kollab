@@ -1,7 +1,7 @@
 .header {
   margin: 0 0 $spacer 0;
-  padding-top: 1.5 * $spacer;
-  padding-bottom: 0.5 * $spacer;
+  padding-top: $spacer-l;
+  padding-bottom: $spacer-s;
 
   text-align: center;
 
@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
 
-  margin-top: 0.5 * $spacer;
+  margin-top: $spacer-s;
 
   &__count {
     font-size: x-large;

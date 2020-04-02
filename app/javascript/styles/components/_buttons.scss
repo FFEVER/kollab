@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
 
-  padding: 0 $global-space * 0.3;
+  padding: 0 $spacer-xs;
 
   cursor: pointer;
   white-space: nowrap;
@@ -19,7 +19,7 @@
   &--small {
     height: 2rem;
     max-height: 2rem;
-    padding: $global-space * 0.2 $global-space * 0.3;
+    padding: $spacer-xs;
   }
 
   &--long {
@@ -88,7 +88,7 @@
     border: solid 1px $kollab-gray;
     background-color: transparent;
   }
-  
+
   &--round {
     height: 40px;
 

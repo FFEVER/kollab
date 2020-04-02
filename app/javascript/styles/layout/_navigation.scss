@@ -16,7 +16,7 @@
 
   &__brand {
     height: 36px;
-    margin-bottom: 2 * $spacer;
+    margin-bottom: $spacer-l;
     padding: $spacer;
   }
 
@@ -26,7 +26,7 @@
     flex-direction: column;
     justify-content: center;
 
-    margin-bottom: 1.5 * $spacer;
+    margin-bottom: $spacer-l;
     padding: $spacer;
 
     color: $kollab-gray-light;

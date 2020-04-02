@@ -1,14 +1,14 @@
 .project {
-  padding: 1.5 * $spacer $spacer;
+  padding: $spacer-l $spacer;
   &__form {
     .form__date {
       &:first-child {
-        margin-right: $global-space;
+        margin-right: $spacer;
       }
     }
   }
   &--with-margin {
-    margin-bottom: 3 * $global-space;
+    margin-bottom: $spacer-xl;
   }
 
   &__view {
@@ -27,7 +27,7 @@
 
     .section {
       width: 100%;
-      margin-bottom: 0.5 * $global-space;
+      margin-bottom: $spacer-s;
 
       &__header {
         display: flex;
@@ -38,12 +38,12 @@
       &__actions {
         display: flex;
 
-        margin-bottom: 0.25 * $global-space;
+        margin-bottom: $spacer-xs;
 
         button {
           font-weight: 700;
 
-          margin-right: 0.25 * $global-space;
+          margin-right: $spacer-xs;
 
           span {
             margin-right: 3px;
@@ -57,8 +57,8 @@
           flex-wrap: wrap;
 
           button {
-            margin-right: 0.25 * $global-space;
-            margin-bottom: 0.25 * $global-space;
+            margin-right: $spacer-xs;
+            margin-bottom: $spacer-xs;
           }
         }
       }
@@ -90,7 +90,7 @@
             font-stretch: normal;
             line-height: 1.36;
 
-            margin-left: 0.25 * $global-space;
+            margin-left: $spacer-xs;
 
             letter-spacing: normal;
           }
@@ -125,7 +125,7 @@
     }
 
     &__header {
-      margin: -1.5 * $spacer -1 * $spacer;
+      margin: -1 * $spacer-l -1 * $spacer;
       margin-bottom: $spacer;
     }
   }

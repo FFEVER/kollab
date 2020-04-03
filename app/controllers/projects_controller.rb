@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :custom_authenticate_user!, except: %i[index show]
   before_action :set_project, except: %i[index new create]
 
   def index
@@ -55,10 +55,6 @@ class ProjectsController < ApplicationController
 
   private
 
-  def set_project
-    @project = Project.find(params[:id])
-  end
-
   def project_params
     permitted = params.require(:project).permit(
       :title,
@@ -69,5 +65,9 @@ class ProjectsController < ApplicationController
     )
     permitted[:tag_list] = JSON.parse(permitted[:tag_list]) || []
     permitted
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 end

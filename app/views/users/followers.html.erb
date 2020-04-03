@@ -1,0 +1,11 @@
+<section class="header">
+  <h2><%= @user.full_name %></h2>
+  <div class="sub-header">
+    <span class="sub-header__count"><%= @followers.count %></span>
+    <p> followers </p>
+  </div>
+</section>
+
+<section class="list profile__list">
+  <%= render @followers%>
+</section>

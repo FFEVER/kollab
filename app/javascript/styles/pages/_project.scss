@@ -156,4 +156,13 @@
       letter-spacing: normal;
     }
   }
+
+  &__link {
+    font-weight: bold;
+
+    align-self: center;
+    justify-content: center;
+
+    color: $kollab-turquoise;
+  }
 }

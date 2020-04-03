@@ -43,7 +43,7 @@ class Card extends React.Component {
         >
           <h5 style={{ color: "#4e4e4e" }}>{this.props.project.title}</h5>
           <div className="d-flex flex-row">
-            {this.props.project.tags.map((item, index) => (
+            {this.props.tags.map((item, index) => (
               <p
                 key={index}
                 style={{

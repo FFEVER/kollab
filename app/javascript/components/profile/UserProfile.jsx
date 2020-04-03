@@ -3,47 +3,25 @@ import PropTypes from "prop-types"
 import add from "../../../javascript/images/icon/add.png"
 import Card from "../Card"
 
-const projects = [
-  {
-    id: 1,
-    title: "Object Tracking Drone",
-    tags: ["ObjectDetection", "Drone", "IOT"],
-    status: "In progress"
-  },
-  {
-    id: 2,
-    title: "Robotic car with Obstacle",
-    tags: ["ObjectDetection", "Robotic", "IOT"],
-    status: "In progress"
-  },
-  {
-    id: 3,
-    title: "Garden observation App ",
-    tags: ["ObjectDetection", "Embedded", "IOT"],
-    status: "In progress"
-  }
-]
-
 class UserProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      fullname: "Natthaphol Srisa",
       posts: [
         {
-          id: 1,
           action: "updated project progress",
-          project: projects[0]
+          project: this.props.projects[1],
+          tags: ["WebApplication"]
         },
         {
-          id: 2,
           action: "updated project progress",
-          project: projects[1]
+          project: this.props.projects[0],
+          tags: ["Communication", "WebApplication", "Media"]
         },
         {
-          id: 3,
           action: "done the project of",
-          project: projects[2]
+          project: this.props.projects[0],
+          tags: ["Communication", "WebApplication", "Media"]
         }
       ]
     }
@@ -58,10 +36,9 @@ class UserProfile extends React.Component {
   }
 
   render() {
-    const { currentUser } = this.props
+    const { currentUser, projects } = this.props
     return (
       <div>
-        {console.log("User ", currentUser)}
         <div className="d-flex flex-row mt-3 justify-content-between">
           <h3>Post</h3>
           <img className="icon--round" src={add} />
@@ -73,6 +50,7 @@ class UserProfile extends React.Component {
             user={currentUser}
             action={item.action}
             project={item.project}
+            tags={item.tags}
           />
         ))}
       </div>
@@ -83,7 +61,9 @@ class UserProfile extends React.Component {
 UserProfile.propTypes = {
   authenticityToken: PropTypes.string,
   editPath: PropTypes.string,
-  currentUser: PropTypes.object
+  currentUser: PropTypes.object,
+  projects: PropTypes.array,
+  tags: PropTypes.array
 }
 
 export default UserProfile

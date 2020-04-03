@@ -62,9 +62,12 @@
     <h3>Projects</h3>
     <%= link_to image_tag('icon/add.png', style: 'height:20px;width:20px;'), new_project_path%>
   </div>
-  <% @projects.each do |project| %>
-    <%= render partial: "project", locals: {project: project}  %>
-  <% end%>
+  <% @projects.first(3).each do |project| %>
+    <%= render partial: "project", locals: {project: project}%>
+  <%end%>
+  <%# <% if @projects.count > 1%>
+  <%= link_to "See more", user_projects_path(@user), class: "project__link", method: :get %>
+  <%# <%end%>
   <div class="mt-3 mb-3">
     <h3>Interests</h3>
   </div>
@@ -86,7 +89,8 @@
     {
       authenticityToken: form_authenticity_token,
       editPath: edit_user_registration_path,
-      currentUser: current_user
+      currentUser: current_user,
+      projects: @projects
     })
 %>
 </div>

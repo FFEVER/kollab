@@ -1,4 +1,5 @@
 .nav {
+  position: sticky;
   z-index: 10;
 
   display: flex;
@@ -14,6 +15,7 @@
           box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
 
   &__brand {
+    margin-right: $spacer-l;
     &__logo {
       height: 30;
       max-height: 30px;
@@ -26,6 +28,10 @@
   }
 
   &__links {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
     &--right {
       margin-left: auto;
     }
@@ -36,6 +42,16 @@
   }
 
   &__link {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
     margin: 0 $spacer-xs;
+
+    &--hover {
+      &:hover {
+        border-bottom: solid 3px $kollab-primary;
+      }
+    }
   }
 }

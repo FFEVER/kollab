@@ -11,9 +11,30 @@ class Navbar extends React.Component {
   }
 
   signedInLinks() {
+    let { userProjectsPath, projectsPath, userPath } = this.props
+    return (
+      <>
+        <div className="nav__links">
+          <a href={userProjectsPath} className="nav__link nav__link--hover">
+            Projects
+          </a>
+          <a href={projectsPath} className="nav__link nav__link--hover">
+            Explore
+          </a>
+        </div>
+        <div className="nav__links--right">
+          <a href={userPath} className="nav__link nav__link">
+            <button className="button button--small">My Profile</button>
+          </a>
+        </div>
+      </>
+    )
+  }
+
+  nonSignedInLinks = () => {
     let { newUserSessionPath, newUserRegistrationPath } = this.props
     return (
-      <div className="nav__links--right">
+      <div className="nav__links nav__links--right">
         <a href={newUserSessionPath} className="nav__link">
           <button className="button button--small-fixed button--outline-primary">
             Login
@@ -26,10 +47,6 @@ class Navbar extends React.Component {
         </a>
       </div>
     )
-  }
-
-  nonSignedInLinks = () => {
-    return <div>Hello</div>
   }
 
   render() {

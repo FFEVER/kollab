@@ -5,6 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable
+
   has_many :members
   has_many :projects, through: :members do
     def owned
@@ -47,5 +48,13 @@ class User < ApplicationRecord
 
   def followings=(user)
     followings << user
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def year_faculty
+    '4th year Software Engineering Student'
   end
 end

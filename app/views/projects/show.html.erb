@@ -22,12 +22,10 @@
 
         <% if @project.followed_by?(current_user) %>
           <%= button_to "Following", unfollow_project_path, method: :post,
-            class: "button button--small button--outline-gray-light",
-            remote: true %>
+            class: "button button--small button--outline-gray-light", remote: true%>
         <% else %>
           <%= button_to "Follow", follow_project_path, method: :post,
-            class: "button button--small button--green",
-            remote: true %>
+            class: "button button--small button--green", remote: true %>
         <% end %>
       </section>
     </div>

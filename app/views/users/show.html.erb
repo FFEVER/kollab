@@ -7,15 +7,31 @@
       <div class="d-flex flex-row align-items-center justify-content-between">
         <h3><%= @user.projects.count %></h3>
         <p class="mr-3 ml-3">Projects</p>
-        <h3>5</h3>
+        <h3><%= @user.followings.count %></h3>
         <p class="mr-3 ml-3">Folloings</p>
-        <h3>3</h3>
+        <h3><%= @user.followers.count %></h3>
         <p class="mr-3 ml-3">Followers</p>
       </div>
     </div>
   </div>
   <p class="mt-3 mb-3">I am 4th year student from King Mongkut’s Institute of Technology Ladkrabang and currently studying in Software Engineering field. I am interested Web Development and Docker.</p>
-  <%= button_to "Edit Profile", edit_user_registration_path, class: "button button--edit-profile", method: :get %>
+  <% if current_user != @user %>
+    <% if current_user.following?(@user) %>
+      <div class="d-flex flex-row">
+        <button class="button button--small button--green" style="width:50%">Message</button>
+        <%= link_to "Following", unfollow_user_path, method: :post,
+              class: "button button--small button--gray", remote: true, style: 'width:50%;'%>
+      </div>
+    <% else %>
+      <div class="d-flex flex-row">
+        <button class="button button--small button--green" style="width:50%">Message</button>
+        <%= link_to "Follow", follow_user_path, method: :post,
+              class: "button button--small button--green", remote: true, style: 'width:50%;'%>
+      </div>
+    <% end %>
+  <% else %>
+    <%= button_to "Edit Profile", edit_user_registration_path, class: "button button--edit-profile", method: :get %>
+  <% end %>
   <div class="d-flex flex-row mt-3 justify-content-between">
     <h3>Skills</h3>
     <%=image_tag 'icon/more.png', style: 'height:20px;width:20px;'%>
@@ -69,8 +85,8 @@
   <%= react_component("profile/UserProfile",
     {
       authenticityToken: form_authenticity_token,
-      submitPath: user_path,
-      editPath: edit_user_registration_path
+      editPath: edit_user_registration_path,
+      currentUser: current_user
     })
 %>
 </div>

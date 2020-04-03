@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from "react"
+import PropTypes from "prop-types"
 
 class Card extends React.Component {
   render() {
@@ -27,7 +27,7 @@ class Card extends React.Component {
     ) : this.props.type === "post" ? (
       <div>
         <div className="d-flex flex-row mt-1 align-items-senter">
-          <h5>{this.props.user}</h5>
+          <h5>{`${this.props.user.first_name} ${this.props.user.last_name[0]}.`}</h5>
           <p
             style={{
               fontSize: "1.2em",
@@ -59,7 +59,7 @@ class Card extends React.Component {
       </div>
     ) : (
       <div />
-    );
+    )
   }
 }
 
@@ -68,8 +68,8 @@ Card.propTypes = {
   title: PropTypes.string,
   tags: PropTypes.array,
   status: PropTypes.string,
-  user: PropTypes.string,
+  user: PropTypes.object,
   action: PropTypes.string,
   project: PropTypes.object
-};
-export default Card;
+}
+export default Card

@@ -13,10 +13,15 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update(user_params)
-      redirect_to @user
-    else
-      render :edit
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'Profile was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        errors = helpers.errors_to_camel(@user.errors.messages)
+        format.html { render :edit }
+        format.json { render json: { messages: errors }, status: :unprocessable_entity }
+      end
     end
   end
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except: %i[edit update]
   before_action :authenticate_user!, except: %i[show]
 
   def show; end

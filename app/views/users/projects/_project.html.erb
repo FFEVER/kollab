@@ -1,6 +1,6 @@
 <%= link_to project do %>
   <div class="list__item">
-    <div class="list__item__col project__item__info">
+    <div class="list__item__col project__item--info">
       <h6 class="project__item__title">
         <%= project.title %>
       </h6>
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="list__item__col project__item__actions">
+    <div class="list__item__col project__item--actions">
       <%# TODO: [Anyone] Add status%>
       <% if %w[Owned Participated].include?(@page) %>
         <button class="button button--status button--very-small button--status--orange">

@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :set_user
   before_action :authenticate_user!, except: %i[show]
 
-  def show
-    @user = User.find(params[:id])
-  end
+  def show; end
 
   def edit
     @user = current_user
@@ -26,18 +25,28 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @user = User.find_by_id(params[:id])
     current_user.followings << @user
-    redirect_to @user
+    redirect_to request.referrer
   end
 
   def unfollow
-    @user = User.find_by_id(params[:id])
     current_user.unfollow(@user)
-    redirect_to @user
+    redirect_to request.referrer
+  end
+
+  def followers
+    @followers = @user.followers
+  end
+
+  def followings
+    @followings = @user.followings
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :profile_image)

@@ -7,20 +7,37 @@ import {
   FormControl,
   FormHelperText,
   Select,
-  MenuItem
+  MenuItem,
 } from "@material-ui/core"
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab"
-import { TagInput, tagsToArray } from "../shared/form/TagInput"
+import { TagInput, tagsToArray, defaultStyles } from "../shared/form/TagInput"
 import { UserBasicInfoValidator, defaultErrors } from "./UserBasicInfoValidator"
 import faculties from "../../../assets/utils/faculties"
+import fields from "../../../assets/utils/fields"
 import CreatableSelect from "react-select/creatable"
 
 import Button from "../shared/form/Button"
 
 const DATA_PREFIX = "user"
 
-const dataName = name => {
+const dataName = (name) => {
   return DATA_PREFIX + "[" + name + "]"
+}
+
+const tagStyles = {
+  ...defaultStyles,
+  control: (provided, state) => ({
+    ...provided,
+    minWidth: "100%",
+    height: "56px",
+    borderColor: "#c2c2c2",
+    boxShadow: state.isFocused ? "0 0 3px #ce7171" : "",
+    cursor: "text",
+    "&:hover": {
+      borderColor: "#c2c2c2",
+    },
+    marginTop: "10px",
+  }),
 }
 
 class UserBasicInfo extends React.Component {
@@ -32,8 +49,10 @@ class UserBasicInfo extends React.Component {
       errors: defaultErrors,
       isButtonLoading: false,
       roll: "student",
-      expertise: [],
-      skills: []
+      expertise: "",
+      field: "",
+      subfield: "",
+      skills: [],
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -50,43 +69,39 @@ class UserBasicInfo extends React.Component {
 
   handleCheckAgreeCondition() {
     this.setState({
-      checkedAgreeCondition: !this.state.checkedAgreeCondition
+      checkedAgreeCondition: !this.state.checkedAgreeCondition,
     })
   }
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     })
-  }
-
-  handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value })
   }
 
   handleExpertiseChange(value) {
     this.setState({
-      expertise: [...this.state.expertise, ...value]
+      expertise: [...this.state.expertise, ...value],
     })
   }
 
   handleExpertiseClear(value) {
     // Handle clear or delete expertise
     this.setState({
-      expertise: value
+      expertise: value,
     })
   }
 
   handleSkillsChange(value) {
     this.setState({
-      skills: [...this.state.skills, ...value]
+      skills: [...this.state.skills, ...value],
     })
   }
 
   handleSkillsClear(value) {
     // Handle clear or delete skills
     this.setState({
-      skills: value
+      skills: value,
     })
   }
 
@@ -95,16 +110,16 @@ class UserBasicInfo extends React.Component {
     this.setIsButtonLoading(true)
 
     UserBasicInfoValidator.validateAll(this.state)
-      .then(result => {
+      .then((result) => {
         this.setState({
-          errors: defaultErrors
+          errors: defaultErrors,
         })
         const formData = this.createFormData()
         this.submitForm(formData)
       })
-      .catch(errors => {
+      .catch((errors) => {
         this.setState({
-          errors: errors
+          errors: errors,
         })
         this.setIsButtonLoading(false)
       })
@@ -117,25 +132,25 @@ class UserBasicInfo extends React.Component {
       url: submitPath,
       responseType: "json",
       headers: {
-        Accept: "application/json"
+        Accept: "application/json",
       },
-      data: formData
+      data: formData,
     })
-      .then(response => {
+      .then((response) => {
         if (response.status === 201) {
           window.location.href = response.headers.location
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response.status === 400) {
-          this.setState(state => {
+          this.setState((state) => {
             let error_messages = error.response.data.messages
             let errors = defaultErrors
             for (const [k, v] of Object.entries(error_messages)) {
               errors[k] = v
             }
             return {
-              errors
+              errors,
             }
           })
         }
@@ -171,7 +186,9 @@ class UserBasicInfo extends React.Component {
       isButtonLoading,
       roll,
       expertise,
-      skills
+      field,
+      subfield,
+      skills,
     } = this.state
     return (
       <form
@@ -179,8 +196,8 @@ class UserBasicInfo extends React.Component {
         onSubmit={this.handleSubmit}
         noValidate
       >
+        {" "}
         <h3>Roll</h3>
-
         <div className="d-flex flex-column mt-2">
           <ToggleButtonGroup
             className="button--toggle"
@@ -205,7 +222,6 @@ class UserBasicInfo extends React.Component {
             </ToggleButton>
           </ToggleButtonGroup>
         </div>
-
         <div className="mt-3">
           <h4>Faculty</h4>
           <div className="d-flex flex-column mt-3">
@@ -216,7 +232,7 @@ class UserBasicInfo extends React.Component {
                 value={faculty}
                 onChange={this.handleChange}
               >
-                {faculties.map(fac =>
+                {faculties.map((fac) =>
                   fac.departments.map((dep, id) => (
                     <MenuItem key={id} value={dep}>
                       {dep}
@@ -242,10 +258,9 @@ class UserBasicInfo extends React.Component {
             </FormControl>
           </div>
         </div>
-
         <div className="form d-flex flex-column mt-3">
           <h4>Expertise</h4>
-          <TagInput
+          {/* <TagInput
             className="mt-3"
             value={expertise}
             onChange={this.handleExpertiseClear}
@@ -253,8 +268,80 @@ class UserBasicInfo extends React.Component {
             placeholder="Type something and press enter..."
             errors={errors.expertise}
             id="expertise"
-          />
+            styles={tagStyles}
+          /> */}
+
+          <div className="d-flex flex-column mt-3">
+            <FormControl variant="outlined">
+              <InputLabel>
+                {expertise ? "" : "Select your expertise"}
+              </InputLabel>
+              <Select
+                name="expertise"
+                value={expertise}
+                onChange={this.handleChange}
+              >
+                {fields.map((item, index) => (
+                  <MenuItem key={index} value={item.Division}>
+                    {item.Division}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
         </div>
+        {expertise ? (
+          <div className="form d-flex flex-column mt-3">
+            <h4>Field</h4>
+
+            <div className="d-flex flex-column mt-3">
+              <FormControl variant="outlined">
+                <InputLabel>{field ? "" : "Select your expertise"}</InputLabel>
+                <Select name="field" value={field} onChange={this.handleChange}>
+                  {fields
+                    .find((f) => f.Division === expertise)
+                    .Groups.map((item, index) => (
+                      <MenuItem key={index} value={item.Group}>
+                        {item.Group}
+                      </MenuItem>
+                    ))}
+                </Select>
+              </FormControl>
+            </div>
+          </div>
+        ) : (
+          <div />
+        )}
+        {field ? (
+          <div className="form d-flex flex-column mt-3">
+            <h4>Subfield</h4>
+            {console.log("field ", field)}
+            <div className="d-flex flex-column mt-3">
+              <FormControl variant="outlined">
+                <InputLabel>
+                  {subfield ? "" : "Select your expertise"}
+                </InputLabel>
+                <Select
+                  name="subfield"
+                  value={subfield}
+                  onChange={this.handleChange}
+                >
+                  {fields
+                    .find((f) => f.Division === expertise)
+                    .Groups.find((g) => g.Group === field)
+                    .Fields.map((item, index) => (
+                      <MenuItem key={index} value={item}>
+                        {item}
+                        {console.log("subfield ", item)}
+                      </MenuItem>
+                    ))}
+                </Select>
+              </FormControl>
+            </div>
+          </div>
+        ) : (
+          <div />
+        )}
         <div className="form d-flex flex-column mt-3 mb-3">
           <h4>Skills</h4>
           <TagInput
@@ -265,10 +352,9 @@ class UserBasicInfo extends React.Component {
             placeholder="Type something and press enter..."
             errors={errors.skills}
             id="skills"
-            styles={{ backgroundColor: "red" }}
+            styles={tagStyles}
           />
         </div>
-
         <Button
           type="submit"
           name="submitButton"
@@ -284,7 +370,7 @@ class UserBasicInfo extends React.Component {
 
 UserBasicInfo.propTypes = {
   authenticityToken: PropTypes.string,
-  submitPath: PropTypes.string
+  submitPath: PropTypes.string,
 }
 
 export default UserBasicInfo

@@ -1,7 +1,17 @@
 <h1>Users#edit</h1>
 
 <%= form_with(model: @user, local: true) do |f| %>
-  <%= @user.errors.messages unless @user.errors.messages.blank? %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div>
     <%= f.label :first_name %>
@@ -18,11 +28,7 @@
     <%= f.file_field :profile_image %>
   </div>
 
-  <% if @user.profile_image.attached? %>
-    <%= image_tag @user.profile_image.variant(resize_to_limit: [150, 150]) %>
-  <% end %>
-
-  <div class="actions">
+  <button class="button">
     <%= f.submit "Update" %>
-  </div>
+  </button>
 <% end %>

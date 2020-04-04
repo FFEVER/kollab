@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     sessions: 'users/sessions'
   }
-  resources :users, only: %i[show] do
+  resources :users, only: %i[show edit update] do
     resources :projects, only: :index, controller: 'users/projects'
     member do
       post 'follow'

@@ -13,7 +13,11 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
+    if @user.update(user_params)
+      redirect_to @user
+    else
+      render :edit
+    end
   end
 
   def follow
@@ -31,6 +35,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :profile_image)
+    params.require(:user).permit(:first_name, :last_name, :profile_image)
   end
 end

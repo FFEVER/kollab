@@ -1,6 +1,7 @@
 <h1>Users#edit</h1>
 
-<%= form_with(model: @user) do |f| %>
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= @user.errors.messages unless @user.errors.messages.blank? %>
 
   <div>
     <%= f.label :first_name %>

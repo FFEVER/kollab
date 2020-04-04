@@ -29,7 +29,6 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true, length: { within: 1..50 }
   validates :last_name, presence: true, length: { within: 1..50 }
-  validate :acceptable_image
 
   def following?(user)
     followings.include?(user)
@@ -49,18 +48,5 @@ class User < ApplicationRecord
 
   def followings=(user)
     followings << user
-  end
-
-  def acceptable_image
-    return unless profile_image.attached?
-
-    unless profile_image.byte_size < 3.megabyte
-      errors.add(:profile_image, 'is too big (maximum 3MB)')
-    end
-
-    acceptable_types = ['image/jpeg', 'image/png']
-    unless acceptable_types.include?(profile_image.content_type)
-      errors.add(:profile_image, 'must be PNG or JPEG')
-    end
   end
 end

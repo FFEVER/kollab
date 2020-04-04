@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :set_user, except: %i[edit update]
-  before_action :authenticate_user!, except: %i[show]
+  before_action :custom_authenticate_user!, except: %i[show]
 
   def show; end
 

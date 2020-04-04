@@ -33,7 +33,7 @@
               class: "button button--small button--green", remote: true %>
           <% end %>
         <% else %>
-          <button class="button button--small button--green">Edit profile</button>
+          <%= link_to "Edit profile", edit_user_path(current_user), class: "button button--small button--green" %>
         <% end %>
       </div>
     </header>

@@ -8,8 +8,8 @@
   </div>
 
   <div>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
   </div>
 
   <div>
@@ -18,7 +18,7 @@
   </div>
 
   <% if @user.profile_image.attached? %>
-    <%= image_tag @user.profile_image %>
+    <%= image_tag @user.profile_image.variant(resize_to_limit: [150, 150]) %>
   <% end %>
 
   <div class="actions">

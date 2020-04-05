@@ -66,9 +66,14 @@ class Navbar extends React.Component {
             Explore
           </a>
         </div>
+
         <div className="nav__links nav__links--right">
-          <a href={userPath} className="nav__link">
-            <button className="button button--md">My Profile</button>
+          <a href="#" className="nav__link nav__link--icon">
+            <i class="fas fa-search"></i>
+          </a>
+
+          <a href="#" className="nav__link nav__link--icon">
+            <i class="fas fa-bell"></i>
           </a>
 
           <div className="nav__dropdown" id="drop-menu">

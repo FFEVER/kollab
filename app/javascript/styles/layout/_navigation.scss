@@ -49,6 +49,14 @@
     height: 100%;
     margin: 0 $spacer-xs;
 
+    &--icon {
+      font-size: x-large;
+
+      margin-right: $spacer-s;
+
+      color: $kollab-primary;
+    }
+
     &--hover {
       &:hover {
         border-bottom: solid 3px $kollab-primary;
@@ -60,6 +68,7 @@
     position: relative;
 
     height: 100%;
+    margin: 0 $spacer-xs;
 
     &__drop-button {
       font-size: x-large;

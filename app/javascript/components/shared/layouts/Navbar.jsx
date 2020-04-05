@@ -6,7 +6,7 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isMobile: true
+      isMobile: true,
     }
   }
 
@@ -24,7 +24,7 @@ class Navbar extends React.Component {
         </div>
         <div className="nav__links--right">
           <a href={userPath} className="nav__link nav__link">
-            <button className="button button--small">My Profile</button>
+            <button className="button button--md">My Profile</button>
           </a>
         </div>
       </>
@@ -36,14 +36,12 @@ class Navbar extends React.Component {
     return (
       <div className="nav__links nav__links--right">
         <a href={newUserSessionPath} className="nav__link">
-          <button className="button button--small-fixed button--outline-primary">
+          <button className="button button--md button--outline-primary">
             Login
           </button>
         </a>
         <a href={newUserRegistrationPath} className="nav__link">
-          <button className="button button--small-fixed button--primary">
-            Signup
-          </button>
+          <button className="button button--md button--primary">Signup</button>
         </a>
       </div>
     )
@@ -56,7 +54,7 @@ class Navbar extends React.Component {
       projectsPath,
       newUserSessionPath,
       newUserRegistrationPath,
-      userSignedIn
+      userSignedIn,
     } = this.props
     return (
       <nav className="nav">
@@ -71,7 +69,7 @@ class Navbar extends React.Component {
             <span>Explore</span>
           </a>
         </div>
-        {userSignedIn ? this.signedInLinks() : this.nonSignedInLinks()}
+        {!userSignedIn ? this.signedInLinks() : this.nonSignedInLinks()}
       </nav>
     )
   }
@@ -85,6 +83,6 @@ Navbar.propTypes = {
   newUserSessionPath: PropTypes.string,
   userPath: PropTypes.string,
   userProjectsPath: PropTypes.string,
-  projectsPath: PropTypes.string
+  projectsPath: PropTypes.string,
 }
 export default Navbar

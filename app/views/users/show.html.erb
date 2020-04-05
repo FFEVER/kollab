@@ -12,26 +12,32 @@ button button--md
 <button class="button button--lg">Button lg</button>
 button button--lg
 <br>
-<button class="button button--lg button--gradient-primary">Button lg</button>
+<button class="button button--lg button--gradient-primary">Button lg gradient</button>
 button button--lg button--gradient-primary
 <br>
 <button class="button button--md button--star">100</button>
 button button--md button--star
 <br>
-<button class="button button--md button--starring">30</button>
-button button--md button--starring
+<button class="button button--md button--unstar">30</button>
+button button--md button--unstar
 <br>
 <button class="button button--md button--follow--md">Follow</button>
 button button--md button--follow--md
 <br>
-<button class="button button--md button--following--md">Following</button>
-button button--md button--following--md
+<button class="button button--md button--unfollow--md">Following</button>
+button button--md button--unfollow--md
 <br>
 <button class="button button--sm button--follow--sm">Follow</button>
 button button--sm button--follow--sm
 <br>
-<button class="button button--sm button--following--sm">Following</button>
-button button--sm button--following--sm
+<button class="button button--sm button--unfollow--sm">Following</button>
+button button--sm button--unfollow--sm
+<br>
+<button class="button button--md button--outline-primary">Login</button>
+button button--md button--outline-primary
+<br>
+<button class="button button--md button--primary">Signup</button>
+button button--md button--primary
 <br>
 <br>
 <div class="profile">
@@ -64,13 +70,13 @@ button button--sm button--following--sm
         <% if current_user != @user %>
           <% if current_user.following?(@user) %>
             <%= link_to "Following", unfollow_user_path, method: :post,
-              class: "button button--small button--gray", remote: true%>
+              class: "button button--md button--gray", remote: true%>
           <% else %>
             <%= link_to "Follow", follow_user_path, method: :post,
-              class: "button button--small button--primary", remote: true%>
+              class: "button button--md button--primary", remote: true%>
           <% end %>
         <% else %>
-          <button class="button button--small button--primary">Edit profile</button>
+          <button class="button button--md button--primary">Edit profile</button>
         <% end %>
       </div>
     </header>

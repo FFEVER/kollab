@@ -19,17 +19,17 @@
     <div class="list__item__col project__item--actions">
       <%# TODO: [Anyone] Add status%>
       <% if %w[Owned Participated].include?(@page) %>
-        <button class="button button--status button--very-small button--status--orange">
+        <button class="button button--status button--sm button--status--orange">
           In progress
         </button>
       <% else %>
         <% if project.followed_by?(current_user) %>
           <%= button_to "Following", unfollow_project_path(project), method: :post,
-            class: "button button--very-small button--outline-gray-light",
+            class: "button button--sm button--unfollow--sm",
             remote: true %>
         <% else %>
           <%= button_to "Follow", follow_project_path(project), method: :post,
-            class: "button button--very-small button--primary",
+            class: "button button--sm button--follow--sm",
             remote: true %>
         <% end %>
       <% end %>

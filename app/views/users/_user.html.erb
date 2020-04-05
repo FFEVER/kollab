@@ -23,11 +23,11 @@
     <% if user != current_user %>
       <% if user.followed_by?(current_user) %>
         <%= button_to "Following", unfollow_user_path(user), method: :post,
-            class: "button button--very-small button--outline-gray-light",
+            class: "button button--sm button--unfollow--sm",
             remote: true %>
       <% else %>
         <%= button_to "Follow", follow_user_path(user), method: :post,
-            class: "button button--very-small button--primary",
+            class: "button button--sm button--follow--sm",
             remote: true %>
       <% end %>
     <% end %>

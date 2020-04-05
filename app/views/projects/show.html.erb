@@ -8,24 +8,22 @@
       <section class="section section__actions">
         <% if @project.starred_by?(current_user) %>
           <%= button_to unstar_project_path, method: :post,
-            class: "button button--small button--primary", remote: true do %>
-            <span class="icon icon--star"></span>
+            class: "button button--md button--unstar", remote: true do %>
             <%= @project.stars.count %>
           <% end %>
         <% else %>
           <%= button_to star_project_path, method: :post,
-            class: "button button--small button--outline-gray-light", remote: true do %>
-            <span class="icon icon--star"></span>
+            class: "button button--md button--star", remote: true do %>
             <%= @project.stars.count %>
           <% end %>
         <% end %>
 
         <% if @project.followed_by?(current_user) %>
           <%= button_to "Following", unfollow_project_path, method: :post,
-            class: "button button--small button--outline-gray-light", remote: true%>
+            class: "button button--md button--unfollow--md", remote: true%>
         <% else %>
           <%= button_to "Follow", follow_project_path, method: :post,
-            class: "button button--small button--primary", remote: true %>
+            class: "button button--md button--follow--md", remote: true %>
         <% end %>
       </section>
     </div>
@@ -71,7 +69,7 @@
     <h2>Tags</h2>
     <div>
       <% @project.tag_list.each do |tag|%>
-        <button class="button button--small button--tag">
+        <button class="button button--md button--tag">
           <%= "##{tag}" %>
         </button>
       <% end %>

@@ -4,6 +4,7 @@
 
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
 
   width: 100%;
   height: $nav-height;
@@ -51,6 +52,38 @@
     &--hover {
       &:hover {
         border-bottom: solid 3px $kollab-primary;
+      }
+    }
+  }
+
+  &__dropdown {
+    position: relative;
+
+    height: 100%;
+
+    &__drop-button {
+      font-size: x-large;
+
+      width: 1.5rem;
+      height: 100%;
+
+      color: $kollab-primary;
+      background-color: transparent;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &__drop-item {
+      font-family: 'Muli';
+
+      color: $kollab-gray;
+      &:hover {
+        background-color: rgba(84, 189, 194, 0.12);
+      }
+      i {
+        margin-right: $spacer-s;
       }
     }
   }

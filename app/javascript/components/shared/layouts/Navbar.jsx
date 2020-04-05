@@ -9,9 +9,25 @@ class Navbar extends React.Component {
     this.state = {
       isMobile: true,
       logoutError: false,
+      dropMenuOpen: false,
     }
 
     this.logout = this.logout.bind(this)
+    this.handleDropClose = this.handleDropClose.bind(this)
+    this.handleDropOpen = this.handleDropOpen.bind(this)
+  }
+
+  componentDidMount() {
+    $("#drop-menu").on("show.bs.dropdown", this.handleDropOpen)
+    $("#drop-menu").on("hide.bs.dropdown", this.handleDropClose)
+  }
+
+  handleDropOpen() {
+    this.setState({ dropMenuOpen: true })
+  }
+
+  handleDropClose() {
+    this.setState({ dropMenuOpen: false })
   }
 
   logout() {
@@ -39,6 +55,7 @@ class Navbar extends React.Component {
 
   signedInLinks() {
     let { userProjectsPath, projectsPath, userPath } = this.props
+    let { dropMenuOpen } = this.state
     return (
       <>
         <div className="nav__links">
@@ -53,9 +70,55 @@ class Navbar extends React.Component {
           <a href={userPath} className="nav__link">
             <button className="button button--md">My Profile</button>
           </a>
-          <a onClick={this.logout} className="nav__link">
-            <button className="button button--md">Logout</button>
-          </a>
+
+          <div className="nav__dropdown" id="drop-menu">
+            <button
+              className="nav__dropdown__drop-button"
+              id="drop-button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {dropMenuOpen ? (
+                <i className="fas fa-times"></i>
+              ) : (
+                <i className="fas fa-bars"></i>
+              )}
+            </button>
+
+            <div
+              className="dropdown-menu dropdown-menu-right"
+              aria-labelledby="drop-button"
+            >
+              <a
+                href={userProjectsPath}
+                className="dropdown-item nav__dropdown__drop-item"
+              >
+                <i className="fas fa-th-large"></i>
+                Projects
+              </a>
+              <a href="#" className="dropdown-item nav__dropdown__drop-item">
+                <i className="far fa-envelope"></i>
+                Messages
+              </a>
+              <a
+                href={userPath}
+                className="dropdown-item nav__dropdown__drop-item"
+              >
+                <i className="fas fa-user"></i>
+                My Profile
+              </a>
+              <div className="dropdown-divider"></div>
+              <a
+                href="#"
+                className="dropdown-item nav__dropdown__drop-item"
+                onClick={this.logout}
+              >
+                <i className="fas fa-sign-out-alt"></i>
+                Log out
+              </a>
+            </div>
+          </div>
         </div>
       </>
     )
@@ -83,11 +146,11 @@ class Navbar extends React.Component {
     return (
       <>
         <div
-          class="alert alert-danger alert-dismissible fade"
+          className="alert alert-danger alert-dismissible fade"
           role="alert"
           hidden={!logoutError}
         >
-          <button type="button" class="close" data-dismiss="alert">
+          <button type="button" className="close" data-dismiss="alert">
             &times;
           </button>
           Cannot logout. Something went wrong.

@@ -59,16 +59,22 @@ class Navbar extends React.Component {
     return (
       <>
         <div className="nav__links">
-          <a href={userProjectsPath} className="nav__link nav__link--hover">
+          <a
+            href={userProjectsPath}
+            className="nav__link nav__link--hover nav__link--desktop"
+          >
             Projects
           </a>
-          <a href={projectsPath} className="nav__link nav__link--hover">
+          <a
+            href={projectsPath}
+            className="nav__link nav__link--hover nav__link--desktop"
+          >
             Explore
           </a>
         </div>
 
         <div className="nav__links nav__links--right">
-          <a href="#" className="nav__link nav__link--icon">
+          <a href="#" className="nav__link nav__link--icon nav__link--mobile">
             <i class="fas fa-search"></i>
           </a>
 
@@ -100,7 +106,7 @@ class Navbar extends React.Component {
                 className="dropdown-item nav__dropdown__drop-item"
               >
                 <i className="fas fa-th-large"></i>
-                Projects
+                My Projects
               </a>
               <a href="#" className="dropdown-item nav__dropdown__drop-item">
                 <i className="far fa-envelope"></i>
@@ -120,7 +126,7 @@ class Navbar extends React.Component {
                 onClick={this.logout}
               >
                 <i className="fas fa-sign-out-alt"></i>
-                Log out
+                Log Out
               </a>
             </div>
           </div>

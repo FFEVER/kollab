@@ -70,10 +70,10 @@ button button--md button--primary
         <% if current_user != @user %>
           <% if current_user.following?(@user) %>
             <%= link_to "Following", unfollow_user_path, method: :post,
-              class: "button button--md button--gray", remote: true%>
+              class: "button button--md button--unfollow--md", remote: true%>
           <% else %>
             <%= link_to "Follow", follow_user_path, method: :post,
-              class: "button button--md button--primary", remote: true%>
+              class: "button button--md button--follow--md", remote: true%>
           <% end %>
         <% else %>
           <button class="button button--md button--primary">Edit profile</button>

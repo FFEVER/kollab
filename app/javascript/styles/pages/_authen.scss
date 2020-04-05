@@ -16,14 +16,8 @@
   }
 }
 
-@media screen and (max-width: 429px) {
-  .authen {
-    margin: 40px;
-  }
-}
-
 /* For Tablets */
-@media screen and (min-width: 430px) {
+@media screen and (min-width: $kollab-width-tablet) {
   .authen {
     width: 600px;
     margin: 100px auto 500px;

@@ -11,6 +11,13 @@
       min-height: 50px;
     }
 
+    &--medium {
+      width: 70px;
+      min-width: 70px;
+      height: 70px;
+      min-height: 70px;
+    }
+
     &--with-border {
       border: solid 2px black;
     }

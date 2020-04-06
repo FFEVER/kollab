@@ -5,9 +5,11 @@ import axios from "axios"
 import {
   InputLabel,
   FormControl,
-  FormHelperText,
+  FormControlLabel,
   Select,
   MenuItem,
+  RadioGroup,
+  Radio,
 } from "@material-ui/core"
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab"
 import { TagInput, tagsToArray, defaultStyles } from "../shared/form/TagInput"
@@ -31,7 +33,7 @@ const tagStyles = {
     minWidth: "100%",
     height: "56px",
     borderColor: "#c2c2c2",
-    boxShadow: state.isFocused ? "0 0 3px #ce7171" : "",
+    boxShadow: state.isFocused ? "0 0 3px #54bdc2" : "",
     cursor: "text",
     "&:hover": {
       borderColor: "#c2c2c2",
@@ -53,6 +55,7 @@ class UserBasicInfo extends React.Component {
       field: "",
       subfield: "",
       skills: [],
+      checkedExpertise: { check: false, value: "" },
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -61,8 +64,6 @@ class UserBasicInfo extends React.Component {
     this.submitForm = this.submitForm.bind(this)
     this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
     this.handleAlignment = this.handleAlignment.bind(this)
-    this.handleExpertiseChange = this.handleExpertiseChange.bind(this)
-    this.handleExpertiseClear = this.handleExpertiseClear.bind(this)
     this.handleSkillsChange = this.handleSkillsChange.bind(this)
     this.handleSkillsClear = this.handleSkillsClear.bind(this)
   }
@@ -76,19 +77,6 @@ class UserBasicInfo extends React.Component {
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
-    })
-  }
-
-  handleExpertiseChange(value) {
-    this.setState({
-      expertise: [...this.state.expertise, ...value],
-    })
-  }
-
-  handleExpertiseClear(value) {
-    // Handle clear or delete expertise
-    this.setState({
-      expertise: value,
     })
   }
 
@@ -260,88 +248,77 @@ class UserBasicInfo extends React.Component {
         </div>
         <div className="form d-flex flex-column mt-3">
           <h4>Expertise</h4>
-          {/* <TagInput
-            className="mt-3"
-            value={expertise}
-            onChange={this.handleExpertiseClear}
-            onKeyDown={this.handleExpertiseChange}
-            placeholder="Type something and press enter..."
-            errors={errors.expertise}
-            id="expertise"
-            styles={tagStyles}
-          /> */}
-
-          <div className="d-flex flex-column mt-3">
-            <FormControl variant="outlined">
-              <InputLabel>
-                {expertise ? "" : "Select your expertise"}
-              </InputLabel>
-              <Select
-                name="expertise"
-                value={expertise}
-                onChange={this.handleChange}
-              >
-                {fields.map((item, index) => (
-                  <MenuItem key={index} value={item.Division}>
-                    {item.Division}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+          <Button
+            name="expertise"
+            type="button"
+            className="button--textfield col-xs-2 mt-3 text-left"
+            data-toggle="modal"
+            data-target="#expertiseModal"
+            style={{ color: expertise ? "black" : "#808080" }}
+          >
+            {expertise ? expertise : "Select your expertise"}
+          </Button>
+          <div
+            name="expertise"
+            className="modal fade"
+            id="expertiseModal"
+            tabIndex="-1"
+            role="dialog"
+            aria-labelledby="expertiseModalLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="expertiseModalLabel">
+                    Select your Expertise
+                  </h5>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  {fields.map((f, index) => (
+                    <RadioGroup
+                      key={index}
+                      aria-label="expertise"
+                      name="expertise"
+                      value={expertise}
+                      onChange={this.handleChange}
+                    >
+                      <FormControlLabel
+                        value={f.Division}
+                        control={<Radio />}
+                        label={f.Division}
+                      />
+                    </RadioGroup>
+                  ))}
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    data-dismiss="modal"
+                  >
+                    Done
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        {expertise ? (
-          <div className="form d-flex flex-column mt-3">
-            <h4>Field</h4>
-
-            <div className="d-flex flex-column mt-3">
-              <FormControl variant="outlined">
-                <InputLabel>{field ? "" : "Select your expertise"}</InputLabel>
-                <Select name="field" value={field} onChange={this.handleChange}>
-                  {fields
-                    .find((f) => f.Division === expertise)
-                    .Groups.map((item, index) => (
-                      <MenuItem key={index} value={item.Group}>
-                        {item.Group}
-                      </MenuItem>
-                    ))}
-                </Select>
-              </FormControl>
-            </div>
-          </div>
-        ) : (
-          <div />
-        )}
-        {field ? (
-          <div className="form d-flex flex-column mt-3">
-            <h4>Subfield</h4>
-            {console.log("field ", field)}
-            <div className="d-flex flex-column mt-3">
-              <FormControl variant="outlined">
-                <InputLabel>
-                  {subfield ? "" : "Select your expertise"}
-                </InputLabel>
-                <Select
-                  name="subfield"
-                  value={subfield}
-                  onChange={this.handleChange}
-                >
-                  {fields
-                    .find((f) => f.Division === expertise)
-                    .Groups.find((g) => g.Group === field)
-                    .Fields.map((item, index) => (
-                      <MenuItem key={index} value={item}>
-                        {item}
-                        {console.log("subfield ", item)}
-                      </MenuItem>
-                    ))}
-                </Select>
-              </FormControl>
-            </div>
-          </div>
-        ) : (
-          <div />
-        )}
         <div className="form d-flex flex-column mt-3 mb-3">
           <h4>Skills</h4>
           <TagInput

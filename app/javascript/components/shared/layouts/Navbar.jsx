@@ -181,10 +181,12 @@ class Navbar extends React.Component {
         </div>
 
         <nav className="nav">
-          <a href="/" className="nav__brand">
-            <img src={KollabLogo} alt="kollab" className="nav__brand__logo" />
-          </a>
-          {userSignedIn ? this.signedInLinks() : this.nonSignedInLinks()}
+          <div className="wrapper__nav-content">
+            <a href="/" className="nav__brand">
+              <img src={KollabLogo} alt="kollab" className="nav__brand__logo" />
+            </a>
+            {userSignedIn ? this.signedInLinks() : this.nonSignedInLinks()}
+          </div>
         </nav>
       </>
     )

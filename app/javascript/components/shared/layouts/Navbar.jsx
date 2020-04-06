@@ -8,12 +8,11 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isMobile: true,
       logoutError: false,
       dropMenuOpen: false,
     }
 
-    this.logout = this.logout.bind(this)
+    this.sign_out = this.sign_out.bind(this)
     this.handleDropClose = this.handleDropClose.bind(this)
     this.handleDropOpen = this.handleDropOpen.bind(this)
   }
@@ -31,7 +30,7 @@ class Navbar extends React.Component {
     this.setState({ dropMenuOpen: false })
   }
 
-  logout() {
+  sign_out() {
     event.preventDefault()
 
     let { destroyUserSessionPath, rootPath, authenticityToken } = this.props
@@ -154,7 +153,7 @@ class Navbar extends React.Component {
               <a
                 href="#"
                 className="dropdown-item nav__dropdown__drop-item"
-                onClick={this.logout}
+                onClick={this.sign_out}
               >
                 <i className="fas fa-sign-out-alt"></i>
                 Sign Out
@@ -195,7 +194,7 @@ class Navbar extends React.Component {
           <button type="button" className="close" data-dismiss="alert">
             &times;
           </button>
-          Cannot logout. Something went wrong.
+          Cannot sign out. Something went wrong.
         </div>
 
         <nav className="nav">
@@ -213,7 +212,6 @@ class Navbar extends React.Component {
 
 Navbar.propTypes = {
   userSignedIn: PropTypes.bool,
-  currentUserPath: PropTypes.string,
   destroyUserSessionPath: PropTypes.string,
   newUserRegistrationPath: PropTypes.string,
   newUserSessionPath: PropTypes.string,

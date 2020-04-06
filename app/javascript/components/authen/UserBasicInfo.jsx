@@ -11,14 +11,13 @@ import {
   RadioGroup,
   Radio,
 } from "@material-ui/core"
+import ChevronRightIcon from "@material-ui/icons/ChevronRight"
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab"
 import { TagInput, tagsToArray, defaultStyles } from "../shared/form/TagInput"
+import Button from "../shared/form/Button"
 import { UserBasicInfoValidator, defaultErrors } from "./UserBasicInfoValidator"
 import faculties from "../../../assets/utils/faculties"
 import fields from "../../../assets/utils/fields"
-import CreatableSelect from "react-select/creatable"
-
-import Button from "../shared/form/Button"
 
 const DATA_PREFIX = "user"
 
@@ -290,30 +289,26 @@ class UserBasicInfo extends React.Component {
                       name="expertise"
                       value={expertise}
                       onChange={this.handleChange}
+                      className="d-flex flex-row flex-nowrap justify-content-between"
                     >
                       <FormControlLabel
                         value={f.Division}
-                        control={<Radio />}
+                        control={<Radio color="#54bdc2" />}
                         label={f.Division}
                       />
+                      <ChevronRightIcon />
                     </RadioGroup>
                   ))}
                 </div>
                 <div className="modal-footer">
-                  <button
+                  <Button
+                    name="confirmExpertise"
                     type="button"
-                    className="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
+                    className="button--gradient-green button--fullwidth"
                     data-dismiss="modal"
                   >
                     Done
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

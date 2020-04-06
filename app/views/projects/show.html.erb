@@ -81,7 +81,7 @@
 
     <% @members.each do |member| %>
       <%= button_to member.user, class: "member", method: :get do %>
-        <%= image_pack_tag 'person.jpg',
+        <%= image_tag member.user.profile_image,
             class: "image__profile image__profile--small image__profile--with-border" %>
 
         <div class="member__details">

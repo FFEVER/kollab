@@ -55,21 +55,32 @@ class Navbar extends React.Component {
   }
 
   signedInLinks = () => {
-    let { userProjectsPath, projectsPath, userPath, userFullName } = this.props
+    let {
+      userProjectsPath,
+      projectsPath,
+      userPath,
+      userFullName,
+      onMyProjectsPage,
+      onExplorePage,
+    } = this.props
     let { dropMenuOpen } = this.state
     return (
       <>
         <div className="nav__items">
           <a
             href={userProjectsPath}
-            className="nav__item nav__item--button nav__item--button--active nav__item--desktop"
+            className={`nav__item nav__item--button nav__item--desktop ${
+              onMyProjectsPage ? "nav__item--button--active" : ""
+            }`}
           >
             <i className="fas fa-th-large"></i>
             My Projects
           </a>
           <a
             href={projectsPath}
-            className="nav__item nav__item--button nav__item--desktop"
+            className={`nav__item nav__item--button nav__item--desktop ${
+              onExplorePage ? "nav__item--button--active" : ""
+            }`}
           >
             <i class="fas fa-search"></i>
             Explore
@@ -204,6 +215,8 @@ Navbar.propTypes = {
   projectsPath: PropTypes.string,
   rootPath: PropTypes.string,
   userFullName: PropTypes.string,
+  onMyProjectsPage: PropTypes.bool,
+  onExplorePage: PropTypes.bool,
   authenticityToken: PropTypes.string,
 }
 export default Navbar

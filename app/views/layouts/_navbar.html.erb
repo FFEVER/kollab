@@ -7,6 +7,16 @@
   <% user_projects_path_props = new_user_session_path %>
 <% end %>
 
+<% on_my_projects_page = false %>
+<% if current_page?(user_projects_path(current_user)) %>
+  <% on_my_projects_page = true %>
+<% end %>
+
+<% on_explore_page = false %>
+<% if current_page?(projects_path) %>
+  <% on_explore_page = true %>
+<% end %>
+
 <%= react_component "shared/layouts/Navbar",
   {
     userSignedIn: user_signed_in?,
@@ -18,5 +28,7 @@
     projectsPath: projects_path,
     rootPath: root_path,
     userFullName: user_full_name,
+    onMyProjectsPage: on_my_projects_page,
+    onExplorePage: on_explore_page,
     authenticityToken: form_authenticity_token,
   } %>

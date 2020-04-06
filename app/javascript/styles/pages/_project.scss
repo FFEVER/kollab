@@ -27,27 +27,27 @@
 
     .section {
       width: 100%;
-      margin-bottom: $spacer-s;
+      margin-bottom: $spacer-l;
 
       &__header {
         display: flex;
 
         color: black;
-      }
 
-      &__actions {
-        display: flex;
+        &__title {
+          margin-bottom: $spacer;
+        }
+        &__actions {
+          display: flex;
 
-        margin-bottom: $spacer-xs;
+          margin-bottom: $spacer;
 
-        button {
-          font-weight: 700;
-
-          margin-right: $spacer-xs;
-
-          span {
-            margin-right: 3px;
+          button {
+            margin-right: $spacer-s;
           }
+        }
+        &__short-desc {
+          margin-bottom: $spacer-s;
         }
       }
 
@@ -84,7 +84,17 @@
           display: flex;
           align-items: center;
 
+          width: 100%;
           padding: 0 $spacer;
+
+          background-color: transparent;
+
+          &:hover {
+            cursor: pointer;
+            .member__name {
+              text-decoration: underline;
+            }
+          }
 
           &__details {
             font-weight: normal;
@@ -92,7 +102,7 @@
             font-stretch: normal;
             line-height: 1.36;
 
-            margin-left: $spacer;
+            margin-left: $spacer-s;
 
             letter-spacing: normal;
           }

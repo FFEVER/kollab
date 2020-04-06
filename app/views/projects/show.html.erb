@@ -1,11 +1,11 @@
 <div class="project project__view">
   <section class="section section__header">
     <div>
-      <section class="section">
+      <section class="section__header__title">
         <h1><%= @project.title %></h1>
       </section>
 
-      <section class="section section__actions">
+      <section class="section__header__actions">
         <% if @project.starred_by?(current_user) %>
           <%= button_to unstar_project_path, method: :post,
             class: "button button--md button--unstar", remote: true do %>
@@ -26,16 +26,16 @@
             class: "button button--md button--follow--md", remote: true %>
         <% end %>
       </section>
+
+      <section class="section__header__short-desc">
+        <p><%= @project.short_desc%></p>
+      </section>
     </div>
 
     <section class="section__follower">
       <span><%= @project.followers.count %></span>
       <p>Followers</p>
     </section>
-  </section>
-
-  <section class="section section__short-desc">
-    <p><%= @project.short_desc%></p>
   </section>
 
   <section class="section section__dates">
@@ -79,12 +79,10 @@
   <section class="section section__members">
     <h2>Members (<%= @project.members.count %>)</h2>
 
-    <div class="member">
-      <% @members.each do |member| %>
-        <%= link_to member.user do %>
-          <%= image_pack_tag 'person.jpg',
+    <% @members.each do |member| %>
+      <%= button_to member.user, class: "member", method: :get do %>
+        <%= image_pack_tag 'person.jpg',
             class: "image__profile image__profile--small image__profile--with-border" %>
-        <% end %>
 
         <div class="member__details">
           <%= link_to member.user, class: "member__name" do %>
@@ -96,9 +94,9 @@
           <p class="member__role">
             <%= member.role %>
           </p>
-        <% end %>
-      </div>
-    </div>
+        </div>
+      <% end %>
+    <% end %>
   </section>
 
   <section class="section section__posts">

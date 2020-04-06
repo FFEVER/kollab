@@ -1,6 +1,7 @@
 <% if current_user %>
   <% user_path_props = user_path(current_user)%>
   <% user_projects_path_props = user_projects_path(current_user) %>
+  <% user_full_name = current_user.full_name%>
 <% else %>
   <% user_path_props = new_user_session_path%>
   <% user_projects_path_props = new_user_session_path %>
@@ -16,5 +17,6 @@
     userProjectsPath: user_projects_path_props,
     projectsPath: projects_path,
     rootPath: root_path,
-    authenticityToken: form_authenticity_token
+    authenticityToken: form_authenticity_token,
+    userFullName: user_full_name
   } %>

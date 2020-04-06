@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import KollabLogo from "images/kollab-blue.png"
+import PersonImg from "images/person.jpg"
 import axios from "axios"
 
 class Navbar extends React.Component {
@@ -53,32 +54,34 @@ class Navbar extends React.Component {
       })
   }
 
-  signedInLinks() {
-    let { userProjectsPath, projectsPath, userPath } = this.props
+  signedInLinks = () => {
+    let { userProjectsPath, projectsPath, userPath, userFullName } = this.props
     let { dropMenuOpen } = this.state
     return (
       <>
-        <div className="nav__links">
+        <div className="nav__items">
           <a
             href={userProjectsPath}
-            className="nav__link nav__link--hover nav__link--desktop"
+            className="nav__item nav__item--button nav__item--button--active nav__item--desktop"
           >
-            Projects
+            <i className="fas fa-th-large"></i>
+            My Projects
           </a>
           <a
             href={projectsPath}
-            className="nav__link nav__link--hover nav__link--desktop"
+            className="nav__item nav__item--button nav__item--desktop"
           >
+            <i class="fas fa-search"></i>
             Explore
           </a>
         </div>
 
-        <div className="nav__links nav__links--right">
-          <a href="#" className="nav__link nav__link--icon nav__link--mobile">
+        <div className="nav__items nav__items--right">
+          <a href="#" className="nav__item nav__item--icon nav__item--mobile">
             <i class="fas fa-search"></i>
           </a>
 
-          <a href="#" className="nav__link nav__link--icon">
+          <a href="#" className="nav__item nav__item--icon">
             <i class="fas fa-bell"></i>
           </a>
 
@@ -90,11 +93,21 @@ class Navbar extends React.Component {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              {dropMenuOpen ? (
-                <i className="fas fa-times"></i>
-              ) : (
-                <i className="fas fa-bars"></i>
-              )}
+              <div class="nav__item nav__profile nav__item--desktop">
+                {userFullName}
+                <img
+                  src={PersonImg}
+                  className="nav__profile-img image__profile image__profile--small"
+                ></img>
+              </div>
+
+              <div className="nav__item nav__item--mobile">
+                {dropMenuOpen ? (
+                  <i className="fas fa-times"></i>
+                ) : (
+                  <i className="fas fa-bars"></i>
+                )}
+              </div>
             </button>
 
             <div
@@ -103,7 +116,7 @@ class Navbar extends React.Component {
             >
               <a
                 href={userProjectsPath}
-                className="dropdown-item nav__dropdown__drop-item"
+                className="dropdown-item nav__dropdown__drop-item nav__item--mobile"
               >
                 <i className="fas fa-th-large"></i>
                 My Projects
@@ -126,7 +139,7 @@ class Navbar extends React.Component {
                 onClick={this.logout}
               >
                 <i className="fas fa-sign-out-alt"></i>
-                Log Out
+                Sign Out
               </a>
             </div>
           </div>
@@ -138,13 +151,13 @@ class Navbar extends React.Component {
   nonSignedInLinks = () => {
     let { newUserSessionPath, newUserRegistrationPath } = this.props
     return (
-      <div className="nav__links nav__links--right">
-        <a href={newUserSessionPath} className="nav__link">
+      <div className="nav__items nav__items--right">
+        <a href={newUserSessionPath} className="nav__item">
           <button className="button button--md button--outline-primary">
             Login
           </button>
         </a>
-        <a href={newUserRegistrationPath} className="nav__link">
+        <a href={newUserRegistrationPath} className="nav__item">
           <button className="button button--md button--primary">Signup</button>
         </a>
       </div>
@@ -171,14 +184,6 @@ class Navbar extends React.Component {
           <a href="/" className="nav__brand">
             <img src={KollabLogo} alt="kollab" className="nav__brand__logo" />
           </a>
-          <div className="nav__links nav__links--desktop">
-            <a href="#" className="nav__link">
-              <span>Feed</span>
-            </a>
-            <a href={projectsPath} className="nav__link">
-              <span>Explore</span>
-            </a>
-          </div>
           {userSignedIn ? this.signedInLinks() : this.nonSignedInLinks()}
         </nav>
       </>
@@ -196,6 +201,7 @@ Navbar.propTypes = {
   userProjectsPath: PropTypes.string,
   projectsPath: PropTypes.string,
   rootPath: PropTypes.string,
+  userFullName: PropTypes.string,
   authenticityToken: PropTypes.string,
 }
 export default Navbar

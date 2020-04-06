@@ -1,4 +1,7 @@
 .nav {
+  font-family: 'Muli';
+  font-weight: bold;
+
   position: sticky;
   z-index: 10;
 
@@ -15,20 +18,26 @@
      -moz-box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
           box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
 
+  @media only screen and (min-width: $kollab-width-tablet) {
+    font-size: 16px;
+
+    height: $nav-height-desktop;
+  }
+
   &__brand {
     margin-right: $spacer-l;
     &__logo {
-      height: 30;
+      height: 30px;
       max-height: 30px;
 
       @media only screen and (min-width: $kollab-width-tablet) {
-        height: 36px;
-        max-height: 36px;
+        height: 38px;
+        max-height: 38px;
       }
     }
   }
 
-  &__links {
+  &__items {
     display: flex;
     align-items: center;
 
@@ -42,24 +51,43 @@
     }
   }
 
-  &__link {
+  &__item {
+    font-weight: bold;
+
     display: flex;
     align-items: center;
 
-    height: 100%;
     margin: 0 $spacer-xs;
 
+    @media only screen and (min-width: $kollab-width-tablet) {
+      color: black;
+    }
+
     &--icon {
-      font-size: x-large;
+      font-size: 1.5rem;
 
       margin-right: $spacer-s;
 
       color: $kollab-primary;
+      @media only screen and (min-width: $kollab-width-tablet) {
+        font-size: 1rem;
+
+        color: black;
+      }
     }
 
-    &--hover {
-      &:hover {
-        border-bottom: solid 3px $kollab-primary;
+    &--button {
+      width: 180px;
+      height: $nav-height;
+      padding-left: $spacer;
+      i {
+        margin-right: $spacer-s;
+      }
+
+      &--active {
+        color: $kollab-primary;
+        border-radius: 5px;
+        background-color: rgba(84, 189, 194, 0.12);
       }
     }
 
@@ -77,6 +105,25 @@
     }
   }
 
+  &__profile {
+    &::after {
+      font-family: 'Font Awesome 5 Free';
+      font-size: 1rem;
+      font-weight: 900;
+
+      display: inline-block;
+
+      margin-left: $spacer-s;
+
+      content: '\f078';
+
+      color: $kollab-gray;
+    }
+  }
+  &__profile-img {
+    margin-left: $spacer;
+  }
+
   &__dropdown {
     position: relative;
 
@@ -84,22 +131,22 @@
     margin: 0 $spacer-xs;
 
     &__drop-button {
-      font-size: x-large;
-
-      width: 1.5rem;
       height: 100%;
 
-      color: $kollab-primary;
       background-color: transparent;
 
       &:focus {
         outline: none;
       }
+
+      i {
+        font-size: 1.5rem;
+
+        color: $kollab-primary;
+      }
     }
 
     &__drop-item {
-      font-family: 'Muli';
-
       color: $kollab-gray;
       &:hover {
         background-color: rgba(84, 189, 194, 0.12);

@@ -88,7 +88,10 @@ class Navbar extends React.Component {
         </div>
 
         <div className="nav__items nav__items--right">
-          <a href="#" className="nav__item nav__item--icon nav__item--mobile">
+          <a
+            href={projectsPath}
+            className="nav__item nav__item--icon nav__item--mobile"
+          >
             <i className="fas fa-search"></i>
           </a>
 

@@ -113,15 +113,13 @@
 
       display: inline-block;
 
-      margin-left: $spacer-s;
-
       content: '\f078';
 
       color: $kollab-gray;
     }
   }
   &__profile-img {
-    margin-left: $spacer;
+    margin: 0 $spacer-s;
   }
 
   &__dropdown {

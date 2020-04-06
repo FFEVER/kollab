@@ -5,10 +5,6 @@
   position: sticky;
   z-index: 10;
 
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-
   width: 100%;
   height: $nav-height;
   padding: 0 $spacer-l;
@@ -116,6 +112,11 @@
       content: '\f078';
 
       color: $kollab-gray;
+    }
+    &:hover {
+      &::after {
+        color: $kollab-primary !important;
+      }
     }
   }
   &__profile-img {

@@ -84,13 +84,15 @@
           display: flex;
           align-items: center;
 
+          padding: 0 $spacer;
+
           &__details {
             font-weight: normal;
             font-style: normal;
             font-stretch: normal;
             line-height: 1.36;
 
-            margin-left: $spacer-xs;
+            margin-left: $spacer;
 
             letter-spacing: normal;
           }
@@ -99,7 +101,7 @@
           }
 
           &__role {
-            color: $kollab-gray-light;
+            color: $kollab-gray-font;
           }
         }
       }

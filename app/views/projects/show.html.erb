@@ -81,8 +81,13 @@
 
     <% @members.each do |member| %>
       <%= button_to member.user, class: "member", method: :get do %>
-        <%= image_tag member.user.profile_image,
+        <% if member.user.profile_image_url %>
+          <%= image_tag member.user.profile_image,
             class: "image__profile image__profile--small image__profile--with-border" %>
+        <% else %>
+          <%= image_pack_tag "portrait_placeholder.png",
+            class: "image__profile image__profile--small image__profile--with-border" %>
+        <% end %>
 
         <div class="member__details">
           <%= link_to member.user, class: "member__name" do %>

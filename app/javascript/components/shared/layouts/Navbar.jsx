@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import KollabLogo from "images/kollab-blue.png"
-import PersonImg from "images/person.jpg"
+import PortraitImg from "images/portrait_placeholder.png"
 import axios from "axios"
 
 class Navbar extends React.Component {
@@ -62,6 +62,7 @@ class Navbar extends React.Component {
       userFullName,
       onMyProjectsPage,
       onExplorePage,
+      profileImgUrl,
     } = this.props
     let { dropMenuOpen } = this.state
     return (
@@ -82,18 +83,18 @@ class Navbar extends React.Component {
               onExplorePage ? "nav__item--button--active" : ""
             }`}
           >
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
             Explore
           </a>
         </div>
 
         <div className="nav__items nav__items--right">
           <a href="#" className="nav__item nav__item--icon nav__item--mobile">
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </a>
 
           <a href="#" className="nav__item nav__item--icon">
-            <i class="fas fa-bell"></i>
+            <i className="fas fa-bell"></i>
           </a>
 
           <div className="nav__dropdown" id="drop-menu">
@@ -104,12 +105,18 @@ class Navbar extends React.Component {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <div class="nav__item nav__profile nav__item--desktop">
-                {userFullName}
+              <div className="nav__item nav__profile nav__item--desktop">
                 <img
-                  src={PersonImg}
+                  src={profileImgUrl ? profileImgUrl : PortraitImg}
                   className="nav__profile-img image__profile image__profile--small"
+                  copyright={
+                    profileImgUrl
+                      ? ""
+                      : "cc-by-sa Greasemann commons.wikimedia.org/wiki/File:Portrait_Placeholder.png"
+                  }
+                  alt="profile"
                 ></img>
+                <div className="nav__profile-name">{userFullName}</div>
               </div>
 
               <div className="nav__item nav__item--mobile">
@@ -126,6 +133,13 @@ class Navbar extends React.Component {
               aria-labelledby="drop-button"
             >
               <a
+                href={userPath}
+                className="dropdown-item nav__dropdown__drop-item"
+              >
+                <i className="fas fa-user"></i>
+                My Profile
+              </a>
+              <a
                 href={userProjectsPath}
                 className="dropdown-item nav__dropdown__drop-item nav__item--mobile"
               >
@@ -135,13 +149,6 @@ class Navbar extends React.Component {
               <a href="#" className="dropdown-item nav__dropdown__drop-item">
                 <i className="far fa-envelope"></i>
                 Messages
-              </a>
-              <a
-                href={userPath}
-                className="dropdown-item nav__dropdown__drop-item"
-              >
-                <i className="fas fa-user"></i>
-                My Profile
               </a>
               <div className="dropdown-divider"></div>
               <a
@@ -217,6 +224,7 @@ Navbar.propTypes = {
   userFullName: PropTypes.string,
   onMyProjectsPage: PropTypes.bool,
   onExplorePage: PropTypes.bool,
+  profileImgUrl: PropTypes.string,
   authenticityToken: PropTypes.string,
 }
 export default Navbar

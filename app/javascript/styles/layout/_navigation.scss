@@ -120,7 +120,10 @@
     }
   }
   &__profile-img {
-    margin: 0 $spacer-s;
+    margin-right: $spacer-s;
+  }
+  &__profile-name {
+    margin-right: $spacer-s;
   }
 
   &__dropdown {

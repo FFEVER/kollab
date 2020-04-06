@@ -2,19 +2,20 @@
   <% user_path_props = user_path(current_user)%>
   <% user_projects_path_props = user_projects_path(current_user) %>
   <% user_full_name = current_user.full_name%>
+  <% profile_image_url_props = current_user.profile_image_url %>
+
+  <% if current_page?(user_projects_path(current_user)) %>
+    <% on_my_projects_page = true %>
+  <% end %>
+  <% if current_page?(projects_path) %>
+    <% on_explore_page = true %>
+  <% end %>
+
 <% else %>
   <% user_path_props = new_user_session_path%>
   <% user_projects_path_props = new_user_session_path %>
-<% end %>
-
-<% on_my_projects_page = false %>
-<% if current_page?(user_projects_path(current_user)) %>
-  <% on_my_projects_page = true %>
-<% end %>
-
-<% on_explore_page = false %>
-<% if current_page?(projects_path) %>
-  <% on_explore_page = true %>
+  <% on_my_projects_page = false %>
+  <% on_explore_page = false %>
 <% end %>
 
 <%= react_component "shared/layouts/Navbar",
@@ -30,5 +31,6 @@
     userFullName: user_full_name,
     onMyProjectsPage: on_my_projects_page,
     onExplorePage: on_explore_page,
+    profileImgUrl: profile_image_url_props,
     authenticityToken: form_authenticity_token,
   } %>

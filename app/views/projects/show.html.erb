@@ -84,8 +84,11 @@
     <div class="member">
       <% @members.each do |member| %>
         <%= link_to member.user do %>
-          <%= image_pack_tag 'person.jpg',
-            class: "image__profile image__profile--small image__profile--with-border" %>
+          <% if member.user.profile_image.attached? %>
+            <%= image_tag member.user.profile_image, class: "image__profile image__profile--small image__profile--with-border" %>
+          <% else %>
+            <span class="dot dot--profile"></span>
+          <% end %>
         <% end %>
 
         <div class="member__details">

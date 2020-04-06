@@ -6,8 +6,11 @@
     </div>
 
     <div class="profile__section">
-      <!-- TODO: [Anyone] Add profile picture. -->
-      <span class="dot dot--profile"></span>
+      <% if @user.profile_image.attached? %>
+        <%= image_tag @user.profile_image, class: "image__profile image__profile--small" %>
+      <% else %>
+        <span class="dot dot--profile"></span>
+      <% end %>
       <%= link_to user_projects_path(@user) do %>
         <span><%= @user.projects.count %></span>
         <p>Projects</p>
@@ -34,7 +37,7 @@
               class: "button button--small button--green", remote: true%>
           <% end %>
         <% else %>
-          <button class="button button--small button--green">Edit profile</button>
+          <%= link_to "Edit profile", profile_edit_path, class: "button button--small button--green" %>
         <% end %>
       </div>
     </header>

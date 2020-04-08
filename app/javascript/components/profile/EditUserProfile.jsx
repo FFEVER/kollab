@@ -1,41 +1,41 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { TextField, FormControl, Select, MenuItem } from "@material-ui/core";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import React from "react"
+import PropTypes from "prop-types"
+import { TextField, FormControl, Select, MenuItem } from "@material-ui/core"
+import AccountCircle from "@material-ui/icons/AccountCircle"
 
-import CreatableSelect from "react-select/creatable";
+import CreatableSelect from "react-select/creatable"
 
-import edit from "../../../images/icon/edit.png";
-import contact from "../../../images/icon/phone-call.png";
-import mail from "../../../images/icon/mail.png";
-import profileImg from "../../../images/anya.jpg";
-import faculty from "../../../../assets/utils/faculty";
+import edit from "../../images/icon/edit.png"
+import contact from "../../images/icon/phone-call.png"
+import mail from "../../images/icon/mail.png"
+import profileImg from "../../images/anya.jpg"
+import faculty from "../../../assets/utils/faculty"
 
-const filename = "Proposal.pdf";
+const filename = "Proposal.pdf"
 const projects = [
   {
     id: 1,
     title: "Object Tracking Drone",
     tags: ["ObjectDetection", "Drone", "IOT"],
-    status: "In progress"
+    status: "In progress",
   },
   {
     id: 2,
     title: "Robotic car with Obstacle",
     tags: ["ObjectDetection", "Robotic", "IOT"],
-    status: "In progress"
+    status: "In progress",
   },
   {
     id: 3,
     title: "Garden observation App ",
     tags: ["ObjectDetection", "Embedded", "IOT"],
-    status: "In progress"
-  }
-];
+    status: "In progress",
+  },
+]
 
 class EditUserProfile extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       fullname: "Natthaphol Srisa",
       year: 4,
@@ -48,62 +48,62 @@ class EditUserProfile extends React.Component {
       instagram: "nattaphol.s",
       expertise: [
         { value: "SoftwareEngineering", label: "Software Engineering" },
-        { value: "ComputerScience", label: "Computer Science" }
+        { value: "ComputerScience", label: "Computer Science" },
       ],
       skills: [
         { value: "ReactNative", label: "ReactNative" },
         { value: "Docker", label: "Docker" },
-        { value: "JavaScript", label: "JavaScript" }
+        { value: "JavaScript", label: "JavaScript" },
       ],
       posts: [
         {
           id: 1,
           user: "Nattaphol S.",
           action: "updated project progress",
-          project: projects[0]
+          project: projects[0],
         },
         {
           id: 2,
           user: "Nattaphol S.",
           action: "updated project progress",
-          project: projects[1]
-        }
-      ]
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSkillCreate = this.handleSkillCreate.bind(this);
-    this.handleExpertiseCreate = this.handleExpertiseCreate.bind(this);
+          project: projects[1],
+        },
+      ],
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSkillCreate = this.handleSkillCreate.bind(this)
+    this.handleExpertiseCreate = this.handleExpertiseCreate.bind(this)
   }
 
   renderYears() {
     for (var i = 0; i < 3; i++) {
-      <MenuItem key={i} value={i}>
+      ;<MenuItem key={i} value={i}>
         {i}
-      </MenuItem>;
+      </MenuItem>
     }
   }
 
   handleChange(event) {
-    console.log("Event ", event);
+    console.log("Event ", event)
     this.setState({
-      [event.target.name]: event.target.value
-    });
+      [event.target.name]: event.target.value,
+    })
   }
 
   handleSkillCreate(event) {
-    console.log("Event ", event);
-    const skills = this.state.tags;
+    console.log("Event ", event)
+    const skills = this.state.tags
     this.setState({
-      skills: [...skills, { value: event, label: event }]
-    });
+      skills: [...skills, { value: event, label: event }],
+    })
   }
 
   handleExpertiseCreate(event) {
-    console.log("Event ", event);
-    const expertise = this.state.expertise;
+    console.log("Event ", event)
+    const expertise = this.state.expertise
     this.setState({
-      expertise: [...expertise, { value: event, label: event }]
-    });
+      expertise: [...expertise, { value: event, label: event }],
+    })
   }
 
   render() {
@@ -231,14 +231,14 @@ class EditUserProfile extends React.Component {
           </div>
         </div>
       </form>
-    );
+    )
   }
 }
 
 EditUserProfile.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string,
-  editPath: PropTypes.string
-};
+  editPath: PropTypes.string,
+}
 
-export default EditUserProfile;
+export default EditUserProfile

@@ -1,40 +1,40 @@
-import React from "react";
-import PropTypes from "prop-types";
-import phone from "../../../images/icon/phone-call.png";
-import mail from "../../../images/icon/mail.png";
-import instagram from "../../../images/icon/instagram.png";
-import attach from "../../../images/icon/paperclip.png";
-import add from "../../../images/icon/add.png";
-import more from "../../../images/icon/more.png";
-import rectangle from "../../../images/icon/rectangle.png";
-import profileImg from "../../../images/anya.jpg";
-import Card from "../../Card";
+import React from "react"
+import PropTypes from "prop-types"
+import phone from "../../images/icon/phone-call.png"
+import mail from "../../images/icon/mail.png"
+import instagram from "../../images/icon/instagram.png"
+import attach from "../../images/icon/paperclip.png"
+import add from "../../images/icon/add.png"
+import more from "../../images/icon/more.png"
+import rectangle from "../../images/icon/rectangle.png"
+import profileImg from "../../images/anya.jpg"
+import Card from "../Card"
 
-const filename = "Proposal.pdf";
+const filename = "Proposal.pdf"
 const projects = [
   {
     id: 1,
     title: "Object Tracking Drone",
     tags: ["ObjectDetection", "Drone", "IOT"],
-    status: "In progress"
+    status: "In progress",
   },
   {
     id: 2,
     title: "Robotic car with Obstacle",
     tags: ["ObjectDetection", "Robotic", "IOT"],
-    status: "In progress"
+    status: "In progress",
   },
   {
     id: 3,
     title: "Garden observation App ",
     tags: ["ObjectDetection", "Embedded", "IOT"],
-    status: "In progress"
-  }
-];
+    status: "In progress",
+  },
+]
 
 class UserProfile extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       fullname: "Natthaphol Srisa",
       position: "4th year Software Engineering Stduent",
@@ -50,40 +50,40 @@ class UserProfile extends React.Component {
           id: 1,
           user: "Nattaphol S.",
           action: "updated project progress",
-          project: projects[0]
+          project: projects[0],
         },
         {
           id: 2,
           user: "Nattaphol S.",
           action: "updated project progress",
-          project: projects[1]
-        }
+          project: projects[1],
+        },
       ],
       showPassword: false,
       showConfirmPassword: false,
-      checkedAgreeCondition: false
-    };
-    this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.renderItems = this.renderItems.bind(this);
+      checkedAgreeCondition: false,
+    }
+    this.handleClickShowPassword = this.handleClickShowPassword.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.renderItems = this.renderItems.bind(this)
   }
 
   renderItems() {
     for (var i = 0; i < 3; i++) {
-      <img className="logo" src={rectangle} style={{ marginRight: "10px" }} />;
+      ;<img className="logo" src={rectangle} style={{ marginRight: "10px" }} />
     }
   }
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
-    });
+      [event.target.name]: event.target.value,
+    })
   }
 
   handleClickShowPassword() {
     this.setState({
-      showPassword: !this.state.showPassword
-    });
+      showPassword: !this.state.showPassword,
+    })
   }
 
   render() {
@@ -214,13 +214,13 @@ class UserProfile extends React.Component {
         </div>
         <div className="sep-line mt-3 mb-3" />
       </form>
-    );
+    )
   }
 }
 
 UserProfile.propTypes = {
   authenticityToken: PropTypes.string,
-  submitPath: PropTypes.string
-};
+  submitPath: PropTypes.string,
+}
 
-export default UserProfile;
+export default UserProfile

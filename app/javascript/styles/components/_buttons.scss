@@ -11,6 +11,11 @@
 
   border-radius: 5px;
 
+  &--very-small {
+    height: 1.5rem;
+    max-height: 1.5rem;
+  }
+
   &--small {
     height: 2rem;
     max-height: 2rem;

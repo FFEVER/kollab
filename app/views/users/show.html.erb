@@ -1,7 +1,67 @@
-<%= react_component("users/profile/UserProfile",
-    {
-      authenticityToken: form_authenticity_token,
-      submitPath: user_path,
-      editPath: edit_user_registration_path
-    })
-  %>
+<div class="profile">
+  <header class="profile__header">
+    <div class="profile__section">
+      <h1><%= "#{@user.first_name} #{@user.last_name}" %> </h1>
+      <p>4th year Software Engineering</p>
+    </div>
+
+    <div class="profile__section">
+      <% if @user.profile_image.attached? %>
+        <%= image_tag @user.profile_image, class: "image__profile image__profile--small" %>
+      <% else %>
+        <span class="dot dot--profile"></span>
+      <% end %>
+      <%= link_to user_projects_path(@user) do %>
+        <span><%= @user.projects.count %></span>
+        <p>Projects</p>
+      <% end %>
+      <div>
+        <%= link_to followings_user_path(@user) do %>
+          <span><%= @user.followings.count%></span>
+          <p>Following</p>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to followers_user_path(@user) do %>
+          <span><%= @user.followers.count %></span>
+          <p>Followers</p>
+        <% end %>
+      </div>
+      <div>
+        <% if current_user != @user %>
+          <% if current_user.following?(@user) %>
+            <%= link_to "Following", unfollow_user_path, method: :post,
+              class: "button button--small button--gray", remote: true%>
+          <% else %>
+            <%= link_to "Follow", follow_user_path, method: :post,
+              class: "button button--small button--green", remote: true%>
+          <% end %>
+        <% else %>
+          <%= link_to "Edit profile", profile_edit_path, class: "button button--small button--green" %>
+        <% end %>
+      </div>
+    </header>
+
+    <main>
+      <div class="profile__section profile__menu">
+        <%= link_to user_path,
+        {class: "profile__menu__item #{'profile__menu__item--active' if profile_info_page?}"} do %>
+          <div class="dot"></div>
+          <div>Overview</div>
+        <% end %>
+
+        <%= link_to user_path(page: project_page),
+        {class: "profile__menu__item #{'profile__menu__item--active' if !profile_info_page?}"} do %>
+          <div class="dot"></div>
+          Projects
+        <% end %>
+      </div>
+
+      <% if profile_info_page? %>
+        <%= render 'show_info'%>
+      <% else %>
+        <%= render 'show_project'%>
+      <% end %>
+
+    </main>
+  </div>

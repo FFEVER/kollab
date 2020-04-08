@@ -1,12 +1,12 @@
-const faculties = [
+const faculty = [
   {
     id: 1,
     faculty: "Engineering",
     departments: [
       "Software Engineering",
       "Computer Engineering",
-      "Chemical Engineering"
-    ]
+      "Chemical Engineering",
+    ],
   },
   {
     id: 2,
@@ -16,16 +16,16 @@ const faculties = [
       "Computer Science",
       "Chemical Science",
       "Biological Science",
-      "Physical Science"
-    ]
+      "Physical Science",
+    ],
   },
   {
     id: 3,
     faculty: "Information and Technology",
     departments: [
       "Computer Network and Security",
-      "Data Science and Business Analytics"
-    ]
+      "Data Science and Business Analytics",
+    ],
   },
   {
     id: 4,
@@ -33,8 +33,8 @@ const faculties = [
     departments: [
       "Interior Design",
       "Industrial Design",
-      "Communication Art and Design"
-    ]
-  }
-];
-export default faculties;
+      "Communication Art and Design",
+    ],
+  },
+]
+export default faculty

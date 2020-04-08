@@ -11,7 +11,8 @@ import {
   RadioGroup,
   Radio,
 } from "@material-ui/core"
-import ChevronRightIcon from "@material-ui/icons/ChevronRight"
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos"
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab"
 import { TagInput, tagsToArray, defaultStyles } from "../shared/form/TagInput"
 import Button from "../shared/form/Button"
@@ -51,13 +52,18 @@ class UserBasicInfo extends React.Component {
       isButtonLoading: false,
       roll: "student",
       expertise: "",
+      division: "",
+      group: "",
       field: "",
-      subfield: "",
       skills: [],
       checkedExpertise: { check: false, value: "" },
+      activateModal: "division",
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.handleFieldChange = this.handleFieldChange.bind(this)
+    this.handleModalNext = this.handleModalNext.bind(this)
+    this.handleModalBack = this.handleModalBack.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.createFormData = this.createFormData.bind(this)
     this.submitForm = this.submitForm.bind(this)
@@ -67,15 +73,32 @@ class UserBasicInfo extends React.Component {
     this.handleSkillsClear = this.handleSkillsClear.bind(this)
   }
 
-  handleCheckAgreeCondition() {
+  handleChange(event) {
+    console.log("Event ", event)
     this.setState({
-      checkedAgreeCondition: !this.state.checkedAgreeCondition,
+      [event.target.name]: event.target.value,
     })
   }
 
-  handleChange(event) {
+  handleFieldChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
+      activateModal: event.target.name,
+    })
+  }
+
+  handleModalNext(value, field) {
+    var currentField = this.state.activateModal
+    this.setState({
+      activateModal: value,
+      [currentField]: field,
+    })
+  }
+
+  handleModalBack(value, prev) {
+    this.setState({
+      activateModal: value,
+      [prev]: "",
     })
   }
 
@@ -173,9 +196,11 @@ class UserBasicInfo extends React.Component {
       isButtonLoading,
       roll,
       expertise,
+      division,
+      group,
       field,
-      subfield,
       skills,
+      activateModal,
     } = this.state
     return (
       <form
@@ -183,8 +208,8 @@ class UserBasicInfo extends React.Component {
         onSubmit={this.handleSubmit}
         noValidate
       >
-        {" "}
-        <h3>Roll</h3>
+        {console.log("Current state ", this.state)}
+        <h3>Role</h3>
         <div className="d-flex flex-column mt-2">
           <ToggleButtonGroup
             className="button--toggle"
@@ -282,30 +307,125 @@ class UserBasicInfo extends React.Component {
                   </button>
                 </div>
                 <div className="modal-body">
-                  {fields.map((f, index) => (
-                    <RadioGroup
-                      key={index}
-                      aria-label="expertise"
-                      name="expertise"
-                      value={expertise}
-                      onChange={this.handleChange}
-                      className="d-flex flex-row flex-nowrap justify-content-between"
-                    >
-                      <FormControlLabel
-                        value={f.Division}
-                        control={<Radio color="#54bdc2" />}
-                        label={f.Division}
-                      />
-                      <ChevronRightIcon />
-                    </RadioGroup>
-                  ))}
+                  {activateModal === "division" ? (
+                    fields.map((f, index) => (
+                      <RadioGroup
+                        key={index}
+                        aria-label="division"
+                        name="division"
+                        value={division}
+                        onChange={this.handleFieldChange}
+                        className="d-flex flex-row flex-nowrap justify-content-between"
+                      >
+                        <FormControlLabel
+                          value={f.Division}
+                          control={<Radio color="default" />}
+                          label={f.Division}
+                        />
+                        <Button
+                          name="activateModal"
+                          className="button--transparent"
+                          onClick={() =>
+                            this.handleModalNext("group", f.Division)
+                          }
+                        >
+                          <ArrowForwardIosIcon />
+                        </Button>
+                      </RadioGroup>
+                    ))
+                  ) : (
+                    <div />
+                  )}
+                  {activateModal === "group" ? (
+                    <div>
+                      {fields
+                        .find((f) => f.Division === division)
+                        .Groups.map((g, index) => (
+                          <RadioGroup
+                            key={index}
+                            aria-label="group"
+                            name="group"
+                            value={group}
+                            onChange={this.handleFieldChange}
+                            className="d-flex flex-row flex-nowrap justify-content-between"
+                          >
+                            <div className="d-flex flex-row justify-content-center">
+                              <Button
+                                name="activateModal"
+                                className="button--transparent"
+                                onClick={() =>
+                                  this.handleModalBack("division", "group")
+                                }
+                              >
+                                <ArrowBackIosIcon />
+                              </Button>
+                              <FormControlLabel
+                                value={g.Group}
+                                control={<Radio color="default" />}
+                                label={g.Group}
+                              />
+                            </div>
+
+                            <Button
+                              name="activateModal"
+                              className="button--transparent"
+                              onClick={() =>
+                                this.handleModalNext("field", g.Group)
+                              }
+                            >
+                              <ArrowForwardIosIcon />
+                            </Button>
+                          </RadioGroup>
+                        ))}
+                    </div>
+                  ) : (
+                    <div />
+                  )}
+
+                  {activateModal === "field" ? (
+                    <div>
+                      {fields
+                        .find((f) => f.Division === division)
+                        .Groups.find((g) => g.Group === group)
+                        .Fields.map((s, index) => (
+                          <RadioGroup
+                            key={index}
+                            aria-label="field"
+                            name="field"
+                            value={field}
+                            onChange={this.handleFieldChange}
+                            className="d-flex flex-row flex-nowrap justify-content-start"
+                          >
+                            <Button
+                              name="activateModal"
+                              className="button--transparent"
+                              onClick={() =>
+                                this.handleModalBack("group", "field")
+                              }
+                            >
+                              <ArrowBackIosIcon />
+                            </Button>
+                            <FormControlLabel
+                              value={s}
+                              control={<Radio color="default" />}
+                              label={s}
+                            />
+                          </RadioGroup>
+                        ))}
+                    </div>
+                  ) : (
+                    <div />
+                  )}
                 </div>
                 <div className="modal-footer">
                   <Button
-                    name="confirmExpertise"
+                    name="expertise"
                     type="button"
                     className="button--gradient-green button--fullwidth"
                     data-dismiss="modal"
+                    onClick={() =>
+                      this.setState({ expertise: eval(activateModal) })
+                    }
                   >
                     Done
                   </Button>

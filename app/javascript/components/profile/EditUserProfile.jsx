@@ -1,8 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { TextField, FormControl, Select, MenuItem } from "@material-ui/core"
-import AccountCircle from "@material-ui/icons/AccountCircle"
-
+import {
+  EditUserProfileValidator,
+  defaultErrors,
+} from "./EditUserProfileValidator"
 import CreatableSelect from "react-select/creatable"
 
 import edit from "../../images/icon/edit.png"
@@ -11,7 +13,9 @@ import mail from "../../images/icon/mail.png"
 import profileImg from "../../images/anya.jpg"
 import faculty from "../../../assets/utils/faculty"
 
-const filename = "Proposal.pdf"
+import Button from "../shared/form/Button"
+import FormInput from "../shared/form/FormInput"
+
 const projects = [
   {
     id: 1,
@@ -33,17 +37,19 @@ const projects = [
   },
 ]
 
+const socials = ["GitHub", "Facebook", "Instagram"]
+
 class EditUserProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      fullname: "Natthaphol Srisa",
+      user: this.props.currentUser,
       year: 4,
-      faculty: faculty[0].departments[0],
+      currentfaculty: faculty[0].departments[0],
       position: "4th year Software Engineering Stduent",
       bio:
         "I am 4th year student from King Mongkut’s Institute of Technology Ladkrabang and currently studying in Software Engineering field. I am interested Web Development and Docker.",
-      email: "nattaphol@kmitl.ac.th",
+      email: this.props.currentUser.email,
       phone: "+66 89 777 8899",
       instagram: "nattaphol.s",
       expertise: [
@@ -69,6 +75,8 @@ class EditUserProfile extends React.Component {
           project: projects[1],
         },
       ],
+      errors: defaultErrors,
+      socialLink: "",
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSkillCreate = this.handleSkillCreate.bind(this)
@@ -107,11 +115,21 @@ class EditUserProfile extends React.Component {
   }
 
   render() {
+    const {
+      user,
+      errors,
+      currentfaculty,
+      year,
+      bio,
+      expertise,
+      skills,
+      phone,
+      email,
+      socialLink,
+    } = this.state
     return (
-      <form className="profile d-flex flex-column">
-        <div className="align-items-center">
-          <h3>Edit Profile</h3>
-        </div>
+      <form>
+        {console.log("User ", user)}
         <div className="thin-line mt-3 mb-3" />
         <div>
           <div className="d-flex flex-row justify-content-between">
@@ -129,7 +147,7 @@ class EditUserProfile extends React.Component {
                 {/* <InputLabel>{this.state.faculty}</InputLabel> */}
                 <Select
                   name="faculty"
-                  value={this.state.faculty}
+                  value={currentfaculty}
                   onChange={this.handleChange}
                 >
                   <MenuItem value="">
@@ -150,11 +168,7 @@ class EditUserProfile extends React.Component {
               <div className="d-flex flex-column mt-3">
                 <FormControl variant="outlined">
                   {/* <InputLabel>{this.state.faculty}</InputLabel> */}
-                  <Select
-                    name="year"
-                    value={this.state.year}
-                    onChange={this.handleChange}
-                  >
+                  <Select name="year" value={year} onChange={this.handleChange}>
                     <MenuItem value="">
                       <em>Select your year of study</em>
                     </MenuItem>
@@ -176,7 +190,7 @@ class EditUserProfile extends React.Component {
                 // label="Multiline"
                 multiline
                 rows="4"
-                defaultValue={this.state.bio}
+                defaultValue={bio}
                 variant="outlined"
               />
             </div>
@@ -187,7 +201,7 @@ class EditUserProfile extends React.Component {
             <div className="mt-3">
               <CreatableSelect
                 isClearable
-                value={this.state.expertise}
+                value={expertise}
                 isMulti
                 onChange={this.handleChange}
                 onCreateOption={this.handleExpertiseCreate}
@@ -200,7 +214,7 @@ class EditUserProfile extends React.Component {
             <div className="mt-3">
               <CreatableSelect
                 isClearable
-                value={this.state.skills}
+                value={skills}
                 isMulti
                 onChange={this.handleChange}
                 onCreateOption={this.handleSkillCreate}
@@ -215,7 +229,7 @@ class EditUserProfile extends React.Component {
               <TextField
                 label="Phone"
                 variant="outlined"
-                value={this.state.phone}
+                value={phone}
                 fullWidth
               />
             </div>
@@ -224,11 +238,62 @@ class EditUserProfile extends React.Component {
               <TextField
                 label="E-mail"
                 variant="outlined"
-                value={this.state.email}
+                value={email}
                 fullWidth
               />
             </div>
+            <div className="d-flex flex-row  mt-3 align-items-center">
+              <img className="icon" src={contact} />
+              <FormInput
+                name="phone"
+                placeholder="Phone"
+                type="text"
+                value={phone}
+                className="form-control"
+                onChange={this.handleChange}
+                errors={errors.phone}
+              />
+            </div>
           </div>
+          <div className="d-flex flex-column mt-3">
+            <h4>Links</h4>
+            <p>Social Links</p>
+            <div className="d-flex flex-row mt-3">
+              <FormControl className="mr-2" variant="outlined" fullWidth>
+                {/* <InputLabel>{this.state.faculty}</InputLabel> */}
+                <Select
+                  name="socialLink"
+                  value={socialLink}
+                  onChange={this.handleChange}
+                >
+                  <MenuItem value="">
+                    <em>Select your year of study</em>
+                  </MenuItem>
+
+                  <MenuItem value={1}>1</MenuItem>
+                </Select>
+              </FormControl>
+              <FormInput
+                name={socialLink}
+                placeholder="Phone"
+                type="text"
+                value={phone}
+                className="form-control"
+                onChange={this.handleChange}
+                errors={errors.phone}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="d-flex flex-column align-items-center">
+          <Button
+            name="submitButton"
+            type="submit"
+            className="button--gradient-green button--long mt-3"
+            isLoading={this.state.isButtonLoading}
+          >
+            Save
+          </Button>
         </div>
       </form>
     )
@@ -237,8 +302,8 @@ class EditUserProfile extends React.Component {
 
 EditUserProfile.propTypes = {
   authenticityToken: PropTypes.string,
+  currentUser: PropTypes.object,
   submitPath: PropTypes.string,
-  editPath: PropTypes.string,
 }
 
 export default EditUserProfile

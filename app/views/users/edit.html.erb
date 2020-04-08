@@ -1,34 +1,14 @@
-<h1>Users#edit</h1>
-
-<%= form_with(model: @user, url: profile_update_path, local: true) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited from being saved:</h2>
-
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+<div class="profile">
+  <div class="profile__header">
+    <h2>Edit profile</h2>
+  </div>
+  <%= form_with(model: @user, url: profile_update_path, local: true) do |f| %>
+    <%= react_component("profile/EditUserProfile",
+    {
+      authenticityToken: form_authenticity_token,
+      submitPath: profile_update_path,
+      currentUser: @user
+    })
+  %>
   <% end %>
-
-  <div>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
-
-  <div>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div>
-    <%= f.label :profile_image %>
-    <%= f.file_field :profile_image %>
-  </div>
-
-  <button class="button">
-    <%= f.submit "Update" %>
-  </button>
-<% end %>
+</div>

@@ -1,56 +1,60 @@
 const defaultErrors = {
   tagList: [],
-  expertise: [],
-  skills: []
-};
+  expertise: "",
+}
 
 class UserBasicInfoValidator {
-  static validateFirstName(state, errors) {
-    const { firstName } = state;
-    const key = Object.keys({ firstName })[0];
-    if (firstName === undefined || firstName.length < 1) {
-      errors[key].push("First name is reuiqred.");
-    }
-  }
+  static validateTagList(state, errors) {
+    const { tagList } = state
+    const key = Object.keys({ tagList })[0]
 
-  static validateLastName(state, errors) {
-    const { lastName } = state;
-    const key = Object.keys({ lastName })[0];
-    if (lastName === undefined || lastName.length < 1) {
-      errors[key].push("Last name is required.");
+    if (tagList.length > 3) {
+      errors[key].push("Tags can have up to 3.")
+    } else if (tagList.length <= 0) {
+      errors[key].push("Add at least 1 tag")
+    }
+
+    for (const { label, value } of tagList) {
+      const length = value.length
+      if (length > 25) {
+        errors[key].push("A tag is too long (maximum 25 characters).")
+        break
+      }
+      if (length <= 0) {
+        errors[key].push("A tag is too short (minimum 1 character).")
+        break
+      }
     }
   }
 
   static isValidatePass(errors) {
     for (const value of Object.values(errors)) {
-      if (value.length != 0) return false;
+      if (value.length != 0) return false
     }
-    return true;
+    return true
   }
 
   static clearErrors(errors) {
     for (const k of Object.keys(errors)) {
-      errors[k] = [];
+      errors[k] = []
     }
   }
 
   static validateAll(state) {
     let promise = new Promise((resolve, reject) => {
-      const errors = { ...defaultErrors };
-      this.clearErrors(errors);
-      this.validateFirstName(state, errors);
-      this.validateLastName(state, errors);
-      this.validateCheckedAgreeCondition(state, errors);
+      const errors = { ...defaultErrors }
+      this.clearErrors(errors)
+      this.validateTagList(state, errors)
 
       if (this.isValidatePass(errors)) {
-        resolve(errors);
+        resolve(errors)
       } else {
-        reject(errors);
+        reject(errors)
       }
-    });
-    return promise;
+    })
+    return promise
   }
 }
 
-export default UserBasicInfoValidator;
-export { UserBasicInfoValidator, defaultErrors };
+export default UserBasicInfoValidator
+export { UserBasicInfoValidator, defaultErrors }

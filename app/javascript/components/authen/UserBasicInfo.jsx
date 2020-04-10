@@ -56,7 +56,6 @@ class UserBasicInfo extends React.Component {
       group: "",
       field: "",
       skills: [],
-      checkedExpertise: { check: false, value: "" },
       activateModal: "division",
     }
 
@@ -81,10 +80,18 @@ class UserBasicInfo extends React.Component {
   }
 
   handleFieldChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-      activateModal: event.target.name,
-    })
+    console.log("Event ", event)
+    if (event.target.name === event.target.value) {
+      this.setState({
+        [event.target.name]: "",
+        activateModal: event.target.name,
+      })
+    } else {
+      this.setState({
+        [event.target.name]: event.target.value,
+        activateModal: event.target.name,
+      })
+    }
   }
 
   handleModalNext(value, field) {
@@ -255,21 +262,25 @@ class UserBasicInfo extends React.Component {
             </FormControl>
           </div>
         </div>
-        <div className="d-flex flex-column mt-3">
-          <h4>Year of Study</h4>
+        {roll === "student" ? (
           <div className="d-flex flex-column mt-3">
-            <FormControl variant="outlined">
-              <InputLabel>{year ? "" : "Select year of study"}</InputLabel>
-              <Select name="year" value={year} onChange={this.handleChange}>
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
-                <MenuItem value={"other"}>other</MenuItem>
-              </Select>
-            </FormControl>
+            <h4>Year of Study</h4>
+            <div className="d-flex flex-column mt-3">
+              <FormControl variant="outlined">
+                <InputLabel>{year ? "" : "Select year of study"}</InputLabel>
+                <Select name="year" value={year} onChange={this.handleChange}>
+                  <MenuItem value={1}>1</MenuItem>
+                  <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={"other"}>other</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div />
+        )}
         <div className="form d-flex flex-column mt-3">
           <h4>Expertise</h4>
           <Button
@@ -338,6 +349,18 @@ class UserBasicInfo extends React.Component {
                   )}
                   {activateModal === "group" ? (
                     <div>
+                      <div className="d-flex flex-row mb-2">
+                        <Button
+                          name="activateModal"
+                          className="button--transparent mr-2"
+                          onClick={() =>
+                            this.handleModalBack("division", "group")
+                          }
+                        >
+                          <ArrowBackIosIcon />
+                        </Button>
+                        <h4>{division}</h4>
+                      </div>
                       {fields
                         .find((f) => f.Division === division)
                         .Groups.map((g, index) => (
@@ -350,15 +373,6 @@ class UserBasicInfo extends React.Component {
                             className="d-flex flex-row flex-nowrap justify-content-between"
                           >
                             <div className="d-flex flex-row justify-content-center">
-                              <Button
-                                name="activateModal"
-                                className="button--transparent"
-                                onClick={() =>
-                                  this.handleModalBack("division", "group")
-                                }
-                              >
-                                <ArrowBackIosIcon />
-                              </Button>
                               <FormControlLabel
                                 value={g.Group}
                                 control={<Radio color="default" />}
@@ -384,6 +398,19 @@ class UserBasicInfo extends React.Component {
 
                   {activateModal === "field" ? (
                     <div>
+                      <h6>{division}</h6>
+
+                      <div className="d-flex flex-row mt-2 mb-2">
+                        <Button
+                          name="activateModal"
+                          className="button--transparent mr-2"
+                          onClick={() => this.handleModalBack("group", "field")}
+                        >
+                          <ArrowBackIosIcon />
+                        </Button>
+                        <h4>{group}</h4>
+                      </div>
+
                       {fields
                         .find((f) => f.Division === division)
                         .Groups.find((g) => g.Group === group)
@@ -396,15 +423,6 @@ class UserBasicInfo extends React.Component {
                             onChange={this.handleFieldChange}
                             className="d-flex flex-row flex-nowrap justify-content-start"
                           >
-                            <Button
-                              name="activateModal"
-                              className="button--transparent"
-                              onClick={() =>
-                                this.handleModalBack("group", "field")
-                              }
-                            >
-                              <ArrowBackIosIcon />
-                            </Button>
                             <FormControlLabel
                               value={s}
                               control={<Radio color="default" />}

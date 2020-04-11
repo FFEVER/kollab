@@ -3,6 +3,9 @@
   flex-direction: column;
 
   margin: 30px;
+  padding-right: $spacer;
+  padding-left: $spacer;
+
   &__header {
     display: flex;
     flex-direction: row;
@@ -32,19 +35,7 @@
 
 @media screen and (min-width: $kollab-width-tablet) {
   .profile {
-    width: 700px;
     margin: 50px auto auto auto;
-
-    &__header {
-      &__title {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        margin-right: 0.75rem;
-        margin-left: 0.75rem;
-      }
-    }
   }
 }
 

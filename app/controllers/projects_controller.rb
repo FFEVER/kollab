@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
-  before_action :custom_authenticate_user!, except: %i[index show]
+  before_action :custom_authenticate_user!
   before_action :set_project, except: %i[index new create]
 
   def index

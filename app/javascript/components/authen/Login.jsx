@@ -10,14 +10,14 @@ import {
   InputLabel,
   InputAdornment,
   FormControl,
-  FormHelperText
+  FormHelperText,
 } from "@material-ui/core"
 import { Visibility, VisibilityOff } from "@material-ui/icons"
 import { LoginValidator, defaultErrors } from "./LoginValidator"
 
 const DATA_PREFIX = "user"
 
-const dataName = name => {
+const dataName = (name) => {
   return DATA_PREFIX + "[" + name + "]"
 }
 
@@ -29,7 +29,7 @@ class Login extends React.Component {
       password: "",
       errors: defaultErrors,
       showPassword: false,
-      isButtonLoading: false
+      isButtonLoading: false,
     }
 
     this.handleClickShowPassword = this.handleClickShowPassword.bind(this)
@@ -42,13 +42,13 @@ class Login extends React.Component {
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     })
   }
 
   handleClickShowPassword() {
     this.setState({
-      showPassword: !this.state.showPassword
+      showPassword: !this.state.showPassword,
     })
   }
 
@@ -57,13 +57,13 @@ class Login extends React.Component {
     this.setIsButtonLoading(true)
 
     LoginValidator.validateAll(this.state)
-      .then(result => {
+      .then((result) => {
         const formData = this.createFormData()
         this.submitForm(formData)
       })
-      .catch(errors => {
+      .catch((errors) => {
         this.setState({
-          errors: errors
+          errors: errors,
         })
         this.setIsButtonLoading(false)
       })
@@ -76,23 +76,23 @@ class Login extends React.Component {
       url: submitPath,
       responseType: "json",
       headers: {
-        Accept: "application/json"
+        Accept: "application/json",
       },
-      data: formData
+      data: formData,
     })
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
           window.location.href = response.headers.location
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response.status === 401) {
-          this.setState(state => {
+          this.setState((state) => {
             let error_message = error.response.data.error
             let errors = defaultErrors
             errors.password.push(error_message)
             return {
-              errors
+              errors,
             }
           })
         }
@@ -177,7 +177,7 @@ class Login extends React.Component {
         <Button
           name="submitButton"
           type="submit"
-          className="button--gradient-green button--round mt-3"
+          className="button button--lg button--gradient-primary mt-3"
           isLoading={this.state.isButtonLoading}
         >
           Login
@@ -190,7 +190,7 @@ class Login extends React.Component {
 Login.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string,
-  forgotPasswordUrl: PropTypes.string
+  forgotPasswordUrl: PropTypes.string,
 }
 
 export default Login

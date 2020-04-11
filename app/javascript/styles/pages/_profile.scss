@@ -28,7 +28,7 @@
     align-items: center;
     &__col {
       &--image {
-        margin-right: 0.5 * $spacer;
+        margin-right: $spacer-s;
       }
 
       &--actions {

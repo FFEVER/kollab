@@ -1,9 +1,13 @@
 .button {
+  font-family: 'Lato';
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  padding: 0 $global-space * 0.3;
+  height: 1.5rem;
+  max-height: 1.5rem;
+  padding: 0 10px;
 
   cursor: pointer;
   white-space: nowrap;
@@ -11,34 +15,179 @@
 
   border-radius: 5px;
 
-  &--very-small {
+  &:focus {
+    outline: none;
+  }
+
+  &--sm {
+    font-size: 12px;
+
     height: 1.5rem;
     max-height: 1.5rem;
   }
 
-  &--small {
+  &--md {
+    font-size: 14px;
+
     height: 2rem;
     max-height: 2rem;
-    padding: $global-space * 0.2 $global-space * 0.3;
   }
 
-  &--long {
-    width: 300px;
-    height: 40px;
+  &--lg {
+    width: 343px;
+    min-height: 40px;
+    max-height: 40px;
 
     border-radius: 20px;
+
+    @media only screen and (min-width: $kollab-width-tablet) {
+      min-height: 48px;
+      max-height: 48px;
+    }
   }
 
-  &--gray {
-    color: $kollab-gray !important;
-    border-color: $kollab-gray;
-  }
-  &--edit-profile {
-    width: 100%;
-    height: 28px;
+  &--unstar {
+    color: $kollab-yellow;
+    background-color: white;
+    box-shadow: inset 0 0 0 2px $kollab-yellow;
+    &:before {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
 
-    border-radius: 5px;
-    background-color: #ebebeb;
+      display: inline-block;
+
+      padding-right: 3px;
+
+      content: '\f005';
+      vertical-align: middle;
+
+      color: $kollab-yellow;
+    }
+    &:hover {
+      color: $kollab-yellow-dark;
+      box-shadow: inset 0 0 0 2px $kollab-yellow-dark;
+      &:before {
+        font-weight: 400;
+      }
+    }
+  }
+
+  &--star {
+    color: $kollab-gray-font;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px $kollab-gray-font;
+    &:before {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 400;
+
+      display: inline-block;
+
+      padding-right: 3px;
+
+      content: '\f005';
+      vertical-align: middle;
+    }
+    &:hover {
+      color: $kollab-yellow-dark !important;
+      box-shadow: inset 0 0 0 2px $kollab-yellow-dark;
+      &:before {
+        font-weight: 900;
+      }
+    }
+  }
+
+  &--follow {
+    &--sm {
+      width: 66px;
+      padding: 0;
+
+      color: white;
+      background-color: $kollab-primary;
+      &:hover {
+        background-color: $kollab-primary-dark !important;
+      }
+    }
+    &--md {
+      width: 82px;
+      padding: 0;
+
+      color: white;
+      background-color: $kollab-primary;
+      &:hover {
+        background-color: $kollab-primary-dark !important;
+      }
+    }
+  }
+
+  &--unfollow {
+    &--sm {
+      width: 66px;
+      padding: 0;
+
+      color: $kollab-primary;
+      &:hover {
+        background-color: $kollab-gray-light !important;
+      }
+    }
+    &--md {
+      width: 82px;
+      padding: 0;
+
+      color: $kollab-primary;
+      &:hover {
+        background-color: $kollab-gray-light !important;
+      }
+    }
+  }
+
+  &--primary {
+    color: white;
+    background-color: $kollab-primary !important;
+
+    &:hover {
+      background-color: $kollab-primary-dark !important;
+    }
+  }
+
+  &--outline-primary {
+    color: $kollab-primary;
+    border: solid 2px $kollab-primary;
+    background-color: transparent;
+
+    &:hover {
+      color: white;
+      background-color: $kollab-primary !important;
+    }
+  }
+
+  &--gradient-primary {
+    color: white;
+    background: $kollab-primary;
+    background: linear-gradient(
+    90deg,
+    $kollab-primary 0%,
+    $kollab-secondary 99%
+    );
+
+    &:hover {
+      background: $kollab-secondary;
+      background: linear-gradient(
+      90deg,
+      $kollab-primary 0%,
+      $kollab-secondary 50%
+      );
+    }
+  }
+
+  &--fixed-bottom {
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    bottom: 20px;
+    left: 0;
+
+    margin-right: auto;
+    margin-left: auto;
   }
 
   &--tags {
@@ -49,72 +198,6 @@
 
     border-radius: 10px;
     background-color: #ebebeb;
-  }
-
-  &--card {
-    margin-top: 10px;
-    padding-top: 5px;
-    padding-right: 10px;
-    padding-left: 10px;
-    &--green {
-      color: white;
-      background-color: $kollab-turquoise !important;
-    }
-
-    &--outline-gray-light {
-      color: $kollab-gray-light;
-      border: solid 2px $kollab-gray-light;
-      background-color: transparent;
-    }
-
-    &--gradient-green {
-      color: white;
-      background: rgb(84, 189, 194);
-      background: linear-gradient(
-      90deg,
-      rgba(84, 189, 194, 1) 0%,
-      rgba(94, 219, 184, 1) 99%
-      );
-    }
-
-    &--fixed-bottom {
-      position: fixed;
-      z-index: 10;
-      right: 0;
-      bottom: 20px;
-      left: 0;
-
-      border-width: 1px;
-      border-color: black;
-      background-color: white;
-    }
-    &--gradient-green {
-      color: white;
-      background: rgb(84, 189, 194);
-      background: linear-gradient(
-      90deg,
-      rgba(84, 189, 194, 1) 0%,
-      rgba(94, 219, 184, 1) 99%
-      );
-    }
-
-    &--long {
-      width: 300px;
-      height: 40px;
-
-      border-radius: 20px;
-    }
-
-    &--fixed-bottom {
-      position: fixed;
-      z-index: 10;
-      right: 0;
-      bottom: 20px;
-      left: 0;
-
-      margin-right: auto;
-      margin-left: auto;
-    }
   }
 
   &--status {
@@ -130,7 +213,7 @@
 
     &--orange {
       color: $kollab-orange;
-      background-color: $kollab-orange-translucent;
+      background-color: rgba(255, 156, 70, 0.12);
     }
   }
 
@@ -152,5 +235,13 @@
     border: 1px solid $border-gray;
     border-radius: 5px;
     background-color: white;
+  }
+
+  &--edit-profile {
+    width: 100%;
+    height: 28px;
+
+    border-radius: 5px;
+    background-color: #ebebeb;
   }
 }

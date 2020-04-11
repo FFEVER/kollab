@@ -3,35 +3,14 @@ import PropTypes from "prop-types"
 
 class Card extends React.Component {
   render() {
-    return this.props.type === "project" ? (
-      <div className="d-flex flex-column">
-        <button className="button--card mt-3">
-          <div className="d-flex flex-row justify-content-between">
-            <div className="d-flex flex-column ">
-              <h4 style={{ color: "#4e4e4e" }}>{this.props.title}</h4>
-              <div className="d-flex flex-row">
-                {this.props.tags.map((item, index) => (
-                  <p
-                    key={index}
-                    style={{ marginRight: "5px", color: "#54bdc2" }}
-                  >
-                    {"#" + item}
-                  </p>
-                ))}
-              </div>
-            </div>
-            <div className="card-status">{this.props.status}</div>
-          </div>
-        </button>
-      </div>
-    ) : this.props.type === "post" ? (
+    return this.props.type === "post" ? (
       <div>
         <div className="d-flex flex-row mt-1 align-items-senter">
           <h5>{`${this.props.user.first_name} ${this.props.user.last_name[0]}.`}</h5>
           <p
             style={{
               fontSize: "1.2em",
-              marginLeft: "5px"
+              marginLeft: "5px",
             }}
           >
             {this.props.action}
@@ -48,7 +27,7 @@ class Card extends React.Component {
                 key={index}
                 style={{
                   marginRight: "5px",
-                  color: "#54bdc2"
+                  color: "#54bdc2",
                 }}
               >
                 {"#" + item}
@@ -70,6 +49,6 @@ Card.propTypes = {
   status: PropTypes.string,
   user: PropTypes.object,
   action: PropTypes.string,
-  project: PropTypes.object
+  project: PropTypes.object,
 }
 export default Card

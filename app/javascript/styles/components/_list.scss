@@ -5,8 +5,8 @@
   &__item {
     display: flex;
 
-    margin: 0.25 * $spacer 0;
-    padding: $spacer 0.5 * $spacer;
+    margin: $spacer-xs 0;
+    padding: $spacer $spacer-s;
 
     border-radius: 5px;
     background-color: white;

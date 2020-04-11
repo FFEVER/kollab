@@ -8,9 +8,9 @@
         <h3><%= @user.projects.count %></h3>
         <%= link_to "Projects", user_projects_path(@user), class: "mr-2 ml-2", method: :get%>
         <h3><%= @user.followings.count %></h3>
-        <%= link_to "Followings", '#',class: "mr-2 ml-2"%>
+        <%= link_to "Followings", followings_user_path(@user),class: "mr-2 ml-2", method: :get%>
         <h3><%= @user.followers.count %></h3>
-        <%= link_to "Followers", '#', class: "mr-2 ml-2"%>
+        <%= link_to "Followers", followers_user_path(@user), class: "mr-2 ml-2", method: :get%>
       </div>
     </div>
   </div>
@@ -37,9 +37,9 @@
     <%=image_pack_tag 'icon/more.png', style: 'height:20px;width:20px;'%>
   </div>
   <div class="d-flex flex-row mt-2">
-    <button class="button--tags mt-2">React Native</button>
-    <button class="button--tags mt-2">Docker</button>
-    <button class="button--tags mt-2">JavaScript</button>
+    <button class="button--tags">React Native</button>
+    <button class="button--tags">Docker</button>
+    <button class="button--tags">JavaScript</button>
   </div>
   <div class="d-flex flex-row mt-3 justify-content-between">
     <h3>Contact</h3>

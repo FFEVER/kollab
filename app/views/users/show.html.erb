@@ -1,6 +1,11 @@
 <div class="profile">
   <div class="profile__header">
-    <%= image_pack_tag 'anya.jpg', class: "image__profile image__profile--medium" %>
+    <% if @user.profile_image_url %>
+      <%= image_tag @user.profile_image, class: "image__profile image__profile--small" %>
+    <% else %>
+      <%= image_pack_tag "portrait_placeholder.png",
+            class: "image__profile image__profile--small" %>
+    <% end %>
     <div class="d-flex flex-column justify-content-center mr-3 ml-3">
       <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
       <p>4th year Software Engineering Stduent</p>
@@ -30,7 +35,7 @@
       </div>
     <% end %>
   <% else %>
-    <%= button_to "Edit Profile", edit_user_registration_path, class: "button button--edit-profile", method: :get %>
+    <%= button_to "Edit Profile", profile_edit_path, class: "button button--edit-profile", method: :get %>
   <% end %>
   <div class="d-flex flex-row mt-3 justify-content-between">
     <h3>Skills</h3>

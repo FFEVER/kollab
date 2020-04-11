@@ -110,7 +110,7 @@ class Navbar extends React.Component {
               <div className="nav__item nav__profile nav__item--desktop">
                 <img
                   src={profileImgUrl ? profileImgUrl : PortraitImg}
-                  className="nav__profile-img image__profile image__profile--small"
+                  className="nav__profile-img image__profile image__profile--medium"
                   copyright={
                     profileImgUrl
                       ? ""

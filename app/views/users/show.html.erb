@@ -1,7 +1,7 @@
 <div class="profile">
   <div class="profile__header">
     <% if @user.profile_image_url %>
-      <%= image_tag @user.profile_image, class: "image__profile image__profile--small" %>
+      <%= image_tag @user.profile_image, class: "image__profile image__profile--large" %>
     <% else %>
       <%= image_pack_tag "portrait_placeholder.png",
             class: "image__profile image__profile--small" %>

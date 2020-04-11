@@ -3,7 +3,14 @@ $kollab-width-tablet: 768px;
 $kollab-width-desktop: 1024px;
 $kollab-width-desktop-extra: 1200px;
 
-$global-space: 30px;
+$spacer-xs: 0.25 * $spacer;
+$spacer-s: 0.5 * $spacer;
+$spacer-m: $spacer;
+$spacer-l: 1.5 * $spacer;
+$spacer-xl: 2 * $spacer;
+
+$nav-height: 48px;
+$nav-height-desktop: 76px;
 
 html {
   box-sizing: border-box;
@@ -30,12 +37,12 @@ body {
   font-size: 12px;
   font-weight: 400;
 
-  background-color: #fcfcfc;
+  background-color: $kollab-white-bg;
 }
 
-@media only screen and (min-width: $kollab-width-mobile) {
+@media only screen and (min-width: $kollab-width-tablet) {
   body {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -46,6 +53,8 @@ a {
 
   &:hover {
     text-decoration: none;
+
+    color: $kollab-primary;
   }
 }
 

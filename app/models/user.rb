@@ -64,4 +64,10 @@ class User < ApplicationRecord
   def year_faculty
     '4th year Software Engineering Student'
   end
+
+  def profile_image_url
+    if profile_image.attached?
+      Rails.application.routes.url_helpers.rails_blob_path(profile_image, only_path: true)
+    end
+  end
 end

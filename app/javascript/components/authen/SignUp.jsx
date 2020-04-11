@@ -11,7 +11,7 @@ import {
   InputAdornment,
   FormControl,
   FormHelperText,
-  Link
+  Link,
 } from "@material-ui/core"
 
 import Visibility from "@material-ui/icons/Visibility"
@@ -21,7 +21,7 @@ import Button from "../shared/form/Button"
 
 const DATA_PREFIX = "user"
 
-const dataName = name => {
+const dataName = (name) => {
   return DATA_PREFIX + "[" + name + "]"
 }
 
@@ -38,7 +38,7 @@ class SignUp extends React.Component {
       showPassword: false,
       showConfirmPassword: false,
       checkedAgreeCondition: false,
-      isButtonLoading: false
+      isButtonLoading: false,
     }
 
     this.handleCheckAgreeCondition = this.handleCheckAgreeCondition.bind(this)
@@ -55,25 +55,25 @@ class SignUp extends React.Component {
 
   handleCheckAgreeCondition() {
     this.setState({
-      checkedAgreeCondition: !this.state.checkedAgreeCondition
+      checkedAgreeCondition: !this.state.checkedAgreeCondition,
     })
   }
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     })
   }
 
   handleClickShowPassword() {
     this.setState({
-      showPassword: !this.state.showPassword
+      showPassword: !this.state.showPassword,
     })
   }
 
   handleClickShowConfirmPassword() {
     this.setState({
-      showConfirmPassword: !this.state.showConfirmPassword
+      showConfirmPassword: !this.state.showConfirmPassword,
     })
   }
 
@@ -82,16 +82,16 @@ class SignUp extends React.Component {
     this.setIsButtonLoading(true)
 
     SignUpValidator.validateAll(this.state)
-      .then(result => {
+      .then((result) => {
         this.setState({
-          errors: defaultErrors
+          errors: defaultErrors,
         })
         const formData = this.createFormData()
         this.submitForm(formData)
       })
-      .catch(errors => {
+      .catch((errors) => {
         this.setState({
-          errors: errors
+          errors: errors,
         })
         this.setIsButtonLoading(false)
       })
@@ -104,25 +104,25 @@ class SignUp extends React.Component {
       url: submitPath,
       responseType: "json",
       headers: {
-        Accept: "application/json"
+        Accept: "application/json",
       },
-      data: formData
+      data: formData,
     })
-      .then(response => {
+      .then((response) => {
         if (response.status === 201) {
           window.location.href = response.headers.location
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response.status === 400) {
-          this.setState(state => {
+          this.setState((state) => {
             let error_messages = error.response.data.messages
             let errors = defaultErrors
             for (const [k, v] of Object.entries(error_messages)) {
               errors[k] = v
             }
             return {
-              errors
+              errors,
             }
           })
         }
@@ -292,7 +292,7 @@ class SignUp extends React.Component {
             href="#"
             style={{
               fontSize: "1.2em",
-              paddingTop: "8px"
+              paddingTop: "8px",
             }}
           >
             Terms & Conditions
@@ -309,7 +309,7 @@ class SignUp extends React.Component {
           type="submit"
           name="submitButton"
           isLoading={this.state.isButtonLoading}
-          className="button--gradient-green button--round"
+          className="button button--lg button--gradient-primary"
         >
           Sign Up
         </Button>
@@ -320,7 +320,7 @@ class SignUp extends React.Component {
 
 SignUp.propTypes = {
   authenticityToken: PropTypes.string,
-  submitPath: PropTypes.string
+  submitPath: PropTypes.string,
 }
 
 export default SignUp

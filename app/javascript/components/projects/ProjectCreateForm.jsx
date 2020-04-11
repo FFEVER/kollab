@@ -10,7 +10,7 @@ import Button from "../shared/form/Button"
 
 const DATA_PREFIX = "project"
 
-const dataName = name => {
+const dataName = (name) => {
   return DATA_PREFIX + "[" + name + "]"
 }
 
@@ -24,7 +24,7 @@ class ProjectCreateForm extends React.Component {
       startDate: "",
       endDate: "",
       errors: defaultErrors,
-      isButtonLoading: false
+      isButtonLoading: false,
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -40,14 +40,14 @@ class ProjectCreateForm extends React.Component {
 
   handleTagChange(value) {
     this.setState({
-      tagList: [...this.state.tagList, ...value]
+      tagList: [...this.state.tagList, ...value],
     })
   }
 
   handleTagClear(value) {
     // Handle clear or delete tags
     this.setState({
-      tagList: value
+      tagList: value,
     })
   }
 
@@ -56,13 +56,13 @@ class ProjectCreateForm extends React.Component {
     this.setIsButtonLoading(true)
 
     FormValidator.validateAll(this.state)
-      .then(result => {
+      .then((result) => {
         const formData = this.createFormData()
         this.submitForm(formData)
       })
-      .catch(errors => {
+      .catch((errors) => {
         this.setState({
-          errors: errors
+          errors: errors,
         })
         this.setIsButtonLoading(false)
       })
@@ -97,24 +97,24 @@ class ProjectCreateForm extends React.Component {
       url: submitPath,
       responseType: "json",
       headers: {
-        Accept: "application/json"
+        Accept: "application/json",
       },
-      data: formData
+      data: formData,
     })
-      .then(response => {
+      .then((response) => {
         if (response.status === 201)
           window.location.href = response.headers.location
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response.status === 400) {
-          this.setState(state => {
+          this.setState((state) => {
             let error_messages = error.response.data.messages
             let errors = defaultErrors
             for (const [k, v] of Object.entries(error_messages)) {
               errors[k] = v
             }
             return {
-              errors
+              errors,
             }
           })
         }
@@ -137,7 +137,7 @@ class ProjectCreateForm extends React.Component {
       endDate,
       categories,
       errors,
-      isButtonLoading
+      isButtonLoading,
     } = this.state
     return (
       <form onSubmit={this.handleSubmit} className="project__form" noValidate>
@@ -225,7 +225,7 @@ class ProjectCreateForm extends React.Component {
           type="submit"
           name="submitButton"
           isLoading={isButtonLoading}
-          className="button button--fixed-bottom button--long button--gradient-green"
+          className="button button--fixed-bottom button--lg button--gradient-primary"
         >
           Create a Project
         </Button>
@@ -242,6 +242,6 @@ class ProjectCreateForm extends React.Component {
 
 ProjectCreateForm.propTypes = {
   authenticityToken: PropTypes.string,
-  submitPath: PropTypes.string
+  submitPath: PropTypes.string,
 }
 export default ProjectCreateForm

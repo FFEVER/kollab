@@ -4,12 +4,12 @@ import {
   OutlinedInput,
   InputLabel,
   FormControl,
-  FormHelperText
+  FormHelperText,
 } from "@material-ui/core"
 
 const DATA_PREFIX = "user"
 
-const dataName = name => {
+const dataName = (name) => {
   return DATA_PREFIX + "[" + name + "]"
 }
 
@@ -22,7 +22,7 @@ class ForgotPassword extends React.Component {
       emailError: { bool: false, error: "" },
       passwordError: { bool: false, error: "" },
       showPassword: false,
-      checkedAgreeCondition: false
+      checkedAgreeCondition: false,
     }
     this.handleClickShowPassword = this.handleClickShowPassword.bind(this)
     this.handleMouseDownPassword = this.handleMouseDownPassword.bind(this)
@@ -33,13 +33,13 @@ class ForgotPassword extends React.Component {
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     })
   }
 
   handleClickShowPassword() {
     this.setState({
-      showPassword: !this.state.showPassword
+      showPassword: !this.state.showPassword,
     })
   }
 
@@ -54,10 +54,10 @@ class ForgotPassword extends React.Component {
 
     this.state.password === ""
       ? this.setState({
-          passwordError: { bool: true, error: "Required password" }
+          passwordError: { bool: true, error: "Required password" },
         })
       : this.setState({
-          passwordError: { bool: false, error: "" }
+          passwordError: { bool: false, error: "" },
         })
   }
 
@@ -83,7 +83,7 @@ class ForgotPassword extends React.Component {
           </FormHelperText>
         </FormControl>
         <button
-          className="button--gradient-green button--round mt-3"
+          className="button button--lg button--gradient-primary mt-3"
           onClick={this.handleSubmit}
         >
           Request Reset
@@ -95,7 +95,7 @@ class ForgotPassword extends React.Component {
 
 ForgotPassword.propTypes = {
   authenticityToken: PropTypes.string,
-  submitPath: PropTypes.string
+  submitPath: PropTypes.string,
 }
 
 export default ForgotPassword

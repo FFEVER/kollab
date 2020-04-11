@@ -31,10 +31,9 @@
   }
 
   &__section {
-    display: flex;
-    flex-direction: column;
-
     margin-top: 1rem;
+    margin-bottom: $spacer-xs;
+    padding: $spacer-s;
   }
 
   &__menu {
@@ -49,8 +48,8 @@
       flex-direction: column;
 
       width: 50%;
-      padding-top: $global-space * 0.25;
-      padding-bottom: $global-space * 0.25;
+      padding-top: $spacer-xs;
+      padding-bottom: $spacer-xs;
 
       color: $kollab-gray;
 
@@ -71,7 +70,7 @@
     align-items: center;
     &__col {
       &--image {
-        margin-right: 0.5 * $spacer;
+        margin-right: $spacer-s;
       }
 
       &--actions {

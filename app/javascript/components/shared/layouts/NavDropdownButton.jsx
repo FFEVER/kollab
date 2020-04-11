@@ -1,7 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
-import axios from "axios"
-import PortraitImg from "images/portrait_placeholder.png"
 
 class NavDropdownButton extends React.Component {
   constructor(props) {

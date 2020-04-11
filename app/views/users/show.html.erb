@@ -1,16 +1,16 @@
 <div class="profile">
-  <div class="d-flex flex-row">
+  <div class="profile__header">
     <%= image_pack_tag 'anya.jpg', class: "image__profile image__profile--medium" %>
     <div class="d-flex flex-column justify-content-center mr-3 ml-3">
       <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
       <p>4th year Software Engineering Stduent</p>
       <div class="d-flex flex-row align-items-center justify-content-between">
         <h3><%= @user.projects.count %></h3>
-        <%= link_to "Projects", user_projects_path(@user), class: "mr-3 ml-3", method: :get%>
+        <%= link_to "Projects", user_projects_path(@user), class: "mr-2 ml-2", method: :get%>
         <h3><%= @user.followings.count %></h3>
-        <h6 class="mr-3 ml-3">Followings</h6>
+        <%= link_to "Followings", '#',class: "mr-2 ml-2"%>
         <h3><%= @user.followers.count %></h3>
-        <h6 class="mr-3 ml-3">Followers</h6>
+        <%= link_to "Followers", '#', class: "mr-2 ml-2"%>
       </div>
     </div>
   </div>

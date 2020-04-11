@@ -23,10 +23,12 @@
   &__brand {
     margin-right: $spacer-l;
     &__logo {
+      min-width: 70px;
       height: 30px;
       max-height: 30px;
 
       @media only screen and (min-width: $kollab-width-tablet) {
+        min-width: 89px;
         height: 38px;
         max-height: 38px;
       }
@@ -73,9 +75,11 @@
     }
 
     &--button {
-      width: 180px;
       height: $nav-height;
+      padding-right: $spacer;
       padding-left: $spacer;
+
+      white-space: nowrap;
       i {
         margin-right: $spacer-s;
       }
@@ -124,6 +128,8 @@
   }
   &__profile-name {
     margin-right: $spacer-s;
+
+    text-align: left;
   }
 
   &__dropdown {

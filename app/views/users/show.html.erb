@@ -24,20 +24,20 @@
     <% if current_user.following?(@user) %>
       <div class="d-flex flex-row">
         <%= link_to "Following", unfollow_user_path, method: :post,
-              class: "button button--sm button--unfollow--sm mr-1", remote: true, style: 'width:50%;'%>
-        <button class="button button--sm  mr-1" style="width:50%">Message</button>
+              class: "button button--md button--unfollow--sm mr-1", remote: true, style: 'width:50%;'%>
+        <button class="button button--md  mr-1" style="width:50%">Message</button>
 
       </div>
     <% else %>
       <div class="d-flex flex-row">
         <%= link_to "Follow", follow_user_path, method: :post,
-              class: "button button--sm button--follow--sm mr-1", remote: true, style: 'width:50%;'%>
-        <button class="button button--sm" style="width:50%">Message</button>
+              class: "button button--md button--follow--sm mr-1", remote: true, style: 'width:50%;'%>
+        <button class="button button--md" style="width:50%">Message</button>
 
       </div>
     <% end %>
   <% else %>
-    <%= button_to "Edit Profile", profile_edit_path, class: "button button--sm profile__fullwidth", method: :get %>
+    <%= button_to "Edit Profile", profile_edit_path, class: "button button--md profile__fullwidth", method: :get %>
   <% end %>
   <div class="d-flex flex-row mt-3 justify-content-between">
     <h3>Skills</h3>

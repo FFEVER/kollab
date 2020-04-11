@@ -31,9 +31,11 @@
   }
 
   &__section {
+    display: flex;
+    flex-direction: column;
+
     margin-top: 1rem;
     margin-bottom: $spacer-xs;
-    padding: $spacer-s;
   }
 
   &__menu {
@@ -78,6 +80,21 @@
       }
     }
   }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-top: $spacer-m;
+
+    &__edit {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
 }
 
 .dot {
@@ -105,8 +122,15 @@
 .edit-profile {
   &__social {
     display: flex;
+    align-items: center;
     flex-direction: row;
+    justify-content: center;
 
-    margin-bottom: 0.5rem;
+    margin-top: $spacer-s;
+    margin-bottom: $spacer-s;
+    padding: 7px;
+
+    border-radius: 5px;
+    background-color: $kollab-gray-light;
   }
 }

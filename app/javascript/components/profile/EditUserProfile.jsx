@@ -37,8 +37,6 @@ const projects = [
   },
 ]
 
-const socials = ["GitHub", "Facebook", "Instagram"]
-
 class EditUserProfile extends React.Component {
   constructor(props) {
     super(props)
@@ -77,18 +75,16 @@ class EditUserProfile extends React.Component {
       ],
       errors: defaultErrors,
       social: "",
+      socials: [
+        { key: "GitHub", value: "" },
+        { key: "Facebook", value: "" },
+        { key: "Instagram", value: "" },
+      ],
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSkillCreate = this.handleSkillCreate.bind(this)
     this.handleExpertiseCreate = this.handleExpertiseCreate.bind(this)
-  }
-
-  renderYears() {
-    for (var i = 0; i < 3; i++) {
-      ;<MenuItem key={i} value={i}>
-        {i}
-      </MenuItem>
-    }
+    this.addSocialLink = this.addSocialLink.bind(this)
   }
 
   handleChange(event) {
@@ -111,6 +107,46 @@ class EditUserProfile extends React.Component {
     })
   }
 
+  addSocialLink() {
+    return (
+      <div className="edit-profile__social">
+        <FormControl
+          className="mr-3"
+          variant="outlined"
+          fullWidth
+          size="small"
+          style={{ backgroundColor: "white" }}
+        >
+          <Select
+            name="social"
+            value={this.state.social}
+            onChange={this.handleChange}
+          >
+            <MenuItem value="">
+              <em>Social Link</em>
+            </MenuItem>
+
+            {this.state.socials.map((item, index) => (
+              <MenuItem key={index} value={item.key}>
+                {item.key}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormInput
+          name={this.state.social}
+          placeholder={this.state.social}
+          type="text"
+          value={this.state.phone}
+          className="form-control auto-height mr-2"
+          onChange={this.handleChange}
+          errors={this.state.errors.social}
+        />
+        <i className="far fa-times-circle fa-2x" />
+      </div>
+    )
+  }
+
   render() {
     const {
       user,
@@ -123,16 +159,17 @@ class EditUserProfile extends React.Component {
       phone,
       email,
       social,
+      socials,
     } = this.state
     return (
       <form>
         <div className="thin-line" />
         <div>
-          <div className="d-flex flex-row justify-content-between">
+          <div className="profile__image__edit">
             <h4>Profile Picture</h4>
             <img className="icon" src={edit} />
           </div>
-          <div className="d-flex flex-col justify-content-center mt-3">
+          <div className="profile__image">
             <img className="profile-img" src={profileImg} />
           </div>
           <div className="thin-line" />
@@ -249,10 +286,11 @@ class EditUserProfile extends React.Component {
             <p>Social Links</p>
             <div className="edit-profile__social">
               <FormControl
-                className="mr-2"
+                className="mr-3"
                 variant="outlined"
                 fullWidth
                 size="small"
+                style={{ backgroundColor: "white" }}
               >
                 <Select
                   name="social"
@@ -264,8 +302,8 @@ class EditUserProfile extends React.Component {
                   </MenuItem>
 
                   {socials.map((item, index) => (
-                    <MenuItem key={index} value={item}>
-                      {item}
+                    <MenuItem key={index} value={item.key}>
+                      {item.key}
                     </MenuItem>
                   ))}
                 </Select>
@@ -275,18 +313,26 @@ class EditUserProfile extends React.Component {
                 placeholder={social}
                 type="text"
                 value={phone}
-                className="form-control auto-height"
+                className="form-control auto-height mr-2"
                 onChange={this.handleChange}
                 errors={errors.social}
               />
+              <i className="far fa-times-circle fa-2x" />
             </div>
+            <p
+              className="d-flex flex-column align-items-center"
+              style={{ color: "#54bdc2" }}
+              onClick={this.addSocialLink}
+            >
+              Add social links
+            </p>
           </div>
         </div>
         <div className="d-flex flex-column align-items-center">
           <Button
             name="submitButton"
             type="submit"
-            className="button--gradient-green button--long mt-3"
+            className="button--gradient-primary button--lg mt-3"
             isLoading={this.state.isButtonLoading}
           >
             Save

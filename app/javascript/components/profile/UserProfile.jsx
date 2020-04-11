@@ -10,20 +10,20 @@ class UserProfile extends React.Component {
       posts: [
         {
           action: "updated project progress",
-          project: this.props.projects[1],
-          tags: ["WebApplication"]
+          project: this.props.projects[0],
+          tags: ["WebApplication"],
         },
         {
           action: "updated project progress",
           project: this.props.projects[0],
-          tags: ["Communication", "WebApplication", "Media"]
+          tags: ["Communication", "WebApplication", "Media"],
         },
         {
           action: "done the project of",
           project: this.props.projects[0],
-          tags: ["Communication", "WebApplication", "Media"]
-        }
-      ]
+          tags: ["Communication", "WebApplication", "Media"],
+        },
+      ],
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -31,28 +31,33 @@ class UserProfile extends React.Component {
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     })
   }
 
   render() {
-    const { currentUser, projects } = this.props
+    const { currentUser, projects, isProfileOwner } = this.props
+    const { posts } = this.state
     return (
       <div>
         <div className="d-flex flex-row mt-3 justify-content-between">
           <h3>Post</h3>
-          <img className="icon--round" src={add} />
+          {isProfileOwner ? <img className="icon--round" src={add} /> : <div />}
         </div>
-        {this.state.posts.map((item, index) => (
-          <Card
-            key={index}
-            type={"post"}
-            user={currentUser}
-            action={item.action}
-            project={item.project}
-            tags={item.tags}
-          />
-        ))}
+        {projects.length > 0 ? (
+          posts.map((item, index) => (
+            <Card
+              key={index}
+              type={"post"}
+              user={currentUser}
+              action={item.action}
+              project={item.project}
+              tags={item.tags}
+            />
+          ))
+        ) : (
+          <div />
+        )}
       </div>
     )
   }
@@ -63,7 +68,8 @@ UserProfile.propTypes = {
   editPath: PropTypes.string,
   currentUser: PropTypes.object,
   projects: PropTypes.array,
-  tags: PropTypes.array
+  tags: PropTypes.array,
+  isProfileOwner: PropTypes.bool,
 }
 
 export default UserProfile

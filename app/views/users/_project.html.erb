@@ -1,0 +1,38 @@
+<%= link_to project do %>
+  <div class="list__item">
+    <div class="list__item__col project__item--info">
+      <h6 class="project__item__title">
+        <%= project.title %>
+      </h6>
+
+      <p class="project__item__short-desc">
+        <%= project.short_desc %>
+      </p>
+
+      <div class="project__item__tags">
+        <% project.tag_list.each do |tag|%>
+          <a href="#" class="tag"> <%= "##{tag}" %> </a>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="list__item__col project__item--actions">
+      <%# TODO: [Anyone] Add status%>
+      <% if current_user != @user%>
+        <% if project.followed_by?(current_user) %>
+          <%= button_to "Following", unfollow_project_path(project), method: :post,
+            class: "button button--sm button--unfollow--sm",
+            remote: true %>
+        <% else %>
+          <%= button_to "Follow", follow_project_path(project), method: :post,
+            class: "button button--sm button--follow--sm",
+            remote: true %>
+        <% end %>
+      <% else %>
+        <button class="button button--status button--sm button--status--orange">
+          In progress
+        </button>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -44,30 +44,6 @@
         margin-right: 0.75rem;
         margin-left: 0.75rem;
       }
-
-      &__detail {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        justify-content: space-between;
-
-        a {
-          display: flex;
-          align-items: center;
-          flex-grow: 1;
-
-          margin-right: 10px;
-        }
-
-        p {
-          font-size: 12px;
-
-          margin-right: 0.5rem;
-          margin-left: 0.5rem;
-
-          color: #212529;
-        }
-      }
     }
   }
 }

@@ -1,8 +1,13 @@
 <div class="list__item profile__item">
   <div class="list__item__col profile__item__col--image">
     <%= link_to user do %>
-      <%= image_pack_tag 'person.jpg',
+      <% if user.profile_image_url %>
+        <%= image_tag user.profile_image_url,
             class: "image__profile image__profile--small" %>
+      <% else %>
+        <%= image_pack_tag "portrait_placeholder.png",
+            class: "image__profile image__profile--small" %>
+      <% end %>
     <% end %>
   </div>
   <%= link_to user do %>
@@ -23,11 +28,11 @@
     <% if user != current_user %>
       <% if user.followed_by?(current_user) %>
         <%= button_to "Following", unfollow_user_path(user), method: :post,
-            class: "button button--very-small button--outline-gray-light",
+            class: "button button--sm button--unfollow--sm",
             remote: true %>
       <% else %>
         <%= button_to "Follow", follow_user_path(user), method: :post,
-            class: "button button--very-small button--green",
+            class: "button button--sm button--follow--sm",
             remote: true %>
       <% end %>
     <% end %>

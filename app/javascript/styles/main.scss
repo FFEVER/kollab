@@ -1,4 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
 
 /**
 Theme
@@ -18,6 +22,7 @@ Layout
 @import 'layout/navigation';
 @import 'layout/forms';
 @import 'layout/sidebar';
+@import 'layout/wrappers.scss';
 
 /**
 Components

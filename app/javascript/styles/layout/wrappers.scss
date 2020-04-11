@@ -1,0 +1,15 @@
+.wrapper {
+  &__nav-content {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    width: 71rem;
+    max-width: 71rem;
+    margin: 0 auto;
+  }
+  &__content {
+    max-width: 71rem;
+    margin: 0 auto;
+  }
+}

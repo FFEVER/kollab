@@ -29,8 +29,8 @@
   }
 
   &__section {
-    margin-bottom: $global-space * 0.25;
-    padding: $global-space * 0.5;
+    margin-bottom: $spacer-xs;
+    padding: $spacer-s;
 
     box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
   }
@@ -47,8 +47,8 @@
       flex-direction: column;
 
       width: 50%;
-      padding-top: $global-space * 0.25;
-      padding-bottom: $global-space * 0.25;
+      padding-top: $spacer-xs;
+      padding-bottom: $spacer-xs;
 
       color: $kollab-gray;
 
@@ -69,7 +69,7 @@
     align-items: center;
     &__col {
       &--image {
-        margin-right: 0.5 * $spacer;
+        margin-right: $spacer-s;
       }
 
       &--actions {

@@ -17,6 +17,7 @@ ReactRailsUJS.useContext(componentRequireContext)
 import "jquery"
 import "bootstrap"
 import "popper.js"
+import "@fortawesome/fontawesome-free"
 
 // Make jQuery works in rails .js.erb
 window.jQuery = $

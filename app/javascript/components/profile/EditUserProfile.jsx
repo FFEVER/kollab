@@ -76,7 +76,7 @@ class EditUserProfile extends React.Component {
         },
       ],
       errors: defaultErrors,
-      socialLink: "",
+      social: "",
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSkillCreate = this.handleSkillCreate.bind(this)
@@ -92,14 +92,12 @@ class EditUserProfile extends React.Component {
   }
 
   handleChange(event) {
-    console.log("Event ", event)
     this.setState({
       [event.target.name]: event.target.value,
     })
   }
 
   handleSkillCreate(event) {
-    console.log("Event ", event)
     const skills = this.state.tags
     this.setState({
       skills: [...skills, { value: event, label: event }],
@@ -107,7 +105,6 @@ class EditUserProfile extends React.Component {
   }
 
   handleExpertiseCreate(event) {
-    console.log("Event ", event)
     const expertise = this.state.expertise
     this.setState({
       expertise: [...expertise, { value: event, label: event }],
@@ -125,12 +122,11 @@ class EditUserProfile extends React.Component {
       skills,
       phone,
       email,
-      socialLink,
+      social,
     } = this.state
     return (
       <form>
-        {console.log("User ", user)}
-        <div className="thin-line mt-3 mb-3" />
+        <div className="thin-line" />
         <div>
           <div className="d-flex flex-row justify-content-between">
             <h4>Profile Picture</h4>
@@ -139,12 +135,11 @@ class EditUserProfile extends React.Component {
           <div className="d-flex flex-col justify-content-center mt-3">
             <img className="profile-img" src={profileImg} />
           </div>
-          <div className="thin-line mt-3 mb-3" />
+          <div className="thin-line" />
           <div>
             <h4>Faculty</h4>
-            <div className="d-flex flex-column mt-3">
-              <FormControl variant="outlined">
-                {/* <InputLabel>{this.state.faculty}</InputLabel> */}
+            <div className="profile__section">
+              <FormControl variant="outlined" size="small">
                 <Select
                   name="faculty"
                   value={currentfaculty}
@@ -163,10 +158,10 @@ class EditUserProfile extends React.Component {
                 </Select>
               </FormControl>
             </div>
-            <div className="d-flex flex-column mt-3">
+            <div className="profile__section">
               <h4>Year of Study</h4>
-              <div className="d-flex flex-column mt-3">
-                <FormControl variant="outlined">
+              <div className="profile__section">
+                <FormControl variant="outlined" size="small">
                   {/* <InputLabel>{this.state.faculty}</InputLabel> */}
                   <Select name="year" value={year} onChange={this.handleChange}>
                     <MenuItem value="">
@@ -182,12 +177,11 @@ class EditUserProfile extends React.Component {
               </div>
             </div>
           </div>
-          <div className="thin-line mt-3 mb-3" />
-          <div className="d-flex flex-column mt-3">
+          <div className="thin-line" />
+          <div className="profile__section">
             <h4>Bio</h4>
-            <div className="d-flex flex-column mt-3">
+            <div className="profile__section">
               <TextField
-                // label="Multiline"
                 multiline
                 rows="4"
                 defaultValue={bio}
@@ -195,11 +189,12 @@ class EditUserProfile extends React.Component {
               />
             </div>
           </div>
-          <div className="thin-line mt-3 mb-3" />
-          <div className="d-flex flex-column mt-3">
+          <div className="thin-line" />
+          <div className="profile__section">
             <h4>Expertise</h4>
             <div className="mt-3">
               <CreatableSelect
+                name="expertise"
                 isClearable
                 value={expertise}
                 isMulti
@@ -208,8 +203,8 @@ class EditUserProfile extends React.Component {
               />
             </div>
           </div>
-          <div className="thin-line mt-3 mb-3" />
-          <div className="d-flex flex-column mt-3">
+          <div className="thin-line" />
+          <div className="profile__section">
             <h4>Skills</h4>
             <div className="mt-3">
               <CreatableSelect
@@ -221,27 +216,9 @@ class EditUserProfile extends React.Component {
               />
             </div>
           </div>
-          <div className="thin-line mt-3 mb-3" />
-          <div className="d-flex flex-column mt-3">
+          <div className="thin-line" />
+          <div className="profile__section">
             <h4>Contact</h4>
-            <div className="d-flex flex-row  mt-3 align-items-center">
-              <img className="icon" src={contact} />
-              <TextField
-                label="Phone"
-                variant="outlined"
-                value={phone}
-                fullWidth
-              />
-            </div>
-            <div className="d-flex flex-row mt-3 align-items-center">
-              <img className="icon" src={mail} />
-              <TextField
-                label="E-mail"
-                variant="outlined"
-                value={email}
-                fullWidth
-              />
-            </div>
             <div className="d-flex flex-row  mt-3 align-items-center">
               <img className="icon" src={contact} />
               <FormInput
@@ -249,38 +226,58 @@ class EditUserProfile extends React.Component {
                 placeholder="Phone"
                 type="text"
                 value={phone}
-                className="form-control"
+                className="form-control auto-height"
                 onChange={this.handleChange}
                 errors={errors.phone}
               />
             </div>
+            <div className="d-flex flex-row mt-3 align-items-center">
+              <img className="icon" src={mail} />
+              <FormInput
+                name="email"
+                placeholder="E-mail"
+                type="text"
+                value={email}
+                className="form-control auto-height"
+                onChange={this.handleChange}
+                errors={errors.email}
+              />
+            </div>
           </div>
-          <div className="d-flex flex-column mt-3">
+          <div className="profile__section">
             <h4>Links</h4>
             <p>Social Links</p>
-            <div className="d-flex flex-row mt-3">
-              <FormControl className="mr-2" variant="outlined" fullWidth>
-                {/* <InputLabel>{this.state.faculty}</InputLabel> */}
+            <div className="edit-profile__social">
+              <FormControl
+                className="mr-2"
+                variant="outlined"
+                fullWidth
+                size="small"
+              >
                 <Select
-                  name="socialLink"
-                  value={socialLink}
+                  name="social"
+                  value={social}
                   onChange={this.handleChange}
                 >
                   <MenuItem value="">
-                    <em>Select your year of study</em>
+                    <em>Social Link</em>
                   </MenuItem>
 
-                  <MenuItem value={1}>1</MenuItem>
+                  {socials.map((item, index) => (
+                    <MenuItem key={index} value={item}>
+                      {item}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
               <FormInput
-                name={socialLink}
-                placeholder="Phone"
+                name={social}
+                placeholder={social}
                 type="text"
                 value={phone}
-                className="form-control"
+                className="form-control auto-height"
                 onChange={this.handleChange}
-                errors={errors.phone}
+                errors={errors.social}
               />
             </div>
           </div>

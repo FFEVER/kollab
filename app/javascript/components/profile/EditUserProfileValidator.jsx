@@ -1,6 +1,7 @@
 const defaultErrors = {
   email: [],
   phone: [],
+  social: [],
 }
 
 class EditUserProfileValidator {

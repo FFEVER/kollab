@@ -73,9 +73,11 @@
     }
 
     &--button {
-      width: 180px;
       height: $nav-height;
+      padding-right: $spacer;
       padding-left: $spacer;
+
+      white-space: nowrap;
       i {
         margin-right: $spacer-s;
       }

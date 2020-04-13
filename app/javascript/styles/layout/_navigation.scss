@@ -139,6 +139,7 @@
     margin: 0 $spacer-xs;
 
     &__drop-button {
+      min-width: 30px;
       height: 100%;
 
       background-color: transparent;

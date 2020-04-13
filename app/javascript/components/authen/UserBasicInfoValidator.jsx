@@ -1,27 +1,53 @@
 const defaultErrors = {
-  tagList: [],
+  faculty: "",
+  year: "",
   expertise: "",
+  skills: [],
 }
 
 class UserBasicInfoValidator {
-  static validateTagList(state, errors) {
-    const { tagList } = state
-    const key = Object.keys({ tagList })[0]
+  static validateFaculty(state, errors) {
+    const { faculty } = state
+    const key = Object.keys({ faculty })[0]
+    if (faculty === undefined || faculty.length < 1) {
+      errors[key].push("Please select your faculty.")
+    }
+  }
 
-    if (tagList.length > 3) {
-      errors[key].push("Tags can have up to 3.")
-    } else if (tagList.length <= 0) {
-      errors[key].push("Add at least 1 tag")
+  static validateYear(state, errors) {
+    const { year } = state
+    const key = Object.keys({ year })[0]
+    if (year === undefined || year.length < 1) {
+      errors[key].push("Please select your year.")
+    }
+  }
+
+  static validateExpertise(state, errors) {
+    const { expertise } = state
+    const key = Object.keys({ expertise })[0]
+    if (expertise === undefined || expertise.length < 1) {
+      errors[key].push("Please select your expertise.")
+    }
+  }
+
+  static validateSkills(state, errors) {
+    const { skills } = state
+    const key = Object.keys({ skills })[0]
+
+    if (skills.length > 3) {
+      errors[key].push("Skills may have up to 3.")
+    } else if (skills.length <= 0) {
+      errors[key].push("Add at least 1 skill")
     }
 
-    for (const { label, value } of tagList) {
+    for (const { label, value } of skills) {
       const length = value.length
       if (length > 25) {
-        errors[key].push("A tag is too long (maximum 25 characters).")
+        errors[key].push("A skill is too long (maximum 25 characters).")
         break
       }
       if (length <= 0) {
-        errors[key].push("A tag is too short (minimum 1 character).")
+        errors[key].push("A skill is too short (minimum 1 character).")
         break
       }
     }
@@ -44,7 +70,10 @@ class UserBasicInfoValidator {
     let promise = new Promise((resolve, reject) => {
       const errors = { ...defaultErrors }
       this.clearErrors(errors)
-      this.validateTagList(state, errors)
+      this.validateFaculty(state, errors)
+      this.validateYear(state, errors)
+      this.validateExpertise(state, errors)
+      this.validateSkills(state, errors)
 
       if (this.isValidatePass(errors)) {
         resolve(errors)

@@ -10,6 +10,7 @@ import {
   MenuItem,
   RadioGroup,
   Radio,
+  FormHelperText,
 } from "@material-ui/core"
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos"
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos"
@@ -39,6 +40,26 @@ const tagStyles = {
       borderColor: "#c2c2c2",
     },
     marginTop: "10px",
+  }),
+}
+
+const tagErrorStyles = {
+  ...defaultStyles,
+  control: (provided, state) => ({
+    ...provided,
+    minWidth: "100%",
+    height: "56px",
+    borderColor: "red",
+    boxShadow: state.isFocused ? "0 0 3px #ce7171" : "",
+    cursor: "text",
+    "&:hover": {
+      borderColor: "red",
+    },
+    marginTop: "10px",
+  }),
+  placeholder: (provided, state) => ({
+    ...provided,
+    color: "red",
   }),
 }
 
@@ -73,14 +94,12 @@ class UserBasicInfo extends React.Component {
   }
 
   handleChange(event) {
-    console.log("Event ", event)
     this.setState({
       [event.target.name]: event.target.value,
     })
   }
 
   handleFieldChange(event) {
-    console.log("Event ", event)
     if (event.target.name === event.target.value) {
       this.setState({
         [event.target.name]: "",
@@ -244,11 +263,15 @@ class UserBasicInfo extends React.Component {
         <div className="mt-3">
           <h4>Faculty</h4>
           <div className="d-flex flex-column mt-3">
-            <FormControl variant="outlined">
-              <InputLabel>{faculty ? "" : "Select your faculty"}</InputLabel>
+            <FormControl
+              variant="outlined"
+              error={errors.faculty.length > 0 ? true : false}
+            >
+              <InputLabel>Faculty</InputLabel>
               <Select
                 name="faculty"
                 value={faculty}
+                label="Faculty"
                 onChange={this.handleChange}
               >
                 {faculties.map((fac) =>
@@ -259,6 +282,9 @@ class UserBasicInfo extends React.Component {
                   ))
                 )}
               </Select>
+              <FormHelperText error={errors.faculty.length > 0 ? true : false}>
+                {errors.faculty[0]}
+              </FormHelperText>
             </FormControl>
           </div>
         </div>
@@ -266,15 +292,26 @@ class UserBasicInfo extends React.Component {
           <div className="d-flex flex-column mt-3">
             <h4>Year of Study</h4>
             <div className="d-flex flex-column mt-3">
-              <FormControl variant="outlined">
-                <InputLabel>{year ? "" : "Select year of study"}</InputLabel>
-                <Select name="year" value={year} onChange={this.handleChange}>
+              <FormControl
+                variant="outlined"
+                error={errors.year.length > 0 ? true : false}
+              >
+                <InputLabel>Year of study</InputLabel>
+                <Select
+                  name="year"
+                  label="Year of study"
+                  value={year}
+                  onChange={this.handleChange}
+                >
                   <MenuItem value={1}>1</MenuItem>
                   <MenuItem value={2}>2</MenuItem>
                   <MenuItem value={3}>3</MenuItem>
                   <MenuItem value={4}>4</MenuItem>
                   <MenuItem value={"other"}>other</MenuItem>
                 </Select>
+                <FormHelperText error={errors.year.length > 0 ? true : false}>
+                  {errors.year[0]}
+                </FormHelperText>
               </FormControl>
             </div>
           </div>
@@ -289,7 +326,15 @@ class UserBasicInfo extends React.Component {
             className="button--textfield col-xs-2 mt-3 text-left"
             data-toggle="modal"
             data-target="#expertiseModal"
-            style={{ color: expertise ? "black" : "#808080" }}
+            style={{
+              color:
+                errors.expertise.length > 0 && expertise === ""
+                  ? "red"
+                  : expertise
+                  ? "black"
+                  : "#808080",
+              borderColor: errors.expertise.length > 0 ? "red" : "#c2c2c2",
+            }}
           >
             {expertise ? expertise : "Select your expertise"}
           </Button>
@@ -439,7 +484,7 @@ class UserBasicInfo extends React.Component {
                   <Button
                     name="expertise"
                     type="button"
-                    className="button--gradient-green button--fullwidth"
+                    className="button--gradient-primary button--lg"
                     data-dismiss="modal"
                     onClick={() =>
                       this.setState({ expertise: eval(activateModal) })
@@ -451,6 +496,9 @@ class UserBasicInfo extends React.Component {
               </div>
             </div>
           </div>
+          <FormHelperText error={errors.expertise.length > 0 ? true : false}>
+            {errors.expertise[0]}
+          </FormHelperText>
         </div>
         <div className="form d-flex flex-column mt-3 mb-3">
           <h4>Skills</h4>
@@ -459,17 +507,18 @@ class UserBasicInfo extends React.Component {
             value={skills}
             onChange={this.handleSkillsClear}
             onKeyDown={this.handleSkillsChange}
-            placeholder="Type something and press enter..."
+            placeholder="Type your skill and press enter"
             errors={errors.skills}
             id="skills"
             styles={tagStyles}
+            errorStyles={tagErrorStyles}
           />
         </div>
         <Button
           type="submit"
           name="submitButton"
           isLoading={isButtonLoading}
-          className="button--gradient-green button--round"
+          className="button--gradient-primary button--lg"
         >
           Done
         </Button>

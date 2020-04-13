@@ -1,11 +1,167 @@
-.navbar {
-  height: 50px;
+.nav {
+  font-family: 'Muli';
+  font-weight: bold;
 
-  -webkit-box-shadow: 0 5px 10px -8px #999;
-     -moz-box-shadow: 0 5px 10px -8px #999;
-          box-shadow: 0 5px 10px -8px #999;
+  position: sticky;
+  z-index: 10;
 
-  .nav-logo {
-    height: 36px;
+  width: 100%;
+  height: $nav-height;
+  padding: 0 $spacer-l;
+
+  background-color: white;
+  -webkit-box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
+     -moz-box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
+          box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
+
+  @media only screen and (min-width: $kollab-width-tablet) {
+    font-size: 16px;
+
+    height: $nav-height-desktop;
+  }
+
+  &__brand {
+    margin-right: $spacer-l;
+    &__logo {
+      min-width: 70px;
+      height: 30px;
+      max-height: 30px;
+
+      @media only screen and (min-width: $kollab-width-tablet) {
+        min-width: 89px;
+        height: 38px;
+        max-height: 38px;
+      }
+    }
+  }
+
+  &__items {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    &--right {
+      margin-left: auto;
+    }
+
+    &--desktop {
+      display: none;
+    }
+  }
+
+  &__item {
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+
+    margin: 0 $spacer-xs;
+
+    @media only screen and (min-width: $kollab-width-tablet) {
+      color: black;
+    }
+
+    &--icon {
+      font-size: 1.5rem;
+
+      margin-right: $spacer-s;
+
+      color: $kollab-primary;
+      @media only screen and (min-width: $kollab-width-tablet) {
+        font-size: 1rem;
+
+        color: black;
+      }
+    }
+
+    &--button {
+      height: $nav-height;
+      padding-right: $spacer;
+      padding-left: $spacer;
+
+      white-space: nowrap;
+      i {
+        margin-right: $spacer-s;
+      }
+
+      &--active {
+        color: $kollab-primary;
+        border-radius: 5px;
+        background-color: rgba(84, 189, 194, 0.12);
+      }
+    }
+
+    &--mobile {
+      @media only screen and (min-width: $kollab-width-tablet) {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+      @media only screen and (min-width: $kollab-width-tablet) {
+        display: flex;
+      }
+    }
+  }
+
+  &__profile {
+    &::after {
+      font-family: 'Font Awesome 5 Free';
+      font-size: 1rem;
+      font-weight: 900;
+
+      display: inline-block;
+
+      content: '\f078';
+
+      color: $kollab-gray;
+    }
+    &:hover {
+      &::after {
+        color: $kollab-primary !important;
+      }
+    }
+  }
+  &__profile-img {
+    margin-right: $spacer-s;
+  }
+  &__profile-name {
+    margin-right: $spacer-s;
+
+    text-align: left;
+  }
+
+  &__dropdown {
+    position: relative;
+
+    height: 100%;
+    margin: 0 $spacer-xs;
+
+    &__drop-button {
+      height: 100%;
+
+      background-color: transparent;
+
+      &:focus {
+        outline: none;
+      }
+
+      i {
+        font-size: 1.5rem;
+
+        color: $kollab-primary;
+      }
+    }
+
+    &__drop-item {
+      color: $kollab-gray;
+      &:hover {
+        background-color: rgba(84, 189, 194, 0.12);
+      }
+      i {
+        margin-right: $spacer-s;
+      }
+    }
   }
 }

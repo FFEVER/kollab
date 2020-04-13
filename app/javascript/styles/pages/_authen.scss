@@ -10,18 +10,16 @@
 
     text-decoration: underline;
 
-    color: $kollab-turquoise;
+    color: $kollab-primary;
   }
-}
 
-@media screen and (max-width: 629px) {
-  .authen {
-    margin: 40px;
+  .button--lg {
+    width: 100%;
   }
 }
 
 /* For Tablets */
-@media screen and (min-width: 630px) {
+@media screen and (min-width: $kollab-width-tablet) {
   .authen {
     width: 600px;
     margin: 100px auto 500px;

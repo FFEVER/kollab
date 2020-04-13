@@ -1,14 +1,14 @@
 .project {
-  padding: 1.5 * $spacer $spacer;
+  padding: $spacer-l $spacer;
   &__form {
     .form__date {
       &:first-child {
-        margin-right: $global-space;
+        margin-right: $spacer;
       }
     }
   }
   &--with-margin {
-    margin-bottom: 3 * $global-space;
+    margin-bottom: $spacer-xl;
   }
 
   &__view {
@@ -27,27 +27,27 @@
 
     .section {
       width: 100%;
-      margin-bottom: 0.5 * $global-space;
+      margin-bottom: $spacer-l;
 
       &__header {
         display: flex;
 
         color: black;
-      }
 
-      &__actions {
-        display: flex;
+        &__title {
+          margin-bottom: $spacer;
+        }
+        &__actions {
+          display: flex;
 
-        margin-bottom: 0.25 * $global-space;
+          margin-bottom: $spacer;
 
-        button {
-          font-weight: 700;
-
-          margin-right: 0.25 * $global-space;
-
-          span {
-            margin-right: 3px;
+          button {
+            margin-right: $spacer-s;
           }
+        }
+        &__short-desc {
+          margin-bottom: $spacer-s;
         }
       }
 
@@ -57,8 +57,8 @@
           flex-wrap: wrap;
 
           button {
-            margin-right: 0.25 * $global-space;
-            margin-bottom: 0.25 * $global-space;
+            margin-right: $spacer-xs;
+            margin-bottom: $spacer-xs;
           }
         }
       }
@@ -84,13 +84,29 @@
           display: flex;
           align-items: center;
 
+          width: 100%;
+          padding: 0 $spacer;
+
+          background-color: transparent;
+
+          &:hover {
+            cursor: pointer;
+            .member__name {
+              text-decoration: underline;
+            }
+          }
+
           &__details {
             font-weight: normal;
             font-style: normal;
             font-stretch: normal;
             line-height: 1.36;
 
-            margin-left: 0.25 * $global-space;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+
+            margin-left: $spacer-s;
 
             letter-spacing: normal;
           }
@@ -99,7 +115,7 @@
           }
 
           &__role {
-            color: $kollab-gray-light;
+            color: $kollab-gray-font;
           }
         }
       }
@@ -125,7 +141,7 @@
     }
 
     &__header {
-      margin: -1.5 * $spacer -1 * $spacer;
+      margin: -1 * $spacer-l -1 * $spacer;
       margin-bottom: $spacer;
     }
   }
@@ -155,5 +171,16 @@
     &__title {
       letter-spacing: normal;
     }
+  }
+
+  &__link {
+    font-weight: bold;
+
+    align-self: center;
+    justify-content: center;
+
+    margin-top: $spacer;
+
+    color: $kollab-primary;
   }
 }

@@ -1,64 +1,106 @@
 <div class="profile">
-  <header class="profile__header">
-    <div class="profile__section">
-      <h1><%= "#{@user.first_name} #{@user.last_name}" %> </h1>
-      <p>4th year Software Engineering</p>
+  <div class="profile__header">
+    <% if @user.profile_image_url %>
+      <%= image_tag @user.profile_image, class: "image__profile image__profile--large" %>
+    <% else %>
+      <%= image_pack_tag "portrait_placeholder.png",
+            class: "image__profile image__profile--large" %>
+    <% end %>
+    <div class="d-flex flex-column justify-content-center mr-3 ml-3">
+      <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
+      <p>4th year Software Engineering Stduent</p>
+      <div class="d-flex flex-row align-items-center justify-content-between">
+        <h3><%= @user.projects.count %></h3>
+        <%= link_to "Projects", user_projects_path(@user), class: "mr-2 ml-2", method: :get%>
+        <h3><%= @user.followings.count %></h3>
+        <%= link_to "Followings", followings_user_path(@user),class: "mr-2 ml-2", method: :get%>
+        <h3><%= @user.followers.count %></h3>
+        <%= link_to "Followers", followers_user_path(@user), class: "mr-2 ml-2", method: :get%>
+      </div>
     </div>
-
-    <div class="profile__section">
-      <!-- TODO: [Anyone] Add profile picture. -->
-      <span class="dot dot--profile"></span>
-      <%= link_to user_projects_path(@user) do %>
-        <span><%= @user.projects.count %></span>
-        <p>Projects</p>
-      <% end %>
-      <div>
-        <%= link_to followings_user_path(@user) do %>
-          <span><%= @user.followings.count%></span>
-          <p>Following</p>
-        <% end %>
-      </div>
-      <div>
-        <%= link_to followers_user_path(@user) do %>
-          <span><%= @user.followers.count %></span>
-          <p>Followers</p>
-        <% end %>
-      </div>
-      <div>
-        <% if current_user != @user %>
-          <% if current_user.following?(@user) %>
-            <%= link_to "Following", unfollow_user_path, method: :post,
-              class: "button button--small button--gray", remote: true%>
-          <% else %>
-            <%= link_to "Follow", follow_user_path, method: :post,
-              class: "button button--small button--green", remote: true%>
-          <% end %>
-        <% else %>
-          <button class="button button--small button--green">Edit profile</button>
-        <% end %>
-      </div>
-    </header>
-
-    <main>
-      <div class="profile__section profile__menu">
-        <%= link_to user_path,
-        {class: "profile__menu__item #{'profile__menu__item--active' if profile_info_page?}"} do %>
-          <div class="dot"></div>
-          <div>Overview</div>
-        <% end %>
-
-        <%= link_to user_path(page: project_page),
-        {class: "profile__menu__item #{'profile__menu__item--active' if !profile_info_page?}"} do %>
-          <div class="dot"></div>
-          Projects
-        <% end %>
-      </div>
-
-      <% if profile_info_page? %>
-        <%= render 'show_info'%>
-      <% else %>
-        <%= render 'show_project'%>
-      <% end %>
-
-    </main>
   </div>
+  <p class="mt-3 mb-3">I am 4th year student from King Mongkut’s Institute of Technology Ladkrabang and currently studying in Software Engineering field. I am interested Web Development and Docker.</p>
+  <% if current_user != @user %>
+    <% if current_user.following?(@user) %>
+      <div class="d-flex flex-row">
+        <%= link_to "Following", unfollow_user_path, method: :post,
+              class: "button button--md button--unfollow--sm mr-1", remote: true, style: 'width:50%;'%>
+        <button class="button button--md  mr-1" style="width:50%">Message</button>
+
+      </div>
+    <% else %>
+      <div class="d-flex flex-row">
+        <%= link_to "Follow", follow_user_path, method: :post,
+              class: "button button--md button--follow--sm mr-1", remote: true, style: 'width:50%;'%>
+        <button class="button button--md" style="width:50%">Message</button>
+
+      </div>
+    <% end %>
+  <% else %>
+    <%= button_to "Edit Profile", profile_edit_path, class: "button button--md profile__fullwidth", method: :get %>
+  <% end %>
+  <div class="d-flex flex-row mt-3 justify-content-between">
+    <h3>Skills</h3>
+    <%=image_pack_tag 'icon/more.png', style: 'height:20px;width:20px;'%>
+  </div>
+  <div class="d-flex flex-row mt-2">
+    <button class="button--tags">React Native</button>
+    <button class="button--tags">Docker</button>
+    <button class="button--tags">JavaScript</button>
+  </div>
+  <div class="d-flex flex-row mt-3 justify-content-between">
+    <h3>Contact</h3>
+    <%=image_pack_tag 'icon/more.png', style: 'height:20px;width:20px;'%>
+  </div>
+
+  <div class="d-flex flex-row mt-3">
+    <%=image_pack_tag 'icon/phone-call.png', style: 'height:20px;width:20px;margin-right:10px;'%>
+    <p>+66 89 777 6666</p>
+  </div>
+  <div class="d-flex flex-row mt-2">
+    <%=image_pack_tag 'icon/mail.png', style: 'height:20px;width:20px;margin-right:10px;'%>
+    <p><%= "#{@user.email}" %></p>
+  </div>
+  <div class="d-flex flex-row mt-2">
+    <%=image_pack_tag 'icon/instagram.png', style: 'height:20px;width:20px;margin-right:10px;'%>
+    <p>anya.ks</p>
+  </div>
+  <div class="d-flex flex-row justify-content-between mt-3 mb-3">
+    <h3>Projects</h3>
+    <% if current_user == @user%>
+      <%= link_to image_pack_tag('icon/add.png', style: 'height:20px;width:20px;'), new_project_path%>
+    <%end%>
+  </div>
+  <% if @user.projects.count > 0%>
+    <% @projects.first(3).each do |project| %>
+      <%= render partial: "project", locals: {project: project}%>
+    <%end%>
+    <%= link_to "See more", user_projects_path(@user), class: "project__link", method: :get %>
+  <%end%>
+  <div class="mt-3 mb-3">
+    <h3>Interests</h3>
+  </div>
+  <div class="scrollmenu">
+    <% 10.times do %>
+      <%= link_to image_pack_tag('icon/rectangle.png', style: 'height:100px;width:100px;margin-right:10px;'), new_project_path %>
+    <% end %>
+  </div>
+  <div class="mt-3 mb-3">
+    <h3>Photos</h3>
+  </div>
+  <div class="scrollmenu">
+    <% 10.times do %>
+      <%= link_to image_pack_tag('icon/rectangle.png', style: 'height:100px;width:100px;margin-right:10px;'), new_project_path %>
+    <% end %>
+  </div>
+
+  <%= react_component("profile/UserProfile",
+    {
+      authenticityToken: form_authenticity_token,
+      editPath: edit_user_registration_path,
+      currentUser: current_user,
+      projects: @projects,
+      isProfileOwner: current_user == @user
+    })
+%>
+</div>

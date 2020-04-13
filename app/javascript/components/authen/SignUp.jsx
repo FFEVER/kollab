@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import axios from "axios";
+import React from "react"
+import PropTypes from "prop-types"
+import axios from "axios"
 
 import {
   FormControlLabel,
@@ -11,23 +11,23 @@ import {
   InputAdornment,
   FormControl,
   FormHelperText,
-  Link
-} from "@material-ui/core";
+  Link,
+} from "@material-ui/core"
 
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import { SignUpValidator, defaultErrors } from "./SignUpValidator";
-import Button from "../shared/form/Button";
+import Visibility from "@material-ui/icons/Visibility"
+import VisibilityOff from "@material-ui/icons/VisibilityOff"
+import { SignUpValidator, defaultErrors } from "./SignUpValidator"
+import Button from "../shared/form/Button"
 
-const DATA_PREFIX = "user";
+const DATA_PREFIX = "user"
 
-const dataName = name => {
-  return DATA_PREFIX + "[" + name + "]";
-};
+const dataName = (name) => {
+  return DATA_PREFIX + "[" + name + "]"
+}
 
 class SignUp extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       firstName: "",
       lastName: "",
@@ -38,114 +38,113 @@ class SignUp extends React.Component {
       showPassword: false,
       showConfirmPassword: false,
       checkedAgreeCondition: false,
-      isButtonLoading: false
-    };
+      isButtonLoading: false,
+    }
 
-    this.handleCheckAgreeCondition = this.handleCheckAgreeCondition.bind(this);
-    this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
+    this.handleCheckAgreeCondition = this.handleCheckAgreeCondition.bind(this)
+    this.handleClickShowPassword = this.handleClickShowPassword.bind(this)
     this.handleClickShowConfirmPassword = this.handleClickShowConfirmPassword.bind(
       this
-    );
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.createFormData = this.createFormData.bind(this);
-    this.submitForm = this.submitForm.bind(this);
-    this.setIsButtonLoading = this.setIsButtonLoading.bind(this);
+    )
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.createFormData = this.createFormData.bind(this)
+    this.submitForm = this.submitForm.bind(this)
+    this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
   }
 
   handleCheckAgreeCondition() {
     this.setState({
-      checkedAgreeCondition: !this.state.checkedAgreeCondition
-    });
+      checkedAgreeCondition: !this.state.checkedAgreeCondition,
+    })
   }
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
-    });
+      [event.target.name]: event.target.value,
+    })
   }
 
   handleClickShowPassword() {
     this.setState({
-      showPassword: !this.state.showPassword
-    });
+      showPassword: !this.state.showPassword,
+    })
   }
 
   handleClickShowConfirmPassword() {
     this.setState({
-      showConfirmPassword: !this.state.showConfirmPassword
-    });
+      showConfirmPassword: !this.state.showConfirmPassword,
+    })
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-    this.setIsButtonLoading(true);
+    event.preventDefault()
+    this.setIsButtonLoading(true)
 
     SignUpValidator.validateAll(this.state)
-      .then(result => {
+      .then((result) => {
         this.setState({
-          errors: defaultErrors
-        });
-        const formData = this.createFormData();
-        this.submitForm(formData);
+          errors: defaultErrors,
+        })
+        const formData = this.createFormData()
+        this.submitForm(formData)
       })
-      .catch(errors => {
+      .catch((errors) => {
         this.setState({
-          errors: errors
-        });
-        this.setIsButtonLoading(false);
-      });
+          errors: errors,
+        })
+        this.setIsButtonLoading(false)
+      })
   }
 
   submitForm(formData) {
-    const { submitPath } = this.props;
+    const { submitPath } = this.props
     axios({
       method: "post",
       url: submitPath,
       responseType: "json",
       headers: {
-        Accept: "application/json"
+        Accept: "application/json",
       },
-      data: formData
+      data: formData,
     })
-      .then(response => {
-        console.log("response.headers.location ", response);
+      .then((response) => {
         if (response.status === 201) {
-          console.log("response.headers.location ", response);
+          console.log("response.headers.location ", response)
           // window.location.href = response.headers.location;
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response.status === 400) {
-          this.setState(state => {
-            let error_messages = error.response.data.messages;
-            let errors = defaultErrors;
+          this.setState((state) => {
+            let error_messages = error.response.data.messages
+            let errors = defaultErrors
             for (const [k, v] of Object.entries(error_messages)) {
-              errors[k] = v;
+              errors[k] = v
             }
             return {
-              errors
-            };
-          });
+              errors,
+            }
+          })
         }
       })
       .finally(() => {
-        this.setIsButtonLoading(false);
-      });
+        this.setIsButtonLoading(false)
+      })
   }
 
   createFormData() {
-    const formData = new FormData();
-    formData.append(dataName("first_name"), this.state.firstName);
-    formData.append(dataName("last_name"), this.state.lastName);
-    formData.append(dataName("email"), this.state.email);
-    formData.append(dataName("password"), this.state.password);
-    formData.append("authenticity_token", this.props.authenticityToken);
-    return formData;
+    const formData = new FormData()
+    formData.append(dataName("first_name"), this.state.firstName)
+    formData.append(dataName("last_name"), this.state.lastName)
+    formData.append(dataName("email"), this.state.email)
+    formData.append(dataName("password"), this.state.password)
+    formData.append("authenticity_token", this.props.authenticityToken)
+    return formData
   }
 
   setIsButtonLoading(isLoading) {
-    this.setState({ isButtonLoading: isLoading });
+    this.setState({ isButtonLoading: isLoading })
   }
 
   render() {
@@ -294,7 +293,7 @@ class SignUp extends React.Component {
             href="#"
             style={{
               fontSize: "1.2em",
-              paddingTop: "8px"
+              paddingTop: "8px",
             }}
           >
             Terms & Conditions
@@ -311,18 +310,18 @@ class SignUp extends React.Component {
           type="submit"
           name="submitButton"
           isLoading={this.state.isButtonLoading}
-          className="button--gradient-green button--round"
+          className="button button--lg button--gradient-primary"
         >
           Sign Up
         </Button>
       </form>
-    );
+    )
   }
 }
 
 SignUp.propTypes = {
   authenticityToken: PropTypes.string,
-  submitPath: PropTypes.string
-};
+  submitPath: PropTypes.string,
+}
 
-export default SignUp;
+export default SignUp

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     sessions: 'users/sessions'
   }
+
   resources :users, only: %i[show] do
     resources :projects, only: :index, controller: 'users/projects'
     member do
@@ -19,6 +20,8 @@ Rails.application.routes.draw do
       get 'followings'
     end
   end
+  get 'profile/edit', to: 'users#edit'
+  match 'profile/update', to: 'users#update', via: %i[put patch]
 
   resources :projects do
     member do

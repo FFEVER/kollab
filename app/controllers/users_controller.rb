@@ -2,9 +2,11 @@
 
 class UsersController < ApplicationController
   before_action :set_user, except: %i[edit update]
-  before_action :custom_authenticate_user!, except: %i[show]
+  before_action :custom_authenticate_user!
 
-  def show; end
+  def show
+    @projects = @user.projects
+  end
 
   def edit
     @user = current_user

@@ -102,6 +102,10 @@
             font-stretch: normal;
             line-height: 1.36;
 
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+
             margin-left: $spacer-s;
 
             letter-spacing: normal;
@@ -167,5 +171,16 @@
     &__title {
       letter-spacing: normal;
     }
+  }
+
+  &__link {
+    font-weight: bold;
+
+    align-self: center;
+    justify-content: center;
+
+    margin-top: $spacer;
+
+    color: $kollab-primary;
   }
 }

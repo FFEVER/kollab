@@ -162,15 +162,18 @@ class EditUserProfile extends React.Component {
       socials,
     } = this.state
     return (
-      <form>
+      <form className="d-flex flex-column">
         <div className="thin-line" />
         <div>
-          <div className="profile__image__edit">
+          <div className="d-flex flex-row justify-content-between">
             <h4>Profile Picture</h4>
-            <img className="icon" src={edit} />
+            <img className="icon--round" src={edit} />
           </div>
-          <div className="profile__image">
-            <img className="profile-img" src={profileImg} />
+          <div className="d-flex justify-content-center">
+            <img
+              className="image__profile image__profile--mega"
+              src={profileImg}
+            />
           </div>
           <div className="thin-line" />
           <div>

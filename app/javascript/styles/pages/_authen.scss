@@ -3,6 +3,11 @@
   flex: 1;
   flex-direction: column;
 
+  margin-top: $spacer;
+  margin-bottom: $spacer;
+  padding-right: $spacer;
+  padding-left: $spacer;
+
   a:link,
   a:visited {
     font-size: 1em;

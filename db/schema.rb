@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_154109) do
+ActiveRecord::Schema.define(version: 2020_04_18_172326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 2020_04_18_154109) do
     t.integer "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "expertisings", force: :cascade do |t|
+    t.string "expertisable_type", null: false
+    t.bigint "expertisable_id", null: false
+    t.bigint "expertise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["expertisable_type", "expertisable_id"], name: "index_expertisings_on_expertisable_type_and_expertisable_id"
+    t.index ["expertise_id"], name: "index_expertisings_on_expertise_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -116,6 +126,7 @@ ActiveRecord::Schema.define(version: 2020_04_18_154109) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "expertisings", "expertises"
   add_foreign_key "favorites", "projects"
   add_foreign_key "favorites", "users"
   add_foreign_key "taggings", "projects"

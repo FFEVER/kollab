@@ -10,6 +10,8 @@ class Project < ApplicationRecord
   has_many :stars, through: :favorites, source: :user
   has_many :received_follows, as: :followable, class_name: 'Following'
   has_many :followers, through: :received_follows, source: :follower
+  has_many :expertisings, as: :expertisable, dependent: :delete_all
+  has_many :expertises, through: :expertisings, source: :expertise
 
   # TODO: [Eit] Validates fields
   validates :title, presence: true, length: { within: 1..50 }

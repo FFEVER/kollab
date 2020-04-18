@@ -16,27 +16,6 @@ import faculty from "../../../assets/utils/faculty"
 import Button from "../shared/form/Button"
 import FormInput from "../shared/form/FormInput"
 
-const projects = [
-  {
-    id: 1,
-    title: "Object Tracking Drone",
-    tags: ["ObjectDetection", "Drone", "IOT"],
-    status: "In progress",
-  },
-  {
-    id: 2,
-    title: "Robotic car with Obstacle",
-    tags: ["ObjectDetection", "Robotic", "IOT"],
-    status: "In progress",
-  },
-  {
-    id: 3,
-    title: "Garden observation App ",
-    tags: ["ObjectDetection", "Embedded", "IOT"],
-    status: "In progress",
-  },
-]
-
 class EditUserProfile extends React.Component {
   constructor(props) {
     super(props)
@@ -49,7 +28,6 @@ class EditUserProfile extends React.Component {
         "I am 4th year student from King Mongkut’s Institute of Technology Ladkrabang and currently studying in Software Engineering field. I am interested Web Development and Docker.",
       email: this.props.currentUser.email,
       phone: "+66 89 777 8899",
-      instagram: "nattaphol.s",
       expertise: [
         { value: "SoftwareEngineering", label: "Software Engineering" },
         { value: "ComputerScience", label: "Computer Science" },
@@ -59,26 +37,12 @@ class EditUserProfile extends React.Component {
         { value: "Docker", label: "Docker" },
         { value: "JavaScript", label: "JavaScript" },
       ],
-      posts: [
-        {
-          id: 1,
-          user: "Nattaphol S.",
-          action: "updated project progress",
-          project: projects[0],
-        },
-        {
-          id: 2,
-          user: "Nattaphol S.",
-          action: "updated project progress",
-          project: projects[1],
-        },
-      ],
       errors: defaultErrors,
       social: "",
       socials: [
         { key: "GitHub", value: "" },
         { key: "Facebook", value: "" },
-        { key: "Instagram", value: "" },
+        { key: "Instagram", value: "nattaphol.s" },
       ],
     }
     this.handleChange = this.handleChange.bind(this)
@@ -259,8 +223,8 @@ class EditUserProfile extends React.Component {
           <div className="thin-line" />
           <div className="profile__section">
             <h4>Contact</h4>
-            <div className="d-flex flex-row  mt-3 align-items-center">
-              <img className="icon" src={contact} />
+            <div className="profile__item--icon">
+              <img className="icon--round mr-2" src={contact} />
               <FormInput
                 name="phone"
                 placeholder="Phone"
@@ -271,8 +235,8 @@ class EditUserProfile extends React.Component {
                 errors={errors.phone}
               />
             </div>
-            <div className="d-flex flex-row mt-3 align-items-center">
-              <img className="icon" src={mail} />
+            <div className="profile__item--icon">
+              <img className="icon--round mr-2" src={mail} />
               <FormInput
                 name="email"
                 placeholder="E-mail"

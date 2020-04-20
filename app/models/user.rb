@@ -73,4 +73,14 @@ class User < ApplicationRecord
       Rails.application.routes.url_helpers.rails_blob_path(profile_image, only_path: true)
     end
   end
+
+  def skill_list
+    skills.join(' ').split(' ')
+  end
+
+  def skills=(skills_array)
+    skill_names = skills_array.uniq[0..2]
+    new_or_found_skills = skill_names.collect { |name| Skill.find_or_create_by(name: name) }
+    self.skills = new_or_found_skills
+  end
 end

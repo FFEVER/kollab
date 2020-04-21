@@ -8,17 +8,28 @@ class ExpertiseDisplay extends React.Component {
     return (
       <div className="form d-flex flex-column mt-3">
         {expertises.map((item, index) => (
-          <div className="d-flex flex-row align-items-center mb-2" key={index}>
-            <Button name="expertise" className="button--tags mr-3">
-              {item}
-            </Button>
-            <Button
-              name="exp-icon"
-              className="button--transparent"
-              onClick={() => this.props.removeExpertise(item)}
-            >
-              <i className="fas fa-trash"></i>
-            </Button>
+          <div className="mt-1" key={index}>
+            <p>
+              {item.field
+                ? item.division + " > " + item.group + " > "
+                : item.group
+                ? item.division + " > "
+                : ""}
+            </p>
+            <div className="tag-card">
+              {item.field
+                ? item.field
+                : item.group
+                ? item.group
+                : item.division}
+              <Button
+                name="exp-icon"
+                className="button--transparent ml-1"
+                onClick={() => this.props.removeExpertise(item)}
+              >
+                <i className="fas fa-times"></i>
+              </Button>
+            </div>
           </div>
         ))}
       </div>

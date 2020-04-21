@@ -84,6 +84,7 @@ class UserBasicInfo extends React.Component {
     this.handleSkillsClear = this.handleSkillsClear.bind(this)
     this.setDisplayExpertise = this.setDisplayExpertise.bind(this)
     this.removeExpertise = this.removeExpertise.bind(this)
+    this.checkExpertise = this.checkExpertise.bind(this)
   }
 
   handleChange(event) {
@@ -106,14 +107,49 @@ class UserBasicInfo extends React.Component {
   }
 
   setDisplayExpertise(value) {
-    if (!this.state.expertises.includes(value))
-      this.setState({ expertises: [...this.state.expertises, value] })
+    var items = this.state.expertises
+    if (items.length === 0) {
+      this.setState({
+        expertises: [...this.state.expertises, value],
+        activateModal: "division",
+        division: "",
+        group: "",
+        field: "",
+      })
+    }
+
+    for (let i = 0; i < items.length; i++) {
+      if (!this.checkExpertise(value, items[i])) {
+        this.setState({
+          expertises: [...this.state.expertises, value],
+          activateModal: "division",
+          division: "",
+          group: "",
+          field: "",
+        })
+      }
+    }
   }
 
   removeExpertise(item) {
     var items = this.state.expertises
-    items.splice(items.indexOf(item), 1)
+    for (let i = 0; i < items.length; i++) {
+      if (this.checkExpertise(item, items[i])) {
+        items.splice(items.indexOf(i), 1)
+      }
+    }
     this.setState({ expertises: items })
+  }
+
+  checkExpertise(item1, item2) {
+    if (
+      item1[0] === item2[0] &&
+      item1[1] === item2[1] &&
+      item1[2] === item2[2]
+    ) {
+      return true
+    }
+    return false
   }
 
   handleSubmit(event) {
@@ -205,6 +241,7 @@ class UserBasicInfo extends React.Component {
         onSubmit={this.handleSubmit}
         noValidate
       >
+        {console.log("Statee after", this.state)}
         <h3>Role</h3>
         <div className="d-flex flex-column mt-2">
           <ToggleButtonGroup
@@ -288,7 +325,6 @@ class UserBasicInfo extends React.Component {
         ) : (
           <div />
         )}
-
         <ExpertiseModal
           expertises={expertises}
           setExpertiseDisplayFunc={this.setDisplayExpertise}

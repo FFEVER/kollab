@@ -1,7 +1,7 @@
 const defaultErrors = {
   faculty: "",
   year: "",
-  expertise: [],
+  expertises: [],
   skills: [],
 }
 
@@ -23,11 +23,11 @@ class UserBasicInfoValidator {
   }
 
   static validateExpertise(state, errors) {
-    const { expertise } = state
-    const key = Object.keys({ expertise })[0]
-    if (expertise.length > 3) {
+    const { expertises } = state
+    const key = Object.keys({ expertises })[0]
+    if (expertises.length > 3) {
       errors[key].push("Expertise may have up to 3.")
-    } else if (expertise.length <= 0) {
+    } else if (expertises.length <= 0) {
       errors[key].push("Add at least 1 expertise")
     }
   }

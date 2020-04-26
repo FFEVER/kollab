@@ -85,6 +85,7 @@ class UserBasicInfo extends React.Component {
     this.setDisplayExpertise = this.setDisplayExpertise.bind(this)
     this.removeExpertise = this.removeExpertise.bind(this)
     this.checkExpertise = this.checkExpertise.bind(this)
+    this.getExpertise = this.getExpertise.bind(this)
   }
 
   handleChange(event) {
@@ -107,7 +108,7 @@ class UserBasicInfo extends React.Component {
   }
 
   setDisplayExpertise(value) {
-    var items = this.state.expertises
+    let items = this.state.expertises
     if (items.length === 0) {
       this.setState({
         expertises: [...this.state.expertises, value],
@@ -118,38 +119,51 @@ class UserBasicInfo extends React.Component {
       })
     }
 
-    for (let i = 0; i < items.length; i++) {
-      if (!this.checkExpertise(value, items[i])) {
-        this.setState({
-          expertises: [...this.state.expertises, value],
-          activateModal: "division",
-          division: "",
-          group: "",
-          field: "",
-        })
-      }
+    if (!this.checkExpertise(value, items)) {
+      this.setState({
+        expertises: [...this.state.expertises, value],
+        activateModal: "division",
+        division: "",
+        group: "",
+        field: "",
+      })
     }
   }
 
   removeExpertise(item) {
-    var items = this.state.expertises
-    for (let i = 0; i < items.length; i++) {
-      if (this.checkExpertise(item, items[i])) {
-        items.splice(items.indexOf(i), 1)
-      }
-    }
+    console.log("Remove ")
+    let items = this.state.expertises
+    let index = this.getExpertise(item, items)
+    items.splice(items.indexOf(index), 1)
+
     this.setState({ expertises: items })
   }
 
-  checkExpertise(item1, item2) {
-    if (
-      item1[0] === item2[0] &&
-      item1[1] === item2[1] &&
-      item1[2] === item2[2]
-    ) {
-      return true
+  checkExpertise(item, items) {
+    for (let i = 0; i < items.length; i++) {
+      if (
+        item.division === items[i].division &&
+        item.group === items[i].group &&
+        item.field === items[i].field
+      ) {
+        return true
+      }
     }
     return false
+  }
+
+  getExpertise(item, items) {
+    let index = -1
+    for (let i = 0; i < items.length; i++) {
+      if (
+        item.division === items[i].division &&
+        item.group === items[i].group &&
+        item.field === items[i].field
+      ) {
+        index = i
+      }
+    }
+    return index
   }
 
   handleSubmit(event) {
@@ -241,7 +255,6 @@ class UserBasicInfo extends React.Component {
         onSubmit={this.handleSubmit}
         noValidate
       >
-        {console.log("Statee after", this.state)}
         <h3>Role</h3>
         <div className="d-flex flex-column mt-2">
           <ToggleButtonGroup
@@ -330,8 +343,8 @@ class UserBasicInfo extends React.Component {
           setExpertiseDisplayFunc={this.setDisplayExpertise}
           disable={expertises.length > 2 ? true : false}
         />
-        <FormHelperText error={errors.expertise.length > 0 ? true : false}>
-          {errors.expertise[0]}
+        <FormHelperText error={errors.expertises.length > 0 ? true : false}>
+          {errors.expertises[0]}
         </FormHelperText>
         {expertises.length > 0 ? (
           <ExpertiseDisplay

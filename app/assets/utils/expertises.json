@@ -1,0 +1,3656 @@
+[
+  {
+    "Division": "Mathematical Sciences",
+    "Groups": [
+      {
+        "Group": "Pure Mathematics",
+        "Fields": [
+          "Algebra And Number Theory",
+          "Algebraic And Differential Geometry",
+          "Category Theory, K Theory, Homological Algebra",
+          "Combinatorics And Discrete Mathematics (Excl. Physical Combinatorics)"
+        ]
+      },
+      {
+        "Group": "Group Theory And Generalisations",
+        "Fields": [
+          "Lie Groups, Harmonic And Fourier Analysis",
+          "Mathematical Logic, Set Theory, Lattices And Universal Algebra",
+          "Operator Algebras And Functional Analysis",
+          "Ordinary Differential Equations, Difference Equations And Dynamical Systems",
+          "Partial Differential Equations",
+          "Real And Complex Functions (Incl. Several Variables)",
+          "Topology",
+          "Pure Mathematics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Applied Mathematics",
+        "Fields": [
+          "Approximation Theory And Asymptotic Methods",
+          "Biological Mathematics",
+          "Calculus Of Variations, Systems Theory And Control Theory",
+          "Dynamical Systems In Applications",
+          "Financial Mathematics",
+          "Operations Research",
+          "Theoretical And Applied Mechanics",
+          "Applied Mathematics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Numerical And Computational Mathematics",
+        "Fields": [
+          "Numerical Analysis",
+          "Numerical Solution Of Differential And Integral Equations",
+          "Optimisation",
+          "Numerical And Computational Mathematics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Statistics",
+        "Fields": [
+          "Applied Statistics",
+          "Biostatistics",
+          "Forensic Statistics",
+          "Probability Theory",
+          "Statistical Theory",
+          "Stochastic Analysis And Modelling",
+          "Statistics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Mathematical Physics",
+        "Fields": [
+          "Algebraic Structures In Mathematical Physics",
+          "Integrable Systems (Classical And Quantum)",
+          "Mathematical Aspects Of Classical Mechanics, Quantum Mechanics And Quantum Information Theory",
+          "Mathematical Aspects Of General Relativity",
+          "Mathematical Aspects Of Quantum And Conformal Field Theory, Quantum Gravity And String Theory",
+          "Statistical Mechanics, Physical Combinatorics And Mathematical Aspects Of Condensed Matter",
+          "Mathematical Physics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Mathematical Sciences",
+        "Fields": ["Mathematical Sciences Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Physical Sciences",
+    "Groups": [
+      {
+        "Group": "Astronomical And Space Sciences",
+        "Fields": [
+          "Astrobiology",
+          "Astronomical And Space Instrumentation",
+          "Cosmology And Extragalactic Astronomy",
+          "Galactic Astronomy",
+          "General Relativity And Gravitational Waves",
+          "High Energy Astrophysics; Cosmic Rays",
+          "Mesospheric, Ionospheric And Magnetospheric Physics",
+          "Planetary Science (Excl. Extraterrestrial Geology)",
+          "Space And Solar Physics",
+          "Stellar Astronomy And Planetary Systems",
+          "Astronomical And Space Sciences Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Atomic",
+        "Fields": [
+          "Atomic And Molecular Physics",
+          "Nuclear Physics",
+          "Particle Physics",
+          "Plasma Physics; Fusion Plasmas; Electrical Discharges",
+          "Atomic, Molecular, Nuclear, Particle And Plasma Physics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Classical Physics",
+        "Fields": [
+          "Acoustics And Acoustical Devices; Waves",
+          "Electrostatics And Electrodynamics",
+          "Fluid Physics",
+          "Thermodynamics And Statistical Physics",
+          "Classical Physics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Condensed Matter Physics",
+        "Fields": [
+          "Condensed Matter Characterisation Technique Development",
+          "Condensed Matter Imaging",
+          "Condensed Matter Modelling And Density Functional Theory",
+          "Electronic And Magnetic Properties Of Condensed Matter; Superconductivity",
+          "Soft Condensed Matter",
+          "Surfaces And Structural Properties Of Condensed Matter",
+          "Condensed Matter Physics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Optical Physics",
+        "Fields": [
+          "Classical And Physical Optics",
+          "Lasers And Quantum Electronics",
+          "Nonlinear Optics And Spectroscopy",
+          "Photonics, Optoelectronics And Optical Communications",
+          "Optical Physics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Quantum Physics",
+        "Fields": [
+          "Degenerate Quantum Gases And Atom Optics",
+          "Field Theory And String Theory",
+          "Quantum Information, Computation And Communication",
+          "Quantum Optics",
+          "Quantum Physics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Physical Sciences",
+        "Fields": [
+          "Biological Physics",
+          "Complex Physical Systems",
+          "Medical Physics",
+          "Synchrotrons; Accelerators; Instruments And Techniques",
+          "Physical Sciences Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Chemical Sciences",
+    "Groups": [
+      {
+        "Group": "Analytical Chemistry",
+        "Fields": [
+          "Analytical Spectrometry",
+          "Electroanalytical Chemistry",
+          "Flow Analysis",
+          "Immunological And Bioassay Methods",
+          "Instrumental Methods (Excl. Immunological And Bioassay Methods)",
+          "Quality Assurance, Chemometrics, Traceability And Metrological Chemistry",
+          "Sensor Technology (Chemical Aspects)",
+          "Separation Science",
+          "Analytical Chemistry Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Inorganic Chemistry",
+        "Fields": [
+          "Bioinorganic Chemistry",
+          "F-block Chemistry",
+          "Inorganic Green Chemistry",
+          "Main Group Metal Chemistry",
+          "Non-metal Chemistry",
+          "Solid State Chemistry",
+          "Transition Metal Chemistry",
+          "Inorganic Chemistry Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Macromolecular And Materials Chemistry",
+        "Fields": [
+          "Chemical Characterisation Of Materials",
+          "Nanochemistry And Supramolecular Chemistry",
+          "Optical Properties Of Materials",
+          "Physical Chemistry Of Materials",
+          "Polymerisation Mechanisms",
+          "Synthesis Of Materials",
+          "Theory And Design Of Materials",
+          "Macromolecular And Materials Chemistry Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Medicinal And Biomolecular Chemistry",
+        "Fields": [
+          "Biologically Active Molecules",
+          "Biomolecular Modelling And Design",
+          "Characterisation Of Biological Macromolecules",
+          "Cheminformatics And Quantitative Structure-activity Relationships",
+          "Molecular Medicine",
+          "Proteins And Peptides",
+          "Medicinal And Biomolecular Chemistry Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Organic Chemistry",
+        "Fields": [
+          "Free Radical Chemistry",
+          "Natural Products Chemistry",
+          "Organic Chemical Synthesis",
+          "Organic Green Chemistry",
+          "Physical Organic Chemistry",
+          "Organic Chemistry Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Physical Chemistry (Incl. Structural)",
+        "Fields": [
+          "Catalysis And Mechanisms Of Reactions",
+          "Chemical Thermodynamics And Energetics",
+          "Colloid And Surface Chemistry",
+          "Electrochemistry",
+          "Solution Chemistry",
+          "Structural Chemistry And Spectroscopy",
+          "Transport Properties And Non-equilibrium Processes",
+          "Physical Chemistry Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Theoretical And Computational Chemistry",
+        "Fields": [
+          "Quantum Chemistry",
+          "Radiation And Matter",
+          "Reaction Kinetics And Dynamics",
+          "Statistical Mechanics In Chemistry",
+          "Theoretical And Computational Chemistry Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Chemical Sciences",
+        "Fields": [
+          "Environmental Chemistry (Incl. Atmospheric Chemistry)",
+          "Forensic Chemistry",
+          "Industrial Chemistry",
+          "Organometallic Chemistry",
+          "Chemical Sciences Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Earth Sciences",
+    "Groups": [
+      {
+        "Group": "Atmospheric Sciences",
+        "Fields": [
+          "Atmospheric Aerosols",
+          "Atmospheric Dynamics",
+          "Atmospheric Radiation",
+          "Climate Change Processes",
+          "Climatology (Excl. Climate Change Processes)",
+          "Cloud Physics",
+          "Meteorology",
+          "Tropospheric And Stratospheric Physics",
+          "Atmospheric Sciences Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Geochemistry",
+        "Fields": [
+          "Exploration Geochemistry",
+          "Inorganic Geochemistry",
+          "Isotope Geochemistry",
+          "Organic Geochemistry",
+          "Geochemistry Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Geology",
+        "Fields": [
+          "Basin Analysis",
+          "Extraterrestrial Geology",
+          "Geochronology",
+          "Igneous And Metamorphic Petrology",
+          "Marine Geoscience",
+          "Mineralogy And Crystallography",
+          "Ore Deposit Petrology",
+          "Palaeontology (Incl. Palynology)",
+          "Petroleum And Coal Geology",
+          "Sedimentology",
+          "Stratigraphy (Incl. Biostratigraphy And Sequence Stratigraphy)",
+          "Structural Geology",
+          "Tectonics",
+          "Volcanology",
+          "Geology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Geophysics",
+        "Fields": [
+          "Electrical And Electromagnetic Methods In Geophysics",
+          "Geodynamics",
+          "Geophysical Fluid Dynamics",
+          "Geothermics And Radiometrics",
+          "Gravimetrics",
+          "Magnetism And Palaeomagnetism",
+          "Seismology And Seismic Exploration",
+          "Geophysics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Oceanography",
+        "Fields": [
+          "Biological Oceanography",
+          "Chemical Oceanography",
+          "Physical Oceanography",
+          "Oceanography Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Physical Geography And Environmental Geoscience",
+        "Fields": [
+          "Geomorphology And Regolith And Landscape Evolution",
+          "Glaciology",
+          "Hydrogeology",
+          "Natural Hazards",
+          "Palaeoclimatology",
+          "Quaternary Environments",
+          "Surface Processes",
+          "Surfacewater Hydrology",
+          "Physical Geography And Environmental Geoscience Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Earth Sciences",
+        "Fields": ["Earth Sciences Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Environmental Sciences",
+    "Groups": [
+      {
+        "Group": "Ecological Applications",
+        "Fields": [
+          "Ecological Impacts Of Climate Change",
+          "Ecosystem Function",
+          "Invasive Species Ecology",
+          "Landscape Ecology",
+          "Ecological Applications Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmental Science And Management",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Environmental Knowledge",
+          "Conservation And Biodiversity",
+          "Environmental Education And Extension",
+          "Environmental Impact Assessment",
+          "Environmental Management",
+          "Environmental Monitoring",
+          "Environmental Rehabilitation (Excl. Bioremediation)",
+          "Maori Environmental Knowledge",
+          "Natural Resource Management",
+          "Pacific Peoples Environmental Knowledge",
+          "Wildlife And Habitat Management",
+          "Environmental Science And Management Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Soil Sciences",
+        "Fields": [
+          "Carbon Sequestration Science",
+          "Land Capability And Soil Degradation",
+          "Soil Biology",
+          "Soil Chemistry (Excl. Carbon Sequestration Science)",
+          "Soil Physics",
+          "Soil Sciences Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Environmental Sciences",
+        "Fields": ["Environmental Sciences Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Biological Sciences",
+    "Groups": [
+      {
+        "Group": "Biochemistry And Cell Biology",
+        "Fields": [
+          "Analytical Biochemistry",
+          "Bioinformatics",
+          "Cell Development, Proliferation And Death",
+          "Cell Metabolism",
+          "Cell Neurochemistry",
+          "Cellular Interactions (Incl. Adhesion, Matrix, Cell Wall)",
+          "Enzymes",
+          "Protein Trafficking",
+          "Proteomics And Intermolecular Interactions (Excl. Medical Proteomics)",
+          "Receptors And Membrane Biology",
+          "Signal Transduction",
+          "Structural Biology (Incl. Macromolecular Modelling)",
+          "Synthetic Biology",
+          "Systems Biology",
+          "Biochemistry And Cell Biology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Ecology",
+        "Fields": [
+          "Behavioural Ecology",
+          "Community Ecology (Excl. Invasive Species Ecology)",
+          "Ecological Physiology",
+          "Freshwater Ecology",
+          "Marine And Estuarine Ecology (Incl. Marine Ichthyology)",
+          "Palaeoecology",
+          "Population Ecology",
+          "Terrestrial Ecology",
+          "Ecology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Evolutionary Biology",
+        "Fields": [
+          "Animal Systematics And Taxonomy",
+          "Biogeography And Phylogeography",
+          "Biological Adaptation",
+          "Ethology And Sociobiology",
+          "Evolution Of Developmental Systems",
+          "Evolutionary Impacts Of Climate Change",
+          "Host-parasite Interactions",
+          "Life Histories",
+          "Phylogeny And Comparative Analysis",
+          "Plant Systematics And Taxonomy",
+          "Speciation And Extinction",
+          "Evolutionary Biology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Genetics",
+        "Fields": [
+          "Anthropological Genetics",
+          "Cell And Nuclear Division",
+          "Developmental Genetics (Incl. Sex Determination)",
+          "Epigenetics (Incl. Genome Methylation And Epigenomics)",
+          "Gene Expression (Incl. Microarray And Other Genome-wide Approaches)",
+          "Genetic Immunology",
+          "Genome Structure And Regulation",
+          "Genomics",
+          "Molecular Evolution",
+          "Neurogenetics",
+          "Population, Ecological And Evolutionary Genetics",
+          "Quantitative Genetics (Incl. Disease And Trait Mapping Genetics)",
+          "Genetics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Microbiology",
+        "Fields": [
+          "Bacteriology",
+          "Infectious Agents",
+          "Microbial Genetics",
+          "Microbial Ecology",
+          "Mycology",
+          "Virology",
+          "Microbiology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Physiology",
+        "Fields": [
+          "Animal Physiology - Biophysics",
+          "Animal Physiology - Cell",
+          "Animal Physiology - Systems",
+          "Comparative Physiology",
+          "Physiology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Plant Biology",
+        "Fields": [
+          "Phycology (Incl. Marine Grasses)",
+          "Plant Cell And Molecular Biology",
+          "Plant Developmental And Reproductive Biology",
+          "Plant Pathology",
+          "Plant Physiology",
+          "Plant Biology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Zoology",
+        "Fields": [
+          "Animal Behaviour",
+          "Animal Cell And Molecular Biology",
+          "Animal Developmental And Reproductive Biology",
+          "Animal Immunology",
+          "Animal Neurobiology",
+          "Animal Physiological Ecology",
+          "Animal Structure And Function",
+          "Invertebrate Biology",
+          "Vertebrate Biology",
+          "Zoology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Biological Sciences",
+        "Fields": [
+          "Forensic Biology",
+          "Global Change Biology",
+          "Biological Sciences Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Agricultural And Veterinary Sciences",
+    "Groups": [
+      {
+        "Group": "Agriculture",
+        "Fields": [
+          "Agricultural Land Management",
+          "Agricultural Land Planning",
+          "Agricultural Production Systems Simulation",
+          "Agricultural Spatial Analysis And Modelling",
+          "Agricultural Systems Analysis And Modelling",
+          "Farm Management, Rural Management And Agribusiness",
+          "Farming Systems Research",
+          "Sustainable Agricultural Development",
+          "Agriculture, Land And Farm Management Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Animal Production",
+        "Fields": [
+          "Animal Breeding",
+          "Animal Growth And Development",
+          "Animal Management",
+          "Animal Nutrition",
+          "Animal Protection (Pests And Pathogens)",
+          "Animal Reproduction",
+          "Humane Animal Treatment",
+          "Animal Production Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Crop And Pasture Production",
+        "Fields": [
+          "Agro-ecosystem Function And Prediction",
+          "Agronomy",
+          "Crop And Pasture Biochemistry And Physiology",
+          "Crop And Pasture Biomass And Bioproducts",
+          "Crop And Pasture Improvement (Selection And Breeding)",
+          "Crop And Pasture Nutrition",
+          "Crop And Pasture Post Harvest Technologies (Incl. Transportation And Storage)",
+          "Crop And Pasture Protection (Pests, Diseases And Weeds)",
+          "Crop And Pasture Production Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Fisheries Sciences",
+        "Fields": [
+          "Aquaculture",
+          "Aquatic Ecosystem Studies And Stock Assessment",
+          "Fisheries Management",
+          "Fish Pests And Diseases",
+          "Fish Physiology And Genetics",
+          "Post-harvest Fisheries Technologies (Incl. Transportation)",
+          "Fisheries Sciences Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Forestry Sciences",
+        "Fields": [
+          "Agroforestry",
+          "Forestry Biomass And Bioproducts",
+          "Forestry Fire Management",
+          "Forestry Management And Environment",
+          "Forestry Pests, Health And Diseases",
+          "Forestry Product Quality Assessment",
+          "Tree Improvement (Selection And Breeding)",
+          "Tree Nutrition And Physiology",
+          "Wood Fibre Processing",
+          "Wood Processing",
+          "Forestry Sciences Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Horticultural Production",
+        "Fields": [
+          "Horticultural Crop Growth And Development",
+          "Horticultural Crop Improvement (Selection And Breeding)",
+          "Horticultural Crop Protection (Pests, Diseases And Weeds)",
+          "Oenology And Viticulture",
+          "Post Harvest Horticultural Technologies (Incl. Transportation And Storage)",
+          "Horticultural Production Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Veterinary Sciences",
+        "Fields": [
+          "Veterinary Anaesthesiology And Intensive Care",
+          "Veterinary Anatomy And Physiology",
+          "Veterinary Diagnosis And Diagnostics",
+          "Veterinary Epidemiology",
+          "Veterinary Immunology",
+          "Veterinary Medicine",
+          "Veterinary Microbiology (Excl. Virology)",
+          "Veterinary Parasitology",
+          "Veterinary Pathology",
+          "Veterinary Pharmacology",
+          "Veterinary Surgery",
+          "Veterinary Virology",
+          "Veterinary Sciences Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Agricultural And Veterinary Sciences",
+        "Fields": [
+          "Agricultural Hydrology (Drainage, Flooding, Irrigation, Quality, Etc.)",
+          "Fertilisers And Agrochemicals (Incl. Application)",
+          "Agricultural And Veterinary Sciences Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Information And Computing Sciences",
+    "Groups": [
+      {
+        "Group": "Artificial Intelligence And Image Processing",
+        "Fields": [
+          "Adaptive Agents And Intelligent Robotics",
+          "Artificial Life",
+          "Computer Graphics",
+          "Computer Vision",
+          "Expert Systems",
+          "Image Processing",
+          "Natural Language Processing",
+          "Neural, Evolutionary And Fuzzy Computation",
+          "Pattern Recognition And Data Mining",
+          "Simulation And Modelling",
+          "Virtual Reality And Related Simulation",
+          "Artificial Intelligence And Image Processing Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Computation Theory And Mathematics",
+        "Fields": [
+          "Analysis Of Algorithms And Complexity",
+          "Applied Discrete Mathematics",
+          "Computational Logic And Formal Languages",
+          "Mathematical Software",
+          "Numerical Computation",
+          "Computation Theory And Mathematics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Computer Software",
+        "Fields": [
+          "Bioinformatics Software",
+          "Computer System Architecture",
+          "Computer System Security",
+          "Concurrent Programming",
+          "Multimedia Programming",
+          "Open Software",
+          "Operating Systems",
+          "Programming Languages",
+          "Software Engineering",
+          "Computer Software Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Data Format",
+        "Fields": [
+          "Coding And Information Theory",
+          "Data Encryption",
+          "Data Structures",
+          "Markup Languages",
+          "Data Format Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Distributed Computing",
+        "Fields": [
+          "Distributed And Grid Systems",
+          "Mobile Technologies",
+          "Networking And Communications",
+          "Ubiquitous Computing",
+          "Web Technologies (Excl. Web Search)",
+          "Distributed Computing Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Information Systems",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Information And Knowledge Systems",
+          "Computer-human Interaction",
+          "Conceptual Modelling",
+          "Database Management",
+          "Decision Support And Group Support Systems",
+          "Global Information Systems",
+          "Information Engineering And Theory",
+          "Information Systems Development Methodologies",
+          "Information Systems Management",
+          "Information Systems Organisation",
+          "Information Systems Theory",
+          "Interorganisational Information Systems And Web Services",
+          "Maori Information And Knowledge Systems",
+          "Pacific Peoples Information And Knowledge Systems",
+          "Information Systems Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Library And Information Studies",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Knowledge Management",
+          "Health Informatics",
+          "Human Information Behaviour",
+          "Information Retrieval And Web Search",
+          "Informetrics",
+          "Librarianship",
+          "Organisation Of Information And Knowledge Resources",
+          "Records And Information Management (Excl. Business Records And Information Management)",
+          "Social And Community Informatics",
+          "Library And Information Studies Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Information And Computing Sciences",
+        "Fields": [
+          "Information And Computing Sciences Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Engineering",
+    "Groups": [
+      {
+        "Group": "Aerospace Engineering",
+        "Fields": [
+          "Aerodynamics (Excl. Hypersonic Aerodynamics)",
+          "Aerospace Materials",
+          "Aerospace Structures",
+          "Aircraft Performance And Flight Control Systems",
+          "Avionics",
+          "Flight Dynamics",
+          "Hypersonic Propulsion And Hypersonic Aerodynamics",
+          "Satellite, Space Vehicle And Missile Design And Testing",
+          "Aerospace Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Automotive Engineering",
+        "Fields": [
+          "Automotive Combustion And Fuel Engineering (Incl. Alternative/renewable Fuels)",
+          "Automotive Engineering Materials",
+          "Automotive Mechatronics",
+          "Automotive Safety Engineering",
+          "Hybrid Vehicles And Powertrains",
+          "Automotive Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Biomedical Engineering",
+        "Fields": [
+          "Biomaterials",
+          "Biomechanical Engineering",
+          "Biomedical Instrumentation",
+          "Medical Devices",
+          "Rehabilitation Engineering",
+          "Biomedical Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Chemical Engineering",
+        "Fields": [
+          "Carbon Capture Engineering (Excl. Sequestration)",
+          "Catalytic Process Engineering",
+          "Chemical Engineering Design",
+          "Membrane And Separation Technologies",
+          "Non-automotive Combustion And Fuel Engineering (Incl. Alternative/renewable Fuels)",
+          "Powder And Particle Technology",
+          "Process Control And Simulation",
+          "Rheology",
+          "Wastewater Treatment Processes",
+          "Water Treatment Processes",
+          "Chemical Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Civil Engineering",
+        "Fields": [
+          "Civil Geotechnical Engineering",
+          "Construction Engineering",
+          "Construction Materials",
+          "Earthquake Engineering",
+          "Infrastructure Engineering And Asset Management",
+          "Structural Engineering",
+          "Transport Engineering",
+          "Water Quality Engineering",
+          "Water Resources Engineering",
+          "Civil Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Electrical And Electronic Engineering",
+        "Fields": [
+          "Circuits And Systems",
+          "Control Systems, Robotics And Automation",
+          "Industrial Electronics",
+          "Microelectronics And Integrated Circuits",
+          "Photodetectors, Optical Sensors And Solar Cells",
+          "Photonics And Electro-optical Engineering (Excl. Communications)",
+          "Power And Energy Systems Engineering (Excl. Renewable Power)",
+          "Renewable Power And Energy Systems Engineering (Excl. Solar Cells)",
+          "Signal Processing",
+          "Electrical And Electronic Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmental Engineering",
+        "Fields": [
+          "Environmental Engineering Design",
+          "Environmental Engineering Modelling",
+          "Environmental Technologies",
+          "Environmental Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Food Sciences",
+        "Fields": [
+          "Food Chemistry And Molecular Gastronomy (Excl. Wine)",
+          "Food Engineering",
+          "Food Nutritional Balance",
+          "Food Packaging, Preservation And Safety",
+          "Food Processing",
+          "Wine Chemistry And Wine Sensory Science",
+          "Food Sciences Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Geomatic Engineering",
+        "Fields": [
+          "Cartography",
+          "Geodesy",
+          "Geospatial Information Systems",
+          "Navigation And Position Fixing",
+          "Photogrammetry And Remote Sensing",
+          "Surveying (Incl. Hydrographic Surveying)",
+          "Geomatic Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Manufacturing Engineering",
+        "Fields": [
+          "Cad/cam Systems",
+          "Flexible Manufacturing Systems",
+          "Machine Tools",
+          "Machining",
+          "Manufacturing Management",
+          "Manufacturing Processes And Technologies (Excl. Textiles)",
+          "Manufacturing Robotics And Mechatronics (Excl. Automotive Mechatronics)",
+          "Manufacturing Safety And Quality",
+          "Microtechnology",
+          "Packaging, Storage And Transportation (Excl. Food And Agricultural Products)",
+          "Precision Engineering",
+          "Textile Technology",
+          "Manufacturing Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Maritime Engineering",
+        "Fields": [
+          "Marine Engineering",
+          "Naval Architecture",
+          "Ocean Engineering",
+          "Ship And Platform Hydrodynamics",
+          "Ship And Platform Structures",
+          "Special Vehicles",
+          "Maritime Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Materials Engineering",
+        "Fields": [
+          "Ceramics",
+          "Composite And Hybrid Materials",
+          "Compound Semiconductors",
+          "Elemental Semiconductors",
+          "Functional Materials",
+          "Glass",
+          "Metals And Alloy Materials",
+          "Organic Semiconductors",
+          "Polymers And Plastics",
+          "Timber, Pulp And Paper",
+          "Materials Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Mechanical Engineering",
+        "Fields": [
+          "Acoustics And Noise Control (Excl. Architectural Acoustics)",
+          "Automation And Control Engineering",
+          "Autonomous Vehicles",
+          "Dynamics, Vibration And Vibration Control",
+          "Energy Generation, Conversion And Storage Engineering",
+          "Microelectromechanical Systems (Mems)",
+          "Numerical Modelling And Mechanical Characterisation",
+          "Solid Mechanics",
+          "Tribology",
+          "Mechanical Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Resources Engineering And Extractive Metallurgy",
+        "Fields": [
+          "Electrometallurgy",
+          "Geomechanics And Resources Geotechnical Engineering",
+          "Hydrometallurgy",
+          "Mineral Processing/beneficiation",
+          "Mining Engineering",
+          "Petroleum And Reservoir Engineering",
+          "Pyrometallurgy",
+          "Resources Engineering And Extractive Metallurgy Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Interdisciplinary Engineering",
+        "Fields": [
+          "Computational Fluid Dynamics",
+          "Computational Heat Transfer",
+          "Engineering Practice",
+          "Fluidisation And Fluid Mechanics",
+          "Heat And Mass Transfer Operations",
+          "Nuclear Engineering (Incl. Fuel Enrichment And Waste Processing And Storage)",
+          "Risk Engineering (Excl. Earthquake Engineering)",
+          "Turbulent Flows",
+          "Interdisciplinary Engineering Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Engineering",
+        "Fields": [
+          "Agricultural Engineering",
+          "Engineering Instrumentation",
+          "Engineering Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Technology",
+    "Groups": [
+      {
+        "Group": "Agricultural Biotechnology",
+        "Fields": [
+          "Agricultural Biotechnology Diagnostics (Incl. Biosensors)",
+          "Agricultural Marine Biotechnology",
+          "Agricultural Molecular Engineering Of Nucleic Acids And Proteins",
+          "Genetically Modified Animals",
+          "Genetically Modified Field Crops And Pasture",
+          "Genetically Modified Horticulture Plants",
+          "Genetically Modified Trees",
+          "Livestock Cloning",
+          "Transgenesis",
+          "Agricultural Biotechnology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmental Biotechnology",
+        "Fields": [
+          "Biodiscovery",
+          "Biological Control",
+          "Bioremediation",
+          "Environmental Biotechnology Diagnostics (Incl. Biosensors)",
+          "Environmental Marine Biotechnology",
+          "Environmental Molecular Engineering Of Nucleic Acids And Proteins",
+          "Environmental Biotechnology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Industrial Biotechnology",
+        "Fields": [
+          "Biocatalysis And Enzyme Technology",
+          "Bioprocessing, Bioproduction And Bioproducts",
+          "Fermentation",
+          "Industrial Biotechnology Diagnostics (Incl. Biosensors)",
+          "Industrial Microbiology (Incl. Biofeedstocks)",
+          "Industrial Molecular Engineering Of Nucleic Acids And Proteins",
+          "Industrial Biotechnology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Medical Biotechnology",
+        "Fields": [
+          "Gene And Molecular Therapy",
+          "Medical Biotechnology Diagnostics (Incl. Biosensors)",
+          "Medical Molecular Engineering Of Nucleic Acids And Proteins",
+          "Regenerative Medicine (Incl. Stem Cells And Tissue Engineering)",
+          "Medical Biotechnology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Communications Technologies",
+        "Fields": [
+          "Antennas And Propagation",
+          "Broadband And Modem Technology",
+          "Computer Communications Networks",
+          "Data Communications",
+          "Microwave And Millimetrewave Theory And Technology",
+          "Optical Fibre Communications",
+          "Optical Networks And Systems",
+          "Satellite Communications",
+          "Video Communications",
+          "Wireless Communications",
+          "Communications Technologies Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Computer Hardware",
+        "Fields": [
+          "Arithmetic And Logic Structures",
+          "Input, Output And Data Devices",
+          "Logic Design",
+          "Memory Structures",
+          "Performance Evaluation; Testing And Simulation Of Reliability",
+          "Processor Architectures",
+          "Computer Hardware Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Nanotechnology",
+        "Fields": [
+          "Environmental Nanotechnology",
+          "Molecular And Organic Electronics",
+          "Nanobiotechnology",
+          "Nanoelectromechanical Systems",
+          "Nanoelectronics",
+          "Nanofabrication, Growth And Self Assembly",
+          "Nanomanufacturing",
+          "Nanomaterials",
+          "Nanomedicine",
+          "Nanometrology",
+          "Nanophotonics",
+          "Nanoscale Characterisation",
+          "Nanotoxicology, Health And Safety",
+          "Nanotechnology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Technology",
+        "Fields": [
+          "A) Mathematics And Statistics Are Included In Division Mathematical Sciences.",
+          "B) Photonics, Optoelectronics And Optical Communications Are Included In Group Optical Physics.",
+          "C) Quantum Communication Is Included In Group Quantum Physics.",
+          "D) Nanochemistry Is Included In Group Macromolecular And Materials Chemistry.",
+          "E) Environmental Science Is Included In Division Environmental Sciences.",
+          "F) Improvement Of Plants And Animals Through Selective Breeding Is Included In Division Agricultural And Veterinary Sciences.",
+          "G) Information Technology Not Directly Associated With Computer Hardware Is Included In Division Information And Computing Sciences.",
+          "H) Engineering, Including Aerospace, Biomedical And Environmental Engineering And Remote Sensing, Is Included In Division Engineering.",
+          "I) Assisted Reproduction Technologies Are Included In Group Paediatrics And Reproductive Medicine.",
+          "J) Pharmacogenomics Is Included In Group Pharmacology And Pharmaceutical Sciences.",
+          "K) Ethical Use Of Technology Is Included In Group Applied Ethics.",
+          "L) History And Philosophy Of Technology Is Included In Group History And Philosophy Of Specific Fields."
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Medical And Health Sciences",
+    "Groups": [
+      {
+        "Group": "Medical Biochemistry And Metabolomics",
+        "Fields": [
+          "Medical Biochemistry: Amino Acids And Metabolites",
+          "Medical Biochemistry: Carbohydrates",
+          "Medical Biochemistry: Inorganic Elements And Compounds",
+          "Medical Biochemistry: Lipids",
+          "Medical Biochemistry: Nucleic Acids",
+          "Medical Biochemistry: Proteins And Peptides (Incl. Medical Proteomics)",
+          "Metabolic Medicine",
+          "Medical Biochemistry And Metabolomics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Cardiorespiratory Medicine And Haematology",
+        "Fields": [
+          "Cardiology (Incl. Cardiovascular Diseases)",
+          "Haematology",
+          "Respiratory Diseases",
+          "Cardiorespiratory Medicine And Haematology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Clinical Sciences",
+        "Fields": [
+          "Anaesthesiology",
+          "Clinical Chemistry (Diagnostics)",
+          "Clinical Microbiology",
+          "Dermatology",
+          "Emergency Medicine",
+          "Endocrinology",
+          "Gastroenterology And Hepatology",
+          "Geriatrics And Gerontology",
+          "Infectious Diseases",
+          "Intensive Care",
+          "Medical Genetics (Excl. Cancer Genetics)",
+          "Nephrology And Urology",
+          "Nuclear Medicine",
+          "Orthopaedics",
+          "Otorhinolaryngology",
+          "Pathology (Excl. Oral Pathology)",
+          "Physiotherapy",
+          "Podiatry",
+          "Psychiatry (Incl. Psychotherapy)",
+          "Radiology And Organ Imaging",
+          "Rehabilitation And Therapy (Excl. Physiotherapy)",
+          "Rheumatology And Arthritis",
+          "Surgery",
+          "Venereology",
+          "Clinical Sciences Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Complementary And Alternative Medicine",
+        "Fields": [
+          "Chiropractic",
+          "Naturopathy",
+          "Traditional Aboriginal And Torres Strait Islander Medicine And Treatments",
+          "Traditional Chinese Medicine And Treatments",
+          "Traditional Maori Medicine And Treatments",
+          "Complementary And Alternative Medicine Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Dentistry",
+        "Fields": [
+          "Dental Materials And Equipment",
+          "Dental Therapeutics, Pharmacology And Toxicology",
+          "Endodontics",
+          "Oral And Maxillofacial Surgery",
+          "Oral Medicine And Pathology",
+          "Orthodontics And Dentofacial Orthopaedics",
+          "Paedodontics",
+          "Periodontics",
+          "Special Needs Dentistry",
+          "Dentistry Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Human Movement And Sports Science",
+        "Fields": [
+          "Biomechanics",
+          "Exercise Physiology",
+          "Motor Control",
+          "Sports Medicine",
+          "Human Movement And Sports Science Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Immunology",
+        "Fields": [
+          "Allergy",
+          "Applied Immunology (Incl. Antibody Engineering, Xenotransplantation And T-cell Therapies)",
+          "Autoimmunity",
+          "Cellular Immunology",
+          "Humoural Immunology And Immunochemistry",
+          "Immunogenetics (Incl. Genetic Immunology)",
+          "Innate Immunity",
+          "Transplantation Immunology",
+          "Tumour Immunology",
+          "Immunology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Medical Microbiology",
+        "Fields": [
+          "Medical Bacteriology",
+          "Medical Infection Agents (Incl. Prions)",
+          "Medical Parasitology",
+          "Medical Virology",
+          "Medical Microbiology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Neurosciences",
+        "Fields": [
+          "Autonomic Nervous System",
+          "Cellular Nervous System",
+          "Central Nervous System",
+          "Neurology And Neuromuscular Diseases",
+          "Peripheral Nervous System",
+          "Sensory Systems",
+          "Neurosciences Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Nursing",
+        "Fields": [
+          "Aged Care Nursing",
+          "Clinical Nursing: Primary (Preventative)",
+          "Clinical Nursing: Secondary (Acute Care)",
+          "Clinical Nursing: Tertiary (Rehabilitative)",
+          "Mental Health Nursing",
+          "Midwifery",
+          "Nursing Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Nutrition And Dietetics",
+        "Fields": [
+          "Clinical And Sports Nutrition",
+          "Dietetics And Nutrigenomics",
+          "Nutritional Physiology",
+          "Public Nutrition Intervention",
+          "Nutrition And Dietetics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Oncology And Carcinogenesis",
+        "Fields": [
+          "Cancer Cell Biology",
+          "Cancer Diagnosis",
+          "Cancer Genetics",
+          "Cancer Therapy (Excl. Chemotherapy And Radiation Therapy)",
+          "Chemotherapy",
+          "Haematological Tumours",
+          "Molecular Targets",
+          "Radiation Therapy",
+          "Solid Tumours",
+          "Oncology And Carcinogenesis Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Ophthalmology And Optometry",
+        "Fields": [
+          "Ophthalmology",
+          "Optical Technology",
+          "Vision Science",
+          "Ophthalmology And Optometry Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Paediatrics And Reproductive Medicine",
+        "Fields": [
+          "Foetal Development And Medicine",
+          "Obstetrics And Gynaecology",
+          "Paediatrics",
+          "Reproduction",
+          "Paediatrics And Reproductive Medicine Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Pharmacology And Pharmaceutical Sciences",
+        "Fields": [
+          "Basic Pharmacology",
+          "Clinical Pharmacology And Therapeutics",
+          "Clinical Pharmacy And Pharmacy Practice",
+          "Pharmaceutical Sciences",
+          "Pharmacogenomics",
+          "Toxicology (Incl. Clinical Toxicology)",
+          "Pharmacology And Pharmaceutical Sciences Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Medical Physiology",
+        "Fields": [
+          "Cell Physiology",
+          "Human Biophysics",
+          "Systems Physiology",
+          "Medical Physiology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Public Health And Health Services",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Health",
+          "Aged Health Care",
+          "Care For Disabled",
+          "Community Child Health",
+          "Environmental And Occupational Health And Safety",
+          "Epidemiology",
+          "Family Care",
+          "Health And Community Services",
+          "Health Care Administration",
+          "Health Counselling",
+          "Health Information Systems (Incl. Surveillance)",
+          "Health Promotion",
+          "Maori Health",
+          "Mental Health",
+          "Pacific Peoples Health",
+          "Preventive Medicine",
+          "Primary Health Care",
+          "Residential Client Care",
+          "Public Health And Health Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Medical And Health Sciences",
+        "Fields": ["Medical And Health Sciences Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Built Environment And Design",
+    "Groups": [
+      {
+        "Group": "Architecture",
+        "Fields": [
+          "Architectural Design",
+          "Architectural Heritage And Conservation",
+          "Architectural History And Theory",
+          "Architectural Science And Technology (Incl. Acoustics, Lighting, Structure And Ecologically Sustainable Design)",
+          "Architecture Management",
+          "Interior Design",
+          "Landscape Architecture",
+          "Architecture Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Building",
+        "Fields": [
+          "Building Construction Management And Project Planning",
+          "Building Science And Techniques",
+          "Quantity Surveying",
+          "Building Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Design Practice And Management",
+        "Fields": [
+          "Design History And Theory",
+          "Design Innovation",
+          "Design Management And Studio And Professional Practice",
+          "Digital And Interaction Design",
+          "Industrial Design",
+          "Textile And Fashion Design",
+          "Visual Communication Design (Incl. Graphic Design)",
+          "Design Practice And Management Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Engineering Design",
+        "Fields": [
+          "Engineering Design Empirical Studies",
+          "Engineering Design Knowledge",
+          "Engineering Design Methods",
+          "Engineering Systems Design",
+          "Models Of Engineering Design",
+          "Engineering Design Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Urban And Regional Planning",
+        "Fields": [
+          "Community Planning",
+          "History And Theory Of The Built Environment (Excl. Architecture)",
+          "Housing Markets, Development, Management",
+          "Land Use And Environmental Planning",
+          "Regional Analysis And Development",
+          "Transport Planning",
+          "Urban Analysis And Development",
+          "Urban Design",
+          "Urban And Regional Planning Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Built Environment And Design",
+        "Fields": ["Built Environment And Design Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Education",
+    "Groups": [
+      {
+        "Group": "Education Systems",
+        "Fields": [
+          "Continuing And Community Education",
+          "Early Childhood Education (Excl. Maori)",
+          "Higher Education",
+          "Kura Kaupapa Maori (Maori Primary Education)",
+          "Primary Education (Excl. Maori)",
+          "Secondary Education",
+          "Te Whariki (Maori Early Childhood Education)",
+          "Technical, Further And Workplace Education",
+          "Education Systems Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Curriculum And Pedagogy",
+        "Fields": [
+          "Creative Arts, Media And Communication Curriculum And Pedagogy",
+          "Curriculum And Pedagogy Theory And Development",
+          "Economics, Business And Management Curriculum And Pedagogy",
+          "English And Literacy Curriculum And Pedagogy (Excl. Lote, Esl And Tesol)",
+          "Humanities And Social Sciences Curriculum And Pedagogy (Excl. Economics, Business And Management)",
+          "Kohanga Reo (Maori Language Curriculum And Pedagogy)",
+          "Lote, Esl And Tesol Curriculum And Pedagogy (Excl. Maori)",
+          "Mathematics And Numeracy Curriculum And Pedagogy",
+          "Medicine, Nursing And Health Curriculum And Pedagogy",
+          "Physical Education And Development Curriculum And Pedagogy",
+          "Religion Curriculum And Pedagogy",
+          "Science, Technology And Engineering Curriculum And Pedagogy",
+          "Vocational Education And Training Curriculum And Pedagogy",
+          "Curriculum And Pedagogy Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Specialist Studies In Education",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Education",
+          "Comparative And Cross-cultural Education",
+          "Education Assessment And Evaluation",
+          "Educational Administration, Management And Leadership",
+          "Educational Counselling",
+          "Educational Technology And Computing",
+          "Ethnic Education (Excl. Aboriginal And Torres Strait Islander, Maori And Pacific Peoples)",
+          "Gender, Sexuality And Education",
+          "Learning Sciences",
+          "Maori Education (Excl. Early Childhood And Primary Education)",
+          "Pacific Peoples Education",
+          "Special Education And Disability",
+          "Teacher Education And Professional Development Of Educators",
+          "Specialist Studies In Education Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Education",
+        "Fields": ["Education Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Economics",
+    "Groups": [
+      {
+        "Group": "Economic Theory",
+        "Fields": [
+          "History Of Economic Thought",
+          "Macroeconomic Theory",
+          "Mathematical Economics",
+          "Microeconomic Theory",
+          "Economic Theory Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Applied Economics",
+        "Fields": [
+          "Agricultural Economics",
+          "Economic Development And Growth",
+          "Economic History",
+          "Economics Of Education",
+          "Environment And Resource Economics",
+          "Experimental Economics",
+          "Financial Economics",
+          "Health Economics",
+          "Industry Economics And Industrial Organisation",
+          "International Economics And International Finance",
+          "Labour Economics",
+          "Macroeconomics (Incl. Monetary And Fiscal Theory)",
+          "Public Economics- Public Choice",
+          "Public Economics- Publically Provided Goods",
+          "Public Economics- Taxation And Revenue",
+          "Tourism Economics",
+          "Transport Economics",
+          "Urban And Regional Economics",
+          "Welfare Economics",
+          "Applied Economics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Econometrics",
+        "Fields": [
+          "Cross-sectional Analysis",
+          "Econometric And Statistical Methods",
+          "Economic Models And Forecasting",
+          "Panel Data Analysis",
+          "Time-series Analysis",
+          "Econometrics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Economics",
+        "Fields": [
+          "Comparative Economic Systems",
+          "Ecological Economics",
+          "Heterodox Economics",
+          "Economics Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Commerce",
+    "Groups": [
+      {
+        "Group": "Accounting",
+        "Fields": [
+          "Accounting Theory And Standards",
+          "Auditing And Accountability",
+          "Financial Accounting",
+          "International Accounting",
+          "Management Accounting",
+          "Sustainability Accounting And Reporting",
+          "Taxation Accounting",
+          "Accounting, Auditing And Accountability Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Banking",
+        "Fields": [
+          "Finance",
+          "Financial Econometrics",
+          "Financial Institutions (Incl. Banking)",
+          "Insurance Studies",
+          "Investment And Risk Management",
+          "Banking, Finance And Investment Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Business And Management",
+        "Fields": [
+          "Business Information Management (Incl. Records, Knowledge And Information Management, And Intelligence)",
+          "Business Information Systems",
+          "Corporate Governance And Stakeholder Engagement",
+          "Entrepreneurship",
+          "Human Resources Management",
+          "Industrial Relations",
+          "Innovation And Technology Management",
+          "International Business",
+          "Logistics And Supply Chain Management",
+          "Organisation And Management Theory",
+          "Organisational Behaviour",
+          "Organisational Planning And Management",
+          "Quality Management",
+          "Small Business Management",
+          "Business And Management Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Commercial Services",
+        "Fields": [
+          "Food And Hospitality Services",
+          "Hospitality Management",
+          "Real Estate And Valuation Services",
+          "Sport And Leisure Management",
+          "Commercial Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Marketing",
+        "Fields": [
+          "Consumer-oriented Product Or Service Development",
+          "Marketing Communications",
+          "Marketing Management (Incl. Strategy And Customer Relations)",
+          "Marketing Measurement",
+          "Marketing Research Methodology",
+          "Marketing Theory",
+          "Pricing (Incl. Consumer Value Estimation)",
+          "Marketing Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Tourism",
+        "Fields": [
+          "Impacts Of Tourism",
+          "Tourism Forecasting",
+          "Tourism Management",
+          "Tourism Marketing",
+          "Tourism Resource Appraisal",
+          "Tourist Behaviour And Visitor Experience",
+          "Tourism Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Transportation And Freight Services",
+        "Fields": [
+          "Air Transportation And Freight Services",
+          "Rail Transportation And Freight Services",
+          "Road Transportation And Freight Services",
+          "Transportation And Freight Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Commerce",
+        "Fields": [
+          "Commerce, Management, Tourism And Services Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Studies In Human Society",
+    "Groups": [
+      {
+        "Group": "Anthropology",
+        "Fields": [
+          "Anthropology Of Development",
+          "Biological (Physical) Anthropology",
+          "Linguistic Anthropology",
+          "Social And Cultural Anthropology",
+          "Anthropology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Criminology",
+        "Fields": [
+          "Causes And Prevention Of Crime",
+          "Correctional Theory, Offender Treatment And Rehabilitation",
+          "Courts And Sentencing",
+          "Criminological Theories",
+          "Police Administration, Procedures And Practice",
+          "Private Policing And Security Services",
+          "Criminology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Demography",
+        "Fields": [
+          "Family And Household Studies",
+          "Fertility",
+          "Migration",
+          "Mortality",
+          "Population Trends And Policies",
+          "Demography Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Human Geography",
+        "Fields": [
+          "Economic Geography",
+          "Recreation, Leisure And Tourism Geography",
+          "Social And Cultural Geography",
+          "Urban And Regional Studies (Excl. Planning)",
+          "Human Geography Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Policy And Administration",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Policy",
+          "Arts And Cultural Policy",
+          "Communications And Media Policy",
+          "Crime Policy",
+          "Economic Development Policy",
+          "Education Policy",
+          "Environment Policy",
+          "Health Policy",
+          "Public Administration",
+          "Public Policy",
+          "Research, Science And Technology Policy",
+          "Social Policy",
+          "Tourism Policy",
+          "Urban Policy",
+          "Policy And Administration Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Political Science",
+        "Fields": [
+          "Australian Government And Politics",
+          "Citizenship",
+          "Comparative Government And Politics",
+          "Defence Studies",
+          "Environmental Politics",
+          "Government And Politics Of Asia And The Pacific",
+          "International Relations",
+          "New Zealand Government And Politics",
+          "Political Theory And Political Philosophy",
+          "Political Science Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Social Work",
+        "Fields": [
+          "Clinical Social Work Practice",
+          "Counselling, Welfare And Community Services",
+          "Social Program Evaluation",
+          "Social Work Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Sociology",
+        "Fields": [
+          "Applied Sociology, Program Evaluation And Social Impact Assessment",
+          "Environmental Sociology",
+          "Race And Ethnic Relations",
+          "Rural Sociology",
+          "Social Change",
+          "Social Theory",
+          "Sociological Methodology And Research Methods",
+          "Sociology And Social Studies Of Science And Technology",
+          "Sociology Of Education",
+          "Urban Sociology And Community Studies",
+          "Sociology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Studies In Human Society",
+        "Fields": [
+          "Gender Specific Studies",
+          "Studies Of Aboriginal And Torres Strait Islander Society",
+          "Studies Of Asian Society",
+          "Studies Of Maori Society",
+          "Studies Of Pacific Peoples' Societies",
+          "Studies In Human Society Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Psychology And Cognitive Sciences",
+    "Groups": [
+      {
+        "Group": "Psychology",
+        "Fields": [
+          "Biological Psychology (Neuropsychology, Psychopharmacology, Physiological Psychology)",
+          "Developmental Psychology And Ageing",
+          "Educational Psychology",
+          "Forensic Psychology",
+          "Gender Psychology",
+          "Health, Clinical And Counselling Psychology",
+          "Industrial And Organisational Psychology",
+          "Kaupapa Maori Psychology",
+          "Personality, Abilities And Assessment",
+          "Psychological Methodology, Design And Analysis",
+          "Psychology Of Religion",
+          "Sensory Processes, Perception And Performance",
+          "Social And Community Psychology",
+          "Sport And Exercise Psychology",
+          "Psychology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Cognitive Sciences",
+        "Fields": [
+          "Computer Perception, Memory And Attention",
+          "Decision Making",
+          "Knowledge Representation And Machine Learning",
+          "Linguistic Processes (Incl. Speech Production And Comprehension)",
+          "Neurocognitive Patterns And Neural Networks",
+          "Cognitive Sciences Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Psychology And Cognitive Sciences",
+        "Fields": ["Psychology And Cognitive Sciences Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Law And Legal Studies",
+    "Groups": [
+      {
+        "Group": "Law",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Law",
+          "Access To Justice",
+          "Administrative Law",
+          "Civil Law And Procedure",
+          "Commercial And Contract Law",
+          "Comparative Law",
+          "Conflict Of Laws (Private International Law)",
+          "Constitutional Law",
+          "Corporations And Associations Law",
+          "Criminal Law And Procedure",
+          "Environmental And Natural Resources Law",
+          "Equity And Trusts Law",
+          "Family Law",
+          "Human Rights Law",
+          "Intellectual Property Law",
+          "International Law (Excl. International Trade Law)",
+          "International Trade Law",
+          "Labour Law",
+          "Law And Society",
+          "Legal Institutions (Incl. Courts And Justice Systems)",
+          "Legal Practice, Lawyering And The Legal Profession",
+          "Legal Theory, Jurisprudence And Legal Interpretation",
+          "Litigation, Adjudication And Dispute Resolution",
+          "Property Law (Excl. Intellectual Property Law)",
+          "Taxation Law",
+          "Tort Law",
+          "Law Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Maori Law",
+        "Fields": [
+          "Nga Tikanga Maori (Maori Customary Law)",
+          "Te Maori Whakahaere Rauemi (Maori Resource Law))",
+          "Te Tiriti O Waitangi (The Treaty Of Waitangi)",
+          "Te Ture Whenua (Maori Land Law)",
+          "Maori Law Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Law And Legal Studies",
+        "Fields": ["Law And Legal Studies Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Studies In Creative Arts And Writing",
+    "Groups": [
+      {
+        "Group": "Art Theory And Criticism",
+        "Fields": [
+          "Art Criticism",
+          "Art History",
+          "Art Theory",
+          "Visual Cultures",
+          "Art Theory And Criticism Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Film",
+        "Fields": [
+          "Cinema Studies",
+          "Computer Gaming And Animation",
+          "Electronic Media Art",
+          "Film And Television",
+          "Interactive Media",
+          "Film, Television And Digital Media Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Journalism And Professional Writing",
+        "Fields": [
+          "Journalism Studies",
+          "Professional Writing",
+          "Technical Writing",
+          "Journalism And Professional Writing Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Performing Arts And Creative Writing",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Performing Arts",
+          "Creative Writing (Incl. Playwriting)",
+          "Dance",
+          "Drama, Theatre And Performance Studies",
+          "Maori Performing Arts",
+          "Music Composition",
+          "Music Performance",
+          "Music Therapy",
+          "Musicology And Ethnomusicology",
+          "Pacific Peoples Performing Arts",
+          "Performing Arts And Creative Writing Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Visual Arts And Crafts",
+        "Fields": [
+          "Crafts",
+          "Fine Arts (Incl. Sculpture And Painting)",
+          "Lens-based Practice",
+          "Performance And Installation Art",
+          "Visual Arts And Crafts Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Studies In Creative Arts And Writing",
+        "Fields": [
+          "Studies In Creative Arts And Writing Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Language",
+    "Groups": [
+      {
+        "Group": "Communication And Media Studies",
+        "Fields": [
+          "Communication Studies",
+          "Communication Technology And Digital Media Studies",
+          "International And Development Communication",
+          "Media Studies",
+          "Organisational, Interpersonal And Intercultural Communication",
+          "Communication And Media Studies Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Cultural Studies",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Cultural Studies",
+          "Asian Cultural Studies",
+          "Consumption And Everyday Life",
+          "Cultural Theory",
+          "Culture, Gender, Sexuality",
+          "Globalisation And Culture",
+          "Maori Cultural Studies",
+          "Migrant Cultural Studies",
+          "Multicultural, Intercultural And Cross-cultural Studies",
+          "Pacific Cultural Studies",
+          "Postcolonial Studies",
+          "Screen And Media Culture",
+          "Cultural Studies Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Language Studies",
+        "Fields": [
+          "Early English Languages",
+          "English Language",
+          "English As A Second Language",
+          "Central And Eastern European Languages (Incl. Russian)",
+          "Latin And Classical Greek Languages",
+          "French Language",
+          "German Language",
+          "Iberian Languages",
+          "Italian Language",
+          "Other European Languages",
+          "Chinese Languages",
+          "Japanese Language",
+          "Indonesian Languages",
+          "South-east Asian Languages (Excl. Indonesian)",
+          "Indian Languages",
+          "Korean Language",
+          "Other Asian Languages (Excl. South-east Asian)",
+          "Middle Eastern Languages",
+          "Aboriginal And Torres Strait Islander Languages",
+          "Pacific Languages",
+          "Te Reo Maori (Maori Language)",
+          "Comparative Language Studies",
+          "Translation And Interpretation Studies",
+          "Language Studies Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Linguistics",
+        "Fields": [
+          "Applied Linguistics And Educational Linguistics",
+          "Computational Linguistics",
+          "Discourse And Pragmatics",
+          "Laboratory Phonetics And Speech Science",
+          "Language In Culture And Society (Sociolinguistics)",
+          "Language In Time And Space (Incl. Historical Linguistics, Dialectology)",
+          "Lexicography",
+          "Linguistic Structures (Incl. Grammar, Phonology, Lexicon, Semantics)",
+          "Linguistics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Literary Studies",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Literature",
+          "Australian Literature (Excl. Aboriginal And Torres Strait Islander Literature)",
+          "British And Irish Literature",
+          "Maori Literature",
+          "New Zealand Literature (Excl. Maori Literature)",
+          "North American Literature",
+          "Pacific Literature",
+          "Other Literatures In English",
+          "Central And Eastern European Literature (Incl. Russian)",
+          "Latin And Classical Greek Literature",
+          "Literature In French",
+          "Literature In German",
+          "Literature In Italian",
+          "Literature In Spanish And Portuguese",
+          "Other European Literature",
+          "Indonesian Literature",
+          "Literature In Chinese",
+          "Literature In Japanese",
+          "South-east Asian Literature (Excl. Indonesian)",
+          "Indian Literature",
+          "Korean Literature",
+          "Other Asian Literature (Excl. South-east Asian)",
+          "Middle Eastern Literature",
+          "Comparative Literature Studies",
+          "Literary Theory",
+          "Stylistics And Textual Analysis",
+          "Literary Studies Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Language",
+        "Fields": [
+          "Language, Communication And Culture Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "History And Archaeology",
+    "Groups": [
+      {
+        "Group": "Archaeology",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Archaeology",
+          "Archaeological Science",
+          "Archaeology Of Asia, Africa And The Americas",
+          "Archaeology Of Australia (Excl. Aboriginal And Torres Strait Islander)",
+          "Archaeology Of Europe, The Mediterranean And The Levant",
+          "Archaeology Of New Guinea And Pacific Islands (Excl. New Zealand)",
+          "Archaeology Of New Zealand (Excl. Maori)",
+          "Historical Archaeology (Incl. Industrial Archaeology)",
+          "Maori Archaeology",
+          "Maritime Archaeology",
+          "Archaeology Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Curatorial And Related Studies",
+        "Fields": [
+          "Archival, Repository And Related Studies",
+          "Heritage And Cultural Conservation",
+          "Materials Conservation",
+          "Museum Studies",
+          "Curatorial And Related Studies Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Historical Studies",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander History",
+          "Asian History",
+          "Australian History (Excl. Aboriginal And Torres Strait Islander History)",
+          "Biography",
+          "British History",
+          "Classical Greek And Roman History",
+          "European History (Excl. British, Classical Greek And Roman)",
+          "Latin American History",
+          "Maori History",
+          "Middle Eastern And African History",
+          "New Zealand History",
+          "North American History",
+          "Pacific History (Excl. New Zealand And Maori)",
+          "Historical Studies Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other History And Archaeology",
+        "Fields": ["History And Archaeology Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Philosophy And Religious Studies",
+    "Groups": [
+      {
+        "Group": "Applied Ethics",
+        "Fields": [
+          "Bioethics (Human And Animal)",
+          "Business Ethics",
+          "Ethical Use Of New Technology (E.g. Nanotechnology, Biotechnology)",
+          "Human Rights And Justice Issues",
+          "Legal Ethics",
+          "Medical Ethics",
+          "Professional Ethics (Incl. Police And Research Ethics)",
+          "Applied Ethics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "History And Philosophy Of Specific Fields",
+        "Fields": [
+          "Business And Labour History",
+          "History And Philosophy Of Education",
+          "History And Philosophy Of Engineering And Technology",
+          "History And Philosophy Of Law And Justice",
+          "History And Philosophy Of Medicine",
+          "History And Philosophy Of Science (Incl. Non-historical Philosophy Of Science)",
+          "History And Philosophy Of The Humanities",
+          "History And Philosophy Of The Social Sciences",
+          "History Of Ideas",
+          "History Of Philosophy",
+          "History And Philosophy Of Specific Fields Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Philosophy",
+        "Fields": [
+          "Aesthetics",
+          "Decision Theory",
+          "Environmental Philosophy",
+          "Epistemology",
+          "Ethical Theory",
+          "Feminist Theory",
+          "Hermeneutic And Critical Theory",
+          "Logic",
+          "Metaphysics",
+          "Phenomenology",
+          "Philosophical Psychology (Incl. Moral Psychology And Philosophy Of Action)",
+          "Philosophy Of Cognition",
+          "Philosophy Of Language",
+          "Philosophy Of Mind (Excl. Cognition)",
+          "Philosophy Of Religion",
+          "Philosophy Of Specific Cultures (Incl. Comparative Philosophy)",
+          "Poststructuralism",
+          "Psychoanalytic Philosophy",
+          "Social Philosophy",
+          "Philosophy Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Religion And Religious Studies",
+        "Fields": [
+          "Christian Studies (Incl. Biblical Studies And Church History)",
+          "Comparative Religious Studies",
+          "Islamic Studies",
+          "Jewish Studies",
+          "Religion And Society",
+          "Studies In Eastern Religious Traditions",
+          "Studies In Religious Traditions (Excl. Eastern, Jewish, Christian And Islamic Traditions)",
+          "Religion And Religious Studies Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Philosophy And Religious Studies",
+        "Fields": ["Philosophy And Religious Studies Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Defence",
+    "Groups": [
+      {
+        "Group": "Defence",
+        "Fields": [
+          "Air Force",
+          "Army",
+          "Command, Control And Communications",
+          "Emerging Defence Technologies",
+          "Intelligence",
+          "Logistics",
+          "National Security",
+          "Navy",
+          "Personnel",
+          "Defence Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Plant Production And Plant Primary Products",
+    "Groups": [
+      {
+        "Group": "Forestry",
+        "Fields": [
+          "Hardwood Plantations",
+          "Harvesting And Transport Of Forest Products",
+          "Integration Of Farm And Forestry",
+          "Native Forests",
+          "Softwood Plantations",
+          "Forestry Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Horticultural Crops",
+        "Fields": [
+          "Almonds",
+          "Berry Fruit (Excl. Kiwifruit)",
+          "Citrus Fruit",
+          "Hops",
+          "Kiwifruit",
+          "Macadamias",
+          "Mushrooms And Truffles",
+          "Olives",
+          "Ornamentals, Natives, Flowers And Nursery Plants",
+          "Pome Fruit, Pip Fruit",
+          "Stone Fruit",
+          "Table Grapes",
+          "Tree Nuts (Excl. Almonds And Macadamias)",
+          "Tropical Fruit",
+          "Vegetables",
+          "Horticultural Crops Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Industrial Crops",
+        "Fields": [
+          "Cotton",
+          "Essential Oil Crops (E.g. Tea Tree, Eucalyptus, Lavender, Peppermint, Boronia, Sandalwood)",
+          "Plant Extract Crops (E.g. Pyrethrum, Jojoba)",
+          "Sugar",
+          "Tobacco",
+          "Wine Grapes",
+          "Industrial Crops Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Summer Grains And Oilseeds",
+        "Fields": [
+          "Maize",
+          "Rice",
+          "Safflower Seed",
+          "Sorghum",
+          "Soybeans",
+          "Summer Grains And Oilseeds Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Winter Grains And Oilseeds",
+        "Fields": [
+          "Barley",
+          "Canola",
+          "Grain Legumes",
+          "Linseed",
+          "Lupins",
+          "Oats",
+          "Wheat",
+          "Winter Grains And Oilseeds Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Harvesting And Packing Of Plant Products",
+        "Fields": [
+          "Cotton Lint And Cotton Seed",
+          "Fresh Fruits And Vegetables (Post Harvest)",
+          "Sugar Cane (Cut For Crushing)",
+          "Tobacco Leaf",
+          "Unprocessed Grains",
+          "Unprocessed Industrial Crops (Excl. Sugar, Tobacco And Cotton)",
+          "Unprocessed Oilseeds",
+          "Harvesting And Packing Of Plant Products Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmentally Sustainable Plant Production",
+        "Fields": [
+          "Management Of Gaseous Waste From Plant Production (Excl. Greenhouse Gases)",
+          "Management Of Greenhouse Gas Emissions From Plant Production",
+          "Management Of Liquid Waste From Plant Production (Excl. Water)",
+          "Management Of Solid Waste From Plant Production",
+          "Management Of Water Consumption By Plant Production",
+          "Environmentally Sustainable Plant Production Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Plant Production And Plant Primary Products",
+        "Fields": [
+          "Forest Product Traceability And Quality Assurance",
+          "Plant Product Traceability And Quality Assurance (Excl. Forest Products)",
+          "Plant Production And Plant Primary Products Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Animal Production And Animal Primary Products",
+    "Groups": [
+      {
+        "Group": "Fisheries - Aquaculture",
+        "Fields": [
+          "Aquaculture Crustaceans (Excl. Rock Lobster And Prawns)",
+          "Aquaculture Fin Fish (Excl. Tuna)",
+          "Aquaculture Molluscs (Excl. Oysters)",
+          "Aquaculture Oysters",
+          "Aquaculture Prawns",
+          "Aquaculture Rock Lobster",
+          "Aquaculture Tuna",
+          "Fisheries - Aquaculture Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Fisheries - Wild Caught",
+        "Fields": [
+          "Fisheries - Recreational",
+          "Wild Caught Crustaceans (Excl. Rock Lobster And Prawns)",
+          "Wild Caught Edible Molluscs",
+          "Wild Caught Fin Fish (Excl. Tuna)",
+          "Wild Caught Prawns",
+          "Wild Caught Rock Lobster",
+          "Wild Caught Tuna",
+          "Fisheries - Wild Caught Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Livestock Raising",
+        "Fields": [
+          "Beef Cattle",
+          "Dairy Cattle",
+          "Deer",
+          "Goats",
+          "Game Livestock (E.g. Kangaroos, Wallabies, Camels, Buffaloes, Possums)",
+          "Horses",
+          "Minor Livestock (E.g. Alpacas, Ostriches, Crocodiles, Farmed Rabbits)",
+          "Pigs",
+          "Poultry",
+          "Sheep - Meat",
+          "Sheep - Wool",
+          "Livestock Raising Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Pasture",
+        "Fields": [
+          "Browse Crops",
+          "Lucerne",
+          "Native And Residual Pastures",
+          "Non-cereal Crops For Hay",
+          "Non-cereal Crops For Silage/green Feed",
+          "Sown Pastures (Excl. Lucerne)",
+          "Pasture, Browse And Fodder Crops Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Primary Animal Products",
+        "Fields": [
+          "Eggs",
+          "Honey",
+          "Live Animals",
+          "Pearls",
+          "Raw Wool",
+          "Unprocessed Or Minimally Processed Fish",
+          "Unprocessed Or Minimally Processed Milk",
+          "Primary Animal Products Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmentally Sustainable Animal Production",
+        "Fields": [
+          "Management Of Gaseous Waste From Animal Production (Excl. Greenhouse Gases)",
+          "Management Of Greenhouse Gas Emissions From Animal Production",
+          "Management Of Liquid Waste From Animal Production (Excl. Water)",
+          "Management Of Solid Waste From Animal Production",
+          "Management Of Water Consumption By Animal Production",
+          "Environmentally Sustainable Animal Production Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Animal Production And Animal Primary Products",
+        "Fields": [
+          "Animal Welfare",
+          "Fish Product Traceability And Quality Assurance",
+          "Livestock Product Traceability And Quality Assurance",
+          "Animal Production And Animal Primary Products Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Mineral Resources (Excl. Energy Resources)",
+    "Groups": [
+      {
+        "Group": "Mineral Exploration",
+        "Fields": [
+          "Aluminium Ore Exploration",
+          "Copper Ore Exploration",
+          "Diamond Exploration",
+          "Iron Ore Exploration",
+          "Precious (Noble) Metal Ore Exploration",
+          "Stone And Clay Exploration",
+          "Titanium Minerals, Zircon, And Rare Earth Metal Ore (E.g. Monazite) Exploration",
+          "Zinc Ore Exploration",
+          "Mineral Exploration Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Primary Mining And Extraction Of Mineral Resources",
+        "Fields": [
+          "Mining And Extraction Of Aluminium Ores",
+          "Mining And Extraction Of Copper Ores",
+          "Mining And Extraction Of Diamonds",
+          "Mining And Extraction Of Iron Ores",
+          "Mining And Extraction Of Precious (Noble) Metal Ores",
+          "Mining And Extraction Of Stone And Clay",
+          "Mining And Extraction Of Titanium Minerals, Zircon, And Rare Earth Metal Ores (E.g. Monazite)",
+          "Mining And Extraction Of Zinc Ores",
+          "Primary Mining And Extraction Of Mineral Resources Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "First Stage Treatment Of Ores And Minerals",
+        "Fields": [
+          "Alumina Production",
+          "Beneficiation Of Bauxite And Aluminium Ores (Excl. Alumina Production)",
+          "Beneficiation Or Dressing Of Iron Ores",
+          "Beneficiation Or Dressing Of Non-metallic Minerals (Incl. Diamonds)",
+          "Concentrating Processes Of Base Metal Ores (Excl. Aluminium And Iron Ores)",
+          "Production Of Unrefined Precious Metal Ingots And Concentrates",
+          "First Stage Treatment Of Ores And Minerals Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmentally Sustainable Mineral Resource Activities",
+        "Fields": [
+          "Management Of Gaseous Waste From Mineral Resource Activities (Excl. Greenhouse Gases)",
+          "Management Of Greenhouse Gas Emissions From Mineral Resource Activities",
+          "Management Of Liquid Waste From Mineral Resource Activities (Excl. Water)",
+          "Management Of Solid Waste From Mineral Resource Activities",
+          "Management Of Water Consumption By Mineral Resource Activities",
+          "Environmentally Sustainable Mineral Resource Activities Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Mineral Resources (Excl. Energy Resources)",
+        "Fields": [
+          "Mineral Resources (Excl. Energy Resources) Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Energy",
+    "Groups": [
+      {
+        "Group": "Energy Exploration",
+        "Fields": [
+          "Coal Exploration",
+          "Geothermal Exploration",
+          "Oil And Gas Exploration",
+          "Oil Shale And Tar Sands Exploration",
+          "Uranium Exploration",
+          "Energy Exploration Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Mining And Extraction Of Energy Resources",
+        "Fields": [
+          "Coal Mining And Extraction",
+          "Geothermal Energy Extraction",
+          "Oil And Gas Extraction",
+          "Oil Shale And Tar Sands Mining And Extraction",
+          "Uranium Mining And Extraction",
+          "Mining And Extraction Of Energy Resources Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Preparation And Production Of Energy Sources",
+        "Fields": [
+          "Hydrogen Production From Fossil Fuels",
+          "Hydrogen Production From Nuclear Energy",
+          "Hydrogen Production From Renewable Energy",
+          "Oil And Gas Refining",
+          "Preparation Of Black Coal",
+          "Preparation Of Brown Coal (Lignite)",
+          "Preparation Of Oil Shale And Tar Sands",
+          "Preparation Of Uranium",
+          "Production Of Biofuels (Biomass)",
+          "Preparation And Production Of Energy Sources Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Energy Transformation",
+        "Fields": [
+          "Fuel Cells (Excl. Solid Oxide)",
+          "Hydrogen-based Energy Systems (Incl. Internal Hydrogen Combustion Engines)",
+          "Nuclear Energy",
+          "Solid Oxide Fuel Cells",
+          "Transformation Of Black Coal Into Electricity",
+          "Transformation Of Brown Coal (Lignite) Into Electricity",
+          "Transformation Of Coal Into Gaseous Fuels",
+          "Transformation Of Coal Into Liquid Fuels",
+          "Transformation Of Gas Into Electricity",
+          "Transformation Of Gas Into Liquid Fuels",
+          "Energy Transformation Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Renewable Energy",
+        "Fields": [
+          "Biofuel (Biomass) Energy",
+          "Geothermal Energy",
+          "Hydro-electric Energy",
+          "Solar-photovoltaic Energy",
+          "Solar-thermal Electric Energy",
+          "Solar-thermal Energy",
+          "Tidal Energy",
+          "Wave Energy",
+          "Wind Energy",
+          "Renewable Energy Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Energy Storage",
+        "Fields": [
+          "Energy Services And Utilities",
+          "Energy Storage (Excl. Hydrogen)",
+          "Energy Systems Analysis",
+          "Energy Transmission And Distribution (Excl. Hydrogen)",
+          "Hydrogen Distribution",
+          "Hydrogen Storage",
+          "Energy Storage, Distribution And Supply Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Energy Conservation And Efficiency",
+        "Fields": [
+          "Commercial Energy Conservation And Efficiency",
+          "Energy Conservation And Efficiency In Transport",
+          "Industrial Energy Conservation And Efficiency",
+          "Residential Energy Conservation And Efficiency",
+          "Energy Conservation And Efficiency Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmentally Sustainable Energy Activities",
+        "Fields": [
+          "Management Of Gaseous Waste From Energy Activities (Excl. Greenhouse Gases)",
+          "Management Of Greenhouse Gas Emissions From Electricity Generation",
+          "Management Of Greenhouse Gas Emissions From Energy Activities (Excl. Electricity Generation)",
+          "Management Of Liquid Waste From Energy Activities (Excl. Water)",
+          "Management Of Solid Waste From Energy Activities",
+          "Management Of Water Consumption By Energy Activities",
+          "Environmentally Sustainable Energy Activities Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Energy",
+        "Fields": ["Energy Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Manufacturing",
+    "Groups": [
+      {
+        "Group": "Processed Food Products And Beverages (Excl. Dairy Products)",
+        "Fields": [
+          "Bakery Products",
+          "Beverages (Excl. Fruit Juices)",
+          "Carcass Meat (Incl. Fish And Seafood)",
+          "Flour Mill And Cereal Food",
+          "Nutraceuticals And Functional Foods",
+          "Oils And Fats (Incl. Margarines)",
+          "Processed Fish And Seafood Products",
+          "Processed Fruit And Vegetable Products (Incl. Fruit Juices)",
+          "Processed Meat Products",
+          "Soy Products",
+          "Sugar And Confectionery Products",
+          "Processed Food Products And Beverages (Excl. Dairy Products) Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Dairy Products",
+        "Fields": [
+          "Butter And Milk-derived Fats And Oils (Excl. Cream)",
+          "Casein",
+          "Cheese",
+          "Processed Milk And Cream (Incl. Powder, Evaporated And Condensed)",
+          "Whey",
+          "Dairy Products Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Processed Non-food Agriculture Products (Excl. Wood",
+        "Fields": [
+          "Essential Oils (E.g. Tea Tree, Eucalyptus, Lavender, Peppermint, Boronia, Sandalwood)",
+          "Organic Fertilisers",
+          "Plant Extracts (E.g. Pyrethrum, Alkaloids, Jojoba Oil)",
+          "Prepared Animal Feed",
+          "Processed Non-food Agricultural Products (Excl. Wood, Paper And Fibre) Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Leather Products",
+        "Fields": [
+          "Clothing",
+          "Cotton Ginning",
+          "Natural Fibres, Yarns And Fabrics",
+          "Non-fabric Textiles (E.g. Felt)",
+          "Processed Skins, Leather And Leather Products",
+          "Synthetic Fibres, Yarns And Fabrics",
+          "Wool Scouring And Top Making",
+          "Leather Products, Fibre Processing And Textiles Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Wood",
+        "Fields": [
+          "Paper Products (Incl. Coated Paper)",
+          "Printing And Publishing Processes",
+          "Pulp And Paper",
+          "Reconstituted Timber Products (E.g. Chipboard, Particleboard)",
+          "Wood Sawing And Veneer",
+          "Wood, Wood Products And Paper Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Industrial Chemicals And Related Products",
+        "Fields": [
+          "Industrial Gases",
+          "Inorganic Industrial Chemicals",
+          "Lubricants",
+          "Organic Industrial Chemicals (Excl. Resins, Rubber And Plastics)",
+          "Paints",
+          "Plastics In Primary Forms",
+          "Plastic Products (Incl. Construction Materials)",
+          "Rubber And Synthetic Resins",
+          "Soaps And Cosmetics",
+          "Industrial Chemicals And Related Products Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Agricultural Chemicals",
+        "Fields": [
+          "Animal Protection Chemicals",
+          "Chemical Fertilisers",
+          "Crop Protection Chemicals",
+          "Agricultural Chemicals Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Human Pharmaceutical Products",
+        "Fields": [
+          "Human Biological Preventatives (E.g. Vaccines)",
+          "Human Diagnostics",
+          "Human Pharmaceutical Treatments (E.g. Antibiotics)",
+          "Human Pharmaceutical Products Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Veterinary Pharmaceutical Products",
+        "Fields": [
+          "Veterinary Biological Preventatives (E.g. Vaccines)",
+          "Veterinary Diagnostics",
+          "Veterinary Pharmaceutical Treatments (E.g. Antibiotics)",
+          "Veterinary Pharmaceutical Products Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Ceramics",
+        "Fields": [
+          "Cement Products And Concrete Materials",
+          "Ceramics",
+          "Clay Products",
+          "Plaster And Plaster Products",
+          "Structural Glass And Glass Products",
+          "Ceramics, Glass And Industrial Mineral Products Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Basic Metal Products (Incl. Smelting",
+        "Fields": [
+          "Basic Aluminium Products",
+          "Basic Copper Products",
+          "Basic Iron And Steel Products",
+          "Basic Precious Metal Products",
+          "Basic Zinc Products",
+          "Basic Metal Products (Incl. Smelting, Rolling, Drawing And Extruding) Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Fabricated Metal Products",
+        "Fields": [
+          "Coated Metal And Metal-coated Products",
+          "Machined Metal Products",
+          "Metal Castings",
+          "Semi-finished Metal Products",
+          "Sheet Metal Products",
+          "Structural Metal Products",
+          "Fabricated Metal Products Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Transport Equipment",
+        "Fields": [
+          "Aerospace Equipment",
+          "Automotive Equipment",
+          "Nautical Equipment (Excl. Yachts)",
+          "Rail Equipment",
+          "Yachts",
+          "Transport Equipment Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Machinery And Equipment",
+        "Fields": [
+          "Agricultural Machinery And Equipment",
+          "Appliances And Electrical Machinery And Equipment",
+          "Industrial Machinery And Equipment",
+          "Mining Machinery And Equipment",
+          "Machinery And Equipment Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Instrumentation",
+        "Fields": [
+          "Industrial Instruments",
+          "Medical Instruments",
+          "Scientific Instruments",
+          "Instrumentation Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Computer Hardware And Electronic Equipment",
+        "Fields": [
+          "Computer And Electronic Office Equipment",
+          "Consumer Electronic Equipment (Excl. Communication Equipment)",
+          "Integrated Circuits And Devices",
+          "Integrated Systems",
+          "Processor Modules",
+          "Satellite Navigation Equipment",
+          "Computer Hardware And Electronic Equipment Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Communication Equipment",
+        "Fields": [
+          "Network Infrastructure Equipment",
+          "Telemetry Equipment",
+          "Voice And Data Equipment",
+          "Communication Equipment Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmentally Sustainable Manufacturing",
+        "Fields": [
+          "Management Of Gaseous Waste From Manufacturing Activities (Excl. Greenhouse Gases)",
+          "Management Of Greenhouse Gas Emissions From Manufacturing Activities",
+          "Management Of Liquid Waste From Manufacturing Activities (Excl. Water)",
+          "Management Of Solid Waste From Manufacturing Activities",
+          "Management Of Water Consumption By Manufacturing Activities",
+          "Environmentally Sustainable Manufacturing Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Manufacturing",
+        "Fields": ["Furniture", "Manufacturing Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Construction",
+    "Groups": [
+      {
+        "Group": "Construction Planning",
+        "Fields": [
+          "Civil Construction Planning",
+          "Commercial Construction Planning",
+          "Regional Planning",
+          "Residential Construction Planning",
+          "Urban Planning",
+          "Construction Planning Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Construction Design",
+        "Fields": [
+          "Civil Construction Design",
+          "Commercial Construction Design",
+          "Industrial Construction Design",
+          "Residential Construction Design",
+          "Construction Design Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Construction Materials Performance And Processes",
+        "Fields": [
+          "Cement And Concrete Materials",
+          "Metals (E.g. Composites, Coatings, Bonding)",
+          "Polymeric Materials (E.g. Paints)",
+          "Stone, Ceramics And Clay Materials",
+          "Timber Materials",
+          "Construction Materials Performance And Processes Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Construction Processes",
+        "Fields": [
+          "Civil Construction Processes",
+          "Commercial Construction Processes",
+          "Industrial Construction Processes",
+          "Residential Construction Processes",
+          "Construction Processes Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Building Management And Services",
+        "Fields": [
+          "Civil Building Management And Services",
+          "Commercial Building Management And Services",
+          "Residential Building Management And Services",
+          "Building Management And Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmentally Sustainable Construction",
+        "Fields": [
+          "Management Of Gaseous Waste From Construction Activities (Excl. Greenhouse Gases)",
+          "Management Of Greenhouse Gas Emissions From Construction Activities",
+          "Management Of Liquid Waste From Construction Activities (Excl. Water)",
+          "Management Of Solid Waste From Construction Activities",
+          "Management Of Water Consumption By Construction Activities",
+          "Environmentally Sustainable Construction Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Construction",
+        "Fields": ["Construction Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Transport",
+    "Groups": [
+      {
+        "Group": "Ground Transport",
+        "Fields": [
+          "Rail Freight",
+          "Rail Infrastructure And Networks",
+          "Rail Passenger Movements",
+          "Rail Safety",
+          "Road Freight",
+          "Road Infrastructure And Networks",
+          "Road Passenger Movements (Excl. Public Transport)",
+          "Road Public Transport",
+          "Road Safety",
+          "Ground Transport Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Water Transport",
+        "Fields": [
+          "Coastal Sea Freight Transport",
+          "International Sea Freight Transport (Excl. Live Animal Transport)",
+          "International Sea Transport Of Live Animals",
+          "Passenger Water Transport",
+          "Port Infrastructure And Management",
+          "Water Safety",
+          "Water Transport Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Aerospace Transport",
+        "Fields": [
+          "Air Freight",
+          "Air Passenger Transport",
+          "Air Safety",
+          "Air Terminal Infrastructure And Management",
+          "Space Transport",
+          "Aerospace Transport Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmentally Sustainable Transport",
+        "Fields": [
+          "Management Of Gaseous Waste From Transport Activities (Excl. Greenhouse Gases)",
+          "Management Of Greenhouse Gas Emissions From Transport Activities",
+          "Management Of Liquid Waste From Transport Activities (Excl. Water)",
+          "Management Of Noise And Vibration From Transport Activities",
+          "Management Of Solid Waste From Transport Activities",
+          "Management Of Water Consumption By Transport Activities",
+          "Environmentally Sustainable Transport Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Transport",
+        "Fields": [
+          "Intermodal Materials Handling",
+          "Multimodal Transport",
+          "Pipeline Transport",
+          "Postal And Package Services (Incl. Courier Services)",
+          "Transport Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Information And Communication Services",
+    "Groups": [
+      {
+        "Group": "Communication Networks And Services",
+        "Fields": [
+          "Fixed Line Data Networks And Services",
+          "Fixed Line Telephone Networks And Services",
+          "Mobile Data Networks And Services",
+          "Mobile Telephone Networks And Services",
+          "Satellite Communication Networks And Services",
+          "Videoconference Services",
+          "Communication Networks And Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Computer Software And Services",
+        "Fields": [
+          "Application Software Packages (Excl. Computer Games)",
+          "Application Tools And System Utilities",
+          "Computer Gaming Software",
+          "Computer Time Leasing, Sharing And Renting Services",
+          "Information Processing Services (Incl. Data Entry And Capture)",
+          "Internet Hosting Services (Incl. Application Hosting Services)",
+          "Computer Software And Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Information Services",
+        "Fields": [
+          "Electronic Information Storage And Retrieval Services",
+          "Library And Archival Services",
+          "News Collection Services",
+          "Information Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Media Services",
+        "Fields": [
+          "Animation And Computer Generated Imagery Services",
+          "Film And Video Services (Excl. Animation And Computer Generated Imagery)",
+          "Internet Broadcasting",
+          "Publishing And Print Services (Incl. Internet Publishing)",
+          "Radio And Television Broadcasting",
+          "Media Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmentally Sustainable Information And Communication Services",
+        "Fields": [
+          "Management Of Greenhouse Gas Emissions From Information And Communication Services",
+          "Management Of Solid Waste From Information And Communication Services",
+          "Management Of Water Consumption By Information And Communication Services",
+          "Environmentally Sustainable Information And Communication Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Information And Communication Services",
+        "Fields": [
+          "Information And Communication Services Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Commercial Services And Tourism",
+    "Groups": [
+      {
+        "Group": "Financial Services",
+        "Fields": [
+          "Finance Services",
+          "Investment Services (Excl. Superannuation)",
+          "Superannuation And Insurance Services",
+          "Financial Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Property",
+        "Fields": [
+          "Administration And Business Support Services",
+          "Professional, Scientific And Technical Services",
+          "Property Services (Incl. Security)",
+          "Wholesale And Retail Trade",
+          "Property, Business Support Services And Trade Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Tourism",
+        "Fields": [
+          "Economic Issues In Tourism",
+          "Socio-cultural Issues In Tourism",
+          "Tourism Infrastructure Development",
+          "Tourism Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Water And Waste Services",
+        "Fields": [
+          "Waste Management Services",
+          "Waste Recycling Services",
+          "Water Recycling Services (Incl. Sewage And Greywater)",
+          "Water Services And Utilities",
+          "Water And Waste Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmentally Sustainable Commercial Services And Tourism",
+        "Fields": [
+          "Management Of Gaseous Waste From Commercial Services And Tourism (Excl. Greenhouse Gases)",
+          "Management Of Greenhouse Gas Emissions From Commercial Services And Tourism",
+          "Management Of Liquid Waste From Commercial Services And Tourism (Excl. Water)",
+          "Management Of Solid Waste From Commercial Services And Tourism",
+          "Management Of Water Consumption By Commercial Services And Tourism",
+          "Environmentally Sustainable Commercial Services And Tourism Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Commercial Services And Tourism",
+        "Fields": [
+          "Hospitality Services",
+          "Recreational Services",
+          "Commercial Services And Tourism Not Elsewhere Classified",
+          "A) Security Services Or Surveillance Systems For Military Purposes Is Included In Division Defence; And For Corrective Purposes Is Included In Group Justice And The Law.",
+          "B) Management Of Energy Consumption From Commercial Services And Tourism Is Included In Group Energy Conservation And Efficiency.",
+          "C) Management Of Solid, Liquid Or Gaseous Waste Generated As An Integral Process Within An Industry To Minimise Or Prevent Impacts On Environment Is Included In Respective Industry Divisions (E.g. Division Manufacturing) And Groups (E.g. Group Environmentally Sustainable Manufacturing).",
+          "D) Construction Services, Including Architectural And Building Management Services And Construction Of Water Infrastructure, Are Included In Division Construction.",
+          "E) Development Of Transport Infrastructure And Transport And Freight Services Are Included In Division Transport.",
+          "F) Provision Of Information, Communications And Computing Services, Including Media Services, Is Included In Division Information And Communication Services.",
+          "G) Issues Relating To International Trade Are Included In Group International Trade.",
+          "H) Calibration Services Are Included In Group Measurement Standards And Calibration Services.",
+          "I) Music And Theatre Production, Sport And Services To Sport Activities (Including Sporting Clubs), And Recreational And Amusement Services Mainly Of A Non-commercial Nature (E.g. Parks, Botanical Gardens) Is Included In Group Arts And Leisure.",
+          "J) Air Quality; Control Of Pests, Diseases And Exotic Species; Ecosystem Assessment And Management; Flora, Fauna And Biodiversity; Land And Water Management; Rehabilitation Of Degraded Areas; Remnant Vegetation And Conservation Areas; Soils; And Natural Hazards In Environments Affected By Commercial Services And Tourism Are Included In Division Environment."
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Economic Framework",
+    "Groups": [
+      {
+        "Group": "Macroeconomics",
+        "Fields": [
+          "Balance Of Payments",
+          "Demography",
+          "Economic Growth",
+          "Exchange Rates",
+          "Fiscal Policy",
+          "Income Distribution",
+          "Macro Labour Market Issues",
+          "Monetary Policy",
+          "Savings And Investments",
+          "Taxation",
+          "Macroeconomics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Microeconomics",
+        "Fields": [
+          "Consumption",
+          "Human Capital Issues",
+          "Industrial Organisations",
+          "Industry Costs And Structure",
+          "Industry Policy",
+          "Market-based Mechanisms",
+          "Microeconomic Effects Of Taxation",
+          "Micro Labour Market Issues",
+          "Preference, Behaviour And Welfare",
+          "Production",
+          "Supply And Demand",
+          "Microeconomics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "International Trade",
+        "Fields": [
+          "International Agreements On Trade",
+          "Trade Assistance And Protection",
+          "Trade Policy",
+          "International Trade Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Management And Productivity",
+        "Fields": [
+          "Industrial Relations",
+          "Management",
+          "Marketing",
+          "Productivity (Excl. Public Sector)",
+          "Public Sector Productivity",
+          "Technological And Organisational Innovation",
+          "Management And Productivity Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Measurement Standards And Calibration Services",
+        "Fields": [
+          "Agricultural And Environmental Standards",
+          "Defence Standards And Calibrations",
+          "Manufacturing Standards And Calibrations",
+          "Service Industries Standards And Calibrations",
+          "Measurement Standards And Calibration Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Economic Framework",
+        "Fields": [
+          "Carbon And Emissions Trading",
+          "Ecological Economics",
+          "Economic Framework Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Health",
+    "Groups": [
+      {
+        "Group": "Clinical Health (Organs",
+        "Fields": [
+          "Blood Disorders",
+          "Cancer And Related Disorders",
+          "Cardiovascular System And Diseases",
+          "Diabetes",
+          "Digestive System Disorders",
+          "Endocrine Organs And Diseases (Excl. Diabetes)",
+          "Hearing, Vision, Speech And Their Disorders",
+          "Immune System And Allergy",
+          "Infectious Diseases",
+          "Inherited Diseases (Incl. Gene Therapy)",
+          "Nervous System And Disorders",
+          "Neurodegenerative Disorders Related To Ageing",
+          "Oro-dental Disorders",
+          "Reproductive System And Disorders",
+          "Respiratory System And Diseases (Incl. Asthma)",
+          "Skeletal System And Disorders (Incl. Arthritis)",
+          "Skin And Related Disorders",
+          "Surgical Methods And Procedures",
+          "Urogenital System And Disorders",
+          "Zoonoses",
+          "Clinical Health (Organs, Diseases And Abnormal Conditions) Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Health And Support Services",
+        "Fields": [
+          "Allied Health Therapies (Excl. Mental Health Services)",
+          "Carer Health",
+          "Diagnostic Methods",
+          "Evaluation Of Health Outcomes",
+          "Health Education And Promotion",
+          "Health Inequalities",
+          "Health Policy Economic Outcomes",
+          "Health Policy Evaluation",
+          "Mental Health Services",
+          "Nursing",
+          "Palliative Care",
+          "Health And Support Services Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Indigenous Health",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Health - Determinants Of Health",
+          "Aboriginal And Torres Strait Islander Health - Health Status And Outcomes",
+          "Aboriginal And Torres Strait Islander Health - Health System Performance (Incl. Effectiveness Of Interventions)",
+          "Maori Health - Determinants Of Health",
+          "Maori Health - Health Status And Outcomes",
+          "Maori Health - Health System Performance (Incl. Effectiveness Of Interventions)",
+          "Pacific Peoples Health - Determinants Of Health",
+          "Pacific Peoples Health - Health Status And Outcomes",
+          "Pacific Peoples Health - Health System Performance (Incl. Effectiveness Of Interventions)",
+          "Indigenous Health Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Public Health (Excl. Specific Population Health)",
+        "Fields": [
+          "Behaviour And Health",
+          "Dental Health",
+          "Disability And Functional Capacity",
+          "Disease Distribution And Transmission (Incl. Surveillance And Response)",
+          "Environmental Health",
+          "Food Safety",
+          "Health Protection And/or Disaster Response",
+          "Health Status (E.g. Indicators Of Well-being)",
+          "Injury Control",
+          "Mental Health",
+          "Nutrition",
+          "Preventive Medicine",
+          "Social Structure And Health",
+          "Substance Abuse",
+          "Public Health (Excl. Specific Population Health) Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Specific Population Health (Excl. Indigenous Health)",
+        "Fields": [
+          "Child Health",
+          "Health Related To Ageing",
+          "Health Related To Specific Ethnic Groups",
+          "Men's Health",
+          "Occupational Health",
+          "Rural Health",
+          "Women's Health",
+          "Specific Population Health (Excl. Indigenous Health) Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Health",
+        "Fields": ["Health Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Education And Training",
+    "Groups": [
+      {
+        "Group": "Learner And Learning",
+        "Fields": [
+          "Learner And Learning Achievement",
+          "Learner And Learning Processes",
+          "Learner Development",
+          "Moral And Social Development (Incl. Affect)",
+          "Learner And Learning Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Teaching And Instruction",
+        "Fields": [
+          "Pedagogy",
+          "Teacher And Instructor Development",
+          "Teaching And Instruction Technologies",
+          "Teaching And Instruction Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Curriculum",
+        "Fields": [
+          "Assessment And Evaluation Of Curriculum",
+          "Syllabus And Curriculum Development",
+          "Curriculum Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "School/institution",
+        "Fields": [
+          "Management And Leadership Of Schools/institutions",
+          "School/institution Community And Environment",
+          "School/institution Policies And Development",
+          "School/institution Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Education And Training Systems",
+        "Fields": [
+          "Education And Training Systems Policies And Development",
+          "Management Of Education And Training Systems",
+          "Resourcing Of Education And Training Systems",
+          "Education And Training Systems Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Education And Training",
+        "Fields": [
+          "Aboriginal And Torres Strait Islander Education",
+          "Education And Training Theory And Methodology",
+          "Equity And Access To Education",
+          "Gender Aspects Of Education",
+          "Maori Education",
+          "Pacific Peoples Education",
+          "Special Needs Education",
+          "Workforce Transition And Employment",
+          "Education And Training Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Law",
+    "Groups": [
+      {
+        "Group": "Community Service (Excl. Work)",
+        "Fields": [
+          "Ability And Disability",
+          "Aboriginal And Torres Strait Islander Development And Welfare",
+          "Ageing And Older People",
+          "Carers� Development And Welfare",
+          "Children's/youth Services And Childcare",
+          "Citizenship And National Identity",
+          "Comparative Structure And Development Of Community Services",
+          "Distribution Of Income And Wealth",
+          "Employment Services",
+          "Environmental Services",
+          "Ethnicity, Multiculturalism And Migrant Development And Welfare",
+          "Families And Family Services",
+          "Gender And Sexualities",
+          "Maori Development And Welfare",
+          "Pacific Peoples Development And Welfare",
+          "Social Class And Inequalities",
+          "Structure, Delivery And Financing Of Community Services",
+          "Community Service (Excl. Work) Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Government And Politics",
+        "Fields": [
+          "Civics And Citizenship",
+          "Electoral Systems",
+          "Political Systems",
+          "Public Services Policy Advice And Analysis",
+          "Government And Politics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "International Relations",
+        "Fields": [
+          "Defence And Security Policy",
+          "International Aid And Development",
+          "International Organisations",
+          "International Political Economy (Excl. International Trade)",
+          "International Relations Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Justice And The Law",
+        "Fields": [
+          "Civil Justice",
+          "Crime Prevention",
+          "Criminal Justice",
+          "Law Enforcement",
+          "Law Reform",
+          "Legal Processes",
+          "Legislation, Civil And Criminal Codes",
+          "Rehabilitation And Correctional Services",
+          "Justice And The Law Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Work And Institutional Development",
+        "Fields": [
+          "Employment Patterns And Change",
+          "Professions And Professionalisation",
+          "Time Use, Unpaid Work And Volunteering",
+          "Work And Family Responsibilities",
+          "Workplace Safety",
+          "Work And Institutional Development Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Law",
+        "Fields": [
+          "Law, Politics And Community Services Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Cultural Understanding",
+    "Groups": [
+      {
+        "Group": "Arts And Leisure",
+        "Fields": [
+          "Music",
+          "Organised Sports",
+          "Recreation",
+          "The Creative Arts (Incl. Graphics And Craft)",
+          "The Performing Arts (Incl. Theatre And Dance)",
+          "Arts And Leisure Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Communication",
+        "Fields": [
+          "Communication Across Languages And Culture",
+          "Languages And Literacy",
+          "Languages And Literature",
+          "The Media",
+          "Visual Communication",
+          "Communication Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Heritage",
+        "Fields": [
+          "Ahuatanga Maori (Maori Tradition)",
+          "Conserving Aboriginal And Torres Strait Islander Heritage",
+          "Conserving Collections And Movable Cultural Heritage",
+          "Conserving Intangible Cultural Heritage",
+          "Conserving Natural Heritage",
+          "Conserving Pacific Peoples Heritage",
+          "Conserving The Historic Environment",
+          "Matauranga Maori (Maori Knowledge)",
+          "Taonga (Maori Artefacts)",
+          "Tikanga Maori (Maori Customary Practices)",
+          "Wahi Taonga (Maori Places Of Significance)",
+          "Heritage Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Religion And Ethics",
+        "Fields": [
+          "Bioethics",
+          "Business Ethics",
+          "Environmental Ethics",
+          "Religion And Society",
+          "Religious Structures And Ritual",
+          "Religious Traditions (Excl. Structures And Rituals)",
+          "Social Ethics",
+          "Technological Ethics",
+          "Workplace And Organisational Ethics",
+          "Religion And Ethics Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Understanding Past Societies",
+        "Fields": [
+          "Understanding Africa's Past",
+          "Understanding Asia's Past",
+          "Understanding Australia's Past",
+          "Understanding Europe's Past",
+          "Understanding New Zealand's Past",
+          "Understanding The Past Of The Americas",
+          "Understanding Past Societies Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Cultural Understanding",
+        "Fields": ["Cultural Understanding Not Elsewhere Classified"]
+      }
+    ]
+  },
+  {
+    "Division": "Environment",
+    "Groups": [
+      {
+        "Group": "Air Quality",
+        "Fields": [
+          "Antarctic And Sub-antarctic Air Quality",
+          "Coastal And Estuarine Air Quality",
+          "Farmland, Arable Cropland And Permanent Cropland Air Quality",
+          "Marine Air Quality",
+          "Mining Air Quality",
+          "Urban And Industrial Air Quality",
+          "Air Quality Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Atmosphere And Weather",
+        "Fields": [
+          "Atmospheric Composition (Incl. Greenhouse Gas Inventory)",
+          "Atmospheric Processes And Dynamics",
+          "Weather",
+          "Atmosphere And Weather Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Climate And Climate Change",
+        "Fields": [
+          "Climate Change Adaptation Measures",
+          "Climate Change Mitigation Strategies",
+          "Climate Change Models",
+          "Climate Variability (Excl. Social Impacts)",
+          "Ecosystem Adaptation To Climate Change",
+          "Effects Of Climate Change And Variability On Antarctic And Sub-antarctic Environments (Excl. Social Impacts)",
+          "Effects Of Climate Change And Variability On Australia (Excl. Social Impacts)",
+          "Effects Of Climate Change And Variability On New Zealand (Excl. Social Impacts)",
+          "Effects Of Climate Change And Variability On The South Pacific (Excl. Australia And New Zealand) (Excl. Social Impacts)",
+          "Global Effects Of Climate Change And Variability (Excl. Australia, New Zealand, Antarctica And The South Pacific) (Excl. Social Impacts)",
+          "Social Impacts Of Climate Change And Variability",
+          "Climate And Climate Change Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Control Of Pests",
+        "Fields": [
+          "Border Biosecurity (Incl. Quarantine And Inspection)",
+          "Control Of Animal Pests, Diseases And Exotic Species In Coastal And Estuarine Environments",
+          "Control Of Animal Pests, Diseases And Exotic Species In Farmland, Arable Cropland And Permanent Cropland Environments",
+          "Control Of Animal Pests, Diseases And Exotic Species In Forest And Woodlands Environments",
+          "Control Of Pests, Diseases And Exotic Species At Regional Or Larger Scales",
+          "Control Of Pests, Diseases And Exotic Species In Fresh, Ground And Surface Water Environments",
+          "Control Of Pests, Diseases And Exotic Species In Marine Environments",
+          "Control Of Pests, Diseases And Exotic Species In Mining Environments",
+          "Control Of Pests, Diseases And Exotic Species In Mountain And High Country Environments",
+          "Control Of Pests, Diseases And Exotic Species In Sparseland, Permanent Grassland And Arid Zone Environments",
+          "Control Of Pests, Diseases And Exotic Species In Urban And Industrial Environments",
+          "Control Of Plant Pests, Diseases And Exotic Species In Coastal And Estuarine Environments",
+          "Control Of Plant Pests, Diseases And Exotic Species In Farmland, Arable Cropland And Permanent Cropland Environments",
+          "Control Of Plant Pests, Diseases And Exotic Species In Forest And Woodlands Environments",
+          "Pre-border Biosecurity",
+          "Control Of Pests, Diseases And Exotic Species Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Ecosystem Assessment And Management",
+        "Fields": [
+          "Ecosystem Assessment And Management At Regional Or Larger Scales",
+          "Ecosystem Assessment And Management Of Antarctic And Sub-antarctic Environments",
+          "Ecosystem Assessment And Management Of Coastal And Estuarine Environments",
+          "Ecosystem Assessment And Management Of Farmland, Arable Cropland And Permanent Cropland Environments",
+          "Ecosystem Assessment And Management Of Forest And Woodlands Environments",
+          "Ecosystem Assessment And Management Of Fresh, Ground And Surface Water Environments",
+          "Ecosystem Assessment And Management Of Marine Environments",
+          "Ecosystem Assessment And Management Of Mining Environments",
+          "Ecosystem Assessment And Management Of Mountain And High Country Environments",
+          "Ecosystem Assessment And Management Of Sparseland, Permanent Grassland And Arid Zone Environments",
+          "Ecosystem Assessment And Management Of Urban And Industrial Environments",
+          "Ecosystem Assessment And Management Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmental And Natural Resource Evaluation",
+        "Fields": [
+          "Economic Incentives For Environmental Protection",
+          "Eco-verification (Excl. Environmental Lifecycle Assessment)",
+          "Environmental Lifecycle Assessment",
+          "Environmental Management Systems",
+          "Institutional Arrangements For Environmental Protection",
+          "Rights To Environmental And Natural Resources (Excl. Water Allocation)",
+          "Rural Land Evaluation",
+          "Rural Water Evaluation (Incl. Water Quality)",
+          "Sustainability Indicators",
+          "Urban Land Evaluation",
+          "Urban Water Evaluation (Incl. Water Quality)",
+          "Environmental And Natural Resource Evaluation Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Environmental Policy",
+        "Fields": [
+          "Coastal And Marine Management Policy",
+          "Consumption Patterns, Population Issues And The Environment",
+          "Environmental Education And Awareness",
+          "Land Stewardship",
+          "Rural Land Policy",
+          "Rural Water Policy",
+          "Trade And Environment",
+          "Urban Land Policy",
+          "Urban Water Policy",
+          "Environmental Policy, Legislation And Standards Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Flora",
+        "Fields": [
+          "Antarctic And Sub-antarctic Flora, Fauna And Biodiversity",
+          "Coastal And Estuarine Flora, Fauna And Biodiversity",
+          "Documentation Of Undescribed Flora And Fauna",
+          "Farmland, Arable Cropland And Permanent Cropland Flora, Fauna And Biodiversity",
+          "Flora, Fauna And Biodiversity At Regional Or Larger Scales",
+          "Forest And Woodlands Flora, Fauna And Biodiversity",
+          "Fresh, Ground And Surface Water Flora, Fauna And Biodiversity",
+          "Marine Flora, Fauna And Biodiversity",
+          "Mining Flora, Fauna And Biodiversity",
+          "Mountain And High Country Flora, Fauna And Biodiversity",
+          "Sparseland, Permanent Grassland And Arid Zone Flora, Fauna And Biodiversity",
+          "Urban And Industrial Flora, Fauna And Biodiversity",
+          "Flora, Fauna And Biodiversity Of Environments Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Land And Water Management",
+        "Fields": [
+          "Antarctic And Sub-antarctic Land And Water Management",
+          "Coastal And Estuarine Land Management",
+          "Coastal And Estuarine Water Management",
+          "Farmland, Arable Cropland And Permanent Cropland Land Management",
+          "Farmland, Arable Cropland And Permanent Cropland Water Management",
+          "Forest And Woodlands Land Management",
+          "Forest And Woodlands Water Management",
+          "Mining Land And Water Management",
+          "Mountain And High Country Land And Water Management",
+          "Sparseland, Permanent Grassland And Arid Zone Land And Water Management",
+          "Urban And Industrial Land Management",
+          "Urban And Industrial Water Management",
+          "Water Allocation And Quantification",
+          "Land And Water Management Of Environments Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Natural Hazards",
+        "Fields": [
+          "Natural Hazards In Antarctic And Sub-antarctic Environments",
+          "Natural Hazards In Coastal And Estuarine Environments",
+          "Natural Hazards In Farmland, Arable Cropland And Permanent Cropland Environments",
+          "Natural Hazards In Forest And Woodlands Environments",
+          "Natural Hazards In Fresh, Ground And Surface Water Environments",
+          "Natural Hazards In Marine Environments",
+          "Natural Hazards In Mining Environments",
+          "Natural Hazards In Mountain And High Country Environments",
+          "Natural Hazards In Sparseland, Permanent Grassland And Arid Zone Environments",
+          "Natural Hazards In Urban And Industrial Environments",
+          "Natural Hazards Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Physical And Chemical Conditions Of Water",
+        "Fields": [
+          "Physical And Chemical Conditions Of Water For Urban And Industrial Use",
+          "Physical And Chemical Conditions Of Water In Coastal And Estuarine Environments",
+          "Physical And Chemical Conditions Of Water In Fresh, Ground And Surface Water Environments (Excl. Urban And Industrial Use)",
+          "Physical And Chemical Conditions Of Water In Marine Environments",
+          "Physical And Chemical Conditions Of Water Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Rehabilitation Of Degraded Environments",
+        "Fields": [
+          "Rehabilitation Of Degraded Coastal And Estuarine Environments",
+          "Rehabilitation Of Degraded Farmland, Arable Cropland And Permanent Cropland Environments",
+          "Rehabilitation Of Degraded Forest And Woodlands Environments",
+          "Rehabilitation Of Degraded Fresh, Ground And Surface Water Environments",
+          "Rehabilitation Of Degraded Mining Environments",
+          "Rehabilitation Of Degraded Mountain And High Country Environments",
+          "Rehabilitation Of Degraded Sparseland, Permanent Grassland And Arid Zone Environments",
+          "Rehabilitation Of Degraded Urban And Industrial Environments",
+          "Rehabilitation Of Degraded Environments Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Remnant Vegetation And Protected Conservation Areas",
+        "Fields": [
+          "Protected Conservation Areas In Antarctic And Sub-antarctic Environments",
+          "Protected Conservation Areas In Fresh, Ground And Surface Water Environments",
+          "Protected Conservation Areas In Marine Environments",
+          "Remnant Vegetation And Protected Conservation Areas In Coastal And Estuarine Environments",
+          "Remnant Vegetation And Protected Conservation Areas In Farmland, Arable Cropland And Permanent Cropland Environments",
+          "Remnant Vegetation And Protected Conservation Areas In Forest And Woodlands Environments",
+          "Remnant Vegetation And Protected Conservation Areas In Mountain And High Country Environments",
+          "Remnant Vegetation And Protected Conservation Areas At Regional Or Larger Scales",
+          "Remnant Vegetation And Protected Conservation Areas In Sparseland, Permanent Grassland And Arid Zone Environments",
+          "Remnant Vegetation And Protected Conservation Areas In Urban And Industrial Environments",
+          "Remnant Vegetation And Protected Conservation Areas Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Soils",
+        "Fields": [
+          "Coastal And Estuarine Soils",
+          "Farmland, Arable Cropland And Permanent Cropland Soils",
+          "Forest And Woodlands Soils",
+          "Mining Soils",
+          "Mountain And High Country Soils",
+          "Sparseland, Permanent Grassland And Arid Zone Soils",
+          "Urban And Industrial Soils",
+          "Soils Not Elsewhere Classified"
+        ]
+      },
+      {
+        "Group": "Other Environment",
+        "Fields": [
+          "Antarctic And Sub-antarctic Oceanography",
+          "Marine Oceanic Processes (Excl. Climate Related)",
+          "Environment Not Elsewhere Classified"
+        ]
+      }
+    ]
+  },
+  {
+    "Division": "Expanding Knowledge",
+    "Groups": [
+      {
+        "Group": "Expanding Knowledge",
+        "Fields": [
+          "Expanding Knowledge In The Mathematical Sciences",
+          "Expanding Knowledge In The Physical Sciences",
+          "Expanding Knowledge In The Chemical Sciences",
+          "Expanding Knowledge In The Earth Sciences",
+          "Expanding Knowledge In The Environmental Sciences",
+          "Expanding Knowledge In The Biological Sciences",
+          "Expanding Knowledge In The Agricultural And Veterinary Sciences",
+          "Expanding Knowledge In The Information And Computing Sciences",
+          "Expanding Knowledge In Engineering",
+          "Expanding Knowledge In Technology",
+          "Expanding Knowledge In The Medical And Health Sciences",
+          "Expanding Knowledge In Built Environment And Design",
+          "Expanding Knowledge In Education",
+          "Expanding Knowledge In Economics",
+          "Expanding Knowledge In Commerce, Management, Tourism And Services",
+          "Expanding Knowledge Through Studies Of Human Society",
+          "Expanding Knowledge In Psychology And Cognitive Sciences",
+          "Expanding Knowledge In Law And Legal Studies",
+          "Expanding Knowledge Through Studies Of The Creative Arts And Writing",
+          "Expanding Knowledge In Language, Communication And Culture",
+          "Expanding Knowledge In History And Archaeology",
+          "Expanding Knowledge In Philosophy And Religious Studies"
+        ]
+      }
+    ]
+  }
+]

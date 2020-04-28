@@ -189,7 +189,7 @@ class UserBasicInfo extends React.Component {
   submitForm(formData) {
     const { submitPath } = this.props
     axios({
-      method: "post",
+      method: "put",
       url: submitPath,
       responseType: "json",
       headers: {
@@ -198,11 +198,13 @@ class UserBasicInfo extends React.Component {
       data: formData,
     })
       .then((response) => {
-        if (response.status === 201) {
+        if (response.status === 200) {
           window.location.href = response.headers.location
         }
       })
       .catch((error) => {
+        debugger
+        console.log(error)
         if (error.response.status === 400) {
           this.setState((state) => {
             let error_messages = error.response.data.messages
@@ -227,7 +229,9 @@ class UserBasicInfo extends React.Component {
     formData.append(dataName("faculty"), this.state.faculty)
     formData.append(dataName("year"), this.state.year)
     // formData.append(dataName("expertise_ids"), this.state.expertises)
-    formData.append(dataName("skills"), this.state.skills)
+    formData.append(dataName("expertise_ids"), JSON.stringify([1,2,3]))
+    // formData.append(dataName("skills"), this.state.skills)
+    // formData.append(dataName("skills"), JSON.stringify(["React","RoR"]))
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
   }

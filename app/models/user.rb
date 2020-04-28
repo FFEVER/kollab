@@ -85,8 +85,17 @@ class User < ApplicationRecord
     self.skills = new_or_found_skills
   end
 
+  def self.expertise_ids=(expertise_array)
+    expertises.destroy_all
+    expertise_array = expertise_array.uniq[0..2]
+    expertise_array.each do |id|
+      puts "ID = #{id}"
+      expertises << Expertise.find(id)
+    end
+  end
+
   def has_basic_info?
-    completed = role.present? && faculty.present? && expertises.present? && skills.present?
+    completed = role.present? && faculty.present? && expertises.present? #&& skills.present?
     if role == 'student'
       completed && year.present?
     else

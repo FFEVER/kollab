@@ -3,6 +3,7 @@
 class UsersController < ApplicationController
   before_action :set_user, except: %i[edit update basic_info]
   before_action :custom_authenticate_user!
+  skip_before_action :check_basic_info, only: %i[update basic_info]
 
   def show
     @projects = @user.projects

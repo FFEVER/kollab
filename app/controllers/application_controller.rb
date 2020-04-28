@@ -34,8 +34,6 @@ class ApplicationController < ActionController::Base
   end
 
   def check_basic_info
-    unless request.fullpath.include?(basic_info_user_path(current_user))
-      redirect_to(basic_info_user_path(current_user)) unless current_user.has_basic_info?
-    end
+    redirect_to(basic_info_user_path(current_user)) unless current_user.has_basic_info?
   end
 end

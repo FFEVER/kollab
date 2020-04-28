@@ -5,6 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   MAX_IMG_MB_SIZE = 5
   VALID_IMG_TYPES = %w[image/png image/jpg image/jpeg].freeze
+  ROLE = %w[student professor].freeze
 
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable
@@ -26,7 +27,7 @@ class User < ApplicationRecord
   has_many :received_follows, as: :followable, class_name: 'Following', dependent: :delete_all
   has_many :followers, through: :received_follows, source: :follower
   has_many :given_follows, dependent: :delete_all,
-                           foreign_key: :follower_id, class_name: 'Following'
+           foreign_key: :follower_id, class_name: 'Following'
   has_many :followings, through: :given_follows, source: :followable, source_type: 'User'
   has_many :following_projects, through: :given_follows, source: :followable, source_type: 'Project'
   has_many :expertisings, as: :expertisable, dependent: :delete_all
@@ -34,11 +35,11 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :first_name, presence: true, length: { within: 1..50 }
-  validates :last_name, presence: true, length: { within: 1..50 }
+  validates :first_name, presence: true, length: {within: 1..50}
+  validates :last_name, presence: true, length: {within: 1..50}
   validates :profile_image, content_type: VALID_IMG_TYPES,
-                            size: { less_than: MAX_IMG_MB_SIZE.megabytes,
-                                    message: "should less than #{MAX_IMG_MB_SIZE} MB" }
+            size: {less_than: MAX_IMG_MB_SIZE.megabytes,
+                   message: "should less than #{MAX_IMG_MB_SIZE} MB"}
 
   def following?(user)
     followings.include?(user)
@@ -82,5 +83,14 @@ class User < ApplicationRecord
     skill_names = skills_array.uniq[0..2]
     new_or_found_skills = skill_names.collect { |name| Skill.find_or_create_by(name: name) }
     self.skills = new_or_found_skills
+  end
+
+  def has_basic_info?
+    completed = role.present? && faculty.present? && expertises.present? && skills.present?
+    if role == 'student'
+      completed && year.present?
+    else
+      completed
+    end
   end
 end

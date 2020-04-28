@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, except: %i[edit update]
+  before_action :set_user, except: %i[edit update basic_info]
   before_action :custom_authenticate_user!
 
   def show
@@ -24,6 +24,10 @@ class UsersController < ApplicationController
         format.json { render json: { messages: errors }, status: :unprocessable_entity }
       end
     end
+  end
+
+  def basic_info
+    @user = current_user
   end
 
   def follow

@@ -38,9 +38,10 @@ ActiveRecord::Schema.define(version: 2020_04_18_172326) do
 
   create_table "expertises", force: :cascade do |t|
     t.string "name"
-    t.integer "parent_id"
+    t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_expertises_on_parent_id"
   end
 
   create_table "expertisings", force: :cascade do |t|
@@ -126,7 +127,6 @@ ActiveRecord::Schema.define(version: 2020_04_18_172326) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "expertisings", "expertises"
   add_foreign_key "favorites", "projects"
   add_foreign_key "favorites", "users"
   add_foreign_key "taggings", "projects"

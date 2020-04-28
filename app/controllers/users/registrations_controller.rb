@@ -29,24 +29,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       errors = helpers.errors_to_camel(resource.errors.messages)
-      render json: { messages: errors }, status: :bad_request
+      render json: {messages: errors}, status: :bad_request
     end
   end
 
   # GET /resource/edit
-  def edit
-    @user = current_user
-    respond_to do |format|
-      if @user.update(@user.user_params)
-        format.html { redirect_to @user, notice: 'Profile was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        errors = helpers.errors_to_camel(@user.errors.messages)
-        format.html { render :edit }
-        format.json { render json: { messages: errors }, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def edit
+  #   super
+  # end
 
   # PUT /resource
   # def update
@@ -82,7 +72,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     if resource.instance_of? User
-      root_path
+      basic_info_user_path
     else
       super(resource)
     end

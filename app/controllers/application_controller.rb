@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :store_user_location!, if: :storable_location?
+  before_action :check_basic_info
 
   protected
 
@@ -29,6 +30,12 @@ class ApplicationController < ActionController::Base
       end
     else
       authenticate_user!
+    end
+  end
+
+  def check_basic_info
+    unless request.fullpath.include?(basic_info_user_path(current_user))
+      redirect_to(basic_info_user_path(current_user)) unless current_user.has_basic_info?
     end
   end
 end

@@ -68,7 +68,7 @@ class UserBasicInfo extends React.Component {
       year: "",
       errors: defaultErrors,
       isButtonLoading: false,
-      roll: "student",
+      role: "student",
       skills: [],
       activateModal: "division",
       expertises: [],
@@ -131,7 +131,6 @@ class UserBasicInfo extends React.Component {
   }
 
   removeExpertise(item) {
-    console.log("Remove ")
     let items = this.state.expertises
     let index = this.getExpertise(item, items)
     items.splice(items.indexOf(index), 1)
@@ -176,6 +175,7 @@ class UserBasicInfo extends React.Component {
           errors: defaultErrors,
         })
         const formData = this.createFormData()
+        console.log("Form data ", formData)
         this.submitForm(formData)
       })
       .catch((errors) => {
@@ -223,10 +223,11 @@ class UserBasicInfo extends React.Component {
 
   createFormData() {
     const formData = new FormData()
-    formData.append(dataName("first_name"), this.state.firstName)
-    formData.append(dataName("last_name"), this.state.lastName)
-    formData.append(dataName("email"), this.state.email)
-    formData.append(dataName("password"), this.state.password)
+    formData.append(dataName("role"), this.state.role)
+    formData.append(dataName("faculty"), this.state.faculty)
+    formData.append(dataName("year"), this.state.year)
+    // formData.append(dataName("expertise_ids"), this.state.expertises)
+    formData.append(dataName("skills"), this.state.skills)
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
   }
@@ -236,7 +237,7 @@ class UserBasicInfo extends React.Component {
   }
 
   handleAlignment(event, newAlignment) {
-    this.setState({ roll: newAlignment })
+    this.setState({ role: newAlignment })
   }
 
   render() {
@@ -245,7 +246,7 @@ class UserBasicInfo extends React.Component {
       year,
       errors,
       isButtonLoading,
-      roll,
+      role,
       skills,
       expertises,
     } = this.state
@@ -259,24 +260,24 @@ class UserBasicInfo extends React.Component {
         <div className="d-flex flex-column mt-2">
           <ToggleButtonGroup
             className="button--toggle"
-            value={roll}
+            value={role}
             exclusive
             onChange={this.handleAlignment}
             aria-label="text alignment"
           >
             <ToggleButton
               value="professor"
-              selected={roll == "professor" ? true : false}
+              selected={role == "professor" ? true : false}
               style={{ width: "50%" }}
             >
-              {roll == "professor" ? <h5>Professor</h5> : <p>Professor</p>}
+              {role == "professor" ? <h5>Professor</h5> : <p>Professor</p>}
             </ToggleButton>
             <ToggleButton
               value="student"
-              selected={roll == "student" ? true : false}
+              selected={role == "student" ? true : false}
               style={{ width: "50%" }}
             >
-              {roll == "student" ? <h5>Student</h5> : <p>Student</p>}
+              {role == "student" ? <h5>Student</h5> : <p>Student</p>}
             </ToggleButton>
           </ToggleButtonGroup>
         </div>
@@ -308,7 +309,7 @@ class UserBasicInfo extends React.Component {
             </FormControl>
           </div>
         </div>
-        {roll === "student" ? (
+        {role === "student" ? (
           <div className="d-flex flex-column mt-3">
             <h4>Year of Study</h4>
             <div className="d-flex flex-column mt-3">

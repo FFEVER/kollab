@@ -34,9 +34,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @user = current_user
+    respond_to do |format|
+      if @user.update(@user.user_params)
+        format.html { redirect_to @user, notice: 'Profile was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        errors = helpers.errors_to_camel(@user.errors.messages)
+        format.html { render :edit }
+        format.json { render json: { messages: errors }, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PUT /resource
   # def update

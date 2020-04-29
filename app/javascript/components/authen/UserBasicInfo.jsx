@@ -175,7 +175,6 @@ class UserBasicInfo extends React.Component {
           errors: defaultErrors,
         })
         const formData = this.createFormData()
-        console.log("Form data ", formData)
         this.submitForm(formData)
       })
       .catch((errors) => {
@@ -229,9 +228,12 @@ class UserBasicInfo extends React.Component {
     formData.append(dataName("faculty"), this.state.faculty)
     formData.append(dataName("year"), this.state.year)
     // formData.append(dataName("expertise_ids"), this.state.expertises)
-    formData.append(dataName("expertise_ids"), JSON.stringify([1,2,3]))
-    // formData.append(dataName("skills"), this.state.skills)
-    // formData.append(dataName("skills"), JSON.stringify(["React","RoR"]))
+    formData.append(dataName("expertise_ids"), JSON.stringify([1, 2, 3]))
+    console.log("skill ", JSON.stringify(tagsToArray(this.state.skills)))
+    formData.append(
+      dataName("skills"),
+      JSON.stringify(tagsToArray(this.state.skills))
+    )
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
   }

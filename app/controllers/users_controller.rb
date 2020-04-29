@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       else
         errors = helpers.errors_to_camel(@user.errors.messages)
         format.html { render :edit }
-        format.json { render json: {messages: errors}, status: :unprocessable_entity }
+        format.json { render json: { messages: errors }, status: :unprocessable_entity }
       end
     end
   end
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   def user_params
     permitted = params.require(:user).permit(:first_name, :last_name, :role, :faculty, :year, :profile_image, :expertise_ids, :skills)
     permitted[:expertise_ids] = JSON.parse(permitted[:expertise_ids]) || []
-    # permitted[:skills] = JSON.parse(permitted[:skills]) || []
+    permitted[:skills] = JSON.parse(permitted[:skills]) || []
     permitted
   end
 end

@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  skip_before_action :check_basic_info
 
   # GET /resource/sign_up
   # def new
@@ -29,7 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       errors = helpers.errors_to_camel(resource.errors.messages)
-      render json: {messages: errors}, status: :bad_request
+      render json: { messages: errors }, status: :bad_request
     end
   end
 

@@ -34,6 +34,8 @@ class ApplicationController < ActionController::Base
   end
 
   def check_basic_info
-    redirect_to(basic_info_user_path(current_user)) unless current_user.has_basic_info?
+    if user_signed_in? && !current_user.has_basic_info?
+      redirect_to(basic_info_user_path(current_user))
+    end
   end
 end

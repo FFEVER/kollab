@@ -83,9 +83,9 @@ class User < ApplicationRecord
     skills.join(' ').split(' ')
   end
 
-  def self.skills=(skills_array)
+  def skill_list=(skills_array)
+    puts("skills_array #{skills_array}")
     skill_names = skills_array.uniq[0..2]
-    puts "skillllllll #{skill_names}"
     new_or_found_skills = skill_names.collect { |name| Skill.find_or_create_by(name: name) }
     self.skills = new_or_found_skills
   end

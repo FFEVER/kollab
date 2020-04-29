@@ -231,7 +231,7 @@ class UserBasicInfo extends React.Component {
     formData.append(dataName("expertise_ids"), JSON.stringify([1, 2, 3]))
     console.log("skill ", JSON.stringify(tagsToArray(this.state.skills)))
     formData.append(
-      dataName("skills"),
+      dataName("skill_list"),
       JSON.stringify(tagsToArray(this.state.skills))
     )
     formData.append("authenticity_token", this.props.authenticityToken)

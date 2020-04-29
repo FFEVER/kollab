@@ -2,6 +2,6 @@
 
 class Api::V1::UsersController < ApiController
   def index
-    render json: 'hello'
+    @users = User.all
   end
 end

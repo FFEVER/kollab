@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   devise_for :users, controllers: {
-    confirmations: 'users/confirmations',
-    registrations: 'users/registrations',
-    passwords: 'users/passwords',
-    sessions: 'users/sessions'
+      confirmations: 'users/confirmations',
+      registrations: 'users/registrations',
+      passwords: 'users/passwords',
+      sessions: 'users/sessions'
   }
 
   resources :users, only: %i[show] do
@@ -18,8 +18,10 @@ Rails.application.routes.draw do
       post 'unfollow'
       get 'followers'
       get 'followings'
+      get 'basic_info'
     end
   end
+
   get 'profile/edit', to: 'users#edit'
   match 'profile/update', to: 'users#update', via: %i[put patch]
 

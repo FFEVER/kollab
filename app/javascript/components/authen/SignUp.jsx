@@ -110,7 +110,8 @@ class SignUp extends React.Component {
     })
       .then((response) => {
         if (response.status === 201) {
-          window.location.href = response.headers.location
+          console.log("response.headers.location ", response)
+          // window.location.href = response.headers.location;
         }
       })
       .catch((error) => {

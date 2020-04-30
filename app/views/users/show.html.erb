@@ -10,7 +10,7 @@
       <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
       <p>
         <% if @user.role == "student"%>
-          <%= "#{(@user.year == 1) ? "#{@user.year}st" : (@user.year == 2) ?  "#{@user.year}nd" : (@user.year == 3) ? "#{@user.year}rd" : "#{user.year}th"} year #{@user.faculty}"%>
+          <%= "#{(@user.year == 1) ? "#{@user.year}st" : (@user.year == 2) ?  "#{@user.year}nd" : (@user.year == 3) ? "#{@user.year}rd" : "#{@user.year}th"} year #{@user.faculty}"%>
         <%else%>
           <%= "Professor in a faculty of #{@user.faculty}"%>
         <%end%>

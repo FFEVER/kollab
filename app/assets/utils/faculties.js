@@ -1,40 +1,63 @@
 const faculties = [
   {
     id: 1,
-    faculty: "Engineering",
-    departments: [
-      "Software Engineering",
-      "Computer Engineering",
-      "Chemical Engineering",
-    ],
+    faculty: "Faculty of Engineering",
   },
   {
     id: 2,
-    faculty: "Science",
-    departments: [
-      "Science Statistic",
-      "Computer Science",
-      "Chemical Science",
-      "Biological Science",
-      "Physical Science",
-    ],
+    faculty: "Faculty of Architecture",
   },
   {
     id: 3,
-    faculty: "Information and Technology",
-    departments: [
-      "Computer Network and Security",
-      "Data Science and Business Analytics",
-    ],
+    faculty: "Faculty of Science",
   },
   {
     id: 4,
-    faculty: "Architecture",
-    departments: [
-      "Interior Design",
-      "Industrial Design",
-      "Communication Art and Design",
-    ],
+    faculty: "Faculty of Industrial Education and Technology",
+  },
+  {
+    id: 5,
+    faculty: "Faculty of Agricultural Technology",
+  },
+  {
+    id: 6,
+    faculty: "Faculty of Information Technology",
+  },
+  {
+    id: 7,
+    faculty: "Faculty of Food Industry",
+  },
+  {
+    id: 8,
+    faculty: "Faculty of Administration and Management",
+  },
+  {
+    id: 9,
+    faculty: "Faculty of Liberal Arts",
+  },
+  {
+    id: 10,
+    faculty: "Faculty of Medicine",
+  },
+  {
+    id: 11,
+    faculty: "College of Nanotechnology",
+  },
+  {
+    id: 12,
+    faculty: "College of Advanced Manufacturing Innovation",
+  },
+  {
+    id: 13,
+    faculty: "International Academy of Aviation Industry",
+  },
+  {
+    id: 14,
+    faculty: "College of Educational Innovation Research",
+  },
+  {
+    id: 15,
+    faculty: "Institute of Music Science and Engineering",
   },
 ]
 

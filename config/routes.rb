@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   namespace :api, constraints: {format: 'json'} do
     namespace :v1 do
       resources :users, only: %i[index]
+      resources :expertises, only: %i[index]
     end
   end
 end

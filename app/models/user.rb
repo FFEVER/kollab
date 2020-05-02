@@ -43,15 +43,15 @@ class User < ApplicationRecord
                             size: { less_than: MAX_IMG_MB_SIZE.megabytes,
                                     message: "should less than #{MAX_IMG_MB_SIZE} MB" }
 
-  validates :description, presence: true, length: { within: 1..150 }
-  validates :phone, presence: true, length: { within: 1..15 }
-  validates :github, presence: true, length: { within: 1..30 }
-  validates :linkedin, presence: true, length: { within: 1..30 }
-  validates :facebook, presence: true, length: { within: 1..50 }
-  validates :instagram, presence: true, length: { within: 1..30 }
+  validates :description, presence: true, length: { within: 1..150 }, allow_nil: true, allow_blank: true
+  validates :phone, presence: true, length: { within: 1..15 }, allow_nil: true, allow_blank: true
+  validates :github, presence: true, length: { within: 1..30 }, allow_nil: true, allow_blank: true
+  validates :linkedin, presence: true, length: { within: 1..30 }, allow_nil: true, allow_blank: true
+  validates :facebook, presence: true, length: { within: 1..50 }, allow_nil: true, allow_blank: true
+  validates :instagram, presence: true, length: { within: 1..30 }, allow_nil: true, allow_blank: true
 
-  validates_length_of :skill_list, minimum: 1, message: 'Skills cannot be blank.'
-  validates_length_of :skill_list, maximum: 3, message: 'Skills can only have up to 3.'
+  validates_length_of :skill_list, minimum: 1, message: 'Skills cannot be blank.', allow_nil: true, allow_blank: true
+  validates_length_of :skill_list, maximum: 3, message: 'Skills can only have up to 3.', allow_nil: true
 
   def following?(user)
     followings.include?(user)

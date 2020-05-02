@@ -83,42 +83,46 @@ class EditUserProfile extends React.Component {
       expertise_ids: [1, 2, 3],
       skills: this.convertToTags(this.props.currentSkills),
       errors: defaultErrors,
-      github: "",
-      linkedin: "",
-      facebook: "",
-      instagram: "",
+      github: undefined,
+      linkedin: undefined,
+      facebook: undefined,
+      instagram: undefined,
       socials: [
         {
           key: "github",
           name: "GitHub",
           value:
-            this.props.currentUser.github !== null
+            this.props.currentUser.github !== null &&
+            this.props.currentUser.github !== ""
               ? this.props.currentUser.github
-              : "",
+              : undefined,
         },
         {
           key: "linkedin",
           name: "LinkedIn",
           value:
-            this.props.currentUser.linkedin !== null
+            this.props.currentUser.linkedin !== null &&
+            this.props.currentUser.linkedin !== ""
               ? this.props.currentUser.linkedin
-              : "",
+              : undefined,
         },
         {
           key: "facebook",
           name: "Facebook",
           value:
-            this.props.currentUser.facebook !== null
+            this.props.currentUser.facebook !== null &&
+            this.props.currentUser.facebook !== ""
               ? this.props.currentUser.facebook
-              : "",
+              : undefined,
         },
         {
           key: "instagram",
           name: "Instagram",
           value:
-            this.props.currentUser.instagram !== null
+            this.props.currentUser.instagram !== null &&
+            this.props.currentUser.instagram !== ""
               ? this.props.currentUser.instagram
-              : "",
+              : undefined,
         },
       ],
       activateModal: "division",
@@ -275,6 +279,9 @@ class EditUserProfile extends React.Component {
 
   submitForm(formData) {
     const { submitPath } = this.props
+    {
+      console.log("submitForm ", this)
+    }
     axios({
       method: "put",
       url: submitPath,
@@ -365,19 +372,6 @@ class EditUserProfile extends React.Component {
       <form className="d-flex flex-column" onSubmit={this.handleSubmit}>
         <div className="thin-line" />
         <div>
-          {console.log("Current user ", this.props)}
-          {console.log("State ", this.state)}
-          <div className="d-flex flex-row justify-content-between">
-            <h4>Profile Picture</h4>
-            <img className="icon--round" src={edit} />
-          </div>
-          {/* <div className="d-flex justify-content-center">
-            <img
-              className="image__profile image__profile--mega"
-              src={profileImage}
-            />
-          </div> */}
-          <div className="thin-line" />
           <div>
             <h4>Faculty</h4>
             <div className="profile__section">
@@ -437,7 +431,6 @@ class EditUserProfile extends React.Component {
             setExpertiseDisplayFunc={this.setDisplayExpertise}
             disable={expertises.length > 2 ? true : false}
           />{" "}
-          {console.log("error ", errors.expertises.length)}
           <FormHelperText error={errors.expertises.length > 0 ? true : false}>
             {errors.expertises[0]}
           </FormHelperText>

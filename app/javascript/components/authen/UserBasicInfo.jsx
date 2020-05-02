@@ -202,7 +202,6 @@ class UserBasicInfo extends React.Component {
         }
       })
       .catch((error) => {
-        debugger
         console.log(error)
         if (error.response.status === 400) {
           this.setState((state) => {
@@ -258,7 +257,7 @@ class UserBasicInfo extends React.Component {
     } = this.state
     return (
       <form
-        className="d-flex flex-column mt-3"
+        className="d-flex flex-column"
         onSubmit={this.handleSubmit}
         noValidate
       >
@@ -301,13 +300,11 @@ class UserBasicInfo extends React.Component {
                 label="Faculty"
                 onChange={this.handleChange}
               >
-                {faculties.map((fac) =>
-                  fac.departments.map((dep, id) => (
-                    <MenuItem key={id} value={dep}>
-                      {dep}
-                    </MenuItem>
-                  ))
-                )}
+                {faculties.map((fac) => (
+                  <MenuItem key={fac.id} value={fac.faculty}>
+                    {fac.faculty}
+                  </MenuItem>
+                ))}
               </Select>
               <FormHelperText error={errors.faculty.length > 0 ? true : false}>
                 {errors.faculty[0]}

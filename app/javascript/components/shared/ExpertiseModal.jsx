@@ -9,6 +9,8 @@ import {
   RadioGroup,
   Radio,
   FormHelperText,
+  FormControl,
+  Checkbox,
 } from "@material-ui/core"
 
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos"
@@ -24,26 +26,22 @@ class ExpertiseModal extends React.Component {
       division: "",
       group: "",
       field: "",
+      expertise_id: -1,
       activateModal: "division",
     }
     this.handleFieldChange = this.handleFieldChange.bind(this)
     this.handleModalNext = this.handleModalNext.bind(this)
     this.handleModalBack = this.handleModalBack.bind(this)
     this.handleAddExpetise = this.handleAddExpetise.bind(this)
+    this.clearExpertise = this.clearExpertise.bind(this)
   }
 
-  handleFieldChange(event) {
-    if (event.target.name === event.target.value) {
-      this.setState({
-        [event.target.name]: "",
-        activateModal: event.target.name,
-      })
-    } else {
-      this.setState({
-        [event.target.name]: event.target.value,
-        activateModal: event.target.name,
-      })
-    }
+  handleFieldChange(type, value, id) {
+    this.setState({
+      [type]: value,
+      activateModal: type,
+      expertise_id: id,
+    })
   }
 
   handleModalNext(value, field) {
@@ -62,12 +60,17 @@ class ExpertiseModal extends React.Component {
   }
 
   handleAddExpetise() {
-    const { activateModal, division, group, field } = this.state
+    const { activateModal, division, group, field, expertise_id } = this.state
     this.props.setExpertiseDisplayFunc({
       division: division,
       group: group,
       field: field,
+      expertise_id: expertise_id,
     })
+    this.clearExpertise()
+  }
+
+  clearExpertise() {
     this.setState({
       activateModal: "division",
       division: "",
@@ -78,6 +81,7 @@ class ExpertiseModal extends React.Component {
 
   render() {
     const { errors, division, group, field, activateModal } = this.state
+    const { expertises } = this.props
     return (
       <div className="form d-flex flex-column mt-3">
         <div className="d-flex flex-row justify-content-between">
@@ -114,40 +118,46 @@ class ExpertiseModal extends React.Component {
                   className="close"
                   data-dismiss="modal"
                   aria-label="Close"
+                  onClick={this.clearExpertise}
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div className="modal-body">
                 {activateModal === "division" ? (
-                  fields.map((f, index) => (
-                    <RadioGroup
-                      key={index}
-                      aria-label="division"
-                      name="division"
-                      value={division}
-                      onChange={this.handleFieldChange}
-                      className="d-flex flex-row flex-nowrap justify-content-between"
-                    >
-                      <FormControlLabel
-                        value={f.Division}
-                        control={<Radio color="default" />}
-                        label={f.Division}
-                      />
-                      <Button
-                        name="activateModal"
-                        className="button--transparent"
-                        onClick={() =>
-                          this.handleModalNext("group", f.Division)
-                        }
+                  expertises
+                    .filter((exp) => exp.parent_id === null)
+                    .map((f, index) => (
+                      <FormControl
+                        className="d-flex flex-row flex-nowrap justify-content-between"
+                        key={index}
                       >
-                        <ArrowForwardIosIcon />
-                      </Button>
-                    </RadioGroup>
-                  ))
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              color="default"
+                              checked={division === f.name}
+                              onChange={() =>
+                                this.handleFieldChange("division", f.name, f.id)
+                              }
+                              name={f.name}
+                            />
+                          }
+                          label={f.name}
+                        />
+                        <Button
+                          name="activateModal"
+                          className="button--transparent"
+                          onClick={() => this.handleModalNext("group", f.name)}
+                        >
+                          <ArrowForwardIosIcon />
+                        </Button>
+                      </FormControl>
+                    ))
                 ) : (
                   <div />
                 )}
+
                 {activateModal === "group" ? (
                   <div>
                     <div className="d-flex flex-row mb-2">
@@ -162,35 +172,41 @@ class ExpertiseModal extends React.Component {
                       </Button>
                       <h4>{division}</h4>
                     </div>
-                    {fields
-                      .find((f) => f.Division === division)
-                      .Groups.map((g, index) => (
-                        <RadioGroup
-                          key={index}
-                          aria-label="group"
-                          name="group"
-                          value={group}
-                          onChange={this.handleFieldChange}
+                    {expertises
+                      .filter(
+                        (exp) =>
+                          exp.parent_id ===
+                          expertises.filter((exp) => exp.name === division)[0]
+                            .id
+                      )
+                      .map((g, index) => (
+                        <FormControl
                           className="d-flex flex-row flex-nowrap justify-content-between"
+                          key={index}
                         >
-                          <div className="d-flex flex-row justify-content-center">
-                            <FormControlLabel
-                              value={g.Group}
-                              control={<Radio color="default" />}
-                              label={g.Group}
-                            />
-                          </div>
-
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                color="default"
+                                checked={group === g.name}
+                                onChange={() =>
+                                  this.handleFieldChange("group", g.name, g.id)
+                                }
+                                name={g.name}
+                              />
+                            }
+                            label={g.name}
+                          />
                           <Button
                             name="activateModal"
                             className="button--transparent"
                             onClick={() =>
-                              this.handleModalNext("field", g.Group)
+                              this.handleModalNext("field", g.name)
                             }
                           >
                             <ArrowForwardIosIcon />
                           </Button>
-                        </RadioGroup>
+                        </FormControl>
                       ))}
                   </div>
                 ) : (
@@ -212,24 +228,31 @@ class ExpertiseModal extends React.Component {
                       <h4>{group}</h4>
                     </div>
 
-                    {fields
-                      .find((f) => f.Division === division)
-                      .Groups.find((g) => g.Group === group)
-                      .Fields.map((s, index) => (
-                        <RadioGroup
+                    {expertises
+                      .filter(
+                        (exp) =>
+                          exp.parent_id ===
+                          expertises.filter((exp) => exp.name === group)[0].id
+                      )
+                      .map((s, index) => (
+                        <FormControl
+                          className="d-flex flex-row flex-nowrap justify-content-between"
                           key={index}
-                          aria-label="field"
-                          name="field"
-                          value={field}
-                          onChange={this.handleFieldChange}
-                          className="d-flex flex-row flex-nowrap justify-content-start"
                         >
                           <FormControlLabel
-                            value={s}
-                            control={<Radio color="default" />}
-                            label={s}
+                            control={
+                              <Checkbox
+                                color="default"
+                                checked={field === s.name}
+                                onChange={() =>
+                                  this.handleFieldChange("field", s.name, s.id)
+                                }
+                                name={s.name}
+                              />
+                            }
+                            label={s.name}
                           />
-                        </RadioGroup>
+                        </FormControl>
                       ))}
                   </div>
                 ) : (

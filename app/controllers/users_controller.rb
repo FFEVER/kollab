@@ -51,6 +51,13 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :profile_image)
+    permitted = params.require(:user).permit(:first_name, :last_name, :role, :faculty, :year, :skills, :expertise_ids, :profile_image)
+    if permitted[:expertise_ids]
+      permitted[:expertise_ids] = JSON.parse(permitted[:expertise_ids]) || []
+    end
+    if permitted[:skill_list]
+      permitted[:skill_list] = JSON.parse(permitted[:skill_list]) || []
+    end
+    permitted
   end
 end

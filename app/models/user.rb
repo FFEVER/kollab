@@ -29,6 +29,9 @@ class User < ApplicationRecord
                            foreign_key: :follower_id, class_name: 'Following'
   has_many :followings, through: :given_follows, source: :followable, source_type: 'User'
   has_many :following_projects, through: :given_follows, source: :followable, source_type: 'Project'
+  has_many :expertisings, as: :expertisable, dependent: :delete_all
+  has_many :expertises, through: :expertisings, source: :expertise
+
   has_one_attached :profile_image
 
   validates :first_name, presence: true, length: { within: 1..50 }
@@ -68,6 +71,25 @@ class User < ApplicationRecord
   def profile_image_url
     if profile_image.attached?
       Rails.application.routes.url_helpers.rails_blob_path(profile_image, only_path: true)
+    end
+  end
+
+  def skill_list
+    skills.join(' ').split(' ')
+  end
+
+  def skills=(skills_array)
+    skill_names = skills_array.uniq[0..2]
+    new_or_found_skills = skill_names.collect { |name| Skill.find_or_create_by(name: name) }
+    self.skills = new_or_found_skills
+  end
+
+  def self.expertise_ids=(expertise_array)
+    expertises.destroy_all
+    expertise_array = expertise_array.uniq[0..2]
+    expertise_array.each do |id|
+      puts "ID = #{id}"
+      expertises << Expertise.find(id)
     end
   end
 end

@@ -72,6 +72,7 @@ class UserBasicInfo extends React.Component {
       skills: [],
       activateModal: "division",
       expertises: [],
+      expertise_ids: [],
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -108,10 +109,13 @@ class UserBasicInfo extends React.Component {
   }
 
   setDisplayExpertise(value) {
+    console.log("Value ", value)
+
     let items = this.state.expertises
     if (items.length === 0) {
       this.setState({
         expertises: [...this.state.expertises, value],
+        expertise_ids: [...this.state.expertise_ids, value.expertise_id],
         activateModal: "division",
         division: "",
         group: "",
@@ -122,6 +126,7 @@ class UserBasicInfo extends React.Component {
     if (!this.checkExpertise(value, items)) {
       this.setState({
         expertises: [...this.state.expertises, value],
+        expertise_ids: [...this.state.expertise_ids, value.expertise_id],
         activateModal: "division",
         division: "",
         group: "",
@@ -226,8 +231,10 @@ class UserBasicInfo extends React.Component {
     formData.append(dataName("role"), this.state.role)
     formData.append(dataName("faculty"), this.state.faculty)
     formData.append(dataName("year"), this.state.year)
-    // formData.append(dataName("expertise_ids"), this.state.expertises)
-    formData.append(dataName("expertise_ids"), JSON.stringify([1, 2, 3]))
+    formData.append(
+      dataName("expertise_ids"),
+      JSON.stringify(this.state.expertise_ids)
+    )
     console.log("skill ", JSON.stringify(tagsToArray(this.state.skills)))
     formData.append(
       dataName("skill_list"),
@@ -241,8 +248,10 @@ class UserBasicInfo extends React.Component {
     this.setState({ isButtonLoading: isLoading })
   }
 
-  handleAlignment(event, newAlignment) {
-    this.setState({ role: newAlignment })
+  handleAlignment(event, newRole) {
+    if (newRole !== null) {
+      this.setState({ role: newRole })
+    }
   }
 
   render() {
@@ -254,7 +263,10 @@ class UserBasicInfo extends React.Component {
       role,
       skills,
       expertises,
+      expertise_ids,
     } = this.state
+    console.log("State ", this.state)
+
     return (
       <form
         className="d-flex flex-column"
@@ -343,7 +355,7 @@ class UserBasicInfo extends React.Component {
           <div />
         )}
         <ExpertiseModal
-          expertises={expertises}
+          expertises={this.props.allExpertises}
           setExpertiseDisplayFunc={this.setDisplayExpertise}
           disable={expertises.length > 2 ? true : false}
         />
@@ -388,6 +400,8 @@ class UserBasicInfo extends React.Component {
 UserBasicInfo.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string,
+  allExpertises: PropTypes.array,
+  divisions: PropTypes.any,
 }
 
 export default UserBasicInfo

@@ -45,8 +45,7 @@ coverage/*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-
 ##### RubyMine #####
 .idea/
-.generators
 .rakeTasks
+.generators

@@ -7,8 +7,10 @@
     <div class="d-flex flex-column">
       <%= react_component("authen/UserBasicInfo",
         {
-            authenticityToken: form_authenticity_token,
-            submitPath: profile_update_path
+          authenticityToken: form_authenticity_token,
+          submitPath: profile_update_path,
+          allExpertises: Expertise.get_expertises
+          
         })
       %>
 

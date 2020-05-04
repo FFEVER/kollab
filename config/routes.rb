@@ -33,4 +33,11 @@ Rails.application.routes.draw do
       post 'unstar'
     end
   end
+
+  namespace :api, constraints: {format: 'json'} do
+    namespace :v1 do
+      resources :users, only: %i[index]
+      resources :projects, only: %i[index]
+    end
+  end
 end

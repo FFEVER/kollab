@@ -64,12 +64,6 @@ class UsersController < ApplicationController
       :year,
       :expertise_ids,
       :skill_list,
-      :description,
-      :github,
-      :linkedin,
-      :facebook,
-      :instagram,
-      :phone,
       :profile_image
     )
     if permitted[:expertise_ids]

@@ -83,4 +83,13 @@ class User < ApplicationRecord
     new_or_found_skills = skill_names.collect { |name| Skill.find_or_create_by(name: name) }
     self.skills = new_or_found_skills
   end
+
+  def self.expertise_ids=(expertise_array)
+    expertises.destroy_all
+    expertise_array = expertise_array.uniq[0..2]
+    expertise_array.each do |id|
+      puts "ID = #{id}"
+      expertises << Expertise.find(id)
+    end
+  end
 end

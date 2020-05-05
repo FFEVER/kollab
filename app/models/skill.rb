@@ -9,4 +9,8 @@ class Skill < ApplicationRecord
   def to_s
     name
   end
+
+  def self.get_skills
+    Skill.all
+  end
 end

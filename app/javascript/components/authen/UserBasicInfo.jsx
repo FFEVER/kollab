@@ -64,12 +64,13 @@ class UserBasicInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      faculty: "",
-      year: "",
+      faculty: this.props.currentUser.faculty,
+      year: this.props.currentUser.year,
       errors: defaultErrors,
       isButtonLoading: false,
-      role: "student",
-      skills: [],
+      role:
+        this.props.currentUser.role !== null ? this.props.currentUser.role : "",
+      skills: this.convertToTags([this.props.userSkills]),
       activateModal: "division",
       expertises: [],
       expertise_ids: [],
@@ -77,6 +78,7 @@ class UserBasicInfo extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.convertToTags = this.convertToTags.bind(this)
     this.createFormData = this.createFormData.bind(this)
     this.submitForm = this.submitForm.bind(this)
     this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
@@ -93,6 +95,15 @@ class UserBasicInfo extends React.Component {
     this.setState({
       [event.target.name]: event.target.value,
     })
+  }
+
+  convertToTags(obj) {
+    let arry = []
+    obj.map((item) => {
+      let i = this.props.skills.find((item) => item.id === item.id)
+      arry.push({ label: i.name, value: i.name })
+    })
+    return arry
   }
 
   handleSkillsChange(value) {
@@ -267,6 +278,7 @@ class UserBasicInfo extends React.Component {
       expertise_ids,
     } = this.state
     console.log("State ", this.state)
+    console.log("Props ", this.props)
 
     return (
       <form
@@ -342,10 +354,10 @@ class UserBasicInfo extends React.Component {
                   value={year}
                   onChange={this.handleChange}
                 >
-                  <MenuItem value={1}>1</MenuItem>
-                  <MenuItem value={2}>2</MenuItem>
-                  <MenuItem value={3}>3</MenuItem>
-                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={"1"}>1</MenuItem>
+                  <MenuItem value={"2"}>2</MenuItem>
+                  <MenuItem value={"3"}>3</MenuItem>
+                  <MenuItem value={"4"}>4</MenuItem>
                   <MenuItem value={"other"}>other</MenuItem>
                 </Select>
                 <FormHelperText error={errors.year.length > 0 ? true : false}>
@@ -403,8 +415,10 @@ class UserBasicInfo extends React.Component {
 UserBasicInfo.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string,
+  currentUser: PropTypes.object,
   allExpertises: PropTypes.array,
-  divisions: PropTypes.any,
+  skills: PropTypes.any,
+  userSkills: PropTypes.any,
 }
 
 export default UserBasicInfo

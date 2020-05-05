@@ -72,8 +72,8 @@ class UserBasicInfo extends React.Component {
         this.props.currentUser.role !== null ? this.props.currentUser.role : "",
       skills: this.convertToTags([this.props.userSkills]),
       activateModal: "division",
-      expertises: [this.props.userExpertises],
-      expertise_ids: [this.props.userExpertises.id],
+      expertises: [],
+      expertise_ids: [],
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -100,8 +100,8 @@ class UserBasicInfo extends React.Component {
   convertToTags(obj) {
     let arry = []
     obj.map((skill) => {
-      let i = this.props.skills.find((item) => item.id === skill.skill_id)
-      arry.push({ label: i.name, value: i.name })
+      // let i = this.props.skills.find((item) => item.id === skill.skill_id)
+      // arry.push({ label: i.name, value: i.name })
     })
     return arry
   }

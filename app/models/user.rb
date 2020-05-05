@@ -43,7 +43,7 @@ class User < ApplicationRecord
                             size: { less_than: MAX_IMG_MB_SIZE.megabytes,
                                     message: "should less than #{MAX_IMG_MB_SIZE} MB" }
 
-  validates_length_of :skill_list, minimum: 1, message: 'Skills cannot be blank.'
+  validates_length_of :skill_list, minimum: 1, message: 'Skills cannot be blank.', allow_nil: true, allow_blank: true
   validates_length_of :skill_list, maximum: 3, message: 'Skills can only have up to 3.'
 
   def following?(user)

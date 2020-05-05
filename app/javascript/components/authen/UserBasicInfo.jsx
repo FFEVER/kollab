@@ -72,8 +72,8 @@ class UserBasicInfo extends React.Component {
         this.props.currentUser.role !== null ? this.props.currentUser.role : "",
       skills: this.convertToTags([this.props.userSkills]),
       activateModal: "division",
-      expertises: [],
-      expertise_ids: [],
+      expertises: [this.props.userExpertises],
+      expertise_ids: [this.props.userExpertises.id],
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -99,8 +99,8 @@ class UserBasicInfo extends React.Component {
 
   convertToTags(obj) {
     let arry = []
-    obj.map((item) => {
-      let i = this.props.skills.find((item) => item.id === item.id)
+    obj.map((skill) => {
+      let i = this.props.skills.find((item) => item.id === skill.skill_id)
       arry.push({ label: i.name, value: i.name })
     })
     return arry
@@ -325,13 +325,11 @@ class UserBasicInfo extends React.Component {
                 label="Faculty"
                 onChange={this.handleChange}
               >
-                {faculties.map((fac) =>
-                  fac.departments.map((dep, id) => (
-                    <MenuItem key={id} value={dep}>
-                      {dep}
-                    </MenuItem>
-                  ))
-                )}
+                {faculties.map((fac, key) => (
+                  <MenuItem key={key} value={fac.faculty}>
+                    {fac.faculty}
+                  </MenuItem>
+                ))}
               </Select>
               <FormHelperText error={errors.faculty.length > 0 ? true : false}>
                 {errors.faculty[0]}
@@ -354,10 +352,10 @@ class UserBasicInfo extends React.Component {
                   value={year}
                   onChange={this.handleChange}
                 >
-                  <MenuItem value={"1"}>1</MenuItem>
-                  <MenuItem value={"2"}>2</MenuItem>
-                  <MenuItem value={"3"}>3</MenuItem>
-                  <MenuItem value={"4"}>4</MenuItem>
+                  <MenuItem value={1}>1</MenuItem>
+                  <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
                   <MenuItem value={"other"}>other</MenuItem>
                 </Select>
                 <FormHelperText error={errors.year.length > 0 ? true : false}>
@@ -418,6 +416,7 @@ UserBasicInfo.propTypes = {
   currentUser: PropTypes.object,
   allExpertises: PropTypes.array,
   skills: PropTypes.any,
+  userExpertises: PropTypes.any,
   userSkills: PropTypes.any,
 }
 

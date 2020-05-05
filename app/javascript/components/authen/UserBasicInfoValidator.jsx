@@ -1,6 +1,6 @@
 const defaultErrors = {
-  faculty: "",
-  year: "",
+  faculty: [],
+  year: [],
   expertises: [],
   skills: [],
 }

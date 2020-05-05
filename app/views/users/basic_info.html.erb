@@ -12,6 +12,7 @@
           currentUser: @user,
           allExpertises: Expertise.get_expertises,
           skills: Skill.get_skills,
+          userExpertises: Expertising.get_user_expertise(@user.id),
           userSkills: UserSkill.get_user_skills(@user.id)
         })
       %>

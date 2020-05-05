@@ -15,6 +15,7 @@ import {
 } from "./EditUserProfileValidator"
 import ExpertiseModal from "../shared/ExpertiseModal"
 import ExpertiseDisplay from "../shared/ExpertiseDisplay"
+import SocialLink from "../shared/SocialLink"
 
 import { TagInput, tagsToArray, defaultStyles } from "../shared/form/TagInput"
 
@@ -22,6 +23,7 @@ import edit from "../../images/icon/edit.png"
 import contact from "../../images/icon/phone-call.png"
 import mail from "../../images/icon/mail.png"
 import faculties from "../../../assets/utils/faculties"
+import socials from "../../../assets/utils/socials"
 
 import Button from "../shared/form/Button"
 import FormInput from "../shared/form/FormInput"
@@ -73,60 +75,18 @@ class EditUserProfile extends React.Component {
     super(props)
     this.state = {
       user: this.props.currentUser,
-      profileImage: this.props.profileImage,
       year: this.props.currentUser.year,
       faculty: this.props.currentUser.faculty,
       bio: this.props.currentUser.description,
       email: this.props.currentUser.email,
       phone: this.props.currentUser.phone,
-      expertises: this.convertToTags(this.props.currentExpertises),
-      expertise_ids: [1, 2, 3],
+      expertises: this.props.expertises,
+      userExpertises: this.convertExpertiesForDisplay(),
+      expertise_ids: this.filterExpertiseId(this.props.userExpertises),
       skills: this.convertToTags(this.props.currentSkills),
       errors: defaultErrors,
-      github: undefined,
-      linkedin: undefined,
-      facebook: undefined,
-      instagram: undefined,
-      socials: [
-        {
-          key: "github",
-          name: "GitHub",
-          value:
-            this.props.currentUser.github !== null &&
-            this.props.currentUser.github !== ""
-              ? this.props.currentUser.github
-              : undefined,
-        },
-        {
-          key: "linkedin",
-          name: "LinkedIn",
-          value:
-            this.props.currentUser.linkedin !== null &&
-            this.props.currentUser.linkedin !== ""
-              ? this.props.currentUser.linkedin
-              : undefined,
-        },
-        {
-          key: "facebook",
-          name: "Facebook",
-          value:
-            this.props.currentUser.facebook !== null &&
-            this.props.currentUser.facebook !== ""
-              ? this.props.currentUser.facebook
-              : undefined,
-        },
-        {
-          key: "instagram",
-          name: "Instagram",
-          value:
-            this.props.currentUser.instagram !== null &&
-            this.props.currentUser.instagram !== ""
-              ? this.props.currentUser.instagram
-              : undefined,
-        },
-      ],
+      socials: [],
       activateModal: "division",
-      expertises: [],
     }
     this.convertToTags = this.convertToTags.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -135,11 +95,15 @@ class EditUserProfile extends React.Component {
     this.handleExpertisesClear = this.handleExpertisesClear.bind(this)
     this.handleSkillsChange = this.handleSkillsChange.bind(this)
     this.handleSkillsClear = this.handleSkillsClear.bind(this)
-    // this.addSocialLink = this.addSocialLink.bind(this)
+    this.addSocialLink = this.addSocialLink.bind(this)
+    this.setSocial = this.setSocial.bind(this)
     this.setDisplayExpertise = this.setDisplayExpertise.bind(this)
     this.removeExpertise = this.removeExpertise.bind(this)
     this.checkExpertise = this.checkExpertise.bind(this)
     this.getExpertise = this.getExpertise.bind(this)
+    this.filterExpertiseId = this.filterExpertiseId.bind(this)
+    this.setUserExpertises = this.setUserExpertises.bind(this)
+    this.convertExpertiesForDisplay = this.convertExpertiesForDisplay.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.submitForm = this.submitForm.bind(this)
     this.createFormData = this.createFormData.bind(this)
@@ -193,15 +157,30 @@ class EditUserProfile extends React.Component {
     })
   }
 
-  // addSocialLink() {
-  //   return <div className="edit-profile__social">{console.log("Add")}</div>
-  // }
+  addSocialLink() {
+    console.log("Add jaa")
+    return (
+      // <SocialLink
+      //   social={socials[0]}
+      //   handleChange={this.handleChange}
+      //   setSocial={this.setSocial}
+      // />
+      <p>Test</p>
+    )
+  }
+
+  setSocial(id, value) {
+    this.setState({
+      socials: [...this.state.socials, { id: id, value: value }],
+    })
+  }
 
   setDisplayExpertise(value) {
-    let items = this.state.expertises
+    let items = this.state.userExpertises
     if (items.length === 0) {
       this.setState({
-        expertises: [...this.state.expertises, value],
+        userExpertises: [...this.state.userExpertises, value],
+        expertise_ids: [...this.state.expertise_ids, value.expertise_id],
         activateModal: "division",
         division: "",
         group: "",
@@ -211,7 +190,8 @@ class EditUserProfile extends React.Component {
 
     if (!this.checkExpertise(value, items)) {
       this.setState({
-        expertises: [...this.state.expertises, value],
+        userExpertises: [...this.state.userExpertises, value],
+        expertise_ids: [...this.state.expertise_ids, value.expertise_id],
         activateModal: "division",
         division: "",
         group: "",
@@ -221,11 +201,14 @@ class EditUserProfile extends React.Component {
   }
 
   removeExpertise(item) {
-    let items = this.state.expertises
+    let items = this.state.userExpertises
+    let ids = this.state.expertise_ids
     let index = this.getExpertise(item, items)
     items.splice(items.indexOf(index), 1)
-
-    this.setState({ expertises: items })
+    ids.splice(item.expertise_id, 1)
+    console.log("Item ", item)
+    console.log("Ids ", ids)
+    this.setState({ userExpertises: items, expertise_ids: ids })
   }
 
   checkExpertise(item, items) {
@@ -255,6 +238,67 @@ class EditUserProfile extends React.Component {
     return index
   }
 
+  filterExpertiseId(exps) {
+    let list = []
+    exps.map((item) => list.push(item.id))
+    return list
+  }
+
+  setUserExpertises() {
+    let exps = this.props.expertises // All expertises
+    let userExpIds = this.filterExpertiseId(this.props.userExpertises) // User expertise ids
+    let userExps = [] // Return obj
+    let obj = []
+    let temp = {}
+    userExpIds.map((key) => {
+      let id = key
+      let exp = exps.find((item) => item.id === key)
+
+      while (temp !== undefined) {
+        obj.push(exp)
+        temp = exps.find((item) => item.id === exp.parent_id)
+        exp = temp
+      }
+      userExps.push(obj)
+      obj = []
+      temp = {}
+    })
+    return userExps
+  }
+
+  convertExpertiesForDisplay() {
+    let exps = this.setUserExpertises()
+    let expsForDisplay = []
+    exps.map((item) => {
+      if (item.length === 3) {
+        let obj = {
+          field: item[0].name,
+          group: item[1].name,
+          division: item[2].name,
+          expertise_id: item[0].id,
+        }
+        expsForDisplay.push(obj)
+      } else if (item.length === 2) {
+        let obj = {
+          field: "",
+          group: item[0].name,
+          division: item[1].name,
+          expertise_id: item[0].id,
+        }
+        expsForDisplay.push(obj)
+      } else if (item.length === 1) {
+        let obj = {
+          field: "",
+          group: "",
+          division: item[0].name,
+          expertise_id: item[0].id,
+        }
+        expsForDisplay.push(obj)
+      }
+    })
+    return expsForDisplay
+  }
+
   handleSubmit(event) {
     event.preventDefault()
     this.setIsButtonLoading(true)
@@ -264,9 +308,6 @@ class EditUserProfile extends React.Component {
           errors: defaultErrors,
         })
         const formData = this.createFormData()
-        for (var value of formData) {
-          console.log(value)
-        }
         this.submitForm(formData)
       })
       .catch((errors) => {
@@ -279,9 +320,6 @@ class EditUserProfile extends React.Component {
 
   submitForm(formData) {
     const { submitPath } = this.props
-    {
-      console.log("submitForm ", this)
-    }
     axios({
       method: "put",
       url: submitPath,
@@ -328,20 +366,16 @@ class EditUserProfile extends React.Component {
     ),
       formData.append(dataName("phone"), this.state.phone)
     formData.append(dataName("email"), this.state.email)
-    for (let i = 0; i < this.state.socials.length; i++) {
-      if (this.state.socials[i].value === null) {
-        formData.append(dataName(this.state.socials[i].key), "")
-        console.log(this.state.socials[i].key)
-        console.log(this.state.socials[i].value)
-      } else {
-        formData.append(
-          dataName(this.state.socials[i].key),
-          this.state.socials[i].value
-        )
-        console.log(this.state.socials[i].key)
-        console.log(this.state.socials[i].value)
-      }
-    }
+    // for (let i = 0; i < this.state.socials.length; i++) {
+    //   if (this.state.socials[i].value === null) {
+    //     formData.append(dataName(this.state.socials[i].key), "")
+    //   } else {
+    //     formData.append(
+    //       dataName(this.state.socials[i].key),
+    //       this.state.socials[i].value
+    //     )
+    //   }
+    // }
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
   }
@@ -353,12 +387,12 @@ class EditUserProfile extends React.Component {
   render() {
     const {
       user,
-      profileImage,
       errors,
       faculty,
       year,
       bio,
       expertises,
+      userExpertises,
       skills,
       phone,
       email,
@@ -368,6 +402,8 @@ class EditUserProfile extends React.Component {
       facebook,
       instagram,
     } = this.state
+    console.log("props ", this.props)
+    console.log("state ", this.state)
     return (
       <form className="d-flex flex-column" onSubmit={this.handleSubmit}>
         <div className="thin-line" />
@@ -429,15 +465,15 @@ class EditUserProfile extends React.Component {
           <ExpertiseModal
             expertises={expertises}
             setExpertiseDisplayFunc={this.setDisplayExpertise}
-            disable={expertises.length > 2 ? true : false}
+            disable={userExpertises.length > 2 ? true : false}
           />{" "}
           <FormHelperText error={errors.expertises.length > 0 ? true : false}>
             {errors.expertises[0]}
           </FormHelperText>
-          {expertises.length > 0 ? (
+          {userExpertises.length > 0 ? (
             <ExpertiseDisplay
-              expertises={expertises}
-              removeExpertise={this.removeExpertise}
+              expertises={userExpertises}
+              removeExpertise={(item) => this.removeExpertise(item)}
             />
           ) : (
             <div />
@@ -488,21 +524,9 @@ class EditUserProfile extends React.Component {
           <div className="profile__section">
             <h4>Links</h4>
             <p>Social Links</p>
-            {socials.map((item, index) => (
-              <div className="edit-profile__social" key={index}>
-                <h5>{item.name}</h5>
-                <FormInput
-                  name={item.key}
-                  placeholder={item.name}
-                  type="text"
-                  value={item.value}
-                  className="form-control auto-height fix-width"
-                  onChange={(e) => this.handleSocialsChange(e, index)}
-                  errors={errors.socials}
-                />
-                {/* <i className="far fa-times-circle fa-2x" /> */}
-              </div>
-            ))}
+            <p className="link" onClick={() => this.addSocialLink()}>
+              Add social link
+            </p>
           </div>
         </div>
         <div className="d-flex flex-column align-items-center">
@@ -524,9 +548,9 @@ EditUserProfile.propTypes = {
   authenticityToken: PropTypes.string,
   currentUser: PropTypes.object,
   submitPath: PropTypes.string,
-  profileImage: PropTypes.any,
-  currentExpertises: PropTypes.array,
+  userExpertises: PropTypes.array,
   currentSkills: PropTypes.array,
+  expertises: PropTypes.array,
 }
 
 export default EditUserProfile

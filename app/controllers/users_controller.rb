@@ -64,13 +64,22 @@ class UsersController < ApplicationController
       :year,
       :expertise_ids,
       :skill_list,
-      :profile_image
+      :profile_image,
+      :description,
+      :phone,
+      :github,
+      :linkedin,
+      :facebook,
+      :instagram
     )
     if permitted[:expertise_ids]
       permitted[:expertise_ids] = JSON.parse(permitted[:expertise_ids]) || []
     end
     if permitted[:skill_list]
       permitted[:skill_list] = JSON.parse(permitted[:skill_list]) || []
+    end
+    if permitted[:profile_image]
+      permitted[:profile_image] = permitted[:profile_image] || []
     end
     permitted
   end

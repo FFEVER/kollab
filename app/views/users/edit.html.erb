@@ -22,7 +22,7 @@
       </div>
 
       <button class="button--medium button--tags">
-        <%= f.submit "Update", :class => 'button--transparent'%>
+        <%= f.submit "Update", class: 'button--transparent'%>
       </button>
     </div>
   <% end %>
@@ -31,8 +31,8 @@
       authenticityToken: form_authenticity_token,
       submitPath: profile_update_path,
       currentUser: @user,
-      profileImage: @user.profile_image,
-      currentExpertises: @user.expertises,
+      userExpertises: Expertising.get_expertising(@user.id),
+      expertises: Expertise.get_expertises,
       currentSkills: @user.skills,
     })
   %>

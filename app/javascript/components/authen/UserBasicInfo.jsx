@@ -64,12 +64,18 @@ class UserBasicInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      faculty: this.props.currentUser.faculty,
-      year: this.props.currentUser.year,
+      faculty:
+        this.props.currentUser.faculty !== null
+          ? this.props.currentUser.faculty
+          : "",
+      year:
+        this.props.currentUser.year !== null ? this.props.currentUser.year : "",
       errors: defaultErrors,
       isButtonLoading: false,
       role:
-        this.props.currentUser.role !== null ? this.props.currentUser.role : "",
+        this.props.currentUser.role !== null
+          ? this.props.currentUser.role
+          : "student",
       skills: this.setUserSkills(this.props.userSkills),
       activateModal: "division",
       expertises: this.setUserExpertises(this.props.userExpertises),
@@ -327,9 +333,8 @@ class UserBasicInfo extends React.Component {
       role,
       skills,
       expertises,
-      expertise_ids,
     } = this.state
-    console.log("State ", this.state)
+    console.log("state ", this.state)
     return (
       <form
         className="d-flex flex-column mt-3"

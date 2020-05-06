@@ -5,6 +5,6 @@ class UserSkill < ApplicationRecord
   belongs_to :user
 
   def self.get_user_skills(id)
-    UserSkill.find_by_user_id(id)
+    UserSkill.where(user_id: id)
   end
 end

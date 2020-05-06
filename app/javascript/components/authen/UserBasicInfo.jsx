@@ -70,15 +70,18 @@ class UserBasicInfo extends React.Component {
       isButtonLoading: false,
       role:
         this.props.currentUser.role !== null ? this.props.currentUser.role : "",
-      skills: this.convertToTags([this.props.userSkills]),
+      skills: this.setUserSkills(this.props.userSkills),
       activateModal: "division",
-      expertises: [],
-      expertise_ids: [],
+      expertises: this.setUserExpertises(this.props.userExpertises),
+      expertise_ids: this.setExpertiseIds(),
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.convertToTags = this.convertToTags.bind(this)
+    this.setUserSkills = this.setUserSkills.bind(this)
+    this.setUserExpertises = this.setUserExpertises.bind(this)
+    this.setExpertiseObject = this.setExpertiseObject.bind(this)
+    this.setExpertiseIds = this.setExpertiseIds.bind(this)
     this.createFormData = this.createFormData.bind(this)
     this.submitForm = this.submitForm.bind(this)
     this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
@@ -97,11 +100,63 @@ class UserBasicInfo extends React.Component {
     })
   }
 
-  convertToTags(obj) {
+  setUserExpertises(obj) {
+    let arry = []
+
+    obj.map((exp) => {
+      let i = this.props.allExpertises.find(
+        (item) => item.id === exp.expertise_id
+      )
+      arry.push(this.setExpertiseObject(i))
+    })
+
+    return arry
+  }
+
+  setExpertiseObject(exp) {
+    if (exp.parent_id === null) {
+      return { division: exp.name, group: "", field: "", expertise_id: exp.id }
+    } else {
+      // Sup expertise
+      let exps = this.props.allExpertises
+      let parentExp = exps.find((item) => item.id === exp.parent_id)
+      if (parentExp.parent_id === null) {
+        return {
+          division: parentExp.name,
+          group: exp.name,
+          field: "",
+          expertise_id: exp.id,
+        }
+      } else {
+        // Sup supexpertise
+        let superParent = exps.find((item) => item.id === parentExp.parent_id)
+        return {
+          division: superParent.name,
+          group: parentExp.name,
+          field: exp.name,
+          expertise_id: exp.id,
+        }
+      }
+    }
+  }
+
+  setExpertiseIds() {
+    let userExpertises = this.props.userExpertises
+    let arry = []
+    userExpertises.map((exp) => {
+      let i = this.props.allExpertises.find(
+        (item) => item.id === exp.expertise_id
+      )
+      arry.push(i.id)
+    })
+    return arry
+  }
+
+  setUserSkills(obj) {
     let arry = []
     obj.map((skill) => {
-      // let i = this.props.skills.find((item) => item.id === skill.skill_id)
-      // arry.push({ label: i.name, value: i.name })
+      let i = this.props.skills.find((item) => item.id === skill.skill_id)
+      arry.push({ label: i.name, value: i.name })
     })
     return arry
   }
@@ -120,8 +175,6 @@ class UserBasicInfo extends React.Component {
   }
 
   setDisplayExpertise(value) {
-    console.log("Value ", value)
-
     let items = this.state.expertises
     if (items.length === 0) {
       this.setState({
@@ -247,7 +300,6 @@ class UserBasicInfo extends React.Component {
       dataName("expertise_ids"),
       JSON.stringify(this.state.expertise_ids)
     )
-    console.log("skill ", JSON.stringify(tagsToArray(this.state.skills)))
     formData.append(
       dataName("skill_list"),
       JSON.stringify(tagsToArray(this.state.skills))
@@ -278,8 +330,6 @@ class UserBasicInfo extends React.Component {
       expertise_ids,
     } = this.state
     console.log("State ", this.state)
-    console.log("Props ", this.props)
-
     return (
       <form
         className="d-flex flex-column mt-3"
@@ -352,10 +402,10 @@ class UserBasicInfo extends React.Component {
                   value={year}
                   onChange={this.handleChange}
                 >
-                  <MenuItem value={1}>1</MenuItem>
-                  <MenuItem value={2}>2</MenuItem>
-                  <MenuItem value={3}>3</MenuItem>
-                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={"1"}>1</MenuItem>
+                  <MenuItem value={"2"}>2</MenuItem>
+                  <MenuItem value={"3"}>3</MenuItem>
+                  <MenuItem value={"4"}>4</MenuItem>
                   <MenuItem value={"other"}>other</MenuItem>
                 </Select>
                 <FormHelperText error={errors.year.length > 0 ? true : false}>

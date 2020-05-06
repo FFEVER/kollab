@@ -6,6 +6,6 @@ class Expertising < ApplicationRecord
   validates_uniqueness_of :expertise, scope: %i[expertisable_id expertisable_type]
 
   def self.get_user_expertise(id)
-    Expertising.find_by_expertisable_id(id)
+    Expertising.where(expertisable_id: id)
   end
 end

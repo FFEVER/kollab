@@ -205,12 +205,15 @@ class UserBasicInfo extends React.Component {
     }
   }
 
-  removeExpertise(item) {
-    let items = this.state.expertises
-    let index = this.getExpertise(item, items)
-    items.splice(items.indexOf(index), 1)
+  removeExpertise(event, item) {
+    event.preventDefault()
 
-    this.setState({ expertises: items })
+    let items = this.state.expertises
+    let ids = this.state.expertise_ids
+    let index = this.getExpertise(item, items)
+    items.splice(index, 1)
+    ids.splice(index, 1)
+    this.setState({ expertises: items, expertise_ids: ids })
   }
 
   checkExpertise(item, items) {
@@ -277,8 +280,6 @@ class UserBasicInfo extends React.Component {
         }
       })
       .catch((error) => {
-        debugger
-        console.log(error)
         if (error.response.status === 400) {
           this.setState((state) => {
             let error_messages = error.response.data.messages
@@ -334,7 +335,6 @@ class UserBasicInfo extends React.Component {
       skills,
       expertises,
     } = this.state
-    console.log("state ", this.state)
     return (
       <form
         className="d-flex flex-column mt-3"
@@ -411,7 +411,7 @@ class UserBasicInfo extends React.Component {
                   <MenuItem value={"2"}>2</MenuItem>
                   <MenuItem value={"3"}>3</MenuItem>
                   <MenuItem value={"4"}>4</MenuItem>
-                  <MenuItem value={"Other"}>other</MenuItem>
+                  <MenuItem value={"other"}>Other</MenuItem>
                 </Select>
                 <FormHelperText error={errors.year.length > 0 ? true : false}>
                   {errors.year[0]}

@@ -41,6 +41,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { within: 1..50 }
   validates :faculty, presence: true, length: { within: 1..50 }, allow_nil: true, allow_blank: true
   validates :year, presence: true, length: { within: 1..15 }, allow_nil: true, allow_blank: true
+  validates :description, presence: true, length: { within: 1..15 }, allow_nil: true, allow_blank: true
   validates :profile_image, content_type: VALID_IMG_TYPES,
                             size: { less_than: MAX_IMG_MB_SIZE.megabytes,
                                     message: "should less than #{MAX_IMG_MB_SIZE} MB" }
@@ -87,7 +88,6 @@ class User < ApplicationRecord
   end
 
   def skill_list=(skills_array)
-    puts("skills_array #{skills_array}")
     skill_names = skills_array.uniq[0..2]
     new_or_found_skills = skill_names.collect { |name| Skill.find_or_create_by(name: name) }
     self.skills = new_or_found_skills
@@ -97,7 +97,6 @@ class User < ApplicationRecord
     expertises.destroy_all
     expertise_array = expertise_array.uniq[0..2]
     expertise_array.each do |id|
-      puts "ID = #{id}"
       expertises << Expertise.find(id)
     end
   end

@@ -11,9 +11,9 @@
           submitPath: profile_update_path,
           currentUser: @user,
           allExpertises: Expertise.get_expertises,
-          skills: Skill.get_skills,
+          skills: Skill.all,
           userExpertises: Expertising.get_user_expertise(@user.id),
-          userSkills: UserSkill.get_user_skills(@user.id)
+          userSkills: UserSkill.where(@user.id)
         })
       %>
 

@@ -12,8 +12,8 @@
           currentUser: @user,
           allExpertises: Expertise.get_expertises,
           skills: Skill.all,
-          userExpertises: Expertising.get_user_expertise(@user.id),
-          userSkills: UserSkill.where(@user.id)
+          userExpertises: Expertising.where(expertisable_id: @user.id),
+          userSkills: UserSkill.where(user_id: @user.id)
         })
       %>
 

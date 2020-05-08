@@ -29,7 +29,7 @@ const tagStyles = {
   control: (provided, state) => ({
     ...provided,
     minWidth: "100%",
-    height: "56px",
+    minHeight: "56px",
     borderColor: "#c2c2c2",
     boxShadow: state.isFocused ? "0 0 3px #54bdc2" : "",
     cursor: "text",
@@ -45,7 +45,7 @@ const tagErrorStyles = {
   control: (provided, state) => ({
     ...provided,
     minWidth: "100%",
-    height: "56px",
+    minHeight: "56px",
     borderColor: "red",
     boxShadow: state.isFocused ? "0 0 3px #ce7171" : "",
     cursor: "text",

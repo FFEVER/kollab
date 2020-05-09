@@ -1,0 +1,23 @@
+<div class="authen">
+  <div class="mt-1">
+    <%= image_pack_tag 'kollab-blue.png', alt: 'kollab', size: '150x70' %>
+  </div>
+  <div class="mt-3">
+    <h1>Basic Information</h1>
+    <div class="d-flex flex-column">
+      <%= react_component("authen/UserBasicInfo",
+        {
+          authenticityToken: form_authenticity_token,
+          submitPath: profile_update_path,
+          currentUser: @user,
+          allExpertises: Expertise.all,
+          skills: Skill.all,
+          userExpertises: Expertising.where(expertisable_id: @user.id),
+          userSkills: UserSkill.where(user_id: @user.id),
+          faculties: Faculty.all
+        })
+      %>
+
+    </div>
+  </div>
+</div>

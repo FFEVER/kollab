@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Button from "../shared/form/Button"
-import fields from "../../../assets/utils/fields"
 import { defaultErrors } from "../authen/UserBasicInfoValidator"
 
 import {

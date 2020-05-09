@@ -15,7 +15,6 @@ import Button from "../shared/form/Button"
 import ExpertiseModal from "../shared/ExpertiseModal"
 import ExpertiseDisplay from "../shared/ExpertiseDisplay"
 import { UserBasicInfoValidator, defaultErrors } from "./UserBasicInfoValidator"
-// import faculties from "../../../assets/utils/faculties"
 
 const DATA_PREFIX = "user"
 

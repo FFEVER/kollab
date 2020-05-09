@@ -15,9 +15,9 @@ class UserBasicInfoValidator {
   }
 
   static validateYear(state, errors) {
-    const { year } = state
+    const { year, role } = state
     const key = Object.keys({ year })[0]
-    if (year === undefined || year.length < 1) {
+    if ((year === undefined || year.length < 1) && role === "student") {
       errors[key].push("Please select your year.")
     }
   }

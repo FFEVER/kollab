@@ -60,7 +60,7 @@ class UsersController < ApplicationController
       :first_name,
       :last_name,
       :role,
-      :faculty,
+      :faculty_id,
       :year,
       :expertise_ids,
       :skill_list,

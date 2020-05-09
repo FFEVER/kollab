@@ -39,7 +39,7 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true, length: { within: 1..50 }
   validates :last_name, presence: true, length: { within: 1..50 }
-  validates :faculty, presence: true, length: { within: 1..50 }, allow_nil: true, allow_blank: true
+  validates :faculty_id, presence: true, length: { within: 1..15 }, allow_nil: true, allow_blank: true
   validates :year, presence: true, length: { within: 1..15 }, allow_nil: true, allow_blank: true
   validates :description, presence: true, length: { within: 1..15 }, allow_nil: true, allow_blank: true
   validates :profile_image, content_type: VALID_IMG_TYPES,
@@ -102,7 +102,7 @@ class User < ApplicationRecord
   end
 
   def has_basic_info?
-    completed = role.present? && faculty.present? && expertises.present? && skills.present?
+    completed = role.present? && faculty_id.present? && expertises.present? && skills.present?
     if role == 'student'
       completed && year.present?
     else

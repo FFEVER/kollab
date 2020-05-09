@@ -63,10 +63,7 @@ class UserBasicInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      faculty:
-        this.props.currentUser.faculty !== null
-          ? this.props.currentUser.faculty
-          : "",
+      faculty: "",
       year:
         this.props.currentUser.year !== null ? this.props.currentUser.year : "",
       errors: defaultErrors,
@@ -300,8 +297,13 @@ class UserBasicInfo extends React.Component {
   createFormData() {
     const formData = new FormData()
     formData.append(dataName("role"), this.state.role)
-    formData.append(dataName("faculty"), this.state.faculty)
-    formData.append(dataName("year"), this.state.year)
+    let fac = this.props.faculties.find(
+      (item) => item.name === this.state.faculty
+    ).id
+    formData.append(dataName("faculty_id"), fac)
+    if (this.state.role === "student") {
+      formData.append(dataName("year"), this.state.year)
+    }
     formData.append(
       dataName("expertise_ids"),
       JSON.stringify(this.state.expertise_ids)
@@ -335,6 +337,8 @@ class UserBasicInfo extends React.Component {
       expertises,
     } = this.state
     const { faculties } = this.props
+    console.log("state ", this.state)
+    console.log("props ", this.props)
     return (
       <form
         className="d-flex flex-column mt-3"

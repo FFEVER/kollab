@@ -11,12 +11,12 @@
       <p>
         <% if @user.role == "student"%>
           <%if @user.year == "other"%>
-            <%= "Student in #{@user.faculty}" %>
+            <%= "Student in #{Faculty.find(@user.faculty_id)['name']}" %>
           <%else%>
-            <%= "#{@user.year.to_i.ordinalize} year student in #{@user.faculty}"%>
+            <%= "#{@user.year.to_i.ordinalize} year student in #{Faculty.find(@user.faculty_id)['name']}"%>
           <%end%>
         <%else%>
-          <%= "Professor in a faculty of #{@user.faculty}"%>
+          <%= "Professor in a faculty of #{Faculty.find(@user.faculty_id)['name']}"%>
         <%end%>
       </p>
       <div class="d-flex flex-row align-items-center justify-content-between">

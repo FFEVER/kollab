@@ -165,7 +165,7 @@ class EditUserProfile extends React.Component {
       //   handleChange={this.handleChange}
       //   setSocial={this.setSocial}
       // />
-      <p>Test</p>
+      <div>huhuhehehaha</div>
     )
   }
 
@@ -204,10 +204,8 @@ class EditUserProfile extends React.Component {
     let items = this.state.userExpertises
     let ids = this.state.expertise_ids
     let index = this.getExpertise(item, items)
-    items.splice(items.indexOf(index), 1)
-    ids.splice(item.expertise_id, 1)
-    console.log("Item ", item)
-    console.log("Ids ", ids)
+    items.splice(index, 1)
+    ids.splice(index, 1)
     this.setState({ userExpertises: items, expertise_ids: ids })
   }
 
@@ -240,7 +238,7 @@ class EditUserProfile extends React.Component {
 
   filterExpertiseId(exps) {
     let list = []
-    exps.map((item) => list.push(item.id))
+    exps.map((item) => list.push(item.expertise_id))
     return list
   }
 
@@ -437,11 +435,11 @@ class EditUserProfile extends React.Component {
                     <MenuItem value="">
                       <em>Select your year of study</em>
                     </MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={4}>4</MenuItem>
-                    <MenuItem value={"else"}>else</MenuItem>
+                    <MenuItem value={"1"}>1</MenuItem>
+                    <MenuItem value={"2"}>2</MenuItem>
+                    <MenuItem value={"3"}>3</MenuItem>
+                    <MenuItem value={"4"}>4</MenuItem>
+                    <MenuItem value={"other"}>Other</MenuItem>
                   </Select>
                 </FormControl>
               </div>

@@ -9,8 +9,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Expertise.destroy_all
+Faculty.destroy_all
 puts 'Expertise destroyed'
+puts 'Faculty destroyed'
 expertises = JSON.parse(File.read(Rails.root.join('app/assets/utils/expertises.json')))
+faculties = JSON.parse(File.read(Rails.root.join('app/assets/utils/faculties.json')))
+
 expertises.each do |expertise|
   division = Expertise.create!(name: expertise['Division'])
   expertise['Groups'].each do |group|
@@ -19,4 +23,8 @@ expertises.each do |expertise|
       Expertise.create!(name: field, parent: groups)
     end
   end
+end
+
+faculties.each do |faculty|
+  Faculty.create!(name: faculty['faculty'])
 end

@@ -15,8 +15,7 @@ import Button from "../shared/form/Button"
 import ExpertiseModal from "../shared/ExpertiseModal"
 import ExpertiseDisplay from "../shared/ExpertiseDisplay"
 import { UserBasicInfoValidator, defaultErrors } from "./UserBasicInfoValidator"
-import faculties from "../../../assets/utils/faculties"
-import fields from "../../../assets/utils/fields"
+// import faculties from "../../../assets/utils/faculties"
 
 const DATA_PREFIX = "user"
 
@@ -335,6 +334,7 @@ class UserBasicInfo extends React.Component {
       skills,
       expertises,
     } = this.state
+    const { faculties } = this.props
     return (
       <form
         className="d-flex flex-column mt-3"
@@ -381,8 +381,8 @@ class UserBasicInfo extends React.Component {
                 onChange={this.handleChange}
               >
                 {faculties.map((fac, key) => (
-                  <MenuItem key={key} value={fac.faculty}>
-                    {fac.faculty}
+                  <MenuItem key={key} value={fac.name}>
+                    {fac.name}
                   </MenuItem>
                 ))}
               </Select>
@@ -473,6 +473,7 @@ UserBasicInfo.propTypes = {
   skills: PropTypes.any,
   userExpertises: PropTypes.any,
   userSkills: PropTypes.any,
+  faculties: PropTypes.array,
 }
 
 export default UserBasicInfo

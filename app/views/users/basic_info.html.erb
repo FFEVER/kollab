@@ -13,7 +13,8 @@
           allExpertises: Expertise.get_expertises,
           skills: Skill.all,
           userExpertises: Expertising.where(expertisable_id: @user.id),
-          userSkills: UserSkill.where(user_id: @user.id)
+          userSkills: UserSkill.where(user_id: @user.id),
+          faculties: Faculty.all
         })
       %>
 

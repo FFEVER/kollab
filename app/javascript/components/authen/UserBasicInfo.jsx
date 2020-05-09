@@ -62,7 +62,10 @@ class UserBasicInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      faculty: "",
+      faculty:
+        this.props.currentUser.faculty !== null
+          ? this.props.currentUser.faculty
+          : "",
       year:
         this.props.currentUser.year !== null ? this.props.currentUser.year : "",
       errors: defaultErrors,
@@ -103,7 +106,6 @@ class UserBasicInfo extends React.Component {
 
   setUserExpertises(obj) {
     let arry = []
-
     obj.map((exp) => {
       let i = this.props.allExpertises.find(
         (item) => item.id === exp.expertise_id

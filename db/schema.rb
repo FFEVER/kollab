@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_172326) do
+ActiveRecord::Schema.define(version: 2020_05_09_115320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,10 @@ ActiveRecord::Schema.define(version: 2020_04_18_172326) do
 
   create_table "expertises", force: :cascade do |t|
     t.string "name"
-    t.integer "parent_id"
+    t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_expertises_on_parent_id"
   end
 
   create_table "expertisings", force: :cascade do |t|
@@ -51,6 +52,12 @@ ActiveRecord::Schema.define(version: 2020_04_18_172326) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["expertisable_type", "expertisable_id"], name: "index_expertisings_on_expertisable_type_and_expertisable_id"
     t.index ["expertise_id"], name: "index_expertisings_on_expertise_id"
+  end
+
+  create_table "faculties", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -91,6 +98,12 @@ ActiveRecord::Schema.define(version: 2020_04_18_172326) do
     t.datetime "end_date"
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.bigint "tag_id", null: false
     t.bigint "project_id", null: false
@@ -104,6 +117,15 @@ ActiveRecord::Schema.define(version: 2020_04_18_172326) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_skills", force: :cascade do |t|
+    t.bigint "skill_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_id"], name: "index_user_skills_on_skill_id"
+    t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -121,14 +143,24 @@ ActiveRecord::Schema.define(version: 2020_04_18_172326) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
+    t.string "role"
+    t.string "year"
+    t.string "description"
+    t.string "phone"
+    t.string "github"
+    t.string "linkedin"
+    t.string "facebook"
+    t.string "instagram"
+    t.integer "faculty_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "expertisings", "expertises"
   add_foreign_key "favorites", "projects"
   add_foreign_key "favorites", "users"
   add_foreign_key "taggings", "projects"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "user_skills", "skills"
+  add_foreign_key "user_skills", "users"
 end

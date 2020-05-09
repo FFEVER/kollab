@@ -18,8 +18,10 @@ Rails.application.routes.draw do
       post 'unfollow'
       get 'followers'
       get 'followings'
+      get 'basic_info'
     end
   end
+
   get 'profile/edit', to: 'users#edit'
   match 'profile/update', to: 'users#update', via: %i[put patch]
 

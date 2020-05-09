@@ -11,3 +11,14 @@
   border-radius: 5px;
   background-color: #ffd289;
 }
+
+.tag-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding: 7px 10px 5px 10px;
+
+  border-radius: 10px;
+  background-color: $kollab-gray-light;
+}

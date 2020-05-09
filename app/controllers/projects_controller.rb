@@ -63,7 +63,9 @@ class ProjectsController < ApplicationController
       :end_date,
       :tag_list
     )
-    permitted[:tag_list] = JSON.parse(permitted[:tag_list]) || []
+    if permitted[:tag_list]
+      permitted[:tag_list] = JSON.parse(permitted[:tag_list]) || []
+    end
     permitted
   end
 

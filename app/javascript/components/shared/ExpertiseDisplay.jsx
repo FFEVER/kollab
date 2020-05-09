@@ -25,7 +25,7 @@ class ExpertiseDisplay extends React.Component {
               <Button
                 name="exp-icon"
                 className="button--transparent ml-1"
-                onClick={() => this.props.removeExpertise(item)}
+                onClick={(e) => this.props.removeExpertise(e, item)}
               >
                 <i className="fas fa-times"></i>
               </Button>

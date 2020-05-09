@@ -10,9 +10,13 @@
       <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
       <p>
         <% if @user.role == "student"%>
-          <%= "#{(@user.year == 1) ? "#{@user.year}st" : (@user.year == 2) ?  "#{@user.year}nd" : (@user.year == 3) ? "#{@user.year}rd" : "#{@user.year}th"} year #{@user.faculty}"%>
+          <%if @user.year == "other"%>
+            <%= "Student in #{Faculty.find(@user.faculty_id)['name']}" %>
+          <%else%>
+            <%= "#{@user.year.to_i.ordinalize} year student in #{Faculty.find(@user.faculty_id)['name']}"%>
+          <%end%>
         <%else%>
-          <%= "Professor in a faculty of #{@user.faculty}"%>
+          <%= "Professor in a faculty of #{Faculty.find(@user.faculty_id)['name']}"%>
         <%end%>
       </p>
       <div class="d-flex flex-row align-items-center justify-content-between">
@@ -117,30 +121,30 @@
     <%end%>
     <%= link_to "See more", user_projects_path(@user), class: "project__link", method: :get %>
   <%end%>
-  <div class="mt-3 mb-3">
-    <h3>Interests</h3>
-  </div>
-  <div class="scrollmenu">
-    <% 10.times do %>
-      <%= link_to image_pack_tag('icon/rectangle.png', style: 'height:100px;width:100px;margin-right:10px;'), new_project_path %>
-    <% end %>
-  </div>
-  <div class="mt-3 mb-3">
-    <h3>Photos</h3>
-  </div>
-  <div class="scrollmenu">
-    <% 10.times do %>
-      <%= link_to image_pack_tag('icon/rectangle.png', style: 'height:100px;width:100px;margin-right:10px;'), new_project_path %>
-    <% end %>
-  </div>
+  <%# <div class="mt-3 mb-3"> %>
+  <%# <h3>Interests</h3> %>
+  <%# </div> %>
+  <%# <div class="scrollmenu"> %>
+  <%# <% 10.times do %>
+    <%# <%= link_to image_pack_tag('icon/rectangle.png', style: 'height:100px;width:100px;margin-right:10px;'), new_project_path %>
+    <%# <% end %>
+    <%# </div> %>
+    <%# <div class="mt-3 mb-3"> %>
+    <%# <h3>Photos</h3> %>
+    <%# </div> %>
+    <%# <div class="scrollmenu"> %>
+    <%# <% 10.times do %>
+      <%# <%= link_to image_pack_tag('icon/rectangle.png', style: 'height:100px;width:100px;margin-right:10px;'), new_project_path %>
+      <%# <% end %>
+      <%# </div> %>
 
-  <%= react_component("profile/UserProfile",
-    {
-      authenticityToken: form_authenticity_token,
-      editPath: edit_user_registration_path,
-      currentUser: current_user,
-      projects: @projects,
-      isProfileOwner: current_user == @user
-    })
-%>
-</div>
+      <%# <%= react_component("profile/UserProfile", %>
+      <%# { %>
+      <%# authenticityToken: form_authenticity_token, %>
+      <%# editPath: edit_user_registration_path, %>
+      <%# currentUser: current_user, %>
+      <%# projects: @projects, %>
+      <%# isProfileOwner: current_user == @user %>
+      <%# }) %>
+      <%# %>
+    </div>

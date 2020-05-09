@@ -15,8 +15,6 @@ import Button from "../shared/form/Button"
 import ExpertiseModal from "../shared/ExpertiseModal"
 import ExpertiseDisplay from "../shared/ExpertiseDisplay"
 import { UserBasicInfoValidator, defaultErrors } from "./UserBasicInfoValidator"
-import faculties from "../../../assets/utils/faculties"
-import fields from "../../../assets/utils/fields"
 
 const DATA_PREFIX = "user"
 
@@ -29,7 +27,7 @@ const tagStyles = {
   control: (provided, state) => ({
     ...provided,
     minWidth: "100%",
-    height: "56px",
+    minHeight: "56px",
     borderColor: "#c2c2c2",
     boxShadow: state.isFocused ? "0 0 3px #54bdc2" : "",
     cursor: "text",
@@ -45,7 +43,7 @@ const tagErrorStyles = {
   control: (provided, state) => ({
     ...provided,
     minWidth: "100%",
-    height: "56px",
+    minHeight: "56px",
     borderColor: "red",
     boxShadow: state.isFocused ? "0 0 3px #ce7171" : "",
     cursor: "text",
@@ -65,18 +63,26 @@ class UserBasicInfo extends React.Component {
     super(props)
     this.state = {
       faculty: "",
-      year: "",
+      year:
+        this.props.currentUser.year !== null ? this.props.currentUser.year : "",
       errors: defaultErrors,
       isButtonLoading: false,
-      role: "student",
-      skills: [],
+      role:
+        this.props.currentUser.role !== null
+          ? this.props.currentUser.role
+          : "student",
+      skills: this.setUserSkills(this.props.userSkills),
       activateModal: "division",
-      expertises: [],
-      expertise_ids: [],
+      expertises: this.setUserExpertises(this.props.userExpertises),
+      expertise_ids: this.setExpertiseIds(),
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.setUserSkills = this.setUserSkills.bind(this)
+    this.setUserExpertises = this.setUserExpertises.bind(this)
+    this.setExpertiseObject = this.setExpertiseObject.bind(this)
+    this.setExpertiseIds = this.setExpertiseIds.bind(this)
     this.createFormData = this.createFormData.bind(this)
     this.submitForm = this.submitForm.bind(this)
     this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
@@ -95,6 +101,67 @@ class UserBasicInfo extends React.Component {
     })
   }
 
+  setUserExpertises(obj) {
+    let arry = []
+
+    obj.map((exp) => {
+      let i = this.props.allExpertises.find(
+        (item) => item.id === exp.expertise_id
+      )
+      arry.push(this.setExpertiseObject(i))
+    })
+
+    return arry
+  }
+
+  setExpertiseObject(exp) {
+    if (exp.parent_id === null) {
+      return { division: exp.name, group: "", field: "", expertise_id: exp.id }
+    } else {
+      // Sup expertise
+      let exps = this.props.allExpertises
+      let parentExp = exps.find((item) => item.id === exp.parent_id)
+      if (parentExp.parent_id === null) {
+        return {
+          division: parentExp.name,
+          group: exp.name,
+          field: "",
+          expertise_id: exp.id,
+        }
+      } else {
+        // Sup supexpertise
+        let superParent = exps.find((item) => item.id === parentExp.parent_id)
+        return {
+          division: superParent.name,
+          group: parentExp.name,
+          field: exp.name,
+          expertise_id: exp.id,
+        }
+      }
+    }
+  }
+
+  setExpertiseIds() {
+    let userExpertises = this.props.userExpertises
+    let arry = []
+    userExpertises.map((exp) => {
+      let i = this.props.allExpertises.find(
+        (item) => item.id === exp.expertise_id
+      )
+      arry.push(i.id)
+    })
+    return arry
+  }
+
+  setUserSkills(obj) {
+    let arry = []
+    obj.map((skill) => {
+      let i = this.props.skills.find((item) => item.id === skill.skill_id)
+      arry.push({ label: i.name, value: i.name })
+    })
+    return arry
+  }
+
   handleSkillsChange(value) {
     this.setState({
       skills: [...this.state.skills, ...value],
@@ -109,8 +176,6 @@ class UserBasicInfo extends React.Component {
   }
 
   setDisplayExpertise(value) {
-    console.log("Value ", value)
-
     let items = this.state.expertises
     if (items.length === 0) {
       this.setState({
@@ -135,12 +200,15 @@ class UserBasicInfo extends React.Component {
     }
   }
 
-  removeExpertise(item) {
-    let items = this.state.expertises
-    let index = this.getExpertise(item, items)
-    items.splice(items.indexOf(index), 1)
+  removeExpertise(event, item) {
+    event.preventDefault()
 
-    this.setState({ expertises: items })
+    let items = this.state.expertises
+    let ids = this.state.expertise_ids
+    let index = this.getExpertise(item, items)
+    items.splice(index, 1)
+    ids.splice(index, 1)
+    this.setState({ expertises: items, expertise_ids: ids })
   }
 
   checkExpertise(item, items) {
@@ -207,7 +275,6 @@ class UserBasicInfo extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error)
         if (error.response.status === 400) {
           this.setState((state) => {
             let error_messages = error.response.data.messages
@@ -229,13 +296,17 @@ class UserBasicInfo extends React.Component {
   createFormData() {
     const formData = new FormData()
     formData.append(dataName("role"), this.state.role)
-    formData.append(dataName("faculty"), this.state.faculty)
-    formData.append(dataName("year"), this.state.year)
+    let fac = this.props.faculties.find(
+      (item) => item.name === this.state.faculty
+    ).id
+    formData.append(dataName("faculty_id"), fac)
+    if (this.state.role === "student") {
+      formData.append(dataName("year"), this.state.year)
+    }
     formData.append(
       dataName("expertise_ids"),
       JSON.stringify(this.state.expertise_ids)
     )
-    console.log("skill ", JSON.stringify(tagsToArray(this.state.skills)))
     formData.append(
       dataName("skill_list"),
       JSON.stringify(tagsToArray(this.state.skills))
@@ -263,10 +334,8 @@ class UserBasicInfo extends React.Component {
       role,
       skills,
       expertises,
-      expertise_ids,
     } = this.state
-    console.log("State ", this.state)
-
+    const { faculties } = this.props
     return (
       <form
         className="d-flex flex-column"
@@ -312,9 +381,9 @@ class UserBasicInfo extends React.Component {
                 label="Faculty"
                 onChange={this.handleChange}
               >
-                {faculties.map((fac) => (
-                  <MenuItem key={fac.id} value={fac.faculty}>
-                    {fac.faculty}
+                {faculties.map((fac, key) => (
+                  <MenuItem key={key} value={fac.name}>
+                    {fac.name}
                   </MenuItem>
                 ))}
               </Select>
@@ -339,11 +408,11 @@ class UserBasicInfo extends React.Component {
                   value={year}
                   onChange={this.handleChange}
                 >
-                  <MenuItem value={1}>1</MenuItem>
-                  <MenuItem value={2}>2</MenuItem>
-                  <MenuItem value={3}>3</MenuItem>
-                  <MenuItem value={4}>4</MenuItem>
-                  <MenuItem value={"other"}>other</MenuItem>
+                  <MenuItem value={"1"}>1</MenuItem>
+                  <MenuItem value={"2"}>2</MenuItem>
+                  <MenuItem value={"3"}>3</MenuItem>
+                  <MenuItem value={"4"}>4</MenuItem>
+                  <MenuItem value={"other"}>Other</MenuItem>
                 </Select>
                 <FormHelperText error={errors.year.length > 0 ? true : false}>
                   {errors.year[0]}
@@ -400,8 +469,12 @@ class UserBasicInfo extends React.Component {
 UserBasicInfo.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string,
+  currentUser: PropTypes.object,
   allExpertises: PropTypes.array,
-  divisions: PropTypes.any,
+  skills: PropTypes.any,
+  userExpertises: PropTypes.any,
+  userSkills: PropTypes.any,
+  faculties: PropTypes.array,
 }
 
 export default UserBasicInfo

@@ -279,4 +279,17 @@
   &--icon {
     background-color: transparent;
   }
+
+  &--fullwidth {
+    width: 100%;
+    min-height: 40px;
+    max-height: 40px;
+
+    border-radius: 10px;
+
+    @media only screen and (min-width: $kollab-width-tablet) {
+      min-height: 48px;
+      max-height: 48px;
+    }
+  }
 }

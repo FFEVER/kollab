@@ -183,4 +183,14 @@
 
     color: $kollab-primary;
   }
+
+  &__create {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-top: $spacer-m;
+  }
 }

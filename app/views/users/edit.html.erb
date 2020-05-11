@@ -13,11 +13,10 @@
   <%= form_with(model: @user, url: profile_update_path, local: true) do |f| %>
     <div class="d-flex flex-row justify-content-between mb-1">
       <div>
-        <%= f.label :profile_image %>
-        <%= f.file_field :profile_image %>
+        <%= f.file_field :profile_image, label: "Choose a file" %>
       </div>
 
-      <button class="button--medium button--tags">
+      <button class="button--medium button--tags button--round">
         <%= f.submit "Update", class: 'button--transparent'%>
       </button>
     </div>

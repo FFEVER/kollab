@@ -17,7 +17,7 @@
       </div>
 
       <button class="button--medium button--tags button--round">
-        <%= f.submit "Update", class: 'button--transparent'%>
+        <%= f.submit "Update", class: 'button--transparent ml-2 mr-2'%>
       </button>
     </div>
   <% end %>
@@ -26,7 +26,7 @@
       authenticityToken: form_authenticity_token,
       submitPath: profile_update_path,
       currentUser: @user,
-      userExpertises: Expertising.where(expertisable_type: "User", expertise_id: @user.id),
+      userExpertises: Expertising.where(expertisable_type: "User", expertisable_id: @user.id),
       expertises: Expertise.all,
       faculties: Faculty.all,
       currentSkills: @user.skills,

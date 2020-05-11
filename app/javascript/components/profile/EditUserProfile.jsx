@@ -34,6 +34,8 @@ const dataName = (name) => {
   return DATA_PREFIX + "[" + name + "]"
 }
 
+const sc = ["Github", "Linkedin", "Facebook", "Instagram", "Medium"]
+
 const tagStyles = {
   ...defaultStyles,
   control: (provided, state) => ({
@@ -87,7 +89,7 @@ class EditUserProfile extends React.Component {
       expertise_ids: this.filterExpertiseId(this.props.userExpertises),
       skills: this.convertToTags(this.props.currentSkills),
       errors: defaultErrors,
-      socials: [],
+      socials: this.setSocials(),
       activateModal: "division",
     }
     this.convertToTags = this.convertToTags.bind(this)
@@ -104,6 +106,7 @@ class EditUserProfile extends React.Component {
     this.setUserExpertises = this.setUserExpertises.bind(this)
     this.convertExpertiesForDisplay = this.convertExpertiesForDisplay.bind(this)
     this.setFaculty = this.setFaculty.bind(this)
+    this.setSocials = this.setSocials.bind(this)
     this.addSocialLink = this.addSocialLink.bind(this)
     this.removeSocialLink = this.removeSocialLink.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -127,7 +130,6 @@ class EditUserProfile extends React.Component {
   }
 
   handleSocialChange(event) {
-    console.log("State ", this.state)
     let socials = this.state.socials
 
     //Check duplicate
@@ -298,6 +300,20 @@ class EditUserProfile extends React.Component {
     return faculties.find((item) => item.id === faculty_id).name
   }
 
+  setSocials() {
+    const { currentUser } = this.props
+    let list = []
+    sc.map((item) => {
+      if (currentUser[item.toLowerCase()] !== "") {
+        list.push({
+          social: item,
+          name: currentUser[item.toLowerCase()],
+        })
+      }
+    })
+    return list
+  }
+
   addSocialLink() {
     const { socials } = this.state
     if (socials.length === 0) {
@@ -313,7 +329,9 @@ class EditUserProfile extends React.Component {
     }
   }
 
-  removeSocialLink(index) {
+  removeSocialLink(event, index) {
+    event.preventDefault()
+
     let socials = this.state.socials
     socials.splice(index, 1)
     this.setState({ socials: socials })
@@ -391,15 +409,20 @@ class EditUserProfile extends React.Component {
       JSON.stringify(tagsToArray(this.state.skills))
     ),
       formData.append(dataName("phone"), this.state.phone)
-    formData.append(dataName("email"), this.state.email)
-    for (let i = 0; i < this.state.socials.length; i++) {
-      if (this.state.socials[i].name !== "") {
+    let socialType = this.state.socials.map(function (item) {
+      return item.social
+    })
+    sc.map((item) => {
+      if (socialType.includes(item)) {
         formData.append(
-          dataName(this.state.socials[i].social.toLowerCase()),
-          this.state.socials[i].name
+          dataName(item.toLowerCase()),
+          this.state.socials.find((i) => i.social === item).name
         )
+      } else {
+        formData.append(dataName(item.toLowerCase()), "")
       }
-    }
+    })
+    formData.append(dataName("email"), this.state.email)
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
   }
@@ -421,6 +444,8 @@ class EditUserProfile extends React.Component {
       email,
       socials,
     } = this.state
+    console.log("state ", this.state)
+    console.log("props ", this.props)
     return (
       <form className="d-flex flex-column" onSubmit={this.handleSubmit}>
         <h4>Faculty</h4>
@@ -533,7 +558,7 @@ class EditUserProfile extends React.Component {
         <div className="thin-line" />
         <div className="profile__section">
           <h4>Links</h4>
-          <div className="d-flex flex-row justify-content-between">
+          <div className="d-flex flex-row justify-content-between mt-1">
             <p>Social Links</p>
             <p className="link" onClick={() => this.addSocialLink()}>
               Add social link
@@ -556,7 +581,7 @@ class EditUserProfile extends React.Component {
           <Button
             name="submitButton"
             type="submit"
-            className="button--gradient-primary button--lg mt-3"
+            className="button--gradient-primary button--lg"
             isLoading={this.state.isButtonLoading}
           >
             Save

@@ -59,6 +59,7 @@ class UsersController < ApplicationController
     permitted = params.require(:user).permit(
       :first_name,
       :last_name,
+      :email,
       :role,
       :faculty_id,
       :year,
@@ -70,7 +71,8 @@ class UsersController < ApplicationController
       :github,
       :linkedin,
       :facebook,
-      :instagram
+      :instagram,
+      :medium
     )
     if permitted[:expertise_ids]
       permitted[:expertise_ids] = JSON.parse(permitted[:expertise_ids]) || []

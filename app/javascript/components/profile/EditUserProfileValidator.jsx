@@ -4,7 +4,7 @@ const defaultErrors = {
   email: [],
   phone: [],
   socials: [],
-  expertises: [],
+  userExpertises: [],
   skills: [],
 }
 
@@ -59,11 +59,11 @@ class EditUserProfileValidator {
   }
 
   static validateExpertises(state, errors) {
-    const { expertises } = state
-    const key = Object.keys({ expertises })[0]
-    if (expertises.length > 3) {
+    const { userExpertises } = state
+    const key = Object.keys({ userExpertises })[0]
+    if (userExpertises.length > 3) {
       errors[key].push("Expertise may have up to 3.")
-    } else if (expertises.length <= 0) {
+    } else if (userExpertises.length <= 0) {
       errors[key].push("Add at least 1 expertise")
     }
   }

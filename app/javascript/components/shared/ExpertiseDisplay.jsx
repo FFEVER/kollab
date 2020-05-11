@@ -6,9 +6,9 @@ class ExpertiseDisplay extends React.Component {
   render() {
     const expertises = this.props.expertises
     return (
-      <div className="form d-flex flex-column mt-3">
+      <div className="form d-flex flex-column mt-1 mb-3">
         {expertises.map((item, index) => (
-          <div className="mt-1" key={index}>
+          <div className="mt-2" key={index}>
             <p>
               {item.field
                 ? item.division + " > " + item.group + " > "

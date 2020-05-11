@@ -76,10 +76,12 @@ class EditUserProfile extends React.Component {
     this.state = {
       user: this.props.currentUser,
       year: this.props.currentUser.year,
-      faculty: this.props.currentUser.faculty,
-      bio: this.props.currentUser.description,
+      faculty: this.setFaculty(this.props.currentUser.faculty_id),
+      bio: this.props.currentUser.description
+        ? this.props.currentUser.description
+        : "",
       email: this.props.currentUser.email,
-      phone: this.props.currentUser.phone,
+      phone: this.props.currentUser.phone ? this.props.currentUser.phone : "",
       expertises: this.props.expertises,
       userExpertises: this.convertExpertiesForDisplay(),
       expertise_ids: this.filterExpertiseId(this.props.userExpertises),
@@ -90,13 +92,10 @@ class EditUserProfile extends React.Component {
     }
     this.convertToTags = this.convertToTags.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.handleSocialsChange = this.handleSocialsChange.bind(this)
-    this.handleExpertisesChange = this.handleExpertisesChange.bind(this)
-    this.handleExpertisesClear = this.handleExpertisesClear.bind(this)
+    this.handleSocialChange = this.handleSocialChange.bind(this)
+    this.handleSocialValueChange = this.handleSocialValueChange.bind(this)
     this.handleSkillsChange = this.handleSkillsChange.bind(this)
     this.handleSkillsClear = this.handleSkillsClear.bind(this)
-    this.addSocialLink = this.addSocialLink.bind(this)
-    this.setSocial = this.setSocial.bind(this)
     this.setDisplayExpertise = this.setDisplayExpertise.bind(this)
     this.removeExpertise = this.removeExpertise.bind(this)
     this.checkExpertise = this.checkExpertise.bind(this)
@@ -104,6 +103,9 @@ class EditUserProfile extends React.Component {
     this.filterExpertiseId = this.filterExpertiseId.bind(this)
     this.setUserExpertises = this.setUserExpertises.bind(this)
     this.convertExpertiesForDisplay = this.convertExpertiesForDisplay.bind(this)
+    this.setFaculty = this.setFaculty.bind(this)
+    this.addSocialLink = this.addSocialLink.bind(this)
+    this.removeSocialLink = this.removeSocialLink.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.submitForm = this.submitForm.bind(this)
     this.createFormData = this.createFormData.bind(this)
@@ -124,24 +126,37 @@ class EditUserProfile extends React.Component {
     })
   }
 
-  handleSocialsChange(event, index) {
-    let { socials } = this.state
-    socials[index].name = event.target.placeholder
-    socials[index].key = event.target.name
-    socials[index].value = event.target.value
-    this.setState({ socials: socials })
-  }
+  handleSocialChange(event) {
+    console.log("State ", this.state)
+    let socials = this.state.socials
 
-  handleExpertisesChange(value) {
-    this.setState({
-      expertises: [...this.state.expertises, ...value],
+    //Check duplicate
+    let socialValue = socials.map(function (item) {
+      return item.social
     })
+
+    if (!socialValue.includes(event.target.value)) {
+      socials[socials.length - 1] = {
+        social: event.target.value,
+        name:
+          socials[socials.length - 1].name !== ""
+            ? socials[socials.length - 1].name
+            : "",
+      }
+
+      //Set new value
+      this.setState({
+        socials: socials,
+      })
+    }
   }
 
-  handleExpertisesClear(value) {
-    // Handle clear or delete skills
+  handleSocialValueChange(event, index) {
+    let socials = this.state.socials
+    let temp = { social: socials[index].social, name: event.target.value }
+    socials[index] = temp
     this.setState({
-      expertises: value,
+      socials: socials,
     })
   }
 
@@ -154,24 +169,6 @@ class EditUserProfile extends React.Component {
   handleSkillsClear(value) {
     this.setState({
       skills: value,
-    })
-  }
-
-  addSocialLink() {
-    console.log("Add jaa")
-    return (
-      // <SocialLink
-      //   social={socials[0]}
-      //   handleChange={this.handleChange}
-      //   setSocial={this.setSocial}
-      // />
-      <div>huhuhehehaha</div>
-    )
-  }
-
-  setSocial(id, value) {
-    this.setState({
-      socials: [...this.state.socials, { id: id, value: value }],
     })
   }
 
@@ -249,7 +246,6 @@ class EditUserProfile extends React.Component {
     let obj = []
     let temp = {}
     userExpIds.map((key) => {
-      let id = key
       let exp = exps.find((item) => item.id === key)
 
       while (temp !== undefined) {
@@ -295,6 +291,32 @@ class EditUserProfile extends React.Component {
       }
     })
     return expsForDisplay
+  }
+
+  setFaculty(faculty_id) {
+    const { faculties } = this.props
+    return faculties.find((item) => item.id === faculty_id).name
+  }
+
+  addSocialLink() {
+    const { socials } = this.state
+    if (socials.length === 0) {
+      let newSocial = { social: "", name: "" }
+      this.setState({
+        socials: [...socials, newSocial],
+      })
+    } else if (socials[socials.length - 1].social !== "") {
+      let newSocial = { social: "", name: "" }
+      this.setState({
+        socials: [...socials, newSocial],
+      })
+    }
+  }
+
+  removeSocialLink(index) {
+    let socials = this.state.socials
+    socials.splice(index, 1)
+    this.setState({ socials: socials })
   }
 
   handleSubmit(event) {
@@ -354,26 +376,30 @@ class EditUserProfile extends React.Component {
 
   createFormData() {
     const formData = new FormData()
-    formData.append(dataName("faculty"), this.state.faculty)
+    let fac = this.props.faculties.find(
+      (item) => item.name === this.state.faculty
+    )
+    formData.append(dataName("faculty_id"), fac.id)
     formData.append(dataName("year"), this.state.year)
     formData.append(dataName("description"), this.state.bio)
-    formData.append(dataName("expertise"), this.state.expertise_ids)
     formData.append(
-      dataName("skills"),
+      dataName("expertise_ids"),
+      JSON.stringify(this.state.expertise_ids)
+    )
+    formData.append(
+      dataName("skill_list"),
       JSON.stringify(tagsToArray(this.state.skills))
     ),
       formData.append(dataName("phone"), this.state.phone)
     formData.append(dataName("email"), this.state.email)
-    // for (let i = 0; i < this.state.socials.length; i++) {
-    //   if (this.state.socials[i].value === null) {
-    //     formData.append(dataName(this.state.socials[i].key), "")
-    //   } else {
-    //     formData.append(
-    //       dataName(this.state.socials[i].key),
-    //       this.state.socials[i].value
-    //     )
-    //   }
-    // }
+    for (let i = 0; i < this.state.socials.length; i++) {
+      if (this.state.socials[i].name !== "") {
+        formData.append(
+          dataName(this.state.socials[i].social.toLowerCase()),
+          this.state.socials[i].name
+        )
+      }
+    }
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
   }
@@ -384,7 +410,6 @@ class EditUserProfile extends React.Component {
 
   render() {
     const {
-      user,
       errors,
       faculty,
       year,
@@ -395,137 +420,137 @@ class EditUserProfile extends React.Component {
       phone,
       email,
       socials,
-      github,
-      linkedin,
-      facebook,
-      instagram,
     } = this.state
-    console.log("props ", this.props)
-    console.log("state ", this.state)
     return (
       <form className="d-flex flex-column" onSubmit={this.handleSubmit}>
+        <h4>Faculty</h4>
+        <div className="profile__section">
+          <FormControl variant="outlined" size="small">
+            <Select name="faculty" value={faculty} onChange={this.handleChange}>
+              <MenuItem value="">
+                <em>Select your faculty</em>
+              </MenuItem>
+              {faculties.map((fac, key) => (
+                <MenuItem key={key} value={fac.faculty}>
+                  {fac.faculty}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+        <div className="profile__section">
+          <h4>Year of Study</h4>
+          <div className="profile__section">
+            <FormControl variant="outlined" size="small">
+              {/* <InputLabel>{this.state.faculty}</InputLabel> */}
+              <Select name="year" value={year} onChange={this.handleChange}>
+                <MenuItem value="">
+                  <em>Select your year of study</em>
+                </MenuItem>
+                <MenuItem value={"1"}>1</MenuItem>
+                <MenuItem value={"2"}>2</MenuItem>
+                <MenuItem value={"3"}>3</MenuItem>
+                <MenuItem value={"4"}>4</MenuItem>
+                <MenuItem value={"other"}>Other</MenuItem>
+              </Select>
+            </FormControl>
+          </div>
+        </div>
         <div className="thin-line" />
-        <div>
-          <div>
-            <h4>Faculty</h4>
-            <div className="profile__section">
-              <FormControl variant="outlined" size="small">
-                <Select
-                  name="faculty"
-                  value={faculty}
-                  onChange={this.handleChange}
-                >
-                  <MenuItem value="">
-                    <em>Select your faculty</em>
-                  </MenuItem>
-                  {faculties.map((fac, key) => (
-                    <MenuItem key={key} value={fac.faculty}>
-                      {fac.faculty}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </div>
-            <div className="profile__section">
-              <h4>Year of Study</h4>
-              <div className="profile__section">
-                <FormControl variant="outlined" size="small">
-                  {/* <InputLabel>{this.state.faculty}</InputLabel> */}
-                  <Select name="year" value={year} onChange={this.handleChange}>
-                    <MenuItem value="">
-                      <em>Select your year of study</em>
-                    </MenuItem>
-                    <MenuItem value={"1"}>1</MenuItem>
-                    <MenuItem value={"2"}>2</MenuItem>
-                    <MenuItem value={"3"}>3</MenuItem>
-                    <MenuItem value={"4"}>4</MenuItem>
-                    <MenuItem value={"other"}>Other</MenuItem>
-                  </Select>
-                </FormControl>
-              </div>
-            </div>
-          </div>
-          <div className="thin-line" />
+        <div className="profile__section">
+          <h4>Bio</h4>
           <div className="profile__section">
-            <h4>Bio</h4>
-            <div className="profile__section">
-              <TextField
-                name={"bio"}
-                multiline
-                rows="4"
-                defaultValue={bio}
-                variant="outlined"
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="thin-line" />
-          <ExpertiseModal
-            expertises={expertises}
-            setExpertiseDisplayFunc={this.setDisplayExpertise}
-            disable={userExpertises.length > 2 ? true : false}
-          />{" "}
-          <FormHelperText error={errors.expertises.length > 0 ? true : false}>
-            {errors.expertises[0]}
-          </FormHelperText>
-          {userExpertises.length > 0 ? (
-            <ExpertiseDisplay
-              expertises={userExpertises}
-              removeExpertise={(item) => this.removeExpertise(item)}
-            />
-          ) : (
-            <div />
-          )}
-          <div className="thin-line" />
-          <div className="profile__section">
-            <h4>Skills</h4>
-            <TagInput
-              className="mt-3"
-              value={skills}
-              onChange={this.handleSkillsClear}
-              onKeyDown={this.handleSkillsChange}
-              placeholder="Type your skill and press enter"
-              errors={errors.skills}
-              id="skills"
-              styles={tagStyles}
-              errorStyles={tagErrorStyles}
+            <TextField
+              name={"bio"}
+              multiline
+              rows="4"
+              defaultValue={bio}
+              variant="outlined"
+              onChange={this.handleChange}
             />
           </div>
-          <div className="thin-line" />
-          <div className="profile__section">
-            <h4>Contact</h4>
-            <div className="profile__item--icon">
-              <img className="icon--round mr-2" src={contact} />
-              <FormInput
-                name="phone"
-                placeholder="Phone"
-                type="text"
-                value={phone}
-                className="form-control auto-height"
-                onChange={this.handleChange}
-                errors={errors.phone}
-              />
-            </div>
-            <div className="profile__item--icon">
-              <img className="icon--round mr-2" src={mail} />
-              <FormInput
-                name="email"
-                placeholder="E-mail"
-                type="text"
-                value={email}
-                className="form-control auto-height"
-                onChange={this.handleChange}
-                errors={errors.email}
-              />
-            </div>
+        </div>
+        <div className="thin-line" />
+        <ExpertiseModal
+          expertises={expertises}
+          setExpertiseDisplayFunc={this.setDisplayExpertise}
+          disable={userExpertises.length > 2 ? true : false}
+        />{" "}
+        <FormHelperText error={errors.userExpertises.length > 0 ? true : false}>
+          {errors.userExpertises[0]}
+        </FormHelperText>
+        {userExpertises.length > 0 ? (
+          <ExpertiseDisplay
+            expertises={userExpertises}
+            removeExpertise={(item) => this.removeExpertise(item)}
+          />
+        ) : (
+          <div />
+        )}
+        <div className="thin-line" />
+        <div className="profile__section">
+          <h4>Skills</h4>
+          <TagInput
+            className="mt-3"
+            value={skills}
+            onChange={this.handleSkillsClear}
+            onKeyDown={this.handleSkillsChange}
+            placeholder="Type your skill and press enter"
+            errors={errors.skills}
+            id="skills"
+            styles={tagStyles}
+            errorStyles={tagErrorStyles}
+          />
+        </div>
+        <div className="thin-line" />
+        <div className="profile__section">
+          <h4>Contact</h4>
+          <div className="profile__item--icon">
+            <img className="icon--round mr-2" src={contact} />
+            <FormInput
+              name="phone"
+              placeholder="Phone"
+              type="text"
+              value={phone}
+              className="form-control auto-height"
+              onChange={this.handleChange}
+              errors={errors.phone}
+            />
           </div>
-          <div className="profile__section">
-            <h4>Links</h4>
+          <div className="profile__item--icon">
+            <img className="icon--round mr-2" src={mail} />
+            <FormInput
+              name="email"
+              placeholder="E-mail"
+              type="text"
+              value={email}
+              className="form-control auto-height"
+              onChange={this.handleChange}
+              errors={errors.email}
+            />
+          </div>
+        </div>
+        <div className="thin-line" />
+        <div className="profile__section">
+          <h4>Links</h4>
+          <div className="d-flex flex-row justify-content-between">
             <p>Social Links</p>
             <p className="link" onClick={() => this.addSocialLink()}>
               Add social link
             </p>
           </div>
+          {socials.map((item, key) => (
+            <SocialLink
+              key={key}
+              index={key}
+              social={socials[key].social}
+              value={socials[key].name}
+              error={errors.socials}
+              handleSocialChange={this.handleSocialChange}
+              handleValueChange={this.handleSocialValueChange}
+              handleRemoveSocial={this.removeSocialLink}
+            />
+          ))}
         </div>
         <div className="d-flex flex-column align-items-center">
           <Button
@@ -549,6 +574,7 @@ EditUserProfile.propTypes = {
   userExpertises: PropTypes.array,
   currentSkills: PropTypes.array,
   expertises: PropTypes.array,
+  faculties: PropTypes.array,
 }
 
 export default EditUserProfile

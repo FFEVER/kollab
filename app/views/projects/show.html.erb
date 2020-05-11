@@ -66,12 +66,19 @@
   </section>
 
   <section class="section section__tags">
+    <h2>Expertise</h2>
+    <div>
+      <% @project.expertise_ids.each do |id|%>
+        <%= link_to Expertise.find(id).name, "", class: "button--tags"%>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="section section__tags">
     <h2>Tags</h2>
     <div>
       <% @project.tag_list.each do |tag|%>
-        <button class="button button--md button--tag">
-          <%= "##{tag}" %>
-        </button>
+        <%= link_to tag, "", class: "button--tags"%>
       <% end %>
     </div>
   </section>

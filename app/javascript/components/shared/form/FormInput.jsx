@@ -11,6 +11,7 @@ const FormInput = ({
   children,
   label,
   isRequired,
+  pattern,
   ...props
 }) => {
   return (
@@ -25,6 +26,7 @@ const FormInput = ({
         type={type}
         placeholder={placeholder}
         onChange={onChange}
+        pattern={pattern ? pattern : ""}
         className={`${className} ${errors.length === 0 ? "" : "input-error"}`}
         {...props}
       />
@@ -41,20 +43,21 @@ FormInput.defaultProps = {
   type: "text",
   className: "",
   isRequired: false,
-  placeholder: ""
+  placeholder: "",
 }
 
 FormInput.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
-  type: PropTypes.oneOf(["text", "number", "password", "date"]),
+  type: PropTypes.oneOf(["text", "number", "password", "date", "tel"]),
   placeholder: PropTypes.string.isRequired,
   className: PropTypes.string,
   value: PropTypes.any,
   onChange: PropTypes.func.isRequired,
   isRequired: PropTypes.bool,
   label: PropTypes.string,
-  errors: PropTypes.arrayOf(PropTypes.string)
+  errors: PropTypes.arrayOf(PropTypes.string),
+  pattern: PropTypes.string,
 }
 
 export default FormInput

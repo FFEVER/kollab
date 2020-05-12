@@ -444,8 +444,6 @@ class EditUserProfile extends React.Component {
       email,
       socials,
     } = this.state
-    console.log("state ", this.state)
-    console.log("props ", this.props)
     return (
       <form className="d-flex flex-column" onSubmit={this.handleSubmit}>
         <h4>Faculty</h4>
@@ -535,11 +533,12 @@ class EditUserProfile extends React.Component {
             <FormInput
               name="phone"
               placeholder="Phone"
-              type="text"
+              type="tel"
               value={phone}
               className="form-control auto-height"
               onChange={this.handleChange}
               errors={errors.phone}
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             />
           </div>
           <div className="profile__item--icon">

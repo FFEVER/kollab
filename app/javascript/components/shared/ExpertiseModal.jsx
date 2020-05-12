@@ -82,7 +82,7 @@ class ExpertiseModal extends React.Component {
     const { errors, division, group, field, activateModal } = this.state
     const { expertises } = this.props
     return (
-      <div className="form d-flex flex-column mt-2">
+      <div className="form d-flex flex-column mt-3">
         <div className="d-flex flex-row justify-content-between">
           <h4>Expertise</h4>
           <Button

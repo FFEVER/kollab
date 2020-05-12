@@ -23,7 +23,6 @@ import edit from "../../images/icon/edit.png"
 import contact from "../../images/icon/phone-call.png"
 import mail from "../../images/icon/mail.png"
 import faculties from "../../../assets/utils/faculties"
-import socials from "../../../assets/utils/socials"
 
 import Button from "../shared/form/Button"
 import FormInput from "../shared/form/FormInput"

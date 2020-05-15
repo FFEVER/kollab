@@ -537,15 +537,16 @@ class EditUserProfile extends React.Component {
               className="form-control auto-height"
               onChange={this.handleChange}
               errors={errors.phone}
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              pattern="[0-9]{10}"
             />
           </div>
           <div className="profile__item--icon">
             <img className="icon--round mr-2" src={mail} />
             <FormInput
+              id="email"
               name="email"
               placeholder="E-mail"
-              type="text"
+              type="email"
               value={email}
               className="form-control auto-height"
               onChange={this.handleChange}

@@ -26,7 +26,7 @@ const FormInput = ({
         type={type}
         placeholder={placeholder}
         onChange={onChange}
-        pattern={pattern ? pattern : ""}
+        pattern={pattern ? pattern : undefined}
         className={`${className} ${errors.length === 0 ? "" : "input-error"}`}
         {...props}
       />
@@ -49,7 +49,7 @@ FormInput.defaultProps = {
 FormInput.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
-  type: PropTypes.oneOf(["text", "number", "password", "date", "tel"]),
+  type: PropTypes.oneOf(["text", "number", "password", "date", "tel", "email"]),
   placeholder: PropTypes.string.isRequired,
   className: PropTypes.string,
   value: PropTypes.any,

@@ -6,3 +6,5 @@ end
 json.expertises do
   json.array! expertise_ids
 end
+
+json.skills user.skills.map { |s| s.name }

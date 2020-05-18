@@ -69,4 +69,12 @@ class Project < ApplicationRecord
   def followed_by?(user)
     followers.include?(user)
   end
+
+  def categories_tree
+    tree = []
+    expertises.each do |expertise|
+      tree << expertise.parents_tree
+    end
+    tree
+  end
 end

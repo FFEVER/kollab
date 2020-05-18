@@ -116,6 +116,6 @@ class User < ApplicationRecord
     expertises.each do |expertise|
       tree << expertise.parents_tree
     end
-    return tree
+    tree
   end
 end

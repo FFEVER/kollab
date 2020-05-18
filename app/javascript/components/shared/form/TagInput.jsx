@@ -3,28 +3,28 @@ import PropTypes from "prop-types"
 import CreatableSelect from "react-select/creatable"
 
 const components = {
-  DropdownIndicator: null
+  DropdownIndicator: null,
 }
 
-const createOption = label => ({
+const createOption = (label) => ({
   label,
-  value: label
+  value: label,
 })
 
-const tagsToArray = tags => {
+const tagsToArray = (tags) => {
   let tagsArray = []
-  tags.forEach(tagObj => {
+  tags.forEach((tagObj) => {
     tagsArray = [...tagsArray, tagObj["value"]]
   })
   return tagsArray
 }
 
-const customStyles = {
+const defaultStyles = {
   container: (provided, state) => ({
     ...provided,
     minWidth: "100%",
     margin: 0,
-    padding: 0
+    padding: 0,
   }),
   control: (provided, state) => ({
     ...provided,
@@ -32,25 +32,25 @@ const customStyles = {
     cursor: "text",
     boxShadow: state.isFocused ? "0 0 3px #54bdc2" : "",
     "&:hover": {
-      borderColor: "none"
-    }
+      borderColor: "none",
+    },
   }),
   multiValue: (provided, state) => ({
     ...provided,
-    lineHeight: "24px"
+    lineHeight: "24px",
   }),
   multiValueLabel: (provided, state) => ({
     ...provided,
-    fontSize: "100% !important"
+    fontSize: "100% !important",
   }),
   placeholder: (provided, state) => ({
     ...provided,
-    fontSize: "medium"
-  })
+    fontSize: "medium",
+  }),
 }
 
 const customErrorStyles = {
-  ...customStyles,
+  ...defaultStyles,
   control: (provided, state) => ({
     ...provided,
     minWidth: "100%",
@@ -58,15 +58,15 @@ const customErrorStyles = {
     boxShadow: state.isFocused ? "0 0 3px #ce7171" : "",
     cursor: "text",
     "&:hover": {
-      borderColor: "red"
-    }
-  })
+      borderColor: "red",
+    },
+  }),
 }
 
 class TagInput extends React.Component {
   // TODO: [Eit] Show suggestions while typing
   state = {
-    inputValue: ""
+    inputValue: "",
   }
 
   removeDup = () => {
@@ -88,11 +88,11 @@ class TagInput extends React.Component {
     this.props.onChange(value)
   }
 
-  handleInputChange = inputValue => {
+  handleInputChange = (inputValue) => {
     this.setState({ inputValue })
   }
 
-  handleKeyDown = event => {
+  handleKeyDown = (event) => {
     const { inputValue } = this.state
     if (!inputValue) return
     switch (event.key) {
@@ -106,7 +106,7 @@ class TagInput extends React.Component {
         }
         this.props.onKeyDown(newTagObjList)
         this.setState({
-          inputValue: ""
+          inputValue: "",
         })
         event.preventDefault()
     }
@@ -146,8 +146,8 @@ TagInput.defaultProps = {
   placeholder: "",
   errors: [],
   id: "",
-  styles: customStyles,
-  errorStyles: customErrorStyles
+  styles: defaultStyles,
+  errorStyles: customErrorStyles,
 }
 
 TagInput.propTypes = {
@@ -158,8 +158,8 @@ TagInput.propTypes = {
   onKeyDown: PropTypes.func.isRequired,
   id: PropTypes.string,
   styles: PropTypes.object,
-  errorStyles: PropTypes.object
+  errorStyles: PropTypes.object,
 }
 
 export default TagInput
-export { tagsToArray, TagInput }
+export { tagsToArray, defaultStyles, TagInput }

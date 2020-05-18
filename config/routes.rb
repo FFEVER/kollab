@@ -18,8 +18,10 @@ Rails.application.routes.draw do
       post 'unfollow'
       get 'followers'
       get 'followings'
+      get 'basic_info'
     end
   end
+
   get 'profile/edit', to: 'users#edit'
   match 'profile/update', to: 'users#update', via: %i[put patch]
 
@@ -35,7 +37,7 @@ Rails.application.routes.draw do
   namespace :api, constraints: {format: 'json'} do
     namespace :v1 do
       resources :users, only: %i[index]
-      resources :expertises, only: %i[index]
+      resources :projects, only: %i[index]
     end
   end
 end

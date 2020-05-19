@@ -33,9 +33,7 @@ class EditUserProfileValidator {
 
     if (email === undefined || email.length < 1) {
       errors[key].push("E-mail is required.")
-    }
-
-    if (email.indexOf("@") == -1 && email.indexOf(".") == -1) {
+    } else if (email.indexOf("@") == -1 && email.indexOf(".") == -1) {
       errors[key].push("Invalid form of email")
     }
   }
@@ -45,7 +43,7 @@ class EditUserProfileValidator {
     const key = Object.keys({ phone })[0]
 
     if (phone === undefined || phone.length < 1) {
-      errors[key].push("Password is required.")
+      errors[key].push("Phone number is required.")
     }
   }
 
@@ -54,7 +52,7 @@ class EditUserProfileValidator {
     const key = Object.keys({ email })[0]
 
     if (socials === undefined || socials.length < 1) {
-      errors[key].push("Password is required.")
+      errors[key].push("Social link is required.")
     }
   }
 

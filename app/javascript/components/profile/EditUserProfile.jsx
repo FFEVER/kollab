@@ -303,7 +303,10 @@ class EditUserProfile extends React.Component {
     const { currentUser } = this.props
     let list = []
     sc.map((item) => {
-      if (currentUser[item.toLowerCase()] !== "") {
+      if (
+        currentUser[item.toLowerCase()] !== "" &&
+        currentUser[item.toLowerCase()] !== null
+      ) {
         list.push({
           social: item,
           name: currentUser[item.toLowerCase()],
@@ -443,6 +446,7 @@ class EditUserProfile extends React.Component {
       email,
       socials,
     } = this.state
+    console.log("state ", this.state)
     return (
       <form className="d-flex flex-column" onSubmit={this.handleSubmit}>
         <h4>Faculty</h4>
@@ -528,27 +532,27 @@ class EditUserProfile extends React.Component {
         <div className="profile__section">
           <h4>Contact</h4>
           <div className="profile__item--icon">
-            <img className="icon--round mr-2" src={contact} />
+            <img className="icon--round mr-2 mt-2" src={contact} />
             <FormInput
               name="phone"
               placeholder="Phone"
               type="tel"
               value={phone}
-              className="form-control auto-height"
+              className="form-control fix-height"
               onChange={this.handleChange}
               errors={errors.phone}
               pattern="[0-9]{10}"
             />
           </div>
           <div className="profile__item--icon">
-            <img className="icon--round mr-2" src={mail} />
+            <img className="icon--round mr-2 mt-2" src={mail} />
             <FormInput
               id="email"
               name="email"
               placeholder="E-mail"
               type="email"
               value={email}
-              className="form-control auto-height"
+              className="form-control fix-height"
               onChange={this.handleChange}
               errors={errors.email}
             />

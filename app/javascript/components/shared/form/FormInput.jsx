@@ -12,6 +12,7 @@ const FormInput = ({
   label,
   isRequired,
   pattern,
+  icon,
   ...props
 }) => {
   return (
@@ -20,16 +21,19 @@ const FormInput = ({
         {label}
         {isRequired && "*"}
       </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        onChange={onChange}
-        pattern={pattern ? pattern : undefined}
-        className={`${className} ${errors.length === 0 ? "" : "input-error"}`}
-        {...props}
-      />
+      <div className="d-flex flex-column">
+        <input
+          id={name}
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          onChange={onChange}
+          pattern={pattern ? pattern : undefined}
+          className={`${className} ${errors.length === 0 ? "" : "input-error"}`}
+          {...props}
+        />
+      </div>
+      {console.log("Error ", errors)}
       {errors.map((message, index) => (
         <div key={index} className="error-message">
           <small>{message}</small>
@@ -58,6 +62,7 @@ FormInput.propTypes = {
   label: PropTypes.string,
   errors: PropTypes.arrayOf(PropTypes.string),
   pattern: PropTypes.string,
+  icon: PropTypes.any,
 }
 
 export default FormInput

@@ -19,4 +19,17 @@ class Expertise < ApplicationRecord
   def self.fields(group)
     group.subexpertises
   end
+
+  def parents_tree
+    parents_tree_helper(self, [self])
+  end
+
+  private
+
+  def parents_tree_helper(expertise, tree)
+    return tree if expertise.parent.nil?
+
+    tree.unshift(expertise.parent)
+    parents_tree_helper(expertise.parent, tree)
+  end
 end

@@ -258,7 +258,7 @@ class ExpertiseModal extends React.Component {
                   <div />
                 )}
               </div>
-              <div className="modal-footer">
+              <div className="modal-footer justify-content-center">
                 <Button
                   name="expertise"
                   type="button"

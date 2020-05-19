@@ -217,7 +217,6 @@ class ProjectCreateForm extends React.Component {
       isButtonLoading,
       expertises,
     } = this.state
-    console.log("state ", this.state)
     return (
       <form onSubmit={this.handleSubmit} className="project__form" noValidate>
         <div className="form-group">

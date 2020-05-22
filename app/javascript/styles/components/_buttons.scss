@@ -208,17 +208,11 @@
     font-style: normal;
     font-stretch: normal;
 
-    height: 2rem;
-    padding-right: 20px;
-    padding-left: 20px;
-
     letter-spacing: normal;
     text-transform: uppercase;
 
-    &--orange {
-      color: $kollab-orange;
-      background-color: rgba(255, 156, 70, 0.12);
-    }
+    color: $kollab-orange;
+    background-color: rgba(255, 156, 70, 0.12);
   }
 
   &--tag {

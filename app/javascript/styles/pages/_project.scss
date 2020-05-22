@@ -27,7 +27,7 @@
 
     .section {
       width: 100%;
-      margin-bottom: $spacer-l;
+      margin-bottom: $spacer-m;
 
       &__header {
         display: flex;
@@ -35,12 +35,16 @@
         color: black;
 
         &__title {
-          margin-bottom: $spacer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
+
         &__actions {
           display: flex;
+          flex-direction: row;
 
-          margin-bottom: $spacer;
+          margin-bottom: $spacer-xs;
 
           button {
             margin-right: $spacer-s;
@@ -142,7 +146,6 @@
 
     &__header {
       margin: -1 * $spacer-l -1 * $spacer;
-      margin-bottom: $spacer;
     }
   }
 
@@ -182,5 +185,9 @@
     margin-top: $spacer;
 
     color: $kollab-primary;
+  }
+
+  &__fullwidth {
+    width: 100%;
   }
 }

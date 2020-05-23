@@ -1,17 +1,10 @@
 <div class="project project--with-margin">
   <header>
-    <h1>Edit Project</h1>
+    <h1>Setting (Projects) </h1>
   </header>
 
-  <%= react_component("projects/EditProject",
-    {
-      authenticityToken: form_authenticity_token,
-      submitPath: projects_path,
-      currentUser: current_user,
-      currentProject: @project,
-      expertiseIds: Expertising.where(expertisable_type: "Project",expertise_id: @project.id),
-      expertises: Expertise.all,
-      tagIds: Tagging.where(project_id: @project.id),
-      tags: Tag.all
-    })
-  %>
+  <%= tabs_tag do |tab| %>
+    <%= tab.home      'Homepage', root_path, :style => "padding: 10px" %>
+    <%= tab.dashboard 'Dashboard', edit_projects_settings_project_path %>
+  <% end %>
+</div>

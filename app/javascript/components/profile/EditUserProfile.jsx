@@ -90,7 +90,9 @@ class EditUserProfile extends React.Component {
       errors: defaultErrors,
       socials: this.setSocials(),
       activateModal: "division",
+      isButtonLoading: false,
     }
+
     this.convertToTags = this.convertToTags.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSocialChange = this.handleSocialChange.bind(this)

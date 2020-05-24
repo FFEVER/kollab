@@ -47,7 +47,7 @@ class SocialLink extends React.Component {
         />
         <Button
           name="delete-button"
-          className="button--transparent align-self-center"
+          className="button button--transparent align-self-center p-0"
           onClick={(e) => handleRemoveSocial(e, index)}
         >
           <i className="far fa-times-circle fa-2x" />

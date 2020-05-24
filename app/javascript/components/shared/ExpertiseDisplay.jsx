@@ -16,7 +16,7 @@ class ExpertiseDisplay extends React.Component {
                 ? item.division + " > "
                 : ""}
             </p>
-            <div className="tag-card">
+            <div className="tag-card mt-1">
               {item.field
                 ? item.field
                 : item.group
@@ -24,7 +24,7 @@ class ExpertiseDisplay extends React.Component {
                 : item.division}
               <Button
                 name="exp-icon"
-                className="button--transparent ml-1"
+                className="button button--transparent p-0"
                 onClick={(e) => this.props.removeExpertise(e, item)}
               >
                 <i className="fas fa-times"></i>

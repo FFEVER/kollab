@@ -47,9 +47,9 @@
           }
         }
         &__short-desc {
-          flex-wrap: wrap;
-
           margin-bottom: $spacer-m;
+
+          overflow-wrap: break-word;
         }
       }
 

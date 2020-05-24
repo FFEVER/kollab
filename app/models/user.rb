@@ -110,4 +110,12 @@ class User < ApplicationRecord
       completed
     end
   end
+
+  def expertises_tree
+    tree = []
+    expertises.each do |expertise|
+      tree << expertise.parents_tree
+    end
+    tree
+  end
 end

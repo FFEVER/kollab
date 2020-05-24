@@ -173,6 +173,15 @@
     &__title {
       letter-spacing: normal;
     }
+    &__short-desc {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+
+      text-overflow: ellipsis;
+
+      -webkit-line-clamp: 2;
+    }
   }
 
   &__link {

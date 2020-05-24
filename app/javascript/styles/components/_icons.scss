@@ -28,3 +28,16 @@
 
   color: $kollab-gray;
 }
+
+.fa-plus {
+  &__project {
+    font-size: 20px;
+
+    position: absolute;
+    right: 0;
+
+    padding-right: 10px;
+
+    color: white;
+  }
+}

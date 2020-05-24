@@ -19,8 +19,13 @@
     </section>
   <% else %>
     <h1>My Projects</h1>
+    <%= link_to new_project_path, class: "project__create" do%>
+      <button class="button button--fullwidth button--primary">
+        Create a new project
+      </button>
+      <i class="fa fa-plus-circle fa-plus__project" aria-hidden="true"></i>
+    <% end %>
   <% end %>
-
   <% if @page.blank? %>
     <section class="list project__index__menu">
       <%= link_to user_projects_path(page: "Owned"), class: "list__item" do %>

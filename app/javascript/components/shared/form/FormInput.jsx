@@ -15,10 +15,14 @@ const FormInput = ({
 }) => {
   return (
     <>
-      <label htmlFor={name}>
+      {/* <label htmlFor={name}>
         {label}
         {isRequired && "*"}
-      </label>
+      </label> */}
+      <div className="d-flex flex-row mt-2 mb-2">
+        <h4>{label}</h4>
+        {isRequired ? <h6>*</h6> : <div />}
+      </div>
       <input
         id={name}
         name={name}
@@ -41,7 +45,7 @@ FormInput.defaultProps = {
   type: "text",
   className: "",
   isRequired: false,
-  placeholder: ""
+  placeholder: "",
 }
 
 FormInput.propTypes = {
@@ -54,7 +58,7 @@ FormInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   isRequired: PropTypes.bool,
   label: PropTypes.string,
-  errors: PropTypes.arrayOf(PropTypes.string)
+  errors: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default FormInput

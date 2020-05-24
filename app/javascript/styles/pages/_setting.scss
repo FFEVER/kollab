@@ -1,0 +1,63 @@
+.setting {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: $spacer-m;
+  margin-bottom: $spacer-m;
+  padding-right: $spacer-m;
+  padding-left: $spacer-m;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__item {
+    align-items: center;
+    &__col {
+      &--image {
+        margin-right: $spacer-s;
+      }
+
+      &--actions {
+        margin-left: auto;
+      }
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: $spacer-m;
+  }
+
+  &__role-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 67px;
+    height: 24px;
+
+    text-transform: uppercase;
+
+    &__open {
+      color: $kollab-primary;
+      border-radius: 5px;
+      background-color: #e8f4f5;
+    }
+
+    &__close {
+      color: #bcbcbc;
+      border-radius: 5px;
+      background-color: $kollab-gray-bg;
+    }
+  }
+}
+
+@media screen and (min-width: $kollab-width-tablet) {
+  .setting {
+    margin: 50px auto auto auto;
+  }
+}

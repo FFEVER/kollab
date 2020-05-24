@@ -22,3 +22,64 @@
   border-radius: 10px;
   background-color: $kollab-gray-light;
 }
+
+.member-card {
+  display: flex;
+  flex-direction: row;
+
+  width: 98%;
+  min-height: 60px;
+  margin-top: $spacer-s;
+  padding: $spacer-m;
+
+  background-color: white;
+  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
+
+  &__detail {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: $spacer-m;
+  }
+}
+
+.role-card {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 98%;
+  height: 60px;
+  margin: $spacer-xs;
+  padding: $spacer-m;
+
+  background-color: white;
+  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
+}
+
+.card-with-button {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 98%;
+  min-height: 60px;
+  margin-top: $spacer-s;
+  padding: $spacer-m;
+
+  background-color: white;
+  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
+
+  &__image {
+    align-self: center;
+  }
+
+  &__detail {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: $spacer-m;
+  }
+}

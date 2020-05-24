@@ -1,5 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
+import MemberCard from "./cards/MemberCard"
+import RoleCard from "./cards/RoleCard"
+import WaitListCard from "./cards/WaitListCard"
+import PendingCard from "./cards/PendingCard"
+import SuggestMemberCard from "./cards/SuggestMemberCard"
 
 const constMembers = [
   {
@@ -34,7 +39,7 @@ const constRoles = [
     skillIds: [1, 2],
     skills: ["BackendDeveloper", "RoR"],
     descriotion: "- Develop backend using ROR",
-    status: "Close",
+    status: "Closed",
   },
   {
     id: 2,
@@ -44,7 +49,7 @@ const constRoles = [
     skillIds: [3, 4],
     skills: ["FrontendDeveloper", "React"],
     descriotion: "- Develop frontend using React",
-    status: "Close",
+    status: "Closed",
   },
   {
     id: 3,
@@ -54,7 +59,7 @@ const constRoles = [
     skillIds: [5],
     skills: ["BusinessAnalysis"],
     descriotion: "- Define business model",
-    status: "Close",
+    status: "Closed",
   },
   {
     id: 4,
@@ -68,12 +73,28 @@ const constRoles = [
   },
 ]
 
+const defaultUsers = [
+  {
+    id: 1,
+    name: "Tharita Yoyo",
+    expertise: ["Software Engineering"],
+    faculty: "Faculty of Engineering",
+  },
+  {
+    id: 2,
+    name: "Panupong Eiei",
+    expertise: ["Software Engineering"],
+    faculty: "Faculty of Engineering",
+  },
+]
+
 class MemberManagement extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       members: [],
       roles: [],
+      defaultUsers: [],
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -83,6 +104,7 @@ class MemberManagement extends React.Component {
     this.setState({
       members: constMembers,
       roles: constRoles,
+      defaultUsers: defaultUsers,
     })
   }
 
@@ -94,11 +116,52 @@ class MemberManagement extends React.Component {
 
   render() {
     const { currentUser } = this.props
-    const { memmbers, roles } = this.state
+    const { members, roles, defaultUsers } = this.state
     console.log("State ", this.state)
     console.log("Props ", this.props)
-    return
-    ;<div></div>
+    return (
+      <div className="setting">
+        <div className="setting__section">
+          <h2>Memmbers</h2>
+          {members.map((item, index) => (
+            <MemberCard
+              key={index}
+              user={item}
+              role={roles.find((r) => r.id === item.roleId)}
+            />
+          ))}
+        </div>
+
+        <div className="setting__section">
+          <h2>Roles</h2>
+          {roles.map((item, index) => (
+            <RoleCard key={index} role={item} />
+          ))}
+          <p className="mt-2" style={{ color: "#54bdc2", alignSelf: "center" }}>
+            Add Roles
+          </p>
+        </div>
+        <div className="setting__section">
+          <h2>Waiting lists</h2>
+          {defaultUsers.map((item, index) => (
+            <WaitListCard key={index} user={item} />
+          ))}
+        </div>
+
+        <div className="setting__section">
+          <h2>Pending</h2>
+          {defaultUsers.map((item, index) => (
+            <PendingCard key={index} user={item} />
+          ))}
+        </div>
+        <div className="setting__section">
+          <h2>Suggested teammates</h2>
+          {defaultUsers.map((item, index) => (
+            <SuggestMemberCard key={index} user={item} />
+          ))}
+        </div>
+      </div>
+    )
   }
 }
 

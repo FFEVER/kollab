@@ -200,7 +200,9 @@ class EditUserProfile extends React.Component {
     }
   }
 
-  removeExpertise(item) {
+  removeExpertise(event, item) {
+    event.preventDefault()
+
     let items = this.state.userExpertises
     let ids = this.state.expertise_ids
     let index = this.getExpertise(item, items)
@@ -523,7 +525,7 @@ class EditUserProfile extends React.Component {
         {userExpertises.length > 0 ? (
           <ExpertiseDisplay
             expertises={userExpertises}
-            removeExpertise={(item) => this.removeExpertise(item)}
+            removeExpertise={this.removeExpertise}
           />
         ) : (
           <div />

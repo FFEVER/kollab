@@ -597,7 +597,7 @@ class EditUserProfile extends React.Component {
           <Button
             name="submitButton"
             type="submit"
-            className="button--gradient-primary button--lg"
+            className="button button--gradient-primary button--lg"
             isLoading={this.state.isButtonLoading}
           >
             Save

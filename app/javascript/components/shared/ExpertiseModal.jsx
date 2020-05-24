@@ -90,7 +90,7 @@ class ExpertiseModal extends React.Component {
           </div>
           <Button
             name="addExpertise"
-            className="button--icon"
+            className="button button--icon"
             type="button"
             data-toggle="modal"
             data-target="#expertiseModal"

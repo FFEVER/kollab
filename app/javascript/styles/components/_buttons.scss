@@ -47,6 +47,19 @@
     }
   }
 
+  &--fullwidth {
+    width: 100%;
+    min-height: 40px;
+    max-height: 40px;
+
+    border-radius: 24px;
+
+    @media only screen and (min-width: $kollab-width-tablet) {
+      min-height: 48px;
+      max-height: 48px;
+    }
+  }
+
   &--unstar {
     color: $kollab-yellow;
     background-color: white;
@@ -195,8 +208,8 @@
     align-items: center;
 
     height: 28px;
-    margin-left: 10px;
-    padding-top: 3px;
+    margin-right: 10px;
+    padding-top: 5px;
     padding-right: 10px;
     padding-left: 10px;
 
@@ -272,5 +285,18 @@
 
   &--icon {
     background-color: transparent;
+  }
+
+  &--fullwidth {
+    width: 100%;
+    min-height: 40px;
+    max-height: 40px;
+
+    border-radius: 10px;
+
+    @media only screen and (min-width: $kollab-width-tablet) {
+      min-height: 48px;
+      max-height: 48px;
+    }
   }
 }

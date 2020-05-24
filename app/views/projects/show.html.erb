@@ -32,81 +32,94 @@
         <%= button_to "Follow", follow_project_path, method: :post,
             class: "button button--md button--follow--md", remote: true %>
       <% end %>
-    </div>
-    <button class="button button--md button--status">In progress</button>
-  </section>
+    </section>
 
-  <% if @project.owners.map(&:id).include? current_user.id%>
-    <%= button_to "Edit Project", edit_project_path, class: "section button button--md project__fullwidth", method: :get %>
-  <%end%>
+  </div>
+  <button class="button button--md button--status">In progress</button>
+</section>
 
-  <section class="section__header__short-desc">
-    <p><%= @project.short_desc%></p>
-  </section>
+<% if @project.owners.map(&:id).include? current_user.id%>
+  <%= button_to "Edit Project", edit_project_path, class: "section button button--md project__fullwidth", method: :get %>
+<%end%>
 
-  <section class="section section__overview">
-    <%# Todo: [Eit] Project Overview %>
-    <h2>Project Overview</h2>
-    <p><%= @project.short_desc%></p>
+<section class="section__header__short-desc">
+  <p><%= @project.short_desc%></p>
+</section>
 
-  </section>
+<section class="section section__overview">
+  <%# Todo: [Eit] Project Overview %>
+  <h2>Project Overview</h2>
+  <p><%= @project.short_desc%></p>
 
-  <section class="section section__dates">
-    <%# Todo: [Eit] Date conditions %>
-    <% unless @project.start_date.blank? %>
-      <div>
-        <h2>Start</h2>
-        <p><%= @project.start_date_to_s %></p>
-      </div>
-    <% end %>
-    <% unless @project.end_date.blank? %>
-      <div>
-        <h2>End</h2>
-        <p><%= @project.end_date_to_s %></p>
-      </div>
-    <% end %>
-  </section>
+</section>
 
-  <section class="section section__tags">
-    <h2>Tags</h2>
+<section class="section__header__short-desc">
+  <p><%= @project.short_desc%></p>
+</section>
+
+<section class="section section__dates">
+  <%# Todo: [Eit] Date conditions %>
+  <% unless @project.start_date.blank? %>
     <div>
-      <% @project.tag_list.each do |tag|%>
-        <button class="button button--md button--tag">
-          <%= "##{tag}" %>
-        </button>
-      <% end %>
+      <h2>Start</h2>
+      <p><%= @project.start_date_to_s %></p>
     </div>
-  </section>
+  <% end %>
+  <% unless @project.end_date.blank? %>
+    <div>
+      <h2>End</h2>
+      <p><%= @project.end_date_to_s %></p>
+    </div>
+  <% end %>
+</section>
 
-  <section class="section section__members">
-    <h2>Members (<%= @project.members.count %>)</h2>
+<section class="section section__tags">
+  <h2>Categories</h2>
+  <div>
+    <% @project.expertise_ids.each do |id|%>
+      <%= link_to Expertise.find(id).name, "", class: "button--tags"%>
+    <% end %>
+  </div>
+</section>
 
-    <% @members.each do |member| %>
-      <%= button_to member.user, class: "member", method: :get do %>
-        <% if member.user.profile_image_url %>
-          <%= image_tag member.user.profile_image,
+<section class="section section__tags">
+  <h2>Tags</h2>
+  <div>
+    <% @project.tag_list.each do |tag|%>
+      <%= link_to tag, "", class: "button--tags"%>
+    <% end %>
+  </div>
+</section>
+
+<section class="section section__members">
+  <h2>Members (<%= @project.members.count %>)</h2>
+
+  <% @members.each do |member| %>
+    <%= button_to member.user, class: "member", method: :get do %>
+      <% if member.user.profile_image_url %>
+        <%= image_tag member.user.profile_image,
             class: "image__profile image__profile--small image__profile--with-border" %>
-        <% else %>
-          <%= image_pack_tag "portrait_placeholder.png",
+      <% else %>
+        <%= image_pack_tag "portrait_placeholder.png",
             class: "image__profile image__profile--small image__profile--with-border" %>
+      <% end %>
+
+      <div class="member__details">
+        <%= link_to member.user, class: "member__name" do %>
+          <p class="member__name">
+            <%= "#{member.user.first_name} #{member.user.last_name}"%>
+          </p>
         <% end %>
 
-        <div class="member__details">
-          <%= link_to member.user, class: "member__name" do %>
-            <p class="member__name">
-              <%= "#{member.user.first_name} #{member.user.last_name}"%>
-            </p>
-          <% end %>
-
-          <p class="member__role">
-            <%= member.role %>
-          </p>
-        </div>
-      <% end %>
+        <p class="member__role">
+          <%= member.role %>
+        </p>
+      </div>
     <% end %>
-  </section>
+  <% end %>
+</section>
 
-  <%# <section class="section section__posts">
+<%# <section class="section section__posts">
     <h2>Project Posts</h2>
   </section>
 

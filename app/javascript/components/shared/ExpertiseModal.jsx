@@ -80,14 +80,17 @@ class ExpertiseModal extends React.Component {
 
   render() {
     const { errors, division, group, field, activateModal } = this.state
-    const { expertises } = this.props
+    const { expertises, type, require } = this.props
     return (
       <div className="form d-flex flex-column mt-3">
         <div className="d-flex flex-row justify-content-between">
-          <h4>Expertise</h4>
+          <div className="d-flex flex-row">
+            <h4>{type ? type : "Expertise"} *</h4>
+            {require ? <h6>*</h6> : <div />}
+          </div>
           <Button
             name="addExpertise"
-            className="button--icon"
+            className="button button--icon"
             type="button"
             data-toggle="modal"
             data-target="#expertiseModal"
@@ -110,11 +113,11 @@ class ExpertiseModal extends React.Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="expertiseModalLabel">
-                  Select your expertise
+                  {`Select your ${type ? type.toLowerCase() : `expertise`}`}
                 </h5>
                 <button
                   type="button"
-                  className="close"
+                  className="button close"
                   data-dismiss="modal"
                   aria-label="Close"
                   onClick={this.clearExpertise}
@@ -146,7 +149,7 @@ class ExpertiseModal extends React.Component {
                         />
                         <Button
                           name="activateModal"
-                          className="button--transparent"
+                          className="button button--transparent"
                           onClick={() => this.handleModalNext("group", f.name)}
                         >
                           <ArrowForwardIosIcon />
@@ -162,7 +165,7 @@ class ExpertiseModal extends React.Component {
                     <div className="d-flex flex-row mb-2">
                       <Button
                         name="activateModal"
-                        className="button--transparent mr-2"
+                        className="button button--transparent mr-2"
                         onClick={() =>
                           this.handleModalBack("division", "group")
                         }
@@ -198,7 +201,7 @@ class ExpertiseModal extends React.Component {
                           />
                           <Button
                             name="activateModal"
-                            className="button--transparent"
+                            className="button button--transparent"
                             onClick={() =>
                               this.handleModalNext("field", g.name)
                             }
@@ -219,7 +222,7 @@ class ExpertiseModal extends React.Component {
                     <div className="d-flex flex-row mt-2 mb-2">
                       <Button
                         name="activateModal"
-                        className="button--transparent mr-2"
+                        className="button button--transparent mr-2"
                         onClick={() => this.handleModalBack("group", "field")}
                       >
                         <ArrowBackIosIcon />
@@ -258,11 +261,11 @@ class ExpertiseModal extends React.Component {
                   <div />
                 )}
               </div>
-              <div className="modal-footer">
+              <div className="modal-footer justify-content-center">
                 <Button
                   name="expertise"
                   type="button"
-                  className="button--gradient-primary button--lg"
+                  className="button button--gradient-primary button--fullwidth"
                   data-dismiss="modal"
                   onClick={this.handleAddExpetise}
                 >
@@ -281,5 +284,7 @@ ExpertiseModal.propTypes = {
   expertises: PropTypes.array,
   setExpertiseDisplayFunc: PropTypes.func,
   disable: PropTypes.bool,
+  type: PropTypes.string,
+  require: PropTypes.bool,
 }
 export default ExpertiseModal

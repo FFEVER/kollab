@@ -27,7 +27,7 @@
 
     .section {
       width: 100%;
-      margin-bottom: $spacer-l;
+      margin-bottom: $spacer-s;
 
       &__header {
         display: flex;
@@ -47,7 +47,9 @@
           }
         }
         &__short-desc {
-          margin-bottom: $spacer-s;
+          flex-wrap: wrap;
+
+          margin-bottom: $spacer-m;
         }
       }
 

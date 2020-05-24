@@ -15,10 +15,6 @@ const FormInput = ({
 }) => {
   return (
     <>
-      {/* <label htmlFor={name}>
-        {label}
-        {isRequired && "*"}
-      </label> */}
       <div className="d-flex flex-row mt-2 mb-2">
         <h4>{label}</h4>
         {isRequired ? <h6>*</h6> : <div />}
@@ -52,7 +48,6 @@ FormInput.defaultProps = {
 
 FormInput.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.string,
   type: PropTypes.oneOf(["text", "number", "password", "date", "tel", "email"]),
   placeholder: PropTypes.string.isRequired,
   className: PropTypes.string,

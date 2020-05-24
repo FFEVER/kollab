@@ -411,6 +411,7 @@ class EditUserProfile extends React.Component {
       JSON.stringify(tagsToArray(this.state.skills))
     ),
       formData.append(dataName("phone"), this.state.phone)
+    formData.append(dataName("email"), this.state.email)
     let socialType = this.state.socials.map(function (item) {
       return item.social
     })
@@ -446,13 +447,17 @@ class EditUserProfile extends React.Component {
       email,
       socials,
     } = this.state
-    console.log("state ", this.state)
     return (
       <form className="d-flex flex-column" onSubmit={this.handleSubmit}>
         <h4>Faculty</h4>
         <div className="profile__section">
           <FormControl variant="outlined" size="small">
-            <Select name="faculty" value={faculty} onChange={this.handleChange}>
+            <Select
+              name="faculty"
+              value={faculty}
+              onChange={this.handleChange}
+              error={errors.faculty.length > 0 ? true : false}
+            >
               <MenuItem value="">
                 <em>Select your faculty</em>
               </MenuItem>
@@ -463,24 +468,32 @@ class EditUserProfile extends React.Component {
               ))}
             </Select>
           </FormControl>
+          <FormHelperText error={errors.faculty.length > 0 ? true : false}>
+            {errors.faculty[0]}
+          </FormHelperText>
         </div>
+        <h4>Year of Study</h4>
         <div className="profile__section">
-          <h4>Year of Study</h4>
-          <div className="profile__section">
-            <FormControl variant="outlined" size="small">
-              {/* <InputLabel>{this.state.faculty}</InputLabel> */}
-              <Select name="year" value={year} onChange={this.handleChange}>
-                <MenuItem value="">
-                  <em>Select your year of study</em>
-                </MenuItem>
-                <MenuItem value={"1"}>1</MenuItem>
-                <MenuItem value={"2"}>2</MenuItem>
-                <MenuItem value={"3"}>3</MenuItem>
-                <MenuItem value={"4"}>4</MenuItem>
-                <MenuItem value={"other"}>Other</MenuItem>
-              </Select>
-            </FormControl>
-          </div>
+          <FormControl variant="outlined" size="small">
+            <Select
+              name="year"
+              value={year}
+              onChange={this.handleChange}
+              error={errors.year.length > 0 ? true : false}
+            >
+              <MenuItem value="">
+                <em>Select your year of study</em>
+              </MenuItem>
+              <MenuItem value={"1"}>1</MenuItem>
+              <MenuItem value={"2"}>2</MenuItem>
+              <MenuItem value={"3"}>3</MenuItem>
+              <MenuItem value={"4"}>4</MenuItem>
+              <MenuItem value={"other"}>Other</MenuItem>
+            </Select>
+          </FormControl>
+          <FormHelperText error={errors.year.length > 0 ? true : false}>
+            {errors.year[0]}
+          </FormHelperText>
         </div>
         <div className="thin-line" />
         <div className="profile__section">

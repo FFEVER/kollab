@@ -10,11 +10,11 @@ const defaultErrors = {
 
 class EditUserProfileValidator {
   static validateFaculty(state, errors) {
-    const { fuculty } = state
-    const key = Object.keys({ fuculty })[0]
+    const { faculty } = state
+    const key = Object.keys({ faculty })[0]
 
-    if (fuculty === undefined || fuculty.length < 1) {
-      errors[key].push("Password is required.")
+    if (faculty === undefined || faculty.length < 1) {
+      errors[key].push("Faculty is required.")
     }
   }
 
@@ -23,7 +23,7 @@ class EditUserProfileValidator {
     const key = Object.keys({ year })[0]
 
     if (year === undefined || year.length < 1) {
-      errors[key].push("Password is required.")
+      errors[key].push("Year is required.")
     }
   }
 
@@ -107,6 +107,8 @@ class EditUserProfileValidator {
       const errors = { ...defaultErrors }
       this.clearErrors(errors)
       this.validateEmail(state, errors)
+      this.validateYear(state, errors)
+      this.validateFaculty(state, errors)
       this.validateExpertises(state, errors)
       this.validateSkills(state, errors)
 

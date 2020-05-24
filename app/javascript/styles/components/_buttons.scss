@@ -47,6 +47,19 @@
     }
   }
 
+  &--fullwidth {
+    width: 100%;
+    min-height: 40px;
+    max-height: 40px;
+
+    border-radius: 24px;
+
+    @media only screen and (min-width: $kollab-width-tablet) {
+      min-height: 48px;
+      max-height: 48px;
+    }
+  }
+
   &--unstar {
     color: $kollab-yellow;
     background-color: white;

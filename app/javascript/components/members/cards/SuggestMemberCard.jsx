@@ -15,7 +15,7 @@ class SuggestMemberCard extends React.Component {
           </div>
         </div>
         <Button name="cancel-button" className="button button--transparent">
-          <i class="far fa-envelope"></i>
+          <i className="far fa-envelope fa-envelope__member"></i>
         </Button>
       </div>
     )

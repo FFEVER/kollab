@@ -6,6 +6,7 @@
   <%= react_component("projects/ProjectCreateForm",
     {
       authenticityToken: form_authenticity_token,
-      submitPath: projects_path
+      submitPath: projects_path,
+      expertises: Expertise.all
     })
   %>

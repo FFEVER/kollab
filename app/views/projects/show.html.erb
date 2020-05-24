@@ -38,6 +38,10 @@
     </section>
   </section>
 
+  <% if @project.owners.map(&:id).include? current_user.id%>
+    <%= button_to "Edit Project", edit_project_path, class: "section button button--md project__fullwidth", method: :get %>
+  <%end%>
+
   <section class="section section__dates">
     <%# Todo: [Eit] Date conditions %>
     <% unless @project.start_date.blank? %>

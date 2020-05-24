@@ -453,7 +453,7 @@ class EditUserProfile extends React.Component {
     } = this.state
     return (
       <form className="d-flex flex-column" onSubmit={this.handleSubmit}>
-        <h4>Faculty</h4>
+        <h4>Faculty *</h4>
         <div className="profile__section">
           <FormControl variant="outlined" size="small">
             <Select
@@ -476,7 +476,7 @@ class EditUserProfile extends React.Component {
             {errors.faculty[0]}
           </FormHelperText>
         </div>
-        <h4>Year of Study</h4>
+        <h4>Year of Study *</h4>
         <div className="profile__section">
           <FormControl variant="outlined" size="small">
             <Select
@@ -532,7 +532,7 @@ class EditUserProfile extends React.Component {
         )}
         <div className="thin-line" />
         <div className="profile__section">
-          <h4>Skills</h4>
+          <h4>Skills *</h4>
           <TagInput
             className="mt-3"
             value={skills}

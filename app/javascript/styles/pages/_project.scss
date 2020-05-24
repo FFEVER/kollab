@@ -27,7 +27,7 @@
 
     .section {
       width: 100%;
-      margin-bottom: $spacer-l;
+      margin-bottom: $spacer-s;
 
       &__header {
         display: flex;
@@ -47,7 +47,9 @@
           }
         }
         &__short-desc {
-          margin-bottom: $spacer-s;
+          margin-bottom: $spacer-m;
+
+          overflow-wrap: break-word;
         }
       }
 
@@ -171,6 +173,15 @@
     &__title {
       letter-spacing: normal;
     }
+    &__short-desc {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+
+      text-overflow: ellipsis;
+
+      -webkit-line-clamp: 2;
+    }
   }
 
   &__link {
@@ -182,5 +193,20 @@
     margin-top: $spacer;
 
     color: $kollab-primary;
+  }
+
+  &__create {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-top: $spacer-m;
+  }
+
+  &__expertise {
+    margin-top: $spacer;
+    margin-top: $spacer;
   }
 }

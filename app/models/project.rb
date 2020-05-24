@@ -38,6 +38,14 @@ class Project < ApplicationRecord
     self.tags = new_or_found_tags
   end
 
+  def self.expertise_ids=(expertise_array)
+    expertises.destroy_all
+    expertise_array = expertise_array.uniq[0..2]
+    expertise_array.each do |id|
+      expertises << Expertise.find(id)
+    end
+  end
+
   def owners
     owner_members.collect(&:user)
   end
@@ -68,5 +76,13 @@ class Project < ApplicationRecord
 
   def followed_by?(user)
     followers.include?(user)
+  end
+
+  def categories_tree
+    tree = []
+    expertises.each do |expertise|
+      tree << expertise.parents_tree
+    end
+    tree
   end
 end

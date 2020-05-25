@@ -75,7 +75,7 @@
             <i class="far fa-envelope"></i>
             Messages
           <% end %>
-          <%= link_to root_path, class: "dropdown-item nav__dropdown__drop-item" do %>
+          <%= link_to edit_users_settings_user_path(@current_user.id), class: "dropdown-item nav__dropdown__drop-item" do %>
             <i class="fa fa-cog"></i>
             Setting
           <% end %>

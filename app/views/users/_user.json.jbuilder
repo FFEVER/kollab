@@ -9,7 +9,7 @@ end
 
 json.skills user.skills.map { |s| s.name }
 
-json.members user.projects.order('created_at DESC').map { |p| p.id }
+json.joined_projects user.projects.order('created_at DESC').map { |p| p.id }
 
 json.starred_projects user.favorites.order('created_at DESC').map { |f| f.project_id }
 

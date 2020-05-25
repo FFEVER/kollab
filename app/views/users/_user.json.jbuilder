@@ -15,3 +15,4 @@ json.starred_projects user.favorites.order('created_at DESC').map { |f| f.projec
 
 json.followed_projects user.given_follows.where(followable_type: 'Project').order('created_at DESC').map { |gf| gf.followable_id }
 
+json.viewed_projects user.get_n_latest_unique_viewed

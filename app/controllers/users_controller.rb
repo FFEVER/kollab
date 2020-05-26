@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @projects = @user.projects
+    @user.viewers << current_user
   end
 
   def basic_info

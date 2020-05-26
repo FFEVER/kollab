@@ -1,0 +1,74 @@
+.setting {
+  padding: $spacer-m $spacer;
+
+  p {
+    font-size: 14px;
+  }
+
+  &__header {
+    padding-top: $spacer-m;
+    padding-left: $spacer-m;
+
+    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__tab {
+    display: flex;
+    flex-direction: row;
+
+    padding-top: $spacer-s;
+
+    &__item {
+      margin-right: $spacer-m;
+    }
+
+    &__title {
+      margin-bottom: $spacer-xs;
+    }
+
+    &__selected {
+      height: 4px;
+
+      border-radius: 2px;
+      background-color: $kollab-primary;
+    }
+  }
+
+  &__project {
+    &__title {
+      margin-bottom: $spacer-m;
+    }
+
+    &__section {
+      padding-top: $spacer-s;
+      padding-bottom: $spacer-s;
+    }
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+
+      min-height: 48px;
+      padding: 16px 10px;
+
+      border-width: 5px;
+      border-color: $kollab-primary;
+      box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    &__button {
+      &__delete {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 66px;
+        height: 24px;
+
+        color: red;
+        border-radius: 5px;
+        background-color: $kollab-gray-bg;
+      }
+    }
+  }
+}

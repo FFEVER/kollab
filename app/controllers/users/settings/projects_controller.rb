@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
 class Users::Settings::ProjectsController < ApplicationController
-  def edit; end
+  def edit
+    # @user = User.find(params[:user_id])
+    @user = current_user
+    @owned_projects = @user.projects.owned
+    @participated_projects = @user.projects.participated
+    @following_projects = @user.following_projects
+    @starring_projects = @user.starring_projects
+  end
 
   def update; end
 

@@ -1,5 +1,81 @@
-<div class="project project--with-margin">
-  <header>
-    <h1>Setting (User - Projects) </h1>
-  </header>
+<div class="setting__header">
+  <h2>Settings</h2>
+  <%= tabs_tag do |tab| %>
+    <div class="setting__tab tab">
+      <div class="setting__tab__item">
+        <h4><%= tab.edit_profile 'Edit profile', edit_users_settings_user_path, class: "tablinks setting__tab__title" %></h4>
+      </div>
+      <div class="setting__tab__item">
+        <h4><%= tab.edit_project 'Projects', edit_users_settings_project_path, class: "tablinks setting__tab__title" %></h4>
+        <div class="setting__tab__selected"></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="setting">
+  <% if @owned_projects.count > 0%>
+    <div class="setting__project__section">
+      <div class="setting__project__title">
+        <h3>
+          Owned Projects (<%= @owned_projects.count %>)
+        </h3>
+      </div>
+      <% @owned_projects.each do |project| %>
+        <div class="setting__project__item">
+          <p><%=project.title%></p>
+          <div class="setting__project__button__delete">Delete</div>
+        </div>
+      <%end%>
+    </div>
+  <%end%>
+
+  <% if @participated_projects.count > 0%>
+    <div class="setting__project__section">
+      <div class="setting__project__title">
+        <h3>
+          Participated Projects (<%= @participated_projects.count %>)
+        </h3>
+      </div>
+      <% @participated_projects.each do |project| %>
+        <div class="setting__project__item">
+          <p><%=project.title%></p>
+          <div class="setting__project__button__delete">Leave</div>
+        </div>
+      <%end%>
+    </div>
+  <%end%>
+
+  <% if @following_projects.count > 0%>
+    <div class="setting__project__section">
+      <div class="setting__project__title">
+        <h3>
+          Followed Projects (<%= @following_projects.count %>)
+        </h3>
+      </div>
+      <% @following_projects.each do |project| %>
+        <div class="setting__project__item">
+          <p><%=project.title%></p>
+          <div class="setting__project__button__delete">Leave</div>
+        </div>
+      <%end%>
+    </div>
+  <%end%>
+
+  <% if @starring_projects.count > 0%>
+    <div class="setting__project__section">
+      <div class="setting__project__title">
+        <h3>
+          Starred Projects (<%= @starring_projects.count %>)
+        </h3>
+      </div>
+      <% @starring_projects.each do |project| %>
+        <div class="setting__project__item">
+          <p><%=project.title%></p>
+          <div class="setting__project__button__delete">Leave</div>
+        </div>
+      <%end%>
+    </div>
+  <%end%>
+
 </div>

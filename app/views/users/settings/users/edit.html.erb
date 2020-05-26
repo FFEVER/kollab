@@ -1,18 +1,21 @@
-<div class="project project--with-margin">
+<div class="setting__header">
+  <h2>Settings</h2>
   <%= tabs_tag do |tab| %>
-    <div class="d-flex flex-row tab">
-      <%= tab.edit_profile 'Edit Profile', edit_users_settings_project_path, class: "tablinks mr-2" %>
-      <%= tab.edit_project 'Edit Project', edit_users_settings_user_path, class: "tablinks" %>
+    <div class="setting__tab tab">
+      <div class="setting__tab__item">
+        <h4><%= tab.edit_profile 'Edit profile', edit_users_settings_user_path, class: "tablinks setting__tab__title" %></h4>
+        <div class="setting__tab__selected"></div>
+      </div>
+      <div class="setting__tab__item">
+        <h4><%= tab.edit_project 'Projects', edit_users_settings_project_path, class: "tablinks setting__tab__title" %></h4>
+      </div>
     </div>
   <% end %>
 </div>
 
-<div class="profile mb-4">
-  <div class="profile__header">
-    <h2>Edit profile</h2>
-  </div>
+<div class="setting">
   <h4>Profile Picture</h4>
-  <div class="d-flex justify-content-center mb-3">
+  <div class="d-flex justify-content-center mt-2 mb-3">
     <% if current_user.profile_image_url %>
       <%= image_tag current_user.profile_image_url, class: "nav__profile-img image__profile image__profile--mega"%>
     <% else %>

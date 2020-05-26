@@ -6,6 +6,8 @@ const defaultErrors = {
   endDate: [],
   tagList: [],
   categories: [],
+  expertises: [],
+  userExpertises: [],
 }
 
 class FormValidator {

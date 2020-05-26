@@ -274,7 +274,6 @@ class ProjectCreateForm extends React.Component {
 
         <ExpertiseModal
           className="project__expertise"
-          type="Categories"
           require={true}
           expertises={this.props.expertises}
           setExpertiseDisplayFunc={this.setDisplayExpertise}

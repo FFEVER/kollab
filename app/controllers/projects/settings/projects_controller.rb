@@ -5,7 +5,18 @@ class Projects::Settings::ProjectsController < ApplicationController
 
   def edit; end
 
-  def update; end
+  def update
+    respond_to do |format|
+      if @project.update(project_params)
+        format.html { redirect_to project_edit_path, notice: 'Profile was successfully updated.' }
+        format.json { render json: @project, status: :ok, location: @project }
+      else
+        errors = helpers.errors_to_camel(@project.errors.messages)
+        format.html { render :edit }
+        format.json { render json: { messages: errors }, status: :unprocessable_entity }
+      end
+    end
+  end
 
   private
 

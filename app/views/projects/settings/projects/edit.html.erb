@@ -1,17 +1,23 @@
-<div class="project project--with-margin">
-
-  <% tabs_tag do |tab| %>
-    <% tab.dashboard 'Edit Project', edit_projects_settings_project_path %>
+<div class="setting__header">
+  <h2>Settings</h2>
+  <%= tabs_tag do |tab| %>
+    <div class="setting__tab tab">
+      <div class="setting__tab__item">
+        <h4><%= tab.edit_profile 'Edit project', edit_projects_settings_project_path, class: "tablinks setting__tab__title" %></h4>
+        <div class="setting__tab__selected"></div>
+      </div>
+      <div class="setting__tab__item">
+        <h4><%= tab.edit_project 'Member management', edit_projects_settings_project_path, class: "tablinks setting__tab__title" %></h4>
+      </div>
+    </div>
   <% end %>
+</div>
 
-  <header>
-    <h1>Edit Project</h1>
-  </header>
-
+<div class="setting">
   <%= react_component("projects/EditProject",
     {
       authenticityToken: form_authenticity_token,
-      submitPath: projects_path,
+      submitPath: project_update_path,
       currentUser: current_user,
       currentProject: @project,
       expertiseIds: @project.expertise_ids,
@@ -20,3 +26,4 @@
       tags: Tag.all
     })
   %>
+</div>

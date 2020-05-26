@@ -23,7 +23,10 @@ Rails.application.routes.draw do
   end
 
   get 'profile/edit', to: 'users#edit'
-  match 'profile/update', to: 'users#update', via: %i[put patch]
+  get 'project/edit', to: 'projects#edit'
+
+  match 'profile/update', to: 'users/settings/users#update', via: %i[put patch]
+  match 'project/update', to: 'projects/settings/project#update', via: %i[put patch]
 
   resources :projects do
     member do

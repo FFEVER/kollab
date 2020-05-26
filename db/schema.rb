@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_115320) do
+ActiveRecord::Schema.define(version: 2020_05_25_090547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,8 +152,18 @@ ActiveRecord::Schema.define(version: 2020_05_09_115320) do
     t.string "facebook"
     t.string "instagram"
     t.integer "faculty_id"
+    t.string "medium"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "viewings", force: :cascade do |t|
+    t.string "viewable_type", null: false
+    t.bigint "viewable_id", null: false
+    t.integer "viewer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["viewable_type", "viewable_id"], name: "index_viewings_on_viewable_type_and_viewable_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

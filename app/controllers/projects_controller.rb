@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
 
   def show
     @members = @project.members
+    @project.viewers << current_user
   end
 
   def new

@@ -41,3 +41,14 @@
     color: white;
   }
 }
+
+.fa-envelope {
+  &__member {
+    font-size: 20px;
+
+    width: 20px;
+    height: 20px;
+
+    color: $kollab-primary;
+  }
+}

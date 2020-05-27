@@ -299,4 +299,22 @@
       max-height: 48px;
     }
   }
+
+  &__accept {
+    width: 66px;
+    height: 24px;
+
+    color: white;
+    border-radius: 5px;
+    background-color: $kollab-primary;
+  }
+
+  &__decline {
+    width: 66px;
+    height: 24px;
+
+    color: red;
+    border-radius: 5px;
+    background-color: $kollab-gray-bg;
+  }
 }

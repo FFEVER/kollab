@@ -73,4 +73,29 @@
       }
     }
   }
+
+  &__member {
+    &__role-status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 67px;
+      height: 24px;
+
+      text-transform: uppercase;
+
+      &__open {
+        color: $kollab-primary;
+        border-radius: 5px;
+        background-color: #e8f4f5;
+      }
+
+      &__close {
+        color: #bcbcbc;
+        border-radius: 5px;
+        background-color: $kollab-gray-bg;
+      }
+    }
+  }
 }

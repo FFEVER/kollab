@@ -1,0 +1,13 @@
+<div class="search__header">
+  <%= tabs_tag do |tab| %>
+    <div class="search__tab tab">
+      <div class="search__tab__item">
+        <h4><%= tab.edit_profile 'Search', explore_search_index_path, class: "tablinks search__tab__title" %></h4>
+      </div>
+      <div class="search__tab__item">
+        <h4><%= tab.edit_project 'Trending', trending_search_index_path, class: "tablinks search__tab__title" %></h4>
+        <div class="search__tab__selected"></div>
+      </div>
+    </div>
+  <% end %>
+</div>

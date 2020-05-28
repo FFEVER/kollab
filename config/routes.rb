@@ -47,6 +47,9 @@ Rails.application.routes.draw do
   namespace :projects do
     namespace :settings do
       resources :projects, only: %i[edit update]
+      namespace :projects do
+        resources :members, only: %i[index show edit update]
+      end
     end
   end
 
@@ -54,6 +57,13 @@ Rails.application.routes.draw do
     namespace :settings do
       resources :users, only: %i[edit update]
       resources :projects, only: %i[edit update]
+    end
+  end
+
+  resources :search, except: %i[new create edit update destroy] do
+    collection do
+      get 'explore'
+      get 'trending'
     end
   end
 end

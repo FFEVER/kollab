@@ -1,0 +1,32 @@
+.search {
+  padding: $spacer-m $spacer;
+
+  &__header {
+    padding-top: $spacer-m;
+    padding-left: $spacer-m;
+
+    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__tab {
+    display: flex;
+    flex-direction: row;
+
+    padding-top: $spacer-s;
+
+    &__item {
+      margin-right: $spacer-m;
+    }
+
+    &__title {
+      margin-bottom: $spacer-s;
+    }
+
+    &__selected {
+      height: 4px;
+
+      border-radius: 2px;
+      background-color: $kollab-primary;
+    }
+  }
+}

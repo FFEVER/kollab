@@ -321,7 +321,11 @@ class EditProject extends React.Component {
     let allExpertises = this.props.expertises
     console.log("State ", this.state)
     return (
-      <form onSubmit={this.handleSubmit} className="project__form" noValidate>
+      <form
+        onSubmit={this.handleSubmit}
+        className="project__form mb-5"
+        noValidate
+      >
         <div className="form-group">
           <FormInput
             name="title"
@@ -390,7 +394,9 @@ class EditProject extends React.Component {
           <div />
         )}
         <div className="form-row">
-          <h4>Tags *</h4>
+          <div className="mb-2">
+            <h4>Tags *</h4>
+          </div>
           <TagInput
             value={this.state.tagList}
             onChange={this.handleTagClear}

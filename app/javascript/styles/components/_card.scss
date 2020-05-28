@@ -23,6 +23,20 @@
   background-color: $kollab-gray-light;
 }
 
+.project-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 60px;
+  margin-top: $spacer-s;
+  padding: $spacer-m;
+
+  background-color: white;
+  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
+}
+
 .member-card {
   display: flex;
   flex-direction: row;

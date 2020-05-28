@@ -298,7 +298,7 @@ class EditRole extends React.Component {
     return (
       <form onSubmit={this.handleSubmit} noValidate className="mb-5">
         <div className="setting__role__section ">
-          <h2>Add new role</h2>
+          <h2>Edit role</h2>
         </div>
         <div className="setting__role__section">
           <FormInput

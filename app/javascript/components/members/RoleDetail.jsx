@@ -78,12 +78,7 @@ class RoleDetail extends React.Component {
     return (
       <div className="mb-5">
         <div className="setting__role__section ">
-          <img
-            src={anya}
-            className="setting__role__proimg"
-            height="150"
-            width="150"
-          />
+          <img src={anya} className="setting__role__proimg" />
         </div>
         <div className="setting__role__title align-items-center">
           <h3>{`${constUser.first} ${constUser.last}`}</h3>

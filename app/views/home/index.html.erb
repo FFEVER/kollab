@@ -1,12 +1,9 @@
 <div class="container-fluid">
-  <div class="d-flex flex-row align-items-center mt-3">
-    <h1>Welcome to</h1>
-    <div class="ml-2 mb-3">
-      <%= image_pack_tag 'kollab-blue.png', alt: 'kollab', size:'150x70'%>
-    </div>
-  </div>
-  <p>
-    An online community platform for projects collaborations in KMITL.
-  </p>
+  <%= react_component("home/Feed",
+    {
+      authenticityToken: form_authenticity_token,
+      currentUser: current_user,
+    })
+  %>
 
 </div>

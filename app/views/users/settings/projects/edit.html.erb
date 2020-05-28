@@ -22,7 +22,7 @@
         </h3>
       </div>
       <% @owned_projects.each do |project| %>
-        <div class="setting__project__item">
+        <div class="project-card">
           <p><%=project.title%></p>
           <button class="setting__project__button__delete">Delete</button>
         </div>
@@ -38,7 +38,7 @@
         </h3>
       </div>
       <% @participated_projects.each do |project| %>
-        <div class="setting__project__item">
+        <div class="project-card">
           <p><%=project.title%></p>
           <button class="setting__project__button__delete">Leave</button>
         </div>

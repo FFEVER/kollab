@@ -4,14 +4,20 @@ import Button from "../../shared/form/Button"
 
 class MemberCard extends React.Component {
   render() {
-    const { user, role } = this.props
+    const { user, role, onClick } = this.props
     return (
       <div className="member-card">
         <p className="align-self-center">image</p>
-        <div className="member-card__detail">
-          <h5 style={{ color: "#4e4e4e" }}>{user.name}</h5>
-          <p>{role.name}</p>
-        </div>
+        <Button
+          name="member-card"
+          className="button button--transparent"
+          onClick={() => onClick()}
+        >
+          <div className="member-card__detail">
+            <h5 style={{ color: "#4e4e4e" }}>{user.name}</h5>
+            <p>{role.name}</p>
+          </div>
+        </Button>
       </div>
     )
   }
@@ -20,5 +26,6 @@ class MemberCard extends React.Component {
 MemberCard.propTypes = {
   user: PropTypes.object,
   role: PropTypes.object,
+  onClick: PropTypes.func,
 }
 export default MemberCard

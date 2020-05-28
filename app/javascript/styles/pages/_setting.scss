@@ -23,7 +23,7 @@
     }
 
     &__title {
-      margin-bottom: $spacer-xs;
+      margin-bottom: $spacer-s;
     }
 
     &__selected {
@@ -42,18 +42,6 @@
     &__section {
       padding-top: $spacer-s;
       padding-bottom: $spacer-s;
-    }
-
-    &__item {
-      display: flex;
-      justify-content: space-between;
-
-      min-height: 48px;
-      padding: 16px 10px;
-
-      border-width: 5px;
-      border-color: $kollab-primary;
-      box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
     }
 
     &__button {
@@ -75,7 +63,16 @@
   }
 
   &__member {
-    &__role-status {
+    &__title {
+      margin-bottom: $spacer-m;
+    }
+
+    &__section {
+      padding-top: $spacer-s;
+      padding-bottom: $spacer-s;
+    }
+
+    &__role__status {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -96,6 +93,57 @@
         border-radius: 5px;
         background-color: $kollab-gray-bg;
       }
+    }
+  }
+
+  &__role {
+    &__title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      margin-bottom: $spacer-s;
+    }
+
+    &__proimg {
+      align-self: center;
+
+      width: $spacer-s * 10;
+      height: $spacer-s * 10;
+
+      border-radius: $spacer-s * 10;
+    }
+
+    &__section {
+      display: flex;
+      flex-direction: column;
+
+      padding-top: $spacer-s;
+      padding-bottom: $spacer-s;
+
+      &__item {
+        flex-direction: row;
+      }
+
+      &__button {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      p {
+        margin-left: $spacer-s;
+      }
+    }
+
+    &__contact {
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__button {
+      font-size: 14px;
+
+      width: 50%;
     }
   }
 }

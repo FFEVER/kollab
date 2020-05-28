@@ -4,7 +4,7 @@ import { useSpring, animated } from "react-spring"
 
 import Loader from "./../Loader"
 
-const Button = ({ name, children, isLoading, ...props }) => {
+const Button = ({ name, children, className, isLoading, ...props }) => {
   const [showLoader, setShowLoader] = React.useState(false)
 
   const ref = React.useRef(null)
@@ -28,7 +28,7 @@ const Button = ({ name, children, isLoading, ...props }) => {
   }, [isLoading, showLoader])
 
   return (
-    <button id={name} name={name} ref={ref} {...props}>
+    <button id={name} name={name} className={className} ref={ref} {...props}>
       {showLoader ? (
         <animated.div style={fadeOutProps}>
           <Loader width="1.5rem" height="1.5rem" />{" "}

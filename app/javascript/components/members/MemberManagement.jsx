@@ -97,6 +97,7 @@ class MemberManagement extends React.Component {
       defaultUsers: [],
     }
 
+    this.memberDetail = this.memberDetail.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -114,26 +115,35 @@ class MemberManagement extends React.Component {
     })
   }
 
+  memberDetail() {
+    console.log("Show member detail")
+  }
+
   render() {
     const { currentUser } = this.props
     const { members, roles, defaultUsers } = this.state
     console.log("State ", this.state)
     console.log("Props ", this.props)
     return (
-      <div className="setting">
-        <div className="setting__section">
-          <h2>Memmbers</h2>
+      <div>
+        <div className="setting__member__section">
+          <div className="setting__member__title">
+            <h2>Memmbers</h2>
+          </div>
           {members.map((item, index) => (
             <MemberCard
               key={index}
               user={item}
               role={roles.find((r) => r.id === item.roleId)}
+              onClick={this.memberDetail}
             />
           ))}
         </div>
 
-        <div className="setting__section">
-          <h2>Roles</h2>
+        <div className="setting__member__section">
+          <div className="setting__member__title">
+            <h2>Roles</h2>
+          </div>
           {roles.map((item, index) => (
             <RoleCard key={index} role={item} />
           ))}
@@ -141,21 +151,27 @@ class MemberManagement extends React.Component {
             Add Roles
           </p>
         </div>
-        <div className="setting__section">
-          <h2>Waiting lists</h2>
+        <div className="setting__member__section">
+          <div className="setting__member__title">
+            <h2>Waiting lists</h2>
+          </div>
           {defaultUsers.map((item, index) => (
             <WaitListCard key={index} user={item} />
           ))}
         </div>
 
-        <div className="setting__section">
-          <h2>Pending</h2>
+        <div className="setting__member__section">
+          <div className="setting__member__title">
+            <h2>Pending</h2>
+          </div>
           {defaultUsers.map((item, index) => (
             <PendingCard key={index} user={item} />
           ))}
         </div>
-        <div className="setting__section">
-          <h2>Suggested teammates</h2>
+        <div className="setting__member__section">
+          <div className="setting__member__title">
+            <h2>Suggested teammates</h2>
+          </div>
           {defaultUsers.map((item, index) => (
             <SuggestMemberCard key={index} user={item} />
           ))}
@@ -169,6 +185,7 @@ MemberManagement.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string,
   currentUser: PropTypes.object,
+  memmbers: PropTypes.any,
 }
 
 export default MemberManagement

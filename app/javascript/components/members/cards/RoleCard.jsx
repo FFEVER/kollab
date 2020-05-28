@@ -7,8 +7,8 @@ class RoleCard extends React.Component {
     const { role } = this.props
     let statusClass =
       role.status === "Open"
-        ? " setting__role-status setting__role-status__open"
-        : "setting__role-status setting__role-status__close"
+        ? " setting__member__role__status setting__member__role__status__open"
+        : "setting__member__role__status setting__member__role__status__close"
     return (
       <div className="role-card">
         <h5 style={{ color: "#4e4e4e" }}>{role.name}</h5>

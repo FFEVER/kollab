@@ -4,26 +4,24 @@
     <div class="setting__tab tab">
       <div class="setting__tab__item">
         <h4><%= tab.edit_profile 'Edit project', edit_projects_settings_project_path, class: "tablinks setting__tab__title" %></h4>
-        <div class="setting__tab__selected"></div>
       </div>
       <div class="setting__tab__item">
         <h4><%= tab.edit_project 'Member management', projects_settings_projects_member_path, class: "tablinks setting__tab__title" %></h4>
+        <div class="setting__tab__selected"></div>
       </div>
     </div>
   <% end %>
 </div>
-
 <div class="setting">
-  <%= react_component("projects/EditProject",
+
+  <%= react_component("members/EditRole",
     {
       authenticityToken: form_authenticity_token,
-      submitPath: project_update_path,
+      submitPath: projects_path,
       currentUser: current_user,
-      currentProject: @project,
-      expertiseIds: @project.expertise_ids,
-      expertises: Expertise.all,
-      tagIds: Tagging.where(project_id: @project.id),
-      tags: Tag.all
+      members: @project_members,
+      expertises: Expertise.all
     })
   %>
+
 </div>

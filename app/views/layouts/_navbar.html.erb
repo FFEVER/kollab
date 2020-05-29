@@ -34,7 +34,11 @@
         <%= link_to explore_search_index_path, class: "nav__item nav__item--icon nav__item--mobile" do %>
           <i class="fas fa-search"></i>
         <% end %>
+        <%= link_to root_path, class: "nav__item nav__item--icon nav__item--mobile" do %>
+          <i class="fas fa-bell"></i>
+        <% end %>
       </div>
+
       <div class="nav__dropdown" id="drop-menu">
         <button
               class="nav__dropdown__drop-button"
@@ -68,36 +72,37 @@
             <i class="fas fa-th-large"></i>
             My Projects
           <% end %>
-          <%# <%= link_to root_path, class: "dropdown-item nav__dropdown__drop-item" do %>
-            <%# <i class="far fa-envelope"></i> %>
-            <%# Messages %>
-            <%# <% end %>
-            <%= link_to edit_users_settings_user_path(@current_user.id), class: "dropdown-item nav__dropdown__drop-item" do %>
-              <i class="fa fa-cog"></i>
-              Setting
-            <% end %>
+          <%= link_to root_path,
+                class: "dropdown-item nav__dropdown__drop-item nav__item--desktop" do %>
+            <i class="fas fa-bell"></i>
+            Notification
+          <% end %>
+          <%= link_to edit_users_settings_user_path(@current_user.id), class: "dropdown-item nav__dropdown__drop-item" do %>
+            <i class="fa fa-cog"></i>
+            Setting
+          <% end %>
 
-            <div class="dropdown-divider"></div>
-            <%= link_to destroy_user_session_path,
+          <div class="dropdown-divider"></div>
+          <%= link_to destroy_user_session_path,
           class: "dropdown-item nav__dropdown__drop-item",
           method: :delete do %>
-              <i class="fas fa-sign-out-alt"></i>
-              Sign Out
-            <% end %>
-          </div>
+            <i class="fas fa-sign-out-alt"></i>
+            Sign Out
+          <% end %>
         </div>
+      </div>
 
-      <% else %>
-        <div class="nav__items nav__items--right">
-          <%= link_to new_user_session_path, class: "nav__item" do %>
-            <button class="button button--md button--outline-primary">
-              Login
-            </button>
-          <% end %>
-          <%= link_to new_user_registration_path, class: "nav__item" do %>
-            <button class="button button--md button--primary">Signup</button>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  </nav>
+    <% else %>
+      <div class="nav__items nav__items--right">
+        <%= link_to new_user_session_path, class: "nav__item" do %>
+          <button class="button button--md button--outline-primary">
+            Login
+          </button>
+        <% end %>
+        <%= link_to new_user_registration_path, class: "nav__item" do %>
+          <button class="button button--md button--primary">Signup</button>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</nav>

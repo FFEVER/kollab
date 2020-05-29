@@ -2,16 +2,22 @@ import React from "react"
 import PropTypes from "prop-types"
 import Button from "../../shared/form/Button"
 
-import anya from "../../../images/anya.jpg"
 class UserCard extends React.Component {
   render() {
-    const { name, faculty, description, skills, following } = this.props.user
+    const {
+      name,
+      faculty,
+      description,
+      skills,
+      following,
+      image,
+    } = this.props.user
 
     return (
       <div className="search__user__card">
         <div className="search__user__detail">
           <div className="search__user__header mb-1">
-            <img src={anya} className="search__user__proimg"></img>
+            <img src={image} className="search__user__proimg"></img>
             <div className="d-flex flex-column">
               <div className="search__section">
                 <h5>{name}</h5>

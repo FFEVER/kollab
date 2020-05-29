@@ -6,6 +6,13 @@ import WaitListCard from "./cards/WaitListCard"
 import PendingCard from "./cards/PendingCard"
 import SuggestMemberCard from "./cards/SuggestMemberCard"
 
+import profile1 from "../../images/profile/profile_1.jpeg"
+import profile2 from "../../images/profile/profile_2.jpeg"
+import profile3 from "../../images/profile/profile_3.jpeg"
+import profile4 from "../../images/profile/profile_4.jpeg"
+import profile5 from "../../images/profile/profile_5.jpeg"
+import profile6 from "../../images/profile/profile_6.jpeg"
+
 const constMembers = [
   {
     id: 1,
@@ -13,6 +20,7 @@ const constMembers = [
     roleId: 1,
     role: "Ruby Developer",
     owner: true,
+    image: profile3,
   },
   {
     id: 2,
@@ -20,6 +28,7 @@ const constMembers = [
     roleId: 2,
     role: "React Developer",
     owner: true,
+    image: profile1,
   },
   {
     id: 3,
@@ -27,6 +36,7 @@ const constMembers = [
     roleId: 3,
     role: "Business Analyst",
     owner: false,
+    image: profile2,
   },
 ]
 // Role : Name, Fields, Skill, Description, Status
@@ -73,18 +83,53 @@ const constRoles = [
   },
 ]
 
-const defaultUsers = [
+const waitingUsers = [
   {
     id: 1,
-    name: "Tharita Yoyo",
-    expertise: ["Software Engineering"],
-    faculty: "Faculty of Engineering",
+    name: "Srisamorn Nualjan",
+    expertise: ["Computer Science"],
+    faculty: "Faculty of Science",
+    image: profile1,
   },
   {
     id: 2,
-    name: "Panupong Eiei",
+    name: "Malaya palawee",
+    expertise: ["Painting"],
+    faculty: "Faculty of Art",
+    image: profile2,
+  },
+]
+
+const pendingUsers = [
+  {
+    id: 1,
+    name: "Tharita Tipdecho",
+    expertise: ["Software Engineering"],
+    faculty: "Faculty of Science",
+    image: profile4,
+  },
+  {
+    id: 2,
+    name: "Suttipong Sedsart",
+    expertise: ["Architecture"],
+    faculty: "Faculty of Architecture",
+    image: profile3,
+  },
+]
+const suggestUsers = [
+  {
+    id: 1,
+    name: "Kiatetisak Arjhan",
+    expertise: ["Mathematics"],
+    faculty: "Faculty of Science",
+    image: profile5,
+  },
+  {
+    id: 2,
+    name: "Suttipong Ngamdee",
     expertise: ["Software Engineering"],
     faculty: "Faculty of Engineering",
+    image: profile6,
   },
 ]
 
@@ -94,7 +139,7 @@ class MemberManagement extends React.Component {
     this.state = {
       members: [],
       roles: [],
-      defaultUsers: [],
+      // defaultUsers: [],
     }
 
     this.memberDetail = this.memberDetail.bind(this)
@@ -105,7 +150,7 @@ class MemberManagement extends React.Component {
     this.setState({
       members: constMembers,
       roles: constRoles,
-      defaultUsers: defaultUsers,
+      // defaultUsers: defaultUsers,
     })
   }
 
@@ -145,7 +190,7 @@ class MemberManagement extends React.Component {
           {roles.map((item, index) => (
             <RoleCard key={index} role={item} />
           ))}
-          <p className="mt-2" style={{ color: "#54bdc2", alignSelf: "center" }}>
+          <p className="mt-2" className="link align-self-center">
             Add Roles
           </p>
         </div>
@@ -153,7 +198,7 @@ class MemberManagement extends React.Component {
           <div className="setting__member__title">
             <h2>Waiting lists</h2>
           </div>
-          {defaultUsers.map((item, index) => (
+          {waitingUsers.map((item, index) => (
             <WaitListCard key={index} user={item} />
           ))}
         </div>
@@ -162,7 +207,7 @@ class MemberManagement extends React.Component {
           <div className="setting__member__title">
             <h2>Pending</h2>
           </div>
-          {defaultUsers.map((item, index) => (
+          {pendingUsers.map((item, index) => (
             <PendingCard key={index} user={item} />
           ))}
         </div>
@@ -170,7 +215,7 @@ class MemberManagement extends React.Component {
           <div className="setting__member__title">
             <h2>Suggested teammates</h2>
           </div>
-          {defaultUsers.map((item, index) => (
+          {suggestUsers.map((item, index) => (
             <SuggestMemberCard key={index} user={item} />
           ))}
         </div>

@@ -93,15 +93,16 @@ class EditRole extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: "Pet feeder",
+      name: "React Developer",
       expertises: this.props.expertises,
       skills: [
-        { label: "Hardware", name: "hardware" },
-        { label: "Application", name: "application" },
+        { label: "React", name: "react" },
+        { label: "Developer", name: "Developer" },
       ],
-      description: "Pet feeder machine and tracking by a mobile app",
+      description:
+        "- Be able to develop frontend with ReactJs.\n- Familiar with GitHub",
       status: "Open",
-      userExpertises: [],
+      userExpertises: [{ division: "Software", group: "", field: "" }],
       isButtonLoading: false,
       errors: defaultErrors,
     }
@@ -293,6 +294,7 @@ class EditRole extends React.Component {
       errors,
       isButtonLoading,
     } = this.state
+    console.log("state ", this.state)
     return (
       <form onSubmit={this.handleSubmit} noValidate className="mb-5">
         <div className="setting__role__section ">

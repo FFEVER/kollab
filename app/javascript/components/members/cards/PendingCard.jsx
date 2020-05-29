@@ -8,7 +8,10 @@ class PendingCard extends React.Component {
     return (
       <div className="card-with-button">
         <div className="d-flex flex-row">
-          <p className="card-with-button__image">image</p>
+          <img
+            src={user.image}
+            className="image__profile image__profile--medium"
+          />
           <div className="card-with-button__detail">
             <h5 style={{ color: "#4e4e4e" }}>{user.name}</h5>
             <p>{user.faculty}</p>

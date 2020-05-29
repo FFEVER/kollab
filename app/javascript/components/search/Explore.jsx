@@ -4,6 +4,10 @@ import moment from "moment"
 
 import { TextField, IconButton, InputAdornment } from "@material-ui/core"
 import Button from "../shared/form/Button"
+import profile1 from "../../images/profile/profile_1.jpeg"
+import profile2 from "../../images/profile/profile_2.jpeg"
+import profile3 from "../../images/profile/profile_3.jpeg"
+import profile4 from "../../images/profile/profile_4.jpeg"
 
 import ProjectCard from "./cards/ProjectCard"
 import UserCard from "./cards/UserCard"
@@ -11,55 +15,54 @@ import UserCard from "./cards/UserCard"
 const constProjects = [
   {
     id: 1,
-    title: "Project 1",
-    description: "project desction 1",
+    title: "Pet feeder",
+    description: "A pet feeder machine controlled by a mobile application",
     tags: [
-      { label: "tag1", name: "tag1" },
-      { label: "tag2", name: "tag2" },
+      { label: "Machine", name: "tag1" },
+      { label: "MobileApp", name: "tag2" },
     ],
     status: "In progress",
     last_updated: "1 hour ago",
     lookingRoles: [
       "JavaScript Developer",
-      "Accountant",
       "UX/UI Designer",
-      "RoR Developer",
+      "Ruby on Rails Developer",
     ],
     starred: true,
   },
   {
     id: 2,
-    title: "Project 2",
-    description: "project desction 1",
+    title: "Garden carer",
+    description: "A machine that take care my garden when I'm away",
     tags: [
-      { label: "tag3", name: "tag3" },
-      { label: "tag4", name: "tag4" },
+      { label: "WebApp", name: "tag1" },
+      { label: "Engineering", name: "tag2" },
     ],
     status: "Completed",
     last_updated: "2 days ago",
-    lookingRoles: ["Python Developer", "RoR Developer"],
+    lookingRoles: ["Machine Developer", "Web Developer"],
     starred: false,
   },
   {
     id: 3,
-    title: "Project 3",
-    description: "project desction 3",
+    title: "Music for fun",
+    description: "Create a funny music tone by using pet sounds",
     tags: [
-      { label: "tag5", name: "tag5" },
-      { label: "tag6", name: "tag6" },
+      { label: "Music", name: "tag5" },
+      { label: "Veterinarian", name: "tag6" },
     ],
     status: "On Hold",
     last_updated: "2 weeks ago",
-    lookingRoles: ["Java Developer", "Business Analyse"],
+    lookingRoles: ["Musician", "Business Analyse"],
     starred: true,
   },
   {
     id: 4,
-    title: "Project 4",
-    description: "project desction 3",
+    title: "Dating App",
+    description: "App similar to Tinder",
     tags: [
-      { label: "tag7", name: "tag7" },
-      { label: "tag8", name: "tag8" },
+      { label: "MobileApp", name: "tag7" },
+      { label: "Matching", name: "tag8" },
     ],
     status: "Initiating",
     last_updated: "1 month ago",
@@ -68,15 +71,15 @@ const constProjects = [
   },
   {
     id: 5,
-    title: "Project %",
+    title: "Business for homeless",
     description: "project desction 3",
     tags: [
-      { label: "tag9", name: "tag9" },
-      { label: "tag10", name: "tag10" },
+      { label: "Business", name: "tag9" },
+      { label: "Freedom", name: "tag10" },
     ],
     status: "Cancelled",
     last_updated: "2 weeks ago",
-    lookingRoles: ["Java Developer", "Business Analyse"],
+    lookingRoles: ["Business analyse", "Accountant"],
     starred: false,
   },
 ]
@@ -85,35 +88,50 @@ const constUsers = [
   {
     id: 1,
     name: "Kasamabhorn Suparerkrat",
-    faculty: "Faculty of Engineering",
-    description: "Hi! I'm a software engineering student!",
+    faculty: "Faculty of Medicine",
+    description: "A medicine student who is glad to gain more friends",
     skills: [
-      { label: "Skill1", name: "skill_1" },
-      { label: "Skill2", name: "skill_2" },
+      { label: "Medicine", name: "skill_1" },
+      { label: "Doctor", name: "skill_2" },
     ],
     following: true,
+    image: profile1,
   },
   {
     id: 2,
     name: "Supichaya Boondol",
     faculty: "Faculty of Engineering",
-    description: "Hi! I'm a software engineering student!",
+    description: "I'm a software engineering student!",
     skills: [
-      { label: "Skill3", name: "skill_3" },
-      { label: "Skill4", name: "skill_4" },
+      { label: "Software", name: "skill_3" },
+      { label: "Hardware", name: "skill_4" },
     ],
     following: false,
+    image: profile2,
   },
   {
     id: 3,
     name: "Nattaphol Srisa",
-    faculty: "Faculty of Engineering",
-    description: "Hi! I'm a software engineering student!",
+    faculty: "Faculty of Science",
+    description: "I'm a computer science student and I love computer games",
     skills: [
-      { label: "Skill5", name: "skill_5" },
-      { label: "Skill6", name: "skill_6" },
+      { label: "DataVisualization", name: "skill_5" },
+      { label: "DistributedComputing", name: "skill_6" },
     ],
     following: true,
+    image: profile3,
+  },
+  {
+    id: 4,
+    name: "Tharita tipdecho",
+    faculty: "Faculty of Art",
+    description: "I'm an Artist and I like to talk with people",
+    skills: [
+      { label: "Drawing", name: "skill_3" },
+      { label: "TeamCommunication", name: "skill_4" },
+    ],
+    following: false,
+    image: profile4,
   },
 ]
 

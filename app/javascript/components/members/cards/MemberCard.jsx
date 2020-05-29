@@ -7,7 +7,11 @@ class MemberCard extends React.Component {
     const { user, role, onClick } = this.props
     return (
       <div className="member-card">
-        <p className="align-self-center">image</p>
+        <img
+          src={user.image}
+          className="image__profile image__profile--medium"
+        />
+        {/* <p className="align-self-center">image</p> */}
         <Button
           name="member-card"
           className="button button--transparent"

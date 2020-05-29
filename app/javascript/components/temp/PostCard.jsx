@@ -1,38 +1,38 @@
 import React from "react"
 
-import anya from "../../images/anya.jpg"
+import profile from "../../images/profile/jiggo.jpg"
 
 const updateProjects = [
   {
     id: 1,
-    user: { first_name: "Supichaya", last_name: "Boondol", img: anya },
+    user: { first_name: "Supichaya", last_name: "Boondol", img: profile },
     action: "Update project status",
     statuses: { previous: "Initiating", currentStatus: "In progress" },
     // message: "Nearly finish!",
     project: {
-      title: "Update Project 1",
-      description: "Project description",
+      title: "Breathe with a better air",
+      description: "Create an air refresher thath can control by mobile",
       tags: [
-        { label: "Tag1", name: "tag1" },
-        { label: "Tag2", name: "tag2" },
+        { label: "Arduino", name: "tag1" },
+        { label: "Cooking", name: "tag2" },
       ],
     },
-    time: "Tue 9 Dec 2019",
+    time: "Wed 10 Dec 2019",
   },
   {
     id: 2,
-    user: { first_name: "Nattaphol", last_name: "Srisa", img: anya },
-    action: "Post project status",
+    user: { first_name: "Supichaya", last_name: "Boondol", img: profile },
+    title: "Breathe with a better air",
     message: "Get stuck on the machine part .__.",
     project: {
-      title: "Update Project 2",
-      description: "Project description",
+      title: "Breathe with a better air",
+      description: "Create an air refresher thath can control by mobile",
       tags: [
-        { label: "Tag1", name: "tag1" },
-        { label: "Tag2", name: "tag2" },
+        { label: "RubyAndPython", name: "tag1" },
+        { label: "ProgrammingLanguages", name: "tag2" },
       ],
     },
-    time: "Wed 17 Dec 2019",
+    time: "Tue 2 Dec 2019",
   },
 ]
 

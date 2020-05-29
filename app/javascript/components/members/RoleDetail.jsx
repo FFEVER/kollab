@@ -1,170 +1,137 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import {
-  FormControl,
-  Select,
-  MenuItem,
-  FormHelperText,
-} from "@material-ui/core"
-import Button from "../shared/form/Button"
-import phone from "../../images/icon/phone-call.png"
-import mail from "../../images/icon/mail.png"
-import instagram from "../../images/icon/instagram.png"
-import anya from "../../images/anya.jpg"
-
-const constUser = {
-  first: "Kasamabhorn",
-  last: "Suparerkrat",
-  phone: "061 234 5678",
-  mail: "kanasamabhorn@kmitl.ac.th",
-  instagram: "kasamabhorn.ks",
-  socialLinks: [{ id: 1, social: "Instagram", name: "anya.ks" }],
-}
-
-const constRoles = ["React Developer", "UX/UI Design", "Ruby on Rails"]
-
-const constRole = {
-  id: 1,
-  name: "UX/UI Designer",
-  expertiseIds: [1, 2],
-  expertises: ["Graphic Design", "Design"],
-  skillIds: [1, 2],
-  skills: ["UserExperience", "Protptyping"],
-  description: "- Has a strong passion \n- Experienced using Zeplin",
-  status: "Open",
-}
-
-const statuses = [
-  "completed",
-  "in progress",
-  "cancelled",
-  "on hold",
-  "intiating",
-]
-
-const roleStatuses = ["Owner", "Member"]
-
 class RoleDetail extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: {},
-      roles: {},
-      role: "UX/UI Design",
-      contact: {},
-      roleStatus: "Owner",
+      name: "React Developer",
+      expertises: this.props.expertises,
+      skills: [
+        { label: "React", name: "react" },
+        { label: "Developer", name: "Developer" },
+      ],
+      description:
+        "- Be able to develop frontend with ReactJs.- Familiar with GitHub",
+      status: "Open",
+      userExpertises: [{ division: "Software", group: "", field: "" }],
+      isButtonLoading: false,
     }
 
-    this.memberDetail = this.memberDetail.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.setUserExpertises = this.setUserExpertises.bind(this)
+    this.convertExpertiesForDisplay = this.convertExpertiesForDisplay.bind(this)
   }
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
+  setUserExpertises() {
+    let exps = this.props.expertises // All expertises
+    let userExpIds = this.filterExpertiseId(this.props.userExpertises) // User expertise ids
+    let userExps = [] // Return obj
+    let obj = []
+    let temp = {}
+    userExpIds.map((key) => {
+      let exp = exps.find((item) => item.id === key)
+
+      while (temp !== undefined) {
+        obj.push(exp)
+        temp = exps.find((item) => item.id === exp.parent_id)
+        exp = temp
+      }
+      userExps.push(obj)
+      obj = []
+      temp = {}
     })
+    return userExps
   }
 
-  memberDetail() {
-    console.log("Show member detail")
+  convertExpertiesForDisplay() {
+    let exps = this.setUserExpertises()
+    let expsForDisplay = []
+    exps.map((item) => {
+      if (item.length === 3) {
+        let obj = {
+          field: item[0].name,
+          group: item[1].name,
+          division: item[2].name,
+          expertise_id: item[0].id,
+        }
+        expsForDisplay.push(obj)
+      } else if (item.length === 2) {
+        let obj = {
+          field: "",
+          group: item[0].name,
+          division: item[1].name,
+          expertise_id: item[0].id,
+        }
+        expsForDisplay.push(obj)
+      } else if (item.length === 1) {
+        let obj = {
+          field: "",
+          group: "",
+          division: item[0].name,
+          expertise_id: item[0].id,
+        }
+        expsForDisplay.push(obj)
+      }
+    })
+    return expsForDisplay
   }
 
   render() {
     const { currentUser } = this.props
-    const { user, role, roleStatus } = this.state
+    const {
+      name,
+      expertises,
+      skills,
+      description,
+      status,
+      userExpertises,
+    } = this.state
+    console.log("state ", this.state)
     return (
       <div className="mb-5">
         <div className="setting__role__section ">
-          <img src={anya} className="setting__role__proimg" />
+          <h3>{name}</h3>
         </div>
-        <div className="setting__role__title align-items-center">
-          <h3>{`${constUser.first} ${constUser.last}`}</h3>
+        <div className="setting__role__section ">
+          <h4>Expertises</h4>
+          <div className="d-flex flex-row">
+            {userExpertises.map((item, index) => (
+              <div className="button--tags mt-1" key={index}>
+                {item.division}
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="setting__role__section">
           <div className="setting__role__title">
-            <h4>Status</h4>
-          </div>
-          <FormControl variant="outlined" size="small">
-            <Select
-              name="roleStatus"
-              value={roleStatus}
-              onChange={this.handleChange}
-              //   error={errors.faculty.length > 0 ? true : false}
-            >
-              <MenuItem value="">
-                <em>Select a project status</em>
-              </MenuItem>
-              {roleStatuses.map((status, key) => (
-                <MenuItem key={key} value={status}>
-                  {status}
-                </MenuItem>
+            <h4>Skills</h4>
+            <div className="d-flex flex-row">
+              {skills.map((item, index) => (
+                <div className="button--tags mt-1" key={index}>
+                  {item.label}
+                </div>
               ))}
-            </Select>
-          </FormControl>
-          {/* <FormHelperText error={errors.status.length > 0 ? true : false}>
-            {errors.status[0]}
-          </FormHelperText> */}
+            </div>
+          </div>
         </div>
-
         <div className="setting__role__section">
           <div className="setting__role__title">
-            <h4>Role</h4>
+            <h4>Description</h4>
           </div>
-          <FormControl variant="outlined" size="small">
-            <Select
-              name="role"
-              value={role}
-              onChange={this.handleChange}
-              //   error={errors.faculty.length > 0 ? true : false}
+          <p>- Be able to develop frontend with ReactJs.</p>
+          <p>- Familiar with GitHub</p>
+        </div>
+        <div className="setting__role__section ">
+          <div className=" d-flex flex-row, align-items-center">
+            <h4>Status:</h4>
+            <p
+              className="font-weight-bold ml-1"
+              style={{ color: "#54bdc2", fontSize: "16.5px" }}
             >
-              <MenuItem value="">
-                <em>Select a member role</em>
-              </MenuItem>
-              {constRoles.map((role, key) => (
-                <MenuItem key={key} value={role}>
-                  {role}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-
-        <p className="link d-flex flex-column align-items-center">
-          Create new roless
-        </p>
-        <div className="setting__role__section">
-          <div className="setting__role__title">
-            <h4>Contact</h4>
+              {status}
+            </p>
           </div>
-          <div className="setting__role__section setting__role__section__item">
-            <img src={phone} height="20" width="20" />
-            <p>{constUser.phone}</p>
-          </div>
-          <div className="setting__role__section setting__role__section__item">
-            <img src={mail} height="20" width="20" />
-            <p>{constUser.mail}</p>
-          </div>
-          <div className="setting__role__section setting__role__section__item">
-            <img src={instagram} height="20" width="20" />
-            <p>{constUser.instagram}</p>
-          </div>
-        </div>
-
-        <div className="setting__role__section setting__role__section__button button--fixed-bottom ml-2 mr-2">
-          <Button
-            name="remove-button"
-            className="button button--lg button__decline setting__role__button mr-2"
-          >
-            Remove
-          </Button>
-          <Button
-            name="save-button"
-            className="button button--lg button__accept setting__role__button"
-          >
-            Save
-          </Button>
         </div>
       </div>
     )

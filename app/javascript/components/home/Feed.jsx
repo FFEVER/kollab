@@ -5,6 +5,11 @@ import { TextField, IconButton, InputAdornment } from "@material-ui/core"
 import Button from "../shared/form/Button"
 
 import anya from "../../images/anya.jpg"
+import profile1 from "../../images/profile/profile_1.jpeg"
+import profile2 from "../../images/profile/profile_2.jpeg"
+import profile3 from "../../images/profile/profile_3.jpeg"
+import profile4 from "../../images/profile/profile_4.jpeg"
+import profile5 from "../../images/profile/profile_5.jpeg"
 
 import UpdateProjectCard from "./cards/UpdateProjectCard"
 import StarProjectCard from "./cards/StarProjectCard"
@@ -13,26 +18,26 @@ import FollowUserCard from "./cards/FollowUserCard"
 const starProjects = [
   {
     id: 1,
-    user: { first_name: "Supichaya", last_name: "Boondol", img: anya },
+    user: { first_name: "Supichaya", last_name: "Boondol", img: profile1 },
     project: {
-      title: "Project 1",
-      description: "Project description",
+      title: "Pet feeder",
+      description: "A pet feeder machine controlled by a mobile application",
       tags: [
-        { label: "Tag1", name: "tag1" },
-        { label: "Tag2", name: "tag2" },
+        { label: "Machine", name: "tag1" },
+        { label: "MobileApp", name: "tag2" },
       ],
     },
     img: anya,
   },
   {
     id: 2,
-    user: { first_name: "Tharita", last_name: "Tipdecho", img: anya },
+    user: { first_name: "Tharita", last_name: "Tipdecho", img: profile2 },
     project: {
-      title: "Project 2",
-      description: "Project description",
+      title: "Garden carer",
+      description: "A machine that take care my garden when I'm away",
       tags: [
-        { label: "Tag1", name: "tag1" },
-        { label: "Tag2", name: "tag2" },
+        { label: "WebApp", name: "tag1" },
+        { label: "Engineering", name: "tag2" },
       ],
     },
   },
@@ -41,31 +46,31 @@ const starProjects = [
 const updateProjects = [
   {
     id: 1,
-    user: { first_name: "Supichaya", last_name: "Boondol", img: anya },
+    user: { first_name: "Supichaya", last_name: "Boondol", img: profile1 },
     action: "Update project status",
     statuses: { previous: "Initiating", currentStatus: "In progress" },
     // message: "Nearly finish!",
     project: {
-      title: "Update Project 1",
-      description: "Project description",
+      title: "Simple rice cooker",
+      description: "A small rice cooker made by arduino",
       tags: [
-        { label: "Tag1", name: "tag1" },
-        { label: "Tag2", name: "tag2" },
+        { label: "Arduino", name: "tag1" },
+        { label: "Cooking", name: "tag2" },
       ],
     },
     time: "Tue 9 Dec 2019",
   },
   {
     id: 2,
-    user: { first_name: "Nattaphol", last_name: "Srisa", img: anya },
+    user: { first_name: "Nattaphol", last_name: "Srisa", img: profile3 },
     action: "Post project status",
     message: "Get stuck on the machine part .__.",
     project: {
-      title: "Update Project 2",
-      description: "Project description",
+      title: "Ruby web and python libraries",
+      description: "Make a simple app using ruby language and python libraries",
       tags: [
-        { label: "Tag1", name: "tag1" },
-        { label: "Tag2", name: "tag2" },
+        { label: "RubyAndPython", name: "tag1" },
+        { label: "ProgrammingLanguages", name: "tag2" },
       ],
     },
     time: "Wed 17 Dec 2019",
@@ -75,13 +80,13 @@ const updateProjects = [
 const followUsers = [
   {
     id: 1,
-    user: { first_name: "Somphong", last_name: "Prarinyajai", img: anya },
-    target: { first_name: "Parawee", last_name: "Peesuksan", img: anya },
+    user: { first_name: "Somphong", last_name: "Prarinyajai", img: profile5 },
+    target: { first_name: "Parawee", last_name: "Peesuksan", img: profile4 },
   },
   {
     id: 2,
     user: { first_name: "Kanyapa", last_name: "Sririsan", img: anya },
-    target: { first_name: "Pansita", last_name: "Asakorn", img: anya },
+    target: { first_name: "Pansita", last_name: "Asakorn", img: profile2 },
   },
 ]
 

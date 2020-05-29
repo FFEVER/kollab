@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Projects::Settings::Projects::MembersController < ApplicationController
+class Projects::Settings::MembersController < ApplicationController
   before_action :set_project, except: %i[index new create]
 
   def index; end
@@ -20,7 +20,7 @@ class Projects::Settings::Projects::MembersController < ApplicationController
 
   def update; end
 
-  private
+    private
 
   def member_params
     permitted = params.require(:project).permit(
@@ -43,4 +43,4 @@ class Projects::Settings::Projects::MembersController < ApplicationController
   def set_project
     @project = Project.find(params[:id])
   end
-end
+  end

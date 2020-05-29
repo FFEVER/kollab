@@ -7,7 +7,7 @@
         <div class="setting__tab__selected"></div>
       </div>
       <div class="setting__tab__item">
-        <h4><%= tab.edit_project 'Member management', projects_settings_projects_member_path, class: "tablinks setting__tab__title" %></h4>
+        <h4><%= tab.edit_project 'Member management', projects_settings_member_path, class: "tablinks setting__tab__title" %></h4>
       </div>
     </div>
   <% end %>
@@ -17,7 +17,7 @@
   <%= react_component("projects/EditProject",
     {
       authenticityToken: form_authenticity_token,
-      submitPath: project_update_path,
+      submitPath: projects_settings_project_path,
       currentUser: current_user,
       currentProject: @project,
       expertiseIds: @project.expertise_ids,

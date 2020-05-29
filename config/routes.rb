@@ -47,9 +47,7 @@ Rails.application.routes.draw do
   namespace :projects do
     namespace :settings do
       resources :projects, only: %i[edit update]
-      namespace :projects do
-        resources :members, only: %i[index show edit update]
-      end
+      resources :members, only: %i[index show edit update]
     end
   end
 

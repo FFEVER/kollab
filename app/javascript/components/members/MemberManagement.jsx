@@ -122,8 +122,6 @@ class MemberManagement extends React.Component {
   render() {
     const { currentUser } = this.props
     const { members, roles, defaultUsers } = this.state
-    console.log("State ", this.state)
-    console.log("Props ", this.props)
     return (
       <div>
         <div className="setting__member__section">

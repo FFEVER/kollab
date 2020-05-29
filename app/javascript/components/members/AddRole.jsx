@@ -290,8 +290,6 @@ class AddRole extends React.Component {
       errors,
       isButtonLoading,
     } = this.state
-    console.log("State ", this.state)
-    console.log("Props ", this.props)
     return (
       <form onSubmit={this.handleSubmit} noValidate className="mb-5">
         <div className="setting__role__section ">

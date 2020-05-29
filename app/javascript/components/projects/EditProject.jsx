@@ -36,7 +36,7 @@ class EditProject extends React.Component {
       title: "",
       startDate: "",
       endDate: "",
-      expertiseIds: [],
+      expertise_ids: [],
       expertises: [],
       errors: defaultErrors,
       isButtonLoading: false,
@@ -59,7 +59,6 @@ class EditProject extends React.Component {
 
   componentDidMount() {
     let project = this.props.currentProject
-    console.log("Props ", this.props)
 
     let exp_ids = this.props.expertiseIds
 
@@ -87,7 +86,7 @@ class EditProject extends React.Component {
       shortDesc: project.short_desc,
       startDate: moment(new Date(project.start_date)).format("yyyy-MM-DD"),
       endDate: moment(new Date(project.end_date)).format("yyyy-MM-DD"),
-      expertiseIds: exp_ids,
+      expertise_ids: exp_ids,
       expertises: exps,
       tagIds: tagIds,
       tags: tags,
@@ -262,8 +261,14 @@ class EditProject extends React.Component {
     const endDate = new Date(this.state.endDate)
     if (!isNaN(endDate.getDate()))
       formData.append(dataName("end_date"), endDate)
-
-    formData.append(dataName("tag_list"), JSON.stringify(this.tadIds))
+    formData.append(
+      dataName("expertise_ids"),
+      JSON.stringify(this.state.expertise_ids)
+    )
+    formData.append(
+      dataName("tag_list"),
+      JSON.stringify(tagsToArray(this.state.tagList))
+    )
 
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
@@ -272,7 +277,7 @@ class EditProject extends React.Component {
   submitForm(formData) {
     const { submitPath } = this.props
     axios({
-      method: "post",
+      method: "put",
       url: submitPath,
       responseType: "json",
       headers: {
@@ -281,7 +286,7 @@ class EditProject extends React.Component {
       data: formData,
     })
       .then((response) => {
-        if (response.status === 201)
+        if (response.status === 200)
           window.location.href = response.headers.location
       })
       .catch((error) => {
@@ -319,7 +324,6 @@ class EditProject extends React.Component {
       isButtonLoading,
     } = this.state
     let allExpertises = this.props.expertises
-    console.log("State ", this.state)
     return (
       <form
         onSubmit={this.handleSubmit}

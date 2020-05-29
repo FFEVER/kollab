@@ -8,6 +8,12 @@ class UsersController < ApplicationController
   def show
     @projects = @user.projects
     @user.viewers << current_user
+    own = Member.where(user_id: current_user.id, is_owner: true)
+    @own_projects = []
+    own.each_with_index do |item, index|
+      project = Project.find(item[:project_id])
+      @own_projects[index] = project[:title]
+    end
   end
 
   def basic_info

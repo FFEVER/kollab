@@ -91,7 +91,7 @@
     <h2>Members (<%= @project.members.count %>)</h2>
 
     <% @members.each do |member| %>
-      <%= button_to member.user, class: "member", method: :get do %>
+      <%= button_to member.user, class: "member mb-2", method: :get do %>
         <% if member.user.profile_image_url %>
           <%= image_tag member.user.profile_image,
             class: "image__profile image__profile--small image__profile--with-border" %>
@@ -115,11 +115,15 @@
     <% end %>
   </section>
 
-  <%# <section class="section section__posts">
-    <h2>Project Posts</h2>
+  <section class="section section__posts">
+    <%# <h2>Posts</h2> %>
+    <%= react_component("temp/Post")%>
+    <%= react_component("temp/PostCard")%>
   </section>
 
   <section class="section section__related-projects">
     <h2>Related Projects</h2>
-  </section> %>
+
+    <%= react_component("temp/Projects") %>
+  </section>
 </div>

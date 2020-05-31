@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <% if user_signed_in? %>
 
-    <%= react_component("home/Notification",
+    <%= react_component("home/Feed",
     {
       authenticityToken: form_authenticity_token,
       currentUser: current_user,

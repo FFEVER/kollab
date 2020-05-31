@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Projects::Settings::ProjectsController < ApplicationController
-  before_action :set_project, except: %i[index new create]
+  # before_action :set_project, except: %i[index new create]
 
   def edit; end
 
@@ -24,6 +24,7 @@ class Projects::Settings::ProjectsController < ApplicationController
     permitted = params.require(:project).permit(
       :title,
       :short_desc,
+      :long_desc,
       :start_date,
       :end_date,
       :expertise_ids,

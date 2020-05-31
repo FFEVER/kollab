@@ -85,7 +85,7 @@ class ExpertiseModal extends React.Component {
       <div className="form d-flex flex-column mt-3">
         <div className="d-flex flex-row justify-content-between">
           <div className="d-flex flex-row">
-            <h4>Expertise *</h4>
+            <h4>Expertises *</h4>
           </div>
           <Button
             name="addExpertise"

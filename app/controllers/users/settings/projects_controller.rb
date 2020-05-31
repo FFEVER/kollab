@@ -16,6 +16,7 @@ class Users::Settings::ProjectsController < ApplicationController
     permitted = params.require(:project).permit(
       :title,
       :short_desc,
+      :long_desc,
       :start_date,
       :end_date,
       :expertise_ids,

@@ -33,10 +33,11 @@ class EditProject extends React.Component {
       tagIds: [],
       tagList: [],
       shortDesc: "",
+      longDesc: "",
       title: "",
       startDate: "",
       endDate: "",
-      expertiseIds: [],
+      expertise_ids: [],
       expertises: [],
       errors: defaultErrors,
       isButtonLoading: false,
@@ -59,7 +60,6 @@ class EditProject extends React.Component {
 
   componentDidMount() {
     let project = this.props.currentProject
-    console.log("Props ", this.props)
 
     let exp_ids = this.props.expertiseIds
 
@@ -85,9 +85,10 @@ class EditProject extends React.Component {
     this.setState({
       title: project.title,
       shortDesc: project.short_desc,
+      longDesc: project.long_desc ? project.long_desc : "",
       startDate: moment(new Date(project.start_date)).format("yyyy-MM-DD"),
       endDate: moment(new Date(project.end_date)).format("yyyy-MM-DD"),
-      expertiseIds: exp_ids,
+      expertise_ids: exp_ids,
       expertises: exps,
       tagIds: tagIds,
       tags: tags,
@@ -254,6 +255,7 @@ class EditProject extends React.Component {
     const formData = new FormData()
     formData.append(dataName("title"), this.state.title)
     formData.append(dataName("short_desc"), this.state.shortDesc)
+    formData.append(dataName("long_desc"), this.state.longDesc)
 
     const startDate = new Date(this.state.startDate)
     if (!isNaN(startDate.getDate()))
@@ -262,8 +264,14 @@ class EditProject extends React.Component {
     const endDate = new Date(this.state.endDate)
     if (!isNaN(endDate.getDate()))
       formData.append(dataName("end_date"), endDate)
-
-    formData.append(dataName("tag_list"), JSON.stringify(this.tadIds))
+    formData.append(
+      dataName("expertise_ids"),
+      JSON.stringify(this.state.expertise_ids)
+    )
+    formData.append(
+      dataName("tag_list"),
+      JSON.stringify(tagsToArray(this.state.tagList))
+    )
 
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
@@ -272,7 +280,7 @@ class EditProject extends React.Component {
   submitForm(formData) {
     const { submitPath } = this.props
     axios({
-      method: "post",
+      method: "put",
       url: submitPath,
       responseType: "json",
       headers: {
@@ -281,7 +289,7 @@ class EditProject extends React.Component {
       data: formData,
     })
       .then((response) => {
-        if (response.status === 201)
+        if (response.status === 200)
           window.location.href = response.headers.location
       })
       .catch((error) => {
@@ -312,6 +320,7 @@ class EditProject extends React.Component {
     const {
       title,
       shortDesc,
+      longDesc,
       startDate,
       endDate,
       expertises,
@@ -319,9 +328,12 @@ class EditProject extends React.Component {
       isButtonLoading,
     } = this.state
     let allExpertises = this.props.expertises
-    console.log("State ", this.state)
     return (
-      <form onSubmit={this.handleSubmit} className="project__form" noValidate>
+      <form
+        onSubmit={this.handleSubmit}
+        className="project__form mb-5"
+        noValidate
+      >
         <div className="form-group">
           <FormInput
             name="title"
@@ -346,6 +358,19 @@ class EditProject extends React.Component {
             className="form-control"
             errors={errors.shortDesc}
             rows="3"
+          />
+        </div>
+        <div className="form-group">
+          <FromTextarea
+            name="longDesc"
+            label="Long description:"
+            placeholder="Enter a long description"
+            onChange={this.handleChange}
+            isRequired={true}
+            value={longDesc}
+            className="form-control"
+            errors={errors.longDesc}
+            rows="5"
           />
         </div>
         <div className="form-row">
@@ -390,7 +415,9 @@ class EditProject extends React.Component {
           <div />
         )}
         <div className="form-row">
-          <h4>Tags *</h4>
+          <div className="mb-2">
+            <h4>Tags *</h4>
+          </div>
           <TagInput
             value={this.state.tagList}
             onChange={this.handleTagClear}

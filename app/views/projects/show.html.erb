@@ -70,7 +70,7 @@
   </section>
 
   <section class="section section__tags">
-    <h2>Fields</h2>
+    <h2>Expertises</h2>
     <div>
       <% @project.expertise_ids.each do |id|%>
         <%= link_to Expertise.find(id).name, "", class: "button--tags"%>

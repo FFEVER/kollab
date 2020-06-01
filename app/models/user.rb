@@ -126,7 +126,7 @@ class User < ApplicationRecord
     tree
   end
 
-  def get_n_latest_unique_viewed(item_type = 'Project', n = 10)
+  def get_n_latest_unique_viewed(item_type = 'Project', n = 16)
     given_views.where(viewable_type: 'Project').order('created_at DESC').map { |v| v.viewable_id }.uniq[0..(n - 1)]
   end
 end

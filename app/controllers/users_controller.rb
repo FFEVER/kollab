@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @projects = @user.projects
-    @user.viewers << current_user
+    @user.viewers << current_user if @user != current_user
   end
 
   def edit
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       else
         errors = helpers.errors_to_camel(@user.errors.messages)
         format.html { render :edit }
-        format.json { render json: { messages: errors }, status: :unprocessable_entity }
+        format.json { render json: {messages: errors}, status: :unprocessable_entity }
       end
     end
   end
@@ -58,22 +58,22 @@ class UsersController < ApplicationController
 
   def user_params
     permitted = params.require(:user).permit(
-      :first_name,
-      :last_name,
-      :email,
-      :role,
-      :faculty_id,
-      :year,
-      :expertise_ids,
-      :skill_list,
-      :profile_image,
-      :description,
-      :phone,
-      :github,
-      :linkedin,
-      :facebook,
-      :instagram,
-      :medium
+        :first_name,
+        :last_name,
+        :email,
+        :role,
+        :faculty_id,
+        :year,
+        :expertise_ids,
+        :skill_list,
+        :profile_image,
+        :description,
+        :phone,
+        :github,
+        :linkedin,
+        :facebook,
+        :instagram,
+        :medium
     )
     if permitted[:expertise_ids]
       permitted[:expertise_ids] = JSON.parse(permitted[:expertise_ids]) || []

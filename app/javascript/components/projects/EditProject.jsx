@@ -11,7 +11,7 @@ import {
   FormHelperText,
 } from "@material-ui/core"
 
-import { TagInput, tagsToArray } from "../shared/form/TagInput"
+import { TagInput, tagsToArray, defaultStyles } from "../shared/form/TagInput"
 import { FormValidator, defaultErrors } from "./EditProjectValidator"
 import FormInput from "../shared/form/FormInput"
 import FromTextarea from "../shared/form/FormTextarea"
@@ -23,6 +23,42 @@ const DATA_PREFIX = "project"
 
 const dataName = (name) => {
   return DATA_PREFIX + "[" + name + "]"
+}
+
+const tagStyles = {
+  ...defaultStyles,
+  control: (provided, state) => ({
+    ...provided,
+    minWidth: "100%",
+    minHeight: "56px",
+    borderColor: "#c2c2c2",
+    boxShadow: state.isFocused ? "0 0 3px #54bdc2" : "",
+    cursor: "text",
+    "&:hover": {
+      borderColor: "#c2c2c2",
+    },
+    marginTop: "10px",
+  }),
+}
+
+const tagErrorStyles = {
+  ...defaultStyles,
+  control: (provided, state) => ({
+    ...provided,
+    minWidth: "100%",
+    minHeight: "56px",
+    borderColor: "red",
+    boxShadow: state.isFocused ? "0 0 3px #ce7171" : "",
+    cursor: "text",
+    "&:hover": {
+      borderColor: "red",
+    },
+    marginTop: "10px",
+  }),
+  placeholder: (provided, state) => ({
+    ...provided,
+    color: "red",
+  }),
 }
 
 class EditProject extends React.Component {
@@ -272,7 +308,7 @@ class EditProject extends React.Component {
       dataName("tag_list"),
       JSON.stringify(tagsToArray(this.state.tagList))
     )
-
+    formData.append("id", this.props.currentProject.id)
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
   }
@@ -366,7 +402,7 @@ class EditProject extends React.Component {
             label="Long description:"
             placeholder="Enter a long description"
             onChange={this.handleChange}
-            isRequired={true}
+            // isRequired={true}
             value={longDesc}
             className="form-control"
             errors={errors.longDesc}
@@ -419,12 +455,14 @@ class EditProject extends React.Component {
             <h4>Tags *</h4>
           </div>
           <TagInput
+            id="tags"
             value={this.state.tagList}
             onChange={this.handleTagClear}
             onKeyDown={this.handleTagChange}
             placeholder="Type something and press enter..."
-            errors={errors.tags}
-            id="tags"
+            errors={errors.tagList}
+            styles={tagStyles}
+            errorStyles={tagErrorStyles}
           />
         </div>
         <Button

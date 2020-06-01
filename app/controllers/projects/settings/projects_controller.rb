@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Projects::Settings::ProjectsController < ApplicationController
-  # before_action :set_project, except: %i[index new create]
+  before_action :set_project, except: %i[index new create]
 
   def edit; end
 

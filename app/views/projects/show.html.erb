@@ -49,7 +49,7 @@
   <section class="section section__overview">
     <%# Todo: [Eit] Project Overview %>
     <h2>Project Overview</h2>
-    <p><%= @project.short_desc%></p>
+    <p><%= @project.long_desc%></p>
 
   </section>
 
@@ -70,7 +70,7 @@
   </section>
 
   <section class="section section__tags">
-    <h2>Categories</h2>
+    <h2>Fields</h2>
     <div>
       <% @project.expertise_ids.each do |id|%>
         <%= link_to Expertise.find(id).name, "", class: "button--tags"%>

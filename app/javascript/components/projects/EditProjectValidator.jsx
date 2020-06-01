@@ -5,9 +5,7 @@ const defaultErrors = {
   startDate: [],
   endDate: [],
   tagList: [],
-  categories: [],
   expertises: [],
-  userExpertises: [],
 }
 
 class FormValidator {
@@ -27,11 +25,24 @@ class FormValidator {
     const { shortDesc } = state
     const key = Object.keys({ shortDesc })[0]
 
-    if (shortDesc === undefined || shortDesc.length < 1) {
-      errors[key].push("Short description cannot be blank.")
-    }
+    // if (shortDesc === undefined || shortDesc.length < 1) {
+    //   errors[key].push("Short description cannot be blank.")
+    // }
     if (shortDesc.length > 150) {
       errors[key].push("Short description is too long.")
+    }
+  }
+
+  static validateLongDesc(state, errors) {
+    const { longDesc } = state
+    const key = Object.keys({ longDesc })[0]
+
+    if (longDesc === undefined || longDesc.length < 1) {
+      errors[key].push("Long description cannot be blank.")
+    }
+
+    if (longDesc.length > 250) {
+      errors[key].push("The  description is too long.")
     }
   }
 
@@ -49,6 +60,17 @@ class FormValidator {
       if (Number.isNaN(startDateObj)) {
         errors[key].push("Start date cannot be blank.")
       }
+    }
+  }
+
+  static validateExpertises(state, errors) {
+    const { expertises } = state
+    const key = Object.keys({ expertises })[0]
+
+    if (expertises.length > 3) {
+      errors[key].push("Expertises may have up to 3.")
+    } else if (expertises.length <= 0) {
+      errors[key].push("Add at least 1 expertise")
     }
   }
 
@@ -94,8 +116,10 @@ class FormValidator {
       this.clearErrors(errors)
       this.validateTitle(state, errors)
       this.validateShortDesc(state, errors)
+      this.validateLongDesc(state, errors)
       this.validateStartEndDate(state, errors)
       this.validateTagList(state, errors)
+      this.validateExpertises(state, errors)
 
       if (this.isValidatePass(errors)) {
         resolve(errors)

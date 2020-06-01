@@ -21,8 +21,8 @@ class Project < ApplicationRecord
   has_many :viewers, through: :received_views, source: :viewer
 
   # TODO: [Eit] Validates fields
-  validates :title, presence: true, length: { within: 1..50 }
-  validates :short_desc, presence: true, length: { within: 1..150 }
+  validates :title, presence: true, length: {within: 1..50}
+  validates :short_desc, presence: true, length: {within: 1..150}
   validate :start_date_greater_than_end_date
   validates_length_of :tag_list, minimum: 1, message: 'Tags cannot be blank.'
   validates_length_of :tag_list, maximum: 3, message: 'Tags can only have up to 3.'
@@ -91,5 +91,9 @@ class Project < ApplicationRecord
       tree << expertise.parents_tree
     end
     tree
+  end
+
+  def get_n_latest_unique_viewed(n = 16)
+    received_views.order('created_at DESC').map { |v| v.viewer_id }.uniq[0..(n - 1)]
   end
 end

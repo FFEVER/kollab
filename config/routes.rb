@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   devise_for :users, controllers: {
-      confirmations: 'users/confirmations',
-      registrations: 'users/registrations',
-      passwords: 'users/passwords',
-      sessions: 'users/sessions'
+    confirmations: 'users/confirmations',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+    sessions: 'users/sessions'
   }
 
   resources :users, only: %i[show] do
@@ -34,10 +34,17 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api, constraints: {format: 'json'} do
+  namespace :api, constraints: { format: 'json' } do
     namespace :v1 do
       resources :users, only: %i[index]
       resources :projects, only: %i[index]
+    end
+  end
+
+  resources :search, except: %i[new create edit update destroy] do
+    collection do
+      get 'explore'
+      get 'trending'
     end
   end
 end

@@ -4,7 +4,8 @@ const defaultErrors = {
   startDate: [],
   endDate: [],
   tagList: [],
-  categories: []
+  categories: [],
+  expertises: [],
 }
 
 class FormValidator {
@@ -46,6 +47,17 @@ class FormValidator {
       if (Number.isNaN(startDateObj)) {
         errors[key].push("Start date cannot be blank.")
       }
+    }
+  }
+
+  static validateExpertise(state, errors) {
+    const { expertises } = state
+    const key = Object.keys({ expertises })[0]
+
+    if (expertises.length > 3) {
+      errors[key].push("Category can have up to 3.")
+    } else if (expertises.length <= 0) {
+      errors[key].push("Add at least 1 project category")
     }
   }
 
@@ -92,6 +104,7 @@ class FormValidator {
       this.validateTitle(state, errors)
       this.validateShortDesc(state, errors)
       this.validateStartEndDate(state, errors)
+      this.validateExpertise(state, errors)
       this.validateTagList(state, errors)
 
       if (this.isValidatePass(errors)) {

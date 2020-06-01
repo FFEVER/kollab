@@ -4,12 +4,21 @@ class Project < ApplicationRecord
   # TODO: [Anyone] Add full_desc
   has_many :members, dependent: :delete_all
   has_many :users, through: :members
+
   has_many :taggings, dependent: :delete_all
   has_many :tags, through: :taggings
+
   has_many :favorites, dependent: :destroy
   has_many :stars, through: :favorites, source: :user
+
   has_many :received_follows, as: :followable, class_name: 'Following'
   has_many :followers, through: :received_follows, source: :follower
+
+  has_many :expertisings, as: :expertisable, dependent: :delete_all
+  has_many :expertises, through: :expertisings, source: :expertise
+
+  has_many :received_views, as: :viewable, class_name: 'Viewing'
+  has_many :viewers, through: :received_views, source: :viewer
 
   # TODO: [Eit] Validates fields
   validates :title, presence: true, length: { within: 1..50 }
@@ -34,6 +43,14 @@ class Project < ApplicationRecord
     tag_names = tags_array.uniq[0..2]
     new_or_found_tags = tag_names.collect { |name| Tag.find_or_create_by(name: name) }
     self.tags = new_or_found_tags
+  end
+
+  def self.expertise_ids=(expertise_array)
+    expertises.destroy_all
+    expertise_array = expertise_array.uniq[0..2]
+    expertise_array.each do |id|
+      expertises << Expertise.find(id)
+    end
   end
 
   def owners
@@ -66,5 +83,13 @@ class Project < ApplicationRecord
 
   def followed_by?(user)
     followers.include?(user)
+  end
+
+  def categories_tree
+    tree = []
+    expertises.each do |expertise|
+      tree << expertise.parents_tree
+    end
+    tree
   end
 end

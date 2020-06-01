@@ -19,3 +19,25 @@
     height: 20px;
   }
 }
+
+.fa-times {
+  font-size: 20px;
+
+  width: 20px;
+  height: 20px;
+
+  color: $kollab-gray;
+}
+
+.fa-plus {
+  &__project {
+    font-size: 20px;
+
+    position: absolute;
+    right: 0;
+
+    padding-right: 10px;
+
+    color: white;
+  }
+}

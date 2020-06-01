@@ -7,7 +7,25 @@ class UsersController < ApplicationController
 
   def show
     @projects = @user.projects
-    @user.viewers << current_user
+    @user.viewers << current_user if @user != current_user
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to profile_edit_path, notice: 'Profile was successfully updated.' }
+        format.json { render json: @user, status: :ok, location: @user }
+      else
+        errors = helpers.errors_to_camel(@user.errors.messages)
+        format.html { render :edit }
+        format.json { render json: { messages: errors }, status: :unprocessable_entity }
+      end
+    end
   end
 
   def basic_info

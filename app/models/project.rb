@@ -93,4 +93,8 @@ class Project < ApplicationRecord
     end
     tree
   end
+
+  def get_n_latest_unique_viewed(n = 16)
+    received_views.order('created_at DESC').map(&:viewer_id).uniq[0..(n - 1)]
+  end
 end

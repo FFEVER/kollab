@@ -26,6 +26,17 @@ form {
       box-shadow: 0 0 3px #ce7171;
     }
   }
+
+  .fix-height {
+    height: 40px;
+  }
+
+  .fix-width {
+    width: 95%;
+  }
+  .full-width {
+    width: 100%;
+  }
 }
 
 .text {

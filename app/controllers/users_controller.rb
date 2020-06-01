@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @projects = @user.projects
+    @user.viewers << current_user
   end
 
   def edit
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to profile_edit_path, notice: 'Profile was successfully updated.' }
         format.json { render json: @user, status: :ok, location: @user }
       else
         errors = helpers.errors_to_camel(@user.errors.messages)
@@ -59,18 +60,29 @@ class UsersController < ApplicationController
     permitted = params.require(:user).permit(
       :first_name,
       :last_name,
+      :email,
       :role,
       :faculty_id,
       :year,
       :expertise_ids,
       :skill_list,
-      :profile_image
+      :profile_image,
+      :description,
+      :phone,
+      :github,
+      :linkedin,
+      :facebook,
+      :instagram,
+      :medium
     )
     if permitted[:expertise_ids]
       permitted[:expertise_ids] = JSON.parse(permitted[:expertise_ids]) || []
     end
     if permitted[:skill_list]
       permitted[:skill_list] = JSON.parse(permitted[:skill_list]) || []
+    end
+    if permitted[:profile_image]
+      permitted[:profile_image] = permitted[:profile_image] || []
     end
     permitted
   end

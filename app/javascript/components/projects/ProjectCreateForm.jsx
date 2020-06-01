@@ -212,7 +212,6 @@ class ProjectCreateForm extends React.Component {
       shortDesc,
       startDate,
       endDate,
-      categories,
       errors,
       isButtonLoading,
       expertises,
@@ -272,20 +271,6 @@ class ProjectCreateForm extends React.Component {
             />
           </div>
         </div>
-
-        {/* <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="categories">Categories *</label>
-            <input
-              type="text"
-              name="categories"
-              id="categories"
-              className="form-control"
-              onChange={this.handleChange}
-              value={categories}
-            ></input>
-          </div>
-        </div> */}
 
         <ExpertiseModal
           className="project__expertise"

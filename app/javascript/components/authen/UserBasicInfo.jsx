@@ -340,7 +340,7 @@ class UserBasicInfo extends React.Component {
     const { faculties } = this.props
     return (
       <form
-        className="d-flex flex-column mt-3"
+        className="d-flex flex-column"
         onSubmit={this.handleSubmit}
         noValidate
       >

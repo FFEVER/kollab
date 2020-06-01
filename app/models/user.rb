@@ -32,6 +32,13 @@ class User < ApplicationRecord
            foreign_key: :follower_id, class_name: 'Following'
   has_many :followings, through: :given_follows, source: :followable, source_type: 'User'
   has_many :following_projects, through: :given_follows, source: :followable, source_type: 'Project'
+
+  has_many :received_views, as: :viewable, class_name: 'Viewing'
+  has_many :viewers, through: :received_views, source: :viewer
+  has_many :given_views, foreign_key: :viewer_id, class_name: 'Viewing'
+  has_many :viewed_users, through: :given_views, source: :viewable, source_type: 'User'
+  has_many :viewed_projects, through: :given_views, source: :viewable, source_type: 'Project'
+
   has_many :expertisings, as: :expertisable, dependent: :delete_all
   has_many :expertises, through: :expertisings, source: :expertise
   has_many :user_skills, dependent: :delete_all
@@ -42,7 +49,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: {within: 1..50}
   validates :last_name, presence: true, length: {within: 1..50}
   validates :year, length: {within: 1..15}, allow_nil: true, allow_blank: true
-  validates :description, length: {within: 1..15}, allow_nil: true, allow_blank: true
+  validates :description, length: {within: 1..75}, allow_nil: true, allow_blank: true
   validates :profile_image, content_type: VALID_IMG_TYPES,
             size: {less_than: MAX_IMG_MB_SIZE.megabytes,
                    message: "should less than #{MAX_IMG_MB_SIZE} MB"}
@@ -117,5 +124,9 @@ class User < ApplicationRecord
       tree << expertise.parents_tree
     end
     tree
+  end
+
+  def get_n_latest_unique_viewed(item_type = 'Project', n = 16)
+    given_views.where(viewable_type: 'Project').order('created_at DESC').map { |v| v.viewable_id }.uniq[0..(n - 1)]
   end
 end

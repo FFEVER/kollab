@@ -47,14 +47,15 @@
   </section>
 
   <section class="section section__overview">
-    <%# Todo: [Eit] Project Overview %>
     <h2>Project Overview</h2>
+    <% if @project.long_desc.blank? %>
+      <p>No description</p>
+    <% end %>
     <p><%= @project.long_desc %></p>
 
   </section>
 
   <section class="section section__dates">
-    <%# Todo: [Eit] Date conditions %>
     <% unless @project.start_date.blank? %>
       <div>
         <h2>Start</h2>
@@ -121,10 +122,20 @@
       <%= react_component('post/Post', {
           authenticityToken: form_authenticity_token,
           currentUser: current_user,
-          submitPath: project_posts_path(@project)
+          submitPath: project_posts_path(@project),
       }) %>
     <% end %>
-    <%= react_component('post/cards/PostCard') %>
+
+    <% if @serialized_posts.count == 0 %>
+      <p>No post found</p>
+    <% end %>
+
+    <%= react_component('post/cards/PostCard', {
+        authenticityToken: form_authenticity_token,
+        currentUser: current_user,
+        posts: @serialized_posts,
+        showProjectTitle: false,
+    }) %>
   </section>
 
   <%# <section class="section section__related-projects">

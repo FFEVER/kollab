@@ -31,7 +31,8 @@ class PostsController < ApplicationController
 
   def update
     @project = Project.find(params[:project_id])
-    check_permission(@project, current_user)
+    return unless check_permission(@project, current_user)
+    @post.update(:post_params)
   end
 
   def destroy

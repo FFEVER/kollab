@@ -68,8 +68,8 @@ class SearchController < ApplicationController
     project_ids = response['projects']
     project_ids.each do |id|
       project = Project.where(id: id).first
-      # Filter out own and non-exists projects
-      if project and current_user.projects.include? project
+      # Filter out owned and non-exists projects
+      if project and not current_user.projects.include? project
         recommended_projects << project
       end
     end

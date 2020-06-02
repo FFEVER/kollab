@@ -120,6 +120,7 @@ class Explore extends React.Component {
         this.selectType = this.selectType.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
+        this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
     }
 
     selectType(type) {
@@ -136,6 +137,11 @@ class Explore extends React.Component {
         this.setState({isButtonLoading: isLoading})
     }
 
+    handleSearchSubmit() {
+        const searchPath = this.props.searchPath
+        window.location.href = `${searchPath}?word=${this.state.searchText}`;
+    }
+
     render() {
         const {currentUser, projects, users, searchPath, projectPath} = this.props
         const {name, searchText, selectType} = this.state
@@ -147,6 +153,8 @@ class Explore extends React.Component {
                     placeholder={`Search ${selectType}`}
                     type="search"
                     variant="outlined"
+                    onChange={this.handleChange}
+                    name="searchText"
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
@@ -154,6 +162,7 @@ class Explore extends React.Component {
                                     type="submit"
                                     // className={classes.iconButton}
                                     aria-label="search"
+                                    onClick={this.handleSearchSubmit}
                                 >
                                     <i className="fas fa-search fa-search__textfield"></i>
                                 </IconButton>
@@ -181,13 +190,6 @@ class Explore extends React.Component {
                         People
                     </Button>
                 </div>
-                {searchText !== "" ? (
-                    <div className="search__project__section">
-                        <p>{`${projects.length} results`}</p>
-                    </div>
-                ) : (
-                    <div/>
-                )}
 
                 {selectType === "project"
                     ? projects.map((item, index) => (

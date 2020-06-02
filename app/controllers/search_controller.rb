@@ -2,7 +2,8 @@
 
 class SearchController < ApplicationController
   def index
-    values = {word: "%#{params[:word]}%"}
+    @word = params[:word]
+    values = {word: "%#{@word}%"}
     user_conditions = 'users.first_name LIKE :word OR ' +
         'users.last_name LIKE :word OR ' +
         'users.description LIKE :word OR ' +

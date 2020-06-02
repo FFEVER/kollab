@@ -33,7 +33,7 @@ class User < ApplicationRecord
   has_many :followings, through: :given_follows, source: :followable, source_type: 'User'
   has_many :following_projects, through: :given_follows, source: :followable, source_type: 'Project'
 
-  has_many :received_views, as: :viewable, class_name: 'Viewing'
+  has_many :received_views, as: :viewable, class_name: 'Viewing', dependent: :delete_all
   has_many :viewers, through: :received_views, source: :viewer
   has_many :given_views, foreign_key: :viewer_id, class_name: 'Viewing'
   has_many :viewed_users, through: :given_views, source: :viewable, source_type: 'User'
@@ -44,7 +44,10 @@ class User < ApplicationRecord
   has_many :user_skills, dependent: :delete_all
   has_many :skills, through: :user_skills
 
+  has_many :posts
+
   has_one_attached :profile_image
+
 
   validates :first_name, presence: true, length: {within: 1..50}
   validates :last_name, presence: true, length: {within: 1..50}

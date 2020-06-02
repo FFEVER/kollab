@@ -16,40 +16,40 @@
     <div class="section__header__actions">
       <% if @project.starred_by?(current_user) %>
         <%= button_to unstar_project_path, method: :post,
-            class: "button button--md button--unstar", remote: true do %>
+                      class: "button button--md button--unstar", remote: true do %>
           <%= @project.stars.count %>
         <% end %>
       <% else %>
         <%= button_to star_project_path, method: :post,
-            class: "button button--md button--star", remote: true do %>
+                      class: "button button--md button--star", remote: true do %>
           <%= @project.stars.count %>
         <% end %>
       <% end %>
 
       <% if @project.followed_by?(current_user) %>
         <%= button_to "Following", unfollow_project_path, method: :post,
-            class: "button button--md button--unfollow--md", remote: true%>
+                      class: "button button--md button--unfollow--md", remote: true %>
       <% else %>
         <%= button_to "Follow", follow_project_path, method: :post,
-            class: "button button--md button--follow--md", remote: true %>
+                      class: "button button--md button--follow--md", remote: true %>
       <% end %>
     </div>
     <button class="button button--md button--status">In progress</button>
 
   </section>
 
-  <% if @project.owners.map(&:id).include? current_user.id%>
+  <% if @project.owners.map(&:id).include? current_user.id %>
     <%= button_to "Edit Project", edit_projects_settings_project_path, class: "section button button--md project__fullwidth", method: :get %>
-  <%end%>
+  <% end %>
 
   <section class="section__header__short-desc">
-    <p><%= @project.short_desc%></p>
+    <p><%= @project.short_desc %></p>
   </section>
 
   <section class="section section__overview">
     <%# Todo: [Eit] Project Overview %>
     <h2>Project Overview</h2>
-    <p><%= @project.long_desc%></p>
+    <p><%= @project.long_desc %></p>
 
   </section>
 
@@ -72,8 +72,8 @@
   <section class="section section__tags">
     <h2>Fields</h2>
     <div>
-      <% @project.expertise_ids.each do |id|%>
-        <%= link_to Expertise.find(id).name, "", class: "button--tags"%>
+      <% @project.expertise_ids.each do |id| %>
+        <%= link_to Expertise.find(id).name, "", class: "button--tags" %>
       <% end %>
     </div>
   </section>
@@ -81,8 +81,8 @@
   <section class="section section__tags">
     <h2>Tags</h2>
     <div>
-      <% @project.tag_list.each do |tag|%>
-        <%= link_to tag, "", class: "button--tags"%>
+      <% @project.tag_list.each do |tag| %>
+        <%= link_to tag, "", class: "button--tags" %>
       <% end %>
     </div>
   </section>
@@ -94,16 +94,16 @@
       <%= button_to member.user, class: "member mt-2", method: :get do %>
         <% if member.user.profile_image_url %>
           <%= image_tag member.user.profile_image,
-            class: "image__profile image__profile--small image__profile--with-border" %>
+                        class: "image__profile image__profile--small image__profile--with-border" %>
         <% else %>
           <%= image_pack_tag "portrait_placeholder.png",
-            class: "image__profile image__profile--small image__profile--with-border" %>
+                             class: "image__profile image__profile--small image__profile--with-border" %>
         <% end %>
 
         <div class="member__details">
           <%= link_to member.user, class: "member__name" do %>
             <p class="member__name">
-              <%= "#{member.user.first_name} #{member.user.last_name}"%>
+              <%= "#{member.user.first_name} #{member.user.last_name}" %>
             </p>
           <% end %>
 
@@ -115,14 +115,16 @@
     <% end %>
   </section>
 
-  <%# <section class="section section__posts">
-    <h2>Project Posts</h2>
-  </section>%>
-
   <section class="section section__posts">
-    <h2>Posts</h2>
-    <%= react_component("post/Post")%>
-    <%= react_component("post/cards/PostCard")%>
+    <h2>Progress Update</h2>
+    <% if @project.users.include? current_user %>
+      <%= react_component('post/Post', {
+          authenticityToken: form_authenticity_token,
+          currentUser: current_user,
+          submitPath: project_posts_path(@project)
+      }) %>
+    <% end %>
+    <%= react_component('post/cards/PostCard') %>
   </section>
 
   <%# <section class="section section__related-projects">

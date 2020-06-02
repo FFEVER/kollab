@@ -1,19 +1,22 @@
 const defaultErrors = {
-  post: [],
+  body: [],
 }
 
 class PostValidator {
   static validatePost(state, errors) {
-    const { post } = state
-    const key = Object.keys({ post })[0]
-    if (post.length > 50) {
-      errors[key].push("Title is too long.")
+    const { body } = state
+    const key = Object.keys({ body })[0]
+    if (body.length > 500) {
+      errors[key].push("Post is too long.")
+    }
+    if (body.length === 0) {
+      errors[key].push("Post is too short.")
     }
   }
 
   static isValidatePass(errors) {
     for (const value of Object.values(errors)) {
-      if (value.length != 0) return false
+      if (value.length !== 0) return false
     }
     return true
   }
@@ -28,10 +31,7 @@ class PostValidator {
     let promise = new Promise((resolve, reject) => {
       const errors = { ...defaultErrors }
       this.clearErrors(errors)
-      this.validateTitle(state, errors)
-      this.validateShortDesc(state, errors)
-      this.validateStartEndDate(state, errors)
-      this.validateTagList(state, errors)
+      this.validatePost(state, errors)
 
       if (this.isValidatePass(errors)) {
         resolve(errors)
@@ -44,5 +44,4 @@ class PostValidator {
   }
 }
 
-export default PostValidator
 export { PostValidator, defaultErrors }

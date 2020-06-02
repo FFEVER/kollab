@@ -11,19 +11,15 @@ class PostsController < ApplicationController
   def show
   end
 
-  def new
-    @post = Post.new
-  end
-
   def create
     @project = Project.find(params[:project_id])
-    check_permission(@project, current_user)
+    return unless check_permission(@project, current_user)
 
     @post = Post.new(post_params)
     @post.user = current_user
     @post.project = @project
     if @post.save
-      render json: @post, location: project_post_path(@post), status: :created
+      render json: @post, location: project_path(@project), status: :created
     else
       errors = helpers.errors_to_camel(@post.errors.messages)
       render json: {messages: errors}, status: :bad_request
@@ -45,7 +41,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:body)
   end
 
   def set_post
@@ -54,7 +50,9 @@ class PostsController < ApplicationController
 
   def check_permission(project, user)
     unless project.users.include? user
-      render json: {messages: 'You have no permission.'}, status: :unauthorized
+      render json: {messages: {body: ['You have no permission.']}}, status: :unauthorized
+      return false
     end
+    return true
   end
 end

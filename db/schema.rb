@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 2020_06_02_184654) do
 
   create_table "posts", force: :cascade do |t|
     t.text "body"
-    t.string "title"
     t.bigint "project_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false

@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   devise_for :users, controllers: {
-      confirmations: 'users/confirmations',
-      registrations: 'users/registrations',
-      passwords: 'users/passwords',
-      sessions: 'users/sessions'
+    confirmations: 'users/confirmations',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+    sessions: 'users/sessions'
   }
 
   resources :users, only: %i[show] do
@@ -23,7 +23,10 @@ Rails.application.routes.draw do
   end
 
   get 'profile/edit', to: 'users#edit'
-  match 'profile/update', to: 'users#update', via: %i[put patch]
+  get 'project/edit', to: 'projects#edit'
+
+  match 'profile/update', to: 'users/settings/users#update', via: %i[put patch]
+  match 'project/update', to: 'projects/settings/projects#update', via: %i[put patch]
 
   resources :projects do
     member do
@@ -34,10 +37,23 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api, constraints: {format: 'json'} do
+  namespace :api, constraints: { format: 'json' } do
     namespace :v1 do
       resources :users, only: %i[index]
       resources :projects, only: %i[index]
+    end
+  end
+
+  namespace :projects do
+    namespace :settings do
+      resources :projects, only: %i[edit update]
+    end
+  end
+
+  namespace :users do
+    namespace :settings do
+      resources :users, only: %i[edit update]
+      resources :projects, only: %i[edit update]
     end
   end
 

@@ -80,13 +80,12 @@ class ExpertiseModal extends React.Component {
 
   render() {
     const { errors, division, group, field, activateModal } = this.state
-    const { expertises, type, require } = this.props
+    const { expertises, require } = this.props
     return (
       <div className="form d-flex flex-column mt-3">
         <div className="d-flex flex-row justify-content-between">
           <div className="d-flex flex-row">
-            <h4>{type ? type : "Expertise"} *</h4>
-            {require ? <h6>*</h6> : <div />}
+            <h4>Expertises *</h4>
           </div>
           <Button
             name="addExpertise"
@@ -113,7 +112,7 @@ class ExpertiseModal extends React.Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="expertiseModalLabel">
-                  {`Select your ${type ? type.toLowerCase() : `expertise`}`}
+                  Select your expertise
                 </h5>
                 <button
                   type="button"
@@ -284,7 +283,6 @@ ExpertiseModal.propTypes = {
   expertises: PropTypes.array,
   setExpertiseDisplayFunc: PropTypes.func,
   disable: PropTypes.bool,
-  type: PropTypes.string,
   require: PropTypes.bool,
 }
 export default ExpertiseModal

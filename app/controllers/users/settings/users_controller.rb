@@ -1,18 +1,9 @@
 # frozen_string_literal: true
 
-class UsersController < ApplicationController
-  before_action :set_user, except: %i[edit update basic_info]
-  before_action :custom_authenticate_user!
-  skip_before_action :check_basic_info, only: %i[update basic_info]
-
-  def show
-    @projects = @user.projects
-    @user.viewers << current_user if @user != current_user
-  end
-
+class Users::Settings::UsersController < ApplicationController
   def edit
     @user = current_user
-  end
+    end
 
   def update
     @user = current_user
@@ -28,39 +19,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def basic_info
-    @user = current_user
-  end
-
-  def follow
-    current_user.followings << @user
-    respond_to do |format|
-      format.html { redirect_to request.referrer }
-      format.json { render json: {following: @user.followed_by?(current_user)}, status: :created }
-    end
-  end
-
-  def unfollow
-    current_user.unfollow(@user)
-    respond_to do |format|
-      format.html { redirect_to request.referrer }
-      format.json { render json: {following: @user.followed_by?(current_user)}, status: :created }
-    end
-  end
-
-  def followers
-    @followers = @user.followers
-  end
-
-  def followings
-    @followings = @user.followings
-  end
-
   private
-
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   def user_params
     permitted = params.require(:user).permit(

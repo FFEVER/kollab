@@ -19,15 +19,14 @@
       font-size: 1rem;
 
       padding-bottom: 0.5rem;
-
-      text-transform: uppercase;
+      // text-transform: uppercase;
 
       color: $kollab-dark;
     }
 
     .section {
       width: 100%;
-      margin-bottom: $spacer-s;
+      margin-bottom: $spacer-m;
 
       &__header {
         display: flex;
@@ -35,12 +34,16 @@
         color: black;
 
         &__title {
-          margin-bottom: $spacer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
+
         &__actions {
           display: flex;
+          flex-direction: row;
 
-          margin-bottom: $spacer;
+          margin-bottom: $spacer-xs;
 
           button {
             margin-right: $spacer-s;
@@ -144,7 +147,6 @@
 
     &__header {
       margin: -1 * $spacer-l -1 * $spacer;
-      margin-bottom: $spacer;
     }
   }
 

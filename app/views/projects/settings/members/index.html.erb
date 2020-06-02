@@ -1,0 +1,24 @@
+<div class="setting__header">
+  <h2>Settings</h2>
+  <%= tabs_tag do |tab| %>
+    <div class="setting__tab tab">
+      <div class="setting__tab__item">
+        <h4><%= tab.edit_profile 'Edit project', edit_projects_settings_project_path(id: params[:project]), class: "tablinks setting__tab__title" %></h4>
+      </div>
+      <div class="setting__tab__item">
+        <h4><%= tab.member 'Member Management', projects_settings_members_path, class: "tablinks setting__tab__title" %></h4>
+        <div class="setting__tab__selected"></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="setting">
+  <%= react_component("projects/MemberManagement",
+    {
+      authenticityToken: form_authenticity_token,
+      submitPath: project_update_path,
+      currentUser: current_user,
+    })
+  %>
+</div>

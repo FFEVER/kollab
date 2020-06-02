@@ -45,8 +45,13 @@ Rails.application.routes.draw do
   end
 
   namespace :projects do
+    resources :roles, only: %i[show]
+    resources :join_requests, only: %i[create accept destroy]
+
     namespace :settings do
       resources :projects, only: %i[edit update]
+      resources :members, only: %i[index edit update]
+      resources :roles, only: %i[new edit update]
     end
   end
 

@@ -41,6 +41,11 @@ class Explore extends React.Component {
         window.location.href = `${searchPath}?word=${this.state.searchText}&type=${this.state.selectType}`;
     }
 
+    submitSearchTag = (tagName, parentType) => {
+        const searchPath = this.props.searchPath
+        window.location.href = `${searchPath}?word=${tagName}&type=${parentType}`;
+    }
+
     render() {
         const {projects, starPath, unstarPath, projectPath, showSearchBar, authenticityToken} = this.props
 
@@ -75,7 +80,7 @@ class Explore extends React.Component {
 
                 {projects.map((item, index) => (
                     <ProjectCard project={item} key={index} projectPath={projectPath} starPath={starPath}
-                                 unstarPath={unstarPath} authenticityToken={authenticityToken}/>
+                                 unstarPath={unstarPath} submitSearchTag={this.submitSearchTag} authenticityToken={authenticityToken}/>
                 ))}
             </div>
         )

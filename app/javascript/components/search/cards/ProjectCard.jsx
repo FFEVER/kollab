@@ -64,7 +64,7 @@ class ProjectCard extends React.Component {
 
         } = this.props.project
 
-        const {projectPath} = this.props
+        const {projectPath, submitSearchTag} = this.props
 
         const {starred, starCount} = this.state
 
@@ -86,7 +86,7 @@ class ProjectCard extends React.Component {
                     <div className="search__section">
                         <div className="search__tags">
                             {tags.map((item, index) => (
-                                <p className="link mr-1" key={index}>{`#${item}`}</p>
+                                <a className="link mr-1" onClick={() => submitSearchTag(item, "project")} key={index}>{`#${item}`}</a>
                             ))}
                         </div>
                     </div>
@@ -139,5 +139,6 @@ ProjectCard.propTypes = {
     unstarPath: PropTypes.string,
     projectPath: PropTypes.string,
     authenticityToken: PropTypes.string,
+    submitSearchTag: PropTypes.func
 }
 export default ProjectCard

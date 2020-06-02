@@ -3,10 +3,6 @@ import PropTypes from "prop-types"
 
 import {TextField, IconButton, InputAdornment} from "@material-ui/core"
 import Button from "../shared/form/Button"
-import profile1 from "../../images/profile/profile_1.jpeg"
-import profile2 from "../../images/profile/profile_2.jpeg"
-import profile3 from "../../images/profile/profile_3.jpeg"
-import profile4 from "../../images/profile/profile_4.jpeg"
 
 import ProjectCard from "./cards/ProjectCard"
 import UserCard from "./cards/UserCard"
@@ -57,6 +53,11 @@ class Search extends React.Component {
     submitSearch() {
         const searchPath = this.props.searchPath
         window.location.href = `${searchPath}?word=${this.state.searchText}&type=${this.state.selectType}`;
+    }
+
+    submitSearchTag = (tagName, parentType) => {
+        const searchPath = this.props.searchPath
+        window.location.href = `${searchPath}?word=${tagName}&type=${parentType}`;
     }
 
     render() {
@@ -133,11 +134,13 @@ class Search extends React.Component {
                 {selectType === "project"
                     ? projects.map((item, index) => (
                         <ProjectCard project={item} key={index} projectPath={projectPath} starPath={starPath}
-                                     unstarPath={unstarPath} authenticityToken={authenticityToken}/>
+                                     unstarPath={unstarPath} submitSearchTag={this.submitSearchTag}
+                                     authenticityToken={authenticityToken}/>
                     ))
                     : users.map((item, index) => (
                         <UserCard user={item} key={index} userPath={userPath} currentUser={currentUser}
-                                  followPath={followPath} unfollowPath={unfollowPath}
+                                  followPath={followPath}
+                                  unfollowPath={unfollowPath} submitSearchTag={this.submitSearchTag}
                                   authenticityToken={authenticityToken}/>
                     ))}
             </div>

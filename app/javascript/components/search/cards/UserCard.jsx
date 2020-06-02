@@ -56,7 +56,7 @@ class UserCard extends React.Component {
             profile_image_url,
         } = this.props.user
 
-        const {userPath, followPath, unfollowPath, currentUser} = this.props
+        const {userPath, submitSearchTag, currentUser} = this.props
 
         const {following} = this.state
 
@@ -88,7 +88,8 @@ class UserCard extends React.Component {
                     <div className="search__section">
                         <div className="search__tags">
                             {skills.map((item, index) => (
-                                <p className="link mr-1" key={index}>{`#${item}`}</p>
+                                <a className="link mr-1" onClick={() => submitSearchTag(item, "people")}
+                                   key={index}>{`#${item}`}</a>
                             ))}
                         </div>
                     </div>

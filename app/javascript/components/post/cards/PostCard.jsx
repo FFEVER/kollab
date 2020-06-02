@@ -80,7 +80,7 @@ class PostCard extends React.Component {
         return (
             <div>
                 {posts.map((item, index) => (
-                    <div className="home__post">
+                    <div className="home__post" key={item.id}>
                         <div className="home__post__header">
                             {showProjectTitle ?
                                 <a href={this.getProjectPath(item.project.id)}>

@@ -18,9 +18,9 @@
                           authenticityToken: form_authenticity_token,
                           currentUser: current_user,
                           searchPath: search_index_path,
+                          projectPath: project_path(:id),
                           projects: @projects_hash,
                           users: @users_hash,
-                          projectPath: project_path(:id)
                       })
   %>
 

@@ -1,16 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import moment from "moment"
 
 import {TextField, IconButton, InputAdornment} from "@material-ui/core"
-import Button from "../shared/form/Button"
-import profile1 from "../../images/profile/profile_1.jpeg"
-import profile2 from "../../images/profile/profile_2.jpeg"
-import profile3 from "../../images/profile/profile_3.jpeg"
-import profile4 from "../../images/profile/profile_4.jpeg"
 
 import ProjectCard from "./cards/ProjectCard"
-import UserCard from "./cards/UserCard"
 
 class Explore extends React.Component {
     constructor(props) {
@@ -78,13 +71,9 @@ class Explore extends React.Component {
                     }}
                 />
 
-                {selectType === "project"
-                    ? projects.map((item, index) => (
-                        <ProjectCard project={item} key={index} projectPath={projectPath}/>
-                    ))
-                    : users.map((item, index) => (
-                        <UserCard user={item} key={index}/>
-                    ))}
+                {projects.map((item, index) => (
+                    <ProjectCard project={item} key={index} projectPath={projectPath}/>
+                ))}
             </div>
         )
     }

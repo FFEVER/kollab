@@ -23,7 +23,15 @@ class Search extends React.Component {
         this.selectType = this.selectType.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
-        this.handleSearchSubmit()
+        this.submitSearch = this.submitSearch.bind(this)
+        this.keyPress = this.keyPress.bind(this)
+    }
+
+    componentDidMount() {
+        this.setState({
+            searchText: this.props.searchWord,
+            selectType: this.props.selectType
+        })
     }
 
     selectType(type) {
@@ -36,12 +44,19 @@ class Search extends React.Component {
         })
     }
 
+    keyPress(e) {
+        if (e.keyCode === 13) {
+            this.submitSearch()
+        }
+    }
+
     setIsButtonLoading(isLoading) {
         this.setState({isButtonLoading: isLoading})
     }
 
-    handleSearchSubmit(){
-
+    submitSearch() {
+        const searchPath = this.props.searchPath
+        window.location.href = `${searchPath}?word=${this.state.searchText}&type=${this.state.selectType}`;
     }
 
     render() {
@@ -55,6 +70,10 @@ class Search extends React.Component {
                     placeholder={`Search ${selectType}`}
                     type="search"
                     variant="outlined"
+                    name="searchText"
+                    value={this.state.searchText}
+                    onChange={this.handleChange}
+                    onKeyDown={this.keyPress}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
@@ -62,7 +81,7 @@ class Search extends React.Component {
                                     type="submit"
                                     // className={classes.iconButton}
                                     aria-label="search"
-                                    onClick={this.handleSearchSubmit}
+                                    onClick={this.submitSearch}
                                 >
                                     <i className="fas fa-search fa-search__textfield"></i>
                                 </IconButton>
@@ -90,13 +109,13 @@ class Search extends React.Component {
                         People
                     </Button>
                 </div>
-                {searchText !== "" ? (
-                    <div className="search__project__section">
-                        <p>{`${constProjects.length} results`}</p>
-                    </div>
-                ) : (
-                    <div/>
-                )}
+
+                <div className="search__project__section">
+                    {selectType === "project"
+                        ? <p>{`${projects.length} results`}</p>
+                        : <p>{`${users.length} results`}</p>
+                    }
+                </div>
 
                 {selectType === "project"
                     ? projects.map((item, index) => (
@@ -117,7 +136,9 @@ Search.propTypes = {
     projects: PropTypes.array,
     users: PropTypes.array,
     searchPath: PropTypes.string,
-    projectPath: PropTypes.string
+    projectPath: PropTypes.string,
+    searchWord: PropTypes.string,
+    selectType: PropTypes.string
 }
 
 export default Search

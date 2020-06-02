@@ -3,7 +3,6 @@
     <div class="search__tab tab">
       <div class="search__tab__item">
         <h4><%= tab.edit_profile 'Explore', explore_search_index_path, class: "tablinks search__tab__title" %></h4>
-        <div class="search__tab__selected"></div>
       </div>
       <div class="search__tab__item">
         <h4><%= tab.edit_project 'Trending', trending_search_index_path, class: "tablinks search__tab__title" %></h4>
@@ -21,7 +20,8 @@
                           searchPath: search_index_path,
                           users: @users_hash,
                           projectPath: project_path(:id),
-                          searchWord: @word
+                          searchWord: @word,
+                          selectType: @type
                       })
   %>
 

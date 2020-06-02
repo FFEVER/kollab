@@ -2,7 +2,7 @@
   <%= tabs_tag do |tab| %>
     <div class="search__tab tab">
       <div class="search__tab__item">
-        <h4><%= tab.edit_profile 'Search', explore_search_index_path, class: "tablinks search__tab__title" %></h4>
+        <h4><%= tab.edit_profile 'Explore', explore_search_index_path, class: "tablinks search__tab__title" %></h4>
         <div class="search__tab__selected"></div>
       </div>
       <div class="search__tab__item">
@@ -12,13 +12,18 @@
   <% end %>
 </div>
 
+<%= link_to 'search', search_index_path(search: {word: '', search_from: 'user'}) %>
+
 <div class="search">
   <%= react_component("search/Explore",
-    {
-      authenticityToken: form_authenticity_token,
-      currentUser: current_user,
-      project: current_user
-    })
+                      {
+                          authenticityToken: form_authenticity_token,
+                          currentUser: current_user,
+                          project: current_user,
+                          searchPath: search_index_path,
+                          projects: @projects_hash,
+                          users: @users_hash
+                      })
   %>
 
 </div>

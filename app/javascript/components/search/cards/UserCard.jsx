@@ -33,7 +33,7 @@ class UserCard extends React.Component {
           <div className="search__section">
             <div className="search__tags">
               {skills.map((item, index) => (
-                <p className="link mr-1" key={index}>{`#${item.label}`}</p>
+                <p className="link mr-1" key={index}>{`#${item}`}</p>
               ))}
             </div>
           </div>

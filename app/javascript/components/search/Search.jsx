@@ -60,8 +60,8 @@ class Search extends React.Component {
     }
 
     render() {
-        const {currentUser, projects, users, searchPath, projectPath} = this.props
-        const {name, searchText, selectType} = this.state
+        const {currentUser, projects, users, userPath, projectPath} = this.props
+        const {searchText, selectType} = this.state
         return (
             <div className="d-flex flex-column">
                 <TextField
@@ -71,7 +71,7 @@ class Search extends React.Component {
                     type="search"
                     variant="outlined"
                     name="searchText"
-                    value={this.state.searchText}
+                    value={searchText}
                     onChange={this.handleChange}
                     onKeyDown={this.keyPress}
                     InputProps={{
@@ -122,7 +122,7 @@ class Search extends React.Component {
                         <ProjectCard project={item} key={index} projectPath={projectPath}/>
                     ))
                     : users.map((item, index) => (
-                        <UserCard user={item} key={index}/>
+                        <UserCard user={item} key={index} userPath={userPath} currentUser={currentUser}/>
                     ))}
             </div>
         )
@@ -137,6 +137,7 @@ Search.propTypes = {
     users: PropTypes.array,
     searchPath: PropTypes.string,
     projectPath: PropTypes.string,
+    userPath: PropTypes.string,
     searchWord: PropTypes.string,
     selectType: PropTypes.string
 }

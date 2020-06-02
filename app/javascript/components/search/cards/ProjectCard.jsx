@@ -27,15 +27,17 @@ class ProjectCard extends React.Component {
         return (
             <div className="search__project__card">
                 <div className="search__project__detail">
-                    <a href={this.getProjectPath(projectPath, id)}>
-                        <div className="search__section">
+                    <div className="search__section">
+                        <a href={this.getProjectPath(projectPath, id)}>
                             <h5 style={{color: "#4e4e4e"}}>{title}</h5>
-                        </div>
+                        </a>
+                    </div>
 
-                        <div className="search__section">
+                    <div className="search__section">
+                        <a href={this.getProjectPath(projectPath, id)}>
                             <p>{short_desc}</p>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
 
                     <div className="search__section">
                         <div className="search__tags">

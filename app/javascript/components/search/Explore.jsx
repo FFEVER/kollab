@@ -83,7 +83,6 @@ Explore.propTypes = {
     authenticityToken: PropTypes.string,
     currentUser: PropTypes.object,
     projects: PropTypes.array,
-    users: PropTypes.array,
     searchPath: PropTypes.string,
     projectPath: PropTypes.string,
 }

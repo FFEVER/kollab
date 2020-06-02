@@ -1,8 +1,9 @@
 import React from "react"
 import axios from "axios"
+import PropTypes from "prop-types";
 
 import profile from "../../../images/profile/profile_1.jpeg"
-import PropTypes from "prop-types";
+import portraitPlaceholder from "../../../images/portrait_placeholder.png"
 
 const updateProjects = [
     {
@@ -121,7 +122,10 @@ class PostCard extends React.Component {
                                     <p className="mr-2">{`Updated by ${item.user.first_name}`}</p>
                                 </a>
                                 <a href={this.getUserPath(item.user.id)}>
-                                    <img src={item.user.profile_image_url} className="home__post__img"/>
+                                    {item.user.profile_image_url === null ?
+                                        <img src={portraitPlaceholder} className="home__post__img"/>
+                                        : <img src={item.user.profile_image_url} className="home__post__img"/>
+                                    }
                                 </a>
                             </div>
                         </div>

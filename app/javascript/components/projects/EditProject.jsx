@@ -1,10 +1,18 @@
 import React from "react"
 import PropTypes from "prop-types"
 import axios from "axios"
+import moment from "moment"
 
-import { FormHelperText } from "@material-ui/core"
-import { TagInput, tagsToArray } from "../shared/form/TagInput"
-import { FormValidator, defaultErrors } from "./ProjectCreateFormValidator"
+import {
+  TextField,
+  FormControl,
+  Select,
+  MenuItem,
+  FormHelperText,
+} from "@material-ui/core"
+
+import { TagInput, tagsToArray, defaultStyles } from "../shared/form/TagInput"
+import { FormValidator, defaultErrors } from "./EditProjectValidator"
 import FormInput from "../shared/form/FormInput"
 import FromTextarea from "../shared/form/FormTextarea"
 import Button from "../shared/form/Button"
@@ -17,47 +25,119 @@ const dataName = (name) => {
   return DATA_PREFIX + "[" + name + "]"
 }
 
-class ProjectCreateForm extends React.Component {
+const tagStyles = {
+  ...defaultStyles,
+  control: (provided, state) => ({
+    ...provided,
+    minWidth: "100%",
+    minHeight: "56px",
+    borderColor: "#c2c2c2",
+    boxShadow: state.isFocused ? "0 0 3px #54bdc2" : "",
+    cursor: "text",
+    "&:hover": {
+      borderColor: "#c2c2c2",
+    },
+    marginTop: "10px",
+  }),
+}
+
+const tagErrorStyles = {
+  ...defaultStyles,
+  control: (provided, state) => ({
+    ...provided,
+    minWidth: "100%",
+    minHeight: "56px",
+    borderColor: "red",
+    boxShadow: state.isFocused ? "0 0 3px #ce7171" : "",
+    cursor: "text",
+    "&:hover": {
+      borderColor: "red",
+    },
+    marginTop: "10px",
+  }),
+  placeholder: (provided, state) => ({
+    ...provided,
+    color: "red",
+  }),
+}
+
+class EditProject extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      tags: [],
+      tagIds: [],
       tagList: [],
       shortDesc: "",
+      longDesc: "",
       title: "",
       startDate: "",
       endDate: "",
-      expertises: [],
       expertise_ids: [],
+      expertises: [],
       errors: defaultErrors,
       isButtonLoading: false,
     }
 
+    this.setTagList = this.setTagList.bind(this)
+    this.setDisplayExpertise = this.setDisplayExpertise.bind(this)
+    this.removeExpertise = this.removeExpertise.bind(this)
+    this.checkExpertise = this.checkExpertise.bind(this)
+    this.getExpertise = this.getExpertise.bind(this)
+    this.filterExpertiseId = this.filterExpertiseId.bind(this)
+    this.setProjectExpertise = this.setProjectExpertise.bind(this)
+    this.convertExpertiseForDisplay = this.convertExpertiseForDisplay.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleTagChange = this.handleTagChange.bind(this)
     this.handleTagClear = this.handleTagClear.bind(this)
     this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
-    this.setDisplayExpertise = this.setDisplayExpertise.bind(this)
-    this.removeExpertise = this.removeExpertise.bind(this)
-    this.checkExpertise = this.checkExpertise.bind(this)
-    this.getExpertise = this.getExpertise.bind(this)
   }
 
-  handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value })
-  }
+  componentDidMount() {
+    let project = this.props.currentProject
 
-  handleTagChange(value) {
+    let exp_ids = this.props.expertiseIds
+
+    let exps = []
+    exp_ids.map((id) => {
+      let item = this.props.expertises.find((item) => item.id === id)
+      exps.push(this.convertExpertiseForDisplay(item))
+    })
+
+    let tagIds = []
+    this.props.tagIds.map((item) => {
+      tagIds.push(item.tag_id)
+    })
+
+    let tags = []
+    tagIds.map((id) => {
+      let item = this.props.tags.find((item) => item.id === id)
+      tags.push(item)
+    })
+
+    this.setTagList(tags)
+
     this.setState({
-      tagList: [...this.state.tagList, ...value],
+      title: project.title,
+      shortDesc: project.short_desc,
+      longDesc: project.long_desc ? project.long_desc : "",
+      startDate: moment(new Date(project.start_date)).format("yyyy-MM-DD"),
+      endDate: moment(new Date(project.end_date)).format("yyyy-MM-DD"),
+      expertise_ids: exp_ids,
+      expertises: exps,
+      tagIds: tagIds,
+      tags: tags,
     })
   }
 
-  handleTagClear(value) {
-    // Handle clear or delete tags
-    this.setState({
-      tagList: value,
+  setTagList(tags) {
+    let list = []
+    tags.map((item, key) => {
+      let i = { label: item.name, value: item.name }
+      list.push(i)
     })
+    this.setState({ tagList: list })
   }
 
   setDisplayExpertise(value) {
@@ -123,6 +203,73 @@ class ProjectCreateForm extends React.Component {
     return index
   }
 
+  filterExpertiseId(exps) {
+    let list = []
+    exps.map((item) => list.push(item.expertise_id))
+    return list
+  }
+
+  setProjectExpertise(item) {
+    let exps = this.props.expertises // All expertises
+    let obj = []
+    let temp = {}
+    let exp = item
+
+    while (temp !== undefined) {
+      obj.push(exp)
+      temp = exps.find((item) => item.id === exp.parent_id)
+      exp = temp
+    }
+    return obj
+  }
+
+  convertExpertiseForDisplay(item) {
+    let exp = this.setProjectExpertise(item)
+    let obj = []
+
+    if (exp.length === 3) {
+      obj = {
+        field: exp[0].name,
+        group: exp[1].name,
+        division: exp[2].name,
+        expertise_id: item.id,
+      }
+    } else if (exp.length === 2) {
+      obj = {
+        field: "",
+        group: exp[0].name,
+        division: exp[1].name,
+        expertise_id: item.id,
+      }
+    } else if (exp.length === 1) {
+      obj = {
+        field: "",
+        group: "",
+        division: exp[0].name,
+        expertise_id: item.id,
+      }
+    }
+
+    return obj
+  }
+
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  handleTagChange(value) {
+    this.setState({
+      tagList: [...this.state.tagList, ...value],
+    })
+  }
+
+  handleTagClear(value) {
+    // Handle clear or delete tags
+    this.setState({
+      tagList: value,
+    })
+  }
+
   handleSubmit(event) {
     event.preventDefault()
     this.setIsButtonLoading(true)
@@ -144,6 +291,7 @@ class ProjectCreateForm extends React.Component {
     const formData = new FormData()
     formData.append(dataName("title"), this.state.title)
     formData.append(dataName("short_desc"), this.state.shortDesc)
+    formData.append(dataName("long_desc"), this.state.longDesc)
 
     const startDate = new Date(this.state.startDate)
     if (!isNaN(startDate.getDate()))
@@ -152,17 +300,15 @@ class ProjectCreateForm extends React.Component {
     const endDate = new Date(this.state.endDate)
     if (!isNaN(endDate.getDate()))
       formData.append(dataName("end_date"), endDate)
-
     formData.append(
       dataName("expertise_ids"),
       JSON.stringify(this.state.expertise_ids)
     )
-
     formData.append(
       dataName("tag_list"),
       JSON.stringify(tagsToArray(this.state.tagList))
     )
-
+    formData.append("id", this.props.currentProject.id)
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
   }
@@ -170,7 +316,7 @@ class ProjectCreateForm extends React.Component {
   submitForm(formData) {
     const { submitPath } = this.props
     axios({
-      method: "post",
+      method: "put",
       url: submitPath,
       responseType: "json",
       headers: {
@@ -179,7 +325,7 @@ class ProjectCreateForm extends React.Component {
       data: formData,
     })
       .then((response) => {
-        if (response.status === 201)
+        if (response.status === 200)
           window.location.href = response.headers.location
       })
       .catch((error) => {
@@ -210,19 +356,25 @@ class ProjectCreateForm extends React.Component {
     const {
       title,
       shortDesc,
+      longDesc,
       startDate,
       endDate,
+      expertises,
       errors,
       isButtonLoading,
-      expertises,
     } = this.state
+    let allExpertises = this.props.expertises
     return (
-      <form onSubmit={this.handleSubmit} className="project__form" noValidate>
+      <form
+        onSubmit={this.handleSubmit}
+        className="project__form mb-5"
+        noValidate
+      >
         <div className="form-group">
           <FormInput
             name="title"
             type="text"
-            label="Title"
+            label="Title:"
             placeholder="Enter title"
             onChange={this.handleChange}
             isRequired={true}
@@ -231,7 +383,6 @@ class ProjectCreateForm extends React.Component {
             errors={errors.title}
           />
         </div>
-
         <div className="form-group">
           <FromTextarea
             name="shortDesc"
@@ -245,7 +396,19 @@ class ProjectCreateForm extends React.Component {
             rows="3"
           />
         </div>
-
+        <div className="form-group">
+          <FromTextarea
+            name="longDesc"
+            label="Long description:"
+            placeholder="Enter a long description"
+            onChange={this.handleChange}
+            // isRequired={true}
+            value={longDesc}
+            className="form-control"
+            errors={errors.longDesc}
+            rows="5"
+          />
+        </div>
         <div className="form-row">
           <div className="form-group form__date">
             <FormInput
@@ -271,11 +434,8 @@ class ProjectCreateForm extends React.Component {
             />
           </div>
         </div>
-
         <ExpertiseModal
-          className="project__expertise"
-          require={true}
-          expertises={this.props.expertises}
+          expertises={allExpertises}
           setExpertiseDisplayFunc={this.setDisplayExpertise}
           disable={expertises.length > 2 ? true : false}
         />
@@ -291,29 +451,28 @@ class ProjectCreateForm extends React.Component {
           <div />
         )}
         <div className="form-row">
-          <div className="d-flex flex-row mt-2 mb-2">
-            <h4>Tags</h4>
-            <h6>*</h6>
+          <div className="mb-2">
+            <h4>Tags *</h4>
           </div>
           <TagInput
+            id="tags"
             value={this.state.tagList}
             onChange={this.handleTagClear}
             onKeyDown={this.handleTagChange}
             placeholder="Type something and press enter..."
             errors={errors.tagList}
-            id="tagList"
+            styles={tagStyles}
+            errorStyles={tagErrorStyles}
           />
         </div>
-
         <Button
           type="submit"
           name="submitButton"
           isLoading={isButtonLoading}
           className="button button--fixed-bottom button--lg button--gradient-primary"
         >
-          Create a Project
+          Update Project
         </Button>
-
         <input
           type="hidden"
           name="authenticity_token"
@@ -324,9 +483,14 @@ class ProjectCreateForm extends React.Component {
   }
 }
 
-ProjectCreateForm.propTypes = {
+EditProject.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string,
+  currentUser: PropTypes.object,
+  currentProject: PropTypes.object,
+  expertiseIds: PropTypes.array,
   expertises: PropTypes.array,
+  tagIds: PropTypes.array,
+  tags: PropTypes.array,
 }
-export default ProjectCreateForm
+export default EditProject

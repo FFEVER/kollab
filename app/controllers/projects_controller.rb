@@ -48,7 +48,7 @@ class ProjectsController < ApplicationController
     @project.stars << current_user
     respond_to do |format|
       format.html { redirect_to request.referrer }
-      format.json { render json: {starred: @project.starred_by?(current_user)}, status: :created }
+      format.json { render json: {starred: @project.starred_by?(current_user), count: @project.stars.count}, status: :created }
     end
   end
 
@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
     @project.stars.delete(current_user)
     respond_to do |format|
       format.html { redirect_to request.referrer }
-      format.json { render json: {starred: @project.starred_by?(current_user)}, status: :created }
+      format.json { render json: {starred: @project.starred_by?(current_user), count: @project.stars.count}, status: :created }
     end
   end
 

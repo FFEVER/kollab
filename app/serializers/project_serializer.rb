@@ -4,7 +4,7 @@ require 'action_view/helpers'
 include ActionView::Helpers::DateHelper
 
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :title, :short_desc, :status, :tags, :last_updated, :looking_roles, :starred
+  attributes :id, :title, :short_desc, :status, :tags, :last_updated, :looking_roles, :starred, :star_count
 
   def starred
     false
@@ -24,5 +24,9 @@ class ProjectSerializer < ActiveModel::Serializer
 
   def looking_roles
     ['Role1', 'Role2']
+  end
+
+  def star_count
+    self.object.stars.count
   end
 end

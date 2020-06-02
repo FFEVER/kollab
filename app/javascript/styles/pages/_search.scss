@@ -81,6 +81,17 @@
       box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
     }
 
+    &__actions {
+      display: flex;
+
+      .action--star {
+        display: flex;
+        i {
+          margin-right: $spacer-s;
+        }
+      }
+    }
+
     &__status {
       font-weight: bold;
 

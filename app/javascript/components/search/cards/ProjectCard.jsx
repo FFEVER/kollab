@@ -7,12 +7,14 @@ class ProjectCard extends React.Component {
         super(props);
         this.state = {
             starred: false,
+            starCount: 0,
         }
     }
 
     componentDidMount() {
         this.setState({
             starred: this.props.project.starred,
+            starCount: this.props.project.star_count,
         })
     }
 
@@ -42,7 +44,10 @@ class ProjectCard extends React.Component {
             },
             data: formData,
         }).then((response) => {
-            this.setState({starred: response.data.starred})
+            this.setState({
+                starred: response.data.starred,
+                starCount: response.data.count,
+            })
         })
     }
 
@@ -56,11 +61,12 @@ class ProjectCard extends React.Component {
             status,
             last_updated,
             looking_roles,
+
         } = this.props.project
 
         const {projectPath} = this.props
 
-        const {starred} = this.state
+        const {starred, starCount} = this.state
 
         return (
             <div className="search__project__card">
@@ -112,14 +118,16 @@ class ProjectCard extends React.Component {
                         </div>
                     </div>
                 </div>
-                <a onClick={this.handleStar}>
-                    {starred ? (
-                        <i className="fas fa-star"></i>
-                    ) : (
-                        <i className="far fa-star"></i>
-                    )}
-
-                </a>
+                <div className="search__project__actions">
+                    <a onClick={this.handleStar} className="action--star">
+                        {starred ? (
+                            <i className="fas fa-star"></i>
+                        ) : (
+                            <i className="far fa-star"></i>
+                        )}
+                        {starCount}
+                    </a>
+                </div>
             </div>
         )
     }

@@ -16,22 +16,22 @@
     <div class="section__header__actions">
       <% if @project.starred_by?(current_user) %>
         <%= button_to unstar_project_path, method: :post,
-                      class: "button button--md button--unstar", remote: true do %>
+                      class: 'button button--md button--unstar', remote: true do %>
           <%= @project.stars.count %>
         <% end %>
       <% else %>
         <%= button_to star_project_path, method: :post,
-                      class: "button button--md button--star", remote: true do %>
+                      class: 'button button--md button--star', remote: true do %>
           <%= @project.stars.count %>
         <% end %>
       <% end %>
 
       <% if @project.followed_by?(current_user) %>
-        <%= button_to "Following", unfollow_project_path, method: :post,
-                      class: "button button--md button--unfollow--md", remote: true %>
+        <%= button_to 'Following', unfollow_project_path, method: :post,
+                      class: 'button button--md button--unfollow--md', remote: true %>
       <% else %>
-        <%= button_to "Follow", follow_project_path, method: :post,
-                      class: "button button--md button--follow--md", remote: true %>
+        <%= button_to 'Follow', follow_project_path, method: :post,
+                      class: 'button button--md button--follow--md', remote: true %>
       <% end %>
     </div>
     <button class="button button--md button--status">In progress</button>
@@ -39,7 +39,7 @@
   </section>
 
   <% if @project.owners.map(&:id).include? current_user.id %>
-    <%= button_to "Edit Project", edit_projects_settings_project_path, class: "section button button--md project__fullwidth", method: :get %>
+    <%= button_to 'Edit Project', edit_projects_settings_project_path, class: 'section button button--md project__fullwidth', method: :get %>
   <% end %>
 
   <section class="section__header__short-desc">
@@ -74,7 +74,7 @@
     <h2>Fields</h2>
     <div>
       <% @project.expertise_ids.each do |id| %>
-        <%= link_to Expertise.find(id).name, "", class: "button--tags" %>
+        <%= link_to Expertise.find(id).name, "", class: 'button--tags' %>
       <% end %>
     </div>
   </section>
@@ -83,7 +83,7 @@
     <h2>Tags</h2>
     <div>
       <% @project.tag_list.each do |tag| %>
-        <%= link_to tag, "", class: "button--tags" %>
+        <%= link_to tag, "", class: 'button--tags' %>
       <% end %>
     </div>
   </section>
@@ -92,17 +92,17 @@
     <h2>Members (<%= @project.members.count %>)</h2>
 
     <% @members.each do |member| %>
-      <%= button_to member.user, class: "member mt-2", method: :get do %>
+      <%= button_to member.user, class: 'member mt-2', method: :get do %>
         <% if member.user.profile_image_url %>
           <%= image_tag member.user.profile_image,
-                        class: "image__profile image__profile--small image__profile--with-border" %>
+                        class: 'image__profile image__profile--small image__profile--with-border' %>
         <% else %>
-          <%= image_pack_tag "portrait_placeholder.png",
-                             class: "image__profile image__profile--small image__profile--with-border" %>
+          <%= image_pack_tag 'portrait_placeholder.png',
+                             class: 'image__profile image__profile--small image__profile--with-border' %>
         <% end %>
 
         <div class="member__details">
-          <%= link_to member.user, class: "member__name" do %>
+          <%= link_to member.user, class: 'member__name' do %>
             <p class="member__name">
               <%= "#{member.user.first_name} #{member.user.last_name}" %>
             </p>
@@ -134,6 +134,7 @@
         authenticityToken: form_authenticity_token,
         currentUser: current_user,
         posts: @serialized_posts,
+        deletePostPath: project_post_path(@project, :id),
         showProjectTitle: false,
     }) %>
   </section>

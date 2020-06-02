@@ -36,7 +36,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy if current_user.posts.include? @post
+    if current_user.posts.include? @post
+      if @post.destroy
+        render json: {message: 'Removed'}, status: :ok
+      end
+    end
   end
 
   private

@@ -31,6 +31,17 @@
       height: 55px;
     }
 
+    &__header {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      &__action {
+        margin-left: auto;
+      }
+    }
+
     &__action {
       display: flex;
       align-items: center;

@@ -69,7 +69,6 @@ class Post extends React.Component {
                 }
             })
             .catch((error) => {
-                debugger
                 if (error.response.status === 401) {
                     this.setState((state) => {
                         let error_messages = error.response.data.messages

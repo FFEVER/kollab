@@ -56,4 +56,11 @@ Rails.application.routes.draw do
       resources :projects, only: %i[edit update]
     end
   end
+
+  resources :search, only: :index do
+    collection do
+      get 'explore'
+      get 'trending'
+    end
+  end
 end

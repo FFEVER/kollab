@@ -5,10 +5,9 @@ class PostsController < ApplicationController
   before_action :set_post, except: %i[index new create]
 
   def index
-    @posts = Post.all
-  end
-
-  def show
+    @project = Project.find(params[:project_id])
+    @posts = Post.all.order('updated_at DESC')
+    @serialized_posts = ActiveModel::Serializer::CollectionSerializer.new(@posts, each_serializer: PostSerializer)
   end
 
   def create
@@ -24,9 +23,6 @@ class PostsController < ApplicationController
       errors = helpers.errors_to_camel(@post.errors.messages)
       render json: {messages: errors}, status: :bad_request
     end
-  end
-
-  def edit
   end
 
   def update

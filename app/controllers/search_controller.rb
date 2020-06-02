@@ -21,15 +21,17 @@ class SearchController < ApplicationController
     @projects_hash = serialized_projects_to_hash(@serialized_projects)
   end
 
-  def show; end
-
   def explore
     @projects = Project.all
     @serialized_projects = ActiveModel::Serializer::CollectionSerializer.new(@projects, each_serializer: ProjectSerializer)
     @projects_hash = serialized_projects_to_hash(@serialized_projects)
   end
 
-  def trending; end
+  def trending
+    @projects = Project.joins(:received_views).group('projects.id').order('count(viewings) desc')
+    @serialized_projects = ActiveModel::Serializer::CollectionSerializer.new(@projects, each_serializer: ProjectSerializer)
+    @projects_hash = serialized_projects_to_hash(@serialized_projects)
+  end
 
   private
 

@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :search, except: %i[new create edit update destroy] do
+  resources :search, only: :index do
     collection do
       get 'explore'
       get 'trending'

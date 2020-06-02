@@ -91,7 +91,7 @@
     <h2>Members (<%= @project.members.count %>)</h2>
 
     <% @members.each do |member| %>
-      <%= button_to member.user, class: "member", method: :get do %>
+      <%= button_to member.user, class: "member mt-2", method: :get do %>
         <% if member.user.profile_image_url %>
           <%= image_tag member.user.profile_image,
             class: "image__profile image__profile--small image__profile--with-border" %>

@@ -6,8 +6,13 @@ class ProjectCard extends React.Component {
         return item.replace(" ", "").toLowerCase()
     }
 
+    getProjectPath = (projectPath, ProjectId) => {
+        return projectPath.replace("id", ProjectId)
+    }
+
     render() {
         const {
+            id,
             title,
             short_desc,
             tags,
@@ -17,16 +22,20 @@ class ProjectCard extends React.Component {
             starred,
         } = this.props.project
 
+        const {projectPath} = this.props
+
         return (
             <div className="search__project__card">
                 <div className="search__project__detail">
-                    <div className="search__section">
-                        <h5 style={{color: "#4e4e4e"}}>{title}</h5>
-                    </div>
+                    <a href={this.getProjectPath(projectPath, id)}>
+                        <div className="search__section">
+                            <h5 style={{color: "#4e4e4e"}}>{title}</h5>
+                        </div>
 
-                    <div className="search__section">
-                        <p>{short_desc}</p>
-                    </div>
+                        <div className="search__section">
+                            <p>{short_desc}</p>
+                        </div>
+                    </a>
 
                     <div className="search__section">
                         <div className="search__tags">

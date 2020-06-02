@@ -12,17 +12,17 @@
   <% end %>
 </div>
 
-<%= link_to 'search', search_index_path(search: {word: '', search_from: 'user'}) %>
+<%= link_to 'search', search_index_path(word: 'Web') %>
 
 <div class="search">
   <%= react_component("search/Explore",
                       {
                           authenticityToken: form_authenticity_token,
                           currentUser: current_user,
-                          project: current_user,
                           searchPath: search_index_path,
                           projects: @projects_hash,
-                          users: @users_hash
+                          users: @users_hash,
+                          projectPath: project_path(:id)
                       })
   %>
 

@@ -60,8 +60,19 @@ class Search extends React.Component {
     }
 
     render() {
-        const {currentUser, projects, users, userPath, projectPath} = this.props
+        const {
+            currentUser,
+            projects,
+            users,
+            userPath,
+            projectPath,
+            followPath,
+            unfollowPath,
+            authenticityToken
+        } = this.props
+
         const {searchText, selectType} = this.state
+
         return (
             <div className="d-flex flex-column">
                 <TextField
@@ -122,7 +133,9 @@ class Search extends React.Component {
                         <ProjectCard project={item} key={index} projectPath={projectPath}/>
                     ))
                     : users.map((item, index) => (
-                        <UserCard user={item} key={index} userPath={userPath} currentUser={currentUser}/>
+                        <UserCard user={item} key={index} userPath={userPath} currentUser={currentUser}
+                                  followPath={followPath} unfollowPath={unfollowPath}
+                                  authenticityToken={authenticityToken}/>
                     ))}
             </div>
         )
@@ -138,6 +151,8 @@ Search.propTypes = {
     searchPath: PropTypes.string,
     projectPath: PropTypes.string,
     userPath: PropTypes.string,
+    followPath: PropTypes.string,
+    unfollowPath: PropTypes.string,
     searchWord: PropTypes.string,
     selectType: PropTypes.string
 }

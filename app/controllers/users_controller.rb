@@ -34,12 +34,18 @@ class UsersController < ApplicationController
 
   def follow
     current_user.followings << @user
-    redirect_to request.referrer
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.json { render json: {following: @user.followed_by?(current_user)}, status: :created }
+    end
   end
 
   def unfollow
     current_user.unfollow(@user)
-    redirect_to request.referrer
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.json { render json: {following: @user.followed_by?(current_user)}, status: :created }
+    end
   end
 
   def followers

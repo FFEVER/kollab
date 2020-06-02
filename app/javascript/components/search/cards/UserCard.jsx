@@ -2,12 +2,48 @@ import React from "react"
 import PropTypes from "prop-types"
 import Button from "../../shared/form/Button"
 import portraitPlaceholder from "../../../images/portrait_placeholder.png"
+import axios from "axios";
 
 
 class UserCard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            following: false,
+        }
+    }
+
+    componentDidMount() {
+        this.setState({
+            following: this.props.user.following,
+        })
+    }
+
 
     getUserPath = (userPath, Userid) => {
         return userPath.replace("id", Userid)
+    }
+
+    handleFollow = () => {
+        let submitPath = this.props.followPath
+        if (this.state.following) {
+            submitPath = this.props.unfollowPath
+        }
+        submitPath = submitPath.replace("id", this.props.user.id)
+        const formData = new FormData()
+        formData.append("authenticity_token", this.props.authenticityToken)
+
+        axios({
+            method: "post",
+            url: submitPath,
+            responseType: "json",
+            headers: {
+                Accept: "application/json",
+            },
+            data: formData,
+        }).then((response) => {
+            this.setState({following: response.data.following})
+        })
     }
 
     render() {
@@ -17,11 +53,12 @@ class UserCard extends React.Component {
             faculty,
             description,
             skills,
-            following,
             profile_image_url,
         } = this.props.user
 
-        const {userPath, currentUser} = this.props
+        const {userPath, followPath, unfollowPath, currentUser} = this.props
+
+        const {following} = this.state
 
         return (
             <div className="search__user__card">
@@ -61,6 +98,7 @@ class UserCard extends React.Component {
                     :
                     <Button
                         name="follow"
+                        onClick={this.handleFollow}
                         className={
                             following
                                 ? "button search__user__button search__user__button__follow"
@@ -77,5 +115,10 @@ class UserCard extends React.Component {
 
 UserCard.propTypes = {
     user: PropTypes.object,
+    currentUser: PropTypes.object,
+    followPath: PropTypes.string,
+    unfollowPath: PropTypes.string,
+    userPath: PropTypes.string,
+    authenticityToken: PropTypes.string,
 }
 export default UserCard

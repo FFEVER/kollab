@@ -133,8 +133,8 @@ class TagInput extends React.Component {
         />
 
         {errors.map((message, index) => (
-          <div key={index} className="error-message">
-            <small>{message} </small>
+          <div key={index}>
+            <p className="error-message">{message} </p>
           </div>
         ))}
       </>

@@ -23,7 +23,7 @@
           <i class="fas fa-th-large"></i>
           My Projects
         <% end %>
-        <%= link_to projects_path, class: "nav__item nav__item--button nav__item--desktop
+        <%= link_to explore_search_index_path, class: "nav__item nav__item--button nav__item--desktop
           #{"nav__item--button--active" if on_explore_page}" do%>
           <i class="fas fa-search"></i>
           Explore
@@ -31,7 +31,7 @@
       </div>
 
       <div class="nav__items nav__items--right">
-        <%= link_to projects_path, class: "nav__item nav__item--icon nav__item--mobile" do %>
+        <%= link_to explore_search_index_path, class: "nav__item nav__item--icon nav__item--mobile" do %>
           <i class="fas fa-search"></i>
         <% end %>
         <%= link_to root_path, class: "nav__item nav__item--icon" do %>
@@ -74,6 +74,10 @@
           <%= link_to root_path, class: "dropdown-item nav__dropdown__drop-item" do %>
             <i class="far fa-envelope"></i>
             Messages
+          <% end %>
+          <%= link_to edit_users_settings_user_path(@current_user.id), class: "dropdown-item nav__dropdown__drop-item" do %>
+            <i class="fa fa-cog"></i>
+            Setting
           <% end %>
 
           <div class="dropdown-divider"></div>

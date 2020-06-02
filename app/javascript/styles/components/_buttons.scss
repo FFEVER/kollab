@@ -197,7 +197,7 @@
     position: fixed;
     z-index: 10;
     right: 0;
-    bottom: 20px;
+    bottom: 15px;
     left: 0;
 
     margin-right: auto;
@@ -221,17 +221,11 @@
     font-style: normal;
     font-stretch: normal;
 
-    height: 2rem;
-    padding-right: 20px;
-    padding-left: 20px;
-
     letter-spacing: normal;
     text-transform: uppercase;
 
-    &--orange {
-      color: $kollab-orange;
-      background-color: rgba(255, 156, 70, 0.12);
-    }
+    color: $kollab-orange;
+    background-color: rgba(255, 156, 70, 0.12);
   }
 
   &--tag {

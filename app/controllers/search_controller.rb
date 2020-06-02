@@ -4,18 +4,18 @@ class SearchController < ApplicationController
   def index
     @word = params[:word]
     @type = params[:type]
-    values = {word: "%#{@word}%"}
-    user_conditions = 'users.first_name LIKE :word OR ' +
-        'users.last_name LIKE :word OR ' +
-        'users.description LIKE :word OR ' +
-        'skills.name LIKE :word '
+    values = {word: "%#{@word.downcase}%"}
+    user_conditions = 'lower(users.first_name) LIKE :word OR ' +
+        'lower(users.last_name) LIKE :word OR ' +
+        'lower(users.description) LIKE :word OR ' +
+        'lower(skills.name) LIKE :word'
     @users = User.left_outer_joins(:skills).where(user_conditions, values).uniq
     @serialized_users = ActiveModel::Serializer::CollectionSerializer.new(@users, each_serializer: UserSerializer)
     @users_hash = serialized_users_to_hash(@serialized_users)
 
-    project_conditions = 'projects.title LIKE :word OR ' +
-        'projects.short_desc LIKE :word OR ' +
-        'tags.name LIKE :word'
+    project_conditions = 'lower(projects.title) LIKE :word OR ' +
+        'lower(projects.short_desc) LIKE :word OR ' +
+        'lower(tags.name) LIKE :word'
     @projects = Project.left_outer_joins(:tags).where(project_conditions, values).uniq
     @serialized_projects = ActiveModel::Serializer::CollectionSerializer.new(@projects, each_serializer: ProjectSerializer)
     @projects_hash = serialized_projects_to_hash(@serialized_projects)
@@ -27,10 +27,6 @@ class SearchController < ApplicationController
     @projects = Project.all
     @serialized_projects = ActiveModel::Serializer::CollectionSerializer.new(@projects, each_serializer: ProjectSerializer)
     @projects_hash = serialized_projects_to_hash(@serialized_projects)
-
-    @users = User.all
-    @serialized_users = ActiveModel::Serializer::CollectionSerializer.new(@users, each_serializer: UserSerializer)
-    @users_hash = serialized_users_to_hash(@serialized_users)
   end
 
   def trending; end

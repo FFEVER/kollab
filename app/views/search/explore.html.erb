@@ -19,6 +19,8 @@
                           currentUser: current_user,
                           searchPath: search_index_path,
                           projectPath: project_path(:id),
+                          starPath: star_project_path(:id),
+                          unstarPath: unstar_project_path(:id),
                           projects: @projects_hash,
                       })
   %>

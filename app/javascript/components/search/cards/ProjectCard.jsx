@@ -1,7 +1,21 @@
 import React from "react"
 import PropTypes from "prop-types"
+import axios from "axios";
 
 class ProjectCard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            starred: false,
+        }
+    }
+
+    componentDidMount() {
+        this.setState({
+            starred: this.props.project.starred,
+        })
+    }
+
     converted(item) {
         return item.replace(" ", "").toLowerCase()
     }
@@ -9,6 +23,29 @@ class ProjectCard extends React.Component {
     getProjectPath = (projectPath, ProjectId) => {
         return projectPath.replace("id", ProjectId)
     }
+
+    handleStar = () => {
+        let submitPath = this.props.starPath
+        if (this.state.starred) {
+            submitPath = this.props.unstarPath
+        }
+        submitPath = submitPath.replace("id", this.props.project.id)
+        const formData = new FormData()
+        formData.append("authenticity_token", this.props.authenticityToken)
+
+        axios({
+            method: "post",
+            url: submitPath,
+            responseType: "json",
+            headers: {
+                Accept: "application/json",
+            },
+            data: formData,
+        }).then((response) => {
+            this.setState({starred: response.data.starred})
+        })
+    }
+
 
     render() {
         const {
@@ -19,10 +56,11 @@ class ProjectCard extends React.Component {
             status,
             last_updated,
             looking_roles,
-            starred,
         } = this.props.project
 
         const {projectPath} = this.props
+
+        const {starred} = this.state
 
         return (
             <div className="search__project__card">
@@ -74,11 +112,14 @@ class ProjectCard extends React.Component {
                         </div>
                     </div>
                 </div>
-                {starred ? (
-                    <i className="fas fa-star"></i>
-                ) : (
-                    <i className="far fa-star"></i>
-                )}
+                <a onClick={this.handleStar}>
+                    {starred ? (
+                        <i className="fas fa-star"></i>
+                    ) : (
+                        <i className="far fa-star"></i>
+                    )}
+
+                </a>
             </div>
         )
     }
@@ -86,5 +127,9 @@ class ProjectCard extends React.Component {
 
 ProjectCard.propTypes = {
     project: PropTypes.object,
+    starPath: PropTypes.string,
+    unstarPath: PropTypes.string,
+    projectPath: PropTypes.string,
+    authenticityToken: PropTypes.string,
 }
 export default ProjectCard

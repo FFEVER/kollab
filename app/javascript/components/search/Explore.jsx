@@ -42,8 +42,8 @@ class Explore extends React.Component {
     }
 
     render() {
-        const {currentUser, projects, users, searchPath, projectPath} = this.props
-        const {name, searchText, selectType} = this.state
+        const {projects, starPath, unstarPath, projectPath, authenticityToken} = this.props
+
         return (
             <div className="d-flex flex-column">
                 <TextField
@@ -72,7 +72,8 @@ class Explore extends React.Component {
                 />
 
                 {projects.map((item, index) => (
-                    <ProjectCard project={item} key={index} projectPath={projectPath}/>
+                    <ProjectCard project={item} key={index} projectPath={projectPath} starPath={starPath}
+                                 unstarPath={unstarPath} authenticityToken={authenticityToken}/>
                 ))}
             </div>
         )
@@ -85,6 +86,8 @@ Explore.propTypes = {
     projects: PropTypes.array,
     searchPath: PropTypes.string,
     projectPath: PropTypes.string,
+    starPath: PropTypes.string,
+    unstarPath: PropTypes.string,
 }
 
 export default Explore

@@ -1,6 +1,10 @@
 .search {
   padding: $spacer-m $spacer;
 
+  a {
+    cursor: pointer !important;
+  }
+
   &__header {
     padding-top: $spacer-m;
     padding-left: $spacer-m;
@@ -45,6 +49,7 @@
   &__section {
     margin-top: $spacer-xs;
     margin-bottom: $spacer-xs;
+
   }
 
   &__project {
@@ -93,18 +98,22 @@
         color: #35b645;
         background-color: #e4f7e7;
       }
+
       &__inprogress {
         color: $kollab-orange;
         background-color: #fcf0e6;
       }
+
       &__cancelled {
         color: red;
         background-color: #fbdacf;
       }
+
       &__onhold {
         color: #2e90ae;
         background-color: #d9f0f7;
       }
+
       &__initiating {
         color: #db9e00;
         background-color: #fcfae7;
@@ -171,6 +180,7 @@
 
       &__follow {
         color: $kollab-primary;
+
         &:hover {
           background-color: $kollab-gray-light !important;
         }
@@ -179,6 +189,7 @@
       &__unfollow {
         color: white;
         background-color: $kollab-primary;
+
         &:hover {
           background-color: $kollab-primary-dark !important;
         }

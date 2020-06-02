@@ -68,6 +68,8 @@ class Search extends React.Component {
             projectPath,
             followPath,
             unfollowPath,
+            starPath,
+            unstarPath,
             authenticityToken
         } = this.props
 
@@ -130,7 +132,8 @@ class Search extends React.Component {
 
                 {selectType === "project"
                     ? projects.map((item, index) => (
-                        <ProjectCard project={item} key={index} projectPath={projectPath}/>
+                        <ProjectCard project={item} key={index} projectPath={projectPath} starPath={starPath}
+                                     unstarPath={unstarPath} authenticityToken={authenticityToken}/>
                     ))
                     : users.map((item, index) => (
                         <UserCard user={item} key={index} userPath={userPath} currentUser={currentUser}
@@ -153,6 +156,8 @@ Search.propTypes = {
     userPath: PropTypes.string,
     followPath: PropTypes.string,
     unfollowPath: PropTypes.string,
+    starPath: PropTypes.string,
+    unstarPath: PropTypes.string,
     searchWord: PropTypes.string,
     selectType: PropTypes.string
 }

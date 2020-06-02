@@ -135,7 +135,9 @@
         currentUser: current_user,
         posts: @serialized_posts,
         deletePostPath: project_post_path(@project, :id),
-        showProjectTitle: false,
+        projectPath: project_path(:id),
+        userPath: user_path(:id),
+        showProjectTitle: true,
     }) %>
   </section>
 

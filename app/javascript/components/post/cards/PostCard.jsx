@@ -3,7 +3,6 @@ import axios from "axios"
 
 import profile from "../../../images/profile/profile_1.jpeg"
 import PropTypes from "prop-types";
-import {defaultErrors} from "../PostValidator";
 
 const updateProjects = [
     {
@@ -66,6 +65,14 @@ class PostCard extends React.Component {
             })
     }
 
+    getProjectPath = (id) => {
+        return this.props.projectPath.replace("id", id)
+    }
+
+    getUserPath = (id) => {
+        return this.props.userPath.replace("id", id)
+    }
+
     render() {
         const {currentUser, showProjectTitle} = this.props
         const {posts} = this.state
@@ -74,7 +81,11 @@ class PostCard extends React.Component {
                 {posts.map((item, index) => (
                     <div className="home__post">
                         <div className="home__post__header">
-                            {showProjectTitle ? <h4>{item.project.title}</h4> : null}
+                            {showProjectTitle ?
+                                <a href={this.getProjectPath(item.project.id)}>
+                                    <h4>{item.project.title}</h4>
+                                </a>
+                                : null}
                             <div className="home__post__header__action">
                                 {currentUser.id === item.user.id ?
                                     <a onClick={() => this.handleDeletePost(item.id)}>
@@ -106,8 +117,12 @@ class PostCard extends React.Component {
                         <div className="home__post__section home__post__action home__post__action__between">
                             <p>{item.last_updated}</p>
                             <div className="home__post__action">
-                                <p className="mr-2">{`Updated by ${item.user.first_name}`}</p>
-                                <img src={item.user.profile_image_url} className="home__post__img"/>
+                                <a href={this.getUserPath(item.user.id)}>
+                                    <p className="mr-2">{`Updated by ${item.user.first_name}`}</p>
+                                </a>
+                                <a href={this.getUserPath(item.user.id)}>
+                                    <img src={item.user.profile_image_url} className="home__post__img"/>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -126,6 +141,8 @@ PostCard.propTypes = {
     currentUser: PropTypes.object,
     posts: PropTypes.array,
     deletePostPath: PropTypes.string,
+    projectPath: PropTypes.string,
+    userPath: PropTypes.string,
     showProjectTitle: PropTypes.bool,
 }
 

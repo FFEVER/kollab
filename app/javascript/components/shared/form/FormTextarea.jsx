@@ -31,9 +31,9 @@ const FormTextarea = ({
         {...props}
       />
       {errors.map((message, index) => (
-        <p key={index} className="error-message">
-          <small>{message}</small>
-        </p>
+        <div key={index}>
+          <p className="error-message">{message} </p>
+        </div>
       ))}
     </>
   )

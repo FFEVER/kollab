@@ -4,29 +4,6 @@
       <section class="section__header__title">
         <h1><%= @project.title %></h1>
       </section>
-
-      <section class="section__header__actions">
-        <% if @project.starred_by?(current_user) %>
-          <%= button_to unstar_project_path, method: :post,
-            class: "button button--md button--unstar", remote: true do %>
-            <%= @project.stars.count %>
-          <% end %>
-        <% else %>
-          <%= button_to star_project_path, method: :post,
-            class: "button button--md button--star", remote: true do %>
-            <%= @project.stars.count %>
-          <% end %>
-        <% end %>
-
-        <% if @project.followed_by?(current_user) %>
-          <%= button_to "Following", unfollow_project_path, method: :post,
-            class: "button button--md button--unfollow--md", remote: true%>
-        <% else %>
-          <%= button_to "Follow", follow_project_path, method: :post,
-            class: "button button--md button--follow--md", remote: true %>
-        <% end %>
-      </section>
-
     </div>
 
     <section class="section__follower">
@@ -35,11 +12,45 @@
     </section>
   </section>
 
+  <section class="section d-flex flex-row align-items-center justify-content-between">
+    <div class="section__header__actions">
+      <% if @project.starred_by?(current_user) %>
+        <%= button_to unstar_project_path, method: :post,
+            class: "button button--md button--unstar", remote: true do %>
+          <%= @project.stars.count %>
+        <% end %>
+      <% else %>
+        <%= button_to star_project_path, method: :post,
+            class: "button button--md button--star", remote: true do %>
+          <%= @project.stars.count %>
+        <% end %>
+      <% end %>
+
+      <% if @project.followed_by?(current_user) %>
+        <%= button_to "Following", unfollow_project_path, method: :post,
+            class: "button button--md button--unfollow--md", remote: true%>
+      <% else %>
+        <%= button_to "Follow", follow_project_path, method: :post,
+            class: "button button--md button--follow--md", remote: true %>
+      <% end %>
+    </div>
+    <button class="button button--md button--status">In progress</button>
+
+  </section>
+
   <% if @project.owners.map(&:id).include? current_user.id%>
-    <%= button_to "Edit Project", edit_project_path, class: "section button button--md project__fullwidth", method: :get %>
+    <%= button_to "Edit Project", edit_projects_settings_project_path, class: "section button button--md project__fullwidth", method: :get %>
   <%end%>
+
   <section class="section__header__short-desc">
     <p><%= @project.short_desc%></p>
+  </section>
+
+  <section class="section section__overview">
+    <%# Todo: [Eit] Project Overview %>
+    <h2>Project Overview</h2>
+    <p><%= @project.long_desc%></p>
+
   </section>
 
   <section class="section section__dates">
@@ -58,19 +69,8 @@
     <% end %>
   </section>
 
-  <section class="section section__status">
-    <%# Todo: [Eit] Project status %>
-    <h2>Status</h2>
-    <button class="button button--status button--status--orange">In progress</button>
-  </section>
-
-  <section class="section section__overview">
-    <%# Todo: [Eit] Project Overview %>
-    <h2>Project Overview</h2>
-  </section>
-
   <section class="section section__tags">
-    <h2>Categories</h2>
+    <h2>Fields</h2>
     <div>
       <% @project.expertise_ids.each do |id|%>
         <%= link_to Expertise.find(id).name, "", class: "button--tags"%>
@@ -91,7 +91,7 @@
     <h2>Members (<%= @project.members.count %>)</h2>
 
     <% @members.each do |member| %>
-      <%= button_to member.user, class: "member", method: :get do %>
+      <%= button_to member.user, class: "member mt-2", method: :get do %>
         <% if member.user.profile_image_url %>
           <%= image_tag member.user.profile_image,
             class: "image__profile image__profile--small image__profile--with-border" %>
@@ -115,11 +115,11 @@
     <% end %>
   </section>
 
-  <section class="section section__posts">
+  <%# <section class="section section__posts">
     <h2>Project Posts</h2>
   </section>
 
   <section class="section section__related-projects">
     <h2>Related Projects</h2>
-  </section>
+  </section> %>
 </div>

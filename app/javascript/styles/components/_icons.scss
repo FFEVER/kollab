@@ -52,3 +52,58 @@
     color: $kollab-primary;
   }
 }
+
+.fa-search {
+  font-size: 20px;
+
+  width: 20px;
+  height: 20px;
+
+  color: $kollab-primary;
+
+  &__textfield {
+    color: $kollab-gray;
+  }
+
+  &__navbar {
+    color: black;
+  }
+}
+
+.fa-star {
+  font-size: 20px;
+
+  width: 20px;
+  height: 20px;
+
+  color: $kollab-yellow;
+}
+
+.fa-clock {
+  font-size: 20px;
+
+  width: 20px;
+  height: 20px;
+
+  color: $kollab-gray;
+}
+
+.fa-user-friends {
+  font-size: 17px;
+
+  width: 20px;
+  height: 20px;
+
+  color: $kollab-gray;
+}
+
+.fa-bell {
+  &__member {
+    font-size: 20px;
+
+    width: 20px;
+    height: 20px;
+
+    color: $kollab-primary;
+  }
+}

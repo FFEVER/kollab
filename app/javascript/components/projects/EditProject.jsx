@@ -25,6 +25,13 @@ const dataName = (name) => {
   return DATA_PREFIX + "[" + name + "]"
 }
 
+const projectStatuses = [
+  "Completed",
+  "In progress",
+  "Cancelled",
+  "On hold",
+  "Initiating",
+]
 const tagStyles = {
   ...defaultStyles,
   control: (provided, state) => ({
@@ -77,6 +84,7 @@ class EditProject extends React.Component {
       expertises: [],
       errors: defaultErrors,
       isButtonLoading: false,
+      status: "",
     }
 
     this.setTagList = this.setTagList.bind(this)
@@ -128,6 +136,7 @@ class EditProject extends React.Component {
       expertises: exps,
       tagIds: tagIds,
       tags: tags,
+      status: project.status,
     })
   }
 
@@ -308,6 +317,7 @@ class EditProject extends React.Component {
       dataName("tag_list"),
       JSON.stringify(tagsToArray(this.state.tagList))
     )
+    formData.append(dataName("status"), this.state.status)
     formData.append("id", this.props.currentProject.id)
     formData.append("authenticity_token", this.props.authenticityToken)
     return formData
@@ -361,13 +371,15 @@ class EditProject extends React.Component {
       endDate,
       expertises,
       errors,
+      status,
       isButtonLoading,
     } = this.state
     let allExpertises = this.props.expertises
+    console.log("State ", this.state)
     return (
       <form
         onSubmit={this.handleSubmit}
-        className="project__form mb-5"
+        className="project__form mb-3"
         noValidate
       >
         <div className="form-group">
@@ -465,14 +477,41 @@ class EditProject extends React.Component {
             errorStyles={tagErrorStyles}
           />
         </div>
-        <Button
-          type="submit"
-          name="submitButton"
-          isLoading={isButtonLoading}
-          className="button button--fixed-bottom button--lg button--gradient-primary"
-        >
-          Update Project
-        </Button>
+        <div className="form-column d-flex flex-column mt-2">
+          <div className="mb-2">
+            <h4>Status *</h4>
+          </div>
+          <FormControl variant="outlined" size="small">
+            <Select
+              name="status"
+              value={status}
+              onChange={this.handleChange}
+              error={errors.status.length > 0 ? true : false}
+            >
+              <MenuItem value="">
+                <em>Select your project status</em>
+              </MenuItem>
+              {projectStatuses.map((s, index) => (
+                <MenuItem value={s} key={index}>
+                  {s}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormHelperText error={errors.status.length > 0 ? true : false}>
+            {errors.status[0]}
+          </FormHelperText>
+        </div>
+        <div className="d-flex flex-column align-items-center mt-3">
+          <Button
+            type="submit"
+            name="submitButton"
+            isLoading={isButtonLoading}
+            className="button button--lg button--gradient-primary"
+          >
+            Update Project
+          </Button>
+        </div>
         <input
           type="hidden"
           name="authenticity_token"

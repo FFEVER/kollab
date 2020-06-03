@@ -28,7 +28,8 @@ class Projects::Settings::ProjectsController < ApplicationController
       :start_date,
       :end_date,
       :expertise_ids,
-      :tag_list
+      :tag_list,
+      :status
     )
     if permitted[:expertise_ids]
       permitted[:expertise_ids] = JSON.parse(permitted[:expertise_ids]) || []

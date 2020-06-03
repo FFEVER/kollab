@@ -1,0 +1,1435 @@
+[
+  {
+    "name": "เกียรติกูล เจียรนัยธนะกิจ",
+    "type": "professor",
+    "skills": [
+      "ทรงผม",
+      "การออกแบบ",
+      "โปรแกรมคอมพิวเตอร์",
+      "ปัญญาประดิษฐ์",
+      "โปรแกรมประยุกต์"
+    ],
+    "fields": ["Computer Software Not Elsewhere Classified"],
+    "department": "ภาควิชาวิศวกรรมคอมพิวเตอร์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "เขมพัทธ์ พัชรวิชญ์",
+    "type": "professor",
+    "skills": [
+      "ภาพยนตร์แก็งสเตอร์",
+      "ภาพยนตร์สั้น",
+      "การผลิตและการกำกับรายการ"
+    ],
+    "fields": ["Fine Arts (Incl. Sculpture And Painting)", "Art Theory"],
+    "department": "สาขาวิชาภาพยนตร์และดิจิทัล มีเดีย",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "เจริญ วงษ์ชุ่มเย็น",
+    "type": "professor",
+    "skills": ["โปรแกรมประยุกต์", "ระบบสารสนเทศเพื่อการจัดการ"],
+    "fields": ["Computer Software And Services Not Elsewhere Classified"],
+    "department": "สาขาวิชาวิศวกรรมคอมพิวเตอร์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "เตือนฤดี รักใหม่",
+    "type": "professor",
+    "skills": ["ภาพยนตร์", "การผลิตและการกำกับรายการ"],
+    "fields": ["Art Theory"],
+    "department": "สาขาวิชาภาพยนตร์และดิจิทัล มีเดีย",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "เทอดศักดิ์ ลิ่วหาทอง",
+    "type": "professor",
+    "skills": [],
+    "fields": [
+      "Computer Hardware And Electronic Equipment",
+      "Electrical And Electronic Engineering"
+    ],
+    "department": "สาขาวิชาวิศวกรรมอิเล็กทรอนิกส์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "เบญจมาศ กุฎอินทร์",
+    "type": "professor",
+    "skills": ["การตกแต่งภายใน", "สถานตากอากาศ", "การออกแบบตกแต่ง"],
+    "fields": ["Architecture"],
+    "department": "สาขาวิชาสถาปัตยกรรมภายใน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "เมทินี จรรยาสุภาพ",
+    "type": "professor",
+    "skills": [],
+    "fields": [
+      "Engineering",
+      "Including Aerospace",
+      "Biomedical And Environmental Engineering And Remote Sensing",
+      "Is Included In Division Engineering."
+    ],
+    "department": "สาขาวิชาวิศวกรรมชีวการแพทย์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "เสาวภา พงษ์คุณากร",
+    "type": "professor",
+    "skills": ["การออกแบบกราฟิก", "อัตลักษณ์", "การออกแบบ"],
+    "fields": ["Visual Arts And Crafts Not Elsewhere Classified"],
+    "department": "สาขาวิชานิเทศศิลป์",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "แข มังกรวงษ์",
+    "type": "professor",
+    "skills": [
+      "ภาพยนตร์",
+      "การผลิตและการกำกับรายการ",
+      "ภาพยนตร์สั้น",
+      "การผลิตและการกำกับรายการ"
+    ],
+    "fields": ["Visual Arts And Crafts Not Elsewhere Classified"],
+    "department": "สาขาวิชาภาพยนตร์และดิจิทัล มีเดีย",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "โมทนา สิทธิพิทักษ์",
+    "type": "professor",
+    "skills": ["การออกแบบเครื่องเรือน"],
+    "fields": ["Visual Arts And Crafts", "Art Theory"],
+    "department": "สาขาวิชาศิลปอุตสาหกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "โอชกร ภาคสุวรรณ",
+    "type": "professor",
+    "skills": ["พิพิธภัณฑ์วิทยาศาสตร์", "การออกแบบและการสร้าง"],
+    "fields": ["Architectural Design", "Architecture Management"],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ไกรทอง โชติวุฒิพัฒนา",
+    "type": "professor",
+    "skills": [
+      "นิทรรศการ",
+      "อาคาร",
+      "การออกแบบและการสร้าง",
+      "อาคาร",
+      "การออกแบบและการสร้าง"
+    ],
+    "fields": ["Architectural Design"],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ไพศาล สิทธิโยภาสกุล",
+    "type": "professor",
+    "skills": [
+      "Arduino (Programmable controller)",
+      "การประมวลผลภาพ",
+      "มอเตอร์ไฟฟ้ากระแสตรง"
+    ],
+    "fields": [
+      "Information Processing Services (Incl. Data Entry And Capture)"
+    ],
+    "department": "สาขาวิชาวิศวกรรมสารสนเทศ",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "กฤช งามสม",
+    "type": "professor",
+    "skills": ["จิตรกรรม", "เทคนิค"],
+    "fields": [
+      "Fine Arts (Incl. Sculpture And Painting)",
+      "Art Theory And Criticism"
+    ],
+    "department": "สาขาวิชาจิตรกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "กฤดากร กล่อมการ",
+    "type": "professor",
+    "skills": ["หุ่นยนต์", "พลศาสตร์", "หุ่นยนต์เคลื่อนที่"],
+    "fields": ["Data Structures"],
+    "department": "สาขาวิชาวิศวกรรมสารสนเทศ",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "กฤษฎา บุศรา",
+    "type": "professor",
+    "skills": [],
+    "fields": ["Software Engineering"],
+    "department": "สาขาวิชาวิทยาการคอมพิวเตอร์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "กฤษฎา อินทรสถิตย์",
+    "type": "professor",
+    "skills": [
+      "การตกแต่งภายใน",
+      "สถานตากอากาศ",
+      "การออกแบบตกแต่ง",
+      "สถานพักผ่อนหย่อนใจ",
+      "การออกแบบตกแต่ง"
+    ],
+    "fields": ["Architecture Management"],
+    "department": "สาขาวิชาสถาปัตยกรรมภายใน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "กฤษฏา บุศรา",
+    "type": "professor",
+    "skills": [],
+    "fields": ["Open Software"],
+    "department": "สาขาวิชาวิทยาการคอมพิวเตอร์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "กฤษณ์ วงรุจิระ",
+    "type": "professor",
+    "skills": ["คอมพิวเตอร์วิทัศน์", "เครื่องแยก"],
+    "fields": ["Wireless Communications", "Networking And Communications"],
+    "department": "สาขาวิชาวิศวกรรมโทรคมนาคม",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "กันจณา ดำโสภี",
+    "type": "professor",
+    "skills": ["ภาพพิมพ์กัดกรด"],
+    "fields": ["Art Theory"],
+    "department": "สาขาวิชาภาพพิมพ์",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "กันต์ สุสังกรกาญจน์",
+    "type": "professor",
+    "skills": ["การถ่ายภาพบุคคล"],
+    "fields": ["Arts And Leisure", "Art Theory"],
+    "department": "สาขาวิชาการถ่ายภาพ",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "กัลยาณี เต็งพงศธร",
+    "type": "professor",
+    "skills": ["การบริหารงานบุคคล"],
+    "fields": ["Fermentation"],
+    "department": "สาขาวิชาเทคโนโลยีการหมักในอุตสาหกรรม",
+    "faculty": "Faculty of Agricultural Technology"
+  },
+  {
+    "name": "กาจปัญญา สุวรรณสุโข",
+    "type": "professor",
+    "skills": ["เอทานอล", "การผลิต", "การหมัก", "การกลั่น"],
+    "fields": ["Physical Sciences"],
+    "department": "ภาควิชาฟิสิกส์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "กาญจนา คำนึงกิจ",
+    "type": "professor",
+    "skills": ["สินเชื่อ", "การจัดการ", "ซอฟต์แวร์", "การพัฒนา"],
+    "fields": ["Pure Mathematics Not Elsewhere Classified"],
+    "department": "ภาควิชาคณิตศาสตร์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "กิตติ แสงแก้ว",
+    "type": "professor",
+    "skills": ["การแกะสลักหิน", "ประติมากรรม", "ประติมากรรมหินอ่อน"],
+    "fields": ["Arts And Leisure", "Art Theory"],
+    "department": "สาขาวิชาประติมากรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "กิตติ ศรมณี",
+    "type": "professor",
+    "skills": ["ภาพยนตร์", "การผลิตและการกำกับรายการ"],
+    "fields": ["Arts And Leisure"],
+    "department": "สาขาวิชาภาพยนตร์และดิจิทัล มีเดีย",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "กิตติชัย บรรจง",
+    "type": "professor",
+    "skills": ["การควบคุมกระบวนการผลิต", "หมากฝรั่ง", "คุณภาพ"],
+    "fields": ["Food Processing", "Food Engineering"],
+    "department": "สาขาวิชาวิศวกรรมแปรรูปอาหาร",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "กิตติพงษ์ ห่วงรักษ์",
+    "type": "professor",
+    "skills": ["น้ำมันหอมระเหย", "ส้ม", "เปลือก", "การแปรรูป", "สารสกัดจากพืช"],
+    "fields": ["Agricultural Machinery And Equipment"],
+    "department": "สาขาวิชาอุตสาหกรรมเกษตร",
+    "faculty": "Faculty of Agricultural Technology"
+  },
+  {
+    "name": "ขนิษฐา แซ่ตั้ง",
+    "type": "professor",
+    "skills": ["จิตรกรรม", "โปรแกรมคอมพิวเตอร์", "แสงเลเซอร์"],
+    "fields": ["Engineering Systems Design"],
+    "department": "สาขาวิชาวิศวกรรมอิเล็กทรอนิกส์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "คณากร คชาชีวะ",
+    "type": "professor",
+    "skills": ["ภาพพิมพ์", "ศิลปกรรมสื่อผสม"],
+    "fields": ["Art Theory"],
+    "department": "สาขาวิชาภาพพิมพ์",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "คมสัน หนูเขียว",
+    "type": "professor",
+    "skills": ["วิดีโออาร์ต"],
+    "fields": ["Visual Arts And Crafts Not Elsewhere Classified"],
+    "department": "สาขาวิชาจิตรกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "จรรยา เหตะโยธิน",
+    "type": "professor",
+    "skills": [
+      "การสร้างภาพเคลื่อนไหวด้วยคอมพิวเตอร์",
+      "ภาพยนตร์",
+      "การผลิตและการกำกับรายการ"
+    ],
+    "fields": ["Visual Arts And Crafts", "Art Theory"],
+    "department": "สาขาวิชาภาพยนตร์และดิจิทัล มีเดีย",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "จักรวิดา จันทนวรางกูร",
+    "type": "professor",
+    "skills": ["อาคาร", "การออกแบบและการสร้าง"],
+    "fields": ["Architectural Design"],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "จิรวัฒน์ ปานกลาง",
+    "type": "professor",
+    "skills": ["ไดโอดเปล่งแสง", "วงจรไฟฟ้า"],
+    "fields": ["Electrical And Electronic Engineering"],
+    "department": "สาขาวิชาวิศวกรรมอิเล็กทรอนิกส",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "ชนินทร์ ทิพโยภาส",
+    "type": "professor",
+    "skills": ["สถานตากอากาศ,การออกแบบและการสร้าง"],
+    "fields": [
+      "Construction Services, Including Architectural And Building Management Services And Construction Of Water Infrastructure, Are Included In Division Construction."
+    ],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ชมพูนุท สีห์โสภณ",
+    "type": "professor",
+    "skills": ["กะทิ", "ผลิตภัณฑ์กะทิ"],
+    "fields": ["Agricultural Machinery And Equipment"],
+    "department": "สาขาวิชาอุตสาหกรรมเกษตร",
+    "faculty": "Faculty of Agricultural Technology"
+  },
+  {
+    "name": "ชลิดา อู่ตะเภา",
+    "type": "professor",
+    "skills": ["เกณฑ์การประเมินอาคารเขียว", "อาคารแบบยั่งยืน"],
+    "fields": ["Architecture"],
+    "department": "สาขาวิชาวิศวกรรมโยธา",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "ชัชวาล อ่ำสมคิด",
+    "type": "professor",
+    "skills": ["ประติมากรรม", "เทคนิค", "ประติมากรรมโลหะ", "ประติมากรรมเหล็ก"],
+    "fields": ["Art Theory"],
+    "department": "สาขาวิชาประติมากรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ชัยวุฒิ พุฒทอง",
+    "type": "professor",
+    "skills": ["การถ่ายภาพ"],
+    "fields": ["Fine Arts (Incl. Sculpture And Painting)"],
+    "department": "สาขาวิชาการถ่ายภาพ",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ชุมพร มูรพันธุ์",
+    "type": "professor",
+    "skills": ["การตกแต่งภายใน", "ศูนย์การเรียน", "การออกแบบตกแต่ง"],
+    "fields": ["Architecture"],
+    "department": "สาขาวิชาสถาปัตยกรรมภายใน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ชูชาติ ปิณฑวิรุจน์",
+    "type": "professor",
+    "skills": [],
+    "fields": ["Biomedical Instrumentation"],
+    "department": "สาขาวิชาวิศวกรรมชีวการแพทย์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "ณรงค์ฤทธิ์ จินต์จันทรวงค์",
+    "type": "professor",
+    "skills": ["ศูนย์การเรียน,การออกแบบและการสร้าง"],
+    "fields": [
+      "Construction Services, Including Architectural And Building Management Services And Construction Of Water Infrastructure, Are Included In Division Construction."
+    ],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ณรงค์ฤทธิ์ จินต์จันทรวงศ์",
+    "type": "professor",
+    "skills": ["ศูนย์การเรียน", "การออกแบบและการสร้าง"],
+    "fields": ["Architecture"],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ณัฐพร พรหมรส",
+    "type": "professor",
+    "skills": ["เทคโนโลยีสุญญากาศ", "การระเหย", "อุปกรณ์", "หม้อแปลงไฟฟ้า"],
+    "fields": ["Physical Sciences"],
+    "department": "ภาควิชาฟิสิกส์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "ดาว วาสิกศิริ",
+    "type": "professor",
+    "skills": ["การถ่ายภาพโฆษณา"],
+    "fields": ["Visual Arts And Crafts", "Art Theory And Criticism"],
+    "department": "สาขาวิชาการถ่ายภาพ",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ดุลยพล ศรีจันทร์",
+    "type": "professor",
+    "skills": ["การออกแบบเครื่องเรือน"],
+    "fields": ["Art Theory"],
+    "department": "สาขาวิชาศิลปอุตสาหกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ต่อวงศ์ ปุ้ยพันธวงศ์",
+    "type": "professor",
+    "skills": [
+      "ตู้",
+      "การออกแบบ",
+      "โรงเรียน",
+      "ครุภัณฑ์และอุปกรณ์",
+      "การออกแบบ"
+    ],
+    "fields": ["Visual Arts And Crafts", "Art Theory And Criticism"],
+    "department": "สาขาวิชาศิลปอุตสาหกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ถิรเดช ดำรงโภวรรณ",
+    "type": "professor",
+    "skills": ["พริก", "การอบแห้ง"],
+    "fields": ["Food Processing", "Food Engineering"],
+    "department": "สาขาวิชาวิศวกรรมแปรรูปอาหาร",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "ทรงเกียรติ เที้ยธิทรัพย์",
+    "type": "professor",
+    "skills": ["ท่าอากาศยาน", "การออกแบบและการสร้าง"],
+    "fields": ["Architecture Management"],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ทรรศนีย์ ลี้ตระกูล",
+    "type": "professor",
+    "skills": ["พิพิธภัณฑ์สัตว์น้ำ", "การออกแบบและการสร้าง"],
+    "fields": ["Architecture Management"],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ธงชัย พุฒทองศิริ",
+    "type": "professor",
+    "skills": ["กล้วย", "การแปรรูป", "เตาไมโครเวฟ"],
+    "fields": ["Agricultural Machinery And Equipment"],
+    "department": "สาขาวิชาอุตสาหกรรมเกษตร",
+    "faculty": "Faculty of Agricultural Technology"
+  },
+  {
+    "name": "ธนดล ดีรุจิเจริญ",
+    "type": "professor",
+    "skills": ["การแกะสลักหิน", "ประติมากรรมหินอ่อน"],
+    "fields": ["Visual Arts And Crafts"],
+    "department": "สาขาวิชาประติมากรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ธนสาร พัฒนสุทธิชลกุล",
+    "type": "professor",
+    "skills": ["ภาพพิมพ์แกะโลหะ"],
+    "fields": ["Visual Arts And Crafts"],
+    "department": "สาขาวิชาภาพพิมพ์",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ธิติพันธุ์ ตริตระการ",
+    "type": "professor",
+    "skills": [
+      "ศูนย์การค้า,การออกแบบและการสร้าง,อาคารพาณิชย์,การออกแบบและการสร้าง"
+    ],
+    "fields": [
+      "Construction Services, Including Architectural And Building Management Services And Construction Of Water Infrastructure, Are Included In Division Construction."
+    ],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ธิปชัย วัฒนวิจารณ์",
+    "type": "professor",
+    "skills": ["โปรตีน", "ยางพารา", "เอนไซม์"],
+    "fields": ["Environmental Chemistry (Incl. Atmospheric Chemistry)"],
+    "department": "สาขาวิชาเคมีสิ่งแวดล้อม",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "ธีร์ อังคะสุวพลา",
+    "type": "professor",
+    "skills": [
+      "Extreme sports",
+      "กีฬาเสี่ยงอันตราย",
+      "สมาคม",
+      "การออกแบบและการสร้าง"
+    ],
+    "fields": ["Architecture Not Elsewhere Classified"],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ธีรชัย ลี้สุรพลานนท์",
+    "type": "professor",
+    "skills": ["โรงเรียนอนุบาล", "การออกแบบและการสร้าง"],
+    "fields": ["Architecture"],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ธีระ ศิริธีรากุล",
+    "type": "professor",
+    "skills": [
+      "เทคโนโลยีสตรีมมิ่งมีเดีย",
+      "ระบบสื่อสารไร้สาย",
+      "อุปกรณ์ตรวจจับ"
+    ],
+    "fields": ["Computer Software And Services Not Elsewhere Classified"],
+    "department": "สาขาวิชาวิทยาการคอมพิวเตอร์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "นภัทร สระเอี่ยม",
+    "type": "professor",
+    "skills": ["การทำภาพพิมพ์ลายน้ำดิจิทัล"],
+    "fields": ["Networking And Communications"],
+    "department": "สาขาวิชาวิศวกรรมโทรคมนาคม",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "นภัสรพี เหลืองสกุล",
+    "type": "professor",
+    "skills": ["ขนม", "ผลิตภัณฑ์สมุนไพร", "สุนัข", "อาหาร"],
+    "fields": ["Agricultural Machinery And Equipment"],
+    "department": "สาขาวิชาอุตสาหกรรมเกษตร",
+    "faculty": "Faculty of Agricultural Technology"
+  },
+  {
+    "name": "นวภัทรา หนูนาค",
+    "type": "professor",
+    "skills": ["สารประกอบอินทรีย์", "เหล็กกล้าไร้สนิม", "พื้นผิว"],
+    "fields": ["Food Processing", "Food Engineering"],
+    "department": "สาขาวิชาวิศวกรรมอาหาร",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "นวลสวาท หิรัญสกลวงศ์",
+    "type": "professor",
+    "skills": [
+      "โปรแกรมประยุกต์",
+      "สมาธิ",
+      "โรคสมาธิสั้น",
+      "การป้องกันและควบคุม",
+      "เกม",
+      "โปรแกรมคอมพิวเตอร์"
+    ],
+    "fields": [
+      "Numerical And Computational Mathematics Not Elsewhere Classified"
+    ],
+    "department": "ภาควิชาคณิตศาสตร์และวิทยาการคอมพิวเตอร์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "นัฐพร นวกิจรังสรรค์",
+    "type": "professor",
+    "skills": ["จราจร", "แบบจำลอง"],
+    "fields": ["Architecture"],
+    "department": "สาขาวิชาวิศวกรรมโยธา",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "นิธิพัฒน์ หอยสังข์ทอง",
+    "type": "professor",
+    "skills": ["จิตรกรรม", "เทคนิค"],
+    "fields": [
+      "Fine Arts (Incl. Sculpture And Painting)",
+      "Art Theory And Criticism"
+    ],
+    "department": "สาขาวิชาจิตรกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "บรรจงศักดิ์ พิมพ์ทอง",
+    "type": "professor",
+    "skills": ["การออกแบบเครื่องเรือน"],
+    "fields": ["Fine Arts (Incl. Sculpture And Painting)"],
+    "department": "สาขาวิชาศิลปอุตสาหกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "บุญสนอง รัตนสุนทรากุล",
+    "type": "professor",
+    "skills": ["การออกแบบเครื่องเรือน"],
+    "fields": [
+      "Fine Arts (Incl. Sculpture And Painting)",
+      "Art Theory And Criticism"
+    ],
+    "department": "สาขาวิชาศิลปอุตสาหกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "บุศยมาศ นันทวัน,มล.",
+    "type": "professor",
+    "skills": ["จิตรกรรม"],
+    "fields": ["Visual Arts And Crafts Not Elsewhere Classified"],
+    "department": "สาขาวิชาจิตรกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ประพจน์ ศรีนุวัตติวงศ์",
+    "type": "professor",
+    "skills": ["การพัฒนาเว็บไซต์"],
+    "fields": ["Computer Software Not Elsewhere Classified"],
+    "department": "สาขาวิชาวิทยาการคอมพิวเตอร์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "ประภัสสร เลิศอนันต์",
+    "type": "professor",
+    "skills": [
+      "ภาพยนตร์",
+      "การผลิตและการกำกับรายการ",
+      "ภาพยนตร์สั้น",
+      "การผลิตและการกำกับรายการ"
+    ],
+    "fields": ["Arts And Leisure", "Art Theory"],
+    "department": "สาขาวิชาภาพยนตร์และดิจิทัล มีเดีย",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ประมวล ศรีกาหลง",
+    "type": "professor",
+    "skills": ["มันฝรั่ง", "การแปรรูป"],
+    "fields": ["Food Processing", "Food Engineering"],
+    "department": "สาขาวิชาวิศวกรรมแปรรูปอาหาร",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "ปรัศณี เมฆศรีสวัสดิ์",
+    "type": "professor",
+    "skills": ["พิพิธภัณฑ์สัตว์น้ำ,การออกแบบและการสร้าง"],
+    "fields": [
+      "Construction Services, Including Architectural And Building Management Services And Construction Of Water Infrastructure, Are Included In Division Construction."
+    ],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ปริญญา ชูแก้ว",
+    "type": "professor",
+    "skills": ["สถานสงเคราะห์คนชรา", "การออกแบบและการสร้าง"],
+    "fields": ["Architecture Management"],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "ปรียาภัสสร์ ด้วงทอง",
+    "type": "professor",
+    "skills": ["เครื่องหนัง", "การออกแบบ", "เครื่องหนัง", "วัสดุเหลือใช้"],
+    "fields": ["Visual Arts And Crafts Not Elsewhere Classified"],
+    "department": "สาขาวิชาศิลปอุตสาหกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ปาณสาร สุขสงวน",
+    "type": "professor",
+    "skills": ["การออกแบบเครื่องแต่งกาย"],
+    "fields": ["Visual Arts And Crafts Not Elsewhere Classified"],
+    "department": "สาขาวิชาศิลปอุตสาหกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "พงศ์สันต์ สุวรรณะชฎ",
+    "type": "professor",
+    "skills": [
+      "ศูนย์การเรียน",
+      "อาคาร",
+      "การออกแบบและการสร้าง",
+      "สถานพักผ่อนหย่อนใจ",
+      "การออกแบบและการสร้าง"
+    ],
+    "fields": ["Architecture Management"],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "พงษ์ชัย นิลาศ",
+    "type": "professor",
+    "skills": ["หุ่นยนต์"],
+    "fields": ["Engineering Design"],
+    "department": "สาขาวิชาวิศวกรรมการวัดคุม",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "พงษ์ศักดิ์ ตั้งติวาจา",
+    "type": "professor",
+    "skills": ["การถ่ายภาพแฟชั่น", "แฟชั่น", "ภาพถ่าย"],
+    "fields": ["Art Theory And Criticism"],
+    "department": "สาขาวิชาการถ่ายภาพ",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "พรพุฒิ ศุภเอม",
+    "type": "professor",
+    "skills": ["พิพิธภัณฑ์,การออกแบบและการสร้าง"],
+    "fields": [
+      "Construction Services, Including Architectural And Building Management Services And Construction Of Water Infrastructure, Are Included In Division Construction."
+    ],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "พรรณศรี ชูอารยะประทีป",
+    "type": "professor",
+    "skills": ["การประชาสัมพันธ์", "การออกแบบ", "วิทยากล"],
+    "fields": ["Arts And Leisure", "Art Theory"],
+    "department": "สาขาวิชานิเทศศิลป์",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "พลกฤต กฤตโยภาส",
+    "type": "professor",
+    "skills": ["พิพิธภัณฑ์", "การออกแบบและการสร้าง"],
+    "fields": ["Architecture"],
+    "department": "สาขาวชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "พลศาสตร์ เลิศประเสริฐ",
+    "type": "professor",
+    "skills": ["การประมวลผลภาพ", "เครื่องแยก"],
+    "fields": [
+      "Computer Hardware And Electronic Equipment",
+      "Electrical And Electronic Engineering"
+    ],
+    "department": "สาขาวิชาวิศวกรรมอิเล็กทรอนิกส์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "พิเชฐ โสวิทยสกุล",
+    "type": "professor",
+    "skills": ["สถานตากอากาศ", "การออกแบบและการสร้าง"],
+    "fields": ["Architecture Not Elsewhere Classified"],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "พิเชฐ ม่วงนวล",
+    "type": "professor",
+    "skills": ["การให้อาหารสัตว์", "การควบคุมอัตโนมัติ"],
+    "fields": [
+      "Electrical And Electronic Engineering",
+      "Wireless Communications",
+      "Networking And Communications"
+    ],
+    "department": "สาขาวิชาวิศวกรรมโทรคมนาคม",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "พิจักษณ์ ทนันชัยบุตร",
+    "type": "professor",
+    "skills": ["การถ่ายภาพ", "นิทาน", "ภาพประกอบ", "ภาพประกอบหนังสือ"],
+    "fields": ["Visual Arts And Crafts", "Art Theory And Criticism"],
+    "department": "สาขาการถ่ายภาพ",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "พิสิฐ พินิจจันทร์",
+    "type": "professor",
+    "skills": ["โขน", "ศูนย์ศิลปกรรม", "อาคาร", "การออกแบบและการสร้าง"],
+    "fields": ["Architectural Design", "Architecture Management"],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "พีรพงศ์ พงษ์ประภาพันธ์",
+    "type": "professor",
+    "skills": ["หนังสือภาพ", "การออกแบบ"],
+    "fields": ["Fine Arts (Incl. Sculpture And Painting)", "Art Theory"],
+    "department": "สาขาวิชานิเทศศิลป์",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "พีรพงษ์ พงษ์ประภาพันธ์",
+    "type": "professor",
+    "skills": ["แผ่นโฆษณา", "การออกแบบ"],
+    "fields": ["Arts And Leisure"],
+    "department": "สาขาวิชานิเทศศิลป์",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ภัทรพงษ์ ผาสุขกิจ",
+    "type": "professor",
+    "skills": ["หุ่นยนต์", "การเสริมแรง"],
+    "fields": ["Engineering Systems Design"],
+    "department": "สาขาวิชาวิศวกรรมอิเล็กทรอนิกส์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "มงคล เกิดวัน",
+    "type": "professor",
+    "skills": ["ประติมากรรม", "ประติมากรรม", "เทคนิค"],
+    "fields": ["Visual Arts And Crafts", "Art Theory"],
+    "department": "สาขาวิชาประติมากรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "มณฑล ใจกุศล",
+    "type": "professor",
+    "skills": ["ความดัน", "การทดลอง", "เครื่องมือและอุปกรณ์"],
+    "fields": ["Mechanical Engineering"],
+    "department": "สาขาวิชาวิศวกรรมเครื่องกล",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "มนตรี คำเงิน",
+    "type": "professor",
+    "skills": [],
+    "fields": ["Wireless Communications"],
+    "department": "สาขาวิชาวิศวกรรมโทรคมนาคม",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "มนตรี ทองคำ",
+    "type": "professor",
+    "skills": [
+      "การดูดซับ",
+      "ไดอะตอมไมต์",
+      "น้ำเสีย",
+      "การบำบัด",
+      "การกำจัดโลหะ"
+    ],
+    "fields": ["Industrial Chemistry", "Inorganic Industrial Chemicals"],
+    "department": "สาขาวิชาเคมีอุตสาหกรรม",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "มนวดี ศิริเปรมฤดี",
+    "type": "professor",
+    "skills": ["การออกแบบกราฟิก", "อัตลักษณ์", "การออกแบบ"],
+    "fields": ["Fine Arts (Incl. Sculpture And Painting)"],
+    "department": "สาขาวิชานิเทศศิลป์",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ยุทธนา คิดใจเดียว",
+    "type": "professor",
+    "skills": ["แขนกล", "การควบคุม"],
+    "fields": ["Electrical And Electronic Engineering"],
+    "department": "สาขาวิชาวิศวกรรมอิเล็กทรอนิกส์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "ยุทธนา นิ่มเกตุ",
+    "type": "professor",
+    "skills": ["ภาพพิมพ์กัดกรด"],
+    "fields": ["Arts And Leisure"],
+    "department": "สาขาวิชาภาพพิมพ์",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ยุทธพงษ์ รังสรรค์เสรี",
+    "type": "professor",
+    "skills": ["ระบบตรวจสอบย้อนกลับ"],
+    "fields": [
+      "Electrical And Electronic Engineering",
+      "Wireless Communications",
+      "Networking And Communications"
+    ],
+    "department": "สาขาวิชาวิศวกรรมโทรคมนาคม",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "ยุพร พืชกมุทร",
+    "type": "professor",
+    "skills": ["ปลา", "การแปรรูป", "ผลิตภัณฑ์ปลา"],
+    "fields": ["Agricultural Machinery And Equipment"],
+    "department": "สาขาวิชาอุตสาหกรรมเกษตร",
+    "faculty": "Faculty of Agricultural Technology"
+  },
+  {
+    "name": "รณน เจียรตระกูล",
+    "type": "professor",
+    "skills": ["การแกะสลัก", "โปรแกรมคอมพิวเตอร์", "ซอฟต์แวร์", "การพัฒนา"],
+    "fields": ["Image Processing"],
+    "department": "สาขาวิชาวิศวกรรมอุตสาหการ",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "รวิช ควรประเสริฐ",
+    "type": "professor",
+    "skills": [
+      "โรงแรม",
+      "การออกแบบและการสร้าง",
+      "ห้องปฏิบัติการ",
+      "การออกแบบและการสร้าง"
+    ],
+    "fields": ["Architecture Not Elsewhere Classified"],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "รวีศักดิ์ รักใหม่",
+    "type": "professor",
+    "skills": ["ภาพยนตร์สารคดี", "การผลิตและการกำกับรายการ"],
+    "fields": ["Art Theory"],
+    "department": "สาขาวิชาภาพยนตร์และดิจิทัล มีเดีย",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "รุ่งโรจน์ วงศ์มหาศิริ",
+    "type": "professor",
+    "skills": [
+      "โรงเรียนดนตรี",
+      "การออกแบบและการสร้าง",
+      "โรงเรียนสอนคนตาบอด",
+      "การออกแบบและการสร้าง"
+    ],
+    "fields": ["Architecture"],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "รุจิรา ตาปราบ",
+    "type": "professor",
+    "skills": [
+      "การควบคุมกระบวนการผลิต",
+      "การควบคุมอุณหภูมิ",
+      "ไข่",
+      "การแตกร้าว"
+    ],
+    "fields": ["Food Processing", "Food Engineering"],
+    "department": "สาขาวิชาวิศวกรรมแปรรูปอาหาร",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "วรพล ยวงเงิน",
+    "type": "professor",
+    "skills": ["ซอฟต์แวร์", "การพัฒนา", "แผ่นโฆษณา", "การออกแบบ"],
+    "fields": ["Visual Arts And Crafts", "Art Theory And Criticism"],
+    "department": "สาขาวิชานิเทศศิลป์",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "วรวรรณ โรจนไพบูลย์",
+    "type": "professor",
+    "skills": ["โรงเรียนอนุบาล", "การออกแบบและการสร้าง"],
+    "fields": ["Architecture Not Elsewhere Classified"],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "วรวัฒน์ ลิ้มโภคา",
+    "type": "professor",
+    "skills": [
+      "คลาวด์คอมพิวติง",
+      "ซอฟต์แวร์",
+      "การพัฒนา",
+      "โอเพนซอร์สซอฟต์แวร์"
+    ],
+    "fields": ["Software Engineering", "Open Software"],
+    "department": "สาขาวิชาวิศวกรรมคอมพิวเตอร์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "วรางคณา กิ้มปาน",
+    "type": "professor",
+    "skills": [
+      "ค่าล่วงเวลา",
+      "โปรแกรมคอมพิวเตอร์",
+      "โปรแกรมประยุกต์บนเว็บ",
+      "การบริหารค่าตอบแทน",
+      "โปรแกรมคอมพิวเตอร์"
+    ],
+    "fields": ["Open Software"],
+    "department": "ภาควิชาวิทยาการคอมพิวเตอร์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "วราวุฒิ ครูส่ง",
+    "type": "professor",
+    "skills": [
+      "แคลเซียมคลอไรด์",
+      "การย่อยสลายทางชีวภาพ",
+      "โคจิ",
+      "แมกนีเซียมซัลเฟต"
+    ],
+    "fields": ["Fermentation"],
+    "department": "สาขาวิชาเทคโนโลยีการหมัก",
+    "faculty": "Faculty of Agricultural Technology"
+  },
+  {
+    "name": "วัจนพงศ์ เกษมศิริ",
+    "type": "professor",
+    "skills": ["การประมวลผลภาพ", "การอัตโนมัติ", "โปรแกรมประยุกต์บนเว็บ"],
+    "fields": ["Software Engineering", "Open Software"],
+    "department": "สาขาวิชาวิศวกรรมคอมพิวเตอร์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "วัชระ ฉัตรวิริยะ",
+    "type": "professor",
+    "skills": [
+      "ซอฟต์แวร์",
+      "การพัฒนา",
+      "โทรศัพท์เคลื่อนที่",
+      "โประแกรมคอมพิวเตอร์",
+      "แอนดรอยด์ (ระบบปฏิบัติการคอมพิวเตอร์)"
+    ],
+    "fields": ["Open Software"],
+    "department": "สาขาวิชาวิศวกรรมคอมพิวเตอร์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "วันวิสา ชัชวงษ์",
+    "type": "professor",
+    "skills": ["ระบบสารสนเทศเพื่อการจัดการ"],
+    "fields": [
+      "Information Processing Services (Incl. Data Entry And Capture)",
+      "Pattern Recognition And Data Mining"
+    ],
+    "department": "สาขาวิชาวิศวกรรมสารสนเทศ",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "วิฑูรย์ ยินดีสุข",
+    "type": "professor",
+    "skills": [
+      "ความหนืด",
+      "การวัด",
+      "เครื่องมือและอุปกรณ์",
+      "กลีเซอรีน",
+      "ความหนืด"
+    ],
+    "fields": ["Physical Sciences"],
+    "department": "ภาควิชาฟิสิกส์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "วิบูลย์ ปิยวัฒนเมธา",
+    "type": "professor",
+    "skills": [],
+    "fields": ["Biomedical Engineering Not Elsewhere Classified"],
+    "department": "สาขาวิชาวิศวกรรมชีวการแพทย์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "วุฒิกร คงคา",
+    "type": "professor",
+    "skills": ["อินสตอลเลชัน (ศิลปกรรม)"],
+    "fields": ["Visual Arts And Crafts", "Art Theory And Criticism"],
+    "department": "สาขาวิชาจิตรกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ศรัณย์ อินทโกสุม",
+    "type": "professor",
+    "skills": ["เครือข่ายสังคม", "ระบบสารสนเทศเพื่อการจัดการ"],
+    "fields": ["Software Engineering"],
+    "department": "สาขาวิชาวิทยาการคอมพิวเตอร์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "ศศินันท์ คิรินทร์รัตนะ",
+    "type": "professor",
+    "skills": ["กรง", "การออกแบบ"],
+    "fields": ["Art Theory And Criticism"],
+    "department": "สาขาวิชาศิลปอุตสาหกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "ศุกระวรรณ มะเวชะ",
+    "type": "professor",
+    "skills": ["เกมคอมพิวเตอร์"],
+    "fields": [
+      "Mathematical Logic",
+      "Set Theory",
+      "Lattices And Universal Algebra"
+    ],
+    "department": "สาขาวิชาคณิตศาสตร์ประยุกต์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "สถาพร พรหมวงศ์",
+    "type": "professor",
+    "skills": [],
+    "fields": ["Networking And Communications"],
+    "department": "สาขาวิชาวิศวกรรมโทรคมนาคม",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "สนธิสุข ธีระชัยชยุติ",
+    "type": "professor",
+    "skills": ["แบบจำลองทางคณิตศาสตร์", "มะนาว", "คุณภาพ"],
+    "fields": ["Food Processing", "Food Engineering"],
+    "department": "สาขาวิชาวิศวกรรมแปรรูปอาหาร",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "สมโชค สินนุกูล",
+    "type": "professor",
+    "skills": ["สถานตากอากาศเพื่อสุขภาพ,การออกแบบและการสร้าง"],
+    "fields": [
+      "Construction Services, Including Architectural And Building Management Services And Construction Of Water Infrastructure, Are Included In Division Construction."
+    ],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "สมพิศ ฟูสกุล",
+    "type": "professor",
+    "skills": ["กายภาพบำบัด", "เครื่องมือและอุปกรณ์", "การออกแบบ"],
+    "fields": ["Visual Arts And Crafts", "Art Theory And Criticism"],
+    "department": "สาขาวิชาศิลปอุตสาหกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "สมศักดิ์ เชียร์ศิริกุล",
+    "type": "professor",
+    "skills": ["ไฟฟ้าแรงสูง", "อุปกรณ์ไฟฟ้าสำรอง"],
+    "fields": ["Electrical And Electronic Engineering"],
+    "department": "สาขาวิชาวิศวกรรมอิเล็กทรอนิกส์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "สมศักดิ์ ธรรมเวชวิถี",
+    "type": "professor",
+    "skills": ["พิพิธภัณฑ์สัตว์น้ำ", "การออกแบบและการสร้าง"],
+    "fields": ["Architectural Design"],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "สร้อยสุดา พรภักดีวัฒนา",
+    "type": "professor",
+    "skills": ["กลูโคส", "การควบคุมอุณหภูมิ", "เอทานอล", "การผลิต"],
+    "fields": ["Fermentation"],
+    "department": "สาขาวิชาเทคโนโลยีการหมัก",
+    "faculty": "Faculty of Agricultural Technology"
+  },
+  {
+    "name": "สวามินี นวลแขกุล",
+    "type": "professor",
+    "skills": ["การควบคุมการผลิต", "ผลิตภัณฑ์อาหาร"],
+    "fields": ["Food Processing", "Food Engineering"],
+    "department": "สาขาวิชาวิทยาศาสตร์และเทคโนโลยีการอาหาร",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "สายชล ใจเย็น",
+    "type": "professor",
+    "skills": [],
+    "fields": ["Open Software"],
+    "department": "สาขาวิชาวิทยาการคอมพิวเตอร์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "สายชล สินสมบูรณ์ทอง",
+    "type": "professor",
+    "skills": [],
+    "fields": ["Computation Theory And Mathematics Not Elsewhere Classified"],
+    "department": "สาขาวิชาสถิติประยุกต์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "สาหร่าย เล็กชะอุ่ม",
+    "type": "professor",
+    "skills": [
+      "หุ่นยนต์",
+      "การควบคุมอัตโนมัติ",
+      "หุ่นยนต์เคลื่อนที่",
+      "การควบคุมอัตโนมัติ",
+      "อุปกรณ์ตรวจจับ"
+    ],
+    "fields": ["Physical Sciences"],
+    "department": "ภาควิชาฟิสิกส์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "สิรภพ ตู้ประกาย",
+    "type": "professor",
+    "skills": [],
+    "fields": ["Wireless Communications", "Networking And Communications"],
+    "department": "สาขาวิชาวิศวกรรมโทรคมนาคม",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "สิริลักษณ์ แสงสงวน",
+    "type": "professor",
+    "skills": [
+      "สวนพฤกษศาสตร์",
+      "ภูมิสถาปัตยกรรม",
+      "การออกแบบและการสร้าง",
+      "อาคาร",
+      "การออกแบบและการสร้าง"
+    ],
+    "fields": ["Architecture"],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "สุทธิชัย นพนาคีพงษ์",
+    "type": "professor",
+    "skills": ["เครื่องประจุแบตเตอรี่"],
+    "fields": [
+      "Engineering Design",
+      "Wireless Communications",
+      "Networking And Communications"
+    ],
+    "department": "สาขาวิชาวิศวกรรมโทรคมนาคม",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "สุพัฒน์ กิตติรัตน์สัจจา",
+    "type": "professor",
+    "skills": ["คอนเวอร์เตอร์"],
+    "fields": ["Electrical And Electronic Engineering"],
+    "department": "สาขาวิชาวิศวกรรมไฟฟ้า",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "สุพัฒน์ บุณยฤทธิกิจ",
+    "type": "professor",
+    "skills": ["สถานตากอากาศ", "การออกแบบและการสร้าง"],
+    "fields": ["Architectural Design", "Architecture Management"],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "สุพันธุ์ ตั้งจิตกุศลมั่น",
+    "type": "professor",
+    "skills": ["เครื่องวัด", "ออกซิเจน", "การวัด"],
+    "fields": ["Biomedical Instrumentation"],
+    "department": "สาขาวิชาวิศวกรรมชีวการแพทย์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "สุภาวดี รัตนมาศ",
+    "type": "professor",
+    "skills": ["อาคารสูง", "การออกแบบและการสร้าง"],
+    "fields": ["Architecture Management"],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "สุมิตร พนาอุดมทรัพย์",
+    "type": "professor",
+    "skills": ["ที่จอดรถ", "การควบคุมอัตโนมัติ", "ไมโครคอนโทรลเลอร์"],
+    "fields": [
+      "Manufacturing Robotics And Mechatronics (Excl. Automotive Mechatronics)"
+    ],
+    "department": "สาขาวิชาวิศวกรรมแมคคาทรอนิกส์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "สุรเดช ตรีไตรลักษณะ",
+    "type": "professor",
+    "skills": ["กายภาพบำบัด", "โปรแกรมคอมพิวเตอร์"],
+    "fields": [
+      "Engineering",
+      "Including Aerospace",
+      "Biomedical And Environmental Engineering And Remote Sensing",
+      "Is Included In Division Engineering."
+    ],
+    "department": "สาขาวิชาวิศวกรรมชีวการแพทย์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "สุรพันธ์ เอื้อไพบูลย์",
+    "type": "professor",
+    "skills": ["การออกแบบระบบ", "สัญญาณเตือนไฟฟ้า"],
+    "fields": ["Engineering Design"],
+    "department": "สาขาวิชาวิศวกรรมอิเล็กทรอนิกส์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "สุรพันธุ์ เอื้อไพบูลย์",
+    "type": "professor",
+    "skills": ["กล้องส่องตรวจ", "แบบจำลอง"],
+    "fields": ["Medical Devices", "Biomedical Instrumentation"],
+    "department": "สาขาวิชาวิศวกรรมชีวการแพทย์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "สุรินทร์ คำฝอย",
+    "type": "professor",
+    "skills": ["แบตเตอรี่", "การวิเคราะห์"],
+    "fields": [
+      "Computer Hardware And Electronic Equipment",
+      "Electrical And Electronic Engineering"
+    ],
+    "department": "สาขาวิชาวิศวกรรมไฟฟ้า",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "หทัยรัตน์ มณีรัตน์",
+    "type": "professor",
+    "skills": ["ภาพพิมพ์สี"],
+    "fields": ["Art Theory"],
+    "department": "สาขาวิชาจิตรกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "อนุพงษ์ จันทร",
+    "type": "professor",
+    "skills": ["จิตรกรรมสีอะคริลิก"],
+    "fields": ["Art Theory And Criticism"],
+    "department": "สาขาวิชาจิครกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "อนุสรณ์ จ๋วงพานิช",
+    "type": "professor",
+    "skills": ["ศูนย์ศิลปกรรม", "การวางแผนออกแบบเเละการสร้าง"],
+    "fields": ["Architecture"],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "อพัชชา จินดาประเสริฐ",
+    "type": "professor",
+    "skills": [
+      "การควบคุมสินค้าคงคลัง",
+      "การควบคุมสินค้าคงคลัง",
+      "การจัดการตลาด"
+    ],
+    "fields": ["Fermentation"],
+    "department": "สาขาวิชาเทคโนโลยีการหมักในอุตสาหกรรม",
+    "faculty": "Faculty of Agricultural Technology"
+  },
+  {
+    "name": "อมร กฤษณพันธุ์",
+    "type": "professor",
+    "skills": [
+      "พิษณุโลก",
+      "ประวัติศาสตร์",
+      "แหล่งข้อมูล",
+      "ศูนย์การเรียน",
+      "อาคาร",
+      "การออกแบบและการวางผัง"
+    ],
+    "fields": ["Architectural Design"],
+    "department": "สาขาวิชาสถาปัตยกรรมและการวางแผน",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "อริยะ กิตติเจริญวิวัฒน์",
+    "type": "professor",
+    "skills": ["ประติมากรรม", "เทคนิค"],
+    "fields": ["Visual Arts And Crafts"],
+    "department": "สาขาวิชาประติมากรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "อลิตา จั่นฝังเพ็ชร",
+    "type": "professor",
+    "skills": ["จิตรกรรม"],
+    "fields": [
+      "Fine Arts (Incl. Sculpture And Painting)",
+      "Art Theory And Criticism"
+    ],
+    "department": "สาขาวิชาจิตรกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "อัฐพร นิมมาลัยแก้ว",
+    "type": "professor",
+    "skills": ["เค้ก", "จิตรกรรม"],
+    "fields": ["Fine Arts (Incl. Sculpture And Painting)", "Art Theory"],
+    "department": "สาขาวิชาจิตรกรรม",
+    "faculty": "Faculty of Liberal Arts"
+  },
+  {
+    "name": "อาจ วสุวานิช",
+    "type": "professor",
+    "skills": ["พุทธศาสนา", "ศูนย์การเรียน", "การออกแบบและการสร้าง"],
+    "fields": ["Architecture Not Elsewhere Classified"],
+    "department": "สาขาวิชาสถาปัตยกรรม",
+    "faculty": "Faculty of Architecture"
+  },
+  {
+    "name": "อาทิตย์ แข็งธัญการ",
+    "type": "professor",
+    "skills": [
+      "ร้านค้าสะดวกซื้อ",
+      "การจัดการ",
+      "ร้านค้าสะดวกซื้อ",
+      "การบัญชี",
+      "ธุรกิจ",
+      "การประมวลผลข้อมูล"
+    ],
+    "fields": ["Applied Mathematics Not Elsewhere Classified"],
+    "department": "ภาควิชาคณิตศาสตร์",
+    "faculty": "Faculty of Science"
+  },
+  {
+    "name": "อำนาจ ขาวเน",
+    "type": "professor",
+    "skills": ["การออกแบบระบบ", "ค่ารักษาพยาบาล", "โปรแกรมคอมพิวเตอร์"],
+    "fields": ["Software Engineering"],
+    "department": "สาขาวิชาวิศวกรรมคอมพิวเตอร์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "อิทธิภูมิ บุญพิคำ",
+    "type": "professor",
+    "skills": ["เครื่องประจุแบตเตอรี่"],
+    "fields": ["Engineering Systems Design"],
+    "department": "สาขาวิชาวิศวกรรมอิเล็กทรอนิกส์",
+    "faculty": "Faculty of Engineering"
+  },
+  {
+    "name": "อุรชา จักรคชาพล",
+    "type": "professor",
+    "skills": ["ศิลปะการถ่ายภาพ"],
+    "fields": ["Visual Arts And Crafts Not Elsewhere Classified"],
+    "department": "สาขาวิชาการถ่ายภาพ",
+    "faculty": "Faculty of Liberal Arts"
+  }
+]

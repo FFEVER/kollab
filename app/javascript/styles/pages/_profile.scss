@@ -8,6 +8,33 @@
   padding-left: $spacer;
   padding-bottom: $spacer-xl;
 
+  &__view {
+    display: flex;
+    flex-direction: column;
+    @media only screen and (min-width: $kollab-width-desktop) {
+      flex-direction: row;
+    }
+
+    &__col {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      @media only screen and (min-width: $kollab-width-desktop) {
+        width: 65%;
+      }
+
+        &--projects {
+        display: flex;
+        @media only screen and (min-width: $kollab-width-desktop) {
+          width: 35%;
+          min-width: 350px;
+          margin-left: $spacer-m;
+        }
+      }
+    }
+  }
+
+
   &__header {
     display: flex;
     flex-direction: row;
@@ -21,6 +48,7 @@
 
   &__item {
     align-items: center;
+
     &__col {
       &--image {
         margin-right: $spacer-s;
@@ -30,6 +58,7 @@
         margin-left: auto;
       }
     }
+
     &--icon {
       display: flex;
       // align-items: center;

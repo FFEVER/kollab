@@ -39,14 +39,14 @@
   <% if current_user != @user %>
     <% if current_user.following?(@user) %>
       <div class="d-flex flex-row">
-        <%= link_to "Following", unfollow_user_path, method: :post,
+        <%= link_to "Following", unfollow_user_path(@user), method: :post,
                     class: "button button--md button--unfollow--sm mr-1", remote: true, style: 'width:50%;' %>
         <button class="button button--md  mr-1" style="width:50%">Message</button>
 
       </div>
     <% else %>
       <div class="d-flex flex-row">
-        <%= link_to "Follow", follow_user_path, method: :post,
+        <%= link_to "Follow", follow_user_path(@user), method: :post,
                     class: "button button--md button--follow--sm mr-1", remote: true, style: 'width:50%;' %>
         <button class="button button--md" style="width:50%">Message</button>
 

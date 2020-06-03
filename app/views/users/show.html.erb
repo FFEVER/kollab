@@ -43,16 +43,13 @@
         <% if current_user.following?(@user) %>
           <div class="d-flex flex-row">
             <%= link_to "Following", unfollow_user_path, method: :post,
-                        class: "button button--md button--unfollow--sm mr-1", remote: true, style: 'width:50%;' %>
-            <button class="button button--md  mr-1" style="width:50%">Message</button>
+                        class: "button button--md button--unfollow--sm mr-1", remote: true, style: 'width:100%;' %>
 
           </div>
         <% else %>
           <div class="d-flex flex-row">
             <%= link_to "Follow", follow_user_path, method: :post,
-                        class: "button button--md button--follow--sm mr-1", remote: true, style: 'width:50%;' %>
-            <button class="button button--md" style="width:50%">Message</button>
-
+                        class: "button button--md button--follow--sm mr-1", remote: true, style: 'width:100%;' %>
           </div>
         <% end %>
       <% else %>
@@ -143,20 +140,21 @@
       <h3>Posts</h3>
     </div>
 
-    <% if @serialized_posts.count == 0 %>
+    <% if @serialized_posts.count > 0 %>
+      <%= react_component('post/cards/PostCard', {
+          authenticityToken: form_authenticity_token,
+          currentUser: current_user,
+          posts: @serialized_posts,
+          deletePostPath: project_post_path(:project_id, :id),
+          projectPath: project_path(:id),
+          userPath: user_path(:id),
+          showProjectTitle: true,
+      }) %>
+      <%= link_to "Show all posts", user_posts_path(@user), class: "project__link", method: :get %>
+    <% else %>
       <p>No post found</p>
     <% end %>
 
-    <%= react_component('post/cards/PostCard', {
-        authenticityToken: form_authenticity_token,
-        currentUser: current_user,
-        posts: @serialized_posts,
-        deletePostPath: project_post_path(:project_id, :id),
-        projectPath: project_path(:id),
-        userPath: user_path(:id),
-        showProjectTitle: true,
-    }) %>
-    <%= link_to "Show all posts", user_posts_path(@user), class: "project__link", method: :get %>
   </div>
 
   <%# <div class="mt-3 mb-3"> %>

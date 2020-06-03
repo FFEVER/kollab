@@ -47,6 +47,8 @@ gem 'active_storage_validations'
 
 gem 'aws-sdk-s3', require: false
 
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -71,8 +73,8 @@ group :development, :test do
   gem 'simplecov', require: false
   # Fixtures replacement
   gem 'factory_bot_rails'
-  # Generate fake data in test suits
-  gem 'faker'
+  # # Generate fake data in test suits
+  # gem 'faker'
   # Clean database efficiently in test suits
   gem 'database_cleaner'
 end

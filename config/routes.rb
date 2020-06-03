@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[show] do
     resources :projects, only: :index, controller: 'users/projects'
+    resources :posts, only: :index, controller: 'users/posts'
     member do
       post 'follow'
       post 'unfollow'
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
       post 'star'
       post 'unstar'
     end
+
+    resources :posts
   end
 
   namespace :api, constraints: { format: 'json' } do

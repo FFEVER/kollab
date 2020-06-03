@@ -22,7 +22,7 @@ class SearchController < ApplicationController
   end
 
   def explore
-    @projects = Project.all
+    @projects = find_recommended_projects
     @serialized_projects = ActiveModel::Serializer::CollectionSerializer.new(@projects, each_serializer: ProjectSerializer)
     @projects_hash = serialized_projects_to_hash(@serialized_projects)
   end
@@ -46,7 +46,7 @@ class SearchController < ApplicationController
       p_hash[:starred] = true if p.object.starred_by?(current_user)
       projects_hash << p_hash
     end
-    return projects_hash
+    projects_hash
   end
 
   def serialized_users_to_hash(users)
@@ -56,6 +56,31 @@ class SearchController < ApplicationController
       u_hash[:following] = true if u.object.followed_by?(current_user)
       users_hash << u_hash
     end
-    return users_hash
+    users_hash
   end
+
+  def find_recommended_projects
+    begin
+      response = helpers.get_recommended_projects(current_user)
+      puts JSON.pretty_generate(response)
+    rescue => e
+      logger.error e.message
+      response = {
+          'projects' => Project.all.limit(100).map { |p| p.id }
+      }
+    end
+
+    # Convert ids to project objects
+    recommended_projects = []
+    project_ids = response['projects']
+    project_ids.each do |id|
+      project = Project.where(id: id).first
+      # Filter out owned and non-exists projects
+      if project and not current_user.projects.include? project
+        recommended_projects << project
+      end
+    end
+    recommended_projects
+  end
+
 end

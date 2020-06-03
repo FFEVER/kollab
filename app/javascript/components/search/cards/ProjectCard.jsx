@@ -22,9 +22,15 @@ class ProjectCard extends React.Component {
         return item.replace(" ", "").toLowerCase()
     }
 
-    getProjectPath = (projectPath, ProjectId) => {
-        return projectPath.replace("id", ProjectId)
+    getProjectPath = (projectPath, projectId) => {
+        return projectPath.replace("id", projectId)
     }
+
+    submitSearchTag = (tagName, parentType) => {
+        const searchPath = this.props.searchPath
+        window.location.href = `${searchPath}?word=${tagName}&type=${parentType}`;
+    }
+
 
     handleStar = () => {
         let submitPath = this.props.starPath
@@ -64,7 +70,7 @@ class ProjectCard extends React.Component {
 
         } = this.props.project
 
-        const {projectPath, submitSearchTag} = this.props
+        const {projectPath} = this.props
 
         const {starred, starCount} = this.state
 
@@ -86,7 +92,7 @@ class ProjectCard extends React.Component {
                     <div className="search__section">
                         <div className="search__tags">
                             {tags.map((item, index) => (
-                                <a className="link mr-1" onClick={() => submitSearchTag(item, "project")} key={index}>{`#${item}`}</a>
+                                <a href="#" className="link mr-1" onClick={() => this.submitSearchTag(item, "project")} key={index}>{`#${item}`}</a>
                             ))}
                         </div>
                     </div>
@@ -139,6 +145,7 @@ ProjectCard.propTypes = {
     unstarPath: PropTypes.string,
     projectPath: PropTypes.string,
     authenticityToken: PropTypes.string,
+    searchPath: PropTypes.string,
     submitSearchTag: PropTypes.func
 }
 export default ProjectCard

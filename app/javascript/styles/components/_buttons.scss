@@ -226,6 +226,31 @@
 
     color: $kollab-orange;
     background-color: rgba(255, 156, 70, 0.12);
+
+    &__completed {
+      color: #35b645;
+      background-color: #e4f7e7;
+    }
+
+    &__inprogress {
+      color: $kollab-orange;
+      background-color: #fcf0e6;
+    }
+
+    &__cancelled {
+      color: red;
+      background-color: #fbdacf;
+    }
+
+    &__onhold {
+      color: #2e90ae;
+      background-color: #d9f0f7;
+    }
+
+    &__initiating {
+      color: #db9e00;
+      background-color: #fcfae7;
+    }
   }
 
   &--tag {

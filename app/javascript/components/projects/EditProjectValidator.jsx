@@ -6,6 +6,7 @@ const defaultErrors = {
   endDate: [],
   tagList: [],
   expertises: [],
+  status: [],
 }
 
 class FormValidator {
@@ -97,6 +98,18 @@ class FormValidator {
     }
   }
 
+  static validateStatus(state, errors) {
+    const { status } = state
+    const key = Object.keys({ status })[0]
+
+    // if (shortDesc === undefined || shortDesc.length < 1) {
+    //   errors[key].push("Short description cannot be blank.")
+    // }
+    if (status === undefined || status.length < 1) {
+      errors[key].push("Please select your project status.")
+    }
+  }
+
   static isValidatePass(errors) {
     for (const value of Object.values(errors)) {
       if (value.length != 0) return false
@@ -120,6 +133,7 @@ class FormValidator {
       this.validateStartEndDate(state, errors)
       this.validateTagList(state, errors)
       this.validateExpertises(state, errors)
+      this.validateStatus(state, errors)
 
       if (this.isValidatePass(errors)) {
         resolve(errors)

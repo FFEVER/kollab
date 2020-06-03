@@ -20,13 +20,13 @@
           <%= button_to unstar_project_path, method: :post,
                         class: 'button button--md button--unstar', remote: true do %>
             <%= @project.stars.count %>
-          <% end %>
+          <%end%>
         <% else %>
           <%= button_to star_project_path, method: :post,
                         class: 'button button--md button--star', remote: true do %>
             <%= @project.stars.count %>
           <% end %>
-        <% end %>
+        <%end%>
 
         <% if @project.followed_by?(current_user) %>
           <%= button_to 'Following', unfollow_project_path, method: :post,
@@ -36,104 +36,116 @@
                         class: 'button button--md button--follow--md', remote: true %>
         <% end %>
       </div>
-      <button class="button button--md button--status">In progress</button>
 
-    </section>
+      <% case @project.status %>
+      <% when "In progress"%>
+      <button class="button button--md button--status button--status__inprogress" ><%= @project.status%></button>
+      <% when "Completed"%>
+      <button class="button button--md button--status button--status__completed" ><%= @project.status %></button>
+      <% when "Cancelled"%>
+      <button class="button button--md button--status button--status__cencelled" ><%= @project.status%></button>
+      <% when "On hold"%>
+      <button class="button button--md button--status button--status__onhold" ><%= @project.status%></button>
+      <% when "Initiating"%>
+      <button class="button button--md button--status button--status__initiating" ><%= @project.status%></button>
+    <%end%>
 
-    <% if @project.owners.map(&:id).include? current_user.id %>
-      <%= button_to 'Edit Project', edit_projects_settings_project_path, class: 'section button button--md project__fullwidth', method: :get %>
+  </section>
+
+  <% if @project.owners.map(&:id).include? current_user.id%>
+    <%= button_to "Edit Project", edit_projects_settings_project_path, class: "section button button--md project__fullwidth", method: :get %>
+  <%end%>
+
+  <section class="section__header__short-desc">
+    <p><%= @project.short_desc%></p>
+  </section>
+
+  <section class="section section__overview">
+    <h2>Project Overview</h2>
+    <% if @project.long_desc.blank? %>
+      <p>No description</p>
     <% end %>
+    <p><%= @project.long_desc %></p>
 
-    <section class="section__header__short-desc">
-      <p><%= @project.short_desc %></p>
-    </section>
+  </section>
 
-    <section class="section section__overview">
-      <h2>Project Overview</h2>
-      <% if @project.long_desc.blank? %>
-        <p>No description</p>
-      <% end %>
-      <p><%= @project.long_desc %></p>
-
-    </section>
-
-    <section class="section section__dates">
-      <% unless @project.start_date.blank? %>
-        <div>
-          <h2>Start</h2>
-          <p><%= @project.start_date_to_s %></p>
-        </div>
-      <% end %>
-      <% unless @project.end_date.blank? %>
-        <div>
-          <h2>End</h2>
-          <p><%= @project.end_date_to_s %></p>
-        </div>
-      <% end %>
-    </section>
-
-    <section class="section section__tags">
-      <h2>Fields</h2>
+  <section class="section section__dates">
+    <% unless @project.start_date.blank? %>
       <div>
-        <% @project.expertise_ids.each do |id| %>
-          <%= link_to Expertise.find(id).name, "", class: 'button--tags' %>
-        <% end %>
+        <h2>Start</h2>
+        <p><%= @project.start_date_to_s %></p>
       </div>
-    </section>
-
-    <section class="section section__tags">
-      <h2>Tags</h2>
+    <% end %>
+    <% unless @project.end_date.blank? %>
       <div>
-        <% @project.tag_list.each do |tag| %>
-          <%= link_to tag, "", class: 'button--tags' %>
-        <% end %>
+        <h2>End</h2>
+        <p><%= @project.end_date_to_s %></p>
       </div>
-    </section>
+    <% end %>
+  </section>
 
-    <section class="section section__members">
-      <h2>Members (<%= @project.members.count %>)</h2>
+  <section class="section section__tags">
+    <h2>Fields</h2>
+    <div>
+      <% @project.expertise_ids.each do |id| %>
+        <%= link_to Expertise.find(id).name, "", class: 'button--tags' %>
+      <% end %>
+    </div>
+  </section>
 
-      <% @members.each do |member| %>
-        <%= button_to member.user, class: 'member mt-2', method: :get do %>
-          <% if member.user.profile_image_url %>
-            <%= image_tag member.user.profile_image,
+  <section class="section section__tags">
+    <h2>Tags</h2>
+    <div>
+      <% @project.tag_list.each do |tag| %>
+        <%= link_to tag, "", class: 'button--tags' %>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="section section__members">
+    <h2>Members (<%= @project.members.count %>)</h2>
+
+    <% @members.each do |member| %>
+      <%= button_to member.user, class: 'member mt-2', method: :get do %>
+        <% if member.user.profile_image_url %>
+          <%= image_tag member.user.profile_image,
                           class: 'image__profile image__profile--small image__profile--with-border' %>
-          <% else %>
-            <%= image_pack_tag 'portrait_placeholder.png',
+        <% else %>
+          <%= image_pack_tag 'portrait_placeholder.png',
                                class: 'image__profile image__profile--small image__profile--with-border' %>
+        <% end %>
+
+        <div class="member__details">
+          <%= link_to member.user, class: 'member__name' do %>
+            <p class="member__name">
+              <%= "#{member.user.first_name} #{member.user.last_name}" %>
+            </p>
           <% end %>
 
-          <div class="member__details">
-            <%= link_to member.user, class: 'member__name' do %>
-              <p class="member__name">
-                <%= "#{member.user.first_name} #{member.user.last_name}" %>
-              </p>
-            <% end %>
-
-            <p class="member__role">
-              <%= member.role %>
-            </p>
-          </div>
-        <% end %>
+          <p class="member__role">
+            <%= member.role %>
+          </p>
+        </div>
       <% end %>
-    </section>
+    <% end %>
+  </section>
 
-    <section class="section section__posts">
-      <h2>Progress Update</h2>
+  <section class="section section__posts">
+    <h2>Progress Update</h2>
 
-      <% if @serialized_posts.count == 0 %>
-        <p>No post found</p>
-      <% end %>
+    <% if @serialized_posts.count == 0 %>
+      <p>No post found</p>
+    <% end %>
 
-      <% if @project.users.include? current_user %>
-        <%= react_component('post/Post', {
+    <% if @project.users.include? current_user %>
+      <%= react_component('post/Post', {
             authenticityToken: form_authenticity_token,
             currentUser: current_user,
             submitPath: project_posts_path(@project),
         }) %>
-      <% end %>
+    <% end %>
 
-      <%= react_component('post/cards/PostCard', {
+    <%= react_component('post/cards/PostCard', {
           authenticityToken: form_authenticity_token,
           currentUser: current_user,
           posts: @serialized_posts,
@@ -143,28 +155,28 @@
           showProjectTitle: false,
       }) %>
 
-      <%= link_to 'Show all posts', project_posts_path(@project), class: 'project__link' %>
-    </section>
+    <%= link_to 'Show all posts', project_posts_path(@project), class: 'project__link' %>
+  </section>
 
-  </div>
+</div>
 
-  <div class="project__view__col project__view__col--related-projects">
-    <section class="section section__related-projects">
-      <h2>Related Projects</h2>
-      <% @serialized_projects.each do |project| %>
-        <%= react_component('search/cards/ProjectCard',
-                            {
-                                authenticityToken: form_authenticity_token,
-                                currentUser: current_user,
-                                searchPath: search_index_path,
-                                projectPath: project_path(:id),
-                                starPath: star_project_path(:id),
-                                unstarPath: unstar_project_path(:id),
-                                project: project
-                            })
+<div class="project__view__col project__view__col--related-projects">
+  <section class="section section__related-projects">
+    <h2>Related Projects</h2>
+    <% @serialized_projects.each do |project| %>
+      <%= react_component('search/cards/ProjectCard',
+            {
+                authenticityToken: form_authenticity_token,
+                currentUser: current_user,
+                searchPath: search_index_path,
+                projectPath: project_path(:id),
+                starPath: star_project_path(:id),
+                unstarPath: unstar_project_path(:id),
+                project: project
+            })
         %>
-      <% end %>
+    <% end %>
 
-    </section>
-  </div>
+  </section>
+</div>
 </div>

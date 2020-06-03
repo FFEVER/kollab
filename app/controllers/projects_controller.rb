@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
       render json: @project, location: project_path(@project), status: :created
     else
       errors = helpers.errors_to_camel(@project.errors.messages)
-      render json: {messages: errors}, status: :bad_request
+      render json: { messages: errors }, status: :bad_request
     end
   end
 
@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
     @project.stars << current_user
     respond_to do |format|
       format.html { redirect_to request.referrer }
-      format.json { render json: {starred: @project.starred_by?(current_user), count: @project.stars.count}, status: :created }
+      format.json { render json: { starred: @project.starred_by?(current_user), count: @project.stars.count }, status: :created }
     end
   end
 
@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
     @project.stars.delete(current_user)
     respond_to do |format|
       format.html { redirect_to request.referrer }
-      format.json { render json: {starred: @project.starred_by?(current_user), count: @project.stars.count}, status: :created }
+      format.json { render json: { starred: @project.starred_by?(current_user), count: @project.stars.count }, status: :created }
     end
   end
 
@@ -60,12 +60,14 @@ class ProjectsController < ApplicationController
 
   def project_params
     permitted = params.require(:project).permit(
-        :title,
-        :short_desc,
-        :start_date,
-        :end_date,
-        :expertise_ids,
-        :tag_list
+      :title,
+      :short_desc,
+      :long_desc,
+      :start_date,
+      :end_date,
+      :expertise_ids,
+      :tag_list,
+      :status
     )
     if permitted[:expertise_ids]
       permitted[:expertise_ids] = JSON.parse(permitted[:expertise_ids]) || []

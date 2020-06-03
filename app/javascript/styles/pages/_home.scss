@@ -1,0 +1,75 @@
+.home {
+  display: flex;
+  flex-direction: column;
+
+  padding: $spacer-m $spacer;
+
+  &__post {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: $spacer-m;
+    padding: $spacer-m;
+
+    background-color: white;
+    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
+
+    &__tags {
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__star {
+      height: 110px;
+    }
+
+    &__update {
+      height: 130px;
+    }
+
+    &__follow {
+      height: 55px;
+    }
+
+    &__header {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      &__action {
+        margin-left: auto;
+      }
+    }
+
+    &__action {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      &__end {
+        justify-content: flex-end;
+      }
+
+      &__between {
+        justify-content: space-between;
+      }
+    }
+
+    &__img {
+      width: $spacer-m * 2.5;
+      height: $spacer-m * 2.5;
+
+      border: solid 1px black;
+      border-radius: $spacer-m * 2.5;
+    }
+
+    &__message {
+      margin-bottom: $spacer-m;
+      padding: $spacer-m;
+
+      border: solid 1px $kollab-gray-light;
+      border-radius: $spacer-xs;
+    }
+  }
+}

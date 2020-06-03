@@ -11,6 +11,8 @@ class ProjectsController < ApplicationController
   def show
     @members = @project.members
     @project.viewers << current_user
+    @posts = @project.posts.order('updated_at DESC').limit(3)
+    @serialized_posts = ActiveModel::Serializer::CollectionSerializer.new(@posts, each_serializer: PostSerializer)
   end
 
   def new

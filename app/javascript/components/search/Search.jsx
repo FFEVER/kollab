@@ -71,7 +71,8 @@ class Search extends React.Component {
             unfollowPath,
             starPath,
             unstarPath,
-            authenticityToken
+            searchPath,
+            authenticityToken,
         } = this.props
 
         const {searchText, selectType} = this.state
@@ -134,7 +135,7 @@ class Search extends React.Component {
                 {selectType === "project"
                     ? projects.map((item, index) => (
                         <ProjectCard project={item} key={index} projectPath={projectPath} starPath={starPath}
-                                     unstarPath={unstarPath} submitSearchTag={this.submitSearchTag}
+                                     unstarPath={unstarPath} searchPath={searchPath}
                                      authenticityToken={authenticityToken}/>
                     ))
                     : users.map((item, index) => (

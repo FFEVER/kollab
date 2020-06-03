@@ -2,7 +2,7 @@
   <% if current_page?(user_projects_path(current_user)) %>
     <% on_my_projects_page = true %>
   <% end %>
-  <% if current_page?(projects_path) %>
+  <% if current_page?(explore_search_index_path) or current_page?(trending_search_index_path) %>
     <% on_explore_page = true %>
   <% end %>
 <% else %>
@@ -18,14 +18,15 @@
     <% if user_signed_in? %>
       <div class="nav__items">
         <%= link_to user_projects_path(current_user),
-          class:"nav__item nav__item--button nav__item--desktop
-          #{"nav__item--button--active" if on_my_projects_page}" do%>
+                    class: "nav__item nav__item--button nav__item--desktop
+          #{"nav__item--button--active" if on_my_projects_page}" do %>
           <i class="fas fa-th-large"></i>
           My Projects
         <% end %>
-        <%= link_to explore_search_index_path, class: "nav__item nav__item--button nav__item--desktop
-          #{"nav__item--button--active" if on_explore_page}" do%>
-          <i class="fas fa-search fa-search__navbar"></i>
+        <%= link_to explore_search_index_path,
+                    class: "nav__item nav__item--button nav__item--desktop
+          #{"nav__item--button--active" if on_explore_page}" do %>
+          <i class="fas fa-search fa-search--navbar"></i>
           Explore
         <% end %>
       </div>
@@ -40,41 +41,41 @@
       </div>
       <div class="nav__dropdown" id="drop-menu">
         <button
-              class="nav__dropdown__drop-button"
-              id="drop-button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
+          class="nav__dropdown__drop-button"
+          id="drop-button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
           <div class="nav__item nav__profile nav__item--desktop">
             <% if current_user.profile_image_url %>
-              <%= image_tag current_user.profile_image_url, class: "nav__profile-img image__profile image__profile--medium"%>
+              <%= image_tag current_user.profile_image_url, class: "nav__profile-img image__profile image__profile--medium" %>
             <% else %>
-              <%= image_pack_tag "portrait_placeholder.png", class: "nav__profile-img image__profile image__profile--medium"%>
+              <%= image_pack_tag "portrait_placeholder.png", class: "nav__profile-img image__profile image__profile--medium" %>
             <% end %>
             <div class="nav__profile-name"><%= current_user.full_name %></div>
           </div>
 
           <div class="nav__item nav__item--mobile">
-            <%= react_component "shared/layouts/NavDropdownButton"%>
+            <%= react_component "shared/layouts/NavDropdownButton" %>
           </div>
         </button>
 
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="drop-button">
           <%= link_to user_path(current_user),
-                class: "dropdown-item nav__dropdown__drop-item" do %>
+                      class: "dropdown-item nav__dropdown__drop-item" do %>
             <i class="fas fa-user"></i>
             My Profile
           <% end %>
           <%= link_to user_projects_path(current_user),
-                class: "dropdown-item nav__dropdown__drop-item nav__item--mobile" do %>
+                      class: "dropdown-item nav__dropdown__drop-item nav__item--mobile" do %>
             <i class="fas fa-th-large"></i>
             My Projects
           <% end %>
-          <%= link_to root_path, class: "dropdown-item nav__dropdown__drop-item" do %>
-            <i class="far fa-envelope"></i>
-            Messages
-          <% end %>
+          <%#= link_to root_path, class: "dropdown-item nav__dropdown__drop-item" do %>
+          <!--            <i class="far fa-envelope"></i>-->
+          <!--            Messages-->
+          <%# end %>
           <%= link_to edit_users_settings_user_path(@current_user.id), class: "dropdown-item nav__dropdown__drop-item" do %>
             <i class="fa fa-cog"></i>
             Setting
@@ -82,8 +83,8 @@
 
           <div class="dropdown-divider"></div>
           <%= link_to destroy_user_session_path,
-            class: "dropdown-item nav__dropdown__drop-item",
-            method: :delete do %>
+                      class: "dropdown-item nav__dropdown__drop-item",
+                      method: :delete do %>
             <i class="fas fa-sign-out-alt"></i>
             Sign Out
           <% end %>

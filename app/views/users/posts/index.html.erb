@@ -1,0 +1,76 @@
+<div class="profile">
+  <div class="profile__header">
+    <% if @user.profile_image_url %>
+      <%= image_tag @user.profile_image, class: "image__profile image__profile--large" %>
+    <% else %>
+      <%= image_pack_tag "portrait_placeholder.png",
+                         class: "image__profile image__profile--large" %>
+    <% end %>
+    <div class="d-flex flex-column justify-content-center mr-3 ml-3">
+      <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
+      <p>
+        <% if @user.role == "student" %>
+          <% if @user.year == "other" %>
+            <%= "Student in #{Faculty.find(@user.faculty_id)['name']}" %>
+          <% else %>
+            <%= "#{@user.year.to_i.ordinalize} year student in #{Faculty.find(@user.faculty_id)['name']}" %>
+          <% end %>
+        <% else %>
+          <%= "Professor in a faculty of #{Faculty.find(@user.faculty_id)['name']}" %>
+        <% end %>
+      </p>
+      <div class="d-flex flex-row align-items-center justify-content-between">
+        <h3><%= @user.projects.count %></h3>
+        <%= link_to "Projects", user_projects_path(@user), class: "mr-2 ml-2", method: :get %>
+        <h3><%= @user.followings.count %></h3>
+        <%= link_to "Followings", followings_user_path(@user), class: "mr-2 ml-2", method: :get %>
+        <h3><%= @user.followers.count %></h3>
+        <%= link_to "Followers", followers_user_path(@user), class: "mr-2 ml-2", method: :get %>
+      </div>
+    </div>
+  </div>
+  <div class="mt-3 mb-3">
+    <p>
+      <% if @user.description != nil && @user.description != "" %>
+        <%= "#{@user.description}" %>
+      <% end %>
+    </p>
+  </div>
+  <% if current_user != @user %>
+    <% if current_user.following?(@user) %>
+      <div class="d-flex flex-row">
+        <%= link_to "Following", unfollow_user_path(@user), method: :post,
+                    class: "button button--md button--unfollow--sm mr-1", remote: true, style: 'width:50%;' %>
+        <button class="button button--md  mr-1" style="width:50%">Message</button>
+
+      </div>
+    <% else %>
+      <div class="d-flex flex-row">
+        <%= link_to "Follow", follow_user_path(@user), method: :post,
+                    class: "button button--md button--follow--sm mr-1", remote: true, style: 'width:50%;' %>
+        <button class="button button--md" style="width:50%">Message</button>
+
+      </div>
+    <% end %>
+  <% else %>
+    <%= button_to "Edit Profile", edit_users_settings_user_path(current_user), class: "button button--md profile__fullwidth", method: :get %>
+  <% end %>
+
+  <div class="d-flex flex-row mt-3">
+    <h3>Posts</h3>
+  </div>
+
+  <% if @serialized_posts.count == 0 %>
+    <p>No post found</p>
+  <% end %>
+
+  <%= react_component('post/cards/PostCard', {
+      authenticityToken: form_authenticity_token,
+      currentUser: current_user,
+      posts: @serialized_posts,
+      deletePostPath: project_post_path(:project_id, :id),
+      projectPath: project_path(:id),
+      userPath: user_path(:id),
+      showProjectTitle: true,
+  }) %>
+</div>

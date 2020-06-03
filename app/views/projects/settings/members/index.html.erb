@@ -14,11 +14,14 @@
 </div>
 
 <div class="setting">
-  <%= react_component("projects/MemberManagement",
+  <%= react_component("members/MemberManagement",
     {
       authenticityToken: form_authenticity_token,
       submitPath: project_update_path,
       currentUser: current_user,
+      memberRole: @roles
+
     })
-  %>
+ %>
+
 </div>

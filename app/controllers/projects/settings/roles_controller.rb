@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Projects::Settings::MembersController < ApplicationController
+class Projects::Settings::RolesController < ApplicationController
   def new; end
 
   def create; end

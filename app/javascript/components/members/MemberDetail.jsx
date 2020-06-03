@@ -73,6 +73,8 @@ class MemberDetail extends React.Component {
   render() {
     const { currentUser } = this.props
     const { user, role, roleStatus } = this.state
+    console.log("State ", this.state)
+    console.log("Props ", this.props)
     return (
       <div className="mb-5">
         <div className="setting__role__section ">

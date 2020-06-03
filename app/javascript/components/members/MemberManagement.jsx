@@ -5,6 +5,7 @@ import RoleCard from "./cards/RoleCard"
 import WaitListCard from "./cards/WaitListCard"
 import PendingCard from "./cards/PendingCard"
 import SuggestMemberCard from "./cards/SuggestMemberCard"
+import Button from "../shared/form/Button"
 
 const constMembers = [
   {
@@ -88,6 +89,9 @@ const defaultUsers = [
   },
 ]
 
+const memberDetailRoute = "members/1/edit?project=1"
+const EditRoleRoute = "roles/1/edit?project=1"
+
 class MemberManagement extends React.Component {
   constructor(props) {
     super(props)
@@ -98,12 +102,21 @@ class MemberManagement extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
+    // this.handleNavigation = this.handleNavigation.bind(this)
   }
 
   componentDidMount() {
+    let members = []
+    let roles = []
+
+    this.props.memberRole.map((item) => {
+      members.push(item.member)
+      roles.push(item.role)
+    })
+
     this.setState({
-      members: constMembers,
-      roles: constRoles,
+      members: members,
+      roles: roles,
       defaultUsers: defaultUsers,
     })
   }
@@ -114,6 +127,10 @@ class MemberManagement extends React.Component {
     })
   }
 
+  handleNavigation(route, item) {
+    window.location.href = route
+  }
+
   render() {
     const { currentUser } = this.props
     const { members, roles, defaultUsers } = this.state
@@ -121,40 +138,47 @@ class MemberManagement extends React.Component {
     console.log("Props ", this.props)
     return (
       <div className="setting">
-        <div className="setting__section">
+        <div className="setting__member__section">
           <h2>Memmbers</h2>
-          {members.map((item, index) => (
+          {members.map((member, index) => (
             <MemberCard
               key={index}
-              user={item}
-              role={roles.find((r) => r.id === item.roleId)}
+              user={member}
+              role={roles[index]}
+              onClick={this.handleNavigation}
+              submitPath={memberDetailRoute}
             />
           ))}
         </div>
 
-        <div className="setting__section">
+        <div className="setting__member__section">
           <h2>Roles</h2>
           {roles.map((item, index) => (
-            <RoleCard key={index} role={item} />
+            <RoleCard
+              key={index}
+              role={item}
+              onClick={this.handleNavigation}
+              submitPath={EditRoleRoute}
+            />
           ))}
           <p className="mt-2" style={{ color: "#54bdc2", alignSelf: "center" }}>
             Add Roles
           </p>
         </div>
-        <div className="setting__section">
+        <div className="setting__member__section">
           <h2>Waiting lists</h2>
           {defaultUsers.map((item, index) => (
             <WaitListCard key={index} user={item} />
           ))}
         </div>
 
-        <div className="setting__section">
+        <div className="setting__member__section">
           <h2>Pending</h2>
           {defaultUsers.map((item, index) => (
             <PendingCard key={index} user={item} />
           ))}
         </div>
-        <div className="setting__section">
+        <div className="setting__member__section">
           <h2>Suggested teammates</h2>
           {defaultUsers.map((item, index) => (
             <SuggestMemberCard key={index} user={item} />
@@ -169,6 +193,8 @@ MemberManagement.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string,
   currentUser: PropTypes.object,
+  projectMembers: PropTypes.array,
+  memberRole: PropTypes.array,
 }
 
 export default MemberManagement

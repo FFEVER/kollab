@@ -292,9 +292,6 @@ class AddRole extends React.Component {
     } = this.state
     return (
       <form onSubmit={this.handleSubmit} noValidate className="mb-5">
-        <div className="setting__role__section ">
-          <h2>Add new role</h2>
-        </div>
         <div className="setting__role__section">
           <FormInput
             id="name"
@@ -306,6 +303,7 @@ class AddRole extends React.Component {
             className="form-control fix-height"
             onChange={this.handleChange}
             errors={errors.name}
+            isRequired={true}
           />
         </div>
         <ExpertiseModal
@@ -326,7 +324,7 @@ class AddRole extends React.Component {
         )}
         <div className="setting__role__section">
           <div className="setting__role__title">
-            <h4>Skills</h4>
+            <h4>Skills *</h4>
             <TagInput
               className="mt-3"
               value={skills}
@@ -355,7 +353,7 @@ class AddRole extends React.Component {
         </div>
         <div className="setting__role__section">
           <div className="setting__role__title">
-            <h4>Status</h4>
+            <h4>Status *</h4>
           </div>
           <FormControl variant="outlined" size="small">
             <Select

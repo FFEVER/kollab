@@ -50,6 +50,11 @@
         </div>
       <%end%>
     <%end%>
+    <%= link_to new_projects_settings_role_path do%>
+      <p class="link mt-3 align-self-center">
+        Add Roles
+      </p>
+    <%end%>
   </div>
   <%= react_component("members/MemberManagement",
     {

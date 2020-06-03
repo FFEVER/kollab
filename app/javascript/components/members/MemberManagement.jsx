@@ -138,34 +138,7 @@ class MemberManagement extends React.Component {
     console.log("State ", this.state)
     console.log("Props ", this.props)
     return (
-      <div className="setting">
-        <div className="setting__member__section">
-          <h2>Memmbers</h2>
-          {members.map((member, index) => (
-            <MemberCard
-              key={index}
-              user={member}
-              role={roles[index]}
-              onClick={this.handleNavigation}
-              submitPath={memberDetailRoute}
-            />
-          ))}
-        </div>
-
-        <div className="setting__member__section">
-          <h2>Roles</h2>
-          {roles.map((item, index) => (
-            <RoleCard
-              key={index}
-              role={item}
-              onClick={this.handleNavigation}
-              submitPath={EditRoleRoute}
-            />
-          ))}
-          <p className="mt-2" style={{ color: "#54bdc2", alignSelf: "center" }}>
-            Add Roles
-          </p>
-        </div>
+      <div>
         <div className="setting__member__section">
           <h2>Waiting lists</h2>
           {defaultUsers.map((item, index) => (

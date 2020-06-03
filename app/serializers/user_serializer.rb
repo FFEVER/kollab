@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :faculty, :description, :skills, :following, :profile_image_url
+  attributes :id, :first_name, :last_name, :name, :faculty, :description, :skills, :following, :profile_image_url
 
   def name
     "#{self.object.first_name} #{self.object.last_name}"

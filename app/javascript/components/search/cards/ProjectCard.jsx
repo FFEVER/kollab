@@ -22,8 +22,8 @@ class ProjectCard extends React.Component {
         return item.replace(" ", "").toLowerCase()
     }
 
-    getProjectPath = (projectPath, ProjectId) => {
-        return projectPath.replace("id", ProjectId)
+    getProjectPath = (projectPath, projectId) => {
+        return projectPath.replace("id", projectId)
     }
 
     handleStar = () => {

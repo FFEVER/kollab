@@ -35,6 +35,8 @@ Rails.application.routes.draw do
       post 'star'
       post 'unstar'
     end
+
+    resources :posts
   end
 
   namespace :api, constraints: { format: 'json' } do

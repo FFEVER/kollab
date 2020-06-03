@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Project < ApplicationRecord
-  # TODO: [Anyone] Add full_desc
   has_many :members, dependent: :delete_all
   has_many :users, through: :members
 
@@ -17,8 +16,10 @@ class Project < ApplicationRecord
   has_many :expertisings, as: :expertisable, dependent: :delete_all
   has_many :expertises, through: :expertisings, source: :expertise
 
-  has_many :received_views, as: :viewable, class_name: 'Viewing'
+  has_many :received_views, as: :viewable, class_name: 'Viewing', dependent: :delete_all
   has_many :viewers, through: :received_views, source: :viewer
+
+  has_many :posts
 
   # TODO: [Eit] Validates fields
   validates :title, presence: true, length: { within: 1..50 }

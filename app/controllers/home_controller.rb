@@ -7,7 +7,6 @@ class HomeController < ApplicationController
       @following_projects = @user.following_projects
       @following_users = @user.followings
       @posts = Post.where(project: @following_projects).or(Post.where(user: @following_users)).order('updated_at DESC')
-      binding.pry
       @serialized_posts = ActiveModel::Serializer::CollectionSerializer.new(@posts, each_serializer: PostSerializer)
     end
   end

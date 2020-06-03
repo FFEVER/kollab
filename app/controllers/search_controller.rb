@@ -60,8 +60,15 @@ class SearchController < ApplicationController
   end
 
   def find_recommended_projects
-    response = helpers.get_recommended_projects(current_user)
-    puts JSON.pretty_generate(response)
+    begin
+      response = helpers.get_recommended_projects(current_user)
+      puts JSON.pretty_generate(response)
+    rescue => e
+      logger.error e.message
+      response = {
+          'projects' => Project.all.limit(100).map { |p| p.id }
+      }
+    end
 
     # Convert ids to project objects
     recommended_projects = []

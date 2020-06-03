@@ -150,6 +150,11 @@
         }
       }
 
+      &__posts {
+        display: flex;
+        flex-direction: column;
+      }
+
       &__related-projects {
         width: 100%;
       }
@@ -175,7 +180,7 @@
     }
 
     &__header {
-      margin: -1 * $spacer-l -1 * $spacer;
+      margin-top: -1 * $spacer-l;
     }
   }
 

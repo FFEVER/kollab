@@ -8,6 +8,9 @@ class UsersController < ApplicationController
   def show
     @projects = @user.projects
     @user.viewers << current_user if @user != current_user
+    @posts = @user.posts.order('updated_at DESC').limit(3)
+    @serialized_posts = ActiveModel::Serializer::CollectionSerializer.new(@posts, each_serializer: PostSerializer)
+
   end
 
   def edit

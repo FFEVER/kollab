@@ -13,6 +13,11 @@ class ProjectsController < ApplicationController
     @project.viewers << current_user
     @posts = @project.posts.order('updated_at DESC').limit(3)
     @serialized_posts = ActiveModel::Serializer::CollectionSerializer.new(@posts, each_serializer: PostSerializer)
+
+    @projects = find_related_projects
+    @serialized_projects = ActiveModel::Serializer::CollectionSerializer.new(@projects, each_serializer: ProjectSerializer)
+    @projects_hash = serialized_projects_to_hash(@serialized_projects)
+
   end
 
   def new
@@ -83,4 +88,40 @@ class ProjectsController < ApplicationController
   def set_project
     @project = Project.find(params[:id])
   end
+
+  def serialized_projects_to_hash(projects)
+    projects_hash = []
+    projects.each do |p|
+      p_hash = p.serializable_hash
+      p_hash[:starred] = true if p.object.starred_by?(current_user)
+      projects_hash << p_hash
+    end
+    projects_hash
+  end
+
+  def find_related_projects
+    begin
+      response = helpers.get_related_projects(@project)
+      puts JSON.pretty_generate(response)
+    rescue => e
+      logger.error e.message
+      response = {
+          'projects' => Project.all.limit(10).map { |p| p.id }
+      }
+    end
+
+    # Convert ids to project objects
+    related_projects = []
+    project_ids = response['projects']
+    project_ids.each do |id|
+      project = Project.where(id: id).first
+      # Filter out owned and non-exists projects and currently show projects
+      if project and not current_user.projects.include? project and project != @project
+        related_projects << project
+      end
+    end
+    related_projects[0..3]
+  end
+
+
 end

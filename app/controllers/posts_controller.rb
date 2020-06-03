@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def index
     @project = Project.find(params[:project_id])
-    @posts = Post.all.order('updated_at DESC')
+    @posts = @project.posts.order('updated_at DESC')
     @serialized_posts = ActiveModel::Serializer::CollectionSerializer.new(@posts, each_serializer: PostSerializer)
   end
 

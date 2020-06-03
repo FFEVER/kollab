@@ -4,8 +4,10 @@ class HomeController < ApplicationController
   def index
     if user_signed_in?
       @user = current_user
-      @projects = @user.following_projects
-      @posts = Post.where(project: @projects).order('updated_at DESC')
+      @following_projects = @user.following_projects
+      @following_users = @user.followings
+      @posts = Post.where(project: @following_projects).or(Post.where(user: @following_users)).order('updated_at DESC')
+      binding.pry
       @serialized_posts = ActiveModel::Serializer::CollectionSerializer.new(@posts, each_serializer: PostSerializer)
     end
   end

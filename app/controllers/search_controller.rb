@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SearchController < ApplicationController
+  before_action :custom_authenticate_user!
   def index
     @word = params[:word]
     @type = params[:type]

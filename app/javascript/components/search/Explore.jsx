@@ -47,7 +47,7 @@ class Explore extends React.Component {
     }
 
     render() {
-        const {projects, starPath, unstarPath, projectPath, showSearchBar, authenticityToken} = this.props
+        const {projects, starPath, unstarPath, projectPath, searchPath, showSearchBar, authenticityToken} = this.props
 
         return (
             <div className="d-flex flex-column">
@@ -80,7 +80,7 @@ class Explore extends React.Component {
 
                 {projects.map((item, index) => (
                     <ProjectCard project={item} key={index} projectPath={projectPath} starPath={starPath}
-                                 unstarPath={unstarPath} submitSearchTag={this.submitSearchTag} authenticityToken={authenticityToken}/>
+                                 unstarPath={unstarPath} searchPath={searchPath} authenticityToken={authenticityToken}/>
                 ))}
             </div>
         )

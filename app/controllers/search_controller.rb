@@ -28,8 +28,10 @@ class SearchController < ApplicationController
   end
 
   def trending
-    @projects = Project.joins(:received_views).group('projects.id').order('count(viewings) desc')
-    @serialized_projects = ActiveModel::Serializer::CollectionSerializer.new(@projects, each_serializer: ProjectSerializer)
+    @popular_projects = Project.joins(:received_views).group('projects.id').order('count(viewings) desc')
+    @projects = Project.all
+    @trending_projects = (@popular_projects + @projects).uniq[0..100]
+    @serialized_projects = ActiveModel::Serializer::CollectionSerializer.new(@trending_projects, each_serializer: ProjectSerializer)
     @projects_hash = serialized_projects_to_hash(@serialized_projects)
   end
 

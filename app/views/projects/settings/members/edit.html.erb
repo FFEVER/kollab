@@ -1,11 +1,25 @@
 <div class="setting">
   <h2>Member Detail</h2>
-  <%= react_component("members/MemberDetail",
+  <div class="setting__member__section align-items-center">
+    <% if @memberDetail[:member].profile_image_url %>
+      <%= image_tag @memberDetail[:member].profile_image,
+        class: 'image__profile image__profile--large image__profile--with-border' %>
+    <% else %>
+      <%= image_pack_tag 'portrait_placeholder.png',
+        class: 'image__profile image__profile--large image__profile--with-border' %>
+    <% end %>
+  </div>
+  <div class="setting__member__section align-items-center">
+    <h3><%=  "#{@memberDetail[:member].first_name} #{@memberDetail[:member].last_name}" %></h3>
+  </div>
+
+  <%= react_component("members/EditMemberDetail",
     {
       authenticityToken: form_authenticity_token,
       submitPath: projects_settings_members_path,
       currentUser: current_user,
-      memberRole: @roles
+      memberRole: @memberDetail,
+      allRoles: @roles
 
     })
  %>

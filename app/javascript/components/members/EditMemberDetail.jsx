@@ -8,9 +8,16 @@ import {
   FormHelperText,
 } from "@material-ui/core"
 import Button from "../shared/form/Button"
-import phone from "../../images/icon/phone-call.png"
+import { FormValidator, defaultErrors } from "./EditMemberDetailValidator"
+
 import mail from "../../images/icon/mail.png"
+import phone from "../../images/icon/phone-call.png"
+import facebook from "../../images/icon/facebook.png"
+import github from "../../images/icon/github.png"
+import medium from "../../images/icon/medium.png"
+import linkedin from "../../images/icon/linkedin.png"
 import instagram from "../../images/icon/instagram.png"
+
 import anya from "../../images/anya.jpg"
 
 const constUser = {
@@ -45,19 +52,41 @@ const statuses = [
 
 const roleStatuses = ["Owner", "Member"]
 
-class MemberDetail extends React.Component {
+class EditMemberDetail extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       user: {},
-      roles: {},
+      roles: [],
       role: "UX/UI Design",
       contact: {},
       roleStatus: "Owner",
+      contacts: [],
+      errors: defaultErrors,
     }
 
     this.memberDetail = this.memberDetail.bind(this)
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  componentDidMount() {
+    let contacts = [
+      { social: mail, name: this.props.memberRole.member.email },
+      { social: phone, name: this.props.memberRole.member.phone },
+      { social: facebook, name: this.props.memberRole.member.facebook },
+      { social: github, name: this.props.memberRole.member.github },
+      { social: instagram, name: this.props.memberRole.member.instagram },
+      { social: linkedin, name: this.props.memberRole.member.linkedin },
+      { social: medium, name: this.props.memberRole.member.medium },
+    ]
+
+    this.setState({
+      user: this.props.memberRole.member,
+      role: this.props.memberRole.role.title,
+      roles: this.props.allRoles,
+      roleStatus: this.props.memberRole.is_owner ? "Owner" : "Member",
+      contacts: contacts,
+    })
   }
 
   handleChange(event) {
@@ -72,23 +101,11 @@ class MemberDetail extends React.Component {
 
   render() {
     const { currentUser } = this.props
-    const { user, role, roleStatus } = this.state
+    const { user, role, roleStatus, roles, contacts, errors } = this.state
     console.log("State ", this.state)
     console.log("Props ", this.props)
     return (
-      <div className="mb-5">
-        <div className="setting__role__section ">
-          <img
-            src={anya}
-            className="setting__role__proimg"
-            height="150"
-            width="150"
-          />
-        </div>
-        <div className="setting__role__title align-items-center">
-          <h3>{`${constUser.first} ${constUser.last}`}</h3>
-        </div>
-
+      <div>
         <div className="setting__role__section">
           <div className="setting__role__title">
             <h4>Status</h4>
@@ -110,9 +127,9 @@ class MemberDetail extends React.Component {
               ))}
             </Select>
           </FormControl>
-          {/* <FormHelperText error={errors.status.length > 0 ? true : false}>
+          <FormHelperText error={errors.status.length > 0 ? true : false}>
             {errors.status[0]}
-          </FormHelperText> */}
+          </FormHelperText>
         </div>
 
         <div className="setting__role__section">
@@ -129,9 +146,9 @@ class MemberDetail extends React.Component {
               <MenuItem value="">
                 <em>Select a member role</em>
               </MenuItem>
-              {constRoles.map((role, key) => (
-                <MenuItem key={key} value={role}>
-                  {role}
+              {roles.map((role, key) => (
+                <MenuItem key={key} value={role.title}>
+                  {role.title}
                 </MenuItem>
               ))}
             </Select>
@@ -145,18 +162,20 @@ class MemberDetail extends React.Component {
           <div className="setting__role__title">
             <h4>Contact</h4>
           </div>
-          <div className="setting__role__section setting__role__section__item">
-            <img src={phone} height="20" width="20" />
-            <p>{constUser.phone}</p>
-          </div>
-          <div className="setting__role__section setting__role__section__item">
-            <img src={mail} height="20" width="20" />
-            <p>{constUser.mail}</p>
-          </div>
-          <div className="setting__role__section setting__role__section__item">
-            <img src={instagram} height="20" width="20" />
-            <p>{constUser.instagram}</p>
-          </div>
+          {contacts.map((item, index) =>
+            item.name !== "" && item.name !== null ? (
+              <div
+                key={index}
+                className="setting__role__section setting__role__section__item"
+              >
+                {console.log(item)}
+                <img src={item.social} height="20" width="20" />
+                <p>{item.name}</p>
+              </div>
+            ) : (
+              <div key={index} />
+            )
+          )}
         </div>
 
         <div className="setting__role__section setting__role__section__button button--fixed-bottom ml-2 mr-2">
@@ -178,11 +197,12 @@ class MemberDetail extends React.Component {
   }
 }
 
-MemberDetail.propTypes = {
+EditMemberDetail.propTypes = {
   authenticityToken: PropTypes.string,
   submitPath: PropTypes.string,
   currentUser: PropTypes.object,
-  role: PropTypes.object,
+  memberRole: PropTypes.object,
+  allRoles: PropTypes.array,
 }
 
-export default MemberDetail
+export default EditMemberDetail

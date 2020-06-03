@@ -1,5 +1,5 @@
 .setting {
-  padding: $spacer-m $spacer;
+  padding: $spacer-m $spacer-l;
 
   p {
     font-size: 14px;
@@ -80,6 +80,9 @@
     }
 
     &__section {
+      display: flex;
+      flex-direction: column;
+
       padding-top: $spacer-s;
       padding-bottom: $spacer-s;
     }

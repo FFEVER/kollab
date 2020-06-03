@@ -1,4 +1,3 @@
-import React from "react"
 import PropTypes from "prop-types"
 
 import {
@@ -313,22 +312,22 @@ class EditRole extends React.Component {
             errors={errors.name}
           />
         </div>
-        <ExpertiseModal
+        {/* <ExpertiseModal
           expertises={expertises}
           setExpertiseDisplayFunc={this.setDisplayExpertise}
           disable={userExpertises.length > 2 ? true : false}
-        />{" "}
+        /> */}
         {/* <FormHelperText error={errors.userExpertises.length > 0 ? true : false}>
           {errors.userExpertises[0]}
         </FormHelperText> */}
-        {userExpertises.length > 0 ? (
+        {/* {userExpertises.length > 0 ? (
           <ExpertiseDisplay
             expertises={userExpertises}
             removeExpertise={this.removeExpertise}
           />
         ) : (
           <div />
-        )}
+        )} */}
         <div className="setting__role__section">
           <div className="setting__role__title">
             <h4>Skills</h4>

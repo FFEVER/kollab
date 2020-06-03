@@ -1,12 +1,31 @@
-<div class="container-fluid">
-  <div class="d-flex flex-row align-items-center mt-3">
-    <h1>Welcome to</h1>
-    <div class="ml-2 mb-3">
-      <%= image_pack_tag 'kollab-blue.png', alt: 'kollab', size:'150x70'%>
+<div class="home">
+  <% unless user_signed_in? %>
+    <div class="d-flex flex-row align-items-center mt-3">
+      <h1>Welcome to</h1>
+      <div class="ml-2 mb-3">
+        <%= image_pack_tag 'kollab-blue.png', alt: 'kollab', size: '150x70' %>
+      </div>
     </div>
-  </div>
-  <p>
-    An online community platform for projects collaborations in KMITL.
-  </p>
+    <p>
+      An online community platform for projects collaborations in KMITL.
+    </p>
+  <% else %>
+    <% if @serialized_posts.count == 0 %>
+      <div class="home__no-post">
+        <h1>No post here. </h1>
+        <h2>
+          <%= link_to 'Explore', explore_search_index_path %> some interesting projects to follow!
+        </h2>
+      </div>
+    <% end %>
 
+    <%= react_component('post/cards/PostCard', {
+        authenticityToken: form_authenticity_token,
+        currentUser: current_user,
+        posts: @serialized_posts,
+        deletePostPath: project_post_path(:project_id, :id),
+        projectPath: project_path(:id),
+        userPath: user_path(:id),
+    }) %>
+  <% end %>
 </div>

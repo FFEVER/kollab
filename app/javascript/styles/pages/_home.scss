@@ -4,6 +4,18 @@
 
   padding: $spacer-m $spacer;
 
+  &__no-post {
+    margin-top: $spacer-xl;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    a {
+      color: $kollab-primary;
+    }
+  }
+
   &__post {
     display: flex;
     flex-direction: column;

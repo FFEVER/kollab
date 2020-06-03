@@ -60,16 +60,23 @@ class SearchController < ApplicationController
   end
 
   def find_recommended_projects
-    response = helpers.get_recommended_projects(current_user)
-    puts JSON.pretty_generate(response)
+    begin
+      response = helpers.get_recommended_projects(current_user)
+      puts JSON.pretty_generate(response)
+    rescue => e
+      logger.error e.message
+      response = {
+          'projects' => Project.all.limit(100).map { |p| p.id }
+      }
+    end
 
     # Convert ids to project objects
     recommended_projects = []
     project_ids = response['projects']
     project_ids.each do |id|
       project = Project.where(id: id).first
-      # Filter out own and non-exists projects
-      if project and current_user.projects.include? project
+      # Filter out owned and non-exists projects
+      if project and not current_user.projects.include? project
         recommended_projects << project
       end
     end

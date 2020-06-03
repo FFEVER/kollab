@@ -9,7 +9,7 @@ class Users::Settings::UsersController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to profile_edit_path, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to edit_users_settings_user_path(id: @user[:id]), notice: 'Profile was successfully updated.' }
         format.json { render json: @user, status: :ok, location: @user }
       else
         errors = helpers.errors_to_camel(@user.errors.messages)

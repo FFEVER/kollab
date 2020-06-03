@@ -1,5 +1,6 @@
 .project {
   padding: $spacer-l $spacer;
+
   &__form {
     .form__date {
       &:first-child {
@@ -7,6 +8,7 @@
       }
     }
   }
+
   &--with-margin {
     margin-bottom: $spacer-xl;
   }
@@ -14,6 +16,24 @@
   &__view {
     display: flex;
     flex-direction: column;
+    @media only screen and (min-width: $kollab-width-desktop) {
+      flex-direction: row;
+    }
+
+    &__col {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      &--related-projects {
+        display: flex;
+        @media only screen and (min-width: $kollab-width-desktop) {
+          width: 35%;
+          min-width: 350px;
+          margin-left: $spacer-m;
+        }
+      }
+    }
 
     h2 {
       font-size: 1rem;
@@ -49,6 +69,7 @@
             margin-right: $spacer-s;
           }
         }
+
         &__short-desc {
           margin-bottom: $spacer-m;
 
@@ -70,6 +91,7 @@
 
       &__dates {
         display: flex;
+
         div {
           flex-grow: 1;
         }
@@ -79,6 +101,7 @@
         margin-left: auto;
 
         text-align: center;
+
         span {
           font-size: 1.25rem;
         }
@@ -96,6 +119,7 @@
 
           &:hover {
             cursor: pointer;
+
             .member__name {
               text-decoration: underline;
             }
@@ -115,6 +139,7 @@
 
             letter-spacing: normal;
           }
+
           &__name {
             color: black;
           }
@@ -123,6 +148,15 @@
             color: $kollab-gray-font;
           }
         }
+      }
+
+      &__posts {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__related-projects {
+        width: 100%;
       }
     }
   }
@@ -146,7 +180,7 @@
     }
 
     &__header {
-      margin: -1 * $spacer-l -1 * $spacer;
+      margin-top: -1 * $spacer-l;
     }
   }
 
@@ -175,6 +209,7 @@
     &__title {
       letter-spacing: normal;
     }
+
     &__short-desc {
       display: -webkit-box;
       overflow: hidden;

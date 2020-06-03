@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_134952) do
+ActiveRecord::Schema.define(version: 2020_06_03_083315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(version: 2020_05_31_134952) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["parent_id"], name: "index_expertises_on_parent_id"
+  end
+
+  create_table "expertises_roles", id: false, force: :cascade do |t|
+    t.bigint "role_id", null: false
+    t.bigint "expertise_id", null: false
+    t.index ["role_id", "expertise_id"], name: "index_expertises_roles_on_role_id_and_expertise_id"
   end
 
   create_table "expertisings", force: :cascade do |t|
@@ -78,14 +84,35 @@ ActiveRecord::Schema.define(version: 2020_05_31_134952) do
     t.index ["followable_type", "followable_id"], name: "index_followings_on_followable_type_and_followable_id"
   end
 
+  create_table "join_requests", force: :cascade do |t|
+    t.bigint "requester_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_join_requests_on_project_id"
+    t.index ["requester_id"], name: "index_join_requests_on_requester_id"
+  end
+
   create_table "members", force: :cascade do |t|
     t.boolean "is_owner"
     t.bigint "user_id"
     t.bigint "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "role_id"
     t.index ["project_id"], name: "index_members_on_project_id"
+    t.index ["role_id"], name: "index_members_on_role_id"
     t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "body"
+    t.bigint "project_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_posts_on_project_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -97,6 +124,21 @@ ActiveRecord::Schema.define(version: 2020_05_31_134952) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.string "long_desc"
+    t.string "status", default: "In progress"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "roles_skills", id: false, force: :cascade do |t|
+    t.bigint "role_id", null: false
+    t.bigint "skill_id", null: false
+    t.index ["role_id", "skill_id"], name: "index_roles_skills_on_role_id_and_skill_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -170,6 +212,8 @@ ActiveRecord::Schema.define(version: 2020_05_31_134952) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "projects"
   add_foreign_key "favorites", "users"
+  add_foreign_key "join_requests", "projects"
+  add_foreign_key "join_requests", "users", column: "requester_id"
   add_foreign_key "taggings", "projects"
   add_foreign_key "taggings", "tags"
   add_foreign_key "user_skills", "skills"

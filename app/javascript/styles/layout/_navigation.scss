@@ -81,13 +81,25 @@
 
       white-space: nowrap;
       i {
+        color: black;
         margin-right: $spacer-s;
       }
 
-      &--active {
+      &:hover {
+        i {
+          color: $kollab-primary;
+        }
+      }
+
+
+        &--active {
         color: $kollab-primary;
         border-radius: 5px;
         background-color: rgba(84, 189, 194, 0.12);
+
+        i {
+          color: $kollab-primary !important;
+        }
       }
     }
 

@@ -56,6 +56,14 @@
       </p>
     <% end %>
   </div>
+
+  <% @waiting_requests.each do |w| %>
+    <%= p w.to_json %>
+  <% end %>
+
+  <% @inviting_requests.each do |w| %>
+    <%= p w.to_json %>
+  <% end %>
   <%= react_component("members/MemberManagement",
                       {
                           authenticityToken: form_authenticity_token,

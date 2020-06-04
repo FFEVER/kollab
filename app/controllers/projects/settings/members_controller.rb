@@ -6,6 +6,10 @@ class Projects::Settings::MembersController < ApplicationController
     @project = Project.find(params[:project])
     @members = @project.members
     @roles = @project.roles
+    @waiting_requests = ActiveModel::Serializer::CollectionSerializer.new(
+        @project.join_requests.waiting, each_serializer: JoinRequestSerializer)
+    @inviting_requests = ActiveModel::Serializer::CollectionSerializer.new(
+        @project.join_requests.inviting, each_serializer: JoinRequestSerializer)
   end
 
   def edit
@@ -13,7 +17,6 @@ class Projects::Settings::MembersController < ApplicationController
     @project = @member.project
     @user = @member.user
     @role = @member.role
-    @member_details = {member_id: @member.id, member: @user, role: @role, is_owner: @member.is_owner}
     @serialized_member = MemberSerializer.new(@member)
     @roles = @member.project.roles
   end

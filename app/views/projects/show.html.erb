@@ -53,7 +53,7 @@
   </section>
 
   <% if @project.owners.map(&:id).include? current_user.id%>
-    <%= button_to "Edit Project", edit_projects_settings_project_path, class: "section button button--md project__fullwidth", method: :get %>
+    <%= button_to 'Project Setting', edit_projects_settings_project_path, class: 'section button button--md project__fullwidth', method: :get %>
   <%end%>
 
   <section class="section__header__short-desc">

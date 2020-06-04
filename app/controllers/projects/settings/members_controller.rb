@@ -41,9 +41,9 @@ class Projects::Settings::MembersController < ApplicationController
     end
   end
 
-  def set_member
-    @member = Member.find(params[:id])
-  end
+  # def set_member
+  #   @member = Member.find(params[:id])
+  # end
 
   def member_params
     permitted = params.require(:member).permit(

@@ -105,7 +105,7 @@ class MemberManagement extends React.Component {
   componentDidMount() {
     let members = []
     let roles = []
-
+    console.log("this props", this.props)
     this.props.memberRole.map((item) => {
       members.push(item.member)
       roles.push(item.role)

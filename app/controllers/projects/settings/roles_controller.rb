@@ -1,9 +1,19 @@
 # frozen_string_literal: true
 
 class Projects::Settings::RolesController < ApplicationController
-  def new; end
+  def new
+    @role = Role.new
+end
 
-  def create; end
+  def create
+    @role = Role.new(role_params)
+    if @role.save
+      render json: @role, location: project_settings_role_path(id(@role[:id])), status: :created
+    else
+      errors = helpers.errors_to_camel(@role.errors.messages)
+      render json: { messages: errors }, status: :bad_request
+    end
+  end
 
   def index; end
 

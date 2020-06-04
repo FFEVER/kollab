@@ -43,7 +43,6 @@ class EditMemberDetail extends React.Component {
             isRemoveButtonLoading: false
         }
 
-        this.memberDetail = this.memberDetail.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
@@ -73,10 +72,6 @@ class EditMemberDetail extends React.Component {
         })
     }
 
-    memberDetail() {
-        console.log("Show member detail")
-    }
-
     handleDeleteMember = () => {
         if (confirm("Do you want to delete this member?")) {
             this.deleteMember()
@@ -104,7 +99,6 @@ class EditMemberDetail extends React.Component {
                 }
             })
             .catch((error) => {
-                console.log(error)
                 if (error.response.status === 403) {
                     alert(error.response.data.message)
                 } else {
@@ -196,7 +190,7 @@ class EditMemberDetail extends React.Component {
 
     render() {
         const {role, roleStatus, roles, contacts, errors, isButtonLoading, isRemoveButtonLoading} = this.state
-        const {createRolePath} = this.props
+        const {createRolePath, currentUser, member} = this.props
 
         return (
             <div>
@@ -278,7 +272,7 @@ class EditMemberDetail extends React.Component {
                         isLoading={isRemoveButtonLoading}
                         onClick={this.handleDeleteMember}
                     >
-                        Remove
+                        {currentUser.id === member.user.id ? "Leave" : "Remove from project"}
                     </Button>
                     <Button
                         name="save-button"

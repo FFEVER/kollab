@@ -203,14 +203,11 @@ class EditRole extends React.Component {
             data: formData,
         })
             .then((response) => {
-                debugger
                 if (response.status === 200) {
                     window.location.href = response.headers.location
                 }
             })
             .catch((error) => {
-                debugger
-                console.log(error)
                 if (error.response.status === 403) {
                     alert(error.response.data.message)
                 } else {
@@ -242,7 +239,6 @@ class EditRole extends React.Component {
             isButtonLoading,
             isRemoveButtonLoading,
         } = this.state
-        console.log("state ", this.state)
         return (
             <form noValidate className="mb-5">
                 <div className="setting__role__section">

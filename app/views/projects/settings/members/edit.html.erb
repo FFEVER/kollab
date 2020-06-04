@@ -3,25 +3,27 @@
   <div class="setting__member__section align-items-center">
     <% if @member.user.profile_image_url %>
       <%= image_tag @member.user.profile_image,
-        class: 'image__profile image__profile--large image__profile--with-border' %>
+                    class: 'image__profile image__profile--large image__profile--with-border' %>
     <% else %>
       <%= image_pack_tag 'portrait_placeholder.png',
-        class: 'image__profile image__profile--large image__profile--with-border' %>
+                         class: 'image__profile image__profile--large image__profile--with-border' %>
     <% end %>
   </div>
   <div class="setting__member__section align-items-center">
-    <h3><%=  @member.user.full_name %></h3>
+    <%= link_to user_path(@member.user) do %>
+      <h3><%= @member.user.full_name %></h3>
+    <% end %>
   </div>
 
   <%= react_component("members/EditMemberDetail",
-    {
-      authenticityToken: form_authenticity_token,
-      submitPath: projects_settings_member_path,
-      currentUser: current_user,
-      member: @serialized_member,
-      allRoles: @roles,
-      createRolePath: new_projects_settings_role_path(project_id: @project),
-      })
+                      {
+                          authenticityToken: form_authenticity_token,
+                          submitPath: projects_settings_member_path,
+                          currentUser: current_user,
+                          member: @serialized_member,
+                          allRoles: @roles,
+                          createRolePath: new_projects_settings_role_path(project_id: @project),
+                      })
   %>
 
 </div>

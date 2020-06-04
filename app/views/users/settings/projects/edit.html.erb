@@ -24,7 +24,7 @@
       <% @owned_projects.each do |project| %>
         <div class="setting__project__item">
           <p><%=project.title%></p>
-          <%= link_to "Delete", users_settings_project_path(project_id: project.id), class: "setting__project__button__delete", method: :delete, data: {confirm: "Do you want to delete the project", commit: "Yes", cancel: "No"} %>
+          <%= link_to "Delete", users_settings_project_path(project_id: project.id), class: "setting__project__button__delete", method: :delete, data: {confirm: "Do you want to delete the project"} %>
         </div>
       <%end%>
     </div>
@@ -40,7 +40,8 @@
       <% @participated_projects.each do |project| %>
         <div class="setting__project__item">
           <p><%=project.title%></p>
-          <button class="setting__project__button__delete">Leave</button>
+          <%# Add submit path for leaving the project %>
+          <%= link_to "Leave", "", class: "setting__project__button__delete", method: :delete, data: {confirm: "Do you want to leave the project"} %>
         </div>
       <%end%>
     </div>

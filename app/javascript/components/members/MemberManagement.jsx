@@ -136,7 +136,7 @@ class MemberManagement extends React.Component {
         return (
             <div>
                 <div className="setting__member__section">
-                    <h2>Waiting lists</h2>
+                    <h2>Waiting requests</h2>
                     {waitingRequests.map((request, index) => (
                         <WaitListCard key={index} user={request.user}/>
                     ))}
@@ -144,7 +144,7 @@ class MemberManagement extends React.Component {
                 </div>
 
                 <div className="setting__member__section">
-                    <h2>Pending</h2>
+                    <h2>Inviting members</h2>
                     {invitingRequests.map((request, index) => (
                         <PendingCard key={index} user={request.user}/>
                     ))}

@@ -13,10 +13,14 @@ class WaitListCard extends React.Component {
                         <img src={portraitPlaceholder} className="search__user__proimg"/>
                         : <img src={user.profile_image_url} className="search__user__proimg"/>
                     }
-
                     <div className="card-with-button__detail">
                         <h5 style={{color: "#4e4e4e"}}>{user.name}</h5>
                         <p>{user.faculty}</p>
+                        <div>
+                            {user.skills.map((item, index) => (
+                                <a className="link mr-1" key={index}>{`#${item}`}</a>
+                            ))}
+                        </div>
                     </div>
                 </a>
                 <div className="d-flex flex-column">

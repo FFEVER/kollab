@@ -17,6 +17,12 @@ class PendingCard extends React.Component {
                     <div className="card-with-button__detail">
                         <h5 style={{color: "#4e4e4e"}}>{user.name}</h5>
                         <p>{user.faculty}</p>
+                        <div>
+                            {user.skills.map((item, index) => (
+                                <a className="link mr-1" key={index}>{`#${item}`}</a>
+                            ))}
+                        </div>
+
                     </div>
                 </a>
                 <Button name="cancel-button" className="button button__decline">

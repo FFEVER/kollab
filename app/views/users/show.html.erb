@@ -44,10 +44,14 @@
           <div class="d-flex flex-row">
             <%= link_to "Following", unfollow_user_path, method: :post,
                         class: "button button--md button--unfollow--sm mr-1", remote: true, style: 'width:100%;' %>
+            <%= link_to "Following", unfollow_user_path, method: :post,
+                        class: "button button--md button--unfollow--sm mr-1", remote: true, style: 'width:100%;' %>
 
           </div>
         <% else %>
           <div class="d-flex flex-row">
+            <%= link_to "Follow", follow_user_path, method: :post,
+                        class: "button button--md button--follow--sm mr-1", remote: true, style: 'width:100%;' %>
             <%= link_to "Follow", follow_user_path, method: :post,
                         class: "button button--md button--follow--sm mr-1", remote: true, style: 'width:100%;' %>
           </div>

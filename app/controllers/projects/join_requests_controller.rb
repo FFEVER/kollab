@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Projects::JoinRequestsController < ApplicationController
+
   def create
     project = Project.find(params[:project_id])
     if project.users.include? current_user or current_user.projects_to_join.include? project
@@ -27,7 +28,10 @@ class Projects::JoinRequestsController < ApplicationController
   end
 
   def destroy
-    @join_request = JoinRequest.find(params[:id])
+    @join_request = JoinRequest.where(id: params[:id]).first
+    return if @join_request.nil?
+
+    req_id = @join_request.id
     @project = @join_request.project
     if @project.owners.include? current_user or @join_request.user == current_user
       if @join_request.destroy

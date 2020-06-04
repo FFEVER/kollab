@@ -8,6 +8,8 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def faculty
+    return '' if object.faculty.nil?
+
     object.faculty.name
   end
 

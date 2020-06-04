@@ -16,7 +16,7 @@
 
 <div class="setting">
   <div class="setting__member__section">
-    <h2>Members</h2>
+    <h4>Members</h4>
     <% @members.each do |member| %>
       <%= link_to edit_projects_settings_member_path(member) do %>
         <div class="member-card">
@@ -37,7 +37,7 @@
 
   </div>
   <div class="setting__member__section">
-    <h2>Roles</h2>
+    <h4>Roles</h4>
     <% @roles.each do |role| %>
       <%= link_to edit_projects_settings_role_path(role) do %>
         <div class="role-card">
@@ -63,92 +63,11 @@
     <% end %>
   </div>
 
-  <%# Waiting List %>
-  <div class="setting__member__section">
-    <h2>Waiting Lists</h2>
-
-    <%# Change members to waiting users%>
-    <% @members.each do |member| %>
-      <%= link_to edit_projects_settings_member_path(member) do %>
-
-        <div class="card-with-button">
-          <div class="d-flex flex-row">
-            <% if member.user.profile_image_url %>
-              <%= image_tag member.user.profile_image,
-                          class: 'image__profile image__profile--small image__profile--with-border' %>
-            <% else %>
-              <%= image_pack_tag 'portrait_placeholder.png',
-                               class: 'image__profile image__profile--small image__profile--with-border' %>
-            <% end %>
-            <div class="card-with-button__detail">
-              <h5><%= member.user.full_name %></h5>
-              <p><%= member.user.faculty.name%></p>
-            </div>
-          </div>
-
-          <%# Change submit button path %>
-          <div class="d-flex flex-column">
-            <%= button_to "Accept", root_path, class:"button button__accept mb-2"%>
-            <%= button_to "Decline", root_path, class: "button button__decline"%>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <%# Pending List %>
-  <div class="setting__member__section">
-    <h2>Pending Lists</h2>
-
-    <%# Change members to pending users%>
-    <% @members.each do |member| %>
-      <%= link_to edit_projects_settings_member_path(member) do %>
-        <div class="card-with-button">
-          <div class="d-flex flex-row">
-            <% if member.user.profile_image_url %>
-              <%= image_tag member.user.profile_image,
-                          class: 'image__profile image__profile--small image__profile--with-border' %>
-            <% else %>
-              <%= image_pack_tag 'portrait_placeholder.png',
-                               class: 'image__profile image__profile--small image__profile--with-border' %>
-            <% end %>
-            <div class="card-with-button__detail">
-              <h5><%= member.user.full_name %></h5>
-              <p><%= member.user.faculty.name%></p>
-            </div>
-          </div>
-          <%# Change submit button path %>
-          <%= button_to "Cancel", root_path, class:"button button__decline"%>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <%# Recommemde user %>
-  <div class="setting__member__section">
-    <h2>Suggested teammates</h2>
-
-    <%# Change members to pending users%>
-    <% @members.each do |member| %>
-      <%= link_to edit_projects_settings_member_path(member) do %>
-        <div class="card-with-button">
-          <div class="d-flex flex-row">
-            <% if member.user.profile_image_url %>
-              <%= image_tag member.user.profile_image,
-                          class: 'image__profile image__profile--small image__profile--with-border' %>
-            <% else %>
-              <%= image_pack_tag 'portrait_placeholder.png',
-                               class: 'image__profile image__profile--small image__profile--with-border' %>
-            <% end %>
-            <div class="card-with-button__detail">
-              <h5><%= member.user.full_name %></h5>
-              <p><%= member.user.faculty.name%></p>
-            </div>
-          </div>
-          <%# no message button anymore %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
+  <%= react_component('members/MemberManagement',
+                      {
+                          authenticityToken: form_authenticity_token,
+                          currentUser: current_user,
+                          waitingRequests: @waiting_requests,
+                          invitingRequests: @inviting_requests
+                      }) %>
 </div>

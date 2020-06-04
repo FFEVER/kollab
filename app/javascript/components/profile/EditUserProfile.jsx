@@ -379,7 +379,6 @@ class EditUserProfile extends React.Component {
         }
       })
       .catch((error) => {
-        console.log(error)
         if (error.response.status === 400) {
           this.setState((state) => {
             let error_messages = error.response.data.messages

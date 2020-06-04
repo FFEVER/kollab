@@ -15,7 +15,7 @@ class Member < ApplicationRecord
     elsif is_owner
       return 'Project Owner'
     else
-      ''
+      'Member'
     end
   end
 end

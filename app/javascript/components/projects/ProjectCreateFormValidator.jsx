@@ -16,7 +16,7 @@ class FormValidator {
     if (title === undefined || title.length < 1) {
       errors[key].push("Title cannot be blank.")
     }
-    if (title.length > 50) {
+    if (title.length > 100) {
       errors[key].push("Title is too long.")
     }
   }

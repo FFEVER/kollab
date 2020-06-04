@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_083315) do
+ActiveRecord::Schema.define(version: 2020_06_04_081514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_083315) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "start_date"
     t.datetime "end_date"
-    t.string "long_desc"
+    t.string "long_desc", default: ""
     t.string "status", default: "In progress"
   end
 
@@ -133,6 +133,8 @@ ActiveRecord::Schema.define(version: 2020_06_03_083315) do
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "project_id", null: false
+    t.index ["project_id"], name: "index_roles_on_project_id"
   end
 
   create_table "roles_skills", id: false, force: :cascade do |t|
@@ -214,6 +216,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_083315) do
   add_foreign_key "favorites", "users"
   add_foreign_key "join_requests", "projects"
   add_foreign_key "join_requests", "users", column: "requester_id"
+  add_foreign_key "roles", "projects"
   add_foreign_key "taggings", "projects"
   add_foreign_key "taggings", "tags"
   add_foreign_key "user_skills", "skills"

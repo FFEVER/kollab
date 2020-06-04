@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   belongs_to :faculty, optional: true
 
-  has_many :members
+  has_many :members, dependent: :destroy
   has_many :projects, through: :members do
     def owned
       where('members.is_owner = ?', true)

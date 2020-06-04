@@ -16,20 +16,20 @@
 
 <div class="setting">
   <div class="setting__member__section">
-    <h2>Memmbers</h2>
-    <% @roles.each do |role|%>
-      <%= link_to edit_projects_settings_member_path(id: role[:member_id]) do %>
+    <h2>Members</h2>
+    <% @members.each do |member| %>
+      <%= link_to edit_projects_settings_member_path(member) do %>
         <div  class="member-card">
-          <% if role[:member].profile_image_url %>
-            <%= image_tag role[:member].profile_image,
+          <% if member.user.profile_image_url %>
+            <%= image_tag member.user.profile_image,
                           class: 'image__profile image__profile--small image__profile--with-border' %>
           <% else %>
             <%= image_pack_tag 'portrait_placeholder.png',
                                class: 'image__profile image__profile--small image__profile--with-border' %>
           <% end %>
           <div class="member-card__detail">
-            <h5><%= "#{role[:member].first_name} #{role[:member].last_name}"  %></h5>
-            <p><%= role[:role].title %></p>
+            <h5><%= member.user.full_name%></h5>
+            <p><%= member.role_name %></p>
           </div>
         </div>
       <%end%>
@@ -39,7 +39,7 @@
   <div class="setting__member__section">
     <h2>Roles</h2>
     <% @roles.each do |role|%>
-      <%= link_to edit_projects_settings_role_path(id: role[:role].id) do %>
+      <%= link_to edit_projects_settings_role_path(id: role[:role]) do %>
         <div  class="role-card">
           <h5><%= role[:role].title%></h5>
           <% if role[:role].status == "Open"%>
@@ -62,7 +62,6 @@
       submitPath: project_update_path,
       currentUser: current_user,
       memberRole: @roles
-
     })
  %>
 

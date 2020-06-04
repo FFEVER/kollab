@@ -22,7 +22,6 @@ class Project < ApplicationRecord
   has_many :posts
   has_many :roles
 
-  # TODO: [Eit] Validates fields
   validates :title, presence: true, length: { within: 1..50 }
   validates :short_desc, presence: true, length: { within: 1..150 }
   validate :start_date_greater_than_end_date

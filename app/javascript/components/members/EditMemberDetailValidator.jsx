@@ -1,14 +1,14 @@
 const defaultErrors = {
-  status: [],
   role: [],
+  roleStatus: [],
 }
 
 class FormValidator {
   static validateStatus(state, errors) {
-    const { status } = state
-    const key = Object.keys({ status })[0]
+    const { roleStatus } = state
+    const key = Object.keys({ roleStatus })[0]
 
-    if (status === undefined || status.length < 1) {
+    if (roleStatus === undefined || roleStatus.length < 1) {
       errors[key].push("Status cannot be blank.")
     }
   }

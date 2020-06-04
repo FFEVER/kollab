@@ -89,10 +89,6 @@ const defaultUsers = [
   },
 ]
 
-const memberDetailRoute = "members/1/edit?project=1"
-const EditRoleRoute =
-  "http://localhost:5000/projects/settings/roles/1/edit?project=1"
-
 class MemberManagement extends React.Component {
   constructor(props) {
     super(props)

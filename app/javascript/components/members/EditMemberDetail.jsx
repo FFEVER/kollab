@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import axios from "axios"
 
 import {
   FormControl,
@@ -20,35 +21,11 @@ import instagram from "../../images/icon/instagram.png"
 
 import anya from "../../images/anya.jpg"
 
-const constUser = {
-  first: "Kasamabhorn",
-  last: "Suparerkrat",
-  phone: "061 234 5678",
-  mail: "kanasamabhorn@kmitl.ac.th",
-  instagram: "kasamabhorn.ks",
-  socialLinks: [{ id: 1, social: "Instagram", name: "anya.ks" }],
+const DATA_PREFIX = "member"
+
+const dataName = (name) => {
+  return DATA_PREFIX + "[" + name + "]"
 }
-
-const constRoles = ["React Developer", "UX/UI Design", "Ruby on Rails"]
-
-const constRole = {
-  id: 1,
-  name: "UX/UI Designer",
-  expertiseIds: [1, 2],
-  expertises: ["Graphic Design", "Design"],
-  skillIds: [1, 2],
-  skills: ["UserExperience", "Protptyping"],
-  description: "- Has a strong passion \n- Experienced using Zeplin",
-  status: "Open",
-}
-
-const statuses = [
-  "completed",
-  "in progress",
-  "cancelled",
-  "on hold",
-  "intiating",
-]
 
 const roleStatuses = ["Owner", "Member"]
 
@@ -56,7 +33,6 @@ class EditMemberDetail extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: {},
       roles: [],
       role: "UX/UI Design",
       contact: {},
@@ -67,6 +43,8 @@ class EditMemberDetail extends React.Component {
 
     this.memberDetail = this.memberDetail.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
   }
 
   componentDidMount() {
@@ -99,9 +77,77 @@ class EditMemberDetail extends React.Component {
     console.log("Show member detail")
   }
 
+  handleSubmit(event) {
+    event.preventDefault()
+    this.setIsButtonLoading(true)
+
+    FormValidator.validateAll(this.state)
+      .then((result) => {
+        const formData = this.createFormData()
+        this.submitForm(formData)
+      })
+      .catch((errors) => {
+        this.setState({
+          errors: errors,
+        })
+        this.setIsButtonLoading(false)
+      })
+  }
+
+  createFormData() {
+    let { role, roles } = this.state
+    let role_id = roles.find((item) => item.title === role).id
+
+    const formData = new FormData()
+    formData.append(dataName("role_id"), role_id)
+    formData.append(
+      dataName("is_owner"),
+      this.state.roleStatus === "Owner" ? true : false
+    )
+    formData.append("authenticity_token", this.props.authenticityToken)
+    return formData
+  }
+
+  submitForm(formData) {
+    const { submitPath } = this.props
+    axios({
+      method: "put",
+      url: submitPath,
+      responseType: "json",
+      headers: {
+        Accept: "application/json",
+      },
+      data: formData,
+    })
+      .then((response) => {
+        if (response.status === 200)
+          window.location.href = response.headers.location
+      })
+      .catch((error) => {
+        if (error.response.status === 400) {
+          this.setState((state) => {
+            let error_messages = error.response.data.messages
+            let errors = defaultErrors
+            for (const [k, v] of Object.entries(error_messages)) {
+              errors[k] = v
+            }
+            return {
+              errors,
+            }
+          })
+        }
+      })
+      .finally(() => {
+        this.setIsButtonLoading(false)
+      })
+  }
+
+  setIsButtonLoading(isLoading) {
+    this.setState({ isButtonLoading: isLoading })
+  }
+
   render() {
-    const { currentUser } = this.props
-    const { user, role, roleStatus, roles, contacts, errors } = this.state
+    const { role, roleStatus, roles, contacts, errors } = this.state
     console.log("State ", this.state)
     console.log("Props ", this.props)
     return (
@@ -127,8 +173,8 @@ class EditMemberDetail extends React.Component {
               ))}
             </Select>
           </FormControl>
-          <FormHelperText error={errors.status.length > 0 ? true : false}>
-            {errors.status[0]}
+          <FormHelperText error={errors.roleStatus.length > 0 ? true : false}>
+            {errors.roleStatus[0]}
           </FormHelperText>
         </div>
 
@@ -168,7 +214,6 @@ class EditMemberDetail extends React.Component {
                 key={index}
                 className="setting__role__section setting__role__section__item"
               >
-                {console.log(item)}
                 <img src={item.social} height="20" width="20" />
                 <p>{item.name}</p>
               </div>
@@ -188,6 +233,7 @@ class EditMemberDetail extends React.Component {
           <Button
             name="save-button"
             className="button button--lg button__accept setting__role__button"
+            onClick={(e) => this.handleSubmit(e)}
           >
             Save
           </Button>

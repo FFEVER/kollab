@@ -16,7 +16,7 @@
   <%= react_component("members/EditMemberDetail",
     {
       authenticityToken: form_authenticity_token,
-      submitPath: projects_settings_members_path,
+      submitPath: projects_settings_member_path,
       currentUser: current_user,
       memberRole: @memberDetail,
       allRoles: @roles

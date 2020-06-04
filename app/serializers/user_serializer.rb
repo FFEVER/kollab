@@ -7,9 +7,9 @@ class UserSerializer < ActiveModel::Serializer
     "#{object.first_name} #{object.last_name}"
   end
 
-  # def faculty
-  #   self.object.faculty.name
-  # end
+  def faculty
+    object.faculty.name
+  end
 
   def skills
     object.skill_list

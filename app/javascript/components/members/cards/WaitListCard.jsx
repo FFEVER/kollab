@@ -2,10 +2,42 @@ import React from "react"
 import PropTypes from "prop-types"
 import Button from "../../shared/form/Button"
 import portraitPlaceholder from "../../../images/portrait_placeholder.png";
+import axios from "axios";
 
 class WaitListCard extends React.Component {
+
+    rejectRequest = (event) => {
+        const formData = new FormData()
+        formData.append("project_id", this.props.request.project.id)
+        formData.append("authenticity_token", this.props.authenticityToken)
+
+        const url = this.props.request.links.destroy
+        axios({
+            method: "delete",
+            url: url,
+            responseType: "json",
+            headers: {
+                Accept: "application/json",
+            },
+            data: formData,
+        })
+            .then((response) => {
+                if (response.status === 200) {
+                    window.location.href = response.headers.location
+                }
+            })
+            .catch((error) => {
+                if (error.response.status === 403) {
+                    alert(error.response.data.message)
+                } else {
+                    alert(error.response.message)
+                }
+            })
+    }
+
     render() {
-        const {user} = this.props
+        const {request} = this.props
+        const user = request.user
         return (
             <div className="card-with-button">
                 <a href={user.links.show} className="d-flex flex-row">
@@ -27,7 +59,7 @@ class WaitListCard extends React.Component {
                     <Button name="accept-button" className="button button__accept mb-2">
                         Accept
                     </Button>
-                    <Button name="decline-button" className="button button__decline">
+                    <Button name="decline-button" className="button button__decline" onClick={(e) => this.rejectRequest(e)}>
                         Decline
                     </Button>
                 </div>

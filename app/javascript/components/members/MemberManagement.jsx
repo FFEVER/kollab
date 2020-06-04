@@ -138,7 +138,7 @@ class MemberManagement extends React.Component {
                 <div className="setting__member__section">
                     <h2>Waiting requests</h2>
                     {waitingRequests.map((request, index) => (
-                        <WaitListCard key={index} user={request.user}/>
+                        <WaitListCard key={index} request={request}/>
                     ))}
                     {waitingRequests.length === 0 ? "No join request." : null}
                 </div>

@@ -7,5 +7,7 @@ class Projects::JoinRequestsController < ApplicationController
 
   def update; end
 
-  def destroy; end
+  def destroy
+    binding.pry
+  end
 end

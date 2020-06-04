@@ -1,6 +1,5 @@
 const defaultErrors = {
   name: [],
-  userExpertises: [],
   skills: [],
   description: [],
   status: [],
@@ -16,15 +15,15 @@ class AddRoleValidator {
     }
   }
 
-  static validateExpertises(state, errors) {
-    const { userExpertises } = state
-    const key = Object.keys({ userExpertises })[0]
-    if (userExpertises.length > 3) {
-      errors[key].push("Expertise may have up to 3.")
-    } else if (userExpertises.length <= 0) {
-      errors[key].push("Add at least 1 expertise")
-    }
-  }
+  // static validateExpertises(state, errors) {
+  //   const { userExpertises } = state
+  //   const key = Object.keys({ userExpertises })[0]
+  //   if (userExpertises.length > 3) {
+  //     errors[key].push("Expertise may have up to 3.")
+  //   } else if (userExpertises.length <= 0) {
+  //     errors[key].push("Add at least 1 expertise")
+  //   }
+  // }
 
   static validateSkills(state, errors) {
     const { skills } = state
@@ -85,9 +84,9 @@ class AddRoleValidator {
       const errors = { ...defaultErrors }
       this.clearErrors(errors)
       this.validateName(state, errors)
-      this.validateExpertises(state, errors)
+      // this.validateExpertises(state, errors)
       this.validateSkills(state, errors)
-      this.validateDescription(state, errors)
+      // this.validateDescription(state, errors)
       this.validateStatus(state, errors)
 
       if (this.isValidatePass(errors)) {

@@ -3,11 +3,10 @@
   <%= react_component("roles/AddRole",
     {
       authenticityToken: form_authenticity_token,
-      submitPath: projects_settings_members_path,
+      submitPath: projects_settings_roles_path,
       currentUser: current_user,
-      memberRole: @roles
-
+      memberRole: @roles,
+      project: @project
     })
  %>
-
 </div>

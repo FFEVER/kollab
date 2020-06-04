@@ -19,7 +19,7 @@
     <h2>Members</h2>
     <% @members.each do |member| %>
       <%= link_to edit_projects_settings_member_path(member) do %>
-        <div  class="member-card">
+        <div class="member-card">
           <% if member.user.profile_image_url %>
             <%= image_tag member.user.profile_image,
                           class: 'image__profile image__profile--small image__profile--with-border' %>
@@ -28,41 +28,41 @@
                                class: 'image__profile image__profile--small image__profile--with-border' %>
           <% end %>
           <div class="member-card__detail">
-            <h5><%= member.user.full_name%></h5>
+            <h5><%= member.user.full_name %></h5>
             <p><%= member.role_name %></p>
           </div>
         </div>
-      <%end%>
-    <%end%>
+      <% end %>
+    <% end %>
 
   </div>
   <div class="setting__member__section">
     <h2>Roles</h2>
-    <% @roles.each do |role|%>
-      <%= link_to edit_projects_settings_role_path(id: role[:role]) do %>
-        <div  class="role-card">
-          <h5><%= role[:role].title%></h5>
-          <% if role[:role].status == "Open"%>
-            <div class="setting__member__role__status setting__member__role__status__open"><%= role[:role].status%></div>
-          <%else%>
-            <div class="setting__member__role__status setting__member__role__status__close"><%= role[:role].status%></div>
-          <%end%>
+    <% @roles.each do |role| %>
+      <%= link_to edit_projects_settings_role_path(role) do %>
+        <div class="role-card">
+          <h5><%= role.title %></h5>
+          <% if role.status == "Open" %>
+            <div class="setting__member__role__status setting__member__role__status__open"><%= role.status %></div>
+          <% else %>
+            <div class="setting__member__role__status setting__member__role__status__close"><%= role.status %></div>
+          <% end %>
         </div>
-      <%end%>
-    <%end%>
-    <%= link_to new_projects_settings_role_path do%>
+      <% end %>
+    <% end %>
+    <%= link_to new_projects_settings_role_path(project_id: @project) do %>
       <p class="link mt-3 align-self-center">
         Add Roles
       </p>
-    <%end%>
+    <% end %>
   </div>
   <%= react_component("members/MemberManagement",
-    {
-      authenticityToken: form_authenticity_token,
-      submitPath: project_update_path,
-      currentUser: current_user,
-      memberRole: @roles
-    })
- %>
+                      {
+                          authenticityToken: form_authenticity_token,
+                          submitPath: project_update_path,
+                          currentUser: current_user,
+                          memberRole: @roles
+                      })
+  %>
 
 </div>

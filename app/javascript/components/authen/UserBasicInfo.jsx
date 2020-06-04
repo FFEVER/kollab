@@ -62,10 +62,7 @@ class UserBasicInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      faculty:
-        this.props.currentUser.faculty !== null
-          ? this.props.currentUser.faculty
-          : "",
+      faculty: this.props.userFaculty,
       year:
         this.props.currentUser.year !== null ? this.props.currentUser.year : "",
       errors: defaultErrors,
@@ -478,6 +475,7 @@ UserBasicInfo.propTypes = {
   userExpertises: PropTypes.any,
   userSkills: PropTypes.any,
   faculties: PropTypes.array,
+  userFaculty: PropTypes.string,
 }
 
 export default UserBasicInfo

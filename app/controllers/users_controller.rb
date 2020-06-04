@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 
   def basic_info
     @user = current_user
+    @faculty = @user.faculty.name || ''
   end
 
   def follow

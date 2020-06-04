@@ -50,5 +50,6 @@ class Projects::Settings::MembersController < ApplicationController
       :role_id,
       :is_owner
     )
+    permitted
   end
 end

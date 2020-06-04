@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Users::Settings::ProjectsController < ApplicationController
-  before_action :set_project, except: %i[index new create]
-
   def edit
     # @user = User.find(params[:user_id])
     @user = current_user
@@ -15,16 +13,15 @@ class Users::Settings::ProjectsController < ApplicationController
   def update; end
 
   def destroy
-    binding.pry
-
-    if current_user.project.include? @project
-      render json: { message: 'Removed' }, status: :ok if @project.destro
+    @project = Project.find(params[:project_id])
+    if current_user.projects.include? @project
+      if @project.destroy
+        respond_to do |format|
+          format.html { redirect_to edit_users_settings_project_path, notice: 'Project was successfully deleted.' }
+          format.json { render json: @project, status: :ok, location: edit_users_settings_project_path(id: current_user[:id]) }
+        end
+      end
     end
-  end
-
-  def set_project
-    binding.pry
-    @project = Project.find(params[:id])
   end
 
   def project_params

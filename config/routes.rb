@@ -61,7 +61,7 @@ Rails.application.routes.draw do
   namespace :users do
     namespace :settings do
       resources :users, only: %i[edit update]
-      resources :projects, only: %i[edit update]
+      resources :projects, only: %i[edit update destroy]
     end
   end
 

@@ -6,7 +6,7 @@
         <h4><%= tab.edit_profile 'Edit profile', edit_users_settings_user_path, class: "tablinks setting__tab__title" %></h4>
       </div>
       <div class="setting__tab__item">
-        <h4><%= tab.edit_project 'Projects', edit_users_settings_project_path, class: "tablinks setting__tab__title" %></h4>
+        <h4><%= tab.edit_project 'Projects', edit_users_settings_project_path(id: current_user.id), class: "tablinks setting__tab__title" %></h4>
         <div class="setting__tab__selected"></div>
       </div>
     </div>
@@ -24,9 +24,7 @@
       <% @owned_projects.each do |project| %>
         <div class="setting__project__item">
           <p><%=project.title%></p>
-          <%# <%= button_to "Delete", {:controller => :projects, :action => 'destroy', :id => project.id }, method: :delete %>
-          <%= button_to "Delete", project, :method => :delete, class: "setting__project__button__delete" %>
-          <button class="setting__project__button__delete">Delete</button>
+          <%= link_to "Delete", users_settings_project_path(project_id: project.id), class: "setting__project__button__delete", method: :delete, data: {confirm: "Do you want to delete the project", commit: "Yes", cancel: "No"} %>
         </div>
       <%end%>
     </div>

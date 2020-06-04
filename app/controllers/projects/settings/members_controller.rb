@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Projects::Settings::MembersController < ApplicationController
-  before_action :set_member, except: %i[edit update]
+  # before_action :set_member, except: %i[edit update]
 
   def index
     project_id = params[:project]

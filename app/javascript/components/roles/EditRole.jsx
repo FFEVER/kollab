@@ -9,17 +9,10 @@ import {
   FormHelperText,
 } from "@material-ui/core"
 import Button from "../shared/form/Button"
-import ExpertiseModal from "../shared/ExpertiseModal"
-import ExpertiseDisplay from "../shared/ExpertiseDisplay"
 
-import { AddRoleValidator, defaultErrors } from "./AddRoleValidator"
+import { EditRoleValidator, defaultErrors } from "./EditRoleValidator"
 import { TagInput, tagsToArray, defaultStyles } from "../shared/form/TagInput"
 import FormInput from "../shared/form/FormInput"
-
-import phone from "../../images/icon/phone-call.png"
-import mail from "../../images/icon/mail.png"
-import instagram from "../../images/icon/instagram.png"
-import anya from "../../images/anya.jpg"
 
 const tagStyles = {
   ...defaultStyles,
@@ -56,36 +49,6 @@ const tagErrorStyles = {
     color: "red",
   }),
 }
-
-const constUser = {
-  first: "Kasamabhorn",
-  last: "Suparerkrat",
-  phone: "061 234 5678",
-  mail: "kanasamabhorn@kmitl.ac.th",
-  instagram: "kasamabhorn.ks",
-  socialLinks: [{ id: 1, social: "Instagram", name: "anya.ks" }],
-}
-
-const constRoles = ["React Developer", "UX/UI Design", "Ruby on Rails"]
-
-const constRole = {
-  id: 1,
-  name: "UX/UI Designer",
-  expertiseIds: [1, 2],
-  expertises: ["Graphic Design", "Design"],
-  skillIds: [1, 2],
-  skills: ["UserExperience", "Protptyping"],
-  description: "- Has a strong passion \n- Experienced using Zeplin",
-  status: "Open",
-}
-
-const statuses = [
-  "completed",
-  "in progress",
-  "cancelled",
-  "on hold",
-  "intiating",
-]
 
 const roleStatuses = ["Open", "Close"]
 
@@ -265,7 +228,8 @@ class EditRole extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     this.setIsButtonLoading(true)
-    AddRoleValidator.validateAll(this.state)
+
+    EditRoleValidator.validateAll(this.state)
       .then((result) => {
         const formData = this.createFormData()
         this.submitForm(formData)
@@ -276,6 +240,54 @@ class EditRole extends React.Component {
         })
         this.setIsButtonLoading(false)
       })
+  }
+
+  createFormData() {
+    let { role, roles } = this.state
+    let role_id = roles.find((item) => item.title === role).id
+
+    const formData = new FormData()
+    formData.append(dataName("role_id"), role_id)
+    formData.append("authenticity_token", this.props.authenticityToken)
+    return formData
+  }
+
+  submitForm(formData) {
+    const { submitPath } = this.props
+    axios({
+      method: "put",
+      url: submitPath,
+      responseType: "json",
+      headers: {
+        Accept: "application/json",
+      },
+      data: formData,
+    })
+      .then((response) => {
+        if (response.status === 200)
+          window.location.href = response.headers.location
+      })
+      .catch((error) => {
+        if (error.response.status === 400) {
+          this.setState((state) => {
+            let error_messages = error.response.data.messages
+            let errors = defaultErrors
+            for (const [k, v] of Object.entries(error_messages)) {
+              errors[k] = v
+            }
+            return {
+              errors,
+            }
+          })
+        }
+      })
+      .finally(() => {
+        this.setIsButtonLoading(false)
+      })
+  }
+
+  setIsButtonLoading(isLoading) {
+    this.setState({ isButtonLoading: isLoading })
   }
 
   setIsButtonLoading(isLoading) {

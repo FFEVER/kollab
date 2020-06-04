@@ -57,36 +57,6 @@ const tagErrorStyles = {
   }),
 }
 
-const constUser = {
-  first: "Kasamabhorn",
-  last: "Suparerkrat",
-  phone: "061 234 5678",
-  mail: "kanasamabhorn@kmitl.ac.th",
-  instagram: "kasamabhorn.ks",
-  socialLinks: [{ id: 1, social: "Instagram", name: "anya.ks" }],
-}
-
-const constRoles = ["React Developer", "UX/UI Design", "Ruby on Rails"]
-
-const constRole = {
-  id: 1,
-  name: "UX/UI Designer",
-  expertiseIds: [1, 2],
-  expertises: ["Graphic Design", "Design"],
-  skillIds: [1, 2],
-  skills: ["UserExperience", "Protptyping"],
-  description: "- Has a strong passion \n- Experienced using Zeplin",
-  status: "Open",
-}
-
-const statuses = [
-  "completed",
-  "in progress",
-  "cancelled",
-  "on hold",
-  "intiating",
-]
-
 const roleStatuses = ["Open", "Close"]
 
 class AddRole extends React.Component {

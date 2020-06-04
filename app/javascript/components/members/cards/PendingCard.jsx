@@ -2,10 +2,49 @@ import React from "react"
 import PropTypes from "prop-types"
 import Button from "../../shared/form/Button"
 import portraitPlaceholder from "../../../images/portrait_placeholder.png";
+import axios from "axios";
 
 class PendingCard extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            isCancelled: false,
+        }
+    }
+
+    cancelRequest = (event) => {
+        const formData = new FormData()
+        formData.append("project_id", this.props.request.project.id)
+        formData.append("authenticity_token", this.props.authenticityToken)
+
+        const url = this.props.request.links.destroy
+        axios({
+            method: "delete",
+            url: url,
+            responseType: "json",
+            headers: {
+                Accept: "application/json",
+            },
+            data: formData,
+        })
+            .then((response) => {
+                if (response.status === 200) {
+                    this.setState({isCancelled: true})
+                }
+            })
+            .catch((error) => {
+                if (error.response.status === 403) {
+                    alert(error.response.data.message)
+                } else {
+                    alert(error.response.message)
+                }
+            })
+    }
+
     render() {
-        const {user} = this.props
+        const {isCancelled} = this.state
+        const {request} = this.props
+        const user = request.user
         return (
             <div className="card-with-button">
                 <a href={user.links.show} className="d-flex flex-row">
@@ -25,15 +64,23 @@ class PendingCard extends React.Component {
 
                     </div>
                 </a>
-                <Button name="cancel-button" className="button button__decline">
-                    Cancel
-                </Button>
+                {isCancelled ?
+                    <Button name="cancelled-button" className="button button__cancelled">
+                        Cancelled
+                    </Button> :
+                    <Button name="cancel-button" className="button button__decline"
+                            onClick={(e) => this.cancelRequest(e)}>
+                        Cancel
+                    </Button>
+                }
             </div>
         )
     }
 }
 
 PendingCard.propTypes = {
+    authenticityToken: PropTypes.string,
     user: PropTypes.object,
+    removeRequest: PropTypes.func
 }
 export default PendingCard

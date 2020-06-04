@@ -5,6 +5,43 @@ import portraitPlaceholder from "../../../images/portrait_placeholder.png";
 import axios from "axios";
 
 class WaitListCard extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            isAccepted: false,
+            isRejected: false
+        }
+    }
+
+    acceptRequest = (event) => {
+        const formData = new FormData()
+        formData.append("project_id", this.props.request.project.id)
+        formData.append("status", "accepted")
+        formData.append("authenticity_token", this.props.authenticityToken)
+
+        const url = this.props.request.links.update
+        axios({
+            method: "put",
+            url: url,
+            responseType: "json",
+            headers: {
+                Accept: "application/json",
+            },
+            data: formData,
+        })
+            .then((response) => {
+                if (response.status === 200) {
+                    this.setState({isAccepted: true})
+                }
+            })
+            .catch((error) => {
+                if (error.response.status === 403) {
+                    alert(error.response.data.message)
+                } else {
+                    alert(error.response.message)
+                }
+            })
+    }
 
     rejectRequest = (event) => {
         const formData = new FormData()
@@ -23,7 +60,7 @@ class WaitListCard extends React.Component {
         })
             .then((response) => {
                 if (response.status === 200) {
-                    window.location.href = response.headers.location
+                    this.setState({isRejected: true})
                 }
             })
             .catch((error) => {
@@ -37,6 +74,7 @@ class WaitListCard extends React.Component {
 
     render() {
         const {request} = this.props
+        const {isAccepted, isRejected} = this.state
         const user = request.user
         return (
             <div className="card-with-button">
@@ -56,12 +94,30 @@ class WaitListCard extends React.Component {
                     </div>
                 </a>
                 <div className="d-flex flex-column">
-                    <Button name="accept-button" className="button button__accept mb-2">
-                        Accept
-                    </Button>
-                    <Button name="decline-button" className="button button__decline" onClick={(e) => this.rejectRequest(e)}>
-                        Decline
-                    </Button>
+                    {isAccepted ?
+                        <Button name="accepted-button" className="button button__accepted mb-2">
+                            Accepted
+                        </Button> : null
+                    }
+                    {isRejected ?
+                        <Button name="rejected-button" className="button button__cancelled mb-2">
+                            Declined
+                        </Button> : null
+                    }
+                    {
+                        isAccepted === false && isRejected === false ?
+                            <>
+                                <Button name="accept-button" className="button button__accept mb-2"
+                                        onClick={(e) => this.acceptRequest(e)}>
+                                    Accept
+                                </Button>
+                                <Button name="decline-button" className="button button__decline"
+                                        onClick={(e) => this.rejectRequest(e)}>
+                                    Decline
+                                </Button>
+                            </>
+                            : null
+                    }
                 </div>
             </div>
         )
@@ -69,6 +125,7 @@ class WaitListCard extends React.Component {
 }
 
 WaitListCard.propTypes = {
+    authenticityToken: PropTypes.string,
     user: PropTypes.object,
 }
 export default WaitListCard

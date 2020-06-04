@@ -1,11 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
-import MemberCard from "./cards/MemberCard"
-import RoleCard from "./cards/RoleCard"
 import WaitListCard from "./cards/WaitListCard"
 import PendingCard from "./cards/PendingCard"
 import SuggestMemberCard from "./cards/SuggestMemberCard"
-import Button from "../shared/form/Button"
 
 const constMembers = [
     {
@@ -93,29 +90,11 @@ class MemberManagement extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            members: [],
-            roles: [],
-            defaultUsers: [],
+            waitingRequests: this.props.waitingRequests,
+            invitingRequests: this.props.invitingRequests
         }
 
         this.handleChange = this.handleChange.bind(this)
-        // this.handleNavigation = this.handleNavigation.bind(this)
-    }
-
-    componentDidMount() {
-        let members = []
-        let roles = []
-        console.log("this props", this.props)
-        this.props.memberRole.map((item) => {
-            members.push(item.member)
-            roles.push(item.role)
-        })
-
-        this.setState({
-            members: members,
-            roles: roles,
-            defaultUsers: defaultUsers,
-        })
     }
 
     handleChange(event) {
@@ -124,37 +103,33 @@ class MemberManagement extends React.Component {
         })
     }
 
-    handleNavigation(route, item) {
-        window.location.href = route
-    }
-
     render() {
-        const {currentUser, invitingRequests, waitingRequests} = this.props
-        const {members, roles, defaultUsers} = this.state
-        console.log("State ", this.state)
-        console.log("Props ", this.props)
+        const {currentUser, authenticityToken} = this.props
+        const {invitingRequests, waitingRequests} = this.state
+        console.log(this.props)
+        console.log(this.state)
         return (
             <div>
                 <div className="setting__member__section">
-                    <h2>Waiting requests</h2>
+                    <h4>Waiting requests</h4>
                     {waitingRequests.map((request, index) => (
-                        <WaitListCard key={index} request={request}/>
+                        <WaitListCard key={index} request={request} authenticityToken={authenticityToken}/>
                     ))}
                     {waitingRequests.length === 0 ? "No join request." : null}
                 </div>
 
                 <div className="setting__member__section">
-                    <h2>Inviting members</h2>
+                    <h4>Inviting members</h4>
                     {invitingRequests.map((request, index) => (
-                        <PendingCard key={index} user={request.user}/>
+                        <PendingCard key={index} request={request} authenticityToken={authenticityToken}/>
                     ))}
                     {invitingRequests.length === 0 ? "No invitation." : null}
                 </div>
 
                 <div className="setting__member__section">
-                    <h2>Suggested teammates</h2>
+                    <h4>Suggested teammates</h4>
                     {defaultUsers.map((request, index) => (
-                        <SuggestMemberCard key={index} user={request}/>
+                        <SuggestMemberCard key={index} user={request} authenticityToken={authenticityToken}/>
                     ))}
                 </div>
             </div>
@@ -164,10 +139,8 @@ class MemberManagement extends React.Component {
 
 MemberManagement.propTypes = {
     authenticityToken: PropTypes.string,
-    submitPath: PropTypes.string,
     currentUser: PropTypes.object,
     projectMembers: PropTypes.array,
-    memberRole: PropTypes.array,
     waitingRequests: PropTypes.array,
     invitingRequests: PropTypes.array
 }

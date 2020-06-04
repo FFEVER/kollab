@@ -16,7 +16,7 @@
 
 <div class="setting">
   <div class="setting__member__section">
-    <h2>Members</h2>
+    <h4>Members</h4>
     <% @members.each do |member| %>
       <%= link_to edit_projects_settings_member_path(member) do %>
         <div class="member-card">
@@ -37,7 +37,7 @@
 
   </div>
   <div class="setting__member__section">
-    <h2>Roles</h2>
+    <h4>Roles</h4>
     <% @roles.each do |role| %>
       <%= link_to edit_projects_settings_role_path(role) do %>
         <div class="role-card">
@@ -63,19 +63,10 @@
     <% end %>
   </div>
 
-  <% @waiting_requests.each do |w| %>
-    <%= p w.to_json %>
-  <% end %>
-
-  <% @inviting_requests.each do |w| %>
-    <%= p w.to_json %>
-  <% end %>
-  <%= react_component("members/MemberManagement",
+  <%= react_component('members/MemberManagement',
                       {
                           authenticityToken: form_authenticity_token,
-                          submitPath: project_update_path,
                           currentUser: current_user,
-                          memberRole: @roles,
                           waitingRequests: @waiting_requests,
                           invitingRequests: @inviting_requests
                       }) %>

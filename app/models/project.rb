@@ -20,8 +20,8 @@ class Project < ApplicationRecord
   has_many :viewers, through: :received_views, source: :viewer
 
   has_many :posts
+  has_many :roles
 
-  # TODO: [Eit] Validates fields
   validates :title, presence: true, length: { within: 1..50 }
   validates :short_desc, presence: true, length: { within: 1..150 }
   validates :long_desc, length: { within: 0..250 }

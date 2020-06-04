@@ -91,7 +91,8 @@ class MemberManagement extends React.Component {
         super(props)
         this.state = {
             waitingRequests: this.props.waitingRequests,
-            invitingRequests: this.props.invitingRequests
+            invitingRequests: this.props.invitingRequests,
+            suggestedUsers: this.props.suggestedUsers
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -104,8 +105,8 @@ class MemberManagement extends React.Component {
     }
 
     render() {
-        const {currentUser, authenticityToken} = this.props
-        const {invitingRequests, waitingRequests} = this.state
+        const {currentUser, project, joinPath, authenticityToken} = this.props
+        const {invitingRequests, waitingRequests, suggestedUsers} = this.state
         return (
             <div>
                 <div className="setting__member__section">
@@ -126,8 +127,8 @@ class MemberManagement extends React.Component {
 
                 <div className="setting__member__section">
                     <h4>Suggested teammates</h4>
-                    {defaultUsers.map((request, index) => (
-                        <SuggestMemberCard key={index} user={request} authenticityToken={authenticityToken}/>
+                    {suggestedUsers.map((user, index) => (
+                        <SuggestMemberCard key={index} user={user} project={project} joinPath={joinPath} authenticityToken={authenticityToken}/>
                     ))}
                 </div>
             </div>
@@ -140,7 +141,10 @@ MemberManagement.propTypes = {
     currentUser: PropTypes.object,
     projectMembers: PropTypes.array,
     waitingRequests: PropTypes.array,
-    invitingRequests: PropTypes.array
+    invitingRequests: PropTypes.array,
+    suggestedUsers: PropTypes.array,
+    project: PropTypes.object,
+    joinPath: PropTypes.string
 }
 
 export default MemberManagement

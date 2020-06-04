@@ -51,9 +51,11 @@
       <% end %>
     <% end %>
     <%= link_to new_projects_settings_role_path(project_id: @project) do %>
-      <p class="link mt-3 align-self-center">
-        Add Roles
-      </p>
+      <div class="d-flex flex-column align-items-center mt-3">
+        <p class="link">
+          Add Roles
+        </p>
+      </div>
     <% end %>
   </div>
   <%= react_component("members/MemberManagement",

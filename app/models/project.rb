@@ -19,8 +19,8 @@ class Project < ApplicationRecord
   has_many :received_views, as: :viewable, class_name: 'Viewing', dependent: :delete_all
   has_many :viewers, through: :received_views, source: :viewer
 
-  has_many :posts
-  has_many :roles
+  has_many :posts, dependent: :destroy
+  has_many :roles, dependent: :destroy
 
   validates :title, presence: true, length: { within: 1..50 }
   validates :short_desc, presence: true, length: { within: 1..150 }

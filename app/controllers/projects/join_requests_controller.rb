@@ -7,8 +7,12 @@ class Projects::JoinRequestsController < ApplicationController
     if project.users.include? current_user or current_user.projects_to_join.include? project
       redirect_to project, alert: 'You hav already be a member'
     else
-      JoinRequest.create(user: current_user, project: project, status: 'waiting')
-      redirect_to project, notice: 'Requested to join th team'
+      join_req = JoinRequest.create(user: current_user, project: project, status: 'waiting')
+      join_req = JoinRequestSerializer.new(join_req)
+      respond_to do |format|
+        format.html { redirect_to project, notice: 'Requested to join th team' }
+        format.json { render json: {join_request: join_req }, status: :created }
+      end
     end
   end
 

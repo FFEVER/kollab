@@ -4,7 +4,9 @@
     <section class="section section__header">
       <div>
         <section class="section__header__title">
-          <h1><%= @project.title %></h1>
+          <%= link_to project_path(@project) do %>
+            <h1><%= @project.title %></h1>
+          <% end %>
         </section>
       </div>
 
@@ -137,7 +139,9 @@
       <% end %>
       <% @project.roles.open.each do |role| %>
         <div class="project__looking-for-card">
-          <h4><%= role.title %></h4>
+          <%= link_to projects_role_path(role) do %>
+            <h4><%= role.title %></h4>
+          <% end %>
           <p class="mt-1"><%= role.description[0..100].squish %></p>
           <div class="d-flex flex-row mt-2">
             <% role.skill_list.each do |skill| %>

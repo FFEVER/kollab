@@ -14,16 +14,16 @@
 
 <div class="search">
   <%= react_component('search/Explore',
-                      {
-                          authenticityToken: form_authenticity_token,
-                          currentUser: current_user,
-                          searchPath: search_index_path,
-                          projectPath: project_path(:id),
-                          starPath: star_project_path(:id),
-                          unstarPath: unstar_project_path(:id),
-                          projects: @projects_hash,
-                          showSearchBar: true,
-                      })
+    {
+        authenticityToken: form_authenticity_token,
+        currentUser: current_user,
+        searchPath: search_index_path,
+        projectPath: project_path(:id),
+        starPath: star_project_path(:id),
+        unstarPath: unstar_project_path(:id),
+        projects: @projects_hash,
+        showSearchBar: true,
+    })
   %>
 
 </div>

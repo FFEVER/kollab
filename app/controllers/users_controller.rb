@@ -32,7 +32,11 @@ class UsersController < ApplicationController
 
   def basic_info
     @user = current_user
-    @faculty = @user.faculty.name || ''
+    @faculty = if @user.faculty.nil?
+                 ''
+               else
+                 @user.faculty.name
+              end
   end
 
   def follow

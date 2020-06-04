@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     @user.viewers << current_user if @user != current_user
     @posts = @user.posts.order('updated_at DESC').limit(3)
     @serialized_posts = ActiveModel::Serializer::CollectionSerializer.new(@posts, each_serializer: PostSerializer)
-
   end
 
   def edit
@@ -33,14 +32,18 @@ class UsersController < ApplicationController
 
   def basic_info
     @user = current_user
-    @faculty = @user.faculty.name || ''
+    @faculty = if @user.faculty.nil?
+                 ''
+               else
+                 @user.faculty.name
+              end
   end
 
   def follow
     current_user.followings << @user
     respond_to do |format|
       format.html { redirect_to request.referrer }
-      format.json { render json: {following: @user.followed_by?(current_user)}, status: :created }
+      format.json { render json: { following: @user.followed_by?(current_user) }, status: :created }
     end
   end
 
@@ -48,7 +51,7 @@ class UsersController < ApplicationController
     current_user.unfollow(@user)
     respond_to do |format|
       format.html { redirect_to request.referrer }
-      format.json { render json: {following: @user.followed_by?(current_user)}, status: :created }
+      format.json { render json: { following: @user.followed_by?(current_user) }, status: :created }
     end
   end
 

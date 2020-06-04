@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'action_view'
 require 'action_view/helpers'
 include ActionView::Helpers::DateHelper
@@ -8,6 +10,6 @@ class PostSerializer < ActiveModel::Serializer
   belongs_to :project
 
   def last_updated
-    time_ago_in_words(self.object.updated_at - 60 * 60 * 2) + ' ago'
+    time_ago_in_words(object.updated_at - 60) + ' ago'
   end
 end

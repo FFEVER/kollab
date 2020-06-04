@@ -3,6 +3,7 @@
     <div class="search__tab tab">
       <div class="search__tab__item">
         <h4><%= tab.edit_profile 'Explore', explore_search_index_path, class: "tablinks search__tab__title" %></h4>
+        <div class="search__tab__selected"></div>
       </div>
       <div class="search__tab__item">
         <h4><%= tab.edit_project 'Trending', trending_search_index_path, class: "tablinks search__tab__title" %></h4>
@@ -13,21 +14,21 @@
 
 <div class="search">
   <%= react_component('search/Search',
-                      {
-                          authenticityToken: form_authenticity_token,
-                          currentUser: current_user,
-                          projects: @projects_hash,
-                          searchPath: search_index_path,
-                          users: @users_hash,
-                          projectPath: project_path(:id),
-                          userPath: user_path(:id),
-                          followPath: follow_user_path(:id),
-                          unfollowPath: unfollow_user_path(:id),
-                          starPath: star_project_path(:id),
-                          unstarPath: unstar_project_path(:id),
-                          searchWord: @word,
-                          selectType: @type
-                      })
+    {
+        authenticityToken: form_authenticity_token,
+        currentUser: current_user,
+        projects: @projects_hash,
+        searchPath: search_index_path,
+        users: @users_hash,
+        projectPath: project_path(:id),
+        userPath: user_path(:id),
+        followPath: follow_user_path(:id),
+        unfollowPath: unfollow_user_path(:id),
+        starPath: star_project_path(:id),
+        unstarPath: unstar_project_path(:id),
+        searchWord: @word,
+        selectType: @type
+    })
   %>
 
 </div>

@@ -70,7 +70,6 @@ class ProjectCard extends React.Component {
     const { projectPath } = this.props
 
     const { starred, starCount } = this.state
-    console.log("this ", this.props, this.props.project.looking_roles.length)
     return (
       <div className="search__project__card">
         <div className="search__project__detail">

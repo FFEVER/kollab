@@ -86,8 +86,6 @@ class InviteMemberModal extends React.Component {
     render() {
         const {targetUser} = this.props
         const {projects, project} = this.state
-        console.log(this.state)
-        console.log(this.props)
         return (
             <div className="d-flex flex-column">
                 <div>

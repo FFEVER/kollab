@@ -102,8 +102,6 @@ class RoleDetail extends React.Component {
             isRequested,
             isButtonLoading
         } = this.state
-        console.log("state ", this.state)
-        console.log("state ", this.props)
         return (
             <div className="mb-5">
                 <div className="setting__role__section ">

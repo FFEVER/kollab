@@ -106,8 +106,6 @@ class MemberManagement extends React.Component {
     render() {
         const {currentUser, authenticityToken} = this.props
         const {invitingRequests, waitingRequests} = this.state
-        console.log(this.props)
-        console.log(this.state)
         return (
             <div>
                 <div className="setting__member__section">

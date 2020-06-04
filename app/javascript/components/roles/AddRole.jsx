@@ -252,14 +252,16 @@ class AddRole extends React.Component {
             {errors.status[0]}
           </FormHelperText> */}
                 </div>
-                <Button
-                    type="submit"
-                    name="submitButton"
-                    isLoading={isButtonLoading}
-                    className="button button--fixed-bottom button--lg button--gradient-primary"
-                >
-                    Create a Role
-                </Button>
+                <div className="setting__role__section">
+                    <Button
+                        type="submit"
+                        name="submitButton"
+                        isLoading={isButtonLoading}
+                        className="button button--lg button--gradient-primary mt-3 ml-auto mr-auto"
+                    >
+                        Create a Role
+                    </Button>
+                </div>
             </form>
         )
     }

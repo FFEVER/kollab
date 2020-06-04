@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   belongs_to :faculty, optional: true
 
-  has_many :members
+  has_many :members, dependent: :destroy
   has_many :projects, through: :members do
     def owned
       where('members.is_owner = ?', true)
@@ -52,7 +52,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: {within: 1..50}
   validates :last_name, presence: true, length: {within: 1..50}
   validates :year, length: {within: 1..15}, allow_nil: true, allow_blank: true
-  validates :description, length: {within: 1..75}, allow_nil: true, allow_blank: true
+  validates :description, length: {within: 1..300}, allow_nil: true, allow_blank: true
   validates :profile_image, content_type: VALID_IMG_TYPES,
             size: {less_than: MAX_IMG_MB_SIZE.megabytes,
                    message: "should less than #{MAX_IMG_MB_SIZE} MB"}

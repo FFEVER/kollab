@@ -23,6 +23,7 @@
     &__col {
       display: flex;
       flex-direction: column;
+
       width: 100%;
 
       &--related-projects {
@@ -245,5 +246,17 @@
   &__expertise {
     margin-top: $spacer;
     margin-top: $spacer;
+  }
+
+  &__looking-for-card {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 71px;
+    margin-top: $spacer-s;
+    padding: $spacer-m;
+
+    background-color: white;
+    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
   }
 }

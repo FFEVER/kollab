@@ -375,7 +375,6 @@ class EditProject extends React.Component {
       isButtonLoading,
     } = this.state
     let allExpertises = this.props.expertises
-    console.log("State ", this.state)
     return (
       <form
         onSubmit={this.handleSubmit}

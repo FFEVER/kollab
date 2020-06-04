@@ -1,5 +1,5 @@
 .setting {
-  padding: $spacer-m $spacer;
+  padding: $spacer-m $spacer-l;
 
   p {
     font-size: 14px;
@@ -71,6 +71,94 @@
         border-radius: 5px;
         background-color: $kollab-gray-bg;
       }
+    }
+  }
+
+  &__member {
+    &__title {
+      margin-bottom: $spacer-m;
+    }
+
+    &__section {
+      display: flex;
+      flex-direction: column;
+
+      padding-top: $spacer-s;
+      padding-bottom: $spacer-s;
+    }
+
+    &__role__status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 67px;
+      height: 24px;
+
+      text-transform: uppercase;
+
+      &__open {
+        color: $kollab-primary;
+        border-radius: 5px;
+        background-color: #e8f4f5;
+      }
+
+      &__close {
+        color: #bcbcbc;
+        border-radius: 5px;
+        background-color: $kollab-gray-bg;
+      }
+    }
+  }
+
+  &__role {
+    &__title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      margin-bottom: $spacer-s;
+    }
+
+    &__proimg {
+      align-self: center;
+
+      width: $spacer-m * 6;
+      height: $spacer-m * 6;
+
+      border-radius: $spacer-m * 6;
+    }
+
+    &__section {
+      display: flex;
+      flex-direction: column;
+
+      padding-top: $spacer-s;
+      padding-bottom: $spacer-s;
+
+      &__item {
+        flex-direction: row;
+      }
+
+      &__button {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      p {
+        margin-left: $spacer-s;
+      }
+    }
+
+    &__contact {
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__button {
+      font-size: 14px;
+
+      width: 50%;
     }
   }
 }

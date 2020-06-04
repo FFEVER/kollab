@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get 'profile/edit', to: 'users#edit'
   get 'project/edit', to: 'projects#edit'
 
-  match 'profile/update', to: 'users/settings/users#update', via: %i[put patch]
+  match 'profile/update', to: 'users#update', via: %i[put patch]
   match 'project/update', to: 'projects/settings/projects#update', via: %i[put patch]
 
   resources :projects do
@@ -48,8 +48,13 @@ Rails.application.routes.draw do
   end
 
   namespace :projects do
+    resources :roles, only: %i[show]
+    resources :join_requests, only: %i[create accept destroy]
+
     namespace :settings do
       resources :projects, only: %i[edit update]
+      resources :members, only: %i[index edit update destroy]
+      resources :roles, only: %i[new create edit update destroy]
     end
   end
 

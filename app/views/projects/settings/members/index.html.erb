@@ -1,0 +1,154 @@
+<div class="setting__header">
+  <h2>Settings</h2>
+  <%= tabs_tag do |tab| %>
+    <div class="setting__tab tab">
+      <div class="setting__tab__item">
+        <h4><%= tab.edit_profile 'Edit project', edit_projects_settings_project_path(id: params[:project]), class: "tablinks setting__tab__title" %></h4>
+      </div>
+      <div class="setting__tab__item">
+        <h4><%= tab.member 'Member Management', projects_settings_members_path, class: "tablinks setting__tab__title" %></h4>
+        <div class="setting__tab__selected"></div>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+<div class="setting">
+  <div class="setting__member__section">
+    <h2>Members</h2>
+    <% @members.each do |member| %>
+      <%= link_to edit_projects_settings_member_path(member) do %>
+        <div class="member-card">
+          <% if member.user.profile_image_url %>
+            <%= image_tag member.user.profile_image,
+                          class: 'image__profile image__profile--small image__profile--with-border' %>
+          <% else %>
+            <%= image_pack_tag 'portrait_placeholder.png',
+                               class: 'image__profile image__profile--small image__profile--with-border' %>
+          <% end %>
+          <div class="member-card__detail">
+            <h5><%= member.user.full_name %></h5>
+            <p><%= member.role_name %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+  </div>
+  <div class="setting__member__section">
+    <h2>Roles</h2>
+    <% @roles.each do |role| %>
+      <%= link_to edit_projects_settings_role_path(role) do %>
+        <div class="role-card">
+          <h5><%= role.title %></h5>
+          <% if role.status == "Open" %>
+            <div class="setting__member__role__status setting__member__role__status__open"><%= role.status %></div>
+          <% else %>
+            <div class="setting__member__role__status setting__member__role__status__close"><%= role.status %></div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+    <% if @roles.count == 0 %>
+      <p>No role created yet</p>
+    <% end %>
+
+    <%= link_to new_projects_settings_role_path(project_id: @project) do %>
+      <div class="d-flex flex-column align-items-center mt-3">
+        <p class="link">
+          Add Roles
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <%# Waiting List %>
+  <div class="setting__member__section">
+    <h2>Waiting Lists</h2>
+
+    <%# Change members to waiting users%>
+    <% @members.each do |member| %>
+      <%= link_to edit_projects_settings_member_path(member) do %>
+
+        <div class="card-with-button">
+          <div class="d-flex flex-row">
+            <% if member.user.profile_image_url %>
+              <%= image_tag member.user.profile_image,
+                          class: 'image__profile image__profile--small image__profile--with-border' %>
+            <% else %>
+              <%= image_pack_tag 'portrait_placeholder.png',
+                               class: 'image__profile image__profile--small image__profile--with-border' %>
+            <% end %>
+            <div class="card-with-button__detail">
+              <h5><%= member.user.full_name %></h5>
+              <p><%= member.user.faculty.name%></p>
+            </div>
+          </div>
+
+          <%# Change submit button path %>
+          <div class="d-flex flex-column">
+            <%= button_to "Accept", root_path, class:"button button__accept mb-2"%>
+            <%= button_to "Decline", root_path, class: "button button__decline"%>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%# Pending List %>
+  <div class="setting__member__section">
+    <h2>Pending Lists</h2>
+
+    <%# Change members to pending users%>
+    <% @members.each do |member| %>
+      <%= link_to edit_projects_settings_member_path(member) do %>
+        <div class="card-with-button">
+          <div class="d-flex flex-row">
+            <% if member.user.profile_image_url %>
+              <%= image_tag member.user.profile_image,
+                          class: 'image__profile image__profile--small image__profile--with-border' %>
+            <% else %>
+              <%= image_pack_tag 'portrait_placeholder.png',
+                               class: 'image__profile image__profile--small image__profile--with-border' %>
+            <% end %>
+            <div class="card-with-button__detail">
+              <h5><%= member.user.full_name %></h5>
+              <p><%= member.user.faculty.name%></p>
+            </div>
+          </div>
+          <%# Change submit button path %>
+          <%= button_to "Cancel", root_path, class:"button button__decline"%>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%# Recommemde user %>
+  <div class="setting__member__section">
+    <h2>Suggested teammates</h2>
+
+    <%# Change members to pending users%>
+    <% @members.each do |member| %>
+      <%= link_to edit_projects_settings_member_path(member) do %>
+        <div class="card-with-button">
+          <div class="d-flex flex-row">
+            <% if member.user.profile_image_url %>
+              <%= image_tag member.user.profile_image,
+                          class: 'image__profile image__profile--small image__profile--with-border' %>
+            <% else %>
+              <%= image_pack_tag 'portrait_placeholder.png',
+                               class: 'image__profile image__profile--small image__profile--with-border' %>
+            <% end %>
+            <div class="card-with-button__detail">
+              <h5><%= member.user.full_name %></h5>
+              <p><%= member.user.faculty.name%></p>
+            </div>
+          </div>
+          <%# no message button anymore %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

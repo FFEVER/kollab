@@ -3,10 +3,10 @@
     <%= link_to user do %>
       <% if user.profile_image_url %>
         <%= image_tag user.profile_image_url,
-            class: "image__profile image__profile--small" %>
+            class: "image__profile image__profile--small mr-3" %>
       <% else %>
         <%= image_pack_tag "portrait_placeholder.png",
-            class: "image__profile image__profile--small" %>
+            class: "image__profile image__profile--small mr-3" %>
       <% end %>
     <% end %>
   </div>
@@ -28,11 +28,11 @@
     <% if user != current_user %>
       <% if user.followed_by?(current_user) %>
         <%= button_to "Following", unfollow_user_path(user), method: :post,
-            class: "button button--sm button--unfollow--sm",
+            class: "button button--sm button--unfollow--sm mr-3",
             remote: true %>
       <% else %>
         <%= button_to "Follow", follow_user_path(user), method: :post,
-            class: "button button--sm button--follow--sm",
+            class: "button button--sm button--follow--sm mr-3",
             remote: true %>
       <% end %>
     <% end %>

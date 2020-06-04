@@ -1,0 +1,12 @@
+<div class="project project--with-margin">
+  <header>
+    <h1>Member management</h1>
+  </header>
+
+  <%= react_component("members/MemberManagement",
+    {
+      authenticityToken: form_authenticity_token,
+      submitPath: projects_path,
+      currentUser: current_user
+    })
+  %>

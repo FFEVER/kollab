@@ -3,7 +3,7 @@
 class Users::Settings::UsersController < ApplicationController
   def edit
     @user = current_user
-    end
+  end
 
   def update
     @user = current_user

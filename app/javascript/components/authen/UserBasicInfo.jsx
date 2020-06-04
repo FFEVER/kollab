@@ -335,6 +335,7 @@ class UserBasicInfo extends React.Component {
       expertises,
     } = this.state
     const { faculties } = this.props
+    console.log(this.props, this.state)
     return (
       <form
         className="d-flex flex-column"

@@ -119,8 +119,10 @@ class ProjectsController < ApplicationController
       if project and not current_user.projects.include? project and project != @project
         related_projects << project
       end
+      if related_projects.count == 3
+        return related_projects
+      end
     end
-    related_projects[0..3]
   end
 
 

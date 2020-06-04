@@ -24,7 +24,9 @@
       <% @owned_projects.each do |project| %>
         <div class="setting__project__item">
           <p><%=project.title%></p>
-          <%# <button class="setting__project__button__delete">Delete</button> %>
+          <%# <%= button_to "Delete", {:controller => :projects, :action => 'destroy', :id => project.id }, method: :delete %>
+          <%= button_to "Delete", project, :method => :delete, class: "setting__project__button__delete" %>
+          <button class="setting__project__button__delete">Delete</button>
         </div>
       <%end%>
     </div>

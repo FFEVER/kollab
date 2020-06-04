@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::Settings::ProjectsController < ApplicationController
+  before_action :set_project, except: %i[index new create]
+
   def edit
     # @user = User.find(params[:user_id])
     @user = current_user
@@ -11,6 +13,19 @@ class Users::Settings::ProjectsController < ApplicationController
   end
 
   def update; end
+
+  def destroy
+    binding.pry
+
+    if current_user.project.include? @project
+      render json: { message: 'Removed' }, status: :ok if @project.destro
+    end
+  end
+
+  def set_project
+    binding.pry
+    @project = Project.find(params[:id])
+  end
 
   def project_params
     permitted = params.require(:project).permit(

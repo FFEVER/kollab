@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class Projects::MembersController < ApplicationController
+class Projects::RolesController < ApplicationController
   def show; end
 end

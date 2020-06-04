@@ -58,11 +58,16 @@ class PostCard extends React.Component {
   render() {
     const { currentUser, showProjectTitle } = this.props
     const { posts } = this.state
+    console.log("posts ", posts)
+    console.log("props ", this.props)
+
     return (
       <div>
         {posts.map((item, index) => (
           <div className="home__post" key={item.id}>
             <div className="home__post__header">
+              {console.log("item ", item)}
+
               {showProjectTitle ? (
                 <a href={this.getProjectPath(item.project.id)}>
                   <h4>{item.project.title}</h4>

@@ -233,7 +233,7 @@ class AddRole extends React.Component {
                     </div>
                     <FormControl variant="outlined" size="small">
                         <Select
-                            name="roleStatus"
+                            name="status"
                             value={status}
                             onChange={this.handleChange}
                             //   error={errors.faculty.length > 0 ? true : false}

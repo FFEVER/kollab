@@ -36,8 +36,7 @@ class EditMemberDetail extends React.Component {
             roles: [],
             role: this.props.member.role,
             contact: {},
-            roleStatus: this.props.member.is_owner ? "Owner" : "Memer",
-            isOwner: this.props.member.is_owner,
+            roleStatus: this.props.member.is_owner ? "Owner" : "Member",
             contacts: [],
             errors: defaultErrors,
         }
@@ -61,7 +60,7 @@ class EditMemberDetail extends React.Component {
         ]
 
         this.setState({
-            roles: this.props.allRoles,
+            roles: ['-', ...this.props.allRoles],
             contacts: contacts,
         })
     }
@@ -130,8 +129,12 @@ class EditMemberDetail extends React.Component {
     }
 
     createFormData() {
+        // '-' if blank
+        let role_id = '-'
         let {role, roles} = this.state
-        let role_id = roles.find((item) => item.title === role).id
+        if (role) {
+            role_id = roles.find((item) => item.title === role).id
+        }
 
         const formData = new FormData()
         formData.append(dataName("role_id"), role_id)
@@ -240,7 +243,7 @@ class EditMemberDetail extends React.Component {
                 </div>
 
                 <p className="link d-flex flex-column align-items-center">
-                    Create new roless
+                    Create new role
                 </p>
                 <div className="setting__role__section">
                     <div className="setting__role__title">

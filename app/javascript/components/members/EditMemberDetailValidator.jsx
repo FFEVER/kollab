@@ -1,5 +1,4 @@
 const defaultErrors = {
-  role: [],
   roleStatus: [],
 }
 
@@ -13,18 +12,9 @@ class FormValidator {
     }
   }
 
-  static validateRole(state, errors) {
-    const { role } = state
-    const key = Object.keys({ role })[0]
-
-    if (role === undefined || role.length < 1) {
-      errors[key].push("Role cannot be blank.")
-    }
-  }
-
   static isValidatePass(errors) {
     for (const value of Object.values(errors)) {
-      if (value.length != 0) return false
+      if (value.length !== 0) return false
     }
     return true
   }
@@ -40,7 +30,6 @@ class FormValidator {
       const errors = { ...defaultErrors }
       this.clearErrors(errors)
       this.validateStatus(state, errors)
-      this.validateRole(state, errors)
 
       if (this.isValidatePass(errors)) {
         resolve(errors)

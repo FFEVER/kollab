@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Projects::Settings::MembersController < ApplicationController
-  # before_action :set_member, except: %i[edit update]
 
   def index
     @project = Project.find(params[:project])
@@ -19,10 +18,18 @@ class Projects::Settings::MembersController < ApplicationController
   end
 
   def update
+    @member = Member.find(params[:id])
+    @project = @member.project
+    if member_params[:role_id] == '-' && @member.role
+      @member.role.members.clear(@member)
+    end
     respond_to do |format|
-      if @member.update(member_params)
+      if @member.update(is_owner: member_params[:is_owner])
         format.html { redirect_to projects_settings_member_path, notice: 'Member was successfully updated.' }
-        format.json { render json: @member, status: :ok, location: @member }
+        format.json {
+          flash.notice = 'Member has been updated.'
+          render json: @member, status: :ok, location: projects_settings_members_path(project: @project)
+        }
       else
         errors = helpers.errors_to_camel(@member.errors.messages)
         format.html { render :edit }
@@ -44,15 +51,7 @@ class Projects::Settings::MembersController < ApplicationController
     end
   end
 
-  # def set_member
-  #   @member = Member.find(params[:id])
-  # end
-
   def member_params
-    permitted = params.require(:member).permit(
-        :role_id,
-        :is_owner
-    )
-    permitted
+    params.require(:member).permit(:role_id, :is_owner)
   end
 end

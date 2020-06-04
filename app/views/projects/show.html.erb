@@ -20,13 +20,13 @@
           <%= button_to unstar_project_path, method: :post,
                         class: 'button button--md button--unstar', remote: true do %>
             <%= @project.stars.count %>
-          <%end%>
+          <% end %>
         <% else %>
           <%= button_to star_project_path, method: :post,
                         class: 'button button--md button--star', remote: true do %>
             <%= @project.stars.count %>
           <% end %>
-        <%end%>
+        <% end %>
 
         <% if @project.followed_by?(current_user) %>
           <%= button_to 'Following', unfollow_project_path, method: :post,
@@ -38,135 +38,143 @@
       </div>
 
       <% case @project.status %>
-      <% when "In progress"%>
-      <button class="button button--md button--status button--status__inprogress" ><%= @project.status%></button>
-      <% when "Completed"%>
-      <button class="button button--md button--status button--status__completed" ><%= @project.status %></button>
-      <% when "Cancelled"%>
-      <button class="button button--md button--status button--status__cencelled" ><%= @project.status%></button>
-      <% when "On hold"%>
-      <button class="button button--md button--status button--status__onhold" ><%= @project.status%></button>
-      <% when "Initiating"%>
-      <button class="button button--md button--status button--status__initiating" ><%= @project.status%></button>
-    <%end%>
-
-  </section>
-
-  <% if @project.owners.map(&:id).include? current_user.id%>
-    <%= button_to 'Project Setting', edit_projects_settings_project_path, class: 'section button button--md project__fullwidth', method: :get %>
-  <%end%>
-
-  <section class="section__header__short-desc">
-    <p><%= @project.short_desc%></p>
-  </section>
-
-  <section class="section section__overview">
-    <h2>Project Overview</h2>
-    <% if @project.long_desc.blank? %>
-      <p>No description</p>
-    <% end %>
-    <p><%= @project.long_desc %></p>
-
-  </section>
-
-  <section class="section section__dates">
-    <% unless @project.start_date.blank? %>
-      <div>
-        <h2>Start</h2>
-        <p><%= @project.start_date_to_s %></p>
-      </div>
-    <% end %>
-    <% unless @project.end_date.blank? %>
-      <div>
-        <h2>End</h2>
-        <p><%= @project.end_date_to_s %></p>
-      </div>
-    <% end %>
-  </section>
-
-  <section class="section section__tags">
-    <h2>Expertises</h2>
-    <div>
-      <% @project.expertise_ids.each do |id| %>
-        <%= link_to Expertise.find(id).name, "", class: 'button--tags' %>
+      <% when "In progress" %>
+        <button class="button button--md button--status button--status__inprogress"><%= @project.status %></button>
+      <% when "Completed" %>
+        <button class="button button--md button--status button--status__completed"><%= @project.status %></button>
+      <% when "Cancelled" %>
+        <button class="button button--md button--status button--status__cencelled"><%= @project.status %></button>
+      <% when "On hold" %>
+        <button class="button button--md button--status button--status__onhold"><%= @project.status %></button>
+      <% when "Initiating" %>
+        <button class="button button--md button--status button--status__initiating"><%= @project.status %></button>
       <% end %>
-    </div>
-  </section>
 
-  <section class="section section__tags">
-    <h2>Tags</h2>
-    <div>
-      <% @project.tag_list.each do |tag| %>
-        <%= link_to tag, "", class: 'button--tags' %>
+    </section>
+
+    <% if @project.owners.map(&:id).include? current_user.id %>
+      <%= button_to 'Project Setting', edit_projects_settings_project_path, class: 'section button button--md project__fullwidth', method: :get %>
+    <% end %>
+
+    <section class="section__header__short-desc">
+      <p><%= @project.short_desc %></p>
+    </section>
+
+    <section class="section section__overview">
+      <h2>Project Overview</h2>
+      <% if @project.long_desc.blank? %>
+        <p>No description</p>
       <% end %>
-    </div>
-  </section>
+      <p><%= @project.long_desc %></p>
 
-  <section class="section section__members">
-    <h2>Members (<%= @project.members.count %>)</h2>
+    </section>
 
-    <% @members.each do |member| %>
-      <%= button_to member.user, class: 'member mt-2', method: :get do %>
-        <% if member.user.profile_image_url %>
-          <%= image_tag member.user.profile_image,
-                          class: 'image__profile image__profile--small image__profile--with-border' %>
-        <% else %>
-          <%= image_pack_tag 'portrait_placeholder.png',
-                               class: 'image__profile image__profile--small image__profile--with-border' %>
-        <% end %>
-
-        <div class="member__details">
-          <%= link_to member.user, class: 'member__name' do %>
-            <p class="member__name">
-              <%= "#{member.user.first_name} #{member.user.last_name}" %>
-            </p>
-          <% end %>
-
-          <p class="member__role">
-            <%= member.role_name %>
-          </p>
+    <section class="section section__dates">
+      <% unless @project.start_date.blank? %>
+        <div>
+          <h2>Start</h2>
+          <p><%= @project.start_date_to_s %></p>
         </div>
       <% end %>
-    <% end %>
-  </section>
+      <% unless @project.end_date.blank? %>
+        <div>
+          <h2>End</h2>
+          <p><%= @project.end_date_to_s %></p>
+        </div>
+      <% end %>
+    </section>
 
-  <section class="section section__looking-for-teammates">
-    <h2>We are looking for teammates</h2>
-    <div class="project__looking-for-card">
-      <h4>UX/UI Designer</h4>
-      <div class="d-flex flex-row mt-3">
-        <div class= "button--tags mr-1">UserExperience</div>
-        <div class= "button--tags mr-1">ProtoTyping</div>
+    <section class="section section__tags">
+      <h2>Expertises</h2>
+      <div>
+        <% @project.expertise_ids.each do |id| %>
+          <%= link_to Expertise.find(id).name, "", class: 'button--tags' %>
+        <% end %>
       </div>
-    </div>
-    <div class="project__looking-for-card">
-      <h4>Business Analyse</h4>
-      <div class="d-flex flex-row mt-3">
-        <div class= "button--tags mr-1">Business</div>
-        <div class= "button--tags mr-1">Pitching</div>
+    </section>
+
+    <section class="section section__tags">
+      <h2>Tags</h2>
+      <div>
+        <% @project.tag_list.each do |tag| %>
+          <%= link_to tag, "", class: 'button--tags' %>
+        <% end %>
       </div>
-    </div>
-    <div class="d-flex flex-column align-items-center mt-3">
-      <%= button_to "Join the team", root_path, class: "button button--lg button--primary"%>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section__posts">
-    <h2>Progress Update</h2>
+    <section class="section section__members">
+      <h2>Members (<%= @project.members.count %>)</h2>
 
-    <% if @serialized_posts.count == 0 %>
-      <p>No post found</p>
-    <% end %>
+      <% @members.each do |member| %>
+        <%= button_to member.user, class: 'member mt-2', method: :get do %>
+          <% if member.user.profile_image_url %>
+            <%= image_tag member.user.profile_image,
+                          class: 'image__profile image__profile--small image__profile--with-border' %>
+          <% else %>
+            <%= image_pack_tag 'portrait_placeholder.png',
+                               class: 'image__profile image__profile--small image__profile--with-border' %>
+          <% end %>
 
-    <% if @project.users.include? current_user %>
-      <%= react_component('post/Post', {
+          <div class="member__details">
+            <%= link_to member.user, class: 'member__name' do %>
+              <p class="member__name">
+                <%= "#{member.user.first_name} #{member.user.last_name}" %>
+              </p>
+            <% end %>
+
+            <p class="member__role">
+              <%= member.role_name %>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </section>
+
+    <section class="section section__looking-for-teammates">
+      <h2>Opening roles (<%= @project.roles.open.count %>)</h2>
+      <% if @project.roles.open.count <= 0 %>
+        <p>No role available.</p>
+      <% end %>
+      <% @project.roles.open.each do |role| %>
+        <div class="project__looking-for-card">
+          <h4><%= role.title %></h4>
+          <p class="mt-1"><%= role.description[0..100].squish %></p>
+          <div class="d-flex flex-row mt-2">
+            <% role.skill_list.each do |skill| %>
+              <div class="button--tags mr-1"><%= skill %></div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <% unless @project.users.include? current_user %>
+        <div class="d-flex flex-column align-items-center mt-3">
+          <% if current_user.projects_to_join.include? @project %>
+            <% join_request = current_user.join_requests.where(project: @project).first %>
+            <%= button_to 'Cancel request', projects_join_request_path(join_request, project_id: @project), method: :delete, class: 'button button--lg button--outline-primary' %>
+          <% else %>
+            <%= button_to 'Request to join the team', projects_join_requests_path(project_id: @project), class: 'button button--lg button--primary' %>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+
+    <section class="section section__posts">
+      <h2>Progress Update</h2>
+
+      <% if @serialized_posts.count == 0 %>
+        <p>No post found</p>
+      <% end %>
+
+      <% if @project.users.include? current_user %>
+        <%= react_component('post/Post', {
             authenticityToken: form_authenticity_token,
             currentUser: current_user,
             submitPath: project_posts_path(@project),
         }) %>
-    <% end %>
+      <% end %>
 
-    <%= react_component('post/cards/PostCard', {
+      <%= react_component('post/cards/PostCard', {
           authenticityToken: form_authenticity_token,
           currentUser: current_user,
           posts: @serialized_posts,
@@ -176,28 +184,28 @@
           showProjectTitle: false,
       }) %>
 
-    <%= link_to 'Show all posts', project_posts_path(@project), class: 'project__link' %>
-  </section>
+      <%= link_to 'Show all posts', project_posts_path(@project), class: 'project__link' %>
+    </section>
 
-</div>
+  </div>
 
-<div class="project__view__col project__view__col--related-projects">
-  <section class="section section__related-projects">
-    <h2>Related Projects</h2>
-    <% @serialized_projects.each do |project| %>
-      <%= react_component('search/cards/ProjectCard',
-            {
-                authenticityToken: form_authenticity_token,
-                currentUser: current_user,
-                searchPath: search_index_path,
-                projectPath: project_path(:id),
-                starPath: star_project_path(:id),
-                unstarPath: unstar_project_path(:id),
-                project: project
-            })
+  <div class="project__view__col project__view__col--related-projects">
+    <section class="section section__related-projects">
+      <h2>Related Projects</h2>
+      <% @serialized_projects.each do |project| %>
+        <%= react_component('search/cards/ProjectCard',
+                            {
+                                authenticityToken: form_authenticity_token,
+                                currentUser: current_user,
+                                searchPath: search_index_path,
+                                projectPath: project_path(:id),
+                                starPath: star_project_path(:id),
+                                unstarPath: unstar_project_path(:id),
+                                project: project
+                            })
         %>
-    <% end %>
+      <% end %>
 
-  </section>
-</div>
+    </section>
+  </div>
 </div>

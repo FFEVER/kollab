@@ -46,6 +46,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :join_requests, dependent: :delete_all
+  has_many :projects_to_join, through: :join_requests, source: :project
 
   has_one_attached :profile_image
 

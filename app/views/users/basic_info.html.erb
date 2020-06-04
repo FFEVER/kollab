@@ -12,9 +12,10 @@
           currentUser: @user,
           allExpertises: Expertise.all,
           skills: Skill.all,
-          userExpertises: Expertising.where(expertisable_id: @user.id),
+          userExpertises: Expertising.where(expertisable_type: "User",expertisable_id: @user.id),
           userSkills: UserSkill.where(user_id: @user.id),
-          faculties: Faculty.all
+          faculties: Faculty.all,
+          userFaculty: @faculty
         })
       %>
 

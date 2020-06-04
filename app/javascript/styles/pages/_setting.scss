@@ -161,4 +161,10 @@
       width: 50%;
     }
   }
+
+  &--user-setting {
+    @media screen and (min-width: $kollab-width-tablet) {
+      margin: $spacer-m $spacer-xl;
+    }
+  }
 }

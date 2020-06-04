@@ -1,416 +1,296 @@
 import React from "react"
 import PropTypes from "prop-types"
+import axios from "axios"
 
 import {
-  TextField,
-  FormControl,
-  Select,
-  MenuItem,
-  FormHelperText,
+    TextField,
+    FormControl,
+    Select,
+    MenuItem,
+    FormHelperText,
 } from "@material-ui/core"
 import Button from "../shared/form/Button"
 
-import { EditRoleValidator, defaultErrors } from "./EditRoleValidator"
-import { TagInput, tagsToArray, defaultStyles } from "../shared/form/TagInput"
+import {EditRoleValidator, defaultErrors} from "./EditRoleValidator"
+import {TagInput, tagsToArray, defaultStyles} from "../shared/form/TagInput"
 import FormInput from "../shared/form/FormInput"
 
+const DATA_PREFIX = "role"
+
+const dataName = (name) => {
+    return DATA_PREFIX + "[" + name + "]"
+}
+
 const tagStyles = {
-  ...defaultStyles,
-  control: (provided, state) => ({
-    ...provided,
-    minWidth: "100%",
-    height: "56px",
-    borderColor: "#c2c2c2",
-    boxShadow: state.isFocused ? "0 0 3px #54bdc2" : "",
-    cursor: "text",
-    "&:hover": {
-      borderColor: "#c2c2c2",
-    },
-    marginTop: "10px",
-  }),
+    ...defaultStyles,
+    control: (provided, state) => ({
+        ...provided,
+        minWidth: "100%",
+        height: "56px",
+        borderColor: "#c2c2c2",
+        boxShadow: state.isFocused ? "0 0 3px #54bdc2" : "",
+        cursor: "text",
+        "&:hover": {
+            borderColor: "#c2c2c2",
+        },
+        marginTop: "10px",
+    }),
 }
 
 const tagErrorStyles = {
-  ...defaultStyles,
-  control: (provided, state) => ({
-    ...provided,
-    minWidth: "100%",
-    height: "56px",
-    borderColor: "red",
-    boxShadow: state.isFocused ? "0 0 3px #ce7171" : "",
-    cursor: "text",
-    "&:hover": {
-      borderColor: "red",
-    },
-    marginTop: "10px",
-  }),
-  placeholder: (provided, state) => ({
-    ...provided,
-    color: "red",
-  }),
+    ...defaultStyles,
+    control: (provided, state) => ({
+        ...provided,
+        minWidth: "100%",
+        height: "56px",
+        borderColor: "red",
+        boxShadow: state.isFocused ? "0 0 3px #ce7171" : "",
+        cursor: "text",
+        "&:hover": {
+            borderColor: "red",
+        },
+        marginTop: "10px",
+    }),
+    placeholder: (provided, state) => ({
+        ...provided,
+        color: "red",
+    }),
 }
 
 const roleStatuses = ["Open", "Close"]
 
 class EditRole extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: "React Developer",
-      expertises: this.props.expertises,
-      skills: [
-        { label: "React", name: "react" },
-        { label: "Developer", name: "Developer" },
-      ],
-      description:
-        "- Be able to develop frontend with ReactJs.\n- Familiar with GitHub",
-      status: "Open",
-      userExpertises: [{ division: "Software", group: "", field: "" }],
-      isButtonLoading: false,
-      errors: defaultErrors,
-    }
-
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSkillsChange = this.handleSkillsChange.bind(this)
-    this.handleSkillsClear = this.handleSkillsClear.bind(this)
-    this.setDisplayExpertise = this.setDisplayExpertise.bind(this)
-    this.removeExpertise = this.removeExpertise.bind(this)
-    this.checkExpertise = this.checkExpertise.bind(this)
-    this.getExpertise = this.getExpertise.bind(this)
-    this.filterExpertiseId = this.filterExpertiseId.bind(this)
-    this.setUserExpertises = this.setUserExpertises.bind(this)
-    this.convertExpertiesForDisplay = this.convertExpertiesForDisplay.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
-  }
-
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    })
-  }
-
-  handleSkillsChange(value) {
-    this.setState({
-      skills: [...this.state.skills, ...value],
-    })
-  }
-
-  handleSkillsClear(value) {
-    this.setState({
-      skills: value,
-    })
-  }
-
-  setDisplayExpertise(value) {
-    let items = this.state.userExpertises
-    if (items.length === 0) {
-      this.setState({
-        userExpertises: [...this.state.userExpertises, value],
-        expertise_ids: [...this.state.expertise_ids, value.expertise_id],
-        activateModal: "division",
-        division: "",
-        group: "",
-        field: "",
-      })
-    }
-
-    if (!this.checkExpertise(value, items)) {
-      this.setState({
-        userExpertises: [...this.state.userExpertises, value],
-        expertise_ids: [...this.state.expertise_ids, value.expertise_id],
-        activateModal: "division",
-        division: "",
-        group: "",
-        field: "",
-      })
-    }
-  }
-
-  removeExpertise(event, item) {
-    event.preventDefault()
-
-    let items = this.state.userExpertises
-    let ids = this.state.expertise_ids
-    let index = this.getExpertise(item, items)
-    items.splice(index, 1)
-    ids.splice(index, 1)
-    this.setState({ userExpertises: items, expertise_ids: ids })
-  }
-
-  checkExpertise(item, items) {
-    for (let i = 0; i < items.length; i++) {
-      if (
-        item.division === items[i].division &&
-        item.group === items[i].group &&
-        item.field === items[i].field
-      ) {
-        return true
-      }
-    }
-    return false
-  }
-
-  getExpertise(item, items) {
-    let index = -1
-    for (let i = 0; i < items.length; i++) {
-      if (
-        item.division === items[i].division &&
-        item.group === items[i].group &&
-        item.field === items[i].field
-      ) {
-        index = i
-      }
-    }
-    return index
-  }
-
-  filterExpertiseId(exps) {
-    let list = []
-    exps.map((item) => list.push(item.expertise_id))
-    return list
-  }
-
-  setUserExpertises() {
-    let exps = this.props.expertises // All expertises
-    let userExpIds = this.filterExpertiseId(this.props.userExpertises) // User expertise ids
-    let userExps = [] // Return obj
-    let obj = []
-    let temp = {}
-    userExpIds.map((key) => {
-      let exp = exps.find((item) => item.id === key)
-
-      while (temp !== undefined) {
-        obj.push(exp)
-        temp = exps.find((item) => item.id === exp.parent_id)
-        exp = temp
-      }
-      userExps.push(obj)
-      obj = []
-      temp = {}
-    })
-    return userExps
-  }
-
-  convertExpertiesForDisplay() {
-    let exps = this.setUserExpertises()
-    let expsForDisplay = []
-    exps.map((item) => {
-      if (item.length === 3) {
-        let obj = {
-          field: item[0].name,
-          group: item[1].name,
-          division: item[2].name,
-          expertise_id: item[0].id,
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: this.props.role.title,
+            skills: [
+                {label: "React", name: "react"},
+                {label: "Developer", name: "Developer"},
+            ],
+            description: this.props.role.description,
+            status: this.props.role.status,
+            isButtonLoading: false,
+            errors: defaultErrors,
         }
-        expsForDisplay.push(obj)
-      } else if (item.length === 2) {
-        let obj = {
-          field: "",
-          group: item[0].name,
-          division: item[1].name,
-          expertise_id: item[0].id,
-        }
-        expsForDisplay.push(obj)
-      } else if (item.length === 1) {
-        let obj = {
-          field: "",
-          group: "",
-          division: item[0].name,
-          expertise_id: item[0].id,
-        }
-        expsForDisplay.push(obj)
-      }
-    })
-    return expsForDisplay
-  }
 
-  handleSubmit(event) {
-    event.preventDefault()
-    this.setIsButtonLoading(true)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSkillsChange = this.handleSkillsChange.bind(this)
+        this.handleSkillsClear = this.handleSkillsClear.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.setIsButtonLoading = this.setIsButtonLoading.bind(this)
+    }
 
-    EditRoleValidator.validateAll(this.state)
-      .then((result) => {
-        const formData = this.createFormData()
-        this.submitForm(formData)
-      })
-      .catch((errors) => {
+    componentDidMount() {
+        this.setSkills(this.props.role.skill_list)
+    }
+
+    handleChange(event) {
         this.setState({
-          errors: errors,
+            [event.target.name]: event.target.value,
         })
-        this.setIsButtonLoading(false)
-      })
-  }
+    }
 
-  createFormData() {
-    let { role, roles } = this.state
-    let role_id = roles.find((item) => item.title === role).id
+    handleSkillsChange(value) {
+        this.setState({
+            skills: [...this.state.skills, ...value],
+        })
+    }
 
-    const formData = new FormData()
-    formData.append(dataName("role_id"), role_id)
-    formData.append("authenticity_token", this.props.authenticityToken)
-    return formData
-  }
+    setSkills = (skills) => {
+        let list = []
+        skills.map((item, key) => {
+            let i = {label: item, value: item}
+            list.push(i)
+        })
+        this.setState({skills: list})
+    }
 
-  submitForm(formData) {
-    const { submitPath } = this.props
-    axios({
-      method: "put",
-      url: submitPath,
-      responseType: "json",
-      headers: {
-        Accept: "application/json",
-      },
-      data: formData,
-    })
-      .then((response) => {
-        if (response.status === 200)
-          window.location.href = response.headers.location
-      })
-      .catch((error) => {
-        if (error.response.status === 400) {
-          this.setState((state) => {
-            let error_messages = error.response.data.messages
-            let errors = defaultErrors
-            for (const [k, v] of Object.entries(error_messages)) {
-              errors[k] = v
-            }
-            return {
-              errors,
-            }
-          })
-        }
-      })
-      .finally(() => {
-        this.setIsButtonLoading(false)
-      })
-  }
 
-  setIsButtonLoading(isLoading) {
-    this.setState({ isButtonLoading: isLoading })
-  }
+    handleSkillsClear(value) {
+        this.setState({
+            skills: value,
+        })
+    }
 
-  setIsButtonLoading(isLoading) {
-    this.setState({ isButtonLoading: isLoading })
-  }
+    handleSubmit(event) {
+        event.preventDefault()
+        this.setIsButtonLoading(true)
 
-  render() {
-    const { currentUser } = this.props
-    const {
-      name,
-      expertises,
-      skills,
-      description,
-      status,
-      userExpertises,
-      errors,
-      isButtonLoading,
-    } = this.state
-    console.log("state ", this.state)
-    return (
-      <form onSubmit={this.handleSubmit} noValidate className="mb-5">
-        <div className="setting__role__section">
-          <FormInput
-            id="name"
-            name="name"
-            label="Name"
-            placeholder="Role name"
-            type="text"
-            value={name}
-            className="form-control fix-height"
-            onChange={this.handleChange}
-            errors={errors.name}
-            isRequired={true}
-          />
-        </div>
-        {/* <ExpertiseModal
-          expertises={expertises}
-          setExpertiseDisplayFunc={this.setDisplayExpertise}
-          disable={userExpertises.length > 2 ? true : false}
-        /> */}
-        {/* <FormHelperText error={errors.userExpertises.length > 0 ? true : false}>
-          {errors.userExpertises[0]}
-        </FormHelperText> */}
-        {/* {userExpertises.length > 0 ? (
-          <ExpertiseDisplay
-            expertises={userExpertises}
-            removeExpertise={this.removeExpertise}
-          />
-        ) : (
-          <div />
-        )} */}
-        <div className="setting__role__section">
-          <div className="setting__role__title">
-            <h4>Skills *</h4>
-            <TagInput
-              className="mt-3"
-              value={skills}
-              onChange={this.handleSkillsClear}
-              onKeyDown={this.handleSkillsChange}
-              placeholder="Type your skill and press enter"
-              errors={errors.skills}
-              id="skills"
-              styles={tagStyles}
-              errorStyles={tagErrorStyles}
-            />
-          </div>
-        </div>
-        <div className="setting__role__section">
-          <div className="setting__role__title">
-            <h4>Description</h4>
-          </div>
-          <TextField
-            name={"description"}
-            multiline
-            rows="4"
-            defaultValue={description}
-            variant="outlined"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="setting__role__section">
-          <div className="setting__role__title">
-            <h4>Status *</h4>
-          </div>
-          <FormControl variant="outlined" size="small">
-            <Select
-              name="roleStatus"
-              value={status}
-              onChange={this.handleChange}
-              //   error={errors.faculty.length > 0 ? true : false}
-            >
-              <MenuItem value="">
-                <em>Select a project status</em>
-              </MenuItem>
-              {roleStatuses.map((s, key) => (
-                <MenuItem key={key} value={s}>
-                  {s}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          {/* <FormHelperText error={errors.status.length > 0 ? true : false}>
+        EditRoleValidator.validateAll(this.state)
+            .then((result) => {
+                debugger
+                const formData = this.createFormData()
+                this.submitForm(formData)
+            })
+            .catch((errors) => {
+                debugger
+                this.setState({
+                    errors: errors,
+                })
+                this.setIsButtonLoading(false)
+            })
+    }
+
+    createFormData() {
+        const formData = new FormData()
+        formData.append(dataName("title"), this.state.name)
+
+        formData.append(
+            dataName("skill_list"),
+            JSON.stringify(tagsToArray(this.state.skills))
+        )
+
+        formData.append(dataName("description"), this.state.description)
+        formData.append(dataName("status"), this.state.status)
+
+        formData.append("authenticity_token", this.props.authenticityToken)
+        return formData
+    }
+
+    submitForm(formData) {
+        const {submitPath} = this.props
+        axios({
+            method: "put",
+            url: submitPath,
+            responseType: "json",
+            headers: {
+                Accept: "application/json",
+            },
+            data: formData,
+        })
+            .then((response) => {
+                if (response.status === 200)
+                    window.location.href = response.headers.location
+            })
+            .catch((error) => {
+                if (error.response.status === 400) {
+                    this.setState((state) => {
+                        let error_messages = error.response.data.messages
+                        let errors = defaultErrors
+                        for (const [k, v] of Object.entries(error_messages)) {
+                            errors[k] = v
+                        }
+                        return {
+                            errors,
+                        }
+                    })
+                }
+            })
+            .finally(() => {
+                this.setIsButtonLoading(false)
+            })
+    }
+
+    setIsButtonLoading(isLoading) {
+        this.setState({isButtonLoading: isLoading})
+    }
+
+    render() {
+        const {currentUser} = this.props
+        const {
+            name,
+            skills,
+            description,
+            status,
+            errors,
+            isButtonLoading,
+        } = this.state
+        console.log("state ", this.state)
+        return (
+            <form onSubmit={this.handleSubmit} noValidate className="mb-5">
+                <div className="setting__role__section">
+                    <FormInput
+                        id="name"
+                        name="name"
+                        label="Name"
+                        placeholder="Role name"
+                        type="text"
+                        value={name}
+                        className="form-control fix-height"
+                        onChange={this.handleChange}
+                        errors={errors.name}
+                        isRequired={true}
+                    />
+                </div>
+
+                <div className="setting__role__section">
+                    <div className="setting__role__title">
+                        <h4>Skills *</h4>
+                        <TagInput
+                            className="mt-3"
+                            value={skills}
+                            onChange={this.handleSkillsClear}
+                            onKeyDown={this.handleSkillsChange}
+                            placeholder="Type your skill and press enter"
+                            errors={errors.skills}
+                            id="skills"
+                            styles={tagStyles}
+                            errorStyles={tagErrorStyles}
+                        />
+                    </div>
+                </div>
+
+                <div className="setting__role__section">
+                    <div className="setting__role__title">
+                        <h4>Description</h4>
+                    </div>
+                    <TextField
+                        name={"description"}
+                        multiline
+                        rows="4"
+                        defaultValue={description}
+                        variant="outlined"
+                        onChange={this.handleChange}
+                    />
+                </div>
+
+                <div className="setting__role__section">
+                    <div className="setting__role__title">
+                        <h4>Status *</h4>
+                    </div>
+                    <FormControl variant="outlined" size="small">
+                        <Select
+                            name="roleStatus"
+                            value={status}
+                            onChange={this.handleChange}
+                            //   error={errors.faculty.length > 0 ? true : false}
+                        >
+                            <MenuItem value="">
+                                <em>Select a project status</em>
+                            </MenuItem>
+                            {roleStatuses.map((s, key) => (
+                                <MenuItem key={key} value={s}>
+                                    {s}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                    {/* <FormHelperText error={errors.status.length > 0 ? true : false}>
             {errors.status[0]}
           </FormHelperText> */}
-        </div>
-        <Button
-          type="submit"
-          name="submitButton"
-          isLoading={isButtonLoading}
-          className="button button--fixed-bottom button--lg button--gradient-primary"
-        >
-          Update Role
-        </Button>
-      </form>
-    )
-  }
+                </div>
+
+                <Button
+                    type="submit"
+                    name="submitButton"
+                    isLoading={isButtonLoading}
+                    className="button button--fixed-bottom button--lg button--gradient-primary"
+                    onClick={this.handleSubmit}
+                >
+                    Update Role
+                </Button>
+            </form>
+        )
+    }
 }
 
 EditRole.propTypes = {
-  authenticityToken: PropTypes.string,
-  submitPath: PropTypes.string,
-  user: PropTypes.object,
-  role: PropTypes.object,
+    authenticityToken: PropTypes.string,
+    submitPath: PropTypes.string,
+    currentUser: PropTypes.object,
+    role: PropTypes.object,
+    project: PropTypes.object
 }
 
 export default EditRole

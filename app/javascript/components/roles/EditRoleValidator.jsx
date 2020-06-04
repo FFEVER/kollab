@@ -1,6 +1,5 @@
 const defaultErrors = {
   name: [],
-  userExpertises: [],
   skills: [],
   description: [],
   status: [],
@@ -16,15 +15,15 @@ class EditRoleValidator {
     }
   }
 
-  static validateExpertises(state, errors) {
-    const { userExpertises } = state
-    const key = Object.keys({ userExpertises })[0]
-    if (userExpertises.length > 3) {
-      errors[key].push("Expertise may have up to 3.")
-    } else if (userExpertises.length <= 0) {
-      errors[key].push("Add at least 1 expertise")
-    }
-  }
+  // static validateExpertises(state, errors) {
+  //   const { userExpertises } = state
+  //   const key = Object.keys({ userExpertises })[0]
+  //   if (userExpertises.length > 3) {
+  //     errors[key].push("Expertise may have up to 3.")
+  //   } else if (userExpertises.length <= 0) {
+  //     errors[key].push("Add at least 1 expertise")
+  //   }
+  // }
 
   static validateSkills(state, errors) {
     const { skills } = state
@@ -49,14 +48,14 @@ class EditRoleValidator {
     }
   }
 
-  static validateDescription(state, errors) {
-    const { description } = state
-    const key = Object.keys({ description })[0]
-
-    if (description === undefined || description.length < 1) {
-      errors[key].push("Description is required.")
-    }
-  }
+  // static validateDescription(state, errors) {
+  //   const { description } = state
+  //   const key = Object.keys({ description })[0]
+  //
+  //   if (description === undefined || description.length < 1) {
+  //     errors[key].push("Description is required.")
+  //   }
+  // }
 
   static validateStatus(state, errors) {
     const { status } = state
@@ -69,7 +68,7 @@ class EditRoleValidator {
 
   static isValidatePass(errors) {
     for (const value of Object.values(errors)) {
-      if (value.length != 0) return false
+      if (value.length !== 0) return false
     }
     return true
   }
@@ -85,9 +84,9 @@ class EditRoleValidator {
       const errors = { ...defaultErrors }
       this.clearErrors(errors)
       this.validateName(state, errors)
-      this.validateExpertises(state, errors)
+      // this.validateExpertises(state, errors)
       this.validateSkills(state, errors)
-      this.validateDescription(state, errors)
+      // this.validateDescription(state, errors)
       this.validateStatus(state, errors)
 
       if (this.isValidatePass(errors)) {

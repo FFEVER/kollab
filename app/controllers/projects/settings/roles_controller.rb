@@ -8,7 +8,9 @@ class Projects::Settings::RolesController < ApplicationController
 
   def create
     @role = Role.new(role_params)
+    @project = @role.project
     if @role.save
+      flash.notice = 'Role has been created.'
       render json: @role, location: projects_settings_members_path(project: @project.id), status: :created
     else
       errors = helpers.errors_to_camel(@role.errors.messages)
@@ -20,13 +22,18 @@ class Projects::Settings::RolesController < ApplicationController
 
   def edit
     @role = Role.find(params[:id])
+    @project = @role.project
+    @serialized_role = RoleSerializer.new(@role)
   end
 
   def update
+    @role = Role.find(params[:id])
+    @project = @role.project
     respond_to do |format|
       if @role.update(role_params)
-        format.html { redirect_to projects_settings_members_path, notice: 'role was successfully updated.' }
-        format.json { render json: @role, status: :ok, location: @role }
+        flash.notice = 'Role has been updated.'
+        format.html { redirect_to projects_settings_members_path(project: @project.id), notice: 'role was successfully updated.' }
+        format.json { render json: @role, status: :ok, location: projects_settings_members_path(project: @project.id) }
       else
         errors = helpers.errors_to_camel(@role.errors.messages)
         format.html { render :edit }

@@ -22,7 +22,6 @@ const dataName = (name) => {
     return DATA_PREFIX + "[" + name + "]"
 }
 
-
 const tagStyles = {
     ...defaultStyles,
     control: (provided, state) => ({

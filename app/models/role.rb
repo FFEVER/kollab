@@ -8,6 +8,9 @@ class Role < ApplicationRecord
   has_and_belongs_to_many :expertises
   has_and_belongs_to_many :skills
 
+  scope :open, -> { where('status = ?', 'Open') }
+  scope :close, -> { where('status = ?', 'Close') }
+
   def skill_list
     skills.join(' ').split(' ')
   end

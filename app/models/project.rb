@@ -22,7 +22,9 @@ class Project < ApplicationRecord
   has_many :posts
   has_many :roles
 
-  validates :title, presence: true, length: { within: 1..50 }
+  has_many :join_requests, dependent: :delete_all
+
+  validates :title, presence: true, length: { within: 1..100 }
   validates :short_desc, presence: true, length: { within: 1..150 }
   validate :start_date_greater_than_end_date
   validates_length_of :tag_list, minimum: 1, message: 'Tags cannot be blank.'

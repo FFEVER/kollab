@@ -64,6 +64,7 @@
     color: $kollab-yellow;
     background-color: white;
     box-shadow: inset 0 0 0 2px $kollab-yellow;
+
     &:before {
       font-family: 'Font Awesome 5 Free';
       font-weight: 900;
@@ -77,9 +78,11 @@
 
       color: $kollab-yellow;
     }
+
     &:hover {
       color: $kollab-yellow-dark;
       box-shadow: inset 0 0 0 2px $kollab-yellow-dark;
+
       &:before {
         font-weight: 400;
       }
@@ -90,6 +93,7 @@
     color: $kollab-gray-font;
     background-color: transparent;
     box-shadow: inset 0 0 0 2px $kollab-gray-font;
+
     &:before {
       font-family: 'Font Awesome 5 Free';
       font-weight: 400;
@@ -101,9 +105,11 @@
       content: '\f005';
       vertical-align: middle;
     }
+
     &:hover {
       color: $kollab-yellow-dark !important;
       box-shadow: inset 0 0 0 2px $kollab-yellow-dark;
+
       &:before {
         font-weight: 900;
       }
@@ -117,16 +123,19 @@
 
       color: white;
       background-color: $kollab-primary;
+
       &:hover {
         background-color: $kollab-primary-dark !important;
       }
     }
+
     &--md {
       width: 82px;
       padding: 0;
 
       color: white;
       background-color: $kollab-primary;
+
       &:hover {
         background-color: $kollab-primary-dark !important;
       }
@@ -139,15 +148,18 @@
       padding: 0;
 
       color: $kollab-primary;
+
       &:hover {
         background-color: $kollab-gray-light !important;
       }
     }
+
     &--md {
       width: 82px;
       padding: 0;
 
       color: $kollab-primary;
+
       &:hover {
         background-color: $kollab-gray-light !important;
       }
@@ -178,17 +190,17 @@
     color: white;
     background: $kollab-primary;
     background: linear-gradient(
-    90deg,
-    $kollab-primary 0%,
-    $kollab-secondary 99%
+                    90deg,
+                    $kollab-primary 0%,
+                    $kollab-secondary 99%
     );
 
     &:hover {
       background: $kollab-secondary;
       background: linear-gradient(
-      90deg,
-      $kollab-primary 0%,
-      $kollab-secondary 50%
+                      90deg,
+                      $kollab-primary 0%,
+                      $kollab-secondary 50%
       );
     }
   }
@@ -341,5 +353,25 @@
     color: red;
     border-radius: 5px;
     background-color: $kollab-gray-bg;
+  }
+
+  &__accepted {
+    width: 66px;
+    height: 24px;
+    cursor: auto;
+
+    color: $kollab-primary;
+    border-radius: 5px;
+    background-color: transparent;
+  }
+
+  &__cancelled {
+    width: 66px;
+    height: 24px;
+
+    cursor: auto;
+    color: red;
+    border-radius: 5px;
+    background-color: transparent;
   }
 }

@@ -4,14 +4,22 @@ class Projects::JoinRequestsController < ApplicationController
 
   def create
     project = Project.find(params[:project_id])
-    if project.users.include? current_user or current_user.projects_to_join.include? project
-      redirect_to project, alert: 'You hav already be a member'
+    if params[:status] == 'inviting'
+      status = 'inviting'
+      user = User.find(params[:user_id])
     else
-      join_req = JoinRequest.create(user: current_user, project: project, status: 'waiting')
-      join_req = JoinRequestSerializer.new(join_req)
-      respond_to do |format|
-        format.html { redirect_to project, notice: 'Requested to join th team' }
-        format.json { render json: {join_request: join_req }, status: :created }
+      status = 'waiting'
+      user = current_user
+    end
+    respond_to do |format|
+      if project.users.include? user or user.projects_to_join.include? project
+        format.html { redirect_to project, alert: 'You have already be or invited as a member' }
+        format.json { render json: {message: 'You have already be or invited a member'}, status: :forbidden }
+      else
+        join_req = JoinRequest.create(user: user, project: project, status: status)
+        join_req = JoinRequestSerializer.new(join_req)
+        format.html { redirect_to project, notice: 'Request has been created' }
+        format.json { render json: {join_request: join_req}, status: :created }
       end
     end
   end

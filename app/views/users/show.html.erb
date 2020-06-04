@@ -52,12 +52,15 @@
                         class: "button button--md button--follow--sm mr-1", remote: true, style: 'width:100%;' %>
 
           <% end %>
+          <% owned_projects = current_user.projects.owned %>
+          <% projects_to_invite = owned_projects.select { |p| !@user.projects_to_join.include? p }%>
           <%= react_component("shared/InviteMemberModal",
                               {
                                   authenticityToken: form_authenticity_token,
                                   submitPath: project_update_path,
+                                  joinPath: projects_join_requests_path,
                                   targetUser: @user,
-                                  projects: current_user.projects
+                                  projects: projects_to_invite
                               }, {:style => "width:100%"})
           %>
         </div>

@@ -18,10 +18,10 @@
       authenticityToken: form_authenticity_token,
       submitPath: projects_settings_member_path,
       currentUser: current_user,
-      memberRole: @serialized_member,
       member: @serialized_member,
-      allRoles: @roles
-    })
- %>
+      allRoles: @roles,
+      createRolePath: new_projects_settings_role_path(project_id: @project),
+      })
+  %>
 
 </div>

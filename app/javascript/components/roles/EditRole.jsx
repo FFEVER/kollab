@@ -271,15 +271,17 @@ class EditRole extends React.Component {
           </FormHelperText> */}
                 </div>
 
-                <Button
-                    type="submit"
-                    name="submitButton"
-                    isLoading={isButtonLoading}
-                    className="button button--fixed-bottom button--lg button--gradient-primary"
-                    onClick={this.handleSubmit}
-                >
-                    Update Role
-                </Button>
+                <div className="setting__role__section">
+                    <Button
+                        type="submit"
+                        name="submitButton"
+                        isLoading={isButtonLoading}
+                        className="button button--lg button--gradient-primary mt-3 ml-auto mr-auto"
+                        onClick={this.handleSubmit}
+                    >
+                        Update Role
+                    </Button>
+                </div>
             </form>
         )
     }

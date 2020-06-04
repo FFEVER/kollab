@@ -34,7 +34,7 @@ class EditMemberDetail extends React.Component {
         super(props)
         this.state = {
             roles: [],
-            role: this.props.member.role,
+            role: this.props.member.role ? this.props.member.role.title : "",
             contact: {},
             roleStatus: this.props.member.is_owner ? "Owner" : "Member",
             contacts: [],
@@ -60,7 +60,7 @@ class EditMemberDetail extends React.Component {
         ]
 
         this.setState({
-            roles: ['-', ...this.props.allRoles],
+            roles: this.props.allRoles,
             contacts: contacts,
         })
     }
@@ -129,10 +129,9 @@ class EditMemberDetail extends React.Component {
     }
 
     createFormData() {
-        // '-' if blank
-        let role_id = '-'
+        let role_id = -1
         let {role, roles} = this.state
-        if (role) {
+        if (role !== '') {
             role_id = roles.find((item) => item.title === role).id
         }
 
@@ -186,11 +185,8 @@ class EditMemberDetail extends React.Component {
 
     render() {
         const {role, roleStatus, roles, contacts, errors} = this.state
-        const {member} = this.props
-        const links = member.links
+        const {createRolePath} = this.props
 
-        console.log("State ", this.state)
-        console.log("Props ", this.props)
         return (
             <div>
                 <div className="setting__role__section">
@@ -242,9 +238,9 @@ class EditMemberDetail extends React.Component {
                     </FormControl>
                 </div>
 
-                <p className="link d-flex flex-column align-items-center">
+                <a href={createRolePath} className="link d-flex flex-column align-items-center">
                     Create new role
-                </p>
+                </a>
                 <div className="setting__role__section">
                     <div className="setting__role__title">
                         <h4>Contact</h4>
@@ -264,17 +260,17 @@ class EditMemberDetail extends React.Component {
                     )}
                 </div>
 
-                <div className="setting__role__section setting__role__section__button button--fixed-bottom ml-2 mr-2">
+                <div className="setting__role__section setting__role__section__button ml-2 mr-2 mt-lg-3">
                     <Button
                         name="remove-button"
-                        className="button button--lg button__decline setting__role__button mr-2"
+                        className="button button--lg button__decline setting__role__button mr-2 ml-auto"
                         onClick={this.handleDeleteMember}
                     >
                         Remove
                     </Button>
                     <Button
                         name="save-button"
-                        className="button button--lg button__accept setting__role__button"
+                        className="button button--lg button__accept setting__role__button mr-auto"
                         onClick={(e) => this.handleSubmit(e)}
                     >
                         Save
@@ -289,8 +285,8 @@ EditMemberDetail.propTypes = {
     authenticityToken: PropTypes.string,
     submitPath: PropTypes.string,
     currentUser: PropTypes.object,
-    memberRole: PropTypes.object,
     allRoles: PropTypes.array,
+    createRolePath: PropTypes.string,
     member: PropTypes.object
 }
 

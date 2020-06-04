@@ -10,6 +10,7 @@ class Projects::Settings::MembersController < ApplicationController
 
   def edit
     @member = Member.find(params[:id])
+    @project = @member.project
     @user = @member.user
     @role = @member.role
     @member_details = {member_id: @member.id, member: @user, role: @role, is_owner: @member.is_owner}
@@ -20,11 +21,10 @@ class Projects::Settings::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     @project = @member.project
-    if member_params[:role_id] == '-' && @member.role
-      @member.role.members.clear(@member)
-    end
+    @role = Role.where(id: member_params[:role_id]).first
+
     respond_to do |format|
-      if @member.update(is_owner: member_params[:is_owner])
+      if @member.update(is_owner: member_params[:is_owner], role: @role)
         format.html { redirect_to projects_settings_member_path, notice: 'Member was successfully updated.' }
         format.json {
           flash.notice = 'Member has been updated.'
@@ -50,6 +50,8 @@ class Projects::Settings::MembersController < ApplicationController
       end
     end
   end
+
+  private
 
   def member_params
     params.require(:member).permit(:role_id, :is_owner)

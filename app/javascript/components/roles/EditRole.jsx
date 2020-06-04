@@ -71,6 +71,7 @@ class EditRole extends React.Component {
             description: this.props.role.description,
             status: this.props.role.status,
             isButtonLoading: false,
+            isRemoveButtonLoading: false,
             errors: defaultErrors,
         }
 
@@ -119,12 +120,10 @@ class EditRole extends React.Component {
 
         EditRoleValidator.validateAll(this.state)
             .then((result) => {
-                debugger
                 const formData = this.createFormData()
                 this.submitForm(formData)
             })
             .catch((errors) => {
-                debugger
                 this.setState({
                     errors: errors,
                 })
@@ -182,8 +181,54 @@ class EditRole extends React.Component {
             })
     }
 
+    handleDeleteRole = () => {
+        if (confirm("Do you want to delete this role?")) {
+            this.deleteRole()
+        }
+    }
+
+    deleteRole = () => {
+        const formData = new FormData()
+        formData.append("authenticity_token", this.props.authenticityToken)
+
+        this.setIsRemoveButtonLoading(true)
+        const url = this.props.role.links.destroy
+        axios({
+            method: "delete",
+            url: url,
+            responseType: "json",
+            headers: {
+                Accept: "application/json",
+            },
+            data: formData,
+        })
+            .then((response) => {
+                debugger
+                if (response.status === 200) {
+                    window.location.href = response.headers.location
+                }
+            })
+            .catch((error) => {
+                debugger
+                console.log(error)
+                if (error.response.status === 403) {
+                    alert(error.response.data.message)
+                } else {
+                    alert(error.response.message)
+                }
+            })
+            .finally(() => {
+                this.setIsRemoveButtonLoading(false)
+            })
+    }
+
+
     setIsButtonLoading(isLoading) {
         this.setState({isButtonLoading: isLoading})
+    }
+
+    setIsRemoveButtonLoading = (isLoading) => {
+        this.setState({isRemoveButtonLoading: isLoading})
     }
 
     render() {
@@ -195,10 +240,11 @@ class EditRole extends React.Component {
             status,
             errors,
             isButtonLoading,
+            isRemoveButtonLoading,
         } = this.state
         console.log("state ", this.state)
         return (
-            <form onSubmit={this.handleSubmit} noValidate className="mb-5">
+            <form noValidate className="mb-5">
                 <div className="setting__role__section">
                     <FormInput
                         id="name"
@@ -271,17 +317,26 @@ class EditRole extends React.Component {
           </FormHelperText> */}
                 </div>
 
-                <div className="setting__role__section">
+                <div className="setting__role__section setting__role__section__button ml-2 mr-2 mt-lg-3">
                     <Button
-                        type="submit"
-                        name="submitButton"
+                        name="remove-button"
+                        className="button button--lg button__decline setting__role__button mr-2 ml-auto"
+                        isLoading={isRemoveButtonLoading}
+                        onClick={this.handleDeleteRole}
+                    >
+                        Remove
+                    </Button>
+
+                    <Button
+                        name="save-button"
+                        className="button button--lg button__accept setting__role__button mr-auto"
                         isLoading={isButtonLoading}
-                        className="button button--lg button--gradient-primary mt-3 ml-auto mr-auto"
-                        onClick={this.handleSubmit}
+                        onClick={(e) => this.handleSubmit(e)}
                     >
                         Update Role
                     </Button>
                 </div>
+
             </form>
         )
     }

@@ -31,9 +31,11 @@ class Projects::Settings::RolesController < ApplicationController
     @project = @role.project
     respond_to do |format|
       if @role.update(role_params)
-        flash.notice = 'Role has been updated.'
         format.html { redirect_to projects_settings_members_path(project: @project.id), notice: 'role was successfully updated.' }
-        format.json { render json: @role, status: :ok, location: projects_settings_members_path(project: @project.id) }
+        format.json {
+          flash.notice = 'Role has been updated.'
+          render json: @role, status: :ok, location: projects_settings_members_path(project: @project.id)
+        }
       else
         errors = helpers.errors_to_camel(@role.errors.messages)
         format.html { render :edit }
@@ -42,7 +44,21 @@ class Projects::Settings::RolesController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @role = Role.find(params[:id])
+    @project = @role.project
+    if @project.owners.include? current_user
+      if @role.destroy
+        respond_to do |format|
+          format.html { redirect_to projects_settings_members_path(project: @project.id), notice: 'Role was successfully deleted.' }
+          format.json {
+            flash.notice = 'Role has been deleted.'
+            render json: {message: 'Role deleted.'}, status: :ok, location: projects_settings_members_path(project: @project.id)
+          }
+        end
+      end
+    end
+  end
 
   private
 

@@ -39,6 +39,8 @@ class EditMemberDetail extends React.Component {
             roleStatus: this.props.member.is_owner ? "Owner" : "Member",
             contacts: [],
             errors: defaultErrors,
+            isButtonLoading: false,
+            isRemoveButtonLoading: false
         }
 
         this.memberDetail = this.memberDetail.bind(this)
@@ -85,6 +87,7 @@ class EditMemberDetail extends React.Component {
         const formData = new FormData()
         formData.append("authenticity_token", this.props.authenticityToken)
 
+        this.setIsRemoveButtonLoading(true)
         const url = this.props.member.links.destroy
         axios({
             method: "delete",
@@ -125,6 +128,9 @@ class EditMemberDetail extends React.Component {
                     errors: errors,
                 })
                 this.setIsButtonLoading(false)
+            })
+            .finally(() => {
+                this.setIsRemoveButtonLoading(false)
             })
     }
 
@@ -183,8 +189,13 @@ class EditMemberDetail extends React.Component {
         this.setState({isButtonLoading: isLoading})
     }
 
+    setIsRemoveButtonLoading = (isLoading) => {
+        this.setState({isRemoveButtonLoading: isLoading})
+    }
+
+
     render() {
-        const {role, roleStatus, roles, contacts, errors} = this.state
+        const {role, roleStatus, roles, contacts, errors, isButtonLoading, isRemoveButtonLoading} = this.state
         const {createRolePath} = this.props
 
         return (
@@ -264,6 +275,7 @@ class EditMemberDetail extends React.Component {
                     <Button
                         name="remove-button"
                         className="button button--lg button__decline setting__role__button mr-2 ml-auto"
+                        isLoading={isRemoveButtonLoading}
                         onClick={this.handleDeleteMember}
                     >
                         Remove
@@ -271,6 +283,7 @@ class EditMemberDetail extends React.Component {
                     <Button
                         name="save-button"
                         className="button button--lg button__accept setting__role__button mr-auto"
+                        isLoading={isButtonLoading}
                         onClick={(e) => this.handleSubmit(e)}
                     >
                         Save

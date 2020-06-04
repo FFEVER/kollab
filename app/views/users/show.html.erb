@@ -40,18 +40,26 @@
         </p>
       </div>
       <% if current_user != @user %>
-        <% if current_user.following?(@user) %>
-          <div class="d-flex flex-row">
-            <%= link_to "Following", unfollow_user_path, method: :post,
-                        class: "button button--md button--unfollow--sm mr-1", remote: true, style: 'width:100%;' %>
+        <div class="d-flex flex-row">
 
-          </div>
-        <% else %>
-          <div class="d-flex flex-row">
+          <% if current_user.following?(@user) %>
+            <%= link_to "Following", unfollow_user_path, method: :post,
+              class: "button button--md button--unfollow--sm mr-1", remote: true, style: 'width:50%;'%>
+
+          <% else %>
             <%= link_to "Follow", follow_user_path, method: :post,
-                        class: "button button--md button--follow--sm mr-1", remote: true, style: 'width:100%;' %>
-          </div>
-        <% end %>
+              class: "button button--md button--follow--sm mr-1", remote: true, style: 'width:50%;'%>
+
+          <% end %>
+          <%= react_component("shared/InviteMemberModal",
+          {
+            authenticityToken: form_authenticity_token,
+            submitPath: project_update_path,
+            targetUser: @user,
+            projects: current_user.projects
+          }, {:style => "width:50%"})
+        %>
+        </div>
       <% else %>
         <%= button_to "Edit Profile", edit_users_settings_user_path, class: "button button--md profile__fullwidth", method: :get %>
       <% end %>

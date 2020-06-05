@@ -17,7 +17,7 @@ class FormValidator {
     if (title === undefined || title.length < 1) {
       errors[key].push("Title cannot be blank.")
     }
-    if (title.length > 50) {
+    if (title.length > 100) {
       errors[key].push("Title is too long.")
     }
   }
@@ -26,9 +26,9 @@ class FormValidator {
     const { shortDesc } = state
     const key = Object.keys({ shortDesc })[0]
 
-    // if (shortDesc === undefined || shortDesc.length < 1) {
-    //   errors[key].push("Short description cannot be blank.")
-    // }
+    if (shortDesc === undefined || shortDesc.length < 1) {
+      errors[key].push("Short description cannot be blank.")
+    }
     if (shortDesc.length > 150) {
       errors[key].push("Short description is too long.")
     }
@@ -38,12 +38,8 @@ class FormValidator {
     const { longDesc } = state
     const key = Object.keys({ longDesc })[0]
 
-    if (longDesc === undefined || longDesc.length < 1) {
-      errors[key].push("Long description cannot be blank.")
-    }
-
-    if (longDesc.length > 250) {
-      errors[key].push("The  description is too long.")
+    if (longDesc.length > 3000) {
+      errors[key].push("The description is too long.")
     }
   }
 

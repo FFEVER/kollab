@@ -4,14 +4,22 @@ require 'action_view/helpers'
 include ActionView::Helpers::DateHelper
 
 class ProjectSerializer < ActiveModel::Serializer
+  include Rails.application.routes.url_helpers
   attributes :id, :title, :short_desc, :status, :tags, :last_updated, :looking_roles, :starred, :star_count
+
+  attribute :links do
+    id = object.id
+    {
+        'show': project_path(id)
+    }
+  end
 
   def starred
     false
   end
 
   def status
-    self.object.project_status or 'In progress'
+    object.status or 'In progress'
   end
 
   def last_updated
@@ -23,7 +31,7 @@ class ProjectSerializer < ActiveModel::Serializer
   end
 
   def looking_roles
-    ['Role1', 'Role2']
+    object.roles.open.map { |role| role.title }
   end
 
   def star_count

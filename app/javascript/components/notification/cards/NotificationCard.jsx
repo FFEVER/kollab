@@ -1,15 +1,14 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Button from "../../shared/form/Button"
-import portraitPlaceholder from "../../../images/portrait_placeholder.png";
+import Button from "../../shared/form/Button";
 import axios from "axios";
 
-class WaitListCard extends React.Component {
+class NotificationCard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             isAccepted: false,
-            isRejected: false
+            isRejected: false,
         }
     }
 
@@ -73,26 +72,20 @@ class WaitListCard extends React.Component {
     }
 
     render() {
-        const {request} = this.props
         const {isAccepted, isRejected} = this.state
-        const user = request.user
+        const {request} = this.props
+        const project = request.project
+
         return (
+            // <div className="notification__card">
             <div className="card-with-button">
-                <a href={user.links.show} className="d-flex flex-row">
-                    {user.profile_image_url === null ?
-                        <img src={portraitPlaceholder} className="search__user__proimg"/>
-                        : <img src={user.profile_image_url} className="search__user__proimg"/>
-                    }
-                    <div className="card-with-button__detail">
-                        <h5 style={{color: "#4e4e4e"}}>{user.name}</h5>
-                        <p>{user.faculty}</p>
-                        <div>
-                            {user.skills.map((item, index) => (
-                                <a className="link mr-1" key={index}>{`#${item}`}</a>
-                            ))}
-                        </div>
-                    </div>
-                </a>
+                <div className="card-with-button__detail">
+                    <h5> New invitation </h5>
+                    <p>You are invited to join &nbsp;
+                        <a href={project.links.show}><b>{project.title}</b></a>
+                        &nbsp;project</p>
+                </div>
+
                 <div className="d-flex flex-column">
                     {isAccepted ?
                         <Button name="accepted-button" className="button button__accepted mb-2">
@@ -124,8 +117,8 @@ class WaitListCard extends React.Component {
     }
 }
 
-WaitListCard.propTypes = {
+NotificationCard.propTypes = {
     authenticityToken: PropTypes.string,
-    user: PropTypes.object,
+    request: PropTypes.object,
 }
-export default WaitListCard
+export default NotificationCard

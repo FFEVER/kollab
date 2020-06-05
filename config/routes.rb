@@ -5,15 +5,16 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   devise_for :users, controllers: {
-    confirmations: 'users/confirmations',
-    registrations: 'users/registrations',
-    passwords: 'users/passwords',
-    sessions: 'users/sessions'
+      confirmations: 'users/confirmations',
+      registrations: 'users/registrations',
+      passwords: 'users/passwords',
+      sessions: 'users/sessions'
   }
 
   resources :users, only: %i[show] do
     resources :projects, only: :index, controller: 'users/projects'
     resources :posts, only: :index, controller: 'users/posts'
+    resources :notifications, only: :index, controller: 'users/notifications'
     member do
       post 'follow'
       post 'unfollow'
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
     resources :posts
   end
 
-  namespace :api, constraints: { format: 'json' } do
+  namespace :api, constraints: {format: 'json'} do
     namespace :v1 do
       resources :users, only: %i[index]
       resources :projects, only: %i[index]
@@ -49,7 +50,7 @@ Rails.application.routes.draw do
 
   namespace :projects do
     resources :roles, only: %i[show]
-    resources :join_requests, only: %i[create accept destroy]
+    resources :join_requests, only: %i[create update destroy]
 
     namespace :settings do
       resources :projects, only: %i[edit update]
@@ -61,7 +62,7 @@ Rails.application.routes.draw do
   namespace :users do
     namespace :settings do
       resources :users, only: %i[edit update]
-      resources :projects, only: %i[edit update]
+      resources :projects, only: %i[edit update destroy]
     end
   end
 

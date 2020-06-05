@@ -12,6 +12,18 @@ class Users::Settings::ProjectsController < ApplicationController
 
   def update; end
 
+  def destroy
+    @project = Project.find(params[:project_id])
+    if current_user.projects.include? @project
+      if @project.destroy
+        respond_to do |format|
+          format.html { redirect_to edit_users_settings_project_path, notice: 'Project was successfully deleted.' }
+          format.json { render json: @project, status: :ok, location: edit_users_settings_project_path(id: current_user[:id]) }
+        end
+      end
+    end
+  end
+
   def project_params
     permitted = params.require(:project).permit(
       :title,

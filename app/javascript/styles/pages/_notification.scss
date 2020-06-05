@@ -1,0 +1,17 @@
+.notification {
+  display: flex;
+  flex-direction: column;
+
+  padding: $spacer-m $spacer;
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: $spacer-m;
+    padding: $spacer-m;
+
+    background-color: white;
+    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+}

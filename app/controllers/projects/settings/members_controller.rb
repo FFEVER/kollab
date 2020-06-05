@@ -46,12 +46,15 @@ class Projects::Settings::MembersController < ApplicationController
   def destroy
     @member = Member.find(params[:id])
     @project = @member.project
-    if @project.owners.include? current_user
-      if @project.members.count <= 1
-        render json: {message: 'Cannot remove member since it is the last member.'}, status: :forbidden
-      end
-      if @member.destroy
-        render json: {message: 'Removed'}, location: projects_settings_members_path(project: @project), status: :ok
+    respond_to do |format|
+      if @project.owners.include? current_user or @member.user == current_user
+        if @project.users.count <= 1
+          format.html { redirect_to request.referer, alert: 'Cannot remove member since it is the last member.' }
+          format.json { render json: {message: 'Cannot remove member since it is the last member.'}, status: :forbidden }
+        elsif @member.destroy
+          format.html { redirect_to request.referer, notice: 'You have left the project.' }
+          format.json { render json: {message: 'Removed'}, location: projects_settings_members_path(project: @project), status: :ok }
+        end
       end
     end
   end

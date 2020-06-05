@@ -6,7 +6,7 @@
         <h4><%= tab.edit_profile 'Edit profile', edit_users_settings_user_path, class: "tablinks setting__tab__title" %></h4>
       </div>
       <div class="setting__tab__item">
-        <h4><%= tab.edit_project 'Projects', edit_users_settings_project_path, class: "tablinks setting__tab__title" %></h4>
+        <h4><%= tab.edit_project 'Projects', edit_users_settings_project_path(id: current_user.id), class: "tablinks setting__tab__title" %></h4>
         <div class="setting__tab__selected"></div>
       </div>
     </div>
@@ -23,8 +23,8 @@
       </div>
       <% @owned_projects.each do |project| %>
         <div class="setting__project__item">
-          <p><%=project.title%></p>
-          <%# <button class="setting__project__button__delete">Delete</button> %>
+          <%= link_to project.title, project_path(project) %>
+          <%= link_to "Delete", users_settings_project_path(project_id: project.id), class: "setting__project__button__delete", method: :delete, data: {confirm: "Do you want to delete the project"} %>
         </div>
       <%end%>
     </div>
@@ -39,8 +39,10 @@
       </div>
       <% @participated_projects.each do |project| %>
         <div class="setting__project__item">
+          <% member = project.members.where(user: current_user).first %>
           <p><%=project.title%></p>
-          <button class="setting__project__button__delete">Leave</button>
+          <%# Add submit path for leaving the project %>
+          <%= link_to "Leave", projects_settings_member_path(member), class: "setting__project__button__delete", method: :delete, data: {confirm: "Do you want to leave the project"} %>
         </div>
       <%end%>
     </div>

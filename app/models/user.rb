@@ -29,7 +29,7 @@ class User < ApplicationRecord
   has_many :received_follows, as: :followable, class_name: 'Following', dependent: :delete_all
   has_many :followers, through: :received_follows, source: :follower
   has_many :given_follows, dependent: :delete_all,
-           foreign_key: :follower_id, class_name: 'Following'
+                           foreign_key: :follower_id, class_name: 'Following'
   has_many :followings, through: :given_follows, source: :followable, source_type: 'User'
   has_many :following_projects, through: :given_follows, source: :followable, source_type: 'Project'
 
@@ -44,20 +44,19 @@ class User < ApplicationRecord
   has_many :user_skills, dependent: :delete_all
   has_many :skills, through: :user_skills
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :join_requests, dependent: :delete_all
   has_many :projects_to_join, through: :join_requests, source: :project
 
   has_one_attached :profile_image
 
-
-  validates :first_name, presence: true, length: {within: 1..50}
-  validates :last_name, presence: true, length: {within: 1..50}
-  validates :year, length: {within: 1..15}, allow_nil: true, allow_blank: true
-  validates :description, length: {within: 1..300}, allow_nil: true, allow_blank: true
+  validates :first_name, presence: true, length: { within: 1..50 }
+  validates :last_name, presence: true, length: { within: 1..50 }
+  validates :year, length: { within: 1..15 }, allow_nil: true, allow_blank: true
+  validates :description, length: { within: 1..300 }, allow_nil: true, allow_blank: true
   validates :profile_image, content_type: VALID_IMG_TYPES,
-            size: {less_than: MAX_IMG_MB_SIZE.megabytes,
-                   message: "should less than #{MAX_IMG_MB_SIZE} MB"}
+                            size: { less_than: MAX_IMG_MB_SIZE.megabytes,
+                                    message: "should less than #{MAX_IMG_MB_SIZE} MB" }
 
   validates_length_of :skill_list, minimum: 1, message: 'Skills cannot be blank.', allow_nil: true, allow_blank: true
   validates_length_of :skill_list, maximum: 3, message: 'Skills can only have up to 3.'
@@ -131,7 +130,7 @@ class User < ApplicationRecord
     tree
   end
 
-  def get_n_latest_unique_viewed(item_type = 'Project', n = 16)
-    given_views.where(viewable_type: 'Project').order('created_at DESC').map { |v| v.viewable_id }.uniq[0..(n - 1)]
+  def get_n_latest_unique_viewed(_item_type = 'Project', n = 16)
+    given_views.where(viewable_type: 'Project').order('created_at DESC').map(&:viewable_id).uniq[0..(n - 1)]
   end
 end

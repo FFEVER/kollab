@@ -6,6 +6,7 @@ class Users::Settings::UsersController < ApplicationController
   end
 
   def update
+    binding.pry
     @user = current_user
     respond_to do |format|
       if @user.update(user_params)

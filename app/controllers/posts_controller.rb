@@ -21,21 +21,20 @@ class PostsController < ApplicationController
       render json: @post, location: project_path(@project), status: :created
     else
       errors = helpers.errors_to_camel(@post.errors.messages)
-      render json: {messages: errors}, status: :bad_request
+      render json: { messages: errors }, status: :bad_request
     end
   end
 
   def update
     @project = Project.find(params[:project_id])
     return unless check_permission(@project, current_user)
+
     @post.update(:post_params)
   end
 
   def destroy
     if current_user.posts.include? @post
-      if @post.destroy
-        render json: {message: 'Removed'}, status: :ok
-      end
+      render json: { message: 'Removed' }, status: :ok if @post.destroy
     end
   end
 
@@ -51,9 +50,9 @@ class PostsController < ApplicationController
 
   def check_permission(project, user)
     unless project.users.include? user
-      render json: {messages: {body: ['You have no permission.']}}, status: :unauthorized
+      render json: { messages: { body: ['You have no permission.'] } }, status: :unauthorized
       return false
     end
-    return true
+    true
   end
 end

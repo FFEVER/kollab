@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[show] do
     resources :projects, only: :index, controller: 'users/projects'
     resources :posts, only: :index, controller: 'users/posts'
+    resources :notifications, only: :index, controller: 'users/notifications'
     member do
       post 'follow'
       post 'unfollow'

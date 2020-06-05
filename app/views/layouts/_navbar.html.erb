@@ -35,7 +35,7 @@
         <%= link_to explore_search_index_path, class: "nav__item nav__item--icon nav__item--mobile" do %>
           <i class="fas fa-search"></i>
         <% end %>
-        <%= link_to root_path, class: "nav__item nav__item--icon" do %>
+        <%= link_to user_notifications_path(current_user), class: "nav__item nav__item--icon" do %>
           <i class="fas fa-bell"></i>
         <% end %>
       </div>

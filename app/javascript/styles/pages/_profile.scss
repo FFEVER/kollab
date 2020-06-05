@@ -2,11 +2,8 @@
   display: flex;
   flex-direction: column;
 
-  margin-top: $spacer;
-  margin-bottom: $spacer-l;
-  padding-right: $spacer;
-  padding-left: $spacer;
-  padding-bottom: $spacer-xl;
+  margin: $spacer-l;
+  padding: $spacer-s $spacer-m;
 
   &__view {
     display: flex;
@@ -18,22 +15,22 @@
     &__col {
       display: flex;
       flex-direction: column;
+
       width: 100%;
       @media only screen and (min-width: $kollab-width-desktop) {
         width: 65%;
       }
 
-        &--projects {
+      &--projects {
         display: flex;
         @media only screen and (min-width: $kollab-width-desktop) {
           width: 35%;
           min-width: 350px;
-          margin-left: $spacer-m;
+          margin-left: $spacer-l;
         }
       }
     }
   }
-
 
   &__header {
     display: flex;

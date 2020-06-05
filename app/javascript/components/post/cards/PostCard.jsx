@@ -12,7 +12,7 @@ class PostCard extends React.Component {
     }
   }
 
-  handleDeletePost = (projectid, id) => {
+  handleDeletePost = (projectId, id) => {
     if (confirm("Do you want to delete a post?")) {
       this.deletePost(projectId, id)
     }
@@ -21,10 +21,9 @@ class PostCard extends React.Component {
   deletePost = (projectId, id) => {
     const formData = new FormData()
     formData.append("authenticity_token", this.props.authenticityToken)
-
     const url = this.props.deletePostPath
-      .replace("id", id)
       .replace("project_id", projectId)
+      .replace("id", id)
     axios({
       method: "delete",
       url: url,
@@ -58,6 +57,7 @@ class PostCard extends React.Component {
   render() {
     const { currentUser, showProjectTitle } = this.props
     const { posts } = this.state
+
     return (
       <div>
         {posts.map((item, index) => (

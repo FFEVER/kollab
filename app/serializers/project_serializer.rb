@@ -10,9 +10,9 @@ class ProjectSerializer < ActiveModel::Serializer
     false
   end
 
-  def status
-    self.object.project_status or 'In progress'
-  end
+  # def status
+  #   self.object.project_status or 'In progress'
+  # end
 
   def last_updated
     time_ago_in_words(self.object.updated_at - 60 * 60 * 2) + ' ago'
@@ -23,7 +23,7 @@ class ProjectSerializer < ActiveModel::Serializer
   end
 
   def looking_roles
-    ['Role1', 'Role2']
+    object.roles.open.map { |role| role.title }
   end
 
   def star_count

@@ -305,12 +305,12 @@ class ProjectCreateForm extends React.Component {
           />
         </div>
 
-        <div className="form-column">
+        <div className="form-column d-flex flex-column align-items-center">
           <Button
             type="submit"
             name="submitButton"
             isLoading={isButtonLoading}
-            className="button button--lg button--gradient-primary mt-3 ml-auto mr-auto"
+            className="button button--lg button--gradient-primary mt-3 "
           >
             Create a Project
           </Button>

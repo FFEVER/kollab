@@ -43,7 +43,10 @@ form {
   }
 
   .half-width {
-    width: 48.75%;
+    width: 48%;
+    @media only screen and (min-width: $kollab-width-desktop) {
+      width: 49%;
+    }
   }
 }
 

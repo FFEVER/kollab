@@ -60,8 +60,6 @@ class InviteMemberModal extends React.Component {
             data: formData,
         })
             .then((response) => {
-                if (response.status === 201)
-                    alert('Request has been sent')
             })
             .catch((error) => {
                 if (error.response.status === 403) {

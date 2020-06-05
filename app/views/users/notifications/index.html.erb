@@ -1,0 +1,13 @@
+<div class="home">
+  <% if @join_requests.count <= 0 %>
+    <div class="home__no-post">
+      <h1>There is nothing happening right now</h1>
+    </div>
+  <% else %>
+    <%= react_component('notification/Notification', {
+        authenticityToken: form_authenticity_token,
+        currentUser: current_user,
+        joinRequests: @join_requests
+    }) %>
+  <% end %>
+</div>

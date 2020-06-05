@@ -22,7 +22,7 @@
       <%= image_pack_tag "portrait_placeholder.png", class: "nav__profile-img image__profile image__profile--medium"%>
     <% end %>
   </div>
-  <%= form_with(model: @user, url: profile_update_path, local: true) do |f| %>
+  <%= form_with(model: @user, url: users_settings_user_path, local: true) do |f| %>
     <div class="d-flex flex-row justify-content-between mb-1">
       <div>
         <%= f.file_field :profile_image, label: "Choose a file" %>
@@ -36,7 +36,7 @@
   <%= react_component("profile/EditUserProfile",
     {
       authenticityToken: form_authenticity_token,
-      submitPath: profile_update_path,
+      submitPath: users_settings_user_path(current_user),
       currentUser: @user,
       userExpertises: Expertising.where(expertisable_type: "User", expertisable_id: @user.id),
       expertises: Expertise.all,

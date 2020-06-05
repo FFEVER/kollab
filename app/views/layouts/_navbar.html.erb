@@ -35,8 +35,12 @@
         <%= link_to explore_search_index_path, class: "nav__item nav__item--icon nav__item--mobile" do %>
           <i class="fas fa-search"></i>
         <% end %>
-        <%= link_to root_path, class: "nav__item nav__item--icon" do %>
-          <i class="fas fa-bell"></i>
+        <%= link_to user_notifications_path(current_user), class: "nav__item nav__item--icon" do %>
+          <% if current_user.join_requests.inviting.blank? %>
+            <i class="fas fa-bell"></i>
+          <% else %>
+            <i class="fas fa-bell" data-count="."></i>
+          <% end %>
         <% end %>
       </div>
       <div class="nav__dropdown" id="drop-menu">

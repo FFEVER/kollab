@@ -4,15 +4,23 @@ require 'action_view/helpers'
 include ActionView::Helpers::DateHelper
 
 class ProjectSerializer < ActiveModel::Serializer
+  include Rails.application.routes.url_helpers
   attributes :id, :title, :short_desc, :status, :tags, :last_updated, :looking_roles, :starred, :star_count
+
+  attribute :links do
+    id = object.id
+    {
+        'show': project_path(id)
+    }
+  end
 
   def starred
     false
   end
 
-  # def status
-  #   self.object.project_status or 'In progress'
-  # end
+  def status
+    object.status or 'In progress'
+  end
 
   def last_updated
     time_ago_in_words(self.object.updated_at - 60 * 60 * 2) + ' ago'

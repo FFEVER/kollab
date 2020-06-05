@@ -2,7 +2,15 @@
 
 class Project < ApplicationRecord
   has_many :members, dependent: :delete_all
-  has_many :users, through: :members
+  has_many :users, through: :members do
+    def owners
+      where('members.is_owner = ?', true)
+    end
+
+    def participated
+      where('members.is_owner = ?', false)
+    end
+  end
 
   has_many :taggings, dependent: :delete_all
   has_many :tags, through: :taggings
@@ -19,13 +27,13 @@ class Project < ApplicationRecord
   has_many :received_views, as: :viewable, class_name: 'Viewing', dependent: :delete_all
   has_many :viewers, through: :received_views, source: :viewer
 
-  has_many :posts
-  has_many :roles
+  has_many :posts, dependent: :destroy
+  has_many :roles, dependent: :destroy
 
   has_many :join_requests, dependent: :delete_all
 
-  validates :title, presence: true, length: { within: 1..100 }
-  validates :short_desc, presence: true, length: { within: 1..150 }
+  validates :title, presence: true, length: {within: 1..100}
+  validates :short_desc, presence: true, length: {within: 1..150}
   validate :start_date_greater_than_end_date
   validates_length_of :tag_list, minimum: 1, message: 'Tags cannot be blank.'
   validates_length_of :tag_list, maximum: 3, message: 'Tags can only have up to 3.'

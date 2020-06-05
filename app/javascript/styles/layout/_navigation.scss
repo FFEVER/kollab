@@ -11,8 +11,8 @@
 
   background-color: white;
   -webkit-box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
-     -moz-box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
-          box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
 
   @media only screen and (min-width: $kollab-width-tablet) {
     font-size: 16px;
@@ -22,6 +22,7 @@
 
   &__brand {
     margin-right: $spacer-l;
+
     &__logo {
       min-width: 70px;
       height: 30px;
@@ -40,6 +41,7 @@
     align-items: center;
 
     height: 100%;
+
     &--right {
       margin-left: auto;
     }
@@ -80,6 +82,7 @@
       padding-left: $spacer;
 
       white-space: nowrap;
+
       i {
         color: black;
         margin-right: $spacer-s;
@@ -92,7 +95,7 @@
       }
 
 
-        &--active {
+      &--active {
         color: $kollab-primary;
         border-radius: 5px;
         background-color: rgba(84, 189, 194, 0.12);
@@ -129,15 +132,18 @@
 
       color: $kollab-gray;
     }
+
     &:hover {
       &::after {
         color: $kollab-primary !important;
       }
     }
   }
+
   &__profile-img {
     margin-right: $spacer-s;
   }
+
   &__profile-name {
     margin-right: $spacer-s;
 
@@ -169,12 +175,31 @@
 
     &__drop-item {
       color: $kollab-gray;
+
       &:hover {
         background-color: rgba(84, 189, 194, 0.12);
       }
+
       i {
         margin-right: $spacer-s;
       }
     }
   }
+}
+.fas[data-count]{
+  position:relative;
+}
+.fas[data-count]:after{
+  position: absolute;
+  right: -0.75em;
+  top: -.75em;
+  content: attr(data-count);
+  padding: .5em;
+  border-radius: 10em;
+  line-height: .9em;
+  color: white;
+  background: rgba(255,0,0,.75);
+  text-align: center;
+  min-width: 2em;
+  font: bold .4em sans-serif;
 }

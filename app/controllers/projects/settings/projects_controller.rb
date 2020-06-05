@@ -8,7 +8,7 @@ class Projects::Settings::ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to project_edit_path, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to project_edit_path, notice: 'Project was successfully updated.' }
         format.json { render json: @project, status: :ok, location: @project }
       else
         errors = helpers.errors_to_camel(@project.errors.messages)

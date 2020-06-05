@@ -421,7 +421,7 @@ class EditProject extends React.Component {
           />
         </div>
         <div className="form-row">
-          <div className="form-group form__date">
+          <div className="form-group form__date half-width">
             <FormInput
               name="startDate"
               label="Start date:"
@@ -433,7 +433,7 @@ class EditProject extends React.Component {
             />
           </div>
 
-          <div className="form-group form__date">
+          <div className="form-group form__date  half-width">
             <FormInput
               name="endDate"
               label="End date:"

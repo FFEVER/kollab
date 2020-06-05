@@ -4,6 +4,10 @@ form {
   }
 
   .form-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
     margin: 0;
   }
 
@@ -36,6 +40,10 @@ form {
   }
   .full-width {
     width: 100%;
+  }
+
+  .half-width {
+    width: 48.75%;
   }
 }
 
